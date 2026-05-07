@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="updateditarUsuario.php" method="post">
+    <form action="updateEditarProductos.php" method="post">
         <label for="Nombre">Nombre:</label>
         <input type="text" id="Nombre" name="Nombre" required>
         <br>
