@@ -10,13 +10,13 @@ if ($conexion->connect_error) {
     echo "No se ha podido conectar a la base de datos";
 }
 
-$sql = "SELECT * FROM Usuarios WHERE CI='$CI'";
+$sql = "SELECT * FROM Productos";
 $resultado = $conexion->query($sql);
 if ($resultado->num_rows > 0) {
     while($fila = $resultado->fetch_assoc()) {
-        echo  " $fila ["CI"]. $fila["Nombre"] . " - Dirección: " . $fila["Direccion"] . " - Celular: " . $fila["Celular"] . " - Rol: " . $fila["Rol"] . " - Estado: " . $fila["Estado"] ". "<br>";
+        echo "Nombre: " . $fila["Nombre"] . " - Descripción: " . $fila["Descripcion"] . " - Precio: " . $fila["Precio"] . " - Stock: " . $fila["Stock"] . "<br>";
     }
 } else {
-    echo "No se encontraron usuarios.";
+    echo "No se encontraron productos.";
 }
 ?>
