@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="updateditarUsuario.php" method="post">
+        <label for="Nombre">Nombre:</label>
+        <input type="text" id="Nombre" name="Nombre" required>
+        <br>
+        <label for="Direccion">Descripción:</label>
+        <input type="text" id="Descripcion" name="Descripcion" required>
+        <br>
+        <label for="Precio">Precio:</label>
+        <input type="text" id="Precio" name="Precio" required>
+        <br>
+                <label for="Stock">Stock:</label>
+        <input type="text" id="Stock" name="Stock" required>
+        <br>
+        <input type="submit" value="Editar">
+    </form>
+</body>
+</html>
