@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>M&M's</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      display: grid;
+      grid-template-areas:
+        "header header"
+        "main main";
+      grid-template-rows: 250px auto;
+      background-color: #fff;
+      margin-left: 260px;
+    }
+
+    header {
+      grid-area: header;
+      background:radial-gradient( #3a3a3a,#1f1f1f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 5px solid #c59d5f;
+    }
+
+    nav {
+      grid-area: nav;
+      background: linear-gradient(to bottom, #1f1f1f, #3a3a3a);
+      color: #b2b2b2;
+      font-family: Arial, sans-serif;
+      padding-top: 20px;
+      width: 300px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-right: 5px solid #c59d5f;
+      transition: color 0.3s;
+    }
+    #compra{
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+    }
+    nav:hover{
+      color: #c59d5f;
+    }
+    main {
+  grid-area: main;
+  background-color: #fff;
+  padding: 50px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+    #m {
+      font-family: 'Cinzel Decorative', serif;
+      color: #c59d5f;
+      text-align: center;
+      font-size: 100px;
+      margin: 1rem 0;
+      letter-spacing: 1px;
+    }
+
+    .indice ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .indice a {
+      text-decoration: none;
+      color: #b2b2b2;
+      display: block;
+      padding: 20px;
+      transition: background-color 0.6s, color 0.6s;
+    }
+
+    .indice a:hover {
+      background-color: #333;
+      color: white;
+    }
+    #n{
+      font-family:  'Cinzel Decorative', serif;
+      font-size: 45px;
+      color: #2b2b2b;
+      text-align: left;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #c59d5f;
+      padding-left:80px;
+    }
+    #fotos{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); 
+      grid-template-rows: repeat(3, auto);
+      gap: 60px;
+      justify-items: center;
+      margin-top: 20px;
+    }
+    #fotos img{
+      width: 300px;
+      height: 200px;
+      border-radius: 20px;
+      transition: transform 0.3s;
+    }
+    #fotos img:hover{
+      transform: scale(1.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+
+.fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 50px;
+}
+
+.texto h2 {
+  font-family: 'Cinzel Decorative', serif;
+  color: #2b2b2b;
+  border-bottom: 2px solid #c59d5f;
+  margin-bottom: 15px;
+}
+
+.texto p {
+  font-size: 18px;
+  color: #444;
+  text-align: justify;
+}
+
+.imagen img {
+  width: 600px;
+  height: 400px;
+  border-radius: 20px;
+  transition: transform 0.4s;
+}
+
+.imagen img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+ @media (max-width: 1200px) {
+  body {
+    margin-left: 0;
+    grid-template-areas:
+      "header"
+      "nav"
+      "main";
+    grid-template-rows: auto auto auto;
+  }
+
+  nav {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  .fila {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .imagen img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+  }
+
+  #m {
+    font-size: 60px;
+    text-align: center;
+  }
+}
+  </style>
+</head>
+<body>
+  <nav class="indice">
+    <ul>
+      <li><a href="inicio.html">Inicio</a></li>
+      <li><a href="nosotros.html">Sobre nosotros</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="ofertas.html">Ofertas</a></li>
+      <li><a href="contactos.html">Contactos</a></li>
+      <li><a href="formcrear.php" ><img src="https://cdn-icons-png.freepik.com/512/9341/9341730.png" id="compra"></a></li>
+    
+    </ul>
+  </nav>
+
+  <header>
+    <h1 id="m">Sobre Nosotros</h1>
+  </header>
+
+  <main>
+      <div class="fila">
+    <div class="texto">
+      <h2>Visión de la Empresa</h2>
+      <p>
+       Consolidarnos como una empresa líder en el mercado nacional de repostería saludable y especializada, reconocida por la excelencia de sus productos, la innovación en sus recetas y el compromiso con la salud y la satisfacción de nuestros clientes. Aspiramos a ser un referente en la creación de alimentos inclusivos que combinen calidad, sabor y responsabilidad nutricional.
+      </p>
+    </div>
+    <div class="imagen">
+      <img src="https://hablemosdepasteleria.com/wp-content/uploads/2024/06/high-angle-cook-whisking-mixture-bowl-1-scaled.jpg" alt="Visión">
+    </div>
+  </div>
+
+  <div class="fila">
+    <div class="imagen">
+      <img src="https://i5.walmartimages.com/asr/d4e60a6c-0c3c-4024-a6cb-8b1d6787a7ec.33bb1e21e4ee173ee22d0ad06e0de6de.jpeg" alt="Misión">
+    </div>
+    <div class="texto">
+      <h2>Misión de la Empresa</h2>
+      <p>
+        Brindar productos de repostería artesanal de alta calidad, especializados en atender las necesidades alimentarias de personas con condiciones específicas, como celiaquía, diabetes e intolerancias alimentarias. En MYM nos comprometemos a ofrecer masitas seguras, saludables y deliciosas, elaboradas con ingredientes seleccionados y procesos controlados, promoviendo el bienestar y la inclusión alimentaria.
+      </p>
+    </div>
+  </div>
+
+  <div class="fila">
+    <div class="texto">
+      <h2>Objetivos de la Empresa</h2>
+      <p>
+        - Asegurar la inocuidad y calidad de todos los productos mediante la implementación de normas de producción seguras y el uso de materias primas certificadas.<br>
+        - Desarrollar una amplia gama de productos adaptados a diferentes requerimientos nutricionales (sin gluten, sin azúcar, sin lactosa, veganos, entre otros).<br>
+        - Posicionar la marca MYM en el mercado nacional como sinónimo de repostería saludable, inclusiva y confiable.<br>
+        - Implementar estrategias de crecimiento sostenible, fortaleciendo la distribución digital y física para ampliar el alcance del negocio.
+        - Promover la educación alimentaria, generando conciencia sobre la importancia de una dieta saludable y equilibrada, sin renunciar al placer de disfrutar un buen postre <br>
+      </p>
+    </div>
+    <div class="imagen">
+      <img src="https://media.foodandtravel.mx/wp-content/uploads/2023/12/Postreria-platillos.jpg" alt="Objetivos">
+    </div>
+  </div>
+  </main>
+</body>
+</html>

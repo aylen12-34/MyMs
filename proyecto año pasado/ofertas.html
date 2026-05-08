@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>M&M's</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      display: grid;
+      grid-template-areas:
+        "header header"
+        "main main";
+      grid-template-rows: 250px auto;
+      background-color: #fff;
+      margin-left: 260px;
+    }
+
+    header {
+      grid-area: header;
+      background:radial-gradient( #3a3a3a,#1f1f1f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 5px solid #c59d5f;
+    }
+
+    nav {
+      grid-area: nav;
+      background: linear-gradient(to bottom, #1f1f1f, #3a3a3a);
+      color: #b2b2b2;
+      font-family: Arial, sans-serif;
+      padding-top: 20px;
+      width: 300px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-right: 5px solid #c59d5f;
+      transition: color 0.3s;
+    }
+    #compra{
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+    }
+    nav:hover{
+      color: #c59d5f;
+    }
+    main {
+      grid-area: main;
+      background-color: #fff;
+      padding:60px;
+    }
+
+    #m {
+      font-family: 'Cinzel Decorative', serif;
+      color: #c59d5f;
+      text-align: center;
+      font-size: 100px;
+      margin: 1rem 0;
+      letter-spacing: 1px;
+    }
+
+    .indice ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .indice a {
+      text-decoration: none;
+      color: #b2b2b2;
+      display: block;
+      padding: 20px;
+      transition: background-color 0.6s, color 0.6s;
+    }
+
+    .indice a:hover {
+      background-color: #333;
+      color: white;
+    }
+    #n{
+      font-family:  'Cinzel Decorative', serif;
+      font-size: 45px;
+      color: #2b2b2b;
+      text-align: left;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #c59d5f;
+      padding-left:80px;
+    }
+    #fotos{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); 
+      grid-template-rows: repeat(3, auto);
+      gap: 60px;
+      justify-items: center;
+      margin-top: 20px;
+    }
+    #fotos img{
+      width: 300px;
+      height: 200px;
+      border-radius: 20px;
+      transition: transform 0.3s;
+    }
+    #fotos img:hover{
+      transform: scale(1.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    button a{
+      background-color:#c59d5f;
+      text-decoration: none;
+      padding:10px 20px;
+      border-radius:10px;
+      color:#fff;
+    }
+    @media (max-width: 1200px) {
+
+  body {
+    margin-left: 0;
+    grid-template-areas:
+      "header"
+      "nav"
+      "main";
+    grid-template-rows: auto auto auto;
+  }
+
+  nav {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+  }
+
+  #m {
+    font-size: 60px;
+    text-align: center;
+  }
+
+  #fotos {
+    grid-template-columns: 1fr; 
+    justify-items: center;
+  }
+
+  #fotos img {
+    width: 90%;
+    height: auto;          
+  }
+}
+  </style>
+</head>
+<body>
+  <nav class="indice">
+    <ul>
+      <li><a href="inicio.html">Inicio</a></li>
+      <li><a href="nosotros.html">Sobre nosotros</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="ofertas.html">Ofertas</a></li>
+      <li><a href="contactos.html">Contactos</a></li>
+      <li><a href="formcrear.php" ><img src="https://cdn-icons-png.freepik.com/512/9341/9341730.png" id="compra"></a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1 id="m">Ofertas</h1>
+  </header>
+
+  <main>
+  <h2 id="n">Ofertas Especiales</h2>
+
+  <section id="fotos">
+    <div>
+      <img src="https://www.recetasnestle.com.mx/sites/default/files/styles/cropped_recipe_card_new/public/srh_recipes/1561967d896c903449a2fe8526a52f00.jpg.webp?itok=hPIp3Vy-">
+      <h3>Frappe + Brownie</h3>
+      <p>Combo: 2 frappes mas 2 brownies con el 40% de descuento!!!</p>
+      <button style="background-color:#c59d5f; border:none; padding:10px 20px; border-radius:10px; color:#fff; cursor:pointer;"><a href="carrito.html">Ir al carrito</a></button>
+    </div>
+
+    <div>
+      <img src="https://okdiario.com/img/2018/07/22/receta-de-galletas-de-cafe.jpg" >
+      <h3>INVIERNO</h3>
+      <p>Combo: una taza de cafe caliente con 3 galletas a eleccion por el 20% de descuento!!</p>
+      <button style="background-color:#c59d5f; border:none; padding:10px 20px; border-radius:10px; color:#fff; cursor:pointer;"><a href="carrito.html">Ir al carrito</a></button>
+    </div>
+
+    <div>
+      <img src="https://s2.abcstatics.com/abc/sevilla/media/gurme/2024/01/01/s/batidos-de-frutas.jpg-kPbG--1248x698@abc.jpg" >
+      <h3>TRIPLE FRUTAL</h3>
+      <p>Combo: 50% de descuento en 3 batidos de fruta a eleccion</p>
+      <button style="background-color:#c59d5f; border:none; padding:10px 20px; border-radius:10px; color:#fff; cursor:pointer;"><a href="carrito.html">Ir al carrito</a></button>
+    </div>
+  </section>
+</body>
+</html>
