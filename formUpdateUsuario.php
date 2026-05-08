@@ -7,6 +7,8 @@
 </head>
 <body>
     <form action="updateditarUsuario.php" method="post">
+        <label for="CI">Carnet de Identidad</label>
+        <input type="text" id="CI" required>
         <label for="Nombre">Nombre:</label>
         <input type="text" id="Nombre" name="Nombre" required>
         <br>
