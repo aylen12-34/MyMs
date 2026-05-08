@@ -34,7 +34,7 @@
 
 
         
-        input[type="text"] {
+        input {
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
@@ -107,6 +107,11 @@ label.error{
     <script>
         $("form").validate({
     rules: {
+        CI: {
+            required: true,
+            minlength: 7,
+            maxlength: 7
+        },
         Nombre: {
             required: true,
             minlength: 3
@@ -133,6 +138,11 @@ label.error{
     },
 
     messages: {
+        CI: {
+            required: "Ingrese su CI",
+            minlength: "Mínimo 7 caracteres",
+            maxlength: "Máximo 7 caracteres"
+        },
         Nombre: {
             required: "Ingrese su nombre",
             minlength: "Mínimo 3 letras"
