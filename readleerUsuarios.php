@@ -18,4 +18,24 @@ if ($resultado->num_rows > 0) {
         echo "<a href='Usuarios.php? CI='><button>Mostrar</button></a>";
     }
 }
+
+ if($resultado->num_rows > 0) {
+          while ($fila=$resultado->fetch_assoc()) {
+              $CI=$fila['CI'];
+              echo "<tr>";
+              echo "<td>".$fila['CI']."</td>";
+              echo "<td>".$fila['CI']."</td>";
+              echo "<td>".$fila['CI']."</td>";
+              echo "<td>".$fila['CI']."</td>";
+              echo "<td>
+                      <a href='formupdate.php?CI=$CI'><button>Editar</button></a>
+                      <a href='eliminar.php?CI=$CI'><button>Eliminar</button></a>
+                      <a href='readget.php?CI=$CI'><button>Mostrar</button></a>
+                    </td>";
+              echo "</tr>";
+          }
+      } else {
+          echo "<tr><td colspan='5'>No hay ventas registradas</td></tr>";
+      }
+      $conn->close();
 ?>
