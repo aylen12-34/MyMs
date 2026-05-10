@@ -12,8 +12,8 @@
     }
         body{
             display: grid;
-            grid-template-rows: 300px 550px 150px;
-            grid-template-columns:10% 90%;
+            grid-template-rows: 250px auto 100px;
+      grid-template-columns: 15% 85%;
             grid-template-areas: 
             "menu tit"
             "menu text"
@@ -42,10 +42,6 @@
             margin: 1rem 0;
         }
 
-        section{
-            grid-area: text;
-            background: url(fondo.png);
-        }
 
         nav{
             grid-area: menu;
@@ -76,8 +72,9 @@
     }
 section{
     grid-area: text;
-    background: url(fondo.png);
+    background-image: url("2.png");
     padding: 30px;
+    font-size: large;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
