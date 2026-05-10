@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-            <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
+    <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
 
@@ -17,7 +17,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+            padding: 30px 0;
         }
         form {
             max-width: 400px;
@@ -34,7 +35,7 @@
 
 
         
-        input[type="text"] {
+        input {
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
@@ -62,15 +63,15 @@
 
 
         div {
-            margin: 4px;
             width: 420px;
             padding: 35px;
             background-color: #6A253A;
             border: 2px solid #EFE2DA;
-            border-radius: 10%;
+            border-radius: 40px;
             color: #EFE2DA;
         }
-        </style>
+
+    </style>
 </head>
 <body>
     <div>

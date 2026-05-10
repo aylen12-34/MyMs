@@ -17,7 +17,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+            padding: 30px 0;
         }
         form {
             max-width: 400px;
@@ -66,21 +67,10 @@
             padding: 35px;
             background-color: #6A253A;
             border: 2px solid #EFE2DA;
-            border-radius: 10%;
+            border-radius: 40px;
             color: #EFE2DA;
         }
 
-label.error{
-    color: #ffd6de;
-    background-color: #E64B6B;
-    padding: 6px 10px;
-    border-radius: 8px;
-    margin-top: -5px;
-    margin-bottom: 10px;
-    display: inline-block;
-    font-size: 13px;
-
-}
     </style>
 </head>
 <body>
