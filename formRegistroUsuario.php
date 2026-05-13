@@ -99,8 +99,6 @@
     rules: {
         CI: {
             required: true,
-            minlength: 7,
-            maxlength: 7
         },
         Nombre: {
             required: true,
@@ -130,8 +128,6 @@
     messages: {
         CI: {
             required: "Ingrese su CI",
-            minlength: "Mínimo 7 caracteres",
-            maxlength: "Máximo 7 caracteres"
         },
         Nombre: {
             required: "Ingrese su nombre",
