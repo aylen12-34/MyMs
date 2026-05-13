@@ -1,3 +1,29 @@
+<?php
+$usuario = "root";
+$contraseña = "";     
+$direccion = "localhost";
+$baseDeDatos = "MYMS";    
+
+$conexion=new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
+if ($conexion->connect_error) {
+    
+    echo "No se ha podido conectar a la base de datos";
+}
+$CI=$_GET['CI'];
+$sql = "SELECT * FROM Usuarios WHERE CI='$CI'";
+$resultado = $conexion->query($sql);
+if ($resultado->num_rows > 0) {
+    while($fila=$resultado->fetch_assoc()) {
+        $CI=$fila['CI'];
+        $Nombre=$fila['Nombre'];
+        $Direccion=$fila['Direccion'];
+        $Celular=$fila['Celular'];
+        $Rol=$fila['Rol'];
+        $Estado=$fila['Estado'];
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,22 +103,22 @@
     <div>
         <h1>Editar Usuario</h1>
     <form action="updateditarUsuario.php" method="post">
-        <label for="CI">Carnet de Identidad</label>
-        <input type="text" id="CI" required>
-        <label for="Nombre">Nombre:</label>
-        <input type="text" id="Nombre" name="Nombre" required>
+        <label for="">Carnet de Identidad</label>
+        <input type="text" name="CI" value<?=$CI?> required>
+        <label for="">Nombre:</label>
+        <input type="text" name="Nombre" value<?=$Nombre?> required>
         <br>
-        <label for="Direccion">Dirección:</label>
-        <input type="text" id="Direccion" name="Direccion" required>
+        <label for="">Dirección:</label>
+        <input type="text" name="Direccion" value<?=$Direccion?> required>
         <br>
-        <label for="Celular">Celular:</label>
-        <input type="text" id="Celular" name="Celular" required>
+        <label for="">Celular:</label>
+        <input type="text" name="Celular" value<?=$Celular?> required>
         <br>
-        <label for="Rol">Rol:</label>
-        <input type="text" id="Rol" name="Rol" required>
+        <label for="">Rol:</label>
+        <input type="text" name="Rol" value<?=$Rol?> required>
         <br>
-        <label for="Estado">Estado:</label>
-        <input type="text" id="Estado" name="Estado" required>
+        <label for="">Estado:</label>
+        <input type="text" name="Estado" value<?=$Estado?> required>
         <br>
         <input type="submit" value="Editar">
     </form>

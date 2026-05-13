@@ -6,10 +6,8 @@ $baseDeDatos = "MYMS";
 
 $conexion=new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
-    
     echo "Hubo un error al conectar a la base de datos";
 }
-
 $CI=$_POST['CI'];
 $Nombre=$_POST['Nombre'];
 $Direccion=$_POST['Direccion'];

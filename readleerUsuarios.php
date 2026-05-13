@@ -17,6 +17,8 @@ if ($resultado->num_rows > 0) {
         echo    "<br>"."CI: ".$fila["CI"]."<br>". "Nombre: " .$fila["Nombre"] ."<br>". "Dirección: " . $fila["Direccion"] ."<br>"." Celular: " . $fila["Celular"] ."<br>"."Rol: " . $fila["Rol"] ."<br>"."Estado: " . $fila["Estado"] . "<br>";
         $CI=$fila['CI'];
         echo "<a href='readleerUsuario.php? CI=$CI'><button>Mostrar</button></a>";
+        echo "<a href='formUpdateUsuario.php?CI=$CI'><button>Editar</button></a>";
+        echo "<a href='eliminarUsuario.php?CI=$CI'><button>Eliminar</button></a>";
     }
 }
 
