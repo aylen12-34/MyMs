@@ -14,7 +14,7 @@ $sql = "SELECT * FROM Usuarios";
 $resultado = $conexion->query($sql);
 if ($resultado->num_rows > 0) {
     while($fila = $resultado->fetch_assoc()) {
-        echo  " $fila ["CI"]. $fila["Nombre"] . " - Dirección: " . $fila["Direccion"] . " - Celular: " . $fila["Celular"] . " - Rol: " . $fila["Rol"] . " - Estado: " . $fila["Estado"] ". "<br>";
+        echo    "CI: ".$fila["CI"]."<br>". "Nombre: " .$fila["Nombre"] ."<br>". "Dirección: " . $fila["Direccion"] ."<br>"." Celular: " . $fila["Celular"] ."<br>"."Rol: " . $fila["Rol"] ."<br>"."Estado: " . $fila["Estado"] . "<br>";
         echo "<a href='Usuarios.php? CI='><button>Mostrar</button></a>";
     }
 }
@@ -37,5 +37,5 @@ if ($resultado->num_rows > 0) {
       } else {
           echo "<tr><td colspan='5'>No hay ventas registradas</td></tr>";
       }
-      $conn->close();
+      $conexion->close();
 ?>
