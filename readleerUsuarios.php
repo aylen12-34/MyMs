@@ -28,9 +28,9 @@ if ($resultado->num_rows > 0) {
               echo "<td>".$fila['CI']."</td>";
               echo "<td>".$fila['CI']."</td>";
               echo "<td>
-                      <a href='formupdate.php?CI=$CI'><button>Editar</button></a>
+                      <a href='formUpdateUsuario.php?CI=$CI'><button>Editar</button></a>
                       <a href='eliminar.php?CI=$CI'><button>Eliminar</button></a>
-                      <a href='readget.php?CI=$CI'><button>Mostrar</button></a>
+                      <a href='readleerUsuario.php?CI=$CI'><button>Mostrar</button></a>
                     </td>";
               echo "</tr>";
           }
