@@ -14,12 +14,13 @@ $sql = "SELECT * FROM Usuarios";
 $resultado = $conexion->query($sql);
 if ($resultado->num_rows > 0) {
     while($fila = $resultado->fetch_assoc()) {
-        echo    "CI: ".$fila["CI"]."<br>". "Nombre: " .$fila["Nombre"] ."<br>". "Dirección: " . $fila["Direccion"] ."<br>"." Celular: " . $fila["Celular"] ."<br>"."Rol: " . $fila["Rol"] ."<br>"."Estado: " . $fila["Estado"] . "<br>";
-        echo "<a href='Usuarios.php? CI='><button>Mostrar</button></a>";
+        echo    "<br>"."CI: ".$fila["CI"]."<br>". "Nombre: " .$fila["Nombre"] ."<br>". "Dirección: " . $fila["Direccion"] ."<br>"." Celular: " . $fila["Celular"] ."<br>"."Rol: " . $fila["Rol"] ."<br>"."Estado: " . $fila["Estado"] . "<br>";
+        $CI=$fila['CI'];
+        echo "<a href='readleerUsuario.php? CI=$CI'><button>Mostrar</button></a>";
     }
 }
 
- if($resultado->num_rows > 0) {
+ /*if($resultado->num_rows > 0) {
           while ($fila=$resultado->fetch_assoc()) {
               $CI=$fila['CI'];
               echo "<tr>";
@@ -37,5 +38,5 @@ if ($resultado->num_rows > 0) {
       } else {
           echo "<tr><td colspan='5'>No hay ventas registradas</td></tr>";
       }
-      $conexion->close();
+      $conexion->close();*/
 ?>

@@ -18,7 +18,7 @@ if ($resultado->num_rows > 0) {
         session_start();
         $_SESSION['CI']=$fila['CI'];
         $_SESSION['Nombre']=$fila['Nombre'];
-        header("location:readleerUsuario.php?CI=".$fila['CI']);
+        echo "location:readleerUsuario.php?CI=".$fila['CI'];
     }
 }
 ?>
