@@ -51,14 +51,20 @@ $Stock=$_POST['Stock'];
         a{
             color: #EFE2DA;
         }
-#id{
-            background-color: #E64B6B;
-            color: #EFE2DA;
-            transition: 0.3s;
+.volver{
+        padding: 10px 20px;
+        border: none;
+        color: #EFE2DA;
+        border-radius: 5px;
+        background: #E64B6B;
+        cursor: pointer;
+        font-size: 16px;
+        margin:3px;
         }
-        #id:hover{
+
+        .volver:hover{
             background-color: #EFE2DA;
-            color: #6A253A;
+            color: #E64B6B;
         }
     </style>
 </head>
@@ -73,7 +79,9 @@ $Stock=$_POST['Stock'];
         }
       ?>
         </p><br>
-        <button onclick="history.back()" id="volver">Volver</button>
+                
+        <button class="volver" onclick="history.back()">← Volver</button><br>
+        <button class="volver"><a href="readleeProductos.php">Tabla Productos</a></button>
     </div>
 </body>
 </html>

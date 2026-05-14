@@ -136,6 +136,24 @@ button{
             background-color: #EFE2DA;
             color: #6A253A;
         }
+        .volver{
+        padding: 10px 20px;
+        border: none;
+        color: #EFE2DA;
+        border-radius: 5px;
+        background: #E64B6B;
+        cursor: pointer;
+        font-size: 16px;
+        }
+
+        .volver:hover{
+            background-color: #EFE2DA;
+            color:#E64B6B;
+        }
+        a{
+            text-decoration:none;
+            color: #EFE2DA;
+        }
 </style>
 </head>
 <body>
@@ -198,7 +216,9 @@ button{
         ?>
 
     </table>
-<button onclick="history.back()" id="volver">Volver</button>
+<button class="volver"><a href="vendedor.html">Inicio vendedor</a></button>
+<button class="volver"><a href="administrador.html">Inicio Administrador</a></button>
+<button class="volver"><a href="inicio.html">Inicio Publico</a></button>
 </div>
 
 </body>

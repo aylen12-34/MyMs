@@ -1,4 +1,5 @@
 <?php
+
 $usuario = "root";
 $contraseña = "";
 $direccion = "localhost";
@@ -13,13 +14,13 @@ if ($conexion->connect_error) {
 $sql = "SELECT * FROM Productos";
 $resultado = $conexion->query($sql);
 ?>
+?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
+    <title>Mostrar Usuario</title>
     <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
@@ -94,37 +95,15 @@ button{
     transition: 0.3s;
     color: #EFE2DA;
 }
-.mostrar{
-    background-color: #E64B6B;
-    transition: 0.3s;
-}
-
-.mostrar:hover{
-    background-color: #EFE2DA;
-    color: #6A253A;
-}
-
-
-.editar{
-    background-color: #E64B6B;
-    transition: 0.3s;
-}
-
-.editar:hover{
-    background-color: #EFE2DA;
-    color: #6A253A;
-}
-
-
-.eliminar{
-    background-color: #E64B6B;
-    transition: 0.3s;
-}
-
-.eliminar:hover{
-    background-color: #EFE2DA;
-    color: #6A253A;
-}
+#id{
+            background-color: #E64B6B;
+            color: #EFE2DA;
+            transition: 0.3s;
+        }
+        #id:hover{
+            background-color: #EFE2DA;
+            color: #6A253A;
+        }
         .volver{
         padding: 10px 20px;
         border: none;
@@ -139,75 +118,55 @@ button{
             background-color: #EFE2DA;
             color:#E64B6B;
         }
-        a{
-            text-decoration:none;
-            color: #EFE2DA;
-        }
-
 </style>
 </head>
 <body>
 
-<div >
+<div>
 
-    <h2>Lista de Productos</h2>
+<h2>Datos del Producto</h2>
 
-    <table>
+<?php
 
-        <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th>Acciones</th>
-        </tr>
+if ($resultado->num_rows > 0) {
 
-        <?php
+    $fila = $resultado->fetch_assoc();
 
-        if ($resultado->num_rows > 0) {
+    echo "<table>";
 
-            while($fila = $resultado->fetch_assoc()) {
+    echo "<tr>";
+    echo "<td class='titulo'>Nombre</td>";
+    echo "<td>".$fila["Nombre"]."</td>";
+    echo "</tr>";
 
-                echo "<tr>";
+    echo "<tr>";
+    echo "<td class='titulo'>Descripcion</td>";
+    echo "<td>".$fila["Descripcion"]."</td>";
+    echo "</tr>";
 
-                echo "<td>".$fila["Nombre"]."</td>";
-                echo "<td>".$fila["Descripcion"]."</td>";
-                echo "<td>".$fila["Precio"]."</td>";
-                echo "<td>".$fila["Stock"]."</td>";
+    echo "<tr>";
+    echo "<td class='titulo'>Precio</td>";
+    echo "<td>".$fila["Precio"]."</td>";
+    echo "</tr>";
+
+    echo "<tr>";
+    echo "<td class='titulo'>Stock</td>";
+    echo "<td>".$fila["Stock"]."</td>";
+    echo "</tr>";
 
 
-                 echo "<td>
-                        <a href='readleeProducto.php?'>
-                            <button class='mostrar'>Mostrar</button>
-                        </a>
+    echo "</table>";
 
-                        <a href='formUpdateProductos.php?'>
-                            <button class='editar'>Editar</button>
-                        </a>
+} else {
 
-                        <a href='eliminarProductos.php?'>
-                            <button class='eliminar'>Eliminar</button>
-                        </a>
-                      </td>";
+    echo "No se encontraron Productos.";
 
-                echo "</tr>";
-            }
+}
 
-        } else {
+$conexion->close();
 
-            echo "<tr>";
-            echo "<td colspan='5'>No se encontraron productos</td>";
-            echo "</tr>";
-
-        }
-
-        $conexion->close();
-
-        ?>
-
-    </table>
-<button class="volver"><a href="vendedor.html">Inicio vendedor</a></button>
-<button class="volver"><a href="administrador.html">Inicio Administrador</a></button>
+?>
+<button class="volver" onclick="history.back()">← Volver</button><br>
 </div>
 
 </body>

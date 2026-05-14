@@ -105,7 +105,20 @@ if ($resultado->num_rows > 0) {
             background-color: #EFE2DA;
             color: #6A253A;
         }
+        .volver{
+        padding: 10px 20px;
+        border: none;
+        color: #EFE2DA;
+        border-radius: 5px;
+        background: #E64B6B;
+        cursor: pointer;
+        font-size: 16px;
+        }
 
+        .volver:hover{
+            background-color: #EFE2DA;
+            color:#E64B6B;
+        }
     </style>
 </head>
 <body>
@@ -131,7 +144,7 @@ if ($resultado->num_rows > 0) {
         <br>
         <input type="submit" value="Editar">
     </form>
-    <button onclick="history.back()" id="volver">Volver</button>
+    <button class="volver" onclick="history.back()">← Volver</button><br>
 </div>
 </body>
 </html>

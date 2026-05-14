@@ -3,8 +3,78 @@ $usuario = "root";
 $contraseña = "";     
 $direccion = "localhost";
 $baseDeDatos = "MYMS";    
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+    <style>
+    *{
+        font-family: 'Chillax-Semibold';
+    }
+        body {
+            background-image: url(2.png);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 30px 0;
+        }
+        div {
+            width: 420px;
+            padding: 35px;
+            background-color: #6A253A;
+            border: 2px solid #EFE2DA;
+            border-radius: 40px;
+            color: #EFE2DA;
+        }
+        h2 {
+            text-align: center;
+        }
+        a{
+            color: #EFE2DA;
+        }
+        #id{
+            background-color: #E64B6B;
+            color: #EFE2DA;
+            transition: 0.3s;
+        }
+        #id:hover{
+            background-color: #EFE2DA;
+            color: #6A253A;
+        }
+        .volver{
+        padding: 10px 20px;
+        border: none;
+        color: #EFE2DA;
+        border-radius: 5px;
+        background: #E64B6B;
+        cursor: pointer;
+        font-size: 16px;
+        margin:3px;
+        }
 
-$conexion=new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
+        .volver:hover{
+            background-color: #EFE2DA;
+            color: #E64B6B;
+        }
+        a{
+            text-decoration: none;
+            
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Actualizacion Usuario</h2>
+        <p>
+            <?php 
+            $conexion=new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
     echo "Hubo un error al conectar a la base de datos";
 }
@@ -17,9 +87,16 @@ $Estado=$_POST['Estado'];
 $sql="UPDATE Usuarios SET Nombre='$Nombre', Direccion='$Direccion', Celular='$Celular', Rol='$Rol', Estado='$Estado' WHERE CI='$CI'";
 if ($conexion->query($sql) === TRUE) {
     echo "Se edito el usuario correctamente";
-    echo "<br>";
-    echo "<a href='readleerUsuarios.php?'><button class='mostrar'>Volver</button></a>";
+    
 } else {
     echo "Error al actualizar el usuario: " . $conexion->error;
 }
-?>
+      ?>
+        </p><br>
+        
+        <button class="volver" onclick="history.back()">← Volver</button><br>
+        <button class="volver"><a href="readleerUsuarios.php">Tabla Usuarios</a></button>
+    </div>
+    </div>
+</body>
+</html>

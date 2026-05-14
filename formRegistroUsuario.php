@@ -50,18 +50,27 @@
             color:#EFE2DA;
             padding: 10px 20px;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
         }
         input[type="submit"]:hover {
             background-color: #EFE2DA;
             color:#E64B6B;
         }
+        .volver{
+        padding: 10px 20px;
+        border: none;
+        color: #EFE2DA;
+        border-radius: 5px;
+        background: #E64B6B;
+        cursor: pointer;
+        font-size: 16px;
+        }
 
-
-
-
-
+        .volver:hover{
+            background-color: #EFE2DA;
+            color:#E64B6B;
+        }
         div {
             width: 420px;
             padding: 35px;
@@ -93,6 +102,7 @@
             <input type="submit" value="Registrar Usuario">
 
         </form>
+        <button class="volver" onclick="history.back()">← Volver</button>
     </div>
     <script>
         $("form").validate({

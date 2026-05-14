@@ -52,6 +52,25 @@ $Estado=$_POST['Estado'];
             background-color: #EFE2DA;
             color: #6A253A;
         }
+        .volver{
+        padding: 10px 20px;
+        border: none;
+        color: #EFE2DA;
+        border-radius: 5px;
+        background: #E64B6B;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 3px;
+        }
+
+        .volver:hover{
+            background-color: #EFE2DA;
+            color: #E64B6B;
+        }
+        a{
+            text-decoration: none;
+            
+        }
     </style>
 </head>
 <body>
@@ -62,10 +81,15 @@ $Estado=$_POST['Estado'];
             $sql="INSERT INTO Usuarios (CI,Nombre, Direccion, Celular, Rol, Estado) VALUES ('$CI','$Nombre', '$Direccion', '$Celular', '$Rol', '$Estado')";
                 if ($conexion->query($sql) === TRUE) {
                     echo "Cliente registrado correctamente";
+            }else{
+                echo "Hubo un error";
             }
       ?>
         </p><br>
-        <button onclick="history.back()" id="volver">Volver</button>
+        
+        <button class="volver" onclick="history.back()">← Volver</button><br>
+        <button class="volver"><a href="readleerUsuarios">Tabla Usuarios</a></button>
+    </div>
     </div>
 </body>
 </html>

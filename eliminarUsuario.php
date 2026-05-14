@@ -18,99 +18,85 @@ if ($conexion->query($sql) === TRUE) {
     echo "Error: " . $conexion->error;
 }
 ?>
-
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+    <style>
+    *{
+        font-family: 'Chillax-Semibold';
+    }
+        body {
+            background-image: url(2.png);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 30px 0;
+        }
+        div {
+            width: 420px;
+            padding: 35px;
+            background-color: #6A253A;
+            border: 2px solid #EFE2DA;
+            border-radius: 40px;
+            color: #EFE2DA;
+        }
+        h2 {
+            text-align: center;
+        }
+        a{
+            color: #EFE2DA;
+        }
+        #id{
+            background-color: #E64B6B;
+            color: #EFE2DA;
+            transition: 0.3s;
+        }
+        #id:hover{
+            background-color: #EFE2DA;
+            color: #6A253A;
+        }
+        .volver{
+        padding: 10px 20px;
+        border: none;
+        color: #EFE2DA;
+        border-radius: 5px;
+        background: #E64B6B;
+        cursor: pointer;
+        font-size: 16px;
+        margin:3px;
+        }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Eliminar Usuario</title>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    background:linear-gradient(135deg,#A3B18A,#588157);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-    font-family:'Poppins',sans-serif;
-    padding:30px;
-}
-
-.contenedor{
-    background:rgba(52,78,65,.95);
-    width:500px;
-    padding:50px 40px;
-    border-radius:35px;
-    text-align:center;
-    color:white;
-    box-shadow:0 15px 35px rgba(0,0,0,.2);
-}
-
-h1{
-    font-size:35px;
-    margin-bottom:20px;
-}
-
-p{
-    font-size:18px;
-    margin-bottom:35px;
-}
-
-.boton{
-    display:inline-block;
-    background:#A3B18A;
-    color:#344E41;
-    text-decoration:none;
-    padding:16px 35px;
-    border-radius:18px;
-    font-size:18px;
-    font-weight:bold;
-    transition:.3s;
-}
-
-.boton:hover{
-    background:white;
-    transform:translateY(-4px);
-    box-shadow:0 10px 20px rgba(0,0,0,.15);
-}
-
-.error{
-    color:#ffb3b3;
-}
-
-.exito{
-    color:#d8ffd8;
-}
-
-</style>
-
+        .volver:hover{
+            background-color: #EFE2DA;
+            color: #E64B6B;
+        }
+        a{
+            text-decoration: none;
+            
+        }
+    </style>
 </head>
-
 <body>
-
-<div class="contenedor">
-    <h1>Eliminación de Usuario</h1>
-    <p>
-      <?php
+    <div>
+        <h2>Eliminar Usuario</h2>
+        <p>
+            <?php 
         echo "El usuario ha sido eliminado.";
         $conexion->close(); 
       ?>
-    </p>
-
-<a class="boton" href="readleerUsuarios.php">Volver</a>
-
-</div>
-
+      </p><br>
+        
+        
+<button class="volver"><a href="readleerUsuarios.php">Tabla Usuarios</a></button>
+        
+    </div>
+    </div>
 </body>
 </html>
- 
