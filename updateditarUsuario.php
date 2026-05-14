@@ -17,6 +17,8 @@ $Estado=$_POST['Estado'];
 $sql="UPDATE Usuarios SET Nombre='$Nombre', Direccion='$Direccion', Celular='$Celular', Rol='$Rol', Estado='$Estado' WHERE CI='$CI'";
 if ($conexion->query($sql) === TRUE) {
     echo "Se edito el usuario correctamente";
+    echo "<br>";
+    echo "<a href='readleerUsuarios.php?'><button class='mostrar'>Volver</button></a>";
 } else {
     echo "Error al actualizar el usuario: " . $conexion->error;
 }
