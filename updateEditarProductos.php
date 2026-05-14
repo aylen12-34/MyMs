@@ -17,6 +17,7 @@ $Stock=$_POST['Stock'];
 $sql="UPDATE Productos SET Nombre='$Nombre', Descripcion='$Descripcion', Precio='$Precio', Stock='$Stock' WHERE Nombre='$Nombre'";
 if ($conexion->query($sql) === TRUE) {
     echo "Se edito el producto correctamente";
+    echo "<br><a href='readleeProductos.php'>Volver</a>";
 } else {
     echo "Error al actualizar el producto: " . $conexion->error;
 }

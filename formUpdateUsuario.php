@@ -104,21 +104,21 @@ if ($resultado->num_rows > 0) {
         <h1>Editar Usuario</h1>
     <form action="updateditarUsuario.php" method="post">
         <label for="">Carnet de Identidad</label>
-        <input type="text" name="CI" value<?=$CI?> required>
-        <label for="">Nombre:</label>
-        <input type="text" name="Nombre" value<?=$Nombre?> required>
+                <input type="text" name="CI" value='<?=$CI?>' required>
+                <label for="">Nombre:</label>
+                <input type="text" name="Nombre" value='<?=$Nombre?>' required>
         <br>
         <label for="">Dirección:</label>
-        <input type="text" name="Direccion" value<?=$Direccion?> required>
+        <input type="text" name="Direccion" value='<?=$Direccion?>' required>
         <br>
         <label for="">Celular:</label>
-        <input type="text" name="Celular" value<?=$Celular?> required>
+        <input type="text" name="Celular" value='<?=$Celular?>' required>
         <br>
         <label for="">Rol:</label>
-        <input type="text" name="Rol" value<?=$Rol?> required>
+        <input type="text" name="Rol" value='<?=$Rol?>' required>
         <br>
         <label for="">Estado:</label>
-        <input type="text" name="Estado" value<?=$Estado?> required>
+        <input type="text" name="Estado" value='<?=$Estado?>' required>
         <br>
         <input type="submit" value="Editar">
     </form>

@@ -1,3 +1,32 @@
+<?php
+$usuario = "root";
+$contraseña = "";     
+$direccion = "localhost";
+$baseDeDatos = "MYMS";    
+
+$conexion=new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
+if ($conexion->connect_error) {
+    
+    echo "No se ha podido conectar a la base de datos";
+}
+$sql = "SELECT * FROM Productos";
+$resultado = $conexion->query($sql);
+if ($resultado->num_rows > 0) {
+    while($fila=$resultado->fetch_assoc()) {
+        $Nombre=$fila['Nombre'];
+        $Descripcion=$fila['Descripcion'];
+        $Precio=$fila['Precio'];
+        $Stock=$fila['Stock'];
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
@@ -72,13 +101,13 @@
         <h1>Editar Producto</h1>
     <form action="updateEditarProductos.php" method="post">
         <label for="Nombre">Nombre:</label>
-        <input type="text" id="Nombre" name="Nombre" required>  <br>  <br>
+        <input type="text" id="Nombre" name="Nombre"value='<?=$Nombre?>' required>  <br>  <br>
         <label for="Direccion">Descripción:</label>
-        <input type="text" id="Descripcion" name="Descripcion" required>  <br>  <br>
+        <input type="text" id="Descripcion" name="Descripcion" value='<?=$Descripcion?>' required>  <br>  <br>
         <label for="Precio">Precio:</label>
-        <input type="text" id="Precio" name="Precio" required>  <br>  <br>
+        <input type="text" id="Precio" name="Precio" value='<?=$Precio?>' required>  <br>  <br>
         <label for="Stock">Stock:</label>
-        <input type="text" id="Stock" name="Stock" required>  <br>  <br>
+        <input type="text" id="Stock" name="Stock" value='<?=$Stock?>' required>  <br>  <br>
         <input type="submit" value="Editar">
     </form>
     </div>
