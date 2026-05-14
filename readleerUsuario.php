@@ -97,7 +97,15 @@ button{
     transition: 0.3s;
     color: #EFE2DA;
 }
-
+#id{
+            background-color: #E64B6B;
+            color: #EFE2DA;
+            transition: 0.3s;
+        }
+        #id:hover{
+            background-color: #EFE2DA;
+            color: #6A253A;
+        }
 </style>
 </head>
 <body>
@@ -155,7 +163,7 @@ if ($resultado->num_rows > 0) {
 $conexion->close();
 
 ?>
-
+<button onclick="history.back()" id="volver">Volver</button>
 </div>
 
 </body>

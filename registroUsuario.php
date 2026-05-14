@@ -43,7 +43,15 @@ $Estado=$_POST['Estado'];
         a{
             color: #EFE2DA;
         }
-
+        #id{
+            background-color: #E64B6B;
+            color: #EFE2DA;
+            transition: 0.3s;
+        }
+        #id:hover{
+            background-color: #EFE2DA;
+            color: #6A253A;
+        }
     </style>
 </head>
 <body>
@@ -57,7 +65,7 @@ $Estado=$_POST['Estado'];
             }
       ?>
         </p><br>
-        <a href="inicio.html">Volver al inicio</a>
+        <button onclick="history.back()" id="volver">Volver</button>
     </div>
 </body>
 </html>

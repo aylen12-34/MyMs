@@ -96,6 +96,15 @@ if ($resultado->num_rows > 0) {
             border-radius: 40px;
             color: #EFE2DA;
         }
+        #id{
+            background-color: #E64B6B;
+            color: #EFE2DA;
+            transition: 0.3s;
+        }
+        #id:hover{
+            background-color: #EFE2DA;
+            color: #6A253A;
+        }
 
     </style>
 </head>
@@ -122,6 +131,7 @@ if ($resultado->num_rows > 0) {
         <br>
         <input type="submit" value="Editar">
     </form>
+    <button onclick="history.back()" id="volver">Volver</button>
 </div>
 </body>
 </html>

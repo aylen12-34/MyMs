@@ -127,6 +127,15 @@ button{
     background-color: #EFE2DA;
     color: #6A253A;
 }
+#id{
+            background-color: #E64B6B;
+            color: #EFE2DA;
+            transition: 0.3s;
+        }
+        #id:hover{
+            background-color: #EFE2DA;
+            color: #6A253A;
+        }
 </style>
 </head>
 <body>
@@ -189,7 +198,7 @@ button{
         ?>
 
     </table>
-
+<button onclick="history.back()" id="volver">Volver</button>
 </div>
 
 </body>
