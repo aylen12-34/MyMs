@@ -1,34 +1,116 @@
 <?php
-$usuario = "root";
-$contraseña = "";     
-$direccion = "localhost";
-$baseDeDatos = "MYMS";   
- 
-$conn = new mysqli ($usuario,$contraseña,$direccion,$baseDeDatos);
-$sql="DELETE FROM Usuario WHERE CI=".$_GET['CI'];
-$conn->query($sql);
+$servername = "localhost";
+$username = "root";
+$password = "";
+$bdname = "MYMS";
+
+$conexion = new mysqli($servername, $username,$password,$bdname);
+
+if($conexion -> connect_error){
+    echo "Hubo un error";
+}
+$CI = $_GET['CI'];
+$sql = "DELETE FROM Usuarios WHERE  CI = '$CI'";
+if ($conexion->query($sql) === TRUE) {
+    echo "";
+}
+ else {
+    echo "Error: " . $conexion->error;
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eliminar Registro</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Eliminar Usuario</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:linear-gradient(135deg,#A3B18A,#588157);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    font-family:'Poppins',sans-serif;
+    padding:30px;
+}
+
+.contenedor{
+    background:rgba(52,78,65,.95);
+    width:500px;
+    padding:50px 40px;
+    border-radius:35px;
+    text-align:center;
+    color:white;
+    box-shadow:0 15px 35px rgba(0,0,0,.2);
+}
+
+h1{
+    font-size:35px;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:18px;
+    margin-bottom:35px;
+}
+
+.boton{
+    display:inline-block;
+    background:#A3B18A;
+    color:#344E41;
+    text-decoration:none;
+    padding:16px 35px;
+    border-radius:18px;
+    font-size:18px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.boton:hover{
+    background:white;
+    transform:translateY(-4px);
+    box-shadow:0 10px 20px rgba(0,0,0,.15);
+}
+
+.error{
+    color:#ffb3b3;
+}
+
+.exito{
+    color:#d8ffd8;
+}
+
+</style>
 
 </head>
+
 <body>
-  <div class="mensaje">
-    <h2>Eliminación de Registro</h2>
+
+<div class="contenedor">
+    <h1>Eliminación de Usuario</h1>
     <p>
       <?php
-        echo "El registro ha sido eliminado.";
-        $conn->close(); 
+        echo "El usuario ha sido eliminado.";
+        $conexion->close(); 
       ?>
     </p>
-    <a href="menu.html">Volver al menú</a>
-  </div>
+
+<a class="boton" href="readleerUsuarios.php">Volver</a>
+
+</div>
+
 </body>
 </html>
-    
+ 

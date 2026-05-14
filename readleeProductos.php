@@ -125,6 +125,21 @@ button{
                 echo "<td>".$fila["Precio"]."</td>";
                 echo "<td>".$fila["Stock"]."</td>";
 
+
+                 echo "<td>
+                        <a href='readleeProductos.php?'>
+                            <button class='mostrar'>Mostrar</button>
+                        </a>
+
+                        <a href='formUpdateProductos.php?'>
+                            <button class='editar'>Editar</button>
+                        </a>
+
+                        <a href='eliminarProductos.php?'>
+                            <button class='eliminar'>Eliminar</button>
+                        </a>
+                      </td>";
+
                 echo "</tr>";
             }
 
