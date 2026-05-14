@@ -41,6 +41,9 @@ $sql="INSERT INTO Usuarios (CI,Nombre, Direccion, Celular, Rol, Estado) VALUES (
         h2 {
             text-align: center;
         }
+        a{
+            color: #EFE2DA;
+        }
 
     </style>
 </head>
@@ -51,10 +54,11 @@ $sql="INSERT INTO Usuarios (CI,Nombre, Direccion, Celular, Rol, Estado) VALUES (
             <?php 
             $sql="INSERT INTO Usuarios (CI,Nombre, Direccion, Celular, Rol, Estado) VALUES ('$CI','$Nombre', '$Direccion', '$Celular', '$Rol', '$Estado')";
                 if ($conexion->query($sql) === TRUE) {
-                header("Location: inicio.html");
+                    echo "Cliente registrado correctamente";
             }
       ?>
-        </p>
+        </p><br>
+        <a href="inicio.html">Volver al inicio</a>
     </div>
 </body>
 </html>
