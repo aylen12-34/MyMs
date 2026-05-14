@@ -7,7 +7,6 @@ $Celular=$_POST['Celular'];
 $Rol=$_POST['Rol'];
 $Estado=$_POST['Estado'];
 
-$sql="INSERT INTO Usuarios (CI,Nombre, Direccion, Celular, Rol, Estado) VALUES ('$CI','$Nombre', '$Direccion', '$Celular', '$Rol', '$Estado')";
 ?>
 <!DOCTYPE html>
 <html lang="en">

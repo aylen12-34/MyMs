@@ -20,74 +20,118 @@ $resultado = $conexion->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
 
     <style>
-        body{
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            padding: 20px;
-        }
+*{
+    font-family: 'Chillax-Semibold';
+    box-sizing: border-box;
+}
 
-        .contenedor{
-            width: 90%;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-        }
+body{
+    background-image: url(2.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
 
-        h2{
-            text-align: center;
-        }
+div{
+    width: 95%;
+    max-width: 1200px;
+    padding: 35px;
+    background-color: #6A253A;
+    border: 2px solid #EFE2DA;
+    border-radius: 30px;
+    color: #EFE2DA;
+}
 
-        table{
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+h2{
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 32px;
+}
 
-        th, td{
-            border: 1px solid #ccc;
-            padding: 12px;
-            text-align: center;
-        }
+table{
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 15px;
+}
 
-        th{
-            background: #333;
-            color: white;
-        }
+th{
+    background-color: #E64B6B;
+    color: #EFE2DA;
+    padding: 14px;
+    font-size: 15px;
+}
 
-        tr:nth-child(even){
-            background: #f2f2f2;
-        }
+td{
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid rgba(239, 226, 218, 0.2);
+    color: #EFE2DA;
+}
 
-        button{
-            padding: 6px 12px;
-            margin: 2px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+tr{
+    background-color: rgba(255,255,255,0.04);
+    transition: 0.3s;
+}
 
-        .mostrar{
-            background: #3498db;
-            color: white;
-        }
+tr:hover{
+    background-color: rgba(230, 75, 107, 0.25);
+}
 
-        .editar{
-            background: #f39c12;
-            color: white;
-        }
+button{
+    padding: 8px 14px;
+    margin: 3px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #EFE2DA;
+}
 
-        .eliminar{
-            background: #e74c3c;
-            color: white;
-        }
-    </style>
+
+.mostrar{
+    background-color: #E64B6B;
+    transition: 0.3s;
+}
+
+.mostrar:hover{
+    background-color: #EFE2DA;
+    color: #6A253A;
+}
+
+
+.editar{
+    background-color: #E64B6B;
+    transition: 0.3s;
+}
+
+.editar:hover{
+    background-color: #EFE2DA;
+    color: #6A253A;
+}
+
+
+.eliminar{
+    background-color: #E64B6B;
+    transition: 0.3s;
+}
+
+.eliminar:hover{
+    background-color: #EFE2DA;
+    color: #6A253A;
+}
+</style>
 </head>
 <body>
 
-<div class="contenedor">
+<div>
 
     <h2>Lista de Usuarios</h2>
 
