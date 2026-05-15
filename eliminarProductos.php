@@ -94,7 +94,7 @@ if ($conexion->query($sql) === TRUE) {
     </p><br>
         
         
-<button class="volver"><a href="readleeProdectos.php">Tabla Productos</a></button>
+<button class="volver"><a href="readleeProductos.php">Tabla Productos</a></button>
         
     </div>
     </div>
