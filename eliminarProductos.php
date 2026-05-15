@@ -9,7 +9,9 @@ $conexion = new mysqli($servername, $username,$password,$bdname);
 if($conexion -> connect_error){
     echo "Hubo un error";
 }
-$sql = "DELETE FROM Productos" ;
+
+$Nombre = $_GET['Nombrep'];
+$sql = "DELETE FROM Productos WHERE Nombrep='$Nombrep'" ;
 if ($conexion->query($sql) === TRUE) {
     echo "";
 }
@@ -94,7 +96,7 @@ if ($conexion->query($sql) === TRUE) {
     </p><br>
         
         
-<button class="volver"><a href="readleerUsuarios.php">Tabla Productos</a></button>
+<button class="volver"><a href="readleeProductos.php">Tabla Productos</a></button>
         
     </div>
     </div>

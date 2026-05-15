@@ -155,7 +155,7 @@ button{
     <table>
 
         <tr>
-            <th>Nombre</th>
+            <th>Nombrep</th>
             <th>Descripción</th>
             <th>Precio</th>
             <th>Stock</th>
@@ -170,7 +170,7 @@ button{
 
                 echo "<tr>";
 
-                echo "<td>".$fila["Nombre"]."</td>";
+                echo "<td>".$fila["Nombrep"]."</td>";
                 echo "<td>".$fila["Descripcion"]."</td>";
                 echo "<td>".$fila["Precio"]."</td>";
                 echo "<td>".$fila["Stock"]."</td>";

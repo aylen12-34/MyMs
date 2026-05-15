@@ -13,7 +13,7 @@ $sql = "SELECT * FROM Productos";
 $resultado = $conexion->query($sql);
 if ($resultado->num_rows > 0) {
     while($fila=$resultado->fetch_assoc()) {
-        $Nombre=$fila['Nombre'];
+        $Nombrep=$fila['Nombrep'];
         $Descripcion=$fila['Descripcion'];
         $Precio=$fila['Precio'];
         $Stock=$fila['Stock'];
@@ -116,7 +116,7 @@ if ($resultado->num_rows > 0) {
         <h1>Editar Producto</h1>
     <form action="updateEditarProductos.php" method="post">
         <label for="Nombre">Nombre:</label>
-        <input type="text" id="Nombre" name="Nombre"value='<?=$Nombre?>' required>  <br>  <br>
+        <input type="text" id="Nombrep" name="Nombrep" value='<?=$Nombrep?>' required>  <br>  <br>
         <label for="Direccion">Descripción:</label>
         <input type="text" id="Descripcion" name="Descripcion" value='<?=$Descripcion?>' required>  <br>  <br>
         <label for="Precio">Precio:</label>

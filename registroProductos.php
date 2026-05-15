@@ -10,7 +10,7 @@ if ($conexion->connect_error) {
     echo "No se ha podido conectar a la base de datos";
 }
 
-$Nombre=$_POST['Nombre'];
+$Nombrep=$_POST['Nombrep'];
 $Descripcion=$_POST['Descripcion'];
 $Precio=$_POST['Precio'];
 $Stock=$_POST['Stock'];
@@ -73,7 +73,7 @@ $Stock=$_POST['Stock'];
         <h2>Registro de Producto</h2>
         <p>
             <?php 
-           $sql="INSERT INTO Productos (Nombre, Descripcion, Precio, Stock) VALUES ('$Nombre', '$Descripcion', '$Precio', '$Stock')";
+           $sql="INSERT INTO Productos (Nombrep, Descripcion, Precio, Stock) VALUES ('$Nombrep', '$Descripcion', '$Precio', '$Stock')";
         if ($conexion->query($sql) === TRUE) {
             echo "Productos registrado correctamente";
         }
