@@ -18,6 +18,7 @@
             "menu tit"
             "menu text"
             "menu foo" ;
+            margin: 0;
         }
 
         header{
@@ -125,6 +126,10 @@ section button:hover{
             align-items: center;
             border-top: 3px solid #E64B6B;
         }
+        a{
+    text-decoration:none;
+    color:#EFE2DA;
+}
 
         @media(max-width:800px){
   body{
@@ -164,6 +169,7 @@ section button:hover{
     margin: 10px ;
   }
 }
+
     </style>
 </head>
 
@@ -186,11 +192,11 @@ section button:hover{
     <h3>Registro de ventas:</h3><br>
     <button>Ventas en proceso</button><br>
     <button>Ventas Terminadas</button><br>
-    <button>Historial de ventas</button><br>
     <h3>Inventario de producto:</h3><br>
-    <button>Material disponible</button><br>
-    <button>Historial de productos</button><br>
-    <button>Asinar Cargos</button><br>
+    <button><a href="readleeProductos.php">Productos disponibles</a></button><br>
+    <button><a href="formRegistroProductos.php">Registrar productos</a></button><br>
+    <button><a href="formRegistroUsuario.php">Registrar Usuario</a></button><br>
+    <button><a href="readleerUsuarios.php">Usuarios Registrados</a></button><br>
     <button>Reportes</button><br>
     </div>
 

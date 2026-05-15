@@ -127,15 +127,6 @@ button{
     background-color: #EFE2DA;
     color: #6A253A;
 }
-#id{
-            background-color: #E64B6B;
-            color: #EFE2DA;
-            transition: 0.3s;
-        }
-        #id:hover{
-            background-color: #EFE2DA;
-            color: #6A253A;
-        }
         .volver{
         padding: 10px 20px;
         border: none;

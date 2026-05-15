@@ -93,6 +93,21 @@ if ($resultado->num_rows > 0) {
             border-radius: 40px;
             color: #EFE2DA;
         }
+        .volver{
+        padding: 10px 20px;
+        border: none;
+        color: #EFE2DA;
+        border-radius: 5px;
+        background: #E64B6B;
+        cursor: pointer;
+        font-size: 16px;
+        margin:3px;
+        }
+
+        .volver:hover{
+            background-color: #EFE2DA;
+            color: #E64B6B;
+        }
 
     </style>
 </head>
@@ -110,6 +125,7 @@ if ($resultado->num_rows > 0) {
         <input type="text" id="Stock" name="Stock" value='<?=$Stock?>' required>  <br>  <br>
         <input type="submit" value="Editar">
     </form>
+    <button class="volver" onclick="history.back()">← Volver</button><br>
     </div>
 </body>
 </html>

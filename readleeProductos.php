@@ -177,10 +177,6 @@ button{
 
 
                  echo "<td>
-                        <a href='readleeProducto.php?'>
-                            <button class='mostrar'>Mostrar</button>
-                        </a>
-
                         <a href='formUpdateProductos.php?'>
                             <button class='editar'>Editar</button>
                         </a>
