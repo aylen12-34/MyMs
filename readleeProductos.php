@@ -155,7 +155,7 @@ button{
     <table>
 
         <tr>
-            <th>Nombrep</th>
+            <th>Nombre</th>
             <th>Descripción</th>
             <th>Precio</th>
             <th>Stock</th>

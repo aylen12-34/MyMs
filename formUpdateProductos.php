@@ -115,14 +115,14 @@ if ($resultado->num_rows > 0) {
     <div>
         <h1>Editar Producto</h1>
     <form action="updateEditarProductos.php" method="post">
-        <label for="Nombre">Nombre:</label>
-        <input type="text" id="Nombrep" name="Nombrep" value='<?=$Nombrep?>' required>  <br>  <br>
-        <label for="Direccion">Descripción:</label>
-        <input type="text" id="Descripcion" name="Descripcion" value='<?=$Descripcion?>' required>  <br>  <br>
-        <label for="Precio">Precio:</label>
-        <input type="text" id="Precio" name="Precio" value='<?=$Precio?>' required>  <br>  <br>
-        <label for="Stock">Stock:</label>
-        <input type="text" id="Stock" name="Stock" value='<?=$Stock?>' required>  <br>  <br>
+        <label for="">Nombre:</label>
+        <input type="text" name="Nombrep" value='<?=$Nombrep?>' required>  <br>  <br>
+        <label for="">Descripción:</label>
+        <input type="text" name="Descripcion" value='<?=$Descripcion?>' required>  <br>  <br>
+        <label for="">Precio:</label>
+        <input type="text" name="Precio" value='<?=$Precio?>' required>  <br>  <br>
+        <label for="">Stock:</label>
+        <input type="text" name="Stock" value='<?=$Stock?>' required>  <br>  <br>
         <input type="submit" value="Editar">
     </form>
     <button class="volver" onclick="history.back()">← Volver</button><br>

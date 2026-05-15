@@ -88,7 +88,7 @@ $Estado=$_POST['Estado'];
         </p><br>
         
         <button class="volver" onclick="history.back()">← Volver</button><br>
-        <button class="volver"><a href="readleerUsuarios">Tabla Usuarios</a></button>
+        <button class="volver"><a href="readleerUsuarios.php">Tabla Usuarios</a></button>
     </div>
     </div>
 </body>
