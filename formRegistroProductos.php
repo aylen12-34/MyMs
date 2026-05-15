@@ -87,6 +87,8 @@ label.error{
     <div>
         <h1>Registro de Productos</h1>
     <form action="registroProductos.php" method="post">
+        <label for="Codigo">Codigo:</label>
+        <input type="number" id="Codigo" name="Codigo"> <br> <br>
         <label for="Nombre">Nombre:</label>
         <input type="text" id="Nombrep" name="Nombrep"><br><br>
         <label for="Descripcion">Descripción:</label>

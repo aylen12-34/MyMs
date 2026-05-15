@@ -79,12 +79,12 @@ if ($conexion->connect_error) {
     
     echo "Hubo un error al conectar a la base de datos";
 }
-
+$Codigo=$_POST['Codigo'];
 $Nombrep=$_POST['Nombrep'];
 $Descripcion=$_POST['Descripcion'];
 $Precio=$_POST['Precio'];
 $Stock=$_POST['Stock'];
-$sql="UPDATE Productos SET Nombrep='$Nombrep', Descripcion='$Descripcion', Precio='$Precio', Stock='$Stock' WHERE Nombrep='$Nombrep'";
+$sql="UPDATE Productos SET Codigo=$Codigo, Nombrep='$Nombrep', Descripcion='$Descripcion', Precio='$Precio', Stock='$Stock' WHERE Codigo=$Codigo";
 if ($conexion->query($sql) === TRUE) {
     echo "Se edito el producto correctamente";
 } else {

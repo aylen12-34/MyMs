@@ -155,6 +155,7 @@ button{
     <table>
 
         <tr>
+            <th>Codigo</th>
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Precio</th>
@@ -170,6 +171,7 @@ button{
 
                 echo "<tr>";
 
+                echo "<td>".$fila["Codigo"]."</td>";
                 echo "<td>".$fila["Nombrep"]."</td>";
                 echo "<td>".$fila["Descripcion"]."</td>";
                 echo "<td>".$fila["Precio"]."</td>";
@@ -177,11 +179,11 @@ button{
 
 
                  echo "<td>
-                        <a href='formUpdateProductos.php?'>
+                        <a href='formUpdateProductos.php?Codigo=" . $fila["Codigo"] . "'>
                             <button class='editar'>Editar</button>
                         </a>
 
-                        <a href='eliminarProductos.php?'>
+                        <a href='eliminarProductos.php?Codigo=" . $fila["Codigo"] . "'>
                             <button class='eliminar'>Eliminar</button>
                         </a>
                       </td>";
@@ -192,7 +194,7 @@ button{
         } else {
 
             echo "<tr>";
-            echo "<td colspan='5'>No se encontraron productos</td>";
+            echo "<td colspan='6'>No se encontraron productos</td>";
             echo "</tr>";
 
         }

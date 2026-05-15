@@ -9,10 +9,12 @@ if ($conexion->connect_error) {
     
     echo "No se ha podido conectar a la base de datos";
 }
-$sql = "SELECT * FROM Productos";
+$Codigo=$_GET['Codigo'];
+$sql = "SELECT * FROM Productos WHERE Codigo=$Codigo";
 $resultado = $conexion->query($sql);
 if ($resultado->num_rows > 0) {
     while($fila=$resultado->fetch_assoc()) {
+        $Codigo=$fila['Codigo'];
         $Nombrep=$fila['Nombrep'];
         $Descripcion=$fila['Descripcion'];
         $Precio=$fila['Precio'];
@@ -115,14 +117,16 @@ if ($resultado->num_rows > 0) {
     <div>
         <h1>Editar Producto</h1>
     <form action="updateEditarProductos.php" method="post">
-        <label for="">Nombre:</label>
-        <input type="text" name="Nombrep" value='<?=$Nombrep?>' required>  <br>  <br>
-        <label for="">Descripción:</label>
-        <input type="text" name="Descripcion" value='<?=$Descripcion?>' required>  <br>  <br>
-        <label for="">Precio:</label>
-        <input type="text" name="Precio" value='<?=$Precio?>' required>  <br>  <br>
-        <label for="">Stock:</label>
-        <input type="text" name="Stock" value='<?=$Stock?>' required>  <br>  <br>
+        <label for="Codigo">Codigo:</label>
+        <input type="number" id="Codigo" name="Codigo" value='<?=$Codigo?>' required>  <br>  <br>
+        <label for="Nombrep">Nombre:</label>
+        <input type="text" id="Nombrep" name="Nombrep" value='<?=$Nombrep?>' required>  <br>  <br>
+        <label for="Descripcion">Descripción:</label>
+        <input type="text" id="Descripcion" name="Descripcion" value='<?=$Descripcion?>' required>  <br>  <br>
+        <label for="Precio">Precio:</label>
+        <input type="text" id="Precio" name="Precio" value='<?=$Precio?>' required>  <br>  <br>
+        <label for="Stock">Stock:</label>
+        <input type="text" id="Stock" name="Stock" value='<?=$Stock?>' required>  <br>  <br>
         <input type="submit" value="Editar">
     </form>
     <button class="volver" onclick="history.back()">← Volver</button><br>

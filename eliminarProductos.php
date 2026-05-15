@@ -10,8 +10,8 @@ if($conexion -> connect_error){
     echo "Hubo un error";
 }
 
-$Nombrep = $_GET['Nombrep'];
-$sql = "DELETE FROM Productos WHERE Nombrep='$Nombrep'" ;
+$Codigo = $_GET['Codigo'];
+$sql = "DELETE FROM Productos WHERE Codigo=$Codigo";
 if ($conexion->query($sql) === TRUE) {
     echo "";
 }
