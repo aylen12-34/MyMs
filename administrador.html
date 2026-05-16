@@ -32,6 +32,20 @@
             align-items: center;
             border-bottom: 5px solid #E64B6B;
         }
+        header img{
+  animation: aparecer 1.5s ease;
+}
+
+@keyframes aparecer{
+  from{
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
         #g{
       scale: 0.5;
     }
@@ -132,10 +146,11 @@ section button:hover{
 }
 
         @media(max-width:800px){
+
   body{
+    grid-template-columns: 100%;
     grid-template-rows: auto auto auto auto;
-    grid-template-columns:100%;
-    grid-template-areas: 
+    grid-template-areas:
     "tit"
     "menu"
     "text"
@@ -143,30 +158,98 @@ section button:hover{
   }
 
   header{
-    height: 200px;
+    height: 180px;
+    padding: 20px;
+    text-align: center;
   }
 
   #uno{
-    font-size: 50px;
+    font-size: 45px;
+    line-height: 1.1;
   }
+
+  header img{
+    width: 500px;
+    height: auto;
+  }
+          header img{
+  animation: aparecer 1.5s ease;
+}
+
+@keyframes aparecer{
+  from{
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 
   nav{
     border-right: none;
     border-bottom: 5px solid #E64B6B;
   }
 
+  .indice ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .indice li{
+    flex: 1 1 150px;
+  }
+
   .indice a{
     padding: 15px;
     text-align: center;
+    font-size: 15px;
   }
- section{
+
+  section{
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    padding: 20px;
+    gap: 20px;
+  }
+  .a{
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 40px;
+    width:270px;
+  }
+  section h1{
+    font-size: 32px;
+  }
+
+  section h3{
+    font-size: 20px;
+  }
+
+  section p{
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  div img{
+    max-width: 220px;
   }
 
   section button{
     width: 100%;
-    margin: 10px ;
+    max-width: 300px;
+    margin: 5px 0;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  footer{
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
   }
 }
 
@@ -188,7 +271,7 @@ section button:hover{
 </nav>
 
 <section>
-    <div>
+    <div class="a">
     <h3>Registro de ventas:</h3><br>
     <button>Ventas en proceso</button><br>
     <button>Ventas Terminadas</button><br>
@@ -203,7 +286,7 @@ section button:hover{
     <div>
         <img src="https://images.mubicdn.net/images/cast_member/281456/cache-179563-1559374083/image-w856.jpg" alt="">
     </div>
-    <div><b>
+    <div class="a"><b>
     <h1>Datos Personales</h1><br>
     <p>C.I: 9406469</p><br>
     <p>Nombre: Nick Jonas</p><br>

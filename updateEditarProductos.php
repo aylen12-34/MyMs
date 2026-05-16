@@ -67,6 +67,35 @@ $baseDeDatos = "MYMS";
             text-decoration: none;
             
         }
+        @media(max-width:800px){
+
+  body{
+    padding: 20px;
+  }
+
+  div{
+    width: 100%;
+    max-width: 320px;
+    padding: 25px;
+    border-radius: 25px;
+    text-align: center;
+  }
+
+  h2{
+    font-size: 28px;
+  }
+
+  p{
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .volver{
+    width: 100%;
+    margin-top: 10px;
+    box-sizing: border-box;
+  }
+}
     </style>
 </head>
 <body>
@@ -80,11 +109,11 @@ if ($conexion->connect_error) {
     echo "Hubo un error al conectar a la base de datos";
 }
 $Codigo=$_POST['Codigo'];
-$Nombrep=$_POST['Nombrep'];
+$Nombre=$_POST['Nombre'];
 $Descripcion=$_POST['Descripcion'];
 $Precio=$_POST['Precio'];
 $Stock=$_POST['Stock'];
-$sql="UPDATE Productos SET Codigo=$Codigo, Nombrep='$Nombrep', Descripcion='$Descripcion', Precio='$Precio', Stock='$Stock' WHERE Codigo=$Codigo";
+$sql="UPDATE Productos SET Codigo=$Codigo, Nombre='$Nombre', Descripcion='$Descripcion', Precio='$Precio', Stock='$Stock' WHERE Codigo=$Codigo";
 if ($conexion->query($sql) === TRUE) {
     echo "Se edito el producto correctamente";
 } else {

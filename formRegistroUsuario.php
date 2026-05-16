@@ -79,6 +79,40 @@
             border-radius: 40px;
             color: #EFE2DA;
         }
+        @media(max-width:800px){
+
+  body{
+    padding: 20px;
+  }
+
+  div{
+    width: 100%;
+    max-width: 320px;
+    padding: 25px;
+    border-radius: 25px;
+  }
+
+  h1{
+    text-align: center;
+    font-size: 28px;
+  }
+
+  form{
+    width: 100%;
+  }
+
+  input{
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  input[type="submit"],
+  .volver{
+    width: 100%;
+    margin-top: 10px;
+  }
+}
 
     </style>
 </head>

@@ -145,6 +145,43 @@ button{
             text-decoration:none;
             color: #EFE2DA;
         }
+        @media(max-width:800px){
+
+  body{
+    padding: 15px;
+  }
+
+  div{
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    overflow-x: auto;
+  }
+
+  h2{
+    font-size: 26px;
+  }
+
+  table{
+    min-width: 700px;
+  }
+
+  th,
+  td{
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  button{
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  .volver{
+    width: 100%;
+    margin-top: 10px;
+  }
+}
 </style>
 </head>
 <body>
@@ -210,6 +247,7 @@ button{
 <button class="volver"><a href="vendedor.html">Inicio vendedor</a></button>
 <button class="volver"><a href="administrador.html">Inicio Administrador</a></button>
 <button class="volver"><a href="inicio.html">Inicio Publico</a></button>
+<button class="volver"><a href="formRegistroUsuario.php">Registrar Usuarios</a></button>
 </div>
 
 </body>

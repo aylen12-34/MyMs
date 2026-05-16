@@ -15,7 +15,7 @@ $resultado = $conexion->query($sql);
 if ($resultado->num_rows > 0) {
     while($fila=$resultado->fetch_assoc()) {
         $Codigo=$fila['Codigo'];
-        $Nombrep=$fila['Nombrep'];
+        $Nombre=$fila['Nombre'];
         $Descripcion=$fila['Descripcion'];
         $Precio=$fila['Precio'];
         $Stock=$fila['Stock'];
@@ -109,7 +109,40 @@ if ($resultado->num_rows > 0) {
         .volver:hover{
             background-color: #EFE2DA;
             color: #E64B6B;
-        }
+        }@media(max-width:800px){
+
+  body{
+    padding: 20px;
+  }
+
+  div{
+    width: 100%;
+    max-width: 320px;
+    padding: 25px;
+    border-radius: 25px;
+  }
+
+  h1{
+    text-align: center;
+    font-size: 28px;
+  }
+
+  form{
+    width: 100%;
+  }
+
+  input{
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  input[type="submit"],
+  .volver{
+    width: 100%;
+    margin-top: 10px;
+  }
+}
 
     </style>
 </head>
@@ -119,8 +152,8 @@ if ($resultado->num_rows > 0) {
     <form action="updateEditarProductos.php" method="post">
         <label for="Codigo">Codigo:</label>
         <input type="number" id="Codigo" name="Codigo" value='<?=$Codigo?>' required>  <br>  <br>
-        <label for="Nombrep">Nombre:</label>
-        <input type="text" id="Nombrep" name="Nombrep" value='<?=$Nombrep?>' required>  <br>  <br>
+        <label for="Nombre">Nombre:</label>
+        <input type="text" id="Nombre" name="Nombre" value='<?=$Nombre?>' required>  <br>  <br>
         <label for="Descripcion">Descripción:</label>
         <input type="text" id="Descripcion" name="Descripcion" value='<?=$Descripcion?>' required>  <br>  <br>
         <label for="Precio">Precio:</label>

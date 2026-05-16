@@ -10,7 +10,7 @@ if ($conexion->connect_error) {
     echo "No se ha podido conectar a la base de datos";
 }
 $Codigo=$_POST['Codigo'];
-$Nombrep=$_POST['Nombrep'];
+$Nombre=$_POST['Nombre'];
 $Descripcion=$_POST['Descripcion'];
 $Precio=$_POST['Precio'];
 $Stock=$_POST['Stock'];
@@ -65,7 +65,35 @@ $Stock=$_POST['Stock'];
         .volver:hover{
             background-color: #EFE2DA;
             color: #E64B6B;
-        }
+        }@media(max-width:800px){
+
+  body{
+    padding: 20px;
+  }
+
+  div{
+    width: 100%;
+    max-width: 320px;
+    padding: 25px;
+    border-radius: 25px;
+    text-align: center;
+  }
+
+  h2{
+    font-size: 28px;
+  }
+
+  p{
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .volver{
+    width: 100%;
+    margin-top: 10px;
+    box-sizing: border-box;
+  }
+}
     </style>
 </head>
 <body>
@@ -73,7 +101,7 @@ $Stock=$_POST['Stock'];
         <h2>Registro de Producto</h2>
         <p>
             <?php 
-           $sql="INSERT INTO Productos (Codigo, Nombrep, Descripcion, Precio, Stock) VALUES ($Codigo, '$Nombrep', '$Descripcion', '$Precio', '$Stock')";
+           $sql="INSERT INTO Productos (Codigo, Nombre, Descripcion, Precio, Stock) VALUES ('$Codigo', '$Nombre', '$Descripcion', '$Precio', '$Stock')";
         if ($conexion->query($sql) === TRUE) {
             echo "Productos registrado correctamente";
         }

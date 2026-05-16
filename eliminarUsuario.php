@@ -81,6 +81,35 @@ if ($conexion->query($sql) === TRUE) {
             text-decoration: none;
             
         }
+        @media(max-width:800px){
+
+  body{
+    padding: 20px;
+  }
+
+  div{
+    width: 100%;
+    max-width: 320px;
+    padding: 25px;
+    border-radius: 25px;
+    text-align: center;
+  }
+
+  h2{
+    font-size: 28px;
+  }
+
+  p{
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .volver{
+    width: 100%;
+    margin-top: 10px;
+    box-sizing: border-box;
+  }
+}
     </style>
 </head>
 <body>
