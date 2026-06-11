@@ -9,11 +9,8 @@ if ($conexion->connect_error) {
     
     echo "No se ha podido conectar a la base de datos";
 }
-$Codigo=$_POST['Codigo'];
-$Nombre=$_POST['Nombre'];
-$Descripcion=$_POST['Descripcion'];
-$Precio=$_POST['Precio'];
-$Stock=$_POST['Stock'];
+$Cantidad=$_POST['Cantidad'];
+$CostoTotal=$_POST['CostoTotal'];
 
 ?>
 <!DOCTYPE html>
@@ -31,15 +28,15 @@ $Stock=$_POST['Stock'];
         <h2>Registro de Carrito</h2>
         <p>
             <?php 
-           $sql="INSERT INTO Productos (Codigo, Nombre, Descripcion, Precio, Stock) VALUES ('$Codigo', '$Nombre', '$Descripcion', '$Precio', '$Stock')";
+           $sql="INSERT INTO Carrito (Cantidad, CostoTotal) VALUES ('$Cantidad', '$CostoTotal')";
         if ($conexion->query($sql) === TRUE) {
-            echo "Productos registrado correctamente";
+            echo "Producto subido en el carrito";
         }
       ?>
         </p><br>
                 
         <button class="volver" onclick="history.back()">← Volver</button><br>
-        <button class="volver"><a href="readleeProductos.php">Tabla Productos</a></button>
+        <button class="volver"><a href="leerCarrito.php">Tabla Carrito</a></button>
     </div>
 </body>
 </html>

@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `MYMS`.`Carrito` (
   `Productos_Codigo` INT NOT NULL,
   `Pedidos_ID` INT NOT NULL,
   `Cantidad` INT NULL,
-  `Costo Total` INT NULL,
+  `CostoTotal` INT NULL,
   PRIMARY KEY (`Productos_Codigo`, `Pedidos_ID`),
   INDEX `fk_Productos_has_Pedidos_Pedidos1_idx` (`Pedidos_ID` ASC) ,
   INDEX `fk_Productos_has_Pedidos_Productos1_idx` (`Productos_Codigo` ASC) ,
