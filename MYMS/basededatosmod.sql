@@ -54,7 +54,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `MYMS`.`Pedidos` (
   `ID` INT NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(45) NULL,
-  `Fecha` INT NULL,
+  `Fecha` DATE NULL,
   `Estado` VARCHAR(45) NULL,
   `NombreVendedor` VARCHAR(45) NULL,
   PRIMARY KEY (`ID`))
