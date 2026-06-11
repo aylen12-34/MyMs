@@ -11,7 +11,7 @@ if($conexion -> connect_error){
 }
 
 $Codigo = $_GET['Codigo'];
-$sql = "DELETE FROM Carrito WHERE Codigo=$Codigo";
+$sql = "DELETE FROM Carrito";
 if ($conexion->query($sql) === TRUE) {
     echo "";
 }
@@ -27,8 +27,6 @@ if ($conexion->query($sql) === TRUE) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
 </head>
 <body>
     <div>
@@ -41,7 +39,7 @@ if ($conexion->query($sql) === TRUE) {
     </p><br>
         
         
-<button class="volver"><a href="readleeCarrito.php">Tabla Carrito</a></button>
+<button class="volver"><a href="leerCarrito.php">Tabla Carrito</a></button>
         
     </div>
     </div>

@@ -26,6 +26,7 @@ $resultado = $conexion->query($sql);
                 echo "<td>".$fila['Fecha']."</td>";
                 echo "<td>".$fila['Estado']."</td>";
                 echo "<td>".$fila['NombreVendedor']."</td>";
+                echo "<td>".$fila['Cantidad']."</td>";
 
                 echo "<td>
                         <a href='leerPedidos.php?ID=$ID'>
@@ -38,6 +39,10 @@ $resultado = $conexion->query($sql);
 
                         <a href='EliminarPedidos.php?ID=$ID'>
                             <button class='eliminar'>Eliminar</button>
+                        </a>
+                        
+                        <a href='formCarrito.php?ID=$ID'>
+                            <button class='Cantidad'>Eliminar</button>
                         </a>
                       </td>";
 
