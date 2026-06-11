@@ -105,11 +105,10 @@
     width: 100%;
     margin-top: 10px;
   }
-
-  label.error{
-    font-size: 12px;
-  }
+label.error{
+    display:none !important;
 }
+
     </style>
 </head>
 
@@ -143,5 +142,71 @@
 
         </form>
     </div>
+    <script>
+        $("form").validate({
+    rules: {
+        Codigo: {
+            required: true,
+        },
+        Nombre: {
+            required: true,
+            minlength: 3
+        },
+
+        Descripcion: {
+            required: true
+        },
+
+        Precio: {
+            required: true,
+            digits: true,
+            minlength: 8,
+            maxlength: 8
+        },
+
+        Stock: {
+            required: true
+        }
+
+    },
+
+    messages: {
+        Codigo: {
+            required: "Ingrese su CI",
+        },
+        Nombre: {
+            required: "Ingrese su nombre",
+            minlength: "Mínimo 3 letras"
+        },
+
+        Descripcion: {
+            required: "Ingrese su dirección"
+        },
+
+        Precio: {
+            required: "Ingrese su celular",
+            digits: "Solo números",
+            minlength: "Debe tener 8 dígitos",
+            maxlength: "Debe tener 8 dígitos"
+        },
+
+        Stock: {
+            required: "Ingrese el rol"
+        }
+    },
+    showErrors: function(errorMap, errorList) {
+
+    $("input").each(function() {
+        $(this).attr("placeholder", "");
+    });
+
+    $.each(errorList, function(index, error) {
+        $(error.element).val("");
+        $(error.element).attr("placeholder", error.message);
+    });
+
+}
+});
+    </script>
 </body>
 </html>
