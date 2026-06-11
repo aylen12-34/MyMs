@@ -28,15 +28,15 @@ $resultado = $conexion->query($sql);
                 echo "<td>".$fila['NombreVendedor']."</td>";
 
                 echo "<td>
-                        <a href='leerPedido.php?ID=$ID'>
+                        <a href='leerPedidos.php?ID=$ID'>
                             <button class='mostrar'>Mostrar</button>
                         </a>
 
-                        <a href='formUpdatePedido.php?ID=$ID'>
+                        <a href='formupdatePedidos.php?ID=$ID'>
                             <button class='editar'>Editar</button>
                         </a>
 
-                        <a href='eliminarUsuario.php?ID=$ID'>
+                        <a href='EliminarPedidos.php?ID=$ID'>
                             <button class='eliminar'>Eliminar</button>
                         </a>
                       </td>";

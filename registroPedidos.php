@@ -14,8 +14,8 @@ $Fecha=$_POST['Fecha'];
 $Estado=$_POST['Estado'];
 $NombreVendedor=$_POST['NombreVendedor'];
     
-           $sql="INSERT INTO Productos (Nombre, Fecha, Estado, NombreVendedor) VALUES ('$Nombre', '$Fecha', '$Estado', '$NombreVendedor')";
+           $sql="INSERT INTO Pedidos (Nombre, Fecha, Estado, NombreVendedor) VALUES ('$Nombre', '$Fecha', '$Estado', '$NombreVendedor')";
         if ($conexion->query($sql) === TRUE) {
-            echo "Productos registrado correctamente";
+            echo "Pedidos registrado correctamente";
         }
       ?>

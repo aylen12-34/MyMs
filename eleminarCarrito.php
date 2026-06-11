@@ -10,8 +10,8 @@ if($conexion -> connect_error){
     echo "Hubo un error";
 }
 
-$ID = $_GET['ID'];
-$sql = "DELETE FROM Pedidos";
+$Codigo = $_GET['Codigo'];
+$sql = "DELETE FROM Carrito WHERE Codigo=$Codigo";
 if ($conexion->query($sql) === TRUE) {
     echo "";
 }
@@ -27,19 +27,21 @@ if ($conexion->query($sql) === TRUE) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
 </head>
 <body>
     <div>
-        <h2>Eliminar Pedidos</h2>
+        <h2>Eliminar Productos del Carrito</h2>
         <p>
       <?php
-        echo "El pedido ha sido eliminado.";
+        echo "El producto ha sido eliminado.";
         $conexion->close(); 
       ?>
     </p><br>
         
         
-<button class="volver"><a href="leerPedidos.php">Tabla Pedidos</a></button>
+<button class="volver"><a href="readleeCarrito.php">Tabla Carrito</a></button>
         
     </div>
     </div>

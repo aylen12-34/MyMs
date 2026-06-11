@@ -9,8 +9,7 @@ if ($conexion->connect_error) {
     
     echo "No se ha podido conectar a la base de datos";
 }
-$ID=$_GET['ID'];
-$sql = "SELECT * FROM Pedidos WHERE ID=$ID";
+$sql = "SELECT * FROM Pedidos";
 $resultado = $conexion->query($sql);
 if ($resultado->num_rows > 0) {
     while($fila=$resultado->fetch_assoc()) {
@@ -29,13 +28,11 @@ if ($resultado->num_rows > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
 </head>
 <body>
     <div>
         <h1>Editar Pedido</h1>
-    <form action="updateEditarPedidos.php" method="post">
+    <form action="updatePedidos.php" method="post">
         <label for="Nombre">Nombre:</label>
         <input type="text" id="Nombre" name="Nombre" value='<?=$Nombre?>' required>  <br>  <br>
         <label for="Fecha">Fecha:</label>

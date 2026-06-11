@@ -37,14 +37,7 @@ CREATE TABLE IF NOT EXISTS `MYMS`.`Usuarios` (
   `Celular` VARCHAR(45) NULL,
   `Rol` VARCHAR(45) NULL,
   `Estado` VARCHAR(45) NULL,
-  `Productos_Codigo` INT NOT NULL,
-  PRIMARY KEY (`CI`, `Productos_Codigo`),
-  INDEX `fk_Usuarios_Productos_idx` (`Productos_Codigo` ASC) ,
-  CONSTRAINT `fk_Usuarios_Productos`
-    FOREIGN KEY (`Productos_Codigo`)
-    REFERENCES `MYMS`.`Productos` (`Codigo`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`CI`))
 ENGINE = InnoDB;
 
 
