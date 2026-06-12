@@ -9,10 +9,6 @@ if ($conexion->connect_error) {
     
     echo "No se ha podido conectar a la base de datos";
 }
-session_start();
-if($_SESSION['CI']==null){
-    header("location:login.html");
-}
 $sql = "SELECT * FROM Pedidos";
 $resultado = $conexion->query($sql);
 if ($resultado->num_rows > 0) {

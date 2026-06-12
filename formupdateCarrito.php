@@ -45,8 +45,7 @@ if($_SESSION['CI']==null){
         <br>
         <input type="submit" value="Editar">
     </form>
-    <button class="volver" onclick="history.back()">
-         Volver</button><br>
+    <button class="volver" onclick="history.back()">Volver</button><br>
 </div>
 </body>
 </html>

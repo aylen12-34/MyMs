@@ -11,10 +11,7 @@ if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
 
-session_start();
-if($_SESSION['CI']==null){
-    header("location:login.html");
-}
+
 
 ?>
 <!DOCTYPE html>
@@ -33,7 +30,7 @@ if($_SESSION['CI']==null){
     }
 
     body {
-        background-image: url(2.png);
+        background-image: url(imagenes/2.png);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -127,7 +124,7 @@ if($_SESSION['CI']==null){
 label.error{
     display:none !important;
 }
-
+}
     </style>
 </head>
 
