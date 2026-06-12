@@ -13,6 +13,12 @@ if ($conexion->connect_error) {
 session_start();
 if($_SESSION['CI']==null){
     header("location:login.html");
+}else {
+  if($_SESSION['Rol']=="administrador"){
+    $CI = $_SESSION['CI'];
+  } else{
+    header("location:login.html");
+  }
 }
 
 $CI = $_SESSION['CI'];
@@ -296,7 +302,7 @@ section button:hover{
 <section>
     <div class="a">
     <h3>Registro de ventas:</h3><br>
-    <button>Ventas en proceso</button><br>
+    <button><a href="leerPedidos.php">Ventas en proceso</a></button><br>
     <button>Ventas Terminadas</button><br>
     <h3>Personal:</h3><br>
     <button><a href="readleerUsuarios.php">Personal</a></button><br>
@@ -308,6 +314,7 @@ section button:hover{
     </div>
     <div class="a"><b>
     <h1>Datos Personales</h1><br>
+
     <?php
 
 if ($resultado->num_rows > 0) {

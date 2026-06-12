@@ -13,9 +13,15 @@ if ($conexion->connect_error) {
 session_start();
 if($_SESSION['CI']==null){
     header("location:login.html");
+} else {
+  if($_SESSION['Rol']=="vendedor"){
+    $CI = $_SESSION['CI'];
+  } else{
+    header("location:login.html");
+  }
 }
 
-$CI = $_SESSION['CI'];
+
 
 $sql = "SELECT * FROM Usuarios WHERE CI='$CI'";
 $resultado = $conexion->query($sql);
