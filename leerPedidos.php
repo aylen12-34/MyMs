@@ -10,7 +10,7 @@ if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
 
-$sql = "SELECT * FROM Productos";
+$sql = "SELECT * FROM Pedidos";
 $resultado = $conexion->query($sql);
 ?>
 
@@ -19,12 +19,12 @@ $resultado = $conexion->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
+    <title>Pedidos</title>
+
     <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
 
     <style>
+
 *{
     font-family: 'Chillax-Semibold';
     box-sizing: border-box;
@@ -32,14 +32,20 @@ $resultado = $conexion->query($sql);
 
 body{
     background-image: url(imagenes/2.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     min-height: 100vh;
     margin: 0;
+    padding: 20px;
 }
 
-div{
+.contenedor{
     width: 95%;
     max-width: 1200px;
     padding: 35px;
@@ -94,108 +100,97 @@ button{
     transition: 0.3s;
     color: #EFE2DA;
 }
-.mostrar{
-    background-color: #E64B6B;
-    transition: 0.3s;
-}
 
-.mostrar:hover{
-    background-color: #EFE2DA;
-    color: #6A253A;
-}
-
-
-.editar{
-    background-color: #E64B6B;
-    transition: 0.3s;
-}
-
-.editar:hover{
-    background-color: #EFE2DA;
-    color: #6A253A;
-}
-
-
+.mostrar,
+.editar,
 .eliminar{
     background-color: #E64B6B;
-    transition: 0.3s;
 }
 
+.mostrar:hover,
+.editar:hover,
 .eliminar:hover{
     background-color: #EFE2DA;
     color: #6A253A;
 }
-        .volver{
-        padding: 10px 20px;
-        border: none;
-        color: #EFE2DA;
-        border-radius: 5px;
-        background: #E64B6B;
-        cursor: pointer;
-        font-size: 16px;
-        }
 
-        .volver:hover{
-            background-color: #EFE2DA;
-            color:#E64B6B;
-        }
-        a{
-            text-decoration:none;
-            color: #EFE2DA;
-        }@media(max-width:800px){
-
-  body{
-    padding: 15px;
-  }
-
-  div{
-    width: 100%;
-    padding: 20px;
-    border-radius: 20px;
-    overflow-x: auto;
-  }
-
-  h2{
-    font-size: 26px;
-  }
-
-  table{
-    min-width: 650px;
-  }
-
-  th,
-  td{
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  button{
-    width: 100%;
-    margin-top: 5px;
-  }
-
-  .volver{
-    width: 100%;
+.volver{
+    padding: 10px 20px;
+    border: none;
+    color: #EFE2DA;
+    border-radius: 5px;
+    background: #E64B6B;
+    cursor: pointer;
+    font-size: 16px;
     margin-top: 10px;
-  }
 }
 
-</style>
+.volver:hover{
+    background-color: #EFE2DA;
+    color:#E64B6B;
+}
+
+a{
+    text-decoration:none;
+    color: inherit;
+}
+
+.botones{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+@media(max-width:800px){
+
+    .contenedor{
+        width: 100%;
+        padding: 20px;
+        border-radius: 20px;
+        overflow-x: auto;
+    }
+
+    h2{
+        font-size: 26px;
+    }
+
+    table{
+        min-width: 750px;
+    }
+
+    th,
+    td{
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .botones{
+        flex-direction: column;
+    }
+
+    .volver{
+        width: 100%;
+    }
+}
+
+    </style>
 </head>
+
 <body>
 
-<div >
+<div class="contenedor">
 
-    <h2>Lista de Productos</h2>
+    <h2>Lista de Pedidos</h2>
 
     <table>
 
         <tr>
-            <th>Codigo</th>
+            <th>ID</th>
             <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-            <th>Stock</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Vendedor</th>
             <th>Acciones</th>
         </tr>
 
@@ -205,23 +200,30 @@ button{
 
             while($fila = $resultado->fetch_assoc()) {
 
+                $ID = $fila["ID"];
+
                 echo "<tr>";
 
-                echo "<td>".$fila["Codigo"]."</td>";
-                echo "<td>".$fila["Nombre"]."</td>";
-                echo "<td>".$fila["Descripcion"]."</td>";
-                echo "<td>".$fila["Precio"]."</td>";
-                echo "<td>".$fila["Stock"]."</td>";
+                echo "<td>".$fila['ID']."</td>";
+                echo "<td>".$fila['Nombre']."</td>";
+                echo "<td>".$fila['Fecha']."</td>";
+                echo "<td>".$fila['Estado']."</td>";
+                echo "<td>".$fila['NombreVendedor']."</td>";
 
+                echo "<td>
 
-                 echo "<td>
-                        <a href='formUpdateProductos.php?Codigo=" . $fila["Codigo"] . "'>
+                        <a href='leerPedido.php?ID=$ID'>
+                            <button class='mostrar'>Mostrar</button>
+                        </a>
+
+                        <a href='formupdatePedidos.php?ID=$ID'>
                             <button class='editar'>Editar</button>
                         </a>
 
-                        <a href='eliminarProductos.php?Codigo=" . $fila["Codigo"] . "'>
+                        <a href='EliminarPedidos.php?ID=$ID'>
                             <button class='eliminar'>Eliminar</button>
                         </a>
+
                       </td>";
 
                 echo "</tr>";
@@ -230,7 +232,7 @@ button{
         } else {
 
             echo "<tr>";
-            echo "<td colspan='6'>No se encontraron productos</td>";
+            echo "<td colspan='6'>No hay pedidos registrados</td>";
             echo "</tr>";
 
         }
@@ -240,8 +242,25 @@ button{
         ?>
 
     </table>
-<button class="volver"><a href="vendedor.php">Perfil</a></button>
-<button class="volver"><a href="formRegistroProductos.php">Registrar Producto</a></button>
+
+    <div class="botones">
+        <button class="volver">
+            <a href="vendedor.php">Inicio vendedor</a>
+        </button>
+
+        <button class="volver">
+            <a href="administrador.php">Inicio Administrador</a>
+        </button>
+
+        <button class="volver">
+            <a href="inicio.html">Inicio Público</a>
+        </button>
+
+        <button class="volver">
+            <a href="formRegistroPedidos.php">Registrar nuevo pedido</a>
+        </button>
+    </div>
+
 </div>
 
 </body>

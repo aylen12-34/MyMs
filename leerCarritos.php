@@ -10,7 +10,7 @@ if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
 
-$sql = "SELECT * FROM Productos";
+$sql = "SELECT * FROM Carrito";
 $resultado = $conexion->query($sql);
 ?>
 
@@ -19,12 +19,11 @@ $resultado = $conexion->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
+    <title>Lista de Carritos</title>
     <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
-
-    <style>
+<style>
 *{
     font-family: 'Chillax-Semibold';
     box-sizing: border-box;
@@ -184,42 +183,37 @@ button{
 </head>
 <body>
 
-<div >
+<div>
 
-    <h2>Lista de Productos</h2>
+    <h2>Lista de pedidos en el carrito</h2>
 
     <table>
-
         <tr>
-            <th>Codigo</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-            <th>Stock</th>
+            <th>Cantidad</th>
+            <th>Costo Total</th>
             <th>Acciones</th>
         </tr>
 
         <?php
-
         if ($resultado->num_rows > 0) {
 
             while($fila = $resultado->fetch_assoc()) {
 
                 echo "<tr>";
 
-                echo "<td>".$fila["Codigo"]."</td>";
-                echo "<td>".$fila["Nombre"]."</td>";
-                echo "<td>".$fila["Descripcion"]."</td>";
-                echo "<td>".$fila["Precio"]."</td>";
-                echo "<td>".$fila["Stock"]."</td>";
+                echo "<td>".$fila['Cantidad']."</td>";
+                echo "<td>".$fila['CostoTotal']."</td>";
 
+                echo "<td>
+                        <a href='readleerCarrito.php?CI=$CI'>
+                            <button class='mostrar'>Mostrar</button>
+                        </a>
 
-                 echo "<td>
-                        <a href='formUpdateProductos.php?Codigo=" . $fila["Codigo"] . "'>
+                        <a href='formUpdateCarrito.php?CI=$CI'>
                             <button class='editar'>Editar</button>
                         </a>
 
-                        <a href='eliminarProductos.php?Codigo=" . $fila["Codigo"] . "'>
+                        <a href='eliminarCarrito.php?CI=$CI'>
                             <button class='eliminar'>Eliminar</button>
                         </a>
                       </td>";
@@ -228,20 +222,19 @@ button{
             }
 
         } else {
-
             echo "<tr>";
-            echo "<td colspan='6'>No se encontraron productos</td>";
+            echo "<td colspan='3'>No hay usuarios registrados</td>";
             echo "</tr>";
-
         }
 
         $conexion->close();
-
         ?>
 
     </table>
-<button class="volver"><a href="vendedor.php">Perfil</a></button>
-<button class="volver"><a href="formRegistroProductos.php">Registrar Producto</a></button>
+<button class="volver"><a href="vendedor.html">Inicio vendedor</a></button>
+<button class="volver"><a href="administrador.html">Inicio Administrador</a></button>
+<button class="volver"><a href="inicio.html">Inicio Publico</a></button>
+<button class="volver"><a href="formCarrito.php">Registrar nuevo carrito</a></button>
 </div>
 
 </body>

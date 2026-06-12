@@ -34,7 +34,7 @@ if ($conexion->query($sql) === TRUE) {
         font-family: 'Chillax-Semibold';
     }
         body {
-            background-image: url(2.png);
+            background-image: url(imagenes/2.png);
             display: flex;
             justify-content: center;
             align-items: center;

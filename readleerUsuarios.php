@@ -9,6 +9,11 @@ $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
+session_start();
+if($_SESSION['CI']==null){
+    header("location:login.html");
+}
+
 
 $sql = "SELECT * FROM Usuarios";
 $resultado = $conexion->query($sql);
@@ -31,7 +36,7 @@ $resultado = $conexion->query($sql);
 }
 
 body{
-    background-image: url(2.png);
+    background-image: url(imagenes/2.png);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -244,10 +249,9 @@ button{
         ?>
 
     </table>
-<button class="volver"><a href="vendedor.html">Inicio vendedor</a></button>
-<button class="volver"><a href="administrador.html">Inicio Administrador</a></button>
-<button class="volver"><a href="inicio.html">Inicio Publico</a></button>
+<button class="volver"><a href="inicio.html">Menu principal</a></button>
 <button class="volver"><a href="formRegistroUsuario.php">Registrar Usuarios</a></button>
+<button class="volver" onclick="history.back()">← Volver</button><br>
 </div>
 
 </body>

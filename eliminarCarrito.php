@@ -1,13 +1,25 @@
 <?php
-require "bdUsuario.php";
-$CI=$_POST['CI'];
-$Nombre=$_POST['Nombre'];
-$Direccion=$_POST['Direccion'];
-$Celular=$_POST['Celular'];
-$Rol=$_POST['Rol'];
-$Estado=$_POST['Estado'];
+$servername = "localhost";
+$username = "root";
+$password = "";
+$bdname = "MYMS";
 
+$conexion = new mysqli($servername, $username,$password,$bdname);
+
+if($conexion -> connect_error){
+    echo "Hubo un error";
+}
+
+$Codigo = $_GET['Codigo'];
+$sql = "DELETE FROM Carrito";
+if ($conexion->query($sql) === TRUE) {
+    echo "";
+}
+ else {
+    echo "Error: " . $conexion->error;
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,7 +72,7 @@ $Estado=$_POST['Estado'];
         background: #E64B6B;
         cursor: pointer;
         font-size: 16px;
-        margin: 3px;
+        margin:3px;
         }
 
         .volver:hover{
@@ -71,53 +83,21 @@ $Estado=$_POST['Estado'];
             text-decoration: none;
             
         }
-        @media(max-width:800px){
-
-  body{
-    padding: 20px;
-  }
-
-  div{
-    width: 100%;
-    max-width: 320px;
-    padding: 25px;
-    border-radius: 25px;
-    text-align: center;
-  }
-
-  h2{
-    font-size: 28px;
-  }
-
-  p{
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-  .volver{
-    width: 100%;
-    margin-top: 10px;
-    box-sizing: border-box;
-  }
-}
     </style>
 </head>
 <body>
     <div>
-        <h2>Registro de Usuario</h2>
+        <h2>Eliminar El Carrito Registrado</h2>
         <p>
-            <?php 
-            $sql="INSERT INTO Usuarios (CI,Nombre, Direccion, Celular, Rol, Estado) VALUES ('$CI','$Nombre', '$Direccion', '$Celular', '$Rol', '$Estado')";
-            if ($conexion->query($sql) === TRUE) {
-                    echo "Cliente registrado correctamente";
-            }else{
-                echo "Hubo un error";
-            }
+      <?php
+        echo "El Carrito ha sido eliminado.";
+        $conexion->close(); 
       ?>
-        </p><br>
+    </p><br>
         
-        <button class="volver" onclick="history.back()">← Volver</button><br>
-        <button class="volver"><a href="readleerUsuarios.php">Tabla Usuarios</a></button>
+        
+<button class="volver"><a href="leerCarrito.php">Tabla Carrito</a></button>
+        
     </div>
     </div>
 </body>

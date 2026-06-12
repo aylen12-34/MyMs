@@ -10,10 +10,8 @@ $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
-session_start();
-if($_SESSION['CI']==null){
-    header("location:login.html");
-}
+
+
 
 ?>
 <!DOCTYPE html>
@@ -22,7 +20,7 @@ if($_SESSION['CI']==null){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
+        <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
 
@@ -126,100 +124,27 @@ if($_SESSION['CI']==null){
 label.error{
     display:none !important;
 }
-
+}
     </style>
 </head>
 
 <body>
     <div>
-        <h1>Registro de Productos</h1>
+        <h1>Registro de Carrito</h1>
 
-        <form action="registroProductos.php" method="post">
+        <form action="registroCarrito.php" method="post">
 
-            <label for="Codigo">Codigo:</label>
-            <input type="number" id="Codigo" name="Codigo"> 
+            <label for="Cantidad">Cantidad:</label>
+            <input type="number" id="Cantidad" name="Cantidad" required> 
             <br><br>
 
-            <label for="Nombre">Nombre:</label>
-            <input type="text" id="Nombre" name="Nombre">
+            <label for="CostoTotal">Costo Total:</label>
+            <input type="number" id="CostoTotal" name="CostoTotal" required>
             <br><br>
 
-            <label for="Descripcion">Descripción:</label>
-            <input type="text" id="Descripcion" name="Descripcion">
-            <br><br>
-
-            <label for="Precio">Precio:</label>
-            <input type="text" id="Precio" name="Precio">
-            <br><br>
-
-            <label for="Stock">Stock:</label>
-            <input type="text" id="Stock" name="Stock">
-            <br><br>
-
-            <input type="submit" value="Registrar Productos">
+            <input type="submit" value="Subir al Carrito">
 
         </form>
     </div>
-    <script>
-        $("form").validate({
-    rules: {
-        Codigo: {
-            required: true,
-        },
-        Nombre: {
-            required: true,
-            minlength: 3
-        },
-
-        Descripcion: {
-            required: true
-        },
-
-        Precio: {
-            required: true,
-            digits: true
-        },
-
-        Stock: {
-            required: true
-        }
-
-    },
-
-    messages: {
-        Codigo: {
-            required: "Ingrese su CI",
-        },
-        Nombre: {
-            required: "Ingrese su nombre",
-            minlength: "Mínimo 3 letras"
-        },
-
-        Descripcion: {
-            required: "Ingrese su dirección"
-        },
-
-        Precio: {
-            required: "Ingrese el precio",
-            digits: "Solo números"
-        },
-        Stock: {
-            required: "Ingrese el rol"
-        }
-    },
-    showErrors: function(errorMap, errorList) {
-
-    $("input").each(function() {
-        $(this).attr("placeholder", "");
-    });
-
-    $.each(errorList, function(index, error) {
-        $(error.element).val("");
-        $(error.element).attr("placeholder", error.message);
-    });
-
-}
-});
-    </script>
 </body>
 </html>

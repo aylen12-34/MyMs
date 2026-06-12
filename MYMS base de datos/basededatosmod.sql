@@ -41,6 +41,43 @@ CREATE TABLE IF NOT EXISTS `MYMS`.`Usuarios` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `MYMS`.`Pedidos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `MYMS`.`Pedidos` (
+  `ID` INT NOT NULL AUTO_INCREMENT,
+  `Nombre` VARCHAR(45) NULL,
+  `Fecha` DATE NULL,
+  `Estado` VARCHAR(45) NULL,
+  `NombreVendedor` VARCHAR(45) NULL,
+  PRIMARY KEY (`ID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `MYMS`.`Carrito`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `MYMS`.`Carrito` (
+  `Productos_Codigo` INT NOT NULL,
+  `Pedidos_ID` INT NOT NULL,
+  `Cantidad` INT NULL,
+  `CostoTotal` INT NULL,
+  PRIMARY KEY (`Productos_Codigo`, `Pedidos_ID`),
+  INDEX `fk_Productos_has_Pedidos_Pedidos1_idx` (`Pedidos_ID` ASC) ,
+  INDEX `fk_Productos_has_Pedidos_Productos1_idx` (`Productos_Codigo` ASC) ,
+  CONSTRAINT `fk_Productos_has_Pedidos_Productos1`
+    FOREIGN KEY (`Productos_Codigo`)
+    REFERENCES `MYMS`.`Productos` (`Codigo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Productos_has_Pedidos_Pedidos1`
+    FOREIGN KEY (`Pedidos_ID`)
+    REFERENCES `MYMS`.`Pedidos` (`ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

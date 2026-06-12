@@ -1,3 +1,17 @@
+<?php
+$usuario = "root";
+$contraseña = "";
+$direccion = "localhost";
+$baseDeDatos = "MYMS";
+
+$conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
+
+if ($conexion->connect_error) {
+    die("No se ha podido conectar a la base de datos");
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +27,7 @@
         font-family: 'Chillax-Semibold';
     }
         body {
-            background-image: url(2.png);
+            background-image: url(imagenes/2.png);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -196,20 +210,20 @@
         Estado: {
             required: "Ingrese el estado"
         }
-
     },
-    showErrors: function(errorMap, errorList) {
+     showErrors: function(errorMap, errorList) {
 
-    $("input").each(function() {
-        $(this).attr("placeholder", "");
-    });
+        $("input").each(function() {
+            $(this).attr("placeholder", "");
+        });
 
-    $.each(errorList, function(index, error) {
-        $(error.element).attr("placeholder", error.message);
-    });
+        $.each(errorList, function(index, error) {
+            $(error.element).val("");
+            $(error.element).attr("placeholder", error.message);
+        });
 
-}
-    
+        this.defaultShowErrors();
+    }
 });
 
     </script>
