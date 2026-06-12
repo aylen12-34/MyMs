@@ -336,8 +336,6 @@ if ($resultado->num_rows > 0) {
         </div>
     </div>
     <h1>REGISTROS</h1>
-    <h3>Registro de clientes:</h3>
-    <button><a href="readleerUsuarios.php">Ver usuarios</a></button>
     <h3>Inventario de producto:</h3>
     <button><a href="readleeProductos.php">Productos disponibles</a></button>
     <button><a href="leerPedidos.php">Pedidos registradas</a></button>

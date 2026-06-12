@@ -12,6 +12,12 @@ if ($conexion->connect_error) {
 session_start();
 if($_SESSION['CI']==null){
     header("location:login.html");
+}else {
+  if($_SESSION['Rol']=="administrador"){
+    $CI = $_SESSION['CI'];
+  } else{
+    header("location:login.html");
+  }
 }
 
 
