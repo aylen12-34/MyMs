@@ -1,3 +1,22 @@
+<?php
+
+$usuario = "root";
+$contraseña = "";
+$direccion = "localhost";
+$baseDeDatos = "MYMS";
+
+$conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
+
+if ($conexion->connect_error) {
+    die("No se ha podido conectar a la base de datos");
+}
+
+session_start();
+if($_SESSION['CI']==null){
+    header("location:login.html");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
