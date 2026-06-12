@@ -6,9 +6,10 @@ $baseDeDatos = "MYMS";
 
 $conexion=new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
-    
     echo "No se ha podido conectar a la base de datos";
 }
+
+
 $CI=$_POST['CI'];
 $Nombre=$_POST['Nombre'];
 $sql = "SELECT * FROM Usuarios WHERE CI='$CI' AND Nombre='$Nombre'";
@@ -18,7 +19,14 @@ if ($resultado->num_rows > 0) {
         session_start();
         $_SESSION['CI']=$fila['CI'];
         $_SESSION['Nombre']=$fila['Nombre'];
-        echo "location:readleerUsuario.php?CI=".$fila['CI'];
+        $_SESSION['Rol']=$fila['Rol'];
+        if($_SESSION['Rol']=="vendedor"){
+            header("location:vendedor.php?CI=".$fila['CI']);
+        }else{
+            header("location:administrador.php?CI=".$fila['CI']);
+        }
     }
+}else{
+    header("location:login.html");
 }
 ?>

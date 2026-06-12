@@ -1,3 +1,21 @@
+<?php
+$usuario = "root";
+$contraseña = "";
+$direccion = "localhost";
+$baseDeDatos = "MYMS";
+
+$conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
+
+if ($conexion->connect_error) {
+    die("No se ha podido conectar a la base de datos");
+}
+
+session_start();
+if($_SESSION['CI']==null){
+    header("location:login.html");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +31,7 @@
         font-family: 'Chillax-Semibold';
     }
         body {
-            background-image: url(2.png);
+            background-image: url(imagenes/2.png);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -113,6 +131,9 @@
     margin-top: 10px;
   }
 }
+label.error{
+    display:none !important;
+}
 
     </style>
 </head>
@@ -196,6 +217,19 @@
         Estado: {
             required: "Ingrese el estado"
         }
+    },
+     showErrors: function(errorMap, errorList) {
+
+        $("input").each(function() {
+            $(this).attr("placeholder", "");
+        });
+
+        $.each(errorList, function(index, error) {
+            $(error.element).val("");
+            $(error.element).attr("placeholder", error.message);
+        });
+
+        this.defaultShowErrors();
     }
 });
     </script>

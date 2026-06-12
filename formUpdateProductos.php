@@ -9,6 +9,7 @@ if ($conexion->connect_error) {
     
     echo "No se ha podido conectar a la base de datos";
 }
+
 $Codigo=$_GET['Codigo'];
 $sql = "SELECT * FROM Productos WHERE Codigo=$Codigo";
 $resultado = $conexion->query($sql);
@@ -38,7 +39,7 @@ if ($resultado->num_rows > 0) {
         font-family: 'Chillax-Semibold';
     }
         body {
-            background-image: url(2.png);
+            background-image: url(imagenes/2.png);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -143,7 +144,9 @@ if ($resultado->num_rows > 0) {
     margin-top: 10px;
   }
 }
-
+label.error{
+    display:none !important;
+}
     </style>
 </head>
 <body>
@@ -164,5 +167,68 @@ if ($resultado->num_rows > 0) {
     </form>
     <button class="volver" onclick="history.back()">← Volver</button><br>
     </div>
+   <script>
+        $("form").validate({
+    rules: {
+        Codigo: {
+            required: true,
+        },
+        Nombre: {
+            required: true,
+            minlength: 3
+        },
+
+        Descripcion: {
+            required: true
+        },
+
+        Precio: {
+            required: true,
+            digits: true
+        },
+
+        Stock: {
+            required: true
+        }
+
+    },
+
+    messages: {
+        Codigo: {
+            required: "Ingrese su CI",
+        },
+        Nombre: {
+            required: "Ingrese su nombre",
+            minlength: "Mínimo 3 letras"
+        },
+
+        Descripcion: {
+            required: "Ingrese su dirección"
+        },
+
+        Precio: {
+            required: "Ingrese su celular",
+            digits: "Solo números"
+        },
+
+        Stock: {
+            required: "Ingrese el rol"
+        }
+    },
+     showErrors: function(errorMap, errorList) {
+
+        $("input").each(function() {
+            $(this).attr("placeholder", "");
+        });
+
+        $.each(errorList, function(index, error) {
+            $(error.element).val("");
+            $(error.element).attr("placeholder", error.message);
+        });
+
+        this.defaultShowErrors();
+    }
+});
+    </script>
 </body>
 </html>

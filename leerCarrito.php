@@ -11,9 +11,7 @@ if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
 
-$CI = $_GET['CI'];
-
-$sql = "SELECT * FROM Usuarios WHERE CI='$CI'";
+$sql = "SELECT * FROM Carrito";
 $resultado = $conexion->query($sql);
 
 ?>
@@ -22,11 +20,10 @@ $resultado = $conexion->query($sql);
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mostrar Usuario</title>
+    <title>Mostrar el Carrito</title>
     <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
-
     <style>
 *{
     font-family: 'Chillax-Semibold';
@@ -126,7 +123,7 @@ button{
 
 <div>
 
-<h2>Datos del Usuario</h2>
+<h2>Datos del Carrito</h2>
 
 <?php
 
@@ -137,40 +134,20 @@ if ($resultado->num_rows > 0) {
     echo "<table>";
 
     echo "<tr>";
-    echo "<td class='titulo'>CI</td>";
-    echo "<td>".$fila["CI"]."</td>";
+    echo "<td class='titulo'>Cantidad</td>";
+    echo "<td>".$fila["Cantidad"]."</td>";
     echo "</tr>";
 
     echo "<tr>";
-    echo "<td class='titulo'>Nombre</td>";
-    echo "<td>".$fila["Nombre"]."</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td class='titulo'>Dirección</td>";
-    echo "<td>".$fila["Direccion"]."</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td class='titulo'>Celular</td>";
-    echo "<td>".$fila["Celular"]."</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td class='titulo'>Rol</td>";
-    echo "<td>".$fila["Rol"]."</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td class='titulo'>Estado</td>";
-    echo "<td>".$fila["Estado"]."</td>";
+    echo "<td class='titulo'>Costo Total</td>";
+    echo "<td>".$fila["CostoTotal"]."</td>";
     echo "</tr>";
 
     echo "</table>";
 
 } else {
 
-    echo "No se encontraron usuarios.";
+    echo "No se encontraron productos en el carrito.";
 
 }
 

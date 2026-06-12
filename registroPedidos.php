@@ -1,13 +1,19 @@
 <?php
-require "bdUsuario.php";
-$CI=$_POST['CI'];
+$usuario = "root";
+$contraseña = "";     
+$direccion = "localhost";
+$baseDeDatos = "MYMS";   
+ 
+$conexion=new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
+if ($conexion->connect_error) {
+    
+    echo "No se ha podido conectar a la base de datos";
+}
 $Nombre=$_POST['Nombre'];
-$Direccion=$_POST['Direccion'];
-$Celular=$_POST['Celular'];
-$Rol=$_POST['Rol'];
+$Fecha=$_POST['Fecha'];
 $Estado=$_POST['Estado'];
-
-?>
+$NombreVendedor=$_POST['NombreVendedor'];
+   ?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,17 +48,9 @@ $Estado=$_POST['Estado'];
         }
         a{
             color: #EFE2DA;
+            text-decoration:none;
         }
-        #id{
-            background-color: #E64B6B;
-            color: #EFE2DA;
-            transition: 0.3s;
-        }
-        #id:hover{
-            background-color: #EFE2DA;
-            color: #6A253A;
-        }
-        .volver{
+.volver{
         padding: 10px 20px;
         border: none;
         color: #EFE2DA;
@@ -60,18 +58,13 @@ $Estado=$_POST['Estado'];
         background: #E64B6B;
         cursor: pointer;
         font-size: 16px;
-        margin: 3px;
+        margin:3px;
         }
 
         .volver:hover{
             background-color: #EFE2DA;
             color: #E64B6B;
-        }
-        a{
-            text-decoration: none;
-            
-        }
-        @media(max-width:800px){
+        }@media(max-width:800px){
 
   body{
     padding: 20px;
@@ -104,21 +97,17 @@ $Estado=$_POST['Estado'];
 </head>
 <body>
     <div>
-        <h2>Registro de Usuario</h2>
+        <h2>Registro de pedido:</h2>
         <p>
-            <?php 
-            $sql="INSERT INTO Usuarios (CI,Nombre, Direccion, Celular, Rol, Estado) VALUES ('$CI','$Nombre', '$Direccion', '$Celular', '$Rol', '$Estado')";
-            if ($conexion->query($sql) === TRUE) {
-                    echo "Cliente registrado correctamente";
-            }else{
-                echo "Hubo un error";
-            }
+        <?php
+           $sql="INSERT INTO Pedidos (Nombre, Fecha, Estado, NombreVendedor) VALUES ('$Nombre', '$Fecha', '$Estado', '$NombreVendedor')";
+        if ($conexion->query($sql) === TRUE) {
+            echo "Pedido registrado correctamente";
+        }
       ?>
         </p><br>
-        
+                
         <button class="volver" onclick="history.back()">← Volver</button><br>
-        <button class="volver"><a href="readleerUsuarios.php">Tabla Usuarios</a></button>
-    </div>
-    </div>
-</body>
+        <button class="volver"><a href="leerPedidos.php">Tabla Pedidos</a></button>
+    </div></body>
 </html>
