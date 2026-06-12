@@ -17,10 +17,7 @@ if ($resultado->num_rows > 0) {
         $CostoTotal=$fila['CostoTotal'];
     }
 }
-session_start();
-if($_SESSION['CI']==null){
-    header("location:login.html");
-}
+
 ?>
 
 <!DOCTYPE html>
