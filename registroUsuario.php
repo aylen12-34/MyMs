@@ -108,7 +108,7 @@ $Estado=$_POST['Estado'];
         <p>
             <?php 
             $sql="INSERT INTO Usuarios (CI,Nombre, Direccion, Celular, Rol, Estado) VALUES ('$CI','$Nombre', '$Direccion', '$Celular', '$Rol', '$Estado')";
-                if ($conexion->query($sql) === TRUE) {
+            if ($conexion->query($sql) === TRUE) {
                     echo "Cliente registrado correctamente";
             }else{
                 echo "Hubo un error";
