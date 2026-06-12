@@ -18,6 +18,7 @@ $resultado = $conexion->query($sql);
         if ($resultado->num_rows > 0) {
 
             while($fila = $resultado->fetch_assoc()) {
+                $ID= $fila["ID"];
 
 
                 echo "<tr>";
@@ -26,7 +27,6 @@ $resultado = $conexion->query($sql);
                 echo "<td>".$fila['Fecha']."</td>";
                 echo "<td>".$fila['Estado']."</td>";
                 echo "<td>".$fila['NombreVendedor']."</td>";
-                echo "<td>".$fila['Cantidad']."</td>";
 
                 echo "<td>
                         <a href='leerPedidos.php?ID=$ID'>
@@ -62,7 +62,7 @@ $resultado = $conexion->query($sql);
 <button class="volver"><a href="vendedor.html">Inicio vendedor</a></button>
 <button class="volver"><a href="administrador.html">Inicio Administrador</a></button>
 <button class="volver"><a href="inicio.html">Inicio Publico</a></button>
-<button class="volver"><a href="formRegistroUsuario.php">Registrar Usuarios</a></button>
+<button class="volver"><a href="formRegistroPedidos.php">Registrar nuevo pedido</a></button>
 </div>
 
 </body>

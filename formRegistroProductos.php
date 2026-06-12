@@ -159,9 +159,7 @@ label.error{
 
         Precio: {
             required: true,
-            digits: true,
-            minlength: 8,
-            maxlength: 8
+            digits: true
         },
 
         Stock: {
@@ -184,12 +182,9 @@ label.error{
         },
 
         Precio: {
-            required: "Ingrese su celular",
-            digits: "Solo números",
-            minlength: "Debe tener 8 dígitos",
-            maxlength: "Debe tener 8 dígitos"
+            required: "Ingrese el precio",
+            digits: "Solo números"
         },
-
         Stock: {
             required: "Ingrese el rol"
         }

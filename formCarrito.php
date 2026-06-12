@@ -116,7 +116,7 @@ label.error{
     <div>
         <h1>Registro de Carrito</h1>
 
-        <form action="registro_Carrito.php" method="post">
+        <form action="registroCarrito.php" method="post">
 
             <label for="Cantidad">Cantidad:</label>
             <input type="number" id="Cantidad" name="Cantidad" required> 
