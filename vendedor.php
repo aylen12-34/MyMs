@@ -10,8 +10,12 @@ $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
+session_start();
+if($_SESSION['CI']==null){
+    header("location:login.html");
+}
 
-$CI = $_GET['CI'];
+$CI = $_SESSION['CI'];
 
 $sql = "SELECT * FROM Usuarios WHERE CI='$CI'";
 $resultado = $conexion->query($sql);
@@ -265,12 +269,12 @@ div img{
 <body>
 
 <header>
-    <img src="MYMS 4 SIN FONDO.png" alt="" id="g">
+    <img src="imagenes/MYMS 4 SIN FONDO.png" alt="" id="g">
 </header>
 
 <nav class="indice">
     <ul>
-    <li><a href="">Inicio</a></li>
+    <li><a href="inicio.html">Inicio</a></li>
     <li><a href="">Clientes</a></li>
     <li><a href="">Ventas</a></li>
     <li><a href="cerrar.php">Cerrar Sesión</a></li>
@@ -327,11 +331,10 @@ if ($resultado->num_rows > 0) {
     </div>
     <h1>REGISTROS</h1>
     <h3>Registro de clientes:</h3>
-    <button><a href="formRegistroUsuario.php">Registrar Usuarios</a></button>
-    <button><a href="readleerUsuarios.php">Ver Clientes</a></button>
+    <button><a href="readleerUsuarios.php">Ver usuarios</a></button>
     <h3>Inventario de producto:</h3>
     <button><a href="readleeProductos.php">Productos disponibles</a></button>
-    <button><a href="">ventas registradas</a></button>
+    <button><a href="leerPedidos.php">Pedidos registradas</a></button>
 </section>
 
 <footer>

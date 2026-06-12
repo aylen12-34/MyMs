@@ -1,3 +1,26 @@
+<?php
+
+$usuario = "root";
+$contraseña = "";
+$direccion = "localhost";
+$baseDeDatos = "MYMS";
+
+$conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
+
+if ($conexion->connect_error) {
+    die("No se ha podido conectar a la base de datos");
+}
+session_start();
+if($_SESSION['CI']==null){
+    header("location:login.html");
+}
+
+$CI = $_SESSION['CI'];
+
+$sql = "SELECT * FROM Usuarios WHERE CI='$CI'";
+$resultado = $conexion->query($sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -264,9 +287,9 @@ section button:hover{
 
 <nav class="indice">
     <ul>
+    <li><a href="inicio.html">inicio</a></li>
     <li><a href="">INFORMACION</a></li>
-    <li><a href="">pestaña 1</a></li>
-    <li><a href="">pestaña 2</a></li>
+    <li><a href="cerrar.php">Cerrar sesion</a></li>
     </ul>
 </nav>
 
@@ -275,11 +298,8 @@ section button:hover{
     <h3>Registro de ventas:</h3><br>
     <button>Ventas en proceso</button><br>
     <button>Ventas Terminadas</button><br>
-    <h3>Inventario de producto:</h3><br>
-    <button><a href="readleeProductos.php">Productos disponibles</a></button><br>
-    <button><a href="formRegistroProductos.php">Registrar productos</a></button><br>
-    <button><a href="formRegistroUsuario.php">Registrar Usuario</a></button><br>
-    <button><a href="readleerUsuarios.php">Usuarios Registrados</a></button><br>
+    <h3>Personal:</h3><br>
+    <button><a href="readleerUsuarios.php">Personal</a></button><br>
     <button>Reportes</button><br>
     </div>
 
@@ -288,10 +308,47 @@ section button:hover{
     </div>
     <div class="a"><b>
     <h1>Datos Personales</h1><br>
-    <p>C.I: 9406469</p><br>
-    <p>Nombre: Nick Jonas</p><br>
-    <p>Turno: Diurno</p><br>
-    <p>Telefono: +591 64891868</p><br></b>
+    <?php
+
+if ($resultado->num_rows > 0) {
+
+    $fila = $resultado->fetch_assoc();
+
+    echo "<table>";
+
+    echo "<tr>";
+    echo "<td class='titulo'>CI</td>";
+    echo "<td>".$fila["CI"]."</td>";
+    echo "</tr>";
+
+    echo "<tr>";
+    echo "<td class='titulo'>Nombre</td>";
+    echo "<td>".$fila["Nombre"]."</td>";
+    echo "</tr>";
+
+    echo "<tr>";
+    echo "<td class='titulo'>Dirección</td>";
+    echo "<td>".$fila["Direccion"]."</td>";
+    echo "</tr>";
+
+    echo "<tr>";
+    echo "<td class='titulo'>Celular</td>";
+    echo "<td>".$fila["Celular"]."</td>";
+    echo "</tr>";
+
+    echo "<tr>";
+    echo "<td class='titulo'>Rol</td>";
+    echo "<td>".$fila["Rol"]."</td>";
+    echo "</tr>";
+
+    echo "<tr>";
+    echo "<td class='titulo'>Estado</td>";
+    echo "<td>".$fila["Estado"]."</td>";
+    echo "</tr>";
+
+    echo "</table>";
+
+} ?>
     </div>
 </section>
 

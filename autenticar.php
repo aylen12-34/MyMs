@@ -18,7 +18,14 @@ if ($resultado->num_rows > 0) {
         session_start();
         $_SESSION['CI']=$fila['CI'];
         $_SESSION['Nombre']=$fila['Nombre'];
-        header("location:vendedor.php?CI=".$fila['CI']);
+        $_SESSION['Rol']=$fila['Rol'];
+        if($_SESSION['Rol']=="vendedor"){
+            header("location:vendedor.php?CI=".$fila['CI']);
+        }else{
+            header("location:administrador.php?CI=".$fila['CI']);
+        }
     }
+}else{
+    header("location:login.html");
 }
 ?>
