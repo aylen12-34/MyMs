@@ -225,6 +225,7 @@ if ($conexion->connect_error) {
         this.defaultShowErrors();
     }
 });
+
     </script>
 </body>
 </html>
