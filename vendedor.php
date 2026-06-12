@@ -1,3 +1,22 @@
+<?php
+
+$usuario = "root";
+$contraseña = "";
+$direccion = "localhost";
+$baseDeDatos = "MYMS";
+
+$conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
+
+if ($conexion->connect_error) {
+    die("No se ha podido conectar a la base de datos");
+}
+
+$CI = $_GET['CI'];
+
+$sql = "SELECT * FROM Usuarios WHERE CI='$CI'";
+$resultado = $conexion->query($sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -254,26 +273,61 @@ div img{
     <li><a href="">Inicio</a></li>
     <li><a href="">Clientes</a></li>
     <li><a href="">Ventas</a></li>
-    <li><a href="">Cerrar Sesión</a></li>
+    <li><a href="cerrar.php">Cerrar Sesión</a></li>
     </ul>
 </nav>
 
 <section>
     <h1>Datos Personales</h1>
     <div id="perfil">
-        <div><b>
-            <p>C.I: 6487593</p>
-            <p>Nombre: Rodrigo Torres de la Garza</p>
-            <p>Turno: Diurno</p>
-            <p>Telefono: +591 79856324</p></b>
-        </div>
+        <?php
+
+if ($resultado->num_rows > 0) {
+
+    $fila = $resultado->fetch_assoc();
+
+    echo "<table>";
+
+    echo "<tr>";
+    echo "<td class='titulo'>CI</td>";
+    echo "<td>".$fila["CI"]."</td>";
+    echo "</tr>";
+
+    echo "<tr>";
+    echo "<td class='titulo'>Nombre</td>";
+    echo "<td>".$fila["Nombre"]."</td>";
+    echo "</tr>";
+
+    echo "<tr>";
+    echo "<td class='titulo'>Dirección</td>";
+    echo "<td>".$fila["Direccion"]."</td>";
+    echo "</tr>";
+
+    echo "<tr>";
+    echo "<td class='titulo'>Celular</td>";
+    echo "<td>".$fila["Celular"]."</td>";
+    echo "</tr>";
+
+    echo "<tr>";
+    echo "<td class='titulo'>Rol</td>";
+    echo "<td>".$fila["Rol"]."</td>";
+    echo "</tr>";
+
+    echo "<tr>";
+    echo "<td class='titulo'>Estado</td>";
+    echo "<td>".$fila["Estado"]."</td>";
+    echo "</tr>";
+
+    echo "</table>";
+
+} ?>
         <div>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsKvqIOKHSHcKb6YH8xGsmpiJqBcH-piTXBA&s" alt="">
         </div>
     </div>
     <h1>REGISTROS</h1>
     <h3>Registro de clientes:</h3>
-    <button><a href="formRegistroUsuario.php">Registrar Clientes</a></button>
+    <button><a href="formRegistroUsuario.php">Registrar Usuarios</a></button>
     <button><a href="readleerUsuarios.php">Ver Clientes</a></button>
     <h3>Inventario de producto:</h3>
     <button><a href="readleeProductos.php">Productos disponibles</a></button>
