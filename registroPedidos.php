@@ -19,3 +19,15 @@ $NombreVendedor=$_POST['NombreVendedor'];
             echo "Pedidos registrado correctamente";
         }
       ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="volver" onclick="history.back()">← Volver</button><br>
+    <button class="volver"><a href="leerPedidos.php">Tabla Pedidos</a></button>
+</body>
+</html>

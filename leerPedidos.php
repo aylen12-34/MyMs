@@ -41,9 +41,10 @@ $resultado = $conexion->query($sql);
                             <button class='eliminar'>Eliminar</button>
                         </a>
                         
-                        <a href='formCarrito.php?ID=$ID'>
+                        <a href='EliminarPedidos.php?ID=$ID'>
                             <button class='Cantidad'>Eliminar</button>
                         </a>
+                        
                       </td>";
 
                 echo "</tr>";

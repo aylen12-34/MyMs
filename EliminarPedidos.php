@@ -40,6 +40,7 @@ if ($conexion->query($sql) === TRUE) {
         
         
 <button class="volver"><a href="leerPedidos.php">Tabla Pedidos</a></button>
+<button class="pedidos"><a href="formRegistroPedidos.php">Hacer otro pedido</a></button>
         
     </div>
     </div>
