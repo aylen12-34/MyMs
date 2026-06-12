@@ -47,7 +47,7 @@ $resultado = $conexion->query($sql);
 
         header{
             grid-area: tit;
-            background-image: url(cabecera.png);
+            background-image: url(imagenes/cabecera.png);
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -110,7 +110,7 @@ $resultado = $conexion->query($sql);
     }
     section{
     grid-area: text;
-    background: url(2.png);
+    background: url(imagenes/2.png);
     padding: 30px;
     font-size: larger;
 }

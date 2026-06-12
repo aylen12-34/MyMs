@@ -11,7 +11,7 @@ if($conexion -> connect_error){
 }
 
 $ID = $_GET['ID'];
-$sql = "DELETE FROM Pedidos";
+$sql = "DELETE FROM Pedidos WHERE ID = '$ID'";
 if ($conexion->query($sql) === TRUE) {
     echo "";
 }
