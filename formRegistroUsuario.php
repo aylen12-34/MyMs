@@ -127,9 +127,6 @@ if ($conexion->connect_error) {
     margin-top: 10px;
   }
 }
-label.error{
-    display:none !important;
-}
 
     </style>
 </head>
