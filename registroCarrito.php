@@ -101,8 +101,10 @@ $CostoTotal=$_POST['CostoTotal'];
            $sql="INSERT INTO Carrito (Cantidad, CostoTotal) VALUES ('$Cantidad', '$CostoTotal')";
         if ($conexion->query($sql) === TRUE) {
             echo "Producto subido en el carrito";
-        }else{}
-        ?>l
+            }else{
+                echo"Hubo un error :("
+            }
+            ?>
         </p><br>
                 
         <button class="volver" onclick="history.back()">← Volver</button><br>
