@@ -157,9 +157,7 @@ if ($resultado->num_rows > 0) {
     margin-top: 10px;
   }
 }
-label.error{
-    display:none !important;
-}
+
     </style>
 </head>
 <body>
@@ -188,7 +186,7 @@ label.error{
     <button class="volver" onclick="history.back()">
          Volver</button><br>
 </div>
-    <script>
+   <script>
         $("form").validate({
     rules: {
         CI: {
@@ -247,7 +245,6 @@ label.error{
             required: "Ingrese el estado"
         }
     }
-    
 });
     </script>
 </body>

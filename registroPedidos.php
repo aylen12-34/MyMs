@@ -110,6 +110,5 @@ $NombreVendedor=$_POST['NombreVendedor'];
                 
         <button class="volver" onclick="history.back()">← Volver</button><br>
         <button class="volver"><a href="leerPedidos.php">Tabla Pedidos</a></button>
-        <button class="Iniciar sesion"><a href="login.html">Tabla Pedidos</a></button>
     </div></body>
 </html>

@@ -86,8 +86,8 @@
         }
 
         #botonMenu img{
-            width:40px;
-            height:40px;
+            width:55px;
+            height:55px;
             transition:0.7s ease;
         }
 
@@ -106,7 +106,7 @@
 
     <!-- BOTÓN -->
     <div id="botonMenu">
-        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="Menu">
+        <img src="imagenes/ISOTIPO BRUMA PASTEL.png" alt="Menu">
     </div>
 
     <!-- FONDO OSCURO -->

@@ -245,17 +245,11 @@ a{
 
     <div class="botones">
         <button class="volver">
-            <a href="vendedor.php">Inicio vendedor</a>
+            <a href="vendedor.php">Perfil</a>
         </button>
-
-        <button class="volver">
-            <a href="administrador.php">Inicio Administrador</a>
-        </button>
-
         <button class="volver">
             <a href="inicio.html">Inicio Público</a>
         </button>
-
         <button class="volver">
             <a href="formRegistroPedidos.php">Registrar nuevo pedido</a>
         </button>

@@ -10,6 +10,17 @@ $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
+session_start();
+if($_SESSION['CI']==null){
+    header("location:login.html");
+}else {
+  if($_SESSION['Rol']=="vendedor"){
+    $CI = $_SESSION['CI'];
+    $NombreVendedor= $_SESSION['Nombre'];
+  } else{
+    header("location:login.html");
+  }
+}
 
 
 ?>
@@ -40,7 +51,7 @@ if ($conexion->connect_error) {
             <br><br>
 
             <label for="NombreVendedor">NombreVendedor:</label>
-            <input type="text" id="NombreVendedor" name="NombreVendedor">
+            <input type="text" id="NombreVendedor" name="NombreVendedor" value='<?=$_SESSION['Nombre']?>'>
             <br><br>
 
             <input type="submit" value="Registrar Pedidos">

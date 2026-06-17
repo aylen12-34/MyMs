@@ -15,7 +15,7 @@ if($_SESSION['CI']==null){
 }else {
   if($_SESSION['Rol']=="vendedor"){
     $CI = $_SESSION['CI'];
-    $nombreVendedor = $_SESSION['Nombre'];
+    $NombreVendedor= $_SESSION['Nombre'];
   } else{
     header("location:login.html");
   }
@@ -28,7 +28,7 @@ if ($resultado->num_rows > 0) {
         $Nombre=$fila['Nombre'];
         $Fecha=$fila['Fecha'];
         $Estado=$fila['Estado'];
-        $NombreVendedor=$fila['NombreVendedor'];
+        $NombreVendedor=$_SESSION['Nombre'];
     }
 }
 ?>
@@ -169,7 +169,7 @@ label.error{
         <label for="Estado">Estado:</label>
         <input type="text" id="Estado" name="Estado" value='<?=$Estado?>' required>  <br>  <br>
         <label for="NombreVendedor">Nombre del Vendedor:</label>
-        <input type="text" id="NombreVendedor" name="NombreVendedor" value='<?=$_SESSION['Nombre']?>' required>  <br>  <br>
+        <input type="text" id="NombreVendedor" name="NombreVendedor" value='<?=$NombreVendedor?>' required>  <br>  <br>
         <input type="submit" value="Editar">
     </form>
     <button class="volver" onclick="history.back()">← Volver</button><br>
