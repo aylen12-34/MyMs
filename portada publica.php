@@ -40,49 +40,6 @@ body{
 
     min-height:100vh;
 }
-
-/* ==========================
-   HEADER
-========================== */
-
-header{
-    grid-area:header;
-
-    background-image:url(imagenes/10.png);
-
-    background-size:cover;
-    background-repeat:no-repeat;
-    background-position:center;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    border-bottom:5px solid #E64B6B;
-}
-
-header img{
-    animation:aparecer 1.5s ease;
-}
-
-#g{
-    scale:0.5;
-}
-
-@keyframes aparecer{
-
-    from{
-        opacity:0;
-        transform:scale(0.7);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-
-}
-
 /* ==========================
    MAIN
 ========================== */
