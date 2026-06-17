@@ -185,44 +185,31 @@ if ($conexion->connect_error) {
 
     messages: {
         CI: {
-            required: "Ingrese su CI",
+            required: "&#9888; Ingrese su CI",
         },
         Nombre: {
-            required: "Ingrese su nombre",
-            minlength: "Mínimo 3 letras"
+            required: "&#9888; Ingrese su nombre",
+            minlength: "&#9888; Mínimo 3 letras"
         },
 
         Direccion: {
-            required: "Ingrese su dirección"
+            required: "&#9888; Ingrese su dirección"
         },
 
         Celular: {
-            required: "Ingrese su celular",
-            digits: "Solo números",
-            minlength: "Debe tener 8 dígitos",
-            maxlength: "Debe tener 8 dígitos"
+            required: "&#9888; Ingrese su celular",
+            digits: "&#9888; Solo números",
+            minlength: "&#9888; Debe tener 8 dígitos",
+            maxlength: "&#9888; Debe tener 8 dígitos"
         },
 
         Rol: {
-            required: "Ingrese el rol"
+            required: "&#9888; Ingrese el rol"
         },
 
         Estado: {
-            required: "Ingrese el estado"
+            required: "&#9888; Ingrese el estado"
         }
-    },
-     showErrors: function(errorMap, errorList) {
-
-        $("input").each(function() {
-            $(this).attr("placeholder", "");
-        });
-
-        $.each(errorList, function(index, error) {
-            $(error.element).val("");
-            $(error.element).attr("placeholder", error.message);
-        });
-
-        this.defaultShowErrors();
     }
 });
 
