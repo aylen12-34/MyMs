@@ -9,6 +9,18 @@ if ($conexion->connect_error) {
     
     echo "No se ha podido conectar a la base de datos";
 }
+session_start();
+if($_SESSION['CI']==null){
+    header("location:login.html");
+}else {
+  if($_SESSION['Rol']=="vendedor"){
+    $CI = $_SESSION['CI'];
+    $nombreVendedor = $_SESSION['Nombre'];
+  } else{
+    header("location:login.html");
+  }
+}
+
 $sql = "SELECT * FROM Pedidos";
 $resultado = $conexion->query($sql);
 if ($resultado->num_rows > 0) {
@@ -157,7 +169,7 @@ label.error{
         <label for="Estado">Estado:</label>
         <input type="text" id="Estado" name="Estado" value='<?=$Estado?>' required>  <br>  <br>
         <label for="NombreVendedor">Nombre del Vendedor:</label>
-        <input type="text" id="NombreVendedor" name="NombreVendedor" value='<?=$NombreVendedor?>' required>  <br>  <br>
+        <input type="text" id="NombreVendedor" name="NombreVendedor" value='<?=$_SESSION['Nombre']?>' required>  <br>  <br>
         <input type="submit" value="Editar">
     </form>
     <button class="volver" onclick="history.back()">← Volver</button><br>
