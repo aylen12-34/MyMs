@@ -21,6 +21,7 @@ $baseDeDatos = "MYMS";
 if ($conexion->connect_error) {
     echo "Hubo un error al conectar a la base de datos";
 }
+$ID=$_GET['ID'];
 $Nombre=$_POST['Nombre'];
 $Fecha=$_POST['Fecha'];
 $Estado=$_POST['Estado'];

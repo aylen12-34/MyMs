@@ -19,9 +19,9 @@ if($_SESSION['CI']==null){
   } else{
     header("location:login.html");
   }
-}
-
-$sql = "SELECT * FROM Pedidos";
+} 
+$ID=$_GET['ID'];
+$sql = "SELECT * FROM Pedidos WHERE ID='$ID'";
 $resultado = $conexion->query($sql);
 if ($resultado->num_rows > 0) {
     while($fila=$resultado->fetch_assoc()) {
