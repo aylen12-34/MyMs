@@ -40,6 +40,7 @@ body{
 
     min-height:100vh;
 }
+<<<<<<< HEAD
 
 /* ==========================
    HEADER
@@ -48,7 +49,7 @@ body{
 header{
     grid-area:header;
 
-    background-image:url(imagenes/10.png);
+    background-image:url(imagenes/cabeceraorg.png);
 
     background-size:cover;
     background-repeat:no-repeat;
@@ -83,6 +84,8 @@ header img{
 
 }
 
+=======
+>>>>>>> f87def85d23c3267085fb809b315ab8b3757df5b
 /* ==========================
    MAIN
 ========================== */
