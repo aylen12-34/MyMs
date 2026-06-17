@@ -48,7 +48,7 @@ body{
 header{
     grid-area:header;
 
-    background-image:url(imagenes/10.png);
+    background-image:url(imagenes/cabeceraorg.png);
 
     background-size:cover;
     background-repeat:no-repeat;
