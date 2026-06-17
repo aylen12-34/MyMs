@@ -103,11 +103,13 @@ $NombreVendedor=$_POST['NombreVendedor'];
            $sql="INSERT INTO Pedidos (Nombre, Fecha, Estado, NombreVendedor) VALUES ('$Nombre', '$Fecha', '$Estado', '$NombreVendedor')";
         if ($conexion->query($sql) === TRUE) {
             echo "Pedido registrado correctamente";
+             
         }
       ?>
         </p><br>
                 
         <button class="volver" onclick="history.back()">← Volver</button><br>
         <button class="volver"><a href="leerPedidos.php">Tabla Pedidos</a></button>
+        <button class="Iniciar sesion"><a href="login.html">Tabla Pedidos</a></button>
     </div></body>
 </html>
