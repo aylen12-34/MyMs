@@ -126,7 +126,7 @@ if($_SESSION['CI']==null){
 label.error{
     display:none !important;
 }
-
+}
     </style>
 </head>
 
@@ -188,38 +188,26 @@ label.error{
 
     messages: {
         Codigo: {
-            required: "Ingrese su CI",
+            required: "&#9888;Ingrese su CI",
         },
         Nombre: {
-            required: "Ingrese su nombre",
+            required: "&#9888;Ingrese su nombre",
             minlength: "Mínimo 3 letras"
         },
 
         Descripcion: {
-            required: "Ingrese su dirección"
+            required: "&#9888;Ingrese su dirección"
         },
 
         Precio: {
-            required: "Ingrese el precio",
+            required: "&#9888;Ingrese el precio",
             digits: "Solo números"
         },
         Stock: {
-            required: "Ingrese el rol"
+            required: "&#9888;Ingrese el rol"
         }
-    },
-    showErrors: function(errorMap, errorList) {
-
-    $("input").each(function() {
-        $(this).attr("placeholder", "");
+        }
     });
-
-    $.each(errorList, function(index, error) {
-        $(error.element).val("");
-        $(error.element).attr("placeholder", error.message);
-    });
-
-}
-});
     </script>
 </body>
 </html>

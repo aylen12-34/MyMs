@@ -246,20 +246,8 @@ label.error{
         Estado: {
             required: "Ingrese el estado"
         }
-    },
-     showErrors: function(errorMap, errorList) {
-
-        $("input").each(function() {
-            $(this).attr("placeholder", "");
-        });
-
-        $.each(errorList, function(index, error) {
-            $(error.element).val("");
-            $(error.element).attr("placeholder", error.message);
-        });
-
-        this.defaultShowErrors();
     }
+    
 });
     </script>
 </body>
