@@ -46,15 +46,11 @@ body{
 ========================== */
 
 main{
-
-    grid-area:main;
-
-    padding:60px 40px;
-
-    background-image:url("imagenes/fondoelegido.png");
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
+    background-image: url("imagenes/fondoelegido.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 /* ==========================
@@ -153,6 +149,41 @@ main{
 .info{
 
     max-width:500px;
+}
+.banner-croissants{
+    width: 100%;
+    height: 120px;
+
+    background: #6A253A;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    text-align: center;
+
+    margin: 30px 0;
+
+    border-radius: 5px;
+
+    /* sombra blanca suave por defecto */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.61);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* texto */
+.banner-croissants h2{
+    font-size: 40px;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+/* hover simple */
+.banner-croissants:hover{
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
 }
 
 .etiqueta{
@@ -335,20 +366,10 @@ main{
     <?php include("includes/header.php"); ?>
 
     <main>
+          <section class="banner-croissants">
+            <h2>COOKIES</h2>
+          </section>
 
-        <section id="hero">
-
-            <h1>Momentos Dulces & Salados</h1>
-
-            <p>
-                Descubre nuestras especialidades artesanales preparadas con los
-                mejores ingredientes. Cada producto está elaborado con dedicación
-                para brindarte una experiencia única en cada bocado.
-            </p>
-
-        </section>
-
-        <h2 id="n">Nuestra Variedad</h2>
         <section class="producto">
 
             <img src="imagenes/galletas/1.png" class="prod" alt="Tortas y Brownies">
@@ -434,83 +455,261 @@ main{
             </div>
 
         </section>
+    <section class="banner-croissants">
+            <h2>CROISSANTS</h2>
+          </section>
         <section class="producto">
 
-            <img src="imagenes/galletas/8.png" class="prod" alt="Bebidas Calientes">
+            <img src="imagenes/galletas/10.png" class="prod" alt="Bebidas Calientes">
 
             <div class="info">
 
-                <span class="etiqueta">Clásicos</span>
+                <span class="etiqueta">CROISSANTS</span>
 
-                <h2>BEBIDAS CALIENTES</h2>
+                <h2>Oreo Bliss</h2>
 
                 <p>
-                    Café, capuchinos, chocolates calientes y otras bebidas
-                    elaboradas para acompañar tus mañanas, tardes y momentos
-                    especiales.
+                    Croissant cubierto con chocolate blanco 
+                    y trozos de galleta Oreo. La combinación 
+                    perfecta entre suavidad y un irresistible 
+                    toque crujiente.
                 </p>
 
-                <a href="" class="btn">Ver más</a>
+                <a href="" class="btn">Comprar</a>
 
             </div>
 
         </section>
         <section class="producto inverso">
 
-            <img src="imagenes/galletas/6.png" class="prod" alt="Masitas">
+            <img src="imagenes/galletas/11.png" class="prod" alt="Masitas">
 
             <div class="info">
 
-                <span class="etiqueta">Tradicionales</span>
+                <span class="etiqueta">CROISSANTS</span>
 
-                <h2>MASITAS</h2>
+                <h2>Caramel Crunch</h2>
 
                 <p>
-                    Una selección de masitas artesanales horneadas diariamente
-                    con ingredientes cuidadosamente seleccionados para conservar
-                    el auténtico sabor de la tradición.
+                    Relleno y decorado con salsa de caramelo 
+                    y nueces crocantes. Un equilibrio delicioso 
+                    entre dulzura y textura en cada bocado.
                 </p>
 
-                <a href="" class="btn">Ver más</a>
+                <a href="" class="btn">Comprar</a>
 
             </div>
 
         </section>
         <section class="producto">
 
-            <img src="imagenes/galletas/7.png" class="prod" alt="Bebidas Calientes">
+            <img src="imagenes/galletas/12.png" class="prod" alt="Bebidas Calientes">
 
             <div class="info">
 
-                <span class="etiqueta">Clásicos</span>
+                <span class="etiqueta">CROISSANTS</span>
 
-                <h2>BEBIDAS CALIENTES</h2>
+                <h2>Berry Cream</h2>
 
                 <p>
-                    Café, capuchinos, chocolates calientes y otras bebidas
-                    elaboradas para acompañar tus mañanas, tardes y momentos
-                    especiales.
+                    Croissant acompañado de frambuesas frescas 
+                    y un delicado toque de crema. Dulce, ligero 
+                    y lleno de sabor.
                 </p>
 
-                <a href="" class="btn">Ver más</a>
+                <a href="" class="btn">Comprar</a>
 
             </div>
 
         </section>
-        <section id="pedido">
+                <section class="producto inverso">
 
-            <h2>¿Listo para ordenar?</h2>
+            <img src="imagenes/galletas/13.png" class="prod" alt="Masitas">
 
-            <p>
-                Explora nuestro menú completo y realiza tu pedido de forma rápida
-                y sencilla.
-            </p>
+            <div class="info">
 
-            <a href="" class="btn">Menú y pedidos</a>
+                <span class="etiqueta">CROISSANTS</span>
+
+                <h2>Tropical Choco</h2>
+
+                <p>
+                    La intensidad del chocolate se combina con 
+                    rodajas de kiwi y plátano para crear una 
+                    experiencia fresca y sorprendente.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
 
         </section>
-        
-    </main>
+        <section class="producto">
+
+            <img src="imagenes/galletas/14.png" class="prod" alt="Bebidas Calientes">
+
+            <div class="info">
+
+                <span class="etiqueta">CROISSANTS</span>
+
+                <h2>Strawberry Lovers</h2>
+
+                <p>
+                    Fresas frescas bañadas en una generosa cobertura 
+                    de chocolate. Una tentación irresistible para 
+                    los amantes de los sabores clásicos.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
+
+        </section>
+                        <section class="producto inverso">
+
+            <img src="imagenes/galletas/15.png" class="prod" alt="Masitas">
+
+            <div class="info">
+
+                <span class="etiqueta">CROISSANTS</span>
+
+                <h2>Pistachio Dream</h2>
+
+                <p>
+                    Exquisita crema de pistacho y pistachos troceados 
+                    sobre un croissant recién horneado. 
+                    Un sabor sofisticado que conquista desde el primer 
+                    bocado.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
+
+        </section>
+        <section class="banner-croissants">
+            <h2>BEBIDAS FRIAS</h2>
+          </section>
+          <section class="producto">
+            <img src="imagenes/galletas/17.png" class="prod" alt="Bebidas Calientes">
+
+            <div class="info">
+
+                <span class="etiqueta">Frappe</span>
+
+                <h2>Coffee Crush</h2>
+
+                <p>
+                    Frappé de café con crema batida y salsa de caramelo.
+                    Dulce y súper refrescante.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
+
+        </section>
+        <section class="producto inverso">
+
+            <img src="imagenes/galletas/18.png" class="prod" alt="Masitas">
+
+            <div class="info">
+
+                <span class="etiqueta">Batido</span>
+
+                <h2>Caramel Vibes</h2>
+
+                <p>
+                    Café helado con caramelo y crema batida.
+                    El equilibrio perfecto entre dulce y cremoso.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
+
+        </section>
+        <section class="producto">
+
+            <img src="imagenes/galletas/19.png" class="prod" alt="Bebidas Calientes">
+
+            <div class="info">
+
+                <span class="etiqueta">Batido</span>
+
+                <h2>Berry Kiss</h2>
+
+                <p>
+                    Batido de fresa con crema, salsa de fresa y
+                    fresas frescas. Tan rico como se ve.
+                </p>
+
+                <a href="" class="btn">Comparar</a>
+
+            </div>
+
+        </section>
+                <section class="producto inverso">
+
+            <img src="imagenes/galletas/20.png" class="prod" alt="Masitas">
+
+            <div class="info">
+
+                <span class="etiqueta">Frappe</span>
+
+                <h2>Cookies & Cream</h2>
+
+                <p>
+                    Galletas Oreo trituradas y
+                    una base cremosa que enamora 
+                    en cada sorbo.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
+
+        </section>
+        <section class="producto">
+
+            <img src="imagenes/galletas/21.png" class="prod" alt="Bebidas Calientes">
+
+            <div class="info">
+
+                <span class="etiqueta">Fresh Cream</span>
+
+                <h2>Matcha Mood</h2>
+
+                <p>
+                    Leche fría, hielo y auténtico matcha. 
+                    Refrescante y diferente.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
+
+        </section>
+            <section class="producto inverso">
+
+            <img src="imagenes/galletas/22.png" class="prod" alt="Bebidas Calientes">
+
+            <div class="info">
+
+                <span class="etiqueta">Fresh Cream</span>
+
+                <h2>Choco Latte Ice</h2>
+
+                <p>
+                   Chocolate, café y leche fría sobre 
+                   hielo. Cremoso y lleno de sabor.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
+
+        </section>
+</main>
 
     <?php include("includes/footer.php"); ?>
 

@@ -115,7 +115,7 @@
     <!-- MENÚ -->
     <nav class="indice" id="menu">
         <ul>
-            <li><a href="index.php">Inicio</a></li>
+            <li><a href="portada publica.php">Inicio</a></li>
             <li><a href="login.php">Iniciar sesión</a></li>
             <li><a href="menu.php">Menú</a></li>
             <li><a href="nosotros.php">Nosotros</a></li>
