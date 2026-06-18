@@ -9,9 +9,28 @@ $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
+session_start();
+if($_SESSION['CI']==null){
+    header("location:login.html");
+} else {
+  if($_SESSION['Rol']=="vendedor"){
+    $CI = $_SESSION['CI'];
+  } else{
+    header("location:login.html");
+  }
+}
+$Pedidos_ID=$_GET['Pedidos_ID'];
+$sql = "SELECT * FROM Productos";
 
-$sql = "SELECT * FROM Carrito";
 $resultado = $conexion->query($sql);
+$sqlTotal="SELECT sum(costototal) FROM carrito where Pedidos_ID='$Pedidos_ID'";
+$resultadoTotal=$conexion->query($sqlTotal);
+$res = $resultadoTotal->fetch_assoc();
+$total=$res['sum(costototal)'];
+if($res['sum(costototal)']==null){
+    $total=0;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -19,11 +38,12 @@ $resultado = $conexion->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Carritos</title>
+    <title>Productos</title>
     <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
-<style>
+
+    <style>
 *{
     font-family: 'Chillax-Semibold';
     box-sizing: border-box;
@@ -183,58 +203,59 @@ button{
 </head>
 <body>
 
-<div>
+<div >
 
-    <h2>Lista de pedidos en el carrito</h2>
+    <h2>Lista de Productos</h2>
 
     <table>
+
         <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Stock</th>
             <th>Cantidad</th>
-            <th>Costo Total</th>
-            <th>Acciones</th>
+            <th colspan=2>Agregar al Carrito</th>
         </tr>
 
         <?php
+
         if ($resultado->num_rows > 0) {
 
             while($fila = $resultado->fetch_assoc()) {
-
+                echo "<form action='registroCarrito.php' method='post'>";
                 echo "<tr>";
 
-                echo "<td>".$fila['Cantidad']."</td>";
-                echo "<td>".$fila['CostoTotal']."</td>";
-
-                echo "<td>
-                        <a href='readleerCarrito.php?CI=$CI'>
-                            <button class='mostrar'>Mostrar</button>
-                        </a>
-
-                        <a href='formUpdateCarrito.php?CI=$CI'>
-                            <button class='editar'>Editar</button>
-                        </a>
-
-                        <a href='eliminarCarrito.php?CI=$CI'>
-                            <button class='eliminar'>Eliminar</button>
-                        </a>
-                      </td>";
-
+                echo "<td>".$fila["Codigo"]."</td>";
+                echo "<td>".$fila["Nombre"]."</td>";
+                echo "<td>".$fila["Descripcion"]."</td>";
+                echo "<td>".$fila["Precio"]."</td>";
+                echo "<td>".$fila["Stock"]."</td>";
+                echo "<td><input type='number' name='cantidad' value=0></td>";
+                echo "<input type='hidden' value=".$fila["Codigo"]." name='Codigo'>";
+                echo "<input type='hidden' value=".$Pedidos_ID." name='Pedidos_ID'>";
+                echo "<input type='hidden' value=".$fila["Precio"]." name='Precio'>";
+                echo "<td><input type='submit' value='Agregar'></td>";
                 echo "</tr>";
+                echo "</form>";
             }
-
+                echo "<h3>Total: ".$total."</h3>";
+                echo "<table border='1'>";
         } else {
+
             echo "<tr>";
-            echo "<td colspan='3'>No hay usuarios registrados</td>";
+            echo "<td colspan='6'>No se encontraron productos</td>";
             echo "</tr>";
+
         }
 
         $conexion->close();
+
         ?>
 
     </table>
-<button class="volver"><a href="vendedor.html">Inicio vendedor</a></button>
-<button class="volver"><a href="administrador.html">Inicio Administrador</a></button>
-<button class="volver"><a href="inicio.html">Inicio Publico</a></button>
-<button class="volver"><a href="formCarrito.php">Registrar nuevo carrito</a></button>
+<button class="volver"><a href="portada publica.php">Menu</a></button>
 </div>
 
 </body>

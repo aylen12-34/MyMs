@@ -332,7 +332,13 @@ if ($resultado->num_rows > 0) {
 
 } ?>
         <div>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsKvqIOKHSHcKb6YH8xGsmpiJqBcH-piTXBA&s" alt="">
+            <?php
+              if($_SESSION['CI']==123){
+                echo '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn57_OKTIjVTsTFKw2m-3dWGAMdiJSoCmK3-oSSVj7Ug&s" alt="">';
+              } else {
+                echo '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsKvqIOKHSHcKb6YH8xGsmpiJqBcH-piTXBA&s" alt="">';
+              }
+            ?>
         </div>
     </div>
     <h1>REGISTROS</h1>

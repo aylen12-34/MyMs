@@ -101,9 +101,11 @@ $NombreVendedor=$_POST['NombreVendedor'];
         <p>
         <?php
            $sql="INSERT INTO Pedidos (Nombre, Fecha, Estado, NombreVendedor) VALUES ('$Nombre', '$Fecha', '$Estado', '$NombreVendedor')";
-        if ($conexion->query($sql) === TRUE) {
-            echo "Pedido registrado correctamente";
-             
+        if($conexion->query($sql)){
+            $Pedidos_ID = $conexion->insert_id;
+            header("location:leerCarritos.php?Pedidos_ID=".$Pedidos_ID);
+        }else{
+            echo "Error: " . $conexion->error;
         }
       ?>
         </p><br>
