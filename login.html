@@ -104,5 +104,27 @@
         </form>
     <button class="volver"><a href="inicio.html" id="a">← Volver</a></button>
 </div>
+<script>
+        $("form").validate({
+            rules: {
+                CI: {
+                    required: true,
+                    number: true
+                },
+                Nombre: {
+                    required: true
+                }
+            },
+            messages: {
+                CI: {
+                    required: "&#9888; Por favor, ingresa tu CI",
+                    number: "&#9888; Por favor, ingresa un número válido"
+                },
+                Nombre: {
+                    required: "&#9888;Por favor, ingresa tu nombre"
+                }
+            }
+        });
+    </script>
 </body>
 </html>
