@@ -191,6 +191,7 @@ if ($resultado->num_rows > 0) {
     rules: {
         CI: {
             required: true,
+            digits: true
         },
         Nombre: {
             required: true,
@@ -220,6 +221,7 @@ if ($resultado->num_rows > 0) {
     messages: {
         CI: {
             required: "Ingrese su CI",
+            digits:"Solo números"
         },
         Nombre: {
             required: "Ingrese su nombre",
