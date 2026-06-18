@@ -50,7 +50,7 @@ main{
     grid-area:main;
 
     padding:60px 40px;
-    background-image: url("imagenes/fondoelegido.png");
+    background-image: url("imagenes/2.png");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -337,17 +337,9 @@ main{
 
         <section id="hero">
 
-            <h1>Momentos Dulces & Salados</h1>
-
-            <p>
-                Descubre nuestras especialidades artesanales preparadas con los
-                mejores ingredientes. Cada producto está elaborado con dedicación
-                para brindarte una experiencia única en cada bocado.
-            </p>
+            <h1>Especiales De La Semana</h1>
 
         </section>
-
-        <h2 id="n">Nuestra Variedad</h2>
         <section class="producto">
 
             <img src="imagenes/galletas/1.png" class="prod" alt="Tortas y Brownies">
@@ -356,37 +348,37 @@ main{
 
                 <span class="etiqueta">Nuestros favoritos</span>
 
-                <h2>TORTAS Y BROWNIES</h2>
+                <h2>Root Beer Float Cookie</h2>
 
                 <p>
-                    Deliciosas tortas y brownies elaborados artesanalmente,
-                    perfectos para cumpleaños, reuniones y ocasiones especiales.
-                    Preparados con ingredientes de calidad para ofrecer un sabor
-                    inolvidable en cada porción.
+                    Una galleta marmoleada de vainilla y cerveza de raíz, 
+                    coronada con un remolino de mousse cremoso de vainilla 
+                    y cerveza de raíz.
                 </p>
 
-                <a href="" class="btn">Ver más</a>
+                <a href="menu.php" class="btn">Ver más</a>
 
             </div>
 
         </section>
         <section class="producto inverso">
 
-            <img src="imagenes/galletas/2.png" class="prod" alt="Bebidas Frías">
+            <img src="imagenes/galletas/1,5.png" class="prod" alt="Bebidas Frías">
 
             <div class="info">
 
-                <span class="etiqueta">Refrescantes</span>
+                <span class="etiqueta">Exquisita</span>
 
-                <h2>BEBIDAS FRÍAS</h2>
+                <h2>Peanut Butter Cup Cookie ft. REESE'S</h2>
 
                 <p>
-                    Frappés, milkshakes y bebidas heladas preparadas al momento
-                    para acompañar tus postres favoritos. La combinación perfecta
-                    para refrescar cualquier día.
+                    Una clásica galleta de mantequilla de cacahuete cubierta 
+                    con trocitos de mantequilla de cacahuete derretida, 
+                    bañada en chocolate con leche fundido y espolvoreada con 
+                    bombones REESE'S
                 </p>
 
-                <a href="" class="btn">Ver más</a>
+                <a href="menu.php" class="btn">Ver más</a>
 
             </div>
 
@@ -399,15 +391,17 @@ main{
 
                 <span class="etiqueta">Clásicos</span>
 
-                <h2>BEBIDAS CALIENTES</h2>
+                <h2>Everything But The Dad Jokes Cookie</h2>
 
                 <p>
-                    Café, capuchinos, chocolates calientes y otras bebidas
-                    elaboradas para acompañar tus mañanas, tardes y momentos
-                    especiales.
+                    Una galleta original repleta de trocitos de caramelo y 
+                    chips de mantequilla de cacahuete, cubierta con una 
+                    capa de mantequilla de cacahuete derretida y patatas 
+                    fritas crujientes recubiertas de mantequilla de cacahuete, 
+                    y terminada con explosiones de más trocitos de caramelo.
                 </p>
 
-                <a href="" class="btn">Ver más</a>
+                <a href="menu.php" class="btn">Ver más</a>
 
             </div>
 
@@ -420,15 +414,58 @@ main{
 
                 <span class="etiqueta">Tradicionales</span>
 
-                <h2>MASITAS</h2>
+                <h2>Cookies & Cream Grill-It Cookie</h2>
 
                 <p>
-                    Una selección de masitas artesanales horneadas diariamente
-                    con ingredientes cuidadosamente seleccionados para conservar
-                    el auténtico sabor de la tradición.
+                    Una galleta de galleta y crema hecha en sartén, 
+                    cubierta con un remolino de mousse de galleta y crema de chocolate, 
+                    decorada con un diseño de parrilla de chocolate semidulce y ositos 
+                    de goma en un palillo.
                 </p>
 
-                <a href="" class="btn">Ver más</a>
+                <a href="menu.php" class="btn">Ver más</a>
+
+            </div>
+
+        </section>
+        <section class="producto">
+
+            <img src="imagenes/galletas/6.png" class="prod" alt="Bebidas Calientes">
+
+            <div class="info">
+
+                <span class="etiqueta">Clásicos</span>
+
+                <h2>Dubai-Style Chocolate Cheesecake</h2>
+
+                <p>
+                    Una exquisita tarta de queso con chocolate sobre una base de galleta
+                    Graham de chocolate, cubierta con un relleno crujiente de Kataifi y 
+                    pistacho, un chorrito de crema de pistacho y una cucharada de nata montada
+                </p>
+
+                <a href="menu.php" class="btn">Ver más</a>
+
+            </div>
+
+        </section>
+        <section class="producto inverso">
+
+            <img src="imagenes/galletas/7.png" class="prod" alt="Masitas">
+
+            <div class="info">
+
+                <span class="etiqueta">Tradicionales</span>
+
+                <h2>Chocolate Chip Cookie</h2>
+
+                <p>
+                    Una clásica galleta tibia de azúcar moreno, repleta de trocitos 
+                    de chocolate con leche fundido y trozos de chocolate semidulce 
+                    de alta calidad.
+                </p>
+
+                <a href="menu.php" class="btn">Ver más</a>
 
             </div>
 
@@ -441,57 +478,14 @@ main{
 
                 <span class="etiqueta">Clásicos</span>
 
-                <h2>BEBIDAS CALIENTES</h2>
+                <h2>Pink Sugar Cookie</h2>
 
                 <p>
-                    Café, capuchinos, chocolates calientes y otras bebidas
-                    elaboradas para acompañar tus mañanas, tardes y momentos
-                    especiales.
+                    Una clásica galleta de azúcar y almendras cubierta con una 
+                    suave capa rosada de glaseado de almendras auténticas.
                 </p>
 
-                <a href="" class="btn">Ver más</a>
-
-            </div>
-
-        </section>
-        <section class="producto inverso">
-
-            <img src="imagenes/galletas/24.png" class="prod" alt="Masitas">
-
-            <div class="info">
-
-                <span class="etiqueta">Tradicionales</span>
-
-                <h2>MASITAS</h2>
-
-                <p>
-                    Una selección de masitas artesanales horneadas diariamente
-                    con ingredientes cuidadosamente seleccionados para conservar
-                    el auténtico sabor de la tradición.
-                </p>
-
-                <a href="" class="btn">Ver más</a>
-
-            </div>
-
-        </section>
-        <section class="producto">
-
-            <img src="imagenes/galletas/7.png" class="prod" alt="Bebidas Calientes">
-
-            <div class="info">
-
-                <span class="etiqueta">Clásicos</span>
-
-                <h2>BEBIDAS CALIENTES</h2>
-
-                <p>
-                    Café, capuchinos, chocolates calientes y otras bebidas
-                    elaboradas para acompañar tus mañanas, tardes y momentos
-                    especiales.
-                </p>
-
-                <a href="" class="btn">Ver más</a>
+                <a href="menu.php" class="btn">Ver más</a>
 
             </div>
 
