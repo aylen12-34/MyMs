@@ -102,7 +102,7 @@ $NombreVendedor=$_POST['NombreVendedor'];
         <?php
            $sql="INSERT INTO Pedidos (Nombre, Fecha, Estado, NombreVendedor) VALUES ('$Nombre', '$Fecha', '$Estado', '$NombreVendedor')";
         if($conexion->query($sql)){
-            header("location:leerCarritos.php?Pedidos_ID=".$conexion->insert_id);
+            header("location:../Carrito/leerCarritos.php?Pedidos_ID=".$conexion->insert_id);
         }else{
             echo "Error: " . $conexion->error;
         }

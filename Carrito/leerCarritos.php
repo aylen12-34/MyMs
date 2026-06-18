@@ -11,12 +11,12 @@ if ($conexion->connect_error) {
 }
 session_start();
 if($_SESSION['CI']==null){
-    header("location:login.html");
+    header("location:../login.html");
 } else {
   if($_SESSION['Rol']=="vendedor"){
     $CI = $_SESSION['CI'];
   } else{
-    header("location:login.html");
+    header("location:../login.html");
   }
 }
 $Pedidos_ID=$_GET['Pedidos_ID'];
@@ -255,7 +255,7 @@ button{
         ?>
 
     </table>
-<button class="volver"><a href="portada publica.php">Menu</a></button>
+<button class="volver"><a href="../portada publica.php">Menu</a></button>
 </div>
 
 </body>

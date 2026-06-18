@@ -240,7 +240,7 @@ button{
         ?>
 
     </table>
-<button class="volver"><a href="vendedor.php">Perfil</a></button>
+<button class="volver"><a href="../vendedor.php">Perfil</a></button>
 <button class="volver"><a href="formRegistroProductos.php">Registrar Producto</a></button>
 </div>
 

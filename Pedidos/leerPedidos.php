@@ -244,10 +244,10 @@ a{
 
     <div class="botones">
         <button class="volver">
-            <a href="vendedor.php">Perfil</a>
+            <a href="../vendedor.php">Perfil</a>
         </button>
         <button class="volver">
-            <a href="inicio.html">Inicio Público</a>
+            <a href="../inicio.html">Inicio Público</a>
         </button>
         <button class="volver">
             <a href="formRegistroPedidos.php">Registrar nuevo pedido</a>

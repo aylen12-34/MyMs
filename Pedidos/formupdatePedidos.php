@@ -11,13 +11,13 @@ if ($conexion->connect_error) {
 }
 session_start();
 if($_SESSION['CI']==null){
-    header("location:login.html");
+    header("location:../login.html");
 }else {
   if($_SESSION['Rol']=="vendedor"){
     $CI = $_SESSION['CI'];
     $NombreVendedor= $_SESSION['Nombre'];
   } else{
-    header("location:login.html");
+    header("location:../login.html");
   }
 }
 $ID=$_GET['ID'];

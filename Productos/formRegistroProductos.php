@@ -12,7 +12,7 @@ if ($conexion->connect_error) {
 }
 session_start();
 if($_SESSION['CI']==null){
-    header("location:login.html");
+    header("location:../login.html");
 }
 
 ?>
