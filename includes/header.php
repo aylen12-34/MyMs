@@ -13,14 +13,31 @@ background-image: url("imagenes/cabeceraorg.png");
         justify-content:center;
         align-items:center;
 
-        min-height:250px;
+        min-height:350px;
 
         border-bottom:5px solid #E64B6B;
     }
+header img{
+    animation:aparecer 1.5s ease;
+}
 
-    #g{
-        scale:0.5;
+#g{
+    scale:0.5;
+}
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:scale(0.7);
     }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
 
     @media(max-width:1200px){
 

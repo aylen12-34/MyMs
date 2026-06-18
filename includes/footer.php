@@ -1,11 +1,14 @@
 <style>
 footer{
-    background:#6A253A;
+    background-image: url("imagenes/ow.png");
+     background-size:cover;
+        background-repeat:no-repeat;
+        background-position:center;
     color:#EFE2DA;
     display:flex;
     justify-content:center;
     align-items:center;
-    min-height:100px;
+    min-height:200px;
     border-top:5px solid #E64B6B;
 }
 </style>

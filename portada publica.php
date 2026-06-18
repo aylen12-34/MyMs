@@ -13,7 +13,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
 /* ==========================
    COLORES
    morado: #6A253A
@@ -22,12 +21,13 @@
 ========================== */
 
 *{
+    margin:0;
+    padding:0;
     box-sizing:border-box;
+    font-family:'Chillax-Semibold';
 }
 
 body{
-    margin:0;
-    font-family:'Chillax-Semibold';
 
     display:grid;
 
@@ -36,266 +36,480 @@ body{
     "main"
     "footer";
 
-    grid-template-rows:250px auto 100px;
+    grid-template-rows:350px auto 200px;
 
     min-height:100vh;
 }
-<<<<<<< HEAD
 
-/* ==========================
-   HEADER
-========================== */
-
-header{
-    grid-area:header;
-
-    background-image:url(imagenes/cabeceraorg.png);
-
-    background-size:cover;
-    background-repeat:no-repeat;
-    background-position:center;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    border-bottom:5px solid #E64B6B;
-}
-
-header img{
-    animation:aparecer 1.5s ease;
-}
-
-#g{
-    scale:0.5;
-}
-
-@keyframes aparecer{
-
-    from{
-        opacity:0;
-        transform:scale(0.7);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-
-}
-
-=======
->>>>>>> f87def85d23c3267085fb809b315ab8b3757df5b
 /* ==========================
    MAIN
 ========================== */
 
 main{
+
     grid-area:main;
 
-    padding:40px;
+    padding:60px 40px;
 
-    background-image:url("imagenes/2.png");
+    background-image:url("imagenes/fondoelegido.png");
     background-size:cover;
+    background-position:center;
     background-repeat:no-repeat;
 }
 
-#n{
-    font-family:'Chillax-Medium';
+/* ==========================
+   HERO
+========================== */
 
-    font-size:45px;
+#hero{
+
+    text-align:center;
+
+    max-width:900px;
+
+    margin:0 auto 100px auto;
+}
+
+#hero h1{
+
+    font-size:70px;
 
     color:#6A253A;
 
-    border-bottom:2px solid #E64B6B;
+    margin-bottom:20px;
+}
 
-    display:inline-block;
+#hero p{
 
-    margin-bottom:30px;
+    max-width:750px;
+
+    margin:auto;
+
+    font-size:22px;
+
+    color:#555;
+
+    line-height:1.8;
+}
+
+#n{
+
+    text-align:center;
+
+    color:#6A253A;
+
+    font-size:50px;
+
+    margin-bottom:80px;
 }
 
 /* ==========================
    PRODUCTOS
 ========================== */
 
-#fotos{
+.producto{
 
-    display:grid;
+    display:flex;
 
-    grid-template-columns:repeat(2,1fr);
+    align-items:center;
 
-    gap:40px;
+    justify-content:center;
 
-    margin-top:20px;
+    gap:100px;
+
+    max-width:1400px;
+
+    margin:120px auto;
 }
 
-#fotos div{
-    display:flex;
-    flex-direction:column;
+.inverso{
+
+    flex-direction:row-reverse;
 }
 
 .prod{
 
-    width:100%;
-    max-width:500px;
-    height:400px;
+    width:420px;
 
-    border-radius:20px;
+    height:auto;
 
-    object-fit:cover;
-
+    object-fit:contain;
+    border-radius:10px;
     transition:
     transform .4s ease,
-    box-shadow .4s ease,
-    filter .4s ease;
+    box-shadow .4s ease;
 }
 
 .prod:hover{
 
-    transform:scale(1.05) translateY(-8px);
+    transform:scale(1.08) rotate(-2deg);
 
-    box-shadow:0 12px 25px rgba(0,0,0,.3);
-
-    filter:brightness(1.08);
+    box-shadow:
+        0 0 30px #6A253A,
+        0 0 60px rgba(106,37,58,.6),
+        0 0 90px rgba(239,226,218,.9);
 }
 
-h3{
+.info{
 
-    font-family:'Chillax-Light';
+    max-width:500px;
+}
 
-    font-size:25px;
-
-    color:#6A253A;
-
-    border-bottom:2px solid #E64B6B;
+.etiqueta{
 
     display:inline-block;
 
-    margin-top:15px;
+    background:#E64B6B;
+
+    color:white;
+
+    padding:8px 15px;
+
+    border-radius:50px;
+
+    font-size:14px;
+
+    margin-bottom:15px;
 }
 
-h3 a{
+.info h2{
+
     color:#6A253A;
+
+    font-size:52px;
+
+    line-height:1.1;
+
+    margin-bottom:20px;
+}
+
+.info p{
+
+    color:#555;
+
+    font-size:18px;
+
+    line-height:1.9;
+}
+
+.btn{
+
+    display:inline-block;
+
+    margin-top:25px;
+
+    padding:14px 35px;
+
+    background:#6A253A;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:50px;
+
+    transition:.3s ease;
+}
+
+.btn:hover{
+
+    background:#E64B6B;
+
+    transform:translateY(-3px);
+}
+
+/* ==========================
+   PEDIDO
+========================== */
+
+#pedido{
+
+    text-align:center;
+
+    margin-top:120px;
+
+    background:white;
+
+    padding:60px;
+
+    border-radius:30px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.08);
+}
+
+#pedido h2{
+
+    color:#6A253A;
+
+    font-size:40px;
+
+    margin-bottom:15px;
+}
+
+#pedido p{
+
+    color:#555;
+
+    font-size:18px;
+
+    margin-bottom:20px;
 }
 
 /* ==========================
    RESPONSIVE
 ========================== */
 
-@media(max-width:800px){
+@media(max-width:900px){
 
     body{
-
-        grid-template-areas:
-        "header"
-        "main"
-        "footer";
 
         grid-template-rows:auto auto auto;
     }
 
-    header{
-
-        height:180px;
-
-        padding:20px;
-    }
-
-    #g{
-
-        width:250px;
-
-        scale:1;
-    }
-
     main{
-        padding:20px;
+
+        padding:30px 20px;
+    }
+
+    #hero h1{
+
+        font-size:42px;
+    }
+
+    #hero p{
+
+        font-size:18px;
     }
 
     #n{
 
-        font-size:35px;
-
-        text-align:center;
+        font-size:36px;
     }
 
-    #fotos{
+    .producto,
+    .inverso{
 
-        grid-template-columns:1fr;
+        flex-direction:column;
 
         gap:30px;
+
+        text-align:center;
+
+        margin:80px auto;
     }
 
     .prod{
 
-        width:100%;
-        max-width:320px;
-
-        height:250px;
+        width:280px;
     }
 
-    h3{
+    .info h2{
 
-        font-size:20px;
+        font-size:34px;
     }
 
+    .info p{
+
+        font-size:16px;
+    }
+
+    #pedido{
+
+        padding:35px 20px;
+    }
+
+    #pedido h2{
+
+        font-size:30px;
+    }
 }
-
 </style>
 
 </head>
 
 <body>
-    
+
     <?php include("includes/nav.php"); ?>
 
     <?php include("includes/header.php"); ?>
 
     <main>
 
-        <h2 id="n">Nuestra Variedad</h2>
+        <section id="hero">
 
-        <section id="fotos">
+            <h1>Momentos Dulces & Salados</h1>
 
-            <div>
-                <a href="">
-                    <img src="imagenes/applepie.jpg" class="prod">
-                </a>
-
-                <h3>TORTAS Y BROWNIES</h3>
-            </div>
-
-            <div>
-                <a href="">
-                    <img src="imagenes/frappe.png" class="prod">
-                </a>
-
-                <h3>BEBIDAS FRÍAS</h3>
-            </div>
-
-            <div>
-                <a href="">
-                    <img src="imagenes/cafe.jpg" class="prod">
-                </a>
-
-                <h3>BEBIDAS CALIENTES</h3>
-            </div>
-
-            <div>
-                <a href="">
-                    <img src="imagenes/cinnamonrolls.jpg" class="prod">
-                </a>
-
-                <h3>MASITAS</h3>
-            </div>
+            <p>
+                Descubre nuestras especialidades artesanales preparadas con los
+                mejores ingredientes. Cada producto está elaborado con dedicación
+                para brindarte una experiencia única en cada bocado.
+            </p>
 
         </section>
 
-        <h3>
-            Para realizar su pedido, escoja sus productos en:
-            <a href="">Menú y pedidos</a>
-        </h3>
+        <h2 id="n">Nuestra Variedad</h2>
+        <section class="producto">
 
+            <img src="imagenes/galletas/1.png" class="prod" alt="Tortas y Brownies">
+
+            <div class="info">
+
+                <span class="etiqueta">Nuestros favoritos</span>
+
+                <h2>TORTAS Y BROWNIES</h2>
+
+                <p>
+                    Deliciosas tortas y brownies elaborados artesanalmente,
+                    perfectos para cumpleaños, reuniones y ocasiones especiales.
+                    Preparados con ingredientes de calidad para ofrecer un sabor
+                    inolvidable en cada porción.
+                </p>
+
+                <a href="" class="btn">Ver más</a>
+
+            </div>
+
+        </section>
+        <section class="producto inverso">
+
+            <img src="imagenes/galletas/2.png" class="prod" alt="Bebidas Frías">
+
+            <div class="info">
+
+                <span class="etiqueta">Refrescantes</span>
+
+                <h2>BEBIDAS FRÍAS</h2>
+
+                <p>
+                    Frappés, milkshakes y bebidas heladas preparadas al momento
+                    para acompañar tus postres favoritos. La combinación perfecta
+                    para refrescar cualquier día.
+                </p>
+
+                <a href="" class="btn">Ver más</a>
+
+            </div>
+
+        </section>
+        <section class="producto">
+
+            <img src="imagenes/galletas/3.png" class="prod" alt="Bebidas Calientes">
+
+            <div class="info">
+
+                <span class="etiqueta">Clásicos</span>
+
+                <h2>BEBIDAS CALIENTES</h2>
+
+                <p>
+                    Café, capuchinos, chocolates calientes y otras bebidas
+                    elaboradas para acompañar tus mañanas, tardes y momentos
+                    especiales.
+                </p>
+
+                <a href="" class="btn">Ver más</a>
+
+            </div>
+
+        </section>
+        <section class="producto inverso">
+
+            <img src="imagenes/galletas/4.png" class="prod" alt="Masitas">
+
+            <div class="info">
+
+                <span class="etiqueta">Tradicionales</span>
+
+                <h2>MASITAS</h2>
+
+                <p>
+                    Una selección de masitas artesanales horneadas diariamente
+                    con ingredientes cuidadosamente seleccionados para conservar
+                    el auténtico sabor de la tradición.
+                </p>
+
+                <a href="" class="btn">Ver más</a>
+
+            </div>
+
+        </section>
+        <section class="producto">
+
+            <img src="imagenes/galletas/8.png" class="prod" alt="Bebidas Calientes">
+
+            <div class="info">
+
+                <span class="etiqueta">Clásicos</span>
+
+                <h2>BEBIDAS CALIENTES</h2>
+
+                <p>
+                    Café, capuchinos, chocolates calientes y otras bebidas
+                    elaboradas para acompañar tus mañanas, tardes y momentos
+                    especiales.
+                </p>
+
+                <a href="" class="btn">Ver más</a>
+
+            </div>
+
+        </section>
+        <section class="producto inverso">
+
+            <img src="imagenes/galletas/6.png" class="prod" alt="Masitas">
+
+            <div class="info">
+
+                <span class="etiqueta">Tradicionales</span>
+
+                <h2>MASITAS</h2>
+
+                <p>
+                    Una selección de masitas artesanales horneadas diariamente
+                    con ingredientes cuidadosamente seleccionados para conservar
+                    el auténtico sabor de la tradición.
+                </p>
+
+                <a href="" class="btn">Ver más</a>
+
+            </div>
+
+        </section>
+        <section class="producto">
+
+            <img src="imagenes/galletas/7.png" class="prod" alt="Bebidas Calientes">
+
+            <div class="info">
+
+                <span class="etiqueta">Clásicos</span>
+
+                <h2>BEBIDAS CALIENTES</h2>
+
+                <p>
+                    Café, capuchinos, chocolates calientes y otras bebidas
+                    elaboradas para acompañar tus mañanas, tardes y momentos
+                    especiales.
+                </p>
+
+                <a href="" class="btn">Ver más</a>
+
+            </div>
+
+        </section>
+        <section id="pedido">
+
+            <h2>¿Listo para ordenar?</h2>
+
+            <p>
+                Explora nuestro menú completo y realiza tu pedido de forma rápida
+                y sencilla.
+            </p>
+
+            <a href="" class="btn">Menú y pedidos</a>
+
+        </section>
+        
     </main>
 
     <?php include("includes/footer.php"); ?>
