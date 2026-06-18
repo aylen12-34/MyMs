@@ -19,12 +19,13 @@ if($_SESSION['CI']==null){
   } else{
     header("location:login.html");
   }
-} 
+}
 $ID=$_GET['ID'];
 $sql = "SELECT * FROM Pedidos WHERE ID='$ID'";
 $resultado = $conexion->query($sql);
 if ($resultado->num_rows > 0) {
     while($fila=$resultado->fetch_assoc()) {
+        $ID=$fila['ID'];
         $Nombre=$fila['Nombre'];
         $Fecha=$fila['Fecha'];
         $Estado=$fila['Estado'];
@@ -162,6 +163,7 @@ label.error{
     <div>
         <h1>Editar Pedido</h1>
     <form action="updatePedidos.php" method="post">
+        <input type="hidden" name="ID" value="<?=$ID?>">
         <label for="Nombre">Nombre:</label>
         <input type="text" id="Nombre" name="Nombre" value='<?=$Nombre?>' required>  <br>  <br>
         <label for="Fecha">Fecha:</label>

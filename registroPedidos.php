@@ -9,7 +9,6 @@ if ($conexion->connect_error) {
     
     echo "No se ha podido conectar a la base de datos";
 }
-$ID=$_POST['ID'];
 $Nombre=$_POST['Nombre'];
 $Fecha=$_POST['Fecha'];
 $Estado=$_POST['Estado'];

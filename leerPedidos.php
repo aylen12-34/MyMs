@@ -9,8 +9,7 @@ $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
-$ID=$_GET['ID'];
-$sql = "SELECT * FROM Pedidos WHERE ID='$ID'";
+$sql = "SELECT * FROM Pedidos";
 $resultado = $conexion->query($sql);
 ?>
 

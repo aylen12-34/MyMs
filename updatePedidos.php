@@ -21,12 +21,12 @@ $baseDeDatos = "MYMS";
 if ($conexion->connect_error) {
     echo "Hubo un error al conectar a la base de datos";
 }
-$ID=$_GET['ID'];
+$ID=$_POST['ID'];
 $Nombre=$_POST['Nombre'];
 $Fecha=$_POST['Fecha'];
 $Estado=$_POST['Estado'];
 $NombreVendedor=$_POST['NombreVendedor'];  
-$sql="UPDATE Pedidos SET Nombre='$Nombre', Fecha='$Fecha', Estado='$Estado', NombreVendedor='$NombreVendedor'";
+$sql="UPDATE Pedidos SET Nombre='$Nombre', Fecha='$Fecha', Estado='$Estado', NombreVendedor='$NombreVendedor' WHERE ID='$ID'";
 if ($conexion->query($sql) === TRUE) {
     echo "Se edito el pedido correctamente";
     
