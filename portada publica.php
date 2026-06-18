@@ -339,15 +339,7 @@ main{
 
             <h1>Especiales De La Semana</h1>
 
-            <p>
-                Descubre nuestras especialidades artesanales preparadas con los
-                mejores ingredientes. Cada producto está elaborado con dedicación
-                para brindarte una experiencia única en cada bocado.
-            </p>
-
         </section>
-
-        <h2 id="n">Nuestra Variedad</h2>
         <section class="producto">
 
             <img src="imagenes/galletas/1.png" class="prod" alt="Tortas y Brownies">
@@ -364,7 +356,7 @@ main{
                     y cerveza de raíz.
                 </p>
 
-                <a href="" class="btn">Ver más</a>
+                <a href="menu.php" class="btn">Ver más</a>
 
             </div>
 
@@ -386,7 +378,7 @@ main{
                     bombones REESE'S
                 </p>
 
-                <a href="" class="btn">Ver más</a>
+                <a href="menu.php" class="btn">Ver más</a>
 
             </div>
 
@@ -409,7 +401,7 @@ main{
                     y terminada con explosiones de más trocitos de caramelo.
                 </p>
 
-                <a href="" class="btn">Ver más</a>
+                <a href="menu.php" class="btn">Ver más</a>
 
             </div>
 
@@ -431,7 +423,7 @@ main{
                     de goma en un palillo.
                 </p>
 
-                <a href="" class="btn">Ver más</a>
+                <a href="menu.php" class="btn">Ver más</a>
 
             </div>
 
@@ -452,7 +444,7 @@ main{
                     pistacho, un chorrito de crema de pistacho y una cucharada de nata montada
                 </p>
 
-                <a href="" class="btn">Ver más</a>
+                <a href="menu.php" class="btn">Ver más</a>
 
             </div>
 
@@ -473,7 +465,7 @@ main{
                     de alta calidad.
                 </p>
 
-                <a href="" class="btn">Ver más</a>
+                <a href="menu.php" class="btn">Ver más</a>
 
             </div>
 
@@ -493,7 +485,7 @@ main{
                     suave capa rosada de glaseado de almendras auténticas.
                 </p>
 
-                <a href="" class="btn">Ver más</a>
+                <a href="menu.php" class="btn">Ver más</a>
 
             </div>
 
