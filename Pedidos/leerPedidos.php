@@ -20,7 +20,7 @@ $resultado = $conexion->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedidos</title>
 
-    <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
+    <link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
 
     <style>
 
@@ -30,7 +30,7 @@ $resultado = $conexion->query($sql);
 }
 
 body{
-    background-image: url(imagenes/2.png);
+    background-image: url(../imagenes/2.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

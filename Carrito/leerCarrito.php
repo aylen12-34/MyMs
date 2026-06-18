@@ -21,7 +21,7 @@ $resultado = $conexion->query($sql);
 <head>
     <meta charset="UTF-8">
     <title>Mostrar el Carrito</title>
-    <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
+    <link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
     <style>
@@ -31,7 +31,7 @@ $resultado = $conexion->query($sql);
 }
 
 body{
-    background-image: url(imagenes/2.png);
+    background-image: url(../imagenes/2.png);
     display: flex;
     justify-content: center;
     align-items: center;
