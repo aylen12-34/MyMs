@@ -106,7 +106,7 @@ $total=$precio*$cantidad;
 
 
         if ($conexion->query($sql) === TRUE) {
-            echo "Producto subido en el carrito";
+            header ("location:leerCarritos.php?Pedidos_ID=".$Pedidos_ID);
             }else{
                 echo"Hubo un error :(";
             }
@@ -114,7 +114,7 @@ $total=$precio*$cantidad;
         </p><br>
                 
         <button class="volver" onclick="history.back()">← Volver</button><br>
-        <button class="volver"><a href="leerCarrito.php">Tabla Carrito</a></button>
+        <button class="volver"><a href="leerCarrito.php">Carrito</a></button>
     </div>
 </body>
 </html>
