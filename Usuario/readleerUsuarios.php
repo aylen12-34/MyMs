@@ -11,12 +11,12 @@ if ($conexion->connect_error) {
 }
 session_start();
 if($_SESSION['CI']==null){
-    header("location:login.html");
+    header("location:../login.html");
 }else {
   if($_SESSION['Rol']=="administrador"){
     $CI = $_SESSION['CI'];
   } else{
-    header("location:login.html");
+    header("location:../login.html");
   }
 }
 
@@ -255,7 +255,7 @@ button{
         ?>
 
     </table>
-<button class="volver"><a href="inicio.html">Menu principal</a></button>
+<button class="volver"><a href="../portada publica.php">Menu principal</a></button>
 <button class="volver"><a href="formRegistroUsuario.php">Registrar Usuarios</a></button>
 <button class="volver" onclick="history.back()">← Volver</button><br>
 </div>
