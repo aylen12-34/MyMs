@@ -142,11 +142,13 @@ main{
 }
 
 .prod:hover{
-    transform:scale(1.05);
 
-    filter:
-        drop-shadow(0 10px 20px rgba(106,37,58,.3))
-        drop-shadow(0 20px 40px rgba(239,226,218,.7));
+    transform:scale(1.08) rotate(-2deg);
+
+    box-shadow:
+        0 0 30px #ff5b8c,
+        0 0 60px rgba(106,37,58,.6),
+        0 0 90px rgba(239,226,218,.9);
 }
 
 .info{
@@ -222,13 +224,16 @@ main{
 ========================== */
 
 #pedido{
-
+    width:1800px;
+    height:300px;
     text-align:center;
 
     margin-top:120px;
 
-    background:white;
-
+    background-image: url("imagenes/galletas/oficial.png");
+    background-size:cover;
+        background-repeat:no-repeat;
+        background-position:center;
     padding:60px;
 
     border-radius:30px;
