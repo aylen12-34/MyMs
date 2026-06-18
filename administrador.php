@@ -302,10 +302,10 @@ section button:hover{
 <section>
     <div class="a">
     <h3>Registro de ventas:</h3><br>
-    <button><a href="leerPedidos.php">Ventas en proceso</a></button><br>
+    <button><a href="Pedidos/leerPedidos.php">Ventas en proceso</a></button><br>
     <button>Ventas Terminadas</button><br>
     <h3>Personal:</h3><br>
-    <button><a href="readleerUsuarios.php">Personal</a></button><br>
+    <button><a href="Usuario/readleerUsuarios.php">Personal</a></button><br>
     <button>Reportes</button><br>
     </div>
 

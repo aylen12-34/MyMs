@@ -347,8 +347,8 @@ if ($resultado->num_rows > 0) {
     </div>
     <h1>REGISTROS</h1>
     <h3>Inventario de producto:</h3>
-    <button><a href="readleeProductos.php">Productos disponibles</a></button>
-    <button><a href="leerPedidos.php">Pedidos registradas</a></button>
+    <button><a href="Productos/readleeProductos.php">Productos disponibles</a></button>
+    <button><a href="Pedidos/leerPedidos.php">Pedidos registradas</a></button>
 </section>
 
 <footer>
