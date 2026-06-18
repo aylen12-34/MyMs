@@ -333,10 +333,14 @@ if ($resultado->num_rows > 0) {
 } ?>
         <div>
             <?php
-              if($_SESSION['CI']==123){
+              switch ($_SESSION['CI']){
+                case "123";
                 echo '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn57_OKTIjVTsTFKw2m-3dWGAMdiJSoCmK3-oSSVj7Ug&s" alt="">';
-              } else {
-                echo '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsKvqIOKHSHcKb6YH8xGsmpiJqBcH-piTXBA&s" alt="">';
+                break;
+                case "234";
+                echo '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2m2goQVl8DK0LnYv6B_CT0IKIbqRb2jqTv0yEukN4DWb4ZEt6j80pS8mX&s=10" alt="">';
+                case "321";
+                echo '<img src="https://www.nutrisslovers.com/Portals/nutrisslovers/Articulos%20Nutriss%20Gatos/gatos-unicos-guia-de-razas-y-como-nutrir-su-mundo/cuales-son-las-razas-de-gatos-mas-populares-en-colombia.jpg?ver=T9w4YcvobP-L1GXta8uTAA%3D%3D" alt="">';
               }
             ?>
         </div>
