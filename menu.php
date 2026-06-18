@@ -46,7 +46,7 @@ body{
 ========================== */
 
 main{
-    background-image: url("imagenes/fondoelegido.png");
+    background-image: url("imagenes/2.png");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
