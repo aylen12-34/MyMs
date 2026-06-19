@@ -112,7 +112,7 @@
 
     <nav class="indice" id="menu">
         <ul>
-            <li><a href="autenticar.php">Mi Portada</a></li>
+            <li><a href="">Mi Portada</a></li>
             <li><a href="login.php">Iniciar sesión</a></li>
             <li><a href="nosotros.php">Actualizar perfil</a></li>
             <li><a href="nosotros.php">Historial</a></li>

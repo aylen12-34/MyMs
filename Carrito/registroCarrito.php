@@ -102,13 +102,14 @@ $total=$precio*$cantidad;
         <h2>Registro de Carrito</h2>
         <p>
             <?php 
-        $sql = "INSERT INTO carrito (Productos_Codigo,Pedidos_ID,Cantidad,CostoTotal) VALUES ('$Codigo','$Pedidos_ID','$cantidad','$total')";
+        $sql = "INSERT INTO carrito (Productos_Codigo,Pedidos_ID,Cantidad,CostoTotal) 
+        VALUES ('$Codigo','$Pedidos_ID','$cantidad','$total') 
+        ON DUPLICATE key update
+            Cantidad = Cantidad + Values(Cantidad),
+            CostoTotal = CostoTotal + Values(CostoTotal)";
 
-
-        if ($conexion->query($sql) === TRUE) {
+        if($conexion->query($sql) === TRUE){
             header ("location:leerCarritos.php?Pedidos_ID=".$Pedidos_ID);
-            }else{
-            header ("location:formupdateCarrito.php?Pedidos_ID=".$Pedidos_ID);
             }
             ?>
         </p><br>
