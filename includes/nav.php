@@ -120,7 +120,7 @@
             <li><a href="menu.php">Menú</a></li>
             <li><a href="nosotros.php">Nosotros</a></li>
             <li>
-                <a href="formRegistroPedidos.php">
+                <a href="Pedidos/formRegistroPedidos.php">
                     <img src="https://cdn-icons-png.freepik.com/512/9341/9341730.png" id="compra" alt="Carrito">
                 </a>
             </li>

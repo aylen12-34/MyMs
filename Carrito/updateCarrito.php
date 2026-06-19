@@ -94,17 +94,17 @@ p {
     if ($conexion->connect_error) {
         die("Error de conexión");
     }
-
+    $ID_Producto = $_POST['Codigo'];
+    $precio= $_POST['Precio'];
     $Cantidad = $_POST['Cantidad'];
-    $CostoTotal = $_POST['CostoTotal'];
-    $ID_Producto = $_POST['ID_Producto'];
-    $sql = "UPDATE Carrito 
-            SET Cantidad='$Cantidad', 
-                CostoTotal='$CostoTotal'
-            WHERE ID_Producto='$ID_Producto'";
+    $CostoTotal = $precio*$Cantidad;
+    $Pedidos_ID = $_POST['Pedidos_ID'];
+
+    $sql = "UPDATE Carrito SET Cantidad='$Cantidad', CostoTotal='$CostoTotal' WHERE Productos_Codigo='$ID_Producto'";
+
 
     if ($conexion->query($sql) === TRUE) {
-        echo "Carrito actualizado correctamente";
+        header("location:leercarritos.php?Pedidos_ID=".$Pedidos_ID);
     } else {
         echo "Error al actualizar: " . $conexion->error;
     }

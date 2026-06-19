@@ -1,5 +1,6 @@
 <?php
-
+/*mathi igual no te voy a perdonar las veces que se movieron las cosas -zhato
+esteban callate*/ 
 $usuario = "root";
 $contraseña = "";
 $direccion = "localhost";

@@ -9,12 +9,15 @@ if ($conexion->connect_error) {
     
     echo "No se ha podido conectar a la base de datos";
 }
-$sql = "SELECT * FROM Carrito";
+
+$Pedidos_ID=$_GET['Pedidos_ID'];
+$sql = "SELECT * FROM carrito where Pedidos_ID='$Pedidos_ID'";
 $resultado = $conexion->query($sql);
 if ($resultado->num_rows > 0) {
     while($fila=$resultado->fetch_assoc()) {
         $Cantidad=$fila['Cantidad'];
         $CostoTotal=$fila['CostoTotal'];
+        $Codigo=$fila['Productos_Codigo'];
     }
 }
 
@@ -147,13 +150,14 @@ if ($resultado->num_rows > 0) {
         <h1>Editar Carrito</h1>
     <form action="updateCarrito.php" method="post">
         <label for="">ID del Producto:</label>
-        <input type="text" name="ID_Producto" value='<?=$ID_Producto?>' required> <br><br>
+        <input type="text" name="Codigo" value='<?=$Codigo?>' required> <br><br>
         <label for="">Cantidad:</label>
         <input type="text" name="Cantidad" value='<?=$Cantidad?>' required>
         <br> <br>
         <label for="">Costo Total:</label>
-        <input type="text" name="CostoTotal" value='<?=$CostoTotal?>' required><br><br>
+        <input type="text" name="CostoTotal" value='<?=$CostoTotal?>' readonly><br><br>
         <br>
+        <input type="hidden" name="Pedidos_ID" value='<?=$Pedidos_ID?>'>
         <input type="submit" value="Editar">
     </form>
     <button class="volver" onclick="history.back()">Volver</button><br>

@@ -108,7 +108,7 @@ $total=$precio*$cantidad;
         if ($conexion->query($sql) === TRUE) {
             header ("location:leerCarritos.php?Pedidos_ID=".$Pedidos_ID);
             }else{
-                echo"Hubo un error :(";
+            header ("location:formupdateCarrito.php?Pedidos_ID=".$Pedidos_ID);
             }
             ?>
         </p><br>

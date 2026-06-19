@@ -43,7 +43,7 @@ if($_SESSION['CI']==null){
             <br><br>
 
             <label for="Fecha">Fecha:</label>
-            <input type="date" id="Fecha" name="Fecha">
+            <input type="date" id="Fecha" name="Fecha" value='<?php echo date('Y-m-d');?>' readonly>
             <br><br>
 
             <label for="Estado">Estado:</label>
@@ -51,7 +51,7 @@ if($_SESSION['CI']==null){
             <br><br>
 
             <label for="NombreVendedor">NombreVendedor:</label>
-            <input type="text" id="NombreVendedor" name="NombreVendedor" value='<?=$_SESSION['Nombre']?>'>
+            <input type="text" name="NombreVendedor" value='<?=$_SESSION['Nombre']?>' readonly>
             <br><br>
 
             <input type="submit" value="Registrar Pedidos">

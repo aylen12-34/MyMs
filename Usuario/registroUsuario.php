@@ -117,7 +117,7 @@ $Estado=$_POST['Estado'];
       ?>
         </p><br>
         
-        <button class="volver"><a href="login.html">Iniciar Sesion</a></button><br>
+        <button class="volver"><a href="../login.php">Iniciar Sesion</a></button><br>
         <button class="volver"><a href="readleerUsuarios.php">Tabla Usuarios</a></button>
     </div>
     </div>
