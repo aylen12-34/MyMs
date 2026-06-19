@@ -186,77 +186,93 @@ if ($resultado->num_rows > 0) {
     <button class="volver" onclick="history.back()">
          Volver</button><br>
 </div>
-<script>
-    var a=document.getElementByName("CI");
-    var a=document.getElementByName("Nombre");
-    var a=document.getElementByName("Dirección");
-    var a=document.getElementByName("Celular");
-    var a=document.getElementByName("CI");
-    var a=document.getElementByName("CI");
+    <script>
+    var ci = document.getElementsByName("CI")[0];
+    var nombre = document.getElementsByName("Nombre")[0];
+    var direccion = document.getElementsByName("Direccion")[0];
+    var celular = document.getElementsByName("Celular")[0];
+    var rol = document.getElementsByName("Rol")[0];
+    var estado = document.getElementsByName("Estado")[0];
 
-</script>
-   <script>
-        $("form").validate({
-    rules: {
-        CI: {
-            required: true,
-            digits: true
-        },
-        Nombre: {
-            required: true,
-            minlength: 3
-        },
+    var expRegNombre = /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/;
+    var expRegRol = /^[a-z]+$/;
 
-        Direccion: {
-            required: true
-        },
+    function validar() {
 
-        Celular: {
-            required: true,
-            digits: true,
-            minlength: 8,
-            maxlength: 8
-        },
-
-        Rol: {
-            required: true
-        },
-
-        Estado: {
-            required: true
+        if (ci.value == "") {
+            alert("Ingrese su CI");
+            ci.focus();
+            return false;
         }
-    },
 
-    messages: {
-        CI: {
-            required: "Ingrese su CI",
-            digits:"Solo números"
-        },
-        Nombre: {
-            required: "Ingrese su nombre",
-            minlength: "Mínimo 3 letras"
-        },
-
-        Direccion: {
-            required: "Ingrese su dirección"
-        },
-
-        Celular: {
-            required: "Ingrese su celular",
-            digits: "Solo números",
-            minlength: "Debe tener 8 dígitos",
-            maxlength: "Debe tener 8 dígitos"
-        },
-
-        Rol: {
-            required: "Ingrese el rol"
-        },
-
-        Estado: {
-            required: "Ingrese el estado"
+        if (!/^\d+$/.test(ci.value)) {
+            alert("El CI debe contener solo números");
+            ci.focus();
+            return false;
         }
+
+        if (nombre.value == "") {
+            alert("Ingrese su nombre");
+            nombre.focus();
+            return false;
+        }
+
+        if (!expRegNombre.test(nombre.value)) {
+            alert("El nombre debe contener solo letras");
+            nombre.focus();
+            return false;
+        }
+
+        if (nombre.value.length < 3) {
+            alert("El nombre debe tener al menos 3 letras");
+            nombre.focus();
+            return false;
+        }
+
+        if (direccion.value == "") {
+            alert("Ingrese su dirección");
+            direccion.focus();
+            return false;
+        }
+
+        if (celular.value == "") {
+            alert("Ingrese su celular");
+            celular.focus();
+            return false;
+        }
+
+        if (!/^\d+$/.test(celular.value)) {
+            alert("El celular debe contener solo números");
+            celular.focus();
+            return false;
+        }
+
+        if (celular.value.length != 8) {
+            alert("El celular debe tener 8 dígitos");
+            celular.focus();
+            return false;
+        }
+
+        if (rol.value == "") {
+            alert("Ingrese el rol");
+            rol.focus();
+            return false;
+        }
+
+        if (!expRegRol.test(rol.value)) {
+            alert("El rol debe contener solo letras minúsculas");
+            rol.focus();
+            return false;
+        }
+
+        if (estado.value == "") {
+            alert("Ingrese el estado");
+            estado.focus();
+            return false;
+        }
+
+        return true;
     }
-});
     </script>
 </body>
 </html>

@@ -165,53 +165,72 @@ if ($resultado->num_rows > 0) {
     <button class="volver" onclick="history.back()">Volver</button><br>
     </div>
     <script>
-        $("form").validate({
-    rules: {
-        Codigo: {
-            required: true,
-        },
-        Nombre: {
-            required: true,
-            minlength: 3
-        },
+    var codigo = document.getElementById("Codigo");
+    var nombre = document.getElementById("Nombre");
+    var descripcion = document.getElementById("Descripcion");
+    var precio = document.getElementById("Precio");
+    var stock = document.getElementById("Stock");
 
-        Descripcion: {
-            required: true
-        },
+    var expRegNombre = /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/;
 
-        Precio: {
-            required: true,
-            digits: true
-        },
+    function validar() {
 
-        Stock: {
-            required: true
+        if (codigo.value == "") {
+            alert("⚠ Ingrese el código");
+            codigo.focus();
+            return false;
         }
 
-    },
-
-    messages: {
-        Codigo: {
-            required: "&#9888;Ingrese su ID",
-        },
-        Nombre: {
-            required: "&#9888;Ingrese su nombre",
-            minlength: "Mínimo 3 letras"
-        },
-
-        Descripcion: {
-            required: "&#9888;Ingrese su descripción"
-        },
-
-        Precio: {
-            required: "&#9888;Ingrese el precio",
-            digits: "Solo números"
-        },
-        Stock: {
-            required: "&#9888;Ingrese el stock"
+        if (!/^\d+$/.test(codigo.value)) {
+            alert("⚠ El código debe contener solo números");
+            codigo.focus();
+            return false;
         }
+
+        if (nombre.value == "") {
+            alert("⚠ Ingrese el nombre del producto");
+            nombre.focus();
+            return false;
         }
-    });
-    </script>
+
+        if (nombre.value.length < 3) {
+            alert("⚠ El nombre debe tener al menos 3 caracteres");
+            nombre.focus();
+            return false;
+        }
+
+        if (descripcion.value == "") {
+            alert("⚠ Ingrese la descripción");
+            descripcion.focus();
+            return false;
+        }
+
+        if (precio.value == "") {
+            alert("⚠ Ingrese el precio");
+            precio.focus();
+            return false;
+        }
+
+        if (!/^\d+(\.\d{1,2})?$/.test(precio.value)) {
+            alert("⚠ El precio debe ser un número válido");
+            precio.focus();
+            return false;
+        }
+
+        if (stock.value == "") {
+            alert("⚠ Ingrese el stock");
+            stock.focus();
+            return false;
+        }
+
+        if (!/^\d+$/.test(stock.value)) {
+            alert("⚠ El stock debe contener solo números");
+            stock.focus();
+            return false;
+        }
+
+        return true;
+    }
+</script>
 </body>
 </html>

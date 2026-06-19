@@ -134,7 +134,7 @@ if ($conexion->connect_error) {
     <div>
         <h1>Registro de Usuario</h1>
     
-        <form action="registroUsuario.php" method="POST" >
+        <form action="registroUsuario.php" method="POST" onsubmit="return validar()">
             <label for="CI">CI:</label>
             <input type="number" id="CI" name="CI"> <br> <br>
             <label for="Nombre">Nombre:</label>
@@ -153,66 +153,96 @@ if ($conexion->connect_error) {
         <button class="volver" onclick="history.back()">← Volver</button>
     </div>
     <script>
-        $("form").validate({
-    rules: {
-        CI: {
-            required: true,
-        },
-        Nombre: {
-            required: true,
-            minlength: 3
-        },
+    var ci = document.getElementById("CI");
+    var nombre = document.getElementById("Nombre");
+    var direccion = document.getElementById("Direccion");
+    var celular = document.getElementById("Celular");
+    var rol = document.getElementById("Rol");
+    var estado = document.getElementById("Estado");
 
-        Direccion: {
-            required: true
-        },
+    var expRegNombre = /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/;
+    var expRegRol = /^[a-z]+$/;
 
-        Celular: {
-            required: true,
-            digits: true,
-            minlength: 8,
-            maxlength: 8
-        },
+    function validar() {
 
-        Rol: {
-            required: true
-        },
-
-        Estado: {
-            required: true
+        if (ci.value == "") {
+            alert("⚠ Ingrese su CI");
+            ci.focus();
+            return false;
         }
-    },
 
-    messages: {
-        CI: {
-            required: "&#9888; Ingrese su CI",
-        },
-        Nombre: {
-            required: "&#9888; Ingrese su nombre",
-            minlength: "&#9888; Mínimo 3 letras"
-        },
-
-        Direccion: {
-            required: "&#9888; Ingrese su dirección"
-        },
-
-        Celular: {
-            required: "&#9888; Ingrese su celular",
-            digits: "&#9888; Solo números",
-            minlength: "&#9888; Debe tener 8 dígitos",
-            maxlength: "&#9888; Debe tener 8 dígitos"
-        },
-
-        Rol: {
-            required: "&#9888; Ingrese el rol"
-        },
-
-        Estado: {
-            required: "&#9888; Ingrese el estado"
+        if (!/^\d+$/.test(ci.value)) {
+            alert("⚠ El CI debe contener solo números");
+            ci.focus();
+            return false;
         }
+
+        if (nombre.value == "") {
+            alert("⚠ Ingrese su nombre");
+            nombre.focus();
+            return false;
+        }
+
+        if (!expRegNombre.test(nombre.value)) {
+            alert("⚠ El nombre debe contener solo letras");
+            nombre.focus();
+            return false;
+        }
+
+        if (nombre.value.length < 3) {
+            alert("⚠ El nombre debe tener al menos 3 letras");
+            nombre.focus();
+            return false;
+        }
+
+        if (direccion.value == "") {
+            alert("⚠ Ingrese su dirección");
+            direccion.focus();
+            return false;
+        }
+
+        if (celular.value == "") {
+            alert("⚠ Ingrese su celular");
+            celular.focus();
+            return false;
+        }
+
+        if (!/^\d+$/.test(celular.value)) {
+            alert("⚠ El celular debe contener solo números");
+            celular.focus();
+            return false;
+        }
+
+        if (celular.value.length != 8) {
+            alert("⚠ El celular debe tener exactamente 8 dígitos");
+            celular.focus();
+            return false;
+        }
+
+        if (rol.value == "") {
+            alert("⚠ Ingrese el rol");
+            rol.focus();
+            return false;
+        }
+        if (!expRegRol.test(rol.value)) {
+            alert("⚠ El rol debe contener solo letras minúsculas");
+            rol.focus();
+            return false;
+        }
+
+        if (rol.value != "vendedor" && rol.value != "administrador") {
+            alert("⚠ El rol solo puede ser 'vendedor' o 'administrador'");
+            rol.focus();
+            return false;
+        }
+        if (estado.value == "") {
+            alert("⚠ Ingrese el estado");
+            estado.focus();
+            return false;
+        }
+
+        return true;
     }
-});
-
-    </script>
+</script>
 </body>
 </html>
