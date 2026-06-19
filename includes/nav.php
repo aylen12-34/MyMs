@@ -116,7 +116,7 @@
     <nav class="indice" id="menu">
         <ul>
             <li><a href="portada publica.php">Inicio</a></li>
-            <li><a href="login.php">Iniciar sesión</a></li>
+            <li><a href="login.html">Iniciar sesión</a></li>
             <li><a href="menu.php">Menú</a></li>
             <li><a href="nosotros.php">Nosotros</a></li>
             <li>

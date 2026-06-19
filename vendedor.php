@@ -35,327 +35,400 @@ $resultado = $conexion->query($sql);
     <title>Document</title>
     <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
 
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
-        *{
-        font-family: 'Chillax-Semibold';
-    }
-        body{
-            display: grid;
-            grid-template-rows: 250px auto 100px;
-            grid-template-columns: 15% 85%;
-            grid-template-areas: 
-            "menu tit"
-            "menu text"
-            "menu foo" ;
-            min-height: 100vh;
-            margin: 0;
-        }
+        /* ==========================
+   FUENTE Y RESET
+========================== */
 
-        header{
-            grid-area: tit;
-            background-image: url(imagenes/cabecera.png);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-bottom: 5px solid #E64B6B;
-        }
-        header img{
-  animation: aparecer 1.5s ease;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Chillax-Semibold';
 }
 
-@keyframes aparecer{
-  from{
-    opacity: 0;
-    transform: scale(0.7);
-  }
-  to{
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-        #g{
-      scale: 0.5;
-    }
+/* ==========================
+   COLORES
 
-        #uno{
-            color: #EFE2DA;
-            text-align: center;
-            font-size: 100px;
-            margin: 1rem 0;
-        }
+   Morado: #6A253A
+   Rosado: #E64B6B
+   Crema : #EFE2DA
+========================== */
 
-        nav{
-            grid-area: menu;
-            background-color: #6A253A;
-            color: #EFE2DA;
-            font-family: Arial, sans-serif;
-            top: 0;
-            left: 0;
-            border-right: 5px solid #E64B6B;
-    }
-    .indice ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+body{
 
-    .indice a {
-      text-decoration: none;
-      color: #EFE2DA;
-      display: block;
-      padding: 20px;
-      transition: background-color 0.6s, color 0.6s;
-    }
+    display:grid;
 
-    .indice a:hover {
-      background-color: #E64B6B;
-      color: #EFE2DA;
-    }
-    section{
-    grid-area: text;
-    background: url(imagenes/2.png);
-    padding: 30px;
-    font-size: larger;
-}
-
-section h1{
-    margin-top: 20px;
-    color: #6A253A;
-    border-bottom: 3px solid #E64B6B;
-}
-
-section p{
-    margin-bottom: 10px;
-    font-family: Arial, sans-serif;
-    color: #6A253A;
-}
-
-section h3{
-    margin-top: 15px;
-    color: #6A253A;
-}
-
-section button{
-    margin: 10px 10px 0 0;
-    padding: 10px 15px;
-    border: none;
-    background-color: #E64B6B;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-section button:hover{
-    background-color: #c73b58;
-}
-#perfil{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-div img{
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    border-radius: 50%;
-}
-    
-    footer{
-            grid-area: foo;
-            background-color: #6A253A;
-            color: #EFE2DA;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-top: 3px solid #E64B6B;
-        }
-        a{
-            text-decoration: none;
-            color: #EFE2DA;
-        }
-        @media(max-width:800px){
-
-  body{
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto auto auto;
     grid-template-areas:
-      "tit"
-      "menu"
-      "text"
-      "foo";
-  }
+    "header"
+    "main"
+    "footer";
 
+    grid-template-rows:350px auto 200px;
 
-  header{
-    height: 180px;
-    padding: 20px;
-    text-align: center;
-  }
-
-  #g{
-    width: 250px;
-    scale: 1;
-  }
-
-
-  nav{
-    border-right: none;
-    border-bottom: 5px solid #E64B6B;
-  }
-
-  .indice ul{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .indice li{
-    flex: 1 1 120px;
-  }
-
-  .indice a{
-    padding: 15px;
-    text-align: center;
-    font-size: 15px;
-  }
-
-
-  section{
-    padding: 20px;
-    text-align: center;
-  }
-
-  section h1{
-    font-size: 30px;
-  }
-
-  section h3{
-    font-size: 22px;
-  }
-
-  section p{
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-
-  #perfil{
-    flex-direction: column-reverse;
-    align-items: center;
-    gap: 20px;
-  }
-
-  div img{
-    max-width: 220px;
-  }
-
-
-  section button{
-    width: 100%;
-    max-width: 320px;
-    margin: 8px 0;
-    padding: 12px;
-    font-size: 16px;
-  }
-
-
-  footer{
-    text-align: center;
-    padding: 15px;
-    font-size: 14px;
-  }
+    min-height:100vh;
 }
 
+/* ==========================
+   MAIN
+========================== */
+
+main{
+
+    grid-area:main;
+
+    background-image:url("imagenes/2.png");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+    padding:50px;
+
+    display:grid;
+    grid-template-columns:1fr 320px 1fr;
+    gap:30px;
+
+    align-items:start;
+}
+
+/* ==========================
+   TARJETAS
+========================== */
+
+.panel{
+
+    background:rgba(239,226,218,.92);
+
+    backdrop-filter:blur(5px);
+    -webkit-backdrop-filter:blur(5px);
+
+    padding:25px;
+
+    border-radius:20px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+
+.foto{
+
+    background:rgba(239,226,218,.92);
+
+    backdrop-filter:blur(5px);
+    -webkit-backdrop-filter:blur(5px);
+
+    padding:20px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+
+/* ==========================
+   TITULOS
+========================== */
+
+main h1{
+    color:#6A253A;
+    margin-bottom:20px;
+}
+
+main h3{
+    color:#6A253A;
+    margin-bottom:15px;
+}
+
+/* ==========================
+   BOTONES
+========================== */
+
+main button{
+
+    width:100%;
+
+    margin-bottom:12px;
+
+    padding:14px;
+
+    border:none;
+    border-radius:12px;
+
+    background:#E64B6B;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+main button:hover{
+
+    transform:translateY(-3px);
+
+    background:#c73b58;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+button a{
+
+    color:white;
+
+    text-decoration:none;
+
+    display:block;
+
+    width:100%;
+}
+
+/* ==========================
+   FOTO PERFIL
+========================== */
+
+.foto img{
+
+    width:100%;
+
+    max-width:260px;
+
+    height:260px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
+/* ==========================
+   TABLA
+========================== */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+}
+
+table td{
+
+    padding:12px;
+}
+
+table tr{
+
+    border-bottom:1px solid rgba(106,37,58,.2);
+}
+
+.titulo{
+
+    font-weight:bold;
+
+    color:#6A253A;
+}
+
+table td:last-child{
+
+    color:#444;
+}
+
+/* ==========================
+   TEXTO GENERAL
+========================== */
+
+main p{
+
+    color:#444;
+
+    line-height:1.6;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:1000px){
+
+    body{
+
+        grid-template-rows:
+        250px
+        auto
+        150px;
+    }
+
+    main{
+
+        grid-template-columns:1fr;
+
+        padding:25px;
+    }
+
+    .foto{
+
+        order:-1;
+    }
+
+    .foto img{
+
+        max-width:220px;
+
+        height:220px;
+    }
+
+    main h1{
+
+        text-align:center;
+    }
+
+    main h3{
+
+        text-align:center;
+    }
+}
+
+@media(max-width:600px){
+
+    main{
+
+        padding:15px;
+    }
+
+    .panel,
+    .foto{
+
+        padding:18px;
+    }
+
+    main button{
+
+        padding:12px;
+
+        font-size:15px;
+    }
+
+    table td{
+
+        padding:10px;
+        font-size:14px;
+    }
+}
     </style>
 </head>
-
 <body>
 
-<header>
-    <img src="imagenes/MYMS 4 SIN FONDO.png" alt="" id="g">
-</header>
+<?php include("includes/nav.php"); ?>
 
-<nav class="indice">
-    <ul>
-    <li><a href="inicio.html">Inicio</a></li>
-    <li><a href="">Clientes</a></li>
-    <li><a href="">Ventas</a></li>
-    <li><a href="cerrar.php">Cerrar Sesión</a></li>
-    </ul>
-</nav>
+<?php include("includes/header.php"); ?>
 
-<section>
-    <h1>Datos Personales</h1>
-    <div id="perfil">
+<main>
+    <div class="panel">
+
+        <h1>📦 Registros</h1>
+
+        <h3>Inventario de productos</h3>
+
+        <button>
+            <a href="Productos/readleeProductos.php">
+                Productos disponibles
+            </a>
+        </button>
+
+        <button>
+            <a href="Pedidos/leerPedidos.php">
+                Pedidos registrados
+            </a>
+        </button>
+
+    </div>
+    <div class="foto">
+
         <?php
 
-if ($resultado->num_rows > 0) {
+        switch($_SESSION['CI']){
 
-    $fila = $resultado->fetch_assoc();
-
-    echo "<table>";
-
-    echo "<tr>";
-    echo "<td class='titulo'>CI</td>";
-    echo "<td>".$fila["CI"]."</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td class='titulo'>Nombre</td>";
-    echo "<td>".$fila["Nombre"]."</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td class='titulo'>Dirección</td>";
-    echo "<td>".$fila["Direccion"]."</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td class='titulo'>Celular</td>";
-    echo "<td>".$fila["Celular"]."</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td class='titulo'>Rol</td>";
-    echo "<td>".$fila["Rol"]."</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td class='titulo'>Estado</td>";
-    echo "<td>".$fila["Estado"]."</td>";
-    echo "</tr>";
-
-    echo "</table>";
-
-} ?>
-        <div>
-            <?php
-              switch ($_SESSION['CI']){
-                case "123";
-                echo '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn57_OKTIjVTsTFKw2m-3dWGAMdiJSoCmK3-oSSVj7Ug&s" alt="">';
+            case "123":
+                echo '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn57_OKTIjVTsTFKw2m-3dWGAMdiJSoCmK3-oSSVj7Ug&s" alt="Perfil">';
                 break;
-                case "234";
-                echo '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2m2goQVl8DK0LnYv6B_CT0IKIbqRb2jqTv0yEukN4DWb4ZEt6j80pS8mX&s=10" alt="">';
-                case "321";
-                echo '<img src="https://www.nutrisslovers.com/Portals/nutrisslovers/Articulos%20Nutriss%20Gatos/gatos-unicos-guia-de-razas-y-como-nutrir-su-mundo/cuales-son-las-razas-de-gatos-mas-populares-en-colombia.jpg?ver=T9w4YcvobP-L1GXta8uTAA%3D%3D" alt="">';
-              }
-            ?>
-        </div>
-    </div>
-    <h1>REGISTROS</h1>
-    <h3>Inventario de producto:</h3>
-    <button><a href="Productos/readleeProductos.php">Productos disponibles</a></button>
-    <button><a href="Pedidos/leerPedidos.php">Pedidos registradas</a></button>
-</section>
 
-<footer>
-    <div>
-        <p>&copy; 2026 M&M's. Todos los derechos reservados.&nbsp;&nbsp;INSTAGRAM:@myms.sweetstudio</p>
+            case "234":
+                echo '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2m2goQVl8DK0LnYv6B_CT0IKIbqRb2jqTv0yEukN4DWb4ZEt6j80pS8mX&s=10" alt="Perfil">';
+                break;
+
+            case "321":
+                echo '<img src="https://www.nutrisslovers.com/Portals/nutrisslovers/Articulos%20Nutriss%20Gatos/gatos-unicos-guia-de-razas-y-como-nutrir-su-mundo/cuales-son-las-razas-de-gatos-mas-populares-en-colombia.jpg?ver=T9w4YcvobP-L1GXta8uTAA%3D%3D" alt="Perfil">';
+                break;
+
+            default:
+                echo '<img src="imagenes/perfil.png" alt="Perfil">';
+        }
+
+        ?>
+
     </div>
-</footer>
+    <div class="panel">
+
+        <h1>Datos Personales</h1>
+
+        <?php
+
+        if($resultado->num_rows > 0){
+
+            $fila = $resultado->fetch_assoc();
+
+            echo "<table>";
+
+            echo "<tr>";
+            echo "<td class='titulo'>CI</td>";
+            echo "<td>".$fila["CI"]."</td>";
+            echo "</tr>";
+
+            echo "<tr>";
+            echo "<td class='titulo'>Nombre</td>";
+            echo "<td>".$fila["Nombre"]."</td>";
+            echo "</tr>";
+
+            echo "<tr>";
+            echo "<td class='titulo'>Dirección</td>";
+            echo "<td>".$fila["Direccion"]."</td>";
+            echo "</tr>";
+
+            echo "<tr>";
+            echo "<td class='titulo'>Celular</td>";
+            echo "<td>".$fila["Celular"]."</td>";
+            echo "</tr>";
+
+            echo "<tr>";
+            echo "<td class='titulo'>Rol</td>";
+            echo "<td>".$fila["Rol"]."</td>";
+            echo "</tr>";
+
+            echo "<tr>";
+            echo "<td class='titulo'>Estado</td>";
+            echo "<td>".$fila["Estado"]."</td>";
+            echo "</tr>";
+
+            echo "</table>";
+
+        }
+
+        ?>
+
+    </div>
+
+</main>
+
+<?php include("includes/footer.php"); ?>
 
 </body>
 </html>

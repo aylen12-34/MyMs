@@ -109,14 +109,15 @@ $Estado=$_POST['Estado'];
             <?php 
             $sql="INSERT INTO Usuarios (CI,Nombre, Direccion, Celular, Rol, Estado) VALUES ('$CI','$Nombre', '$Direccion', '$Celular', '$Rol', '$Estado')";
             if ($conexion->query($sql) === TRUE) {
-                    echo "Cliente registrado correctamente";
+                    echo "
+                    registrado correctamente";
             }else{
                 echo "Hubo un error";
             }
       ?>
         </p><br>
         
-        <button class="volver" onclick="history.back()">← Volver</button><br>
+        <button class="volver"><a href="login.html">Iniciar Sesion</a></button><br>
         <button class="volver"><a href="readleerUsuarios.php">Tabla Usuarios</a></button>
     </div>
     </div>
