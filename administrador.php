@@ -35,286 +35,213 @@ $resultado = $conexion->query($sql);
     <title>Document</title>
     <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
 
-    <style>
-            *{
-        font-family: 'Chillax-Semibold';
-    }
-        body{
-            display: grid;
-            grid-template-rows: 250px auto 100px;
-      grid-template-columns: 15% 85%;
-            grid-template-areas: 
-            "menu tit"
-            "menu text"
-            "menu foo" ;
-            margin: 0;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-        header{
-            grid-area: tit;
-            background-image: url(imagenes/cabecera2.png);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-bottom: 5px solid #E64B6B;
-        }
-        header img{
-  animation: aparecer 1.5s ease;
+<style>
+/* ==========================
+   COLORES
+   morado: #6A253A
+   rosado: #E64B6B
+   crema:  #EFE2DA
+========================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Chillax-Semibold';
 }
 
-@keyframes aparecer{
-  from{
-    opacity: 0;
-    transform: scale(0.7);
-  }
-  to{
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-        #g{
-      scale: 0.5;
-    }
+body{
 
-        #uno{
-            color: #EFE2DA;
-            text-align: center;
-            font-size: 100px;
-            margin: 1rem 0;
-        }
+    display:grid;
 
-
-        nav{
-            grid-area: menu;
-            background-color: #6A253A;
-            color: #EFE2DA;
-            font-family: Arial, sans-serif;
-            top: 0;
-            left: 0;
-            border-right: 5px solid #E64B6B;
-    }
-    .indice ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .indice a {
-      text-decoration: none;
-      color: #EFE2DA;
-      display: block;
-      padding: 20px;
-      transition: background-color 0.6s, color 0.6s;
-    }
-
-    .indice a:hover {
-      background-color: #E64B6B;
-      color: #EFE2DA;
-    }
-section{
-    grid-area: text;
-    background-image: url("imagenes/2.png");
-    padding: 30px;
-    font-size: large;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-}
-
-section h1{
-    margin-top: 20px;
-    color: #6A253A;
-}
-
-section p{
-    margin-bottom: 10px;
-    font-family: Arial, sans-serif;
-    color: #6A253A;
-}
-
-section h3{
-    margin-top: 15px;
-    color: #6A253A;
-}
-
-section button{
-    margin: 10px 10px 0 0;
-    padding: 10px 15px;
-    border: none;
-    background-color: #E64B6B;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-}
-div img{
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    border-radius: 50%;
-}
-
-section button:hover{
-    background-color: #c73b58;
-}
-    
-    footer{
-            grid-area: foo;
-            background-color: #6A253A;
-            color: #EFE2DA;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-top: 3px solid #E64B6B;
-        }
-        a{
-    text-decoration:none;
-    color:#EFE2DA;
-}
-
-        @media(max-width:800px){
-
-  body{
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto auto auto;
     grid-template-areas:
-    "tit"
-    "menu"
-    "text"
-    "foo";
-  }
+    "header"
+    "main"
+    "footer";
 
-  header{
-    height: 180px;
-    padding: 20px;
-    text-align: center;
-  }
+    grid-template-rows:350px auto 200px;
 
-  #uno{
-    font-size: 45px;
-    line-height: 1.1;
-  }
-
-  header img{
-    width: 500px;
-    height: auto;
-  }
-          header img{
-  animation: aparecer 1.5s ease;
+    min-height:100vh;
 }
 
-@keyframes aparecer{
-  from{
-    opacity: 0;
-    transform: scale(0.7);
-  }
-  to{
-    opacity: 1;
-    transform: scale(1);
-  }
+/* ==========================
+   MAIN
+========================== */
+
+main{
+    grid-area: main;
+
+    background-image: url("imagenes/2.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    padding: 50px;
+
+    display: grid;
+    grid-template-columns: 1fr 350px 1fr;
+    gap: 30px;
+
+    align-items: start;
 }
 
-  nav{
-    border-right: none;
-    border-bottom: 5px solid #E64B6B;
-  }
+/* Tarjetas */
 
-  .indice ul{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+.panel{
+    background: rgba(239, 226, 218, 0.92);
+   
 
-  .indice li{
-    flex: 1 1 150px;
-  }
+    border-radius: 20px;
+    padding: 25px;
 
-  .indice a{
-    padding: 15px;
-    text-align: center;
-    font-size: 15px;
-  }
-
-  section{
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    gap: 20px;
-  }
-  .a{
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 30px; 
-    border-radius: 40px;
-    width:270px;
-  }
-  section h1{
-    font-size: 32px;
-  }
-
-  section h3{
-    font-size: 20px;
-  }
-
-  section p{
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-  div img{
-    max-width: 220px;
-  }
-
-  section button{
-    width: 100%;
-    max-width: 300px;
-    margin: 5px 0;
-    padding: 12px;
-    font-size: 16px;
-  }
-
-  footer{
-    text-align: center;
-    padding: 15px;
-    font-size: 14px;
-  }
+    box-shadow: 0 8px 25px rgba(0,0,0,.15);
 }
 
-    </style>
+/* Títulos */
+
+main h1,
+main h3{
+    color:#6A253A;
+    margin-bottom:15px;
+}
+
+/* Botones */
+
+main button{
+    width:100%;
+    margin-bottom:12px;
+
+    border:none;
+    border-radius:12px;
+
+    padding:14px;
+
+    background:#E64B6B;
+    color:white;
+
+    font-size:16px;
+    transition:.3s;
+    cursor:pointer;
+}
+
+main button:hover{
+    transform:translateY(-3px);
+    background:#c73b58;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+button a{
+    text-decoration:none;
+    color:white;
+    display:block;
+    width:100%;
+}
+
+.foto-admin{
+    background: rgba(239, 226, 218, 0.92);
+
+    border-radius:20px;
+    padding:20px;
+
+    text-align:center;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+
+#yo{
+    width:100%;
+    max-width:280px;
+
+    border-radius:20px;
+
+    object-fit:cover;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table tr{
+    border-bottom:1px solid rgba(106,37,58,.2);
+}
+
+table td{
+    padding:12px;
+}
+
+.titulo{
+    font-weight:bold;
+    color:#6A253A;
+}
+
+table td:last-child{
+    color:#444;
+}
+
+@media(max-width:1000px){
+
+    main{
+        grid-template-columns:1fr;
+    }
+
+    .foto-admin{
+        order:-1;
+    }
+}
+</style>
 </head>
-
 <body>
+     <?php include("includes/nav.php"); ?>
 
-<header>
-    <img src="imagenes/MYMS 4 SIN FONDO.png" alt="" id="g">
-</header>
+     <?php include("includes/header.php"); ?>
+<main>
 
-<nav class="indice">
-    <ul>
-    <li><a href="inicio.html">inicio</a></li>
-    <li><a href="">INFORMACION</a></li>
-    <li><a href="cerrar.php">Cerrar sesion</a></li>
-    </ul>
-</nav>
+    <div class="panel">
 
-<section>
-    <div class="a">
-    <h3>Registro de ventas:</h3><br>
-    <button><a href="Pedidos/leerPedidos.php">Ventas en proceso</a></button><br>
-    <button>Ventas Terminadas</button><br>
-    <h3>Personal:</h3><br>
-    <button><a href="Usuario/readleerUsuarios.php">Personal</a></button><br>
-    <button>Reportes</button><br>
+        <h3>📦 Registro de ventas</h3>
+
+        <button>
+            <a href="Pedidos/leerPedidos.php">
+                Pedidos en proceso
+            </a>
+        </button>
+
+        <button>
+            <a href="Pedidos/formRegistroPedidos.php">
+                Registrar pedidos
+            </a>
+        </button>
+
+        <h3>👥 Personal</h3>
+
+        <button>
+            <a href="Usuario/readleerUsuarios.php">
+                Personal registrado
+            </a>
+        </button>
+
+        <button>
+            Reportes
+        </button>
+
     </div>
 
-    <div>
-        <img src="https://images.mubicdn.net/images/cast_member/281456/cache-179563-1559374083/image-w856.jpg" alt="">
-    </div>
-    <div class="a"><b>
-    <h1>Datos Personales</h1><br>
+    <div class="foto-admin">
 
+        <img id="yo"
+        src="https://images.mubicdn.net/images/cast_member/281456/cache-179563-1559374083/image-w856.jpg"
+        alt="Administrador">
+
+    </div>
+
+    <div class="panel">
+
+        <h1>Datos Personales</h1>
     <?php
 
 if ($resultado->num_rows > 0) {
@@ -356,14 +283,10 @@ if ($resultado->num_rows > 0) {
     echo "</table>";
 
 } ?>
-    </div>
-</section>
 
-<footer>
-    <div>
-        <p>&copy; 2026 M&M's. Todos los derechos reservados.&nbsp;&nbsp;INSTAGRAM:@myms.sweetstudio</p>
     </div>
-</footer>
 
+</main>
+     <?php include("includes/footer.php"); ?>
 </body>
 </html>
