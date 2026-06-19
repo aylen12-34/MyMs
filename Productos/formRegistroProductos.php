@@ -134,7 +134,7 @@ label.error{
     <div>
         <h1>Registro de Productos</h1>
 
-        <form action="registroProductos.php" method="post">
+        <form action="registroProductos.php" method="post" onsubmit="return validar()">
 
             <label for="Codigo">Codigo:</label>
             <input type="number" id="Codigo" name="Codigo"> 
@@ -160,54 +160,70 @@ label.error{
 
         </form>
     </div>
-    <script>
-        $("form").validate({
-    rules: {
-        Codigo: {
-            required: true,
-        },
-        Nombre: {
-            required: true,
-            minlength: 3
-        },
+<script>
+    var codigo = document.getElementById("Codigo");
+    var nombre = document.getElementById("Nombre");
+    var descripcion = document.getElementById("Descripcion");
+    var precio = document.getElementById("Precio");
+    var stock = document.getElementById("Stock");
 
-        Descripcion: {
-            required: true
-        },
+    function validar() {
 
-        Precio: {
-            required: true,
-            digits: true
-        },
-
-        Stock: {
-            required: true
+        if (codigo.value == "") {
+            alert("⚠ Ingrese el código");
+            codigo.focus();
+            return false;
         }
 
-    },
-
-    messages: {
-        Codigo: {
-            required: "&#9888;Ingrese su CI",
-        },
-        Nombre: {
-            required: "&#9888;Ingrese su nombre",
-            minlength: "Mínimo 3 letras"
-        },
-
-        Descripcion: {
-            required: "&#9888;Ingrese su dirección"
-        },
-
-        Precio: {
-            required: "&#9888;Ingrese el precio",
-            digits: "Solo números"
-        },
-        Stock: {
-            required: "&#9888;Ingrese el rol"
+        if (!/^\d+$/.test(codigo.value)) {
+            alert("⚠ El código debe contener solo números");
+            codigo.focus();
+            return false;
         }
+
+        if (nombre.value == "") {
+            alert("⚠ Ingrese el nombre");
+            nombre.focus();
+            return false;
         }
-    });
-    </script>
+
+        if (nombre.value.length < 3) {
+            alert("⚠ El nombre debe tener al menos 3 letras");
+            nombre.focus();
+            return false;
+        }
+
+        if (descripcion.value == "") {
+            alert("⚠ Ingrese la descripción");
+            descripcion.focus();
+            return false;
+        }
+
+        if (precio.value == "") {
+            alert("⚠ Ingrese el precio");
+            precio.focus();
+            return false;
+        }
+
+       if (!/^\d+(\.\d{1,2})?$/.test(precio.value)) {
+            alert("⚠ Ingrese un precio válido (ej: 10 o 10.50)");
+            precio.focus();
+            return false;
+        }
+        if (stock.value == "") {
+            alert("⚠ Ingrese el stock");
+            stock.focus();
+            return false;
+        }
+
+        if (!/^\d+$/.test(stock.value)) {
+            alert("⚠ El stock debe contener solo números");
+            stock.focus();
+            return false;
+        }
+
+        return true;
+    }
+</script>
 </body>
 </html>

@@ -148,7 +148,7 @@ if ($resultado->num_rows > 0) {
 <body>
     <div>
         <h1>Editar Carrito</h1>
-    <form action="updateCarrito.php" method="post">
+    <form action="updateCarrito.php" method="post" onsubmit="return validar()">
         <label for="">ID del Producto:</label>
         <input type="text" name="Codigo" value='<?=$Codigo?>' required> <br><br>
         <label for="">Cantidad:</label>
@@ -162,5 +162,44 @@ if ($resultado->num_rows > 0) {
     </form>
     <button class="volver" onclick="history.back()">Volver</button><br>
 </div>
+<script>
+        var codigo = document.getElementById("Codigo");
+        var cantidad = document.getElementById("Cantidad");
+
+        function validar() {
+
+            if (codigo.value == "") {
+                alert("⚠ Ingrese el ID del producto");
+                codigo.focus();
+                return false;
+            }
+
+            if (!/^\d+$/.test(codigo.value)) {
+                alert("⚠ El ID del producto debe contener solo números");
+                codigo.focus();
+                return false;
+            }
+
+            if (cantidad.value == "") {
+                alert("⚠ Ingrese la cantidad");
+                cantidad.focus();
+                return false;
+            }
+
+            if (!/^\d+$/.test(cantidad.value)) {
+                alert("⚠ La cantidad debe contener solo números");
+                cantidad.focus();
+                return false;
+            }
+
+            if (parseInt(cantidad.value) <= 0) {
+                alert("⚠ La cantidad debe ser mayor a 0");
+                cantidad.focus();
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </body>
 </html>

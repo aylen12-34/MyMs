@@ -149,7 +149,7 @@ if ($resultado->num_rows > 0) {
 <body>
     <div>
         <h1>Editar Producto</h1>
-    <form action="updateEditarProductos.php" method="post">
+    <form action="updateEditarProductos.php" method="post" onsubmit="return validar()">
         <label for="Codigo">Codigo:</label>
         <input type="number" id="Codigo" name="Codigo" value='<?=$Codigo?>' required>  <br>  <br>
         <label for="Nombre">Nombre:</label>

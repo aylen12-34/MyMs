@@ -132,7 +132,7 @@ label.error{
     <div>
         <h1>Registro de Carrito</h1>
 
-        <form action="registroCarrito.php" method="post">
+        <form action="registroCarrito.php" method="post" onsubmit="return validar()">
 
             <label for="Cantidad">Cantidad:</label>
             <input type="number" id="Cantidad" name="Cantidad" required> 
@@ -146,5 +146,44 @@ label.error{
 
         </form>
     </div>
+    <script>
+        var cantidad = document.getElementById("Cantidad");
+        var costoTotal = document.getElementById("CostoTotal");
+
+        function validar() {
+
+            if (cantidad.value == "") {
+                alert("⚠ Ingrese la cantidad");
+                cantidad.focus();
+                return false;
+            }
+
+            if (!/^\d+$/.test(cantidad.value)) {
+                alert("⚠ La cantidad debe contener solo números");
+                cantidad.focus();
+                return false;
+            }
+
+            if (parseInt(cantidad.value) <= 0) {
+                alert("⚠ La cantidad debe ser mayor a 0");
+                cantidad.focus();
+                return false;
+            }
+
+            if (costoTotal.value == "") {
+                alert("⚠ Ingrese el costo total");
+                costoTotal.focus();
+                return false;
+            }
+
+            if (parseFloat(costoTotal.value) <= 0) {
+                alert("⚠ El costo total debe ser mayor a 0");
+                costoTotal.focus();
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </body>
 </html>
