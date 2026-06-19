@@ -1,40 +1,24 @@
 <?php
 $usuario = "root";
-$contraseña = "";     
+$contraseña = "";
 $direccion = "localhost";
-$baseDeDatos = "MYMS";    
+$baseDeDatos = "MYMS";
 
-$conexion=new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
+$conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
+
 if ($conexion->connect_error) {
-    
-    echo "No se ha podido conectar a la base de datos";
+    die("No se ha podido conectar a la base de datos");
 }
-session_start();
-if($_SESSION['CI']==null){
-    header("location:../login.html");
-}
-$CI=$_GET['CI'];
-$sql = "SELECT * FROM Usuarios WHERE CI='$CI'";
-$resultado = $conexion->query($sql);
-if ($resultado->num_rows > 0) {
-    while($fila=$resultado->fetch_assoc()) {
-        $CI=$fila['CI'];
-        $Nombre=$fila['Nombre'];
-        $Direccion=$fila['Direccion'];
-        $Celular=$fila['Celular'];
-        $Rol=$fila['Rol'];
-        $Estado=$fila['Estado'];
-    }
-}
-?>
 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
+    <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
 
@@ -43,7 +27,7 @@ if ($resultado->num_rows > 0) {
         font-family: 'Chillax-Semibold';
     }
         body {
-            background-image: url(../imagenes/2.png);
+            background-image: url(imagenes/2.png);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -80,34 +64,12 @@ if ($resultado->num_rows > 0) {
             color:#EFE2DA;
             padding: 10px 20px;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
         }
         input[type="submit"]:hover {
             background-color: #EFE2DA;
             color:#E64B6B;
-        }
-
-
-
-
-
-        div {
-            width: 420px;
-            padding: 35px;
-            background-color: #6A253A;
-            border: 2px solid #EFE2DA;
-            border-radius: 40px;
-            color: #EFE2DA;
-        }
-        #id{
-            background-color: #E64B6B;
-            color: #EFE2DA;
-            transition: 0.3s;
-        }
-        #id:hover{
-            background-color: #EFE2DA;
-            color: #6A253A;
         }
         .volver{
         padding: 10px 20px;
@@ -122,6 +84,14 @@ if ($resultado->num_rows > 0) {
         .volver:hover{
             background-color: #EFE2DA;
             color:#E64B6B;
+        }
+        div {
+            width: 420px;
+            padding: 35px;
+            background-color: #6A253A;
+            border: 2px solid #EFE2DA;
+            border-radius: 40px;
+            color: #EFE2DA;
         }
         @media(max-width:800px){
 
@@ -162,45 +132,32 @@ if ($resultado->num_rows > 0) {
 </head>
 <body>
     <div>
-        <h1>Editar Usuario</h1>
-    <form action="updateditarUsuario.php" method="post" onsubmit="return validar()">
-        <label for="">Carnet de Identidad</label>
-        <input type="text" name="CI" value='<?=$CI?>' required>
-        <label for="">Nombre:</label>
-        <input type="text" name="Nombre" value='<?=$Nombre?>' required>
-        <br>
-        <label for="">Dirección:</label>
-        <input type="text" name="Direccion" value='<?=$Direccion?>' required>
-        <br>
-        <label for="">Celular:</label>
-        <input type="text" name="Celular" value='<?=$Celular?>' required>
-        <br>
-        <label for="">Rol:</label>
-        <input type="text" name="Rol" value='<?=$Rol?>' required>
-        <br>
-        <label for="">Estado:</label>
-        <input type="text" name="Estado" value='<?=$Estado?>' required>
-        <br>
-        <input type="submit" value="Editar">
-    </form>
-    <button class="volver" onclick="history.back()">
-         Volver</button><br>
-</div>
-<script>
-    var a=document.getElementByName("CI");
-    var a=document.getElementByName("Nombre");
-    var a=document.getElementByName("Dirección");
-    var a=document.getElementByName("Celular");
-    var a=document.getElementByName("CI");
-    var a=document.getElementByName("CI");
+        <h1>Registro de Usuario</h1>
+    
+        <form action="registroUsuario.php" method="POST" >
+            <label for="CI">CI:</label>
+            <input type="number" id="CI" name="CI"> <br> <br>
+            <label for="Nombre">Nombre:</label>
+            <input type="text" id="Nombre" name="Nombre"><br><br>
+            <label for="Direccion">Dirección:</label>
+            <input type="text" id="Direccion" name="Direccion"><br><br>
+            <label for="Celular">Celular:</label>
+            <input type="text" id="Celular" name="Celular"><br><br>
+            <label for="Rol">Rol:</label>
+            <input type="text" id="Rol" name="Rol"><br><br>
+            <label for="Estado">Estado:</label>
+            <input type="text" id="Estado" name="Estado"><br><br>
+            <input type="submit" value="Registrar Usuario">
 
-</script>
-   <script>
+        </form>
+        <button class="volver" onclick="history.back()">← Volver</button>
+    </div>
+    <script>
         $("form").validate({
     rules: {
         CI: {
             required: true,
-            digits: true
+            number: true
         },
         Nombre: {
             required: true,
@@ -230,7 +187,7 @@ if ($resultado->num_rows > 0) {
     messages: {
         CI: {
             required: "Ingrese su CI",
-            digits:"Solo números"
+            number:"Solo números"
         },
         Nombre: {
             required: "Ingrese su nombre",
