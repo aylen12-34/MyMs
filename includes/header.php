@@ -3,7 +3,7 @@
     header{
         grid-area:header;
 
-background-image: url("imagenes/cabeceraorg.png");
+background-image: url("imagenes/ENCABEZADO.png");
 
         background-size:cover;
         background-repeat:no-repeat;

@@ -327,7 +327,7 @@ main p{
 </head>
 <body>
 
-<?php include("includes/nav.php"); ?>
+<?php include("includes/navpro.php"); ?>
 
 <?php include("includes/header.php"); ?>
 

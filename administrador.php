@@ -196,7 +196,7 @@ table td:last-child{
 </style>
 </head>
 <body>
-     <?php include("includes/nav.php"); ?>
+     <?php include("includes/navpro.php"); ?>
 
      <?php include("includes/header.php"); ?>
 <main>
