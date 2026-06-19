@@ -162,7 +162,7 @@ if ($resultado->num_rows > 0) {
         <input type="text" id="Stock" name="Stock" value='<?=$Stock?>' required>  <br>  <br>
         <input type="submit" value="Editar">
     </form>
-    <button class="volver" onclick="history.back()">← Volver</button><br>
+    <button class="volver" onclick="history.back()">Volver</button><br>
     </div>
     <script>
         $("form").validate({

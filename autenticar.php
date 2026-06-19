@@ -27,6 +27,9 @@ if ($resultado->num_rows > 0) {
         }
     }
 }else{
-    header("location:login.html");
+   echo "<script>
+        alert('❌ Usuario o contraseña incorrectos');
+        window.location.href='login.php';
+    </script>";
 }
 ?>

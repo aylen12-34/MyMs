@@ -1,43 +1,118 @@
 <?php
 $usuario = "root";
-$contraseña = "";     
+$contraseña = "";
 $direccion = "localhost";
-$baseDeDatos = "MYMS";    
+$baseDeDatos = "MYMS";
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actualización Carrito</title>
+
+<link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
+
+<style>
+*{
+    font-family: 'Chillax-Semibold';
+}
+
+body {
+    background-image: url(../imagenes/2.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px 0;
+}
+
+.card {
+    width: 420px;
+    padding: 35px;
+    background-color: #6A253A;
+    border: 2px solid #EFE2DA;
+    border-radius: 40px;
+    color: #EFE2DA;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    color: #EFE2DA;
+    border-radius: 5px;
+    background: #E64B6B;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #EFE2DA;
+    color: #6A253A;
+}
+
+@media(max-width:800px){
+    .card{
+        width: 100%;
+        max-width: 320px;
+        padding: 25px;
+        border-radius: 25px;
+    }
+
+    .btn{
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+</style>
+
 </head>
+
 <body>
-    <div>
-        <h2>Actualizacion Carrito</h2>
-        <p>
-            <?php 
-            $conexion=new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
-if ($conexion->connect_error) {
-    echo "Hubo un error al conectar a la base de datos";
-}
-$Cantidad=$_POST['Cantidad'];
-$CostoTotal=$_POST['CostoTotal'];
-$ID_Producto=$_POST['ID_Producto'];
-$sql="UPDATE Carrito SET Cantidad='$Cantidad', CostoTotal='$CostoTotal'";
-if ($conexion->query($sql) === TRUE) {
-    echo "Se edito el producto correctamente";
-    
-} else {
-    echo "Error al actualizar el producto: " . $conexion->error;
-}
-      ?>
-        </p><br>
-      
-        <button class="volver"><a href="readleerCarrito.php">Tabla Carrito</a></button>
-    </div>
-    </div>
+
+<div class="card">
+    <h2>Actualización Carrito</h2>
+
+    <p>
+    <?php
+    $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
+
+    if ($conexion->connect_error) {
+        die("Error de conexión");
+    }
+
+    $Cantidad = $_POST['Cantidad'];
+    $CostoTotal = $_POST['CostoTotal'];
+    $ID_Producto = $_POST['ID_Producto'];
+    $sql = "UPDATE Carrito 
+            SET Cantidad='$Cantidad', 
+                CostoTotal='$CostoTotal'
+            WHERE ID_Producto='$ID_Producto'";
+
+    if ($conexion->query($sql) === TRUE) {
+        echo "Carrito actualizado correctamente";
+    } else {
+        echo "Error al actualizar: " . $conexion->error;
+    }
+    ?>
+    </p>
+
+    <a class="btn" href="readleerCarrito.php">Tabla Carrito</a>
+</div>
+
 </body>
 </html>

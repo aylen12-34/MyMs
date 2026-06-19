@@ -92,7 +92,8 @@
 }
     </style>
 </head>
-<body><div>
+<body>
+    <div>
     <h1>Iniciar Sesión</h1>
     <form action="autenticar.php" method="POST" >
             <label for="CI">CI:</label>
