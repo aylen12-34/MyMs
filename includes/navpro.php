@@ -112,11 +112,15 @@
 
     <nav class="indice" id="menu">
         <ul>
-            <li><a href="">Mi Portada</a></li>
+            <li><a>Mi Portada</a></li>
             <li><a href="login.php">Iniciar sesión</a></li>
-            <li><a href="nosotros.php">Actualizar perfil</a></li>
-            <li><a href="nosotros.php">Historial</a></li>
+            <li><a href="">Historial</a></li>
             <li><a href="cerrar.php">Cerrar sesion</a></li>
+            <li>
+                <a href="Pedidos/formRegistroPedidos.php">
+                    <img src="https://cdn-icons-png.freepik.com/512/9341/9341730.png" id="compra" alt="Carrito">
+                </a>
+            </li>
         </ul>
     </nav>
 
