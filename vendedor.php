@@ -380,9 +380,7 @@ main p{
     <div class="panel">
 
         <h1>Datos Personales</h1>
-
         <?php
-
         if($resultado->num_rows > 0){
 
             $fila = $resultado->fetch_assoc();
@@ -424,7 +422,7 @@ main p{
         }
 
         ?>
-
+        <button><a href="Usuario/formUpdateUsuario.php">Editar</a></button>
     </div>
 
 </main>

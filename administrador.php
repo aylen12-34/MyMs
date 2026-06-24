@@ -12,12 +12,12 @@ if ($conexion->connect_error) {
 }
 session_start();
 if($_SESSION['CI']==null){
-    header("location:login.html");
+    header("location:login.php");
 }else {
   if($_SESSION['Rol']=="administrador"){
     $CI = $_SESSION['CI'];
   } else{
-    header("location:login.html");
+    header("location:login.php");
   }
 }
 
@@ -203,27 +203,9 @@ table td:last-child{
 
     <div class="panel">
 
-        <h3>📦 Registro de ventas</h3>
-
-        <button>
-            <a href="Pedidos/leerPedidos.php">
-                Pedidos en proceso
-            </a>
-        </button>
-
-        <button>
-            <a href="Pedidos/formRegistroPedidos.php">
-                Registrar pedidos
-            </a>
-        </button>
-
         <h3>👥 Personal</h3>
 
-        <button>
-            <a href="Usuario/readleerUsuarios.php">
-                Personal registrado
-            </a>
-        </button>
+        <?php include("includes/leerUsuarios.php"); ?>
 
         <button>
             Reportes
