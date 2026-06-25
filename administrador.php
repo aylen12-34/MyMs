@@ -265,7 +265,7 @@ if ($resultado->num_rows > 0) {
     echo "</table>";
 
 } ?>
-
+<button><a href="Usuario/formUpdateUsuario.php">Editar</a></button>
     </div>
 
 </main>
