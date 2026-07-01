@@ -40,10 +40,6 @@ $resultado = $conexion->query($sql);
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* ==========================
-   FUENTE Y RESET
-========================== */
-
 *{
     margin:0;
     padding:0;
