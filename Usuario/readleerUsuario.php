@@ -11,7 +11,7 @@ if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
 
-$CI = $_POST['CI'];
+$CI = $_GET['CI'];
 
 $sql = "SELECT * FROM Usuarios WHERE CI='$CI'";
 $resultado = $conexion->query($sql);
