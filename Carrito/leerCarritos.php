@@ -204,6 +204,9 @@ button{
 <body>
 
 <div >
+    <?php 
+    //no funciona aun
+    include("../includes/carrito.php"); ?>
 
     <h2>Lista de Productos</h2>
 
