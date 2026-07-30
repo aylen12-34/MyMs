@@ -5,6 +5,9 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
 -- Schema MYMS
 -- -----------------------------------------------------
 
@@ -19,10 +22,10 @@ USE `MYMS` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `MYMS`.`Productos` (
   `Codigo` INT NOT NULL AUTO_INCREMENT,
-  `Nombre` VARCHAR(45) NULL,
-  `Descripcion` VARCHAR(45) NULL,
-  `Precio` VARCHAR(45) NULL,
-  `Stock` VARCHAR(45) NULL,
+  `Nombre` VARCHAR(45) NULL DEFAULT NULL,
+  `Descripcion` VARCHAR(45) NULL DEFAULT NULL,
+  `Precio` VARCHAR(45) NULL DEFAULT NULL,
+  `Stock` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`Codigo`))
 ENGINE = InnoDB;
 
@@ -32,11 +35,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `MYMS`.`Usuarios` (
   `CI` INT NOT NULL AUTO_INCREMENT,
-  `Nombre` VARCHAR(45) NULL,
-  `Direccion` VARCHAR(45) NULL,
-  `Celular` VARCHAR(45) NULL,
-  `Rol` VARCHAR(45) NULL,
-  `Estado` VARCHAR(45) NULL,
+  `Nombre` VARCHAR(45) NULL DEFAULT NULL,
+  `Direccion` VARCHAR(45) NULL DEFAULT NULL,
+  `Celular` VARCHAR(45) NULL DEFAULT NULL,
+  `Rol` VARCHAR(45) NULL DEFAULT NULL,
+  `Estado` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`CI`))
 ENGINE = InnoDB;
 
@@ -46,10 +49,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `MYMS`.`Pedidos` (
   `ID` INT NOT NULL AUTO_INCREMENT,
-  `Nombre` VARCHAR(45) NULL,
-  `Fecha` DATE NULL,
-  `Estado` VARCHAR(45) NULL,
-  `NombreVendedor` VARCHAR(45) NULL,
+  `Nombre` VARCHAR(45) NULL DEFAULT NULL,
+  `Fecha` DATE NULL DEFAULT NULL,
+  `Estado` VARCHAR(45) NULL DEFAULT NULL,
+  `NombreVendedor` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`ID`))
 ENGINE = InnoDB;
 
@@ -60,8 +63,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `MYMS`.`Carrito` (
   `Productos_Codigo` INT NOT NULL,
   `Pedidos_ID` INT NOT NULL,
-  `Cantidad` INT NULL,
-  `CostoTotal` INT NULL,
+  `Cantidad` INT NULL DEFAULT NULL,
+  `CostoTotal` INT NULL DEFAULT NULL,
   PRIMARY KEY (`Productos_Codigo`, `Pedidos_ID`),
   INDEX `fk_Productos_has_Pedidos_Pedidos1_idx` (`Pedidos_ID` ASC) ,
   INDEX `fk_Productos_has_Pedidos_Productos1_idx` (`Productos_Codigo` ASC) ,
@@ -71,6 +74,24 @@ CREATE TABLE IF NOT EXISTS `MYMS`.`Carrito` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Productos_has_Pedidos_Pedidos1`
+    FOREIGN KEY (`Pedidos_ID`)
+    REFERENCES `MYMS`.`Pedidos` (`ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `MYMS`.`Ventas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `MYMS`.`Ventas` (
+  `Pedidos_ID` INT NOT NULL AUTO_INCREMENT,
+  `Costototal` INT NULL DEFAULT NULL,
+  `Estado` VARCHAR(45) NULL DEFAULT NULL,
+  `Metodo` VARCHAR(45) NULL DEFAULT NULL,
+  INDEX `fk_Ventas_Pedidos1_idx` (`Pedidos_ID` ASC) ,
+  PRIMARY KEY (`Pedidos_ID`),
+  CONSTRAINT `fk_Ventas_Pedidos1`
     FOREIGN KEY (`Pedidos_ID`)
     REFERENCES `MYMS`.`Pedidos` (`ID`)
     ON DELETE NO ACTION
