@@ -206,7 +206,10 @@ button{
 <div >
     <?php 
     //no funciona aun
-    include("../includes/carrito.php"); ?>
+    ?>
+    <div id="resultado">
+
+    </div>
 
     <h2>Lista de Productos</h2>
 
@@ -239,7 +242,9 @@ button{
                 echo "<input type='hidden' value=".$fila["Codigo"]." name='Codigo'>";
                 echo "<input type='hidden' value=".$Pedidos_ID." name='Pedidos_ID'>";
                 echo "<input type='hidden' value=".$fila["Precio"]." name='Precio'>";
-                echo "<td><input type='submit' value='Agregar'></td>";
+                ?><button onclick="buscarProducto()"><?php echo "<td><input type='submit' value='Agregar'></td>";?></button>
+                <script src="script.js"></script>
+                <?php
                 echo "</tr>";
                 echo "</form>";
             }

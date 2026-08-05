@@ -23,6 +23,7 @@ resu =resu+ `
 <h3>${producto.nombre}</h3>
 <img src="img/img/productos/${producto.imagen}" width="100">
 
+
 <p>
 Descripción: ${producto.descripcion}
 </p>

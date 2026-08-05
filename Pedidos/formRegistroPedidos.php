@@ -152,7 +152,9 @@ label.error{
             <br><br>
 
             <label for="Estado">Estado:</label>
-            <input type="text" id="Estado" name="Estado">
+            <select name="Estado" id="Estado">
+                <option value="pendiente">Pendiente</option>
+            </select>
             <br><br>
 
             <label for="NombreVendedor">NombreVendedor:</label>

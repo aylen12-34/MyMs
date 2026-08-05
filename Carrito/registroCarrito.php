@@ -107,7 +107,6 @@ $total=$precio*$cantidad;
         ON DUPLICATE key update
             Cantidad = Cantidad + Values(Cantidad),
             CostoTotal = CostoTotal + Values(CostoTotal)";
-
         if($conexion->query($sql) === TRUE){
             header ("location:leerCarritos.php?Pedidos_ID=".$Pedidos_ID);
             }
