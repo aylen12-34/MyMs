@@ -16,7 +16,7 @@ require "bdVentas.php";
     <div>
         <h1>Registro de Ventas</h1>
 
-        <form action="registroVentas.php" method="post" onsubmit="return validar()">
+        <form action="registroVentas.php" method="post">
             <label for="Pedidos_ID">ID del Pedido:</label>
             <input type="number" id="Pedidos_ID" name="Pedidos_ID">
             <br><br>
