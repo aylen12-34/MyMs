@@ -1,5 +1,16 @@
 <?php
 require "bdVentas.php"; 
+session_start();
+if($_SESSION['CI']==null){
+    header("location:../login.html");
+}else {
+  if($_SESSION['Rol']=="administrador"){
+    $CI = $_SESSION['CI'];
+  } else{
+    header("location:../login.html");
+  }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
