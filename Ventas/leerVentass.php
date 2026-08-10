@@ -2,20 +2,11 @@
 require "bdVentas.php";
 session_start();
 
-// Control de acceso seguro
 if (($_SESSION['CI'] ?? null) === null) {
-    // Si no inició sesión, va al login
     header("location: ../login.html");
     exit();
-} else {
-    if (($_SESSION['Rol'] ?? null) === "administrador") {
-        $CI = $_SESSION['CI'];
-    } else {
-        // Si inició sesión pero NO es administrador, va a vendedor.php
-        header("location: ../vendedor.php");
-        exit();
-    }
 }
+
 $CI = $_SESSION['CI'];
 
 $sql = "SELECT * FROM Ventas";
@@ -184,7 +175,7 @@ $resultado = $conexion->query($sql);
             <th>Costo Total</th>
             <th>Estado</th>
             <th>Método</th>
-            <th>Vendedor</th> <!-- Agregada la columna faltante -->
+            <th>Vendedor</th>
             <th>Acciones</th>
         </tr>
 
@@ -200,10 +191,8 @@ $resultado = $conexion->query($sql);
                 echo "<td>" . $fila['NombreVendedor'] . "</td>";
                 echo "<td>";
                 
-                // Botón común
                 echo "<a href='leerVenta.php?ID=$ID'><button class='mostrar'>Mostrar</button></a> ";
 
-                // Condicional evaluado correctamente fuera de comillas de echo
                 if ($_SESSION['Rol'] === "administrador") {
                     echo "<a href='formupdateVentas.php?ID=$ID'><button class='editar'>Editar</button></a> ";
                     echo "<a href='eliminarVentas.php?ID=$ID'><button class='eliminar'>Eliminar</button></a>";
