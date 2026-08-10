@@ -1,4 +1,4 @@
--- MySQL Workbench Forward Engineering
+ -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
@@ -85,22 +85,18 @@ ENGINE = InnoDB;
 -- Table `MYMS`.`Ventas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `MYMS`.`Ventas` (
-    `ID` INT NOT NULL AUTO_INCREMENT,
-    `Pedidos_ID` INT NOT NULL,
-    `Costototal` DECIMAL(10,2) DEFAULT NULL,
-    `Estado` VARCHAR(45) DEFAULT NULL,
-    `Metodo` VARCHAR(45) DEFAULT NULL,
-
-    PRIMARY KEY (`ID`),
-
-    INDEX `fk_Ventas_Pedidos1_idx` (`Pedidos_ID` ASC),
-
-    CONSTRAINT `fk_Ventas_Pedidos1`
-        FOREIGN KEY (`Pedidos_ID`)
-        REFERENCES `MYMS`.`Pedidos` (`ID`)
-        ON DELETE NO ACTION
-        ON UPDATE NO ACTION
-)
+  `ID` INT NOT NULL AUTO_INCREMENT,
+  `Pedidos_ID` INT NOT NULL,
+  `Costototal` DECIMAL(10,2) NULL DEFAULT NULL,
+  `Estado` VARCHAR(45) NULL DEFAULT NULL,
+  `Metodo` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  INDEX `fk_Ventas_Pedidos1_idx` (`Pedidos_ID` ASC) ,
+  CONSTRAINT `fk_Ventas_Pedidos1`
+    FOREIGN KEY (`Pedidos_ID`)
+    REFERENCES `MYMS`.`Pedidos` (`ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
