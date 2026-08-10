@@ -191,7 +191,7 @@ $resultado = $conexion->query($sql);
                 echo "<td>" . $fila['NombreVendedor'] . "</td>";
                 echo "<td>";
                 
-                echo "<a href='leerVenta.php?ID=$ID'><button class='mostrar'>Mostrar</button></a> ";
+                echo "<a href='leerVentas.php?ID=$ID'><button class='mostrar'>Mostrar</button></a> ";
 
                 if ($_SESSION['Rol'] === "administrador") {
                     echo "<a href='formupdateVentas.php?ID=$ID'><button class='editar'>Editar</button></a> ";

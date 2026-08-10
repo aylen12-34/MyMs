@@ -1,7 +1,7 @@
 <?php
 require "bdVentas.php";
-$Pedidos_ID=$_GET['Pedidos_ID'];
-$sql = "SELECT * FROM Ventas WHERE Pedidos_ID='$Pedidos_ID'";
+$ID=$_GET['ID'];
+$sql = "SELECT * FROM Ventas WHERE ID='$ID'";
 $resultado = $conexion->query($sql);
 ?>
 <!DOCTYPE html>
