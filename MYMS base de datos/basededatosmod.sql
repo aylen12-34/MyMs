@@ -85,17 +85,22 @@ ENGINE = InnoDB;
 -- Table `MYMS`.`Ventas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `MYMS`.`Ventas` (
-  `Pedidos_ID` INT NOT NULL AUTO_INCREMENT,
-  `Costototal` INT NULL DEFAULT NULL,
-  `Estado` VARCHAR(45) NULL DEFAULT NULL,
-  `Metodo` VARCHAR(45) NULL DEFAULT NULL,
-  INDEX `fk_Ventas_Pedidos1_idx` (`Pedidos_ID` ASC) ,
-  PRIMARY KEY (`Pedidos_ID`),
-  CONSTRAINT `fk_Ventas_Pedidos1`
-    FOREIGN KEY (`Pedidos_ID`)
-    REFERENCES `MYMS`.`Pedidos` (`ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    `ID` INT NOT NULL AUTO_INCREMENT,
+    `Pedidos_ID` INT NOT NULL,
+    `Costototal` DECIMAL(10,2) DEFAULT NULL,
+    `Estado` VARCHAR(45) DEFAULT NULL,
+    `Metodo` VARCHAR(45) DEFAULT NULL,
+
+    PRIMARY KEY (`ID`),
+
+    INDEX `fk_Ventas_Pedidos1_idx` (`Pedidos_ID` ASC),
+
+    CONSTRAINT `fk_Ventas_Pedidos1`
+        FOREIGN KEY (`Pedidos_ID`)
+        REFERENCES `MYMS`.`Pedidos` (`ID`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION
+)
 ENGINE = InnoDB;
 
 
