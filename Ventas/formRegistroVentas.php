@@ -1,6 +1,7 @@
 <?php
 require "bdVentas.php";
-?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
