@@ -1,11 +1,12 @@
 <?php
 require "bdVentas.php";
 
-$Pedidos_ID=$_GET['Pedidos_ID'];
-$sql = "SELECT * FROM Ventas WHERE Pedidos_ID='$Pedidos_ID'";
+$ID=$_GET['ID'];
+$sql = "SELECT * FROM Ventas WHERE ID='$ID'";
 $resultado = $conexion->query($sql);
 if ($resultado->num_rows > 0) {
     while($fila=$resultado->fetch_assoc()) {
+        $ID=$fila['ID'];    
         $Pedidos_ID=$fila['Pedidos_ID'];
         $Costototal=$fila['Costototal'];
         $Estado=$fila['Estado'];

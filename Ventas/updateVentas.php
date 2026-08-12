@@ -111,12 +111,13 @@ if($_SESSION['CI']==null){
         <h2>Actualizacion de Ventas</h2>
         <p>
  <?php 
+ $ID=$_POST['ID'];
 $Pedidos_ID=$_POST['Pedidos_ID'];
 $Costototal=$_POST['Costototal'];
 $Estado=$_POST['Estado'];
 $Metodo=$_POST['Metodo'];
 $NombreVendedor=$_POST['NombreVendedor'];  
-$sql="UPDATE Pedidos SET Costototal='$Costototal', Estado='$Estado', Metodo='$Metodo', NombreVendedor='$NombreVendedor' WHERE Pedidos_ID='$Pedidos_ID'";
+$sql="UPDATE Ventas SET Costototal='$Costototal', Estado='$Estado', Metodo='$Metodo', NombreVendedor='$NombreVendedor' WHERE ID='$ID'";
 if ($conexion->query($sql) === TRUE) {
     echo "Se edito el pedido correctamente";
     
