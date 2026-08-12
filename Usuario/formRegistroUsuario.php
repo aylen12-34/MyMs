@@ -144,7 +144,10 @@ if ($conexion->connect_error) {
             <label for="Celular">Celular:</label>
             <input type="text" id="Celular" name="Celular"><br><br>
             <label for="Rol">Rol:</label>
-            <input type="text" id="Rol" name="Rol"><br><br>
+            <select name="Rol" id="Rol">
+                <option value="vendedor">vendedor</option>
+                <option value="administrador">administrador</option>
+            </select><br><br>
             <label for="Estado">Estado:</label>
             <input type="text" id="Estado" name="Estado"><br><br>
             <input type="submit" value="Registrar Usuario">
