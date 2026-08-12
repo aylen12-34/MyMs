@@ -13,6 +13,7 @@ $Codigo = $_POST["Codigo"];
 $Pedidos_ID = $_POST['Pedidos_ID'];
 $cantidad = $_POST["cantidad"];
 $precio = $_POST["Precio"];
+$Stock = $_POST["Stock"] - $cantidad;
 $total=$precio*$cantidad;
 
 
@@ -107,6 +108,7 @@ $total=$precio*$cantidad;
         ON DUPLICATE key update
             Cantidad = Cantidad + Values(Cantidad),
             CostoTotal = CostoTotal + Values(CostoTotal)";
+        $sql = "UPDATE Productos SET Stock='$Stock' WHERE Codigo='$Codigo'";
         if($conexion->query($sql) === TRUE){
             header ("location:leerCarritos.php?Pedidos_ID=".$Pedidos_ID);
             }

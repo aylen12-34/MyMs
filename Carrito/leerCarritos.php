@@ -10,15 +10,7 @@ if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
 session_start();
-if($_SESSION['CI']==null){
-    header("location:../login.html");
-} else {
-  if($_SESSION['Rol']=="vendedor"){
-    $CI = $_SESSION['CI'];
-  } else{
-    header("location:../login.html");
-  }
-}
+
 $Pedidos_ID=$_GET['Pedidos_ID'];
 $sql = "SELECT * FROM Productos";
 
