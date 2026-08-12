@@ -12,6 +12,6 @@
 
     <div id="resultado"></div>
 
-    <script src="Ajax/js/script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
