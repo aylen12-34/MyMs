@@ -194,6 +194,7 @@ button{
             <th>Codigo</th>
             <th>Nombre</th>
             <th>Descripción</th>
+            <th>imagen</th>
             <th>Precio</th>
             <th>Stock</th>
             <th>Acciones</th>
@@ -210,6 +211,7 @@ button{
                 echo "<td>".$fila["Codigo"]."</td>";
                 echo "<td>".$fila["Nombre"]."</td>";
                 echo "<td>".$fila["Descripcion"]."</td>";
+                echo "<td>".'<img src="../imagenes/${productos.imagen}?>" width="100">'."</td>";
                 echo "<td>".$fila["Precio"]."</td>";
                 echo "<td>".$fila["Stock"]."</td>";
 

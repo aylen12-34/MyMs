@@ -150,7 +150,6 @@ label.error{
             <label for="Fecha">Fecha:</label>
             <input type="date" id="Fecha" name="Fecha" value='<?php echo date('Y-m-d');?>' readonly>
             <br><br>
-
             <label for="Estado">Estado:</label>
             <select name="Estado" id="Estado">
                 <option value="pendiente">Pendiente</option>

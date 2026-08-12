@@ -148,6 +148,10 @@ label.error{
             <input type="text" id="Descripcion" name="Descripcion">
             <br><br>
 
+            <label for="imagen">Producto</label>
+            <input type="file" name="imagen" accept="image/*">
+            <br><br>
+
             <label for="Precio">Precio:</label>
             <input type="text" id="Precio" name="Precio">
             <br><br>
