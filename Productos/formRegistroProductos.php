@@ -70,6 +70,20 @@ if($_SESSION['CI']==null){
         background-color: #EFE2DA;
         color:#E64B6B;
     }
+    input[type="file"]::file-selector-button {
+    padding: 8px 15px;
+    background-color: #E64B6B;
+    color: #EFE2DA;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: 'Chillax-Semibold';
+    margin-right: 10px;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #6A253A;
+}
 
     div {
         width: 420px;
