@@ -2,7 +2,7 @@
 require "bdVentas.php";
 session_start();
 
-if (($_SESSION['CI'] ?? null) === null) {
+if (!isset($_SESSION['CI'])) {
     header("location: ../login.html");
     exit();
 }
