@@ -3,7 +3,7 @@
 function buscarProducto(){
 
 /*envia  le dice javascript,ve al servidor y pide este archivo, el navegador llama a php sin recargar la pagina*/
-fetch("Prouctos/productos.php")
+fetch("Productos/productos.php")
 
 /*recibe la respuesta en datos y json lo transforma a un objeto en javascript antes nombre:mouse despues producto.nombre*/
 .then(respuesta => respuesta.json())
@@ -20,7 +20,7 @@ datos.forEach(productos => {
 
 html += `
 
-<h3>${producto.nombre}</h3>
+<h3>${productos.Nombre}</h3>
 <img src="img/productos/${productos.imagen}" width="100">
 
 <p>
