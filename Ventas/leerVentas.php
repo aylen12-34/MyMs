@@ -138,7 +138,7 @@ if ($resultado->num_rows > 0) {
 
     echo "<tr>";
     echo "<td class='titulo'>NombreVendedor</td>";
-    echo "<td>".$fila["NombreVendedor"]."</td>";
+    echo "<td>".$fila["Nombre"]."</td>";
     echo "</tr>";
 
     echo "</table>";
