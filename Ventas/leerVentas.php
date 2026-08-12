@@ -1,158 +1,187 @@
 <?php
+session_start();
 require "bdVentas.php";
-$ID=$_GET['ID'];
+
+if (!isset($_GET['ID'])) {
+    die("No se recibió el ID de la venta.");
+}
+
+$ID = $_GET['ID'];
+
 $sql = "SELECT * FROM Ventas WHERE ID='$ID'";
 $resultado = $conexion->query($sql);
+
+if (!$resultado) {
+    die("Error en la consulta: " . $conexion->error);
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Mostrar Usuario</title>
+    <title>Mostrar Venta</title>
+
     <link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
 
     <style>
-*{
-    font-family: 'Chillax-Semibold';
-    box-sizing: border-box;
-}
 
-body{
-    background-image: url(../imagenes/2.png);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-}
+        * {
+            font-family: 'Chillax-Semibold';
+            box-sizing: border-box;
+        }
 
-div{
-    width: 95%;
-    max-width: 1200px;
-    padding: 35px;
-    background-color: #6A253A;
-    border: 2px solid #EFE2DA;
-    border-radius: 30px;
-    color: #EFE2DA;
-}
+        body {
+            background-image: url('../imagenes/2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
 
-h2{
-    text-align: center;
-    margin-bottom: 25px;
-    font-size: 32px;
-}
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-table{
-    width: 100%;
-    border-collapse: collapse;
-    overflow: hidden;
-    border-radius: 15px;
-}
+            min-height: 100vh;
+            margin: 0;
+        }
 
-th{
-    background-color: #E64B6B;
-    color: #EFE2DA;
-    padding: 14px;
-    font-size: 15px;
-}
+        .contenedor {
+            width: 95%;
+            max-width: 1200px;
+            padding: 35px;
 
-td{
-    padding: 14px;
-    text-align: center;
-    border-bottom: 1px solid rgba(239, 226, 218, 0.2);
-    color: #EFE2DA;
-}
+            background-color: #6A253A;
+            border: 2px solid #EFE2DA;
+            border-radius: 30px;
 
-tr{
-    background-color: rgba(255,255,255,0.04);
-    transition: 0.3s;
-}
+            color: #EFE2DA;
+        }
 
-tr:hover{
-    background-color: rgba(230, 75, 107, 0.25);
-}
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 32px;
+        }
 
-button{
-    padding: 8px 14px;
-    margin: 3px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-    color: #EFE2DA;
-}
-#id{
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        th {
             background-color: #E64B6B;
             color: #EFE2DA;
+            padding: 14px;
+            font-size: 15px;
+        }
+
+        td {
+            padding: 14px;
+            text-align: center;
+            border-bottom: 1px solid rgba(239, 226, 218, 0.2);
+            color: #EFE2DA;
+        }
+
+        tr {
+            background-color: rgba(255,255,255,0.04);
             transition: 0.3s;
         }
-        #id:hover{
-            background-color: #EFE2DA;
-            color: #6A253A;
-        }
-        .volver{
-        padding: 10px 20px;
-        border: none;
-        color: #EFE2DA;
-        border-radius: 5px;
-        background: #E64B6B;
-        cursor: pointer;
-        font-size: 16px;
+
+        tr:hover {
+            background-color: rgba(230, 75, 107, 0.25);
         }
 
-        .volver:hover{
-            background-color: #EFE2DA;
-            color:#E64B6B;
+        .titulo {
+            background-color: #E64B6B;
+            font-weight: bold;
         }
-</style>
+
+        .volver {
+            padding: 10px 20px;
+            border: none;
+            color: #EFE2DA;
+            border-radius: 5px;
+            background: #E64B6B;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .volver:hover {
+            background-color: #EFE2DA;
+            color: #E64B6B;
+        }
+
+    </style>
 </head>
+
 <body>
 
-<div>
+<div class="contenedor">
 
-<h2>Datos del Usuario</h2>
+    <h2>Datos de la Venta</h2>
 
-<?php
-if ($resultado->num_rows > 0) {
+    <?php
 
-    $fila = $resultado->fetch_assoc();
+    if ($resultado->num_rows > 0) {
 
-    echo "<table>";
+        $fila = $resultado->fetch_assoc();
 
-    echo "<tr>";
-    echo "<td class='titulo'>Costototal</td>";
-    echo "<td>".$fila["Costototal"]."</td>";
-    echo "</tr>";
+        echo "<table>";
 
-    echo "<tr>";
-    echo "<td class='titulo'>Estado</td>";
-    echo "<td>".$fila["Estado"]."</td>";
-    echo "</tr>";
+        echo "<tr>";
+        echo "<td class='titulo'>ID de Venta</td>";
+        echo "<td>" . $fila["ID"] . "</td>";
+        echo "</tr>";
 
-    echo "<tr>";
-    echo "<td class='titulo'>Metodo</td>";
-    echo "<td>".$fila["Metodo"]."</td>";
-    echo "</tr>";
+        echo "<tr>";
+        echo "<td class='titulo'>ID del Pedido</td>";
+        echo "<td>" . $fila["Pedidos_ID"] . "</td>";
+        echo "</tr>";
 
-    echo "<tr>";
-    echo "<td class='titulo'>NombreVendedor</td>";
-    echo "<td>".$fila["Nombre"]."</td>";
-    echo "</tr>";
+        echo "<tr>";
+        echo "<td class='titulo'>Costo Total</td>";
+        echo "<td>" . $fila["Costototal"] . "</td>";
+        echo "</tr>";
 
-    echo "</table>";
+        echo "<tr>";
+        echo "<td class='titulo'>Estado</td>";
+        echo "<td>" . $fila["Estado"] . "</td>";
+        echo "</tr>";
 
-} else {
+        echo "<tr>";
+        echo "<td class='titulo'>Método de Pago</td>";
+        echo "<td>" . $fila["Metodo"] . "</td>";
+        echo "</tr>";
 
-    echo "No se encontraron usuarios.";
+        if (isset($_SESSION['Nombre'])) {
 
-}
+            echo "<tr>";
+            echo "<td class='titulo'>Nombre del Vendedor</td>";
+            echo "<td>" . $_SESSION['Nombre'] . "</td>";
+            echo "</tr>";
 
-$conexion->close();
+        }
 
-?>
-<button class="volver" onclick="history.back()">← Volver</button><br>
+        echo "</table>";
+
+    } else {
+
+        echo "<p>No se encontró la venta.</p>";
+
+    }
+
+    $conexion->close();
+
+    ?>
+
+    <button class="volver" onclick="history.back()">
+        ← Volver
+    </button>
+
 </div>
 
 </body>
