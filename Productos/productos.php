@@ -4,7 +4,7 @@
 include "bdProductos.php";
 
 
-$sql="SELECT * FROM producto";
+$sql="SELECT * FROM productos";
 
 
 $resultado=mysqli_query($conn,$sql);

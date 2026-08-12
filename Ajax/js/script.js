@@ -23,7 +23,6 @@ html += `
 <h3>${producto.nombre}</h3>
 <img src="img/productos/${productos.imagen}" width="100">
 
-
 <p>
 Descripción: ${productos.Descripcion}
 </p>
