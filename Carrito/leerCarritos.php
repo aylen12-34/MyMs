@@ -204,21 +204,15 @@ button{
 <body>
 
 <div >
-    <?php 
-    //no funciona aun
-    ?>
-    <div id="resultado">
-
-    </div>
 
     <h2>Lista de Productos</h2>
-
     <table>
 
         <tr>
             <th>Codigo</th>
             <th>Nombre</th>
             <th>Descripción</th>
+            <th>imagen</th>
             <th>Precio</th>
             <th>Stock</th>
             <th>Cantidad</th>
@@ -236,14 +230,14 @@ button{
                 echo "<td>".$fila["Codigo"]."</td>";
                 echo "<td>".$fila["Nombre"]."</td>";
                 echo "<td>".$fila["Descripcion"]."</td>";
+                echo "<td><img src='../imagenes/galletas/".$fila["imagen"]."' width='80' style='border-radius: 20px; border: 2px solid #E64B6B;'></td>";
                 echo "<td>".$fila["Precio"]."</td>";
                 echo "<td>".$fila["Stock"]."</td>";
                 echo "<td><input type='number' name='cantidad' value=0></td>";
                 echo "<input type='hidden' value=".$fila["Codigo"]." name='Codigo'>";
                 echo "<input type='hidden' value=".$Pedidos_ID." name='Pedidos_ID'>";
                 echo "<input type='hidden' value=".$fila["Precio"]." name='Precio'>";
-                ?><button onclick="buscarProducto()"><?php echo "<td><input type='submit' value='Agregar'></td>";?></button>
-                <script src="script.js"></script>
+                ?><?php echo "<td><input type='submit' value='Agregar'></td>";?>
                 <?php
                 echo "</tr>";
                 echo "</form>";
@@ -263,6 +257,7 @@ button{
         ?>
 
     </table>
+<button class="volver"><a href="../Ventas/formRegistroVentas.php?Pedidos_ID=<?=$Pedidos_ID?>"> Registrar venta</a></button>
 <button class="volver"><a href="../portada publica.php">Menu</a></button>
 </div>
 

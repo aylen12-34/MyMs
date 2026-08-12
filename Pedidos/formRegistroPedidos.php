@@ -11,16 +11,6 @@ if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
 session_start();
-if($_SESSION['CI']==null){
-    header("location:../login.php");
-}else {
-  if($_SESSION['Rol']=="vendedor"){
-    $CI = $_SESSION['CI'];
-    $NombreVendedor= $_SESSION['Nombre'];
-  } else{
-    header("location:../login.html");
-  }
-}
 
 
 ?>
@@ -151,13 +141,8 @@ label.error{
             <input type="date" id="Fecha" name="Fecha" value='<?php echo date('Y-m-d');?>' readonly>
             <br><br>
             <label for="Estado">Estado:</label>
-            <select name="Estado" id="Estado">
-                <option value="pendiente">Pendiente</option>
-            </select>
+            <input type="text" id="Nombre" name="Nombre" value="pendiente" readonly>
             <br><br>
-
-            <label for="NombreVendedor">NombreVendedor:</label>
-            <input type="text" name="NombreVendedor" value='<?=$_SESSION['Nombre']?>' readonly>
             <br><br>
 
             <input type="submit" value="Registrar Pedidos">

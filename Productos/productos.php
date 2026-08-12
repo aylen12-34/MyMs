@@ -7,7 +7,7 @@ include "bdProductos.php";
 $sql="SELECT * FROM productos";
 
 
-$resultado=mysqli_query($conn,$sql);
+$resultado=mysqli_query($conexion,$sql);
 
 
 $productos=[];
