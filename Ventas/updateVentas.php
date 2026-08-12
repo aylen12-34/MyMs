@@ -1,133 +1,160 @@
 <?php
-require "bdVentas.php"; 
 session_start();
-if($_SESSION['CI']==null){
+require "bdVentas.php";
+
+if (!isset($_SESSION['CI'])) {
     header("location:../login.html");
-}else {
-  if($_SESSION['Rol']=="administrador"){
-    $CI = $_SESSION['CI'];
-  } else{
-    header("location:../login.html");
-  }
+    exit();
 }
 
+if ($_SESSION['Rol'] != "administrador") {
+    header("location:../login.html");
+    exit();
+}
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Actualización de Ventas</title>
+
     <link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
-<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+
     <style>
-    *{
-        font-family: 'Chillax-Semibold';
-    }
+
+        * {
+            font-family: 'Chillax-Semibold';
+        }
+
         body {
-            background-image: url(../imagenes/2.png);
+            background-image: url('../imagenes/2.png');
+            background-size: cover;
+            background-position: center;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             min-height: 100vh;
             padding: 30px 0;
         }
+
         div {
             width: 420px;
             padding: 35px;
+
             background-color: #6A253A;
             border: 2px solid #EFE2DA;
             border-radius: 40px;
+
             color: #EFE2DA;
         }
+
         h2 {
             text-align: center;
         }
-        a{
+
+        a {
             color: #EFE2DA;
-        }
-        #id{
-            background-color: #E64B6B;
-            color: #EFE2DA;
-            transition: 0.3s;
-        }
-        #id:hover{
-            background-color: #EFE2DA;
-            color: #6A253A;
-        }
-        .volver{
-        padding: 10px 20px;
-        border: none;
-        color: #EFE2DA;
-        border-radius: 5px;
-        background: #E64B6B;
-        cursor: pointer;
-        font-size: 16px;
-        margin:3px;
+            text-decoration: none;
         }
 
-        .volver:hover{
+        .volver {
+            padding: 10px 20px;
+            border: none;
+            color: #EFE2DA;
+            border-radius: 5px;
+            background: #E64B6B;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 3px;
+        }
+
+        .volver:hover {
             background-color: #EFE2DA;
             color: #E64B6B;
         }
-        a{
-            text-decoration: none;
-            
+
+        @media(max-width:800px) {
+
+            body {
+                padding: 20px;
+            }
+
+            div {
+                width: 100%;
+                max-width: 320px;
+                padding: 25px;
+                border-radius: 25px;
+                text-align: center;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            p {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+            .volver {
+                width: 100%;
+                margin-top: 10px;
+            }
         }
-        @media(max-width:800px){
 
-  body{
-    padding: 20px;
-  }
-
-  div{
-    width: 100%;
-    max-width: 320px;
-    padding: 25px;
-    border-radius: 25px;
-    text-align: center;
-  }
-
-  h2{
-    font-size: 28px;
-  }
-
-  p{
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-  .volver{
-    width: 100%;
-    margin-top: 10px;
-    box-sizing: border-box;
-  }
-}
     </style>
+
 </head>
+
 <body>
-    <div>
-        <h2>Actualizacion de Ventas</h2>
-        <p>
- <?php 
- $ID=$_POST['ID'];
-$Pedidos_ID=$_POST['Pedidos_ID'];
-$Costototal=$_POST['Costototal'];
-$Estado=$_POST['Estado'];
-$Metodo=$_POST['Metodo'];
-$NombreVendedor=$_POST['NombreVendedor'];  
-$sql="UPDATE Ventas SET Costototal='$Costototal', Estado='$Estado', Metodo='$Metodo', NombreVendedor='$NombreVendedor' WHERE ID='$ID'";
-if ($conexion->query($sql) === TRUE) {
-    echo "Se edito el pedido correctamente";
-    
-} else {
-    echo "Error al actualizar el pedido: " . $conexion->error;
-}
-      ?>
-        </p><br>
-        <button class="volver"><a href="leerVentass.php">Tabla Pedidos</a></button>
-    </div>
-    </div>
+
+<div>
+
+    <h2>Actualización de Ventas</h2>
+
+    <p>
+
+    <?php
+
+    if (!isset($_POST['ID'])) {
+        die("No se recibió el ID de la venta.");
+    }
+
+    $ID = $_POST['ID'];
+    $Pedidos_ID = $_POST['Pedidos_ID'];
+    $Costototal = $_POST['Costototal'];
+    $Estado = $_POST['Estado'];
+    $Metodo = $_POST['Metodo'];
+
+    $sql = "UPDATE Ventas SET  Costototal='$Costototal', Estado='$Estado',Metodo='$Metodo' WHERE ID='$ID'";
+
+    if ($conexion->query($sql) === TRUE) {
+
+        echo "Se editó la venta correctamente.";
+
+    } else {
+
+        echo "Error al actualizar la venta: " . $conexion->error;
+
+    }
+
+    ?>
+
+    </p>
+
+    <br>
+
+    <button class="volver">
+        <a href="leerVentass.php">Tabla Ventas</a>
+    </button>
+
+</div>
+
 </body>
 </html>
