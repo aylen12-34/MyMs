@@ -182,16 +182,16 @@ $resultado = $conexion->query($sql);
         <?php
         if ($resultado->num_rows > 0) {
             while ($fila = $resultado->fetch_assoc()) {
-                $ID = $fila["ID"];
+           $ID = $fila["Pedidos_ID"];
                 echo "<tr>";
                 echo "<td>" . $fila['Pedidos_ID'] . "</td>";
                 echo "<td>" . $fila['Costototal'] . "</td>";
                 echo "<td>" . $fila['Estado'] . "</td>";
                 echo "<td>" . $fila['Metodo'] . "</td>";
-                echo "<td>" . $fila['NombreVendedor'] . "</td>";
+                echo "<td>" . $_SESSION['Nombre'] . "</td>";
                 echo "<td>";
                 
-                echo "<a href='leerVentas.php?ID=$ID'><button class='mostrar'>Mostrar</button></a> ";
+                echo "<a href='leerVentas.php?ID=$ID'><button class='mostrar'>Mostrar</button></a>";
 
                 if ($_SESSION['Rol'] === "administrador") {
                     echo "<a href='formupdateVentas.php?ID=$ID'><button class='editar'>Editar</button></a> ";
