@@ -12,6 +12,7 @@ if ($conexion->connect_error) {
 $Codigo=$_POST['Codigo'];
 $Nombre=$_POST['Nombre'];
 $Descripcion=$_POST['Descripcion'];
+$imagen=$_POST["imagen"];
 $Precio=$_POST['Precio'];
 $Stock=$_POST['Stock'];
 
@@ -101,7 +102,7 @@ $Stock=$_POST['Stock'];
         <h2>Registro de Producto</h2>
         <p>
             <?php 
-           $sql="INSERT INTO Productos (Codigo, Nombre, Descripcion, Precio, Stock) VALUES ('$Codigo', '$Nombre', '$Descripcion', '$Precio', '$Stock')";
+           $sql="INSERT INTO Productos (Codigo, Nombre, Descripcion, imagen, Precio, Stock) VALUES ('$Codigo', '$Nombre', '$Descripcion', '$imagen', '$Precio', '$Stock')";
         if ($conexion->query($sql) === TRUE) {
             echo "Productos registrado correctamente";
         }
