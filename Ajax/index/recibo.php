@@ -6,10 +6,11 @@ require "../../Ventas/bdVentas.php";
 
 
 $Pedidos_ID=$_GET['Pedidos_ID'];
-$sql="SELECT * FROM Ventas WHERE Pedidos_ID='$Pedidos_ID'";
-
-$Metodo=$_GET['Metodo'];
-
+$sqlr="SELECT * FROM Ventas WHERE Pedidos_ID='$Pedidos_ID'";
+$resultador = $conexion->query($sqlr);
+while($fila=$resultador->fetch_assoc()){
+    $Metodo = $fila['Metodo'];
+}
 $sql="SELECT * FROM carrito JOIN pedidos ON carrito.Pedidos_ID=pedidos.ID WHERE carrito.Pedidos_ID='$Pedidos_ID'";
 
 
