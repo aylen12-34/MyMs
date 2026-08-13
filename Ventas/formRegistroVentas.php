@@ -44,7 +44,7 @@ if ($resultado->num_rows > 0) {
     <div>
         <h1>Registro de Ventas</h1>
 
-        <form action="../Ajax/index/recibo.php" method="post">
+        <form action="registroventas.php" method="post">
 
             <label for="Pedidos_ID">ID del Pedido:</label>
             <input type="number" id="ID" name="Pedidos_ID" value="<?= $Pedidos_ID ?>" readonly>

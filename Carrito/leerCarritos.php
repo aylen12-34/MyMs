@@ -201,12 +201,10 @@ button{
     <table>
 
         <tr>
-            <th>Codigo</th>
             <th>Nombre</th>
             <th>Descripción</th>
             <th>imagen</th>
             <th>Precio</th>
-            <th>Stock</th>
             <th>Cantidad</th>
             <th colspan=2>Agregar al Carrito</th>
         </tr>
@@ -219,12 +217,10 @@ button{
                 echo "<form action='registroCarrito.php' method='post'>";
                 echo "<tr>";
 
-                echo "<td>".$fila["Codigo"]."</td>";
                 echo "<td>".$fila["Nombre"]."</td>";
                 echo "<td>".$fila["Descripcion"]."</td>";
                 echo "<td><img src='../imagenes/galletas/".$fila["imagen"]."' width='80' style='border-radius: 20px; border: 2px solid #E64B6B;'></td>";
                 echo "<td>".$fila["Precio"]."</td>";
-                echo "<td>".$fila["Stock"]."</td>";
                 echo "<td><input type='number' name='cantidad' value=0></td>";
                 echo "<input type='hidden' value=".$fila["Codigo"]." name='Codigo'>";
                 echo "<input type='hidden' value=".$Pedidos_ID." name='Pedidos_ID'>";

@@ -5,8 +5,10 @@ require "../../Ventas/bdVentas.php";
 
 
 
-$Pedidos_ID=$_POST['Pedidos_ID'];
-$Metodo=$_POST['Metodo'];
+$Pedidos_ID=$_GET['Pedidos_ID'];
+$sql="SELECT * FROM Ventas WHERE Pedidos_ID='$Pedidos_ID'";
+
+$Metodo=$_GET['Metodo'];
 
 $sql="SELECT * FROM carrito JOIN pedidos ON carrito.Pedidos_ID=pedidos.ID WHERE carrito.Pedidos_ID='$Pedidos_ID'";
 
