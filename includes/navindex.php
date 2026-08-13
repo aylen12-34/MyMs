@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nav</title>
-<link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
+<link rel="stylesheet" href="../../tipografia/Fonts/WEB/css/chillax.css">
     <style>
         *{
       font-family:'Chillax-Semibold';
@@ -106,7 +106,7 @@
 
     <!-- BOTÓN -->
     <div id="botonMenu">
-        <img src="imagenes/ISOTIPO BRUMA PASTEL.png" alt="Menu">
+        <img src="../../imagenes/ISOTIPO BRUMA PASTEL.png" alt="Menu">
     </div>
 
     <!-- FONDO OSCURO -->
@@ -115,12 +115,11 @@
     <!-- MENÚ -->
     <nav class="indice" id="menu">
         <ul>
-            <li><a href="portada publica.php">Inicio</a></li>
-            <li><a href="login.php">Iniciar sesión</a></li>
-            <li><a href="Ajax/index/index1.php">Menú</a></li>
-            <li><a href="nosotros.php">Nosotros</a></li>
+            <li><a href="../../portada publica.php">Inicio</a></li>
+            <li><a href="../../login.php">Iniciar sesión</a></li>
+            <li><a href="../../nosotros.php">Nosotros</a></li>
             <li>
-                <a href="Pedidos/formRegistroPedidos.php">
+                <a href="../../Pedidos/formRegistroPedidos.php">
                     <img src="https://cdn-icons-png.freepik.com/512/9341/9341730.png" id="compra" alt="Carrito">
                 </a>
             </li>

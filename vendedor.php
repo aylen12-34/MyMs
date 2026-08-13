@@ -25,7 +25,7 @@ if($_SESSION['CI']==null){
 
 $sql = "SELECT * FROM Usuarios WHERE CI='$CI'";
 $resultado = $conexion->query($sql);
-$sqlp = "SELECT * FROM Usuarios WHERE CI='$CI'";
+$sqlp = "SELECT imagen FROM Usuarios WHERE CI='$CI'";
 $resultadop = $conexion->query($sqlp);
 
 ?>
@@ -355,11 +355,11 @@ main p{
         <?php
         if ($resultadop->num_rows > 0) {
 
-            while($fila = $resultadop->fetch_assoc()) {
-             echo "<img src='imagenes/perfil/".$fila["imagen"]."' width='120'>";
+            $fila = $resultadop->fetch_assoc();
+                
+            echo "<img src='imagenes/perfil/".$fila["imagen"]."' width='120'>";
 
                 
-            }
                
         } 
         

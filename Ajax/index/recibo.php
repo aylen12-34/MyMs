@@ -405,7 +405,7 @@ Esperando aprobación del vendedor
 🖨 Imprimir
 
 </button>
-<button id="volverProductos"> <a href="../../menu.php">Volver a menu </a> </button>
+<button id="volverProductos"> <a href="index1.php">Volver a menu </a> </button>
 
 <script>
 
