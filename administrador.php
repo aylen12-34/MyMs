@@ -277,7 +277,8 @@ if ($resultado->num_rows > 0) {
     echo "</table>";
 
 } ?>
-<button><a href="Usuario/formUpdateUsuario.php">Editar</a></button>
+<button><a href="Usuario/formUpdateUsuario.php">Editar</a></button> <br>
+<button><a href="Ventas/leerVentass.php">Ver ventas</a></button><br>
     </div>
 
 </main>
