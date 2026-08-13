@@ -1,6 +1,6 @@
 <?php
 require "bdVentas.php";
-
+/*
 $ID = "";
 $CostoTotal = "";
 
@@ -14,7 +14,16 @@ if (isset($_GET['ID'])) {
         $fila = $resultado->fetch_assoc();
         $CostoTotal = $fila['CostoTotal'];
     }
+}*/
+$Pedidos_ID=$_GET['Pedidos_ID'];
+$sql = "SELECT * FROM carrito WHERE Pedidos_ID='$Pedidos_ID'";
+$resultado = $conexion->query($sql);
+if ($resultado->num_rows > 0) {
+    while($fila=$resultado->fetch_assoc()) {
+        $CostoTotal=$fila['CostoTotal'];
+    }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -35,10 +44,10 @@ if (isset($_GET['ID'])) {
     <div>
         <h1>Registro de Ventas</h1>
 
-        <form action="registroVentas.php" method="post">
+        <form action="../Ajax/index/recibo.php" method="post">
 
-            <label for="ID">ID del Pedido:</label>
-            <input type="number" id="ID" name="ID" value="<?= $ID ?>" required>
+            <label for="Pedidos_ID">ID del Pedido:</label>
+            <input type="number" id="ID" name="Pedidos_ID" value="<?= $Pedidos_ID ?>" readonly>
 
             <br><br>
 
