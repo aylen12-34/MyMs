@@ -25,6 +25,9 @@ $CI = $_SESSION['CI'];
 
 $sql = "SELECT * FROM Usuarios WHERE CI='$CI'";
 $resultado = $conexion->query($sql);
+$sqlp = "SELECT * FROM Usuarios WHERE CI='$CI'";
+$resultadop = $conexion->query($sqlp);
+
 
 ?>
 <!DOCTYPE html>
@@ -215,10 +218,19 @@ table td:last-child{
 
     <div class="foto-admin">
 
-        <img id="yo"
-        src="https://images.mubicdn.net/images/cast_member/281456/cache-179563-1559374083/image-w856.jpg"
-        alt="Administrador">
 
+        <?php
+        if ($resultadop->num_rows > 0) {
+
+            while($fila = $resultadop->fetch_assoc()) {
+             echo "<img src='imagenes/perfil/".$fila["imagen"]."' width='120'>";
+
+                
+            }
+               
+        } 
+        
+        ?>
     </div>
 
     <div class="panel">

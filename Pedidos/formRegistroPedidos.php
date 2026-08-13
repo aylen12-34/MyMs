@@ -136,12 +136,19 @@ label.error{
             <label for="Nombre">Nombre:</label>
             <input type="text" id="Nombre" name="Nombre">
             <br><br>
+            <label for="Celular">Celular:</label>
+            <input type="number" id="celular" name="Celular">
+            <br><br>
 
             <label for="Fecha">Fecha:</label>
             <input type="date" id="Fecha" name="Fecha" value='<?php echo date('Y-m-d');?>' readonly>
             <br><br>
+            <label for="Direccion">Dirección:</label>
+            <input type="text" id="direccion" name="Direccion">
+            <br><br>
             <label for="Estado">Estado:</label>
-            <input type="text" id="Nombre" name="Nombre" value="pendiente" readonly>
+            <input type="text" id="Nombre" name="Estado" value="pendiente" readonly>
+            <input type="hidden" value="pendiente" name="NombreVendedor">
             <br><br>
             <br><br>
 

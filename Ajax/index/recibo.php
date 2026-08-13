@@ -6,8 +6,9 @@ require "../../Ventas/bdVentas.php";
 
 
 $Pedidos_ID=$_POST['Pedidos_ID'];
+$Metodo=$_POST['Metodo'];
 
-$sql="SELECT *FROM Pedido WHERE Pedidos_ID='$Pedidos_ID'";
+$sql="SELECT * FROM carrito JOIN pedidos ON carrito.Pedidos_ID=pedidos.ID WHERE carrito.Pedidos_ID='$Pedidos_ID'";
 
 
 $resultado=$conexion->query($sql);
@@ -57,19 +58,19 @@ Cliente:
 
 <p>
 Teléfono:
-<?php echo $pedido["telefono"]; ?>
+<?php echo $pedido["Celular"]; ?>
 </p>
 
 
 <p>
 Dirección:
-<?php echo $pedido["direccion"]; ?>
+<?php echo $pedido["Direccion"]; ?>
 </p>
 
 
 <p>
 Método de pago:
-<?php echo $pedido["metodoPago"]; ?>
+<?php echo $Metodo; ?>
 </p>
 
 
@@ -90,25 +91,10 @@ Productos
 <?php
 
 
-$sqlProductos="
-
-SELECT 
-p.nombre,
-c.cantidad,
-c.costototal
-
-FROM carrito c
-
-INNER JOIN producto p
-
-ON c.Producto_codigo=p.codigo
-
-WHERE c.Pedido_id='$id'
-
-";
+$sqlProductos=" SELECT * FROM carrito c JOIN productos p ON c.Productos_Codigo=p.Codigo WHERE c.Pedidos_ID='$Pedidos_ID' ";
 
 
-$resultadoProductos=$conn->query($sqlProductos);
+$resultadoProductos=$conexion->query($sqlProductos);
 
 
 $total=0;
@@ -117,17 +103,17 @@ $total=0;
 while($producto=$resultadoProductos->fetch_assoc()){
 
 
-$total += $producto["costototal"];
+$total += $producto["CostoTotal"];
 
 
 echo "
 
 <p>
-".$producto["nombre"]."
+".$producto["Nombre"]."
 <br>
-Cantidad: ".$producto["cantidad"]."
+Cantidad: ".$producto["Cantidad"]."
 <br>
-Subtotal: Bs ".$producto["costototal"]."
+Subtotal: Bs ".$producto["CostoTotal"]."
 </p>
 
 ";
@@ -153,11 +139,7 @@ Esperando aprobación del vendedor
 🖨 Imprimir
 
 </button>
-<button id="volverProductos">
-
-Volver a Productos
-
-</button>
+<button id="volverProductos"> <a href="../../Carrito/leerCarritos.php?Pedidos_ID=<?=$Pedidos_ID?>">Volver a Productos </a> </button>
 
 <script>
 

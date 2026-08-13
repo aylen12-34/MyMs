@@ -10,7 +10,9 @@ if ($conexion->connect_error) {
     echo "No se ha podido conectar a la base de datos";
 }
 $Nombre=$_POST['Nombre'];
+$Celular=$_POST['Celular'];
 $Fecha=$_POST['Fecha'];
+$Direccion=$_POST['Direccion'];
 $Estado=$_POST['Estado'];
 $NombreVendedor=$_POST['NombreVendedor'];
    ?> 
@@ -100,9 +102,9 @@ $NombreVendedor=$_POST['NombreVendedor'];
         <h2>Registro de pedido:</h2>
         <p>
         <?php
-           $sql="INSERT INTO Pedidos (Nombre, Fecha, Estado, NombreVendedor) VALUES ('$Nombre', '$Fecha', '$Estado', '$NombreVendedor')";
+           $sql="INSERT INTO Pedidos (Nombre, Celular, Fecha, Direccion, Estado, NombreVendedor) VALUES ('$Nombre', '$Celular', '$Fecha', '$Direccion', '$Estado', '$NombreVendedor')";
         if($conexion->query($sql)){
-            header("location:../Carrito/vercarrito.php?Pedidos_ID=".$conexion->insert_id);
+            header("location:../Carrito/leerCarritos.php?Pedidos_ID=".$conexion->insert_id);
         }else{
             echo "Error: " . $conexion->error;
         }

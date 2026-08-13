@@ -25,6 +25,8 @@ if($_SESSION['CI']==null){
 
 $sql = "SELECT * FROM Usuarios WHERE CI='$CI'";
 $resultado = $conexion->query($sql);
+$sqlp = "SELECT * FROM Usuarios WHERE CI='$CI'";
+$resultadop = $conexion->query($sqlp);
 
 ?>
 <!DOCTYPE html>
@@ -341,7 +343,7 @@ main p{
         </button>
 
         <button>
-            <a href="Pedidos/leerPedidos.php">
+            <a href="Ventas/leerVentass.php">
                 Pedidos registrados
             </a>
         </button>
@@ -351,25 +353,16 @@ main p{
     <div class="foto">
 
         <?php
+        if ($resultadop->num_rows > 0) {
 
-        switch($_SESSION['CI']){
+            while($fila = $resultadop->fetch_assoc()) {
+             echo "<img src='imagenes/perfil/".$fila["imagen"]."' width='120'>";
 
-            case "123":
-                echo '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn57_OKTIjVTsTFKw2m-3dWGAMdiJSoCmK3-oSSVj7Ug&s" alt="Perfil">';
-                break;
-
-            case "234":
-                echo '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2m2goQVl8DK0LnYv6B_CT0IKIbqRb2jqTv0yEukN4DWb4ZEt6j80pS8mX&s=10" alt="Perfil">';
-                break;
-
-            case "321":
-                echo '<img src="https://www.nutrisslovers.com/Portals/nutrisslovers/Articulos%20Nutriss%20Gatos/gatos-unicos-guia-de-razas-y-como-nutrir-su-mundo/cuales-son-las-razas-de-gatos-mas-populares-en-colombia.jpg?ver=T9w4YcvobP-L1GXta8uTAA%3D%3D" alt="Perfil">';
-                break;
-
-            default:
-                echo '<img src="imagenes/perfil.png" alt="Perfil">';
-        }
-
+                
+            }
+               
+        } 
+        
         ?>
 
     </div>
