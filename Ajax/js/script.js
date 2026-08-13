@@ -19,19 +19,19 @@ datos.forEach(productos => {
 /*JavaScript usa las variables para rellenar el HTML con datos dinámicos, en lugar de escribir esos valores manualmente en el archivo HTML. Esto permite mostrar información que llega desde una base de datos*/ 
 
 html += `
-section class="producto">
-<h3>${productos.Nombre}</h3>
-<img src="../../imagenes/galletas/${productos.imagen}" width="100">
+<section class="tarjeta">
+    <h3 class="tarjeta-h3">${productos.Nombre}</h3>
+    <img src="../../imagenes/galletas/${productos.imagen}" width="100">
 
-<p>
+<p class="tarjeta-p">
 Descripción: ${productos.Descripcion}
 </p>
 
-<p>
+<p class="tarjeta-p">
 Precio: Bs ${productos.Precio}
 </p>
 
-<p>
+<p class="tarjeta-p">
 Stock: ${productos.Stock}
 </p>
 </section>
