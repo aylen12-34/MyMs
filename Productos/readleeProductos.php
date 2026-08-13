@@ -211,7 +211,7 @@ button{
                 echo "<td>".$fila["Codigo"]."</td>";
                 echo "<td>".$fila["Nombre"]."</td>";
                 echo "<td>".$fila["Descripcion"]."</td>";
-                echo "<td><img src='../imagenes/galletas/".$fila["imagen"]."' width='80' style='border-radius: 20px; border: 2px solid #E64B6B;'></td>";
+                echo "<td><img src='../".$fila["imagen"]."' width='80' style='border-radius: 20px; border: 2px solid #E64B6B;'></td>";
                 echo "<td>".$fila["Precio"]."</td>";
                 echo "<td>".$fila["Stock"]."</td>";
 

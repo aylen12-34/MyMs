@@ -23,7 +23,7 @@ USE `MYMS` ;
 CREATE TABLE IF NOT EXISTS `MYMS`.`Productos` (
   `Codigo` INT NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(45) NULL DEFAULT NULL,
-  `Descripcion` VARCHAR(45) NULL DEFAULT NULL,
+  `Descripcion` VARCHAR(225) NULL DEFAULT NULL,
   `imagen` VARCHAR(200) NULL DEFAULT NULL,
   `Precio` VARCHAR(45) NULL DEFAULT NULL,
   `Stock` VARCHAR(45) NULL DEFAULT NULL,
@@ -33,9 +33,27 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- datos de la tabla Productos
 -- -----------------------------------------------------
-INSERT INTO `MYMS`.`Productos` (`Codigo`, `Nombre`, `Descripcion`, `imagen`, `Precio`, `Stock`) VALUES 
-(1, 'Root Beer Float Cookie', 'Galleta marmoleada de vainilla y cerveza de raíz', '../imagenes/galletas/1,5', '15', '50');
 
+INSERT INTO `MYMS`.`Productos` (`Codigo`, `Nombre`, `Descripcion`, `imagen`, `Precio`, `Stock`) VALUES
+(1, 'Root Beer Float Cookie', 'Galleta marmoleada de vainilla y cerveza de raiz', 'imagenes/galletas/1.png', '15', '50'),
+(2, 'Peanut Butter Cup Cookie ft. REESEs', 'Galleta de mantequilla de mani', 'imagenes/galletas/1,5.png', '15', '50'),
+(3, 'Everything But The Dad Jokes Cookie', 'Galleta de caramelo y chips de mantequilla de mani', 'imagenes/galletas/3.png', '15', '50'),
+(4, 'Cookies & Cream Grill-It Cookie', 'Galleta y crema hecha en sarten', 'imagenes/galletas/4.png', '15', '50'),
+(5, 'Dubai-Style Chocolate Cheesecake', 'Tarta de queso con chocolate ', 'imagenes/galletas/6.png', '15', '50'),
+(6, 'Chocolate Chip Cookie', 'Clasica galleta de azucar con trozos de chocolate ', 'imagenes/galletas/7.png', '15', '50'),
+(7, 'Pink Sugar Cookie', 'Galleta de azucar y almendras', 'imagenes/galletas/8.png', '15', '50'),
+(8, 'Oreo Bliss', 'Croissant cubierto con chocolate blanco y galleta Oreo', 'imagenes/galletas/10.png', '15', '50'),
+(9, 'Caramel Crunch', 'Relleno con salsa de caramelo y nueces', 'imagenes/galletas/11.png', '15', '50'),
+(10, 'Berry Cream', 'Croissant con frambuesas frescas y crema', 'imagenes/galletas/12.png', '15', '50'),
+(11, 'Tropical Choco', 'Chocolate combinado con rodajas de kiwi y platano', 'imagenes/galletas/13.png', '15', '50'),
+(12, 'Strawberry Lovers', 'Fresas frescas en cobertura de chocolate', 'imagenes/galletas/14.png', '15', '50'),
+(13, 'Pistachio Dream', 'Crema de pistacho y pistachos sobre un croissant', 'imagenes/galletas/15.png', '15', '50'),
+(14, 'Coffee Crush', 'Frappe de cafe con crema batida y salsa de caramelo', 'imagenes/galletas/17.png', '15', '50'),
+(15, 'Caramel Vibes', 'Cafe helado con caramelo y crema batida.', 'imagenes/galletas/18.png', '15', '50'),
+(16, 'Berry Kiss', 'Batido de fresa con crema', 'imagenes/galletas/19.png', '15', '50'),
+(17, 'Cookies & Cream', 'Galletas Oreo trituradas y una base cremosa', 'imagenes/galletas/20.png', '15', '50'),
+(18, 'Matcha Mood', 'Leche fria, hielo y autentico matcha.', 'imagenes/galletas/21.png', '15', '50'),
+(19, 'Choco Latte Ice', 'Chocolate, cafe y leche fria sobre hielo', 'imagenes/galletas/22.png', '15', '50');
 
 -- -----------------------------------------------------
 -- Table `MYMS`.`Usuarios`
