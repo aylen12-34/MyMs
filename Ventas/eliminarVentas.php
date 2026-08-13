@@ -11,8 +11,8 @@ if($_SESSION['CI']==null){
   }
 }
 
-$Pedidos_ID = $_GET['Pedidos_ID'];
-$sql = "DELETE FROM Ventas WHERE Pedidos_ID=$Pedidos_ID";
+$ID = $_GET['ID'];
+$sql = "DELETE FROM Ventas WHERE ID=$ID";
 if ($conexion->query($sql) === TRUE) {
     echo "";
 }

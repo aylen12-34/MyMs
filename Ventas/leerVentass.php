@@ -167,11 +167,11 @@ $resultado = $conexion->query($sql);
 <body>
 
 <div class="contenedor">
-    <h2>Lista de Pedidos</h2>
+    <h2>Lista de Ventas</h2>
 
     <table>
         <tr>
-            <th>Pedidos_ID</th>
+            <th>Id del Pedido</th>
             <th>Costo Total</th>
             <th>Estado</th>
             <th>Método</th>
@@ -213,7 +213,7 @@ $resultado = $conexion->query($sql);
 
     <div class="botones">
         <button class="volver"><a href="../vendedor.php">Perfil</a></button>
-        <button class="volver"><a href="../inicio.html">Inicio Público</a></button>
+        <button class="volver"><a href="../portada publica.php">Inicio Público</a></button>
         <button class="volver"><a href="formRegistroVentas.php">Registrar nueva venta</a></button>
     </div>
 </div>
