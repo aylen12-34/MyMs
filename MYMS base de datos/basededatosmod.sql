@@ -30,6 +30,11 @@ CREATE TABLE IF NOT EXISTS `MYMS`.`Productos` (
   PRIMARY KEY (`Codigo`))
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- datos de la tabla Productos
+-- -----------------------------------------------------
+INSERT INTO `MYMS`.`Productos` (`Codigo`, `Nombre`, `Descripcion`, `imagen`, `Precio`, `Stock`) VALUES 
+(1, 'Root Beer Float Cookie', 'Galleta marmoleada de vainilla y cerveza de raíz', '../imagenes/galletas/1,5', '15', '50');
 
 -- -----------------------------------------------------
 -- Table `MYMS`.`Usuarios`

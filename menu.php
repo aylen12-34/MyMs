@@ -386,7 +386,7 @@ main{
                     y cerveza de raíz.
                 </p>
 
-                <a href="menu.php" class="btn">Ver más</a>
+                <a href="Ajax/index/index1.php" class="btn">Ver más</a>
 
             </div>
 
