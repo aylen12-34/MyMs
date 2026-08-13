@@ -356,13 +356,361 @@ main{
 
     <main>
         <section class="banner-croissants">
-            <button onclick="buscarProducto()"><h2>Menu</h2> </button>
+            <h2>Menu</h2>
            
         </section>
+        <button onclick="buscarProducto()">Mostrar todos los productos</button>
         
         
 
-    <div id="resultado"></div>
+    <div id="resultado">
+<section class="banner-croissants">
+            <h2>COOKIES</h2>
+          </section>
+
+                <section class="producto">
+
+            <img src="imagenes/galletas/1.png" class="prod" alt="Tortas y Brownies">
+
+            <div class="info">
+
+                <span class="etiqueta">Nuestros favoritos</span>
+
+                <h2>Root Beer Float Cookie</h2>
+
+                <p>
+                    Una galleta marmoleada de vainilla y cerveza de raíz, 
+                    coronada con un remolino de mousse cremoso de vainilla 
+                    y cerveza de raíz.
+                </p>
+
+                <a href="Ajax/index/index1.php" class="btn">Ver más</a>
+
+            </div>
+
+        </section>
+        <section class="producto inverso">
+
+            <img src="imagenes/galletas/1,5.png" class="prod" alt="Bebidas Frías">
+
+            <div class="info">
+
+                <span class="etiqueta">Exquisita</span>
+
+                <h2>Peanut Butter Cup Cookie ft. REESE'S</h2>
+
+                <p>
+                    Una clásica galleta de mantequilla de cacahuete cubierta 
+                    con trocitos de mantequilla de cacahuete derretida, 
+                    bañada en chocolate con leche fundido y espolvoreada con 
+                    bombones REESE'S
+                </p>
+
+                <a href="menu.php" class="btn">Ver más</a>
+
+            </div>
+
+        </section>
+        <section class="producto">
+
+            <img src="imagenes/galletas/3.png" class="prod" alt="Bebidas Calientes">
+
+            <div class="info">
+
+                <span class="etiqueta">Clásicos</span>
+
+                <h2>Everything But The Dad Jokes Cookie</h2>
+
+                <p>
+                    Una galleta original repleta de trocitos de caramelo y 
+                    chips de mantequilla de cacahuete, cubierta con una 
+                    capa de mantequilla de cacahuete derretida y patatas 
+                    fritas crujientes recubiertas de mantequilla de cacahuete, 
+                    y terminada con explosiones de más trocitos de caramelo.
+                </p>
+
+                <a href="menu.php" class="btn">Ver más</a>
+
+            </div>
+
+        </section>
+        <section class="producto inverso">
+
+            <img src="imagenes/galletas/4.png" class="prod" alt="Masitas">
+
+            <div class="info">
+
+                <span class="etiqueta">Tradicionales</span>
+
+                <h2>Cookies & Cream Grill-It Cookie</h2>
+
+                <p>
+                    Una galleta de galleta y crema hecha en sartén, 
+                    cubierta con un remolino de mousse de galleta y crema de chocolate, 
+                    decorada con un diseño de parrilla de chocolate semidulce y ositos 
+                    de goma en un palillo.
+                </p>
+
+                <a href="menu.php" class="btn">Ver más</a>
+
+            </div>
+
+        </section>
+    <section class="banner-croissants">
+            <h2>CROISSANTS</h2>
+          </section>
+        <section class="producto">
+
+            <img src="imagenes/galletas/10.png" class="prod" alt="Bebidas Calientes">
+
+            <div class="info">
+
+                <span class="etiqueta">CROISSANTS</span>
+
+                <h2>Oreo Bliss</h2>
+
+                <p>
+                    Croissant cubierto con chocolate blanco 
+                    y trozos de galleta Oreo. La combinación 
+                    perfecta entre suavidad y un irresistible 
+                    toque crujiente.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
+
+        </section>
+        <section class="producto inverso">
+
+            <img src="imagenes/galletas/11.png" class="prod" alt="Masitas">
+
+            <div class="info">
+
+                <span class="etiqueta">CROISSANTS</span>
+
+                <h2>Caramel Crunch</h2>
+
+                <p>
+                    Relleno y decorado con salsa de caramelo 
+                    y nueces crocantes. Un equilibrio delicioso 
+                    entre dulzura y textura en cada bocado.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
+
+        </section>
+        <section class="producto">
+
+            <img src="imagenes/galletas/12.png" class="prod" alt="Bebidas Calientes">
+
+            <div class="info">
+
+                <span class="etiqueta">CROISSANTS</span>
+
+                <h2>Berry Cream</h2>
+
+                <p>
+                    Croissant acompañado de frambuesas frescas 
+                    y un delicado toque de crema. Dulce, ligero 
+                    y lleno de sabor.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
+
+        </section>
+                <section class="producto inverso">
+
+            <img src="imagenes/galletas/13.png" class="prod" alt="Masitas">
+
+            <div class="info">
+
+                <span class="etiqueta">CROISSANTS</span>
+
+                <h2>Tropical Choco</h2>
+
+                <p>
+                    La intensidad del chocolate se combina con 
+                    rodajas de kiwi y plátano para crear una 
+                    experiencia fresca y sorprendente.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
+
+        </section>
+        <section class="producto">
+
+            <img src="imagenes/galletas/14.png" class="prod" alt="Bebidas Calientes">
+
+            <div class="info">
+
+                <span class="etiqueta">CROISSANTS</span>
+
+                <h2>Strawberry Lovers</h2>
+
+                <p>
+                    Fresas frescas bañadas en una generosa cobertura 
+                    de chocolate. Una tentación irresistible para 
+                    los amantes de los sabores clásicos.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
+
+        </section>
+                        <section class="producto inverso">
+
+            <img src="imagenes/galletas/15.png" class="prod" alt="Masitas">
+
+            <div class="info">
+
+                <span class="etiqueta">CROISSANTS</span>
+
+                <h2>Pistachio Dream</h2>
+
+                <p>
+                    Exquisita crema de pistacho y pistachos troceados 
+                    sobre un croissant recién horneado. 
+                    Un sabor sofisticado que conquista desde el primer 
+                    bocado.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
+
+        </section>
+        <section class="banner-croissants">
+            <h2>BEBIDAS FRIAS</h2>
+          </section>
+          <section class="producto">
+            <img src="imagenes/galletas/17.png" class="prod" alt="Bebidas Calientes">
+
+            <div class="info">
+
+                <span class="etiqueta">Frappe</span>
+
+                <h2>Coffee Crush</h2>
+
+                <p>
+                    Frappé de café con crema batida y salsa de caramelo.
+                    Dulce y súper refrescante.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
+
+        </section>
+        <section class="producto inverso">
+
+            <img src="imagenes/galletas/18.png" class="prod" alt="Masitas">
+
+            <div class="info">
+
+                <span class="etiqueta">Batido</span>
+
+                <h2>Caramel Vibes</h2>
+
+                <p>
+                    Café helado con caramelo y crema batida.
+                    El equilibrio perfecto entre dulce y cremoso.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
+
+        </section>
+        <section class="producto">
+
+            <img src="imagenes/galletas/19.png" class="prod" alt="Bebidas Calientes">
+
+            <div class="info">
+
+                <span class="etiqueta">Batido</span>
+
+                <h2>Berry Kiss</h2>
+
+                <p>
+                    Batido de fresa con crema, salsa de fresa y
+                    fresas frescas. Tan rico como se ve.
+                </p>
+
+                <a href="" class="btn">Comparar</a>
+
+            </div>
+
+        </section>
+                <section class="producto inverso">
+
+            <img src="imagenes/galletas/20.png" class="prod" alt="Masitas">
+
+            <div class="info">
+
+                <span class="etiqueta">Frappe</span>
+
+                <h2>Cookies & Cream</h2>
+
+                <p>
+                    Galletas Oreo trituradas y
+                    una base cremosa que enamora 
+                    en cada sorbo.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
+
+        </section>
+        <section class="producto">
+
+            <img src="imagenes/galletas/21.png" class="prod" alt="Bebidas Calientes">
+
+            <div class="info">
+
+                <span class="etiqueta">Fresh Cream</span>
+
+                <h2>Matcha Mood</h2>
+
+                <p>
+                    Leche fría, hielo y auténtico matcha. 
+                    Refrescante y diferente.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
+
+        </section>
+            <section class="producto inverso">
+
+            <img src="imagenes/galletas/22.png" class="prod" alt="Bebidas Calientes">
+
+            <div class="info">
+
+                <span class="etiqueta">Fresh Cream</span>
+
+                <h2>Choco Latte Ice</h2>
+
+                <p>
+                   Chocolate, café y leche fría sobre 
+                   hielo. Cremoso y lleno de sabor.
+                </p>
+
+                <a href="" class="btn">Comprar</a>
+
+            </div>
+
+        </section>
+    </div>
 
     <script src="../js/script.js"></script>
     </main>

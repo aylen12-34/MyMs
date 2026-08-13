@@ -366,7 +366,10 @@ main{
     <?php include("includes/header.php"); ?>
 
     <main>
-          <section class="banner-croissants">
+        <button onclick="buscarProducto()">Mostrar todos los productos</button>
+        
+        <div id="resultado">
+        <section class="banner-croissants">
             <h2>COOKIES</h2>
           </section>
 
@@ -712,6 +715,8 @@ main{
             </div>
 
         </section>
+    </div>
+          <script src="Ajax/js/script.js"></script>
 </main>
 
     <?php include("includes/footer.php"); ?>
