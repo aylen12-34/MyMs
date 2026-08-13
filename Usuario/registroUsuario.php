@@ -108,7 +108,7 @@ $imagen=$_POST['imagen'];
         <h2>Registro de Usuario</h2>
         <p>
             <?php 
-            $sql="INSERT INTO Usuarios (CI,Nombre, Direccion, Celular, Rol, Estado, imagen) VALUES ('$CI','$Nombre', '$Direccion', '$Celular', '$Rol', '$Estado', 'imagen')";
+            $sql="INSERT INTO Usuarios (CI,Nombre, Direccion, Celular, Rol, Estado, imagen) VALUES ('$CI','$Nombre', '$Direccion', '$Celular', '$Rol', '$Estado', '$imagen')";
             if ($conexion->query($sql) === TRUE) {
                     echo "
                     registrado correctamente";
