@@ -11,12 +11,15 @@ if($conexion -> connect_error){
 }
 
 $ID = $_GET['ID'];
-$sql = "DELETE FROM Pedidos WHERE ID = '$ID'";
-if($conexion->query($sql) === TRUE) {
-    echo "";
-}
- else {
-    echo "Error: " . $conexion->error;
+$sqlVentas = "DELETE FROM Ventas WHERE Pedidos_ID = '$ID'";
+$conexion->query($sqlVentas);
+
+$sqlPedidos = "DELETE FROM Pedidos WHERE ID = '$ID'";
+
+if ($conexion->query($sqlPedidos) === TRUE) {
+    $mensaje = "El pedido y su venta asociada han sido eliminados correctamente.";
+} else {
+    $mensaje = "Error al eliminar el pedido: " . $conexion->error;
 }
 ?>
 
@@ -89,11 +92,11 @@ if($conexion->query($sql) === TRUE) {
     <div>
         <h2>Eliminar Pedidos</h2>
         <p>
-      <?php
-        echo "El pedido ha sido eliminado.";
-        $conexion->close(); 
-      ?>
-    </p><br>
+  <?php
+    echo $mensaje;
+    $conexion->close(); 
+  ?>
+</p><br>
         
         
 <button class="volver"><a href="leerPedidos.php">Tabla Pedidos</a></button>
