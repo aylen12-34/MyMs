@@ -496,7 +496,7 @@ button:first-of-type:hover {
 <body>
 
 
-<h1>MI TIENDA</h1>
+<h1>MYMS</h1>
 
 
 <h2>

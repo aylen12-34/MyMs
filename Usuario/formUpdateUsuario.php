@@ -88,7 +88,11 @@ if ($resultado->num_rows > 0) {
             color:#E64B6B;
         }
 
-
+input[readonly]{
+    background-color: #FFFFFF;
+    color: #6A253A;
+    cursor: not-allowed;
+}
 
 
 
@@ -165,7 +169,7 @@ if ($resultado->num_rows > 0) {
         <h1>Editar Usuario</h1>
     <form action="updateditarUsuario.php" method="post" onsubmit="return validar()">
         <label for="">Carnet de Identidad</label>
-        <input type="text" name="CI" value='<?=$CI?>' required>
+        <input type="text" name="CI" value='<?=$CI?>' readonly>
         <label for="">Nombre:</label>
         <input type="text" name="Nombre" value='<?=$Nombre?>' required>
         <br>

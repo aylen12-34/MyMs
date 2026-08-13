@@ -83,7 +83,11 @@ if ($resultado->num_rows > 0) {
             background-color: #EFE2DA;
             color:#E64B6B;
         }
-
+        input[readonly]{
+    background-color: #FFFFFF;
+    color: #6A253A;
+    cursor: not-allowed;
+}
 
 
 
@@ -151,7 +155,7 @@ if ($resultado->num_rows > 0) {
         <h1>Editar Producto</h1>
     <form action="updateEditarProductos.php" method="post" onsubmit="return validar()">
         <label for="Codigo">Codigo:</label>
-        <input type="number" id="Codigo" name="Codigo" value='<?=$Codigo?>' required>  <br>  <br>
+        <input type="number" id="Codigo" name="Codigo" value='<?=$Codigo?>' readonly>  <br>  <br>
         <label for="Nombre">Nombre:</label>
         <input type="text" id="Nombre" name="Nombre" value='<?=$Nombre?>' required>  <br>  <br>
         <label for="Descripcion">Descripción:</label>
