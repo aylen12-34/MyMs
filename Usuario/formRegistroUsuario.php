@@ -1,4 +1,5 @@
 <?php
+
 $usuario = "root";
 $contraseña = "";
 $direccion = "localhost";
@@ -9,7 +10,6 @@ $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
-
 
 ?>
 <!DOCTYPE html>
@@ -26,6 +26,7 @@ if ($conexion->connect_error) {
     *{
         font-family: 'Chillax-Semibold';
     }
+
         body {
             background-image: url(../imagenes/2.png);
             display: flex;
@@ -34,11 +35,10 @@ if ($conexion->connect_error) {
             min-height: 100vh;
             padding: 30px 0;
         }
+
         form {
             max-width: 400px;
         }
-
-
 
         label {
             display: block;
@@ -46,9 +46,6 @@ if ($conexion->connect_error) {
             color: #EFE2DA;
         }
 
-
-
-        
         input {
             width: 100%;
             padding: 8px;
@@ -57,7 +54,64 @@ if ($conexion->connect_error) {
             border-radius: 10px;
         }
 
+        /* SELECT */
+        select{
+            width: 100%;
+            padding: 8px;
 
+            margin-bottom: 10px;
+
+            border: 2.5px solid #E64B6B;
+            border-radius: 10px;
+
+            background-color: white;
+            color: #6A253A;
+
+            font-family: 'Chillax-Semibold';
+            font-size: 15px;
+
+            cursor: pointer;
+            outline: none;
+        }
+
+        select:focus{
+            border-color: #EFE2DA;
+        }
+
+        select option{
+            background-color: white;
+            color: #6A253A;
+            font-family: 'Chillax-Semibold';
+        }
+
+        /* ARCHIVO */
+        input[type="file"]{
+            background-color: white;
+            color: #6A253A;
+            cursor: pointer;
+            font-family: 'Chillax-Semibold';
+        }
+
+        input[type="file"]::file-selector-button{
+            background-color: #E64B6B;
+            color: #EFE2DA;
+
+            border: none;
+            border-radius: 8px;
+
+            padding: 8px 12px;
+            margin-right: 10px;
+
+            font-family: 'Chillax-Semibold';
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        input[type="file"]::file-selector-button:hover{
+            background-color: #EFE2DA;
+            color: #6A253A;
+        }
 
         input[type="submit"] {
             background-color: #E64B6B;
@@ -67,24 +121,27 @@ if ($conexion->connect_error) {
             border-radius: 5px;
             cursor: pointer;
         }
+
         input[type="submit"]:hover {
             background-color: #EFE2DA;
             color:#E64B6B;
         }
+
         .volver{
-        padding: 10px 20px;
-        border: none;
-        color: #EFE2DA;
-        border-radius: 5px;
-        background: #E64B6B;
-        cursor: pointer;
-        font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            color: #EFE2DA;
+            border-radius: 5px;
+            background: #E64B6B;
+            cursor: pointer;
+            font-size: 16px;
         }
 
         .volver:hover{
             background-color: #EFE2DA;
             color:#E64B6B;
         }
+
         div {
             width: 420px;
             padding: 35px;
@@ -93,40 +150,41 @@ if ($conexion->connect_error) {
             border-radius: 40px;
             color: #EFE2DA;
         }
+
         @media(max-width:800px){
 
-  body{
-    padding: 20px;
-  }
+            body{
+                padding: 20px;
+            }
 
-  div{
-    width: 100%;
-    max-width: 320px;
-    padding: 25px;
-    border-radius: 25px;
-  }
+            div{
+                width: 100%;
+                max-width: 320px;
+                padding: 25px;
+                border-radius: 25px;
+            }
 
-  h1{
-    text-align: center;
-    font-size: 28px;
-  }
+            h1{
+                text-align: center;
+                font-size: 28px;
+            }
 
-  form{
-    width: 100%;
-  }
+            form{
+                width: 100%;
+            }
 
-  input{
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 16px;
-  }
+            input{
+                width: 100%;
+                box-sizing: border-box;
+                font-size: 16px;
+            }
 
-  input[type="submit"],
-  .volver{
-    width: 100%;
-    margin-top: 10px;
-  }
-}
+            input[type="submit"],
+            .volver{
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
 
     </style>
 </head>
@@ -230,6 +288,7 @@ if ($conexion->connect_error) {
             rol.focus();
             return false;
         }
+
         if (!expRegRol.test(rol.value)) {
             alert("⚠ El rol debe contener solo letras minúsculas");
             rol.focus();
@@ -241,6 +300,7 @@ if ($conexion->connect_error) {
             rol.focus();
             return false;
         }
+
         if (estado.value == "") {
             alert("⚠ Ingrese el estado");
             estado.focus();

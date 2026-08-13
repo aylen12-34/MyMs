@@ -153,7 +153,46 @@ button{
         a{
             text-decoration:none;
             color: #EFE2DA;
-        }@media(max-width:800px){
+
+        }
+        input[type="number"]{
+    width: 80px;
+    padding: 8px 10px;
+    border: 2px solid #E64B6B;
+    border-radius: 8px;
+    background-color: #EFE2DA;
+    color: #6A253A;
+    font-family: 'Chillax-Semibold';
+    font-size: 15px;
+    text-align: center;
+    outline: none;
+    transition: 0.3s;
+}
+
+input[type="number"]:focus{
+    border-color: #EFE2DA;
+    box-shadow: 0 0 8px rgba(239, 226, 218, 0.5);
+}
+
+/* BOTÓN AGREGAR */
+input[type="submit"]{
+    padding: 8px 14px;
+    margin: 3px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #EFE2DA;
+    background-color: #E64B6B;
+    font-family: 'Chillax-Semibold';
+    font-size: 15px;
+}
+
+input[type="submit"]:hover{
+    background-color: #EFE2DA;
+    color: #6A253A;
+}
+        @media(max-width:800px){
 
   body{
     padding: 15px;
