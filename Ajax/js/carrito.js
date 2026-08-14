@@ -86,7 +86,7 @@ html += `
 
 <div class="productoCarrito">
 
-<img src="img/productos/${producto.imagen}" width="80">
+<img src="../../imagenes/galletas/${producto.imagen}" width="80">
 
 
 <h3>
@@ -117,6 +117,38 @@ Bs ${subtotal}
 });
 
 
+
+/*datos.forEach(producto => {
+
+    console.log("PRODUCTO COMPLETO:", producto);
+    console.log("CANTIDAD:", producto.Cantidad);
+    console.log("COSTO TOTAL:", producto.CostoTotal);
+
+    let subtotal = Number(producto.CostoTotal);
+    let cantidad = Number(producto.Cantidad);
+
+    console.log("CANTIDAD NUMERICA:", cantidad);
+    console.log("SUBTOTAL NUMERICO:", subtotal);
+
+    total += subtotal;
+    cantidadTotal += cantidad;
+
+    html += `
+        <div class="productoCarrito">
+
+            <img src="../imgenes/galletas/${producto.imagen}" width="80">
+
+            <h3>${producto.Nombre}</h3>
+
+            <p>Precio: Bs ${producto.Precio}</p>
+
+            <p>Cantidad: ${Cantidad}</p>
+
+            <p>Subtotal: Bs ${subtotal}</p>
+
+        </div>
+    `;
+});*/
 
 document.getElementById("contenidoCarrito")
 .innerHTML = html;

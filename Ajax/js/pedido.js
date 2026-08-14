@@ -46,7 +46,7 @@ document.getElementById("confirmarPedido").addEventListener("click",()=>{
 
 
 
-fetch("../index/crear_pedido.php",{
+fetch("../index/crearpedido.php",{
 
     method:"POST",
 
@@ -103,7 +103,7 @@ fetch("../index/crear_pedido.php",{
 function verificarEstadoPedido(){
 
 
-fetch("../index/estado_pedido.php")
+fetch("estadopedido.php")
 
 
 .then(res=>res.json())
@@ -115,11 +115,11 @@ fetch("../index/estado_pedido.php")
 if(data.ok){
 
 
-let pedidos=data.pedido;
+let pedido=data.pedido;
 
 
 
-if(pedidos.Estado=="Pendiente"){
+if(pedido.Estado=="Pendiente"){
 
 
 
@@ -132,7 +132,6 @@ document.getElementById("resumenPedido").style.display="block";
 
 
 document.getElementById("datosPedido").innerHTML=`
-
 <p>
 Número pedido:
 ${pedido.id}

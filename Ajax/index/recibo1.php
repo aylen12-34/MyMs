@@ -506,7 +506,7 @@ Recibo de Pedido
 
 <p>
 Número:
-<?php echo $pedido["Pedidos_ID"]; ?>
+<?php echo $pedido["ID"]; ?>
 </p>
 
 

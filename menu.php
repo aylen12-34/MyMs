@@ -366,7 +366,6 @@ main{
     <?php include("includes/header.php"); ?>
 
     <main>
-        <button onclick="buscarProducto()">Mostrar todos los productos</button>
         
         <div id="resultado">
         <section class="banner-croissants">

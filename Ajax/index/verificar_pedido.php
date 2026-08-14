@@ -5,13 +5,13 @@ session_start();
 header("Content-Type: application/json");
 
 //En tu proyecto del carrito esto es importante porque ahí guardas el número del pedido:
-if(isset($_SESSION["pedido"])){
+if(isset($_SESSION["pedidos"])){
 
 
 echo json_encode([
 
 "pedidoActivo"=>true,
-"pedido"=>$_SESSION["pedido"]
+"pedido"=>$_SESSION["pedidos"]
 
 ]);
 

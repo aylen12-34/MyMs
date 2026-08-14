@@ -5,7 +5,7 @@ require("conexion.php");
 
 header("Content-Type: application/json");
 
-if(!isset($_SESSION["pedido"])){
+if(!isset($_SESSION["pedidos"])){
     echo json_encode([
         "ok"=>false,
         "mensaje"=>"No existe pedido activo"
@@ -13,7 +13,7 @@ if(!isset($_SESSION["pedido"])){
     exit;
 }
 
-$idPedido = $_SESSION["pedido"];
+$idPedido = $_SESSION["pedidos"];
 
 accion = isset($_POST["accion"]) ? $_POST["accion"] : 0;
 

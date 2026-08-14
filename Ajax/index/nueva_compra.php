@@ -3,7 +3,7 @@
 session_start();
 
 // Eliminar el pedido activo
-unset($_SESSION["pedido"]);
+unset($_SESSION["pedidos"]);
 
 echo json_encode([
     "ok" => true

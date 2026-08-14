@@ -74,12 +74,12 @@ if($stmt->execute()){
 
     $idPedido=$conn->insert_id;
 
-    $_SESSION["pedido"]=$idPedido;
+    $_SESSION["pedidos"]=$idPedido;
 
     echo json_encode([
         "ok"=>true,
         "pedido"=>$idPedido,
-        "sesion"=>$_SESSION["pedido"]
+        "sesion"=>$_SESSION["pedidos"]
     ]);
 
 }else{

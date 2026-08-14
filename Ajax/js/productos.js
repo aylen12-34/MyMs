@@ -43,7 +43,7 @@ function mostrarProductos(productos){
 
         html += `
         <div class="tarjeta">
-            <img src="../../${producto.imagen}" alt="${producto.nombre}">
+            <img src="../../imagenes/galletas/${productos.imagen}" alt="${producto.Nombre}">
 
             <h3>${producto.Nombre}</h3>
 
@@ -85,7 +85,7 @@ function agregarEventos(){
 }
 function agregarProducto(Codigo){
 
-    fetch("carrito.php",{
+    fetch("../index/carrito.php",{
 
         method:"POST",
 

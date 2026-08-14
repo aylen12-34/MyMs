@@ -260,7 +260,7 @@ input[type="submit"]:hover{
                 echo "<td>".$fila["Descripcion"]."</td>";
                 echo "<td><img src='../imagenes/galletas/".$fila["imagen"]."' width='80' style='border-radius: 20px; border: 2px solid #E64B6B;'></td>";
                 echo "<td>".$fila["Precio"]."</td>";
-                echo "<td><input type='number' name='cantidad' value=0></td>";
+                echo "<td><input type='number' name='cantidad' value=".$fila["cantidad"]."></td>";
                 echo "<input type='hidden' value=".$fila["Codigo"]." name='Codigo'>";
                 echo "<input type='hidden' value=".$Pedidos_ID." name='Pedidos_ID'>";
                 echo "<input type='hidden' value=".$fila["Precio"]." name='Precio'>";
