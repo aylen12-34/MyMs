@@ -119,11 +119,7 @@
             <li><a href="login.php">Iniciar sesión</a></li>
             <li><a href="Ajax/index/index1.php">Menú</a></li>
             <li><a href="nosotros.php">Nosotros</a></li>
-            <li>
-                <a href="Pedidos/formRegistroPedidos.php">
-                    <img src="https://cdn-icons-png.freepik.com/512/9341/9341730.png" id="compra" alt="Carrito">
-                </a>
-            </li>
+            
         </ul>
     </nav>
 

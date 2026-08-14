@@ -25,7 +25,7 @@ $idPedido=$_SESSION["pedidos"];
 $sql="
 UPDATE pedidos
 SET Estado='Pendiente'
-WHERE Pedidos_ID='$idPedido'
+WHERE ID='$idPedido'
 ";
 
 

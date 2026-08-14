@@ -73,11 +73,11 @@ fetch("../index/crearpedido.php",{
 
         alert(
         "Pedido confirmado Nº "
-        + data.pedido
+        + data.pedidos
         );
 
 
-         window.location.href="index1.php?ID="+data.pedido;
+         window.location.href="index1.php?ID="+data.pedidos;
 
 
     }else{

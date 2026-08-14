@@ -15,8 +15,11 @@
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f4f6f9;
+    background-image: url("../../imagenes/2.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 /*======================
@@ -27,9 +30,9 @@ header{
 
     width:100%;
 
-    background:#1e3a8a;
+    background-color: #E64B6B;
 
-    color:white;
+    color:#EFE2DA;
 
     display:flex;
 
@@ -103,9 +106,9 @@ header{
 
     border-radius:50%;
 
-    background:red;
+    background:#6A253A;
 
-    color:white;
+    color:#EFE2DA;
 
     display:flex;
 
@@ -127,7 +130,7 @@ header{
 
     margin:30px;
 
-    color:#1e3a8a;
+    color:#6A253A;
 
 }
 
@@ -157,13 +160,13 @@ header{
 
 .tarjeta{
 
-    background:white;
+    background:#EFE2DA;
 
     border-radius:12px;
 
     overflow:hidden;
 
-    box-shadow:0 4px 10px rgba(0,0,0,.15);
+    box-shadow:0 4px 10px #E64B6B;
 
     transition:.3s;
 
@@ -197,7 +200,7 @@ header{
 
     text-align:center;
 
-    color:#666;
+    color:#E64B6B;
 
     padding:10px;
 
@@ -209,7 +212,7 @@ header{
 
     text-align:center;
 
-    color:#2563eb;
+    color:#6A253A;
 
 }
 
@@ -227,9 +230,9 @@ header{
 
     border-radius:8px;
 
-    background:#2563eb;
+    background:#6A253A;
 
-    color:white;
+    color:#EFE2DA;
 
     cursor:pointer;
 
@@ -239,7 +242,7 @@ header{
 
 .tarjeta button:hover{
 
-    background:#1d4ed8;
+    background:#E64B6B;
 
 }
 
@@ -259,9 +262,9 @@ header{
 
     height:100vh;
 
-    background:white;
+    background:#EFE2DA;
 
-    box-shadow:-5px 0 20px rgba(0,0,0,.25);
+    box-shadow:-5px 0 20px #E64B6B;
 
     transition:.4s;
 
@@ -281,9 +284,9 @@ header{
 
 .sidebarHeader{
 
-    background:#1e3a8a;
+    background:#6A253A;
 
-    color:white;
+    color:#EFE2DA;
 
     padding:15px;
 
@@ -301,7 +304,7 @@ header{
 
     background:none;
 
-    color:white;
+    color:#EFE2DA;
 
     font-size:20px;
 
@@ -323,7 +326,7 @@ header{
 
     padding:15px;
 
-    border-top:1px solid #ddd;
+    border-top:1px solid #E64B6B;
 
 }
 
@@ -347,17 +350,17 @@ header{
 
 #vaciarCarrito{
 
-    background:#ef4444;
+    background:#E64B6B;
 
-    color:white;
+    color:#EFE2DA;
 
 }
 
 #comprar{
 
-    background:#16a34a;
+    background:#E64B6B;
 
-    color:white;
+    color:#EFE2DA;
 
 }
 
@@ -504,7 +507,7 @@ header{
 
     width:400px;
 
-    background:white;
+    background:#EFE2DA;
 
     padding:25px;
 

@@ -15,13 +15,13 @@ if(!isset($_SESSION["pedidos"])){
 
 $idPedido = $_SESSION["pedidos"];
 
-accion = isset($_POST["accion"]) ? $_POST["accion"] : 0;
+$accion = isset($_POST["accion"]) ? $_POST["accion"] : 0;
 
 switch($accion){
 
     case "agregar":
 
-        $codigo = $_POST["Codigo"];
+        $codigo = $_POST["codigo"];
 
         // Buscar producto
         $sqlProducto = "SELECT * FROM productos WHERE Codigo='$codigo'";
