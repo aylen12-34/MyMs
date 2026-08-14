@@ -46,7 +46,7 @@ document.getElementById("confirmarPedido").addEventListener("click",()=>{
 
 
 
-fetch("php/crear_pedido.php",{
+fetch("crear_pedido.php",{
 
     method:"POST",
 
@@ -103,7 +103,7 @@ fetch("php/crear_pedido.php",{
 function verificarEstadoPedido(){
 
 
-fetch("php/estado_pedido.php")
+fetch("../index/verificar_pedido.php")
 
 
 .then(res=>res.json())

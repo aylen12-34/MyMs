@@ -14,7 +14,7 @@ function cargarProductos(){
 /*fetch() es una función de JavaScript que permite realizar peticiones HTTP al servidor.
 
 En este caso envía una petición al archivo:*/
-    fetch("php/obtener_productos.php")
+    fetch("../index/obtener_productos.php")
 /*Cuando el servidor responde, esa respuesta aún no es un objeto de JavaScript.
 
 Es simplemente una respuesta HTTP. Es decir, transforma el JSON recibido en datos que JavaScript puede utilizar.*/ 
@@ -41,18 +41,17 @@ function mostrarProductos(productos){
 
         html += `
         <div class="tarjeta">
+            <img src="../../imagenes/galletas/${productos.imagen}" width="100">
 
-            <img src="img/productos/${producto.imagen}" alt="${producto.nombre}">
+            <h3>${producto.Nombre}</h3>
 
-            <h3>${producto.nombre}</h3>
+            <p>${producto.Descripcion}</p>
 
-            <p>${producto.descripcion}</p>
-
-            <h2>Bs ${producto.precio}</h2>
+            <h2>Bs ${producto.Precio}</h2>
 
             <button
 class="btnAgregar"
-data-codigo="${producto.codigo}"
+data-codigo="${producto.Codigo}"
 ${pedidoActivo ? "" : "disabled"}>
 Agregar al carrito
 </button>
@@ -129,7 +128,7 @@ function habilitarCompra(){
 
 function verificarPedido(){
 
-    fetch("php/verificar_pedido.php")
+    fetch("../index/verificar_pedido.php")
 
     .then(res => res.json())
 

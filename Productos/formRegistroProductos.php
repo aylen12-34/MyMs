@@ -174,6 +174,12 @@ label.error{
             <input type="text" id="Stock" name="Stock">
             <br><br>
 
+            <label>Estado</label>
+            <select name="Estado">
+                <option value="Activo">Activo</option>
+                <option value="Desactivo">Desactivo</option>
+            </select>
+
             <input type="submit" value="Registrar Productos">
 
         </form>
