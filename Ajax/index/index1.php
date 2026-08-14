@@ -119,18 +119,18 @@ Generar Pedido
         <h2>🛍 Finalizar Compra</h2>
 
         <input type="text"
-               id="nombre"
+               id="Nombre"
                placeholder="Nombre completo">
 
         <input type="text"
-               id="telefono"
+               id="Celular"
                placeholder="Teléfono">
 
         <input type="text"
-               id="direccion"
+               id="Direccion"
                placeholder="Dirección">
 
-        <select id="metodoPago">
+        <select id="Metodo">
 
             <option value="QR">Pago mediante QR</option>
 

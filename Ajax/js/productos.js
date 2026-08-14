@@ -10,6 +10,8 @@ verificarPedido();
 
 });
 
+
+
 function cargarProductos(){
 /*fetch() es una función de JavaScript que permite realizar peticiones HTTP al servidor.
 
@@ -41,7 +43,7 @@ function mostrarProductos(productos){
 
         html += `
         <div class="tarjeta">
-            <img src="../../imagenes/galletas/${productos.imagen}" width="100">
+            <img src="../../${producto.imagen}" alt="${producto.nombre}">
 
             <h3>${producto.Nombre}</h3>
 
@@ -51,7 +53,7 @@ function mostrarProductos(productos){
 
             <button
 class="btnAgregar"
-data-codigo="${producto.Codigo}"
+data-Codigo="${producto.Codigo}"
 ${pedidoActivo ? "" : "disabled"}>
 Agregar al carrito
 </button>
@@ -74,16 +76,16 @@ function agregarEventos(){
 
         boton.addEventListener("click",()=>{
 
-            agregarProducto(boton.dataset.codigo);
+            agregarProducto(boton.dataset.Codigo);
 
         });
 
     });
 
 }
-function agregarProducto(codigo){
+function agregarProducto(Codigo){
 
-    fetch("php/carrito.php",{
+    fetch("carrito.php",{
 
         method:"POST",
 
@@ -91,7 +93,7 @@ function agregarProducto(codigo){
             "Content-Type":"application/x-www-form-urlencoded"
         },
 
-        body:"accion=agregar&codigo="+codigo
+        body:"accion=agregar&codigo="+Codigo
 
     })
 

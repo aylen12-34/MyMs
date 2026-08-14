@@ -15,16 +15,16 @@ if(!isset($_SESSION["pedido"])){
 
 $idPedido = $_SESSION["pedido"];
 
-$accion = $_POST["accion"] ?? "";
+accion = isset($_POST["accion"]) ? $_POST["accion"] : 0;
 
 switch($accion){
 
     case "agregar":
 
-        $codigo = $_POST["codigo"];
+        $codigo = $_POST["Codigo"];
 
         // Buscar producto
-        $sqlProducto = "SELECT * FROM Producto WHERE codigo='$codigo'";
+        $sqlProducto = "SELECT * FROM productos WHERE Codigo='$codigo'";
         $resultadoProducto = $conn->query($sqlProducto);
         if($resultadoProducto->num_rows == 0){
 
@@ -39,9 +39,9 @@ switch($accion){
         $producto = $resultadoProducto->fetch_assoc();
 
         // Verificar si ya existe
-        $sqlExiste = "SELECT * FROM Carrito
-                       WHERE Pedido_id='$idPedido'
-                       AND Producto_codigo='$codigo'";
+        $sqlExiste = "SELECT * FROM carrito
+                       WHERE Pedidos_ID='$idPedido'
+                       AND Productos_Codigo='$codigo'";
 
         $resultadoExiste = $conn->query($sqlExiste);
 
@@ -49,22 +49,22 @@ switch($accion){
 
             $fila = $resultadoExiste->fetch_assoc();
 
-            $cantidad = $fila["cantidad"] + 1;
+            $cantidad = $fila["Cantidad"] + 1;
 
-            $subtotal = $cantidad * $producto["precio"];
+            $subtotal = $cantidad * $producto["Precio"];
 
-            $sql = "UPDATE Carrito
-                    SET cantidad='$cantidad',
-                        costototal='$subtotal'
-                    WHERE Pedido_id='$idPedido'
-                    AND Producto_codigo='$codigo'";
+            $sql = "UPDATE carrito
+                    SET Cantidad='$cantidad',
+                        CostoTotal='$subtotal'
+                    WHERE Pedidos_ID='$idPedido'
+                    AND Productos_Codigo='$codigo'";
 
         }else{
 
-            $subtotal = $producto["precio"];
+            $subtotal = $producto["Precio"];
 
-            $sql = "INSERT INTO Carrito
-                    (Pedido_id,Producto_codigo,cantidad,costototal)
+            $sql = "INSERT INTO carrito
+                    (Pedidos_ID,Productos_Codigo,Cantidad,CostoTotal)
                     VALUES
                     ('$idPedido','$codigo',1,'$subtotal')";
 
@@ -90,16 +90,16 @@ switch($accion){
     case "mostrar":
 
     $sql = "SELECT
-                c.Producto_codigo,
-                c.cantidad,
-                c.costototal,
-                p.nombre,
-                p.precio,
+                c.Productos_Codigo,
+                c.Cantidad,
+                c.CostoTotal,
+                p.Nombre,
+                p.Precio,
                 p.imagen
-            FROM Carrito c
-            INNER JOIN Producto p
-            ON c.Producto_codigo = p.codigo
-            WHERE c.Pedido_id='$idPedido'";
+            FROM carrito c
+            INNER JOIN productos p
+            ON c.Productos_Codigo = p.Codigo
+            WHERE c.Pedidos_ID='$idPedido'";
 
     $resultado = $conn->query($sql);
 
@@ -116,8 +116,8 @@ switch($accion){
 break;
 case "vaciar":
 
-    $sql = "DELETE FROM Carrito
-            WHERE Pedido_id='$idPedido'";
+    $sql = "DELETE FROM carrito
+            WHERE Pedidos_ID='$idPedido'";
 
     if($conn->query($sql)){
 

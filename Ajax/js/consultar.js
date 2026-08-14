@@ -8,7 +8,7 @@ document.getElementById("numeroPedido").value;
 
 
 
-fetch("php/consultar_pedido.php",{
+fetch("../index/consultar_pedido.php",{
 
 
 method:"POST",
@@ -52,7 +52,7 @@ document.getElementById("resultado")
 <hr>
 
 <h3>
-Pedido Nº ${p.id}
+Pedido Nº ${p.ID}
 </h3>
 
 

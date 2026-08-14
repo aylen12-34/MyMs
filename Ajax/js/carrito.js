@@ -42,7 +42,7 @@ function cerrarSidebar(){
 
 function actualizarCarrito(){
 
-fetch("php/carrito.php",{
+fetch("../index/carrito.php",{
 
 method:"POST",
 
@@ -72,9 +72,9 @@ let cantidadTotal = 0;
 datos.forEach(producto=>{
 
 
-let subtotal = Number(producto.costototal);
+let subtotal = Number(producto.CostoTotal);
 
-let cantidad = Number(producto.cantidad);
+let cantidad = Number(producto.Cantidad);
 
 
 total += subtotal;
@@ -90,12 +90,12 @@ html += `
 
 
 <h3>
-${producto.nombre}
+${producto.Nombre}
 </h3>
 
 
 <p>
-Precio: Bs ${producto.precio}
+Precio: Bs ${producto.Precio}
 </p>
 
 
@@ -156,7 +156,7 @@ function vaciarCarrito(){
         return;
     }
 
-    fetch("php/carrito.php",{
+    fetch("../index/carrito.php",{
 
         method:"POST",
 
@@ -199,7 +199,7 @@ document.addEventListener("click",function(e){
     if(e.target.id=="comprar"){
 
 
-        fetch("php/finalizar_pedido.php")
+        fetch("finalizar_pedido.php")
 
 .then(res=>res.json())
 

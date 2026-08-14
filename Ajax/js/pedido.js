@@ -36,17 +36,17 @@ document.getElementById("confirmarPedido").addEventListener("click",()=>{
 
     let datos = {
 
-        nombre: document.getElementById("nombre").value,
-        telefono: document.getElementById("telefono").value,
-        direccion: document.getElementById("direccion").value,
-        metodo: document.getElementById("metodoPago").value,
+        Nombre: document.getElementById("Nombre").value,
+        Celular: document.getElementById("Celular").value,
+        Direccion: document.getElementById("Direccion").value,
+        Metodo: document.getElementById("Metodo").value,
     
 
     };
 
 
 
-fetch("crear_pedido.php",{
+fetch("../index/crear_pedido.php",{
 
     method:"POST",
 
@@ -77,7 +77,7 @@ fetch("crear_pedido.php",{
         );
 
 
-         window.location.href="index.php?id="+data.pedido;
+         window.location.href="index1.php?ID="+data.pedido;
 
 
     }else{
@@ -103,7 +103,7 @@ fetch("crear_pedido.php",{
 function verificarEstadoPedido(){
 
 
-fetch("../index/verificar_pedido.php")
+fetch("../index/estado_pedido.php")
 
 
 .then(res=>res.json())
@@ -115,11 +115,11 @@ fetch("../index/verificar_pedido.php")
 if(data.ok){
 
 
-let pedido=data.pedido;
+let pedidos=data.pedido;
 
 
 
-if(pedido.Estado=="Pendiente"){
+if(pedidos.Estado=="Pendiente"){
 
 
 

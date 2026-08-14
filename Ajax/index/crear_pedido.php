@@ -1,8 +1,8 @@
 
 <?php
 
-/*ini_set('display_errors',1);
-error_reporting(E_ALL);*/
+ini_set('display_errors',1);
+error_reporting(E_ALL);
 
 session_start();
 
@@ -30,30 +30,30 @@ if(!$datos){
 }
 
 
-$nombre=$datos["nombre"];
-$telefono=$datos["telefono"];
-$direccion=$datos["direccion"];
-$metodo=$datos["metodo"];
+$nombre=$datos["Nombre"];
+$telefono=$datos["Celular"];
+$direccion=$datos["Direccion"];
+$metodo=$datos["Metodo"];
 
 
 
 $stmt=$conn->prepare("
 
-INSERT INTO pedido
+INSERT INTO pedidos
 (
 Nombre,
 Fecha,
 Estado,
-telefono,
-direccion,
-metodoPago
+Celular,
+Direccion,
+Metodo
 )
 
 VALUES
 (
 ?,
 NOW(),
-'Abierto',
+'Activo',
 ?,
 ?,
 ?
