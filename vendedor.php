@@ -357,7 +357,7 @@ main p{
 
             $fila = $resultadop->fetch_assoc();
                 
-            echo "<img src='imagenes/perfil/".$fila["imagen"]."' width='120'>";
+            echo "<img src='".$fila["imagen"]."' width='120'>";
 
                 
                

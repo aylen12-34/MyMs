@@ -223,7 +223,7 @@ table td:last-child{
         if ($resultadop->num_rows > 0) {
 
             while($fila = $resultadop->fetch_assoc()) {
-             echo "<img src='imagenes/perfil/".$fila["imagen"]."' width='300'>";
+             echo "<img src='".$fila["imagen"]."' width='300'>";
 
                 
             }
