@@ -3,7 +3,7 @@ require "bdVentas.php";
 session_start();
 
 if (!isset($_SESSION['CI'])) {
-    header("location: ../login.html");
+    header("location: ../login.php");
     exit();
 }
 
