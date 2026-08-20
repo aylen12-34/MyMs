@@ -126,11 +126,25 @@ header{
 
 .titulo{
 
-    text-align:center;
+    width: 100%;
 
-    margin:30px;
+    margin: 30px 0 25px 0;
 
-    color:#6A253A;
+    padding: 20px;
+
+    text-align: center;
+
+    background: #6A253A;
+
+    color: #EFE2DA;
+
+    font-size: 38px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    box-shadow: 0 5px 12px rgba(106, 37, 58, 0.3);
 
 }
 
@@ -160,92 +174,163 @@ header{
 
 .tarjeta{
 
-    background:#EFE2DA;
+    background: rgba(239, 226, 218, 0.96);
 
-    border-radius:12px;
+    border-radius: 22px;
 
-    overflow:hidden;
+    overflow: hidden;
 
-    box-shadow:0 4px 10px #E64B6B;
+    padding: 20px;
 
-    transition:.3s;
+    box-shadow: 0 8px 20px rgba(106, 37, 58, 0.25);
+
+    transition: 0.35s;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    border: 2px solid transparent;
 
 }
 
 .tarjeta:hover{
 
-    transform:translateY(-8px);
+    transform: translateY(-10px);
+
+    box-shadow: 0 15px 30px rgba(106, 37, 58, 0.35);
+
+    border-color: #E64B6B;
 
 }
+
+
+/* IMAGEN DEL PRODUCTO */
 
 .tarjeta img{
 
-    width:70%;
+    width: 100%;
 
-    height:220px;
+    height: 230px;
 
-    object-fit:contain;
+    object-fit: cover;
+
+    display: block;
+
+    margin: 0 auto 15px auto;
+
+    border-radius: 18px;
 
 }
+
+
+/* NOMBRE DEL PRODUCTO */
 
 .tarjeta h3{
 
-    text-align:center;
+    text-align: center;
 
-    margin-top:15px;
+    margin-top: 5px;
+
+    color: #6A253A;
+
+    font-size: 20px;
 
 }
+
+
+/* DESCRIPCION */
 
 .tarjeta p{
 
-    text-align:center;
+    text-align: center;
 
-    color:#E64B6B;
+    color: #E64B6B;
 
-    padding:10px;
+    padding: 10px;
 
-    min-height:50px;
+    min-height: 50px;
 
 }
+
+
+/* PRECIO */
 
 .tarjeta h2{
 
-    text-align:center;
+    text-align: center;
 
-    color:#6A253A;
+    color: #6A253A;
+
+    margin-bottom: 5px;
 
 }
 
+
+/* BOTON AGREGAR */
+
 .tarjeta button{
-
-    width:90%;
-
-    margin:15px auto;
-
+    width:100%;
+    margin:8px auto 0 auto;
     display:block;
-
-    padding:12px;
-
+    padding:13px;
     border:none;
-
-    border-radius:8px;
-
-    background:#6A253A;
-
+    border-radius:12px;
     color:#EFE2DA;
-
+    font-size:16px;
+    font-weight:bold;
     cursor:pointer;
-
-    transition:.3s;
-
+    transition:0.3s;
 }
 
 .tarjeta button:hover{
 
-    background:#E64B6B;
+    background: #E64B6B;
+
+    transform: scale(1.03);
+
+}
+#generarPedido{
+
+    display: block;
+
+    margin: 25px auto 35px auto;
+
+    padding: 18px 55px;
+
+    border: none;
+
+    border-radius: 18px;
+
+    background: #E64B6B;
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 20px rgba(230, 75, 107, 0.35);
+
+    transition: 0.3s;
+
+    letter-spacing: 1px;
 
 }
 
+#generarPedido:hover{
+
+    background: #6A253A;
+
+    transform: translateY(-5px) scale(1.04);
+
+    box-shadow: 0 14px 30px rgba(106, 37, 58, 0.45);
+
+}
 /*======================
       SIDEBAR
 =======================*/
@@ -684,5 +769,346 @@ body h2{
     transform:scale(1.03);
 
     transition:0.3s;
+
+}
+/*======================
+      MODAL PRODUCTO
+=======================*/
+
+/* FONDO OSCURO */
+
+#fondoProducto{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.65);
+
+    display:none;
+
+    z-index:3000;
+
+}
+
+#fondoProducto.activo{
+
+    display:block;
+
+}
+
+
+/* VENTANA */
+
+#modalProducto{
+
+    position:fixed;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%, -50%) scale(0.9);
+
+    width:70%;
+    max-width:1000px;
+
+    max-height:80vh;
+
+    background:#EFE2DA;
+
+    border-radius:25px;
+
+    padding:30px;
+
+    display:none;
+
+    z-index:3001;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,0.5);
+
+    opacity:0;
+
+    transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+
+}
+
+#modalProducto.activo{
+
+    display:block;
+
+    transform:translate(-50%, -50%) scale(1);
+
+    opacity:1;
+
+}
+
+
+/* BOTÓN CERRAR */
+
+#cerrarProducto{
+
+    position:absolute;
+
+    top:15px;
+    right:20px;
+
+    width:40px;
+    height:40px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#6A253A;
+
+    color:#EFE2DA;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+}
+
+#cerrarProducto:hover{
+
+    background:#E64B6B;
+
+    transform:scale(1.1);
+
+}
+
+
+/* CONTENIDO */
+
+.productoDetalle{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:35px;
+
+    align-items:center;
+
+}
+
+
+/* IMAGEN */
+
+.productoDetalleImagen{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+#detalleImagen{
+
+    width:100%;
+
+    max-height:450px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 8px 20px rgba(106,37,58,0.3);
+
+}
+
+
+/* INFORMACIÓN */
+
+.productoDetalleInfo{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    gap:15px;
+
+    padding:20px;
+
+}
+
+
+/* NOMBRE */
+
+#detalleNombre{
+
+    color:#6A253A;
+
+    font-size:36px;
+
+    font-weight:bold;
+
+    text-align:left;
+
+}
+
+
+/* PRECIO */
+
+#detallePrecio{
+
+    color:#E64B6B;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+}
+
+
+/* DESCRIPCIÓN */
+
+#detalleDescripcion{
+
+    color:#6A253A;
+
+    font-size:18px;
+
+    line-height:1.6;
+
+}
+
+
+/* BOTÓN AGREGAR */
+
+#detalleAgregar{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-top:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#6A253A;
+
+    color:#EFE2DA;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+}
+
+#detalleAgregar:hover{
+
+    background:#E64B6B;
+
+    transform:translateY(-3px);
+
+}
+.btnAgregar{
+
+    background:#6A253A;
+
+}
+
+.btnAgregar:hover{
+
+    background:#E64B6B;
+
+    transform:scale(1.03);
+
+}
+
+
+.btnVerMas{
+
+    background:#E64B6B;
+
+}
+
+.btnVerMas:hover{
+
+    background:#6A253A;
+
+    transform:scale(1.03);
+
+}
+
+
+/*======================
+      RESPONSIVE
+=======================*/
+
+@media(max-width:768px){
+
+    #modalProducto{
+
+        width:90%;
+
+        max-height:90vh;
+
+        overflow:auto;
+
+        padding:20px;
+
+    }
+
+    .productoDetalle{
+
+        grid-template-columns:1fr;
+
+        gap:15px;
+
+    }
+
+    #detalleImagen{
+
+        max-height:300px;
+
+    }
+
+    #detalleNombre{
+
+        font-size:28px;
+
+        text-align:center;
+
+    }
+
+    #detallePrecio{
+
+        font-size:25px;
+
+        text-align:center;
+
+    }
+
+    #detalleDescripcion{
+
+        text-align:center;
+
+    }
 
 }

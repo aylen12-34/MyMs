@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
     <!--================== CABECERA ==================-->
 
     <header>
@@ -50,6 +49,9 @@
         <h2 class="titulo">
             Productos Disponibles
         </h2>
+        <button id="generarPedido">
+            Generar Pedido
+        </button>
 
         <section id="productos">
 
@@ -57,9 +59,6 @@
 
     </main>
     
-   <button id="generarPedido">
-Generar Pedido
-</button>
 
 
 </div>
@@ -157,11 +156,51 @@ Generar Pedido
 </div>
     
 
+<!--================== FONDO MODAL PRODUCTO ==================-->
 
+<div id="fondoProducto"></div>
+
+
+<!--================== MODAL VER MÁS ==================-->
+
+<div id="modalProducto">
+
+    <button id="cerrarProducto">✖</button>
+
+    <div class="productoDetalle">
+
+        <div class="productoDetalleImagen">
+
+            <img id="detalleImagen" src="" alt="Producto">
+
+        </div>
+
+        <div class="productoDetalleInfo">
+
+            <h2 id="detalleNombre">
+                Nombre del producto
+            </h2>
+
+            <h3 id="detallePrecio">
+                Bs 0
+            </h3>
+
+            <p id="detalleDescripcion">
+                Descripción del producto
+            </p>
+
+            <button id="detalleAgregar">
+                🛒 Agregar al carrito
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 <script src="../js/productos.js"></script>
 <script src="../js/pedido.js"></script>
 <script src="../js/carrito.js"></script>
-
 </body>
 
 </html>
