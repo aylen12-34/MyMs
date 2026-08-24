@@ -171,6 +171,7 @@ $resultado = $conexion->query($sql);
 
     <table>
         <tr>
+            <th>ID Venta</th>
             <th>Id del Pedido</th>
             <th>Costo Total</th>
             <th>Estado</th>
@@ -182,8 +183,10 @@ $resultado = $conexion->query($sql);
         <?php
         if ($resultado->num_rows > 0) {
             while ($fila = $resultado->fetch_assoc()) {
-           $ID = $fila["Pedidos_ID"];
+                $ID = $fila["ID"];
+                $Pedidos_ID = $fila["Pedidos_ID"];
                 echo "<tr>";
+                echo "<td>" . $fila['ID'] . "</td>";
                 echo "<td>" . $fila['Pedidos_ID'] . "</td>";
                 echo "<td>" . $fila['Costototal'] . "</td>";
                 echo "<td>" . $fila['Estado'] . "</td>";
@@ -214,7 +217,7 @@ $resultado = $conexion->query($sql);
     <div class="botones">
         <button class="volver"><a href="../vendedor.php">Perfil</a></button>
         <button class="volver"><a href="../portada publica.php">Inicio Público</a></button>
-        <button class="volver"><a href="../Pedidos/formRegistroPedidos.php">Registrar nueva venta</a></button>
+        <button class="volver"><a href="../Ajax/index/index1.php">Registrar nueva venta</a></button>
     </div>
 </div>
 

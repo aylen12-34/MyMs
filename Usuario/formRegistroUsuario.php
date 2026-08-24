@@ -200,7 +200,7 @@ if ($conexion->connect_error) {
             <label for="Direccion">Dirección:</label>
             <input type="text" id="Direccion" name="Direccion"><br><br>
             <label for="Celular">Celular:</label>
-            <input type="text" id="Celular" name="Celular"><br><br>
+            <input type="number" id="Celular" name="Celular"><br><br>
             <label for="Rol">Rol:</label>
             <select name="Rol" id="Rol">
                 <option value="vendedor">vendedor</option>

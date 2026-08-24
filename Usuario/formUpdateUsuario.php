@@ -177,7 +177,7 @@ input[readonly]{
         <input type="text" name="Direccion" value='<?=$Direccion?>' required>
         <br>
         <label for="">Celular:</label>
-        <input type="text" name="Celular" value='<?=$Celular?>' required>
+        <input type="number" name="Celular" value='<?=$Celular?>' required>
         <br>
         <label for="">Rol:</label>
         <input type="text" name="Rol" value='<?=$Rol?>' required>

@@ -167,11 +167,11 @@ label.error{
             <br><br>
 
             <label for="Precio">Precio:</label>
-            <input type="text" id="Precio" name="Precio">
+            <input type="number" id="Precio" name="Precio">
             <br><br>
 
             <label for="Stock">Stock:</label>
-            <input type="text" id="Stock" name="Stock">
+            <input type="number" id="Stock" name="Stock">
             <br><br>
 
             <label>Estado</label>

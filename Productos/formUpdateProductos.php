@@ -161,9 +161,9 @@ if ($resultado->num_rows > 0) {
         <label for="Descripcion">Descripción:</label>
         <input type="text" id="Descripcion" name="Descripcion" value='<?=$Descripcion?>' required>  <br>  <br>
         <label for="Precio">Precio:</label>
-        <input type="text" id="Precio" name="Precio" value='<?=$Precio?>' required>  <br>  <br>
+        <input type="number" id="Precio" name="Precio" value='<?=$Precio?>' required>  <br>  <br>
         <label for="Stock">Stock:</label>
-        <input type="text" id="Stock" name="Stock" value='<?=$Stock?>' required>  <br>  <br>
+        <input type="number" id="Stock" name="Stock" value='<?=$Stock?>' required>  <br>  <br>
         <input type="submit" value="Editar">
     </form>
     <button class="volver" onclick="history.back()">Volver</button><br>
