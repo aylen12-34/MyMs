@@ -5,6 +5,9 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
 -- Schema MYMS
 -- -----------------------------------------------------
 
@@ -15,34 +18,18 @@ CREATE SCHEMA IF NOT EXISTS `MYMS` DEFAULT CHARACTER SET utf8 ;
 USE `MYMS` ;
 
 -- -----------------------------------------------------
--- Table `MYMS`.`pedidos`
+-- Table `MYMS`.`Productos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `MYMS`.`pedidos` (
-  `ID` INT(11) NOT NULL,
-  `Nombre` VARCHAR(45) NULL DEFAULT NULL,
-  `Fecha` DATE NULL DEFAULT NULL,
-  `Celular` INT(11) NULL DEFAULT NULL,
-  `Estado` VARCHAR(45) NULL DEFAULT NULL,
-  `Direccion` VARCHAR(80) NULL DEFAULT NULL,
-  `NombreVendedor` VARCHAR(45) NULL DEFAULT NULL,
-  PRIMARY KEY (`ID`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `MYMS`.`productos`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `MYMS`.`productos` (
-  `Codigo` INT(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `MYMS`.`Productos` (
+  `Codigo` INT NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(45) NULL DEFAULT NULL,
   `Descripcion` VARCHAR(225) NULL DEFAULT NULL,
   `imagen` VARCHAR(200) NULL DEFAULT NULL,
-  `Precio` INT(45) NULL DEFAULT NULL,
-  `Stock` INT(45) NULL DEFAULT NULL,
+  `Precio` VARCHAR(45) NULL DEFAULT NULL,
+  `Stock` VARCHAR(45) NULL DEFAULT NULL,
   `Estado` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`Codigo`))
-ENGINE = InnoDB
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- datos de la tabla Productos
@@ -70,43 +57,18 @@ INSERT INTO `MYMS`.`Productos` (`Codigo`, `Nombre`, `Descripcion`, `imagen`, `Pr
 (19, 'Choco Latte Ice', 'Chocolate, cafe y leche fria sobre hielo', 'imagenes/galletas/22.png', '15', '50', 'Activo');
 
 -- -----------------------------------------------------
--- Table `MYMS`.`carrito`
+-- Table `MYMS`.`Usuarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `MYMS`.`carrito` (
-  `Productos_Codigo` INT(11) NOT NULL,
-  `Pedidos_ID` INT(11) NOT NULL,
-  `Cantidad` INT(11) NULL DEFAULT NULL,
-  `CostoTotal` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`Productos_Codigo`, `Pedidos_ID`),
-  INDEX `fk_Productos_has_Pedidos_Pedidos1_idx` (`Pedidos_ID` ASC) ,
-  INDEX `fk_Productos_has_Pedidos_Productos1_idx` (`Productos_Codigo` ASC) ,
-  CONSTRAINT `fk_Productos_has_Pedidos_Pedidos1`
-    FOREIGN KEY (`Pedidos_ID`)
-    REFERENCES `MYMS`.`pedidos` (`ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Productos_has_Pedidos_Productos1`
-    FOREIGN KEY (`Productos_Codigo`)
-    REFERENCES `MYMS`.`productos` (`Codigo`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `MYMS`.`usuarios`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `MYMS`.`usuarios` (
-  `CI` INT(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `MYMS`.`Usuarios` (
+  `CI` INT NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(45) NULL DEFAULT NULL,
   `Direccion` VARCHAR(45) NULL DEFAULT NULL,
-  `Celular` INT(45) NULL DEFAULT NULL,
+  `Celular` VARCHAR(45) NULL DEFAULT NULL,
   `Rol` VARCHAR(45) NULL DEFAULT NULL,
   `Estado` VARCHAR(45) NULL DEFAULT NULL,
   `imagen` VARCHAR(200) NULL DEFAULT NULL,
   PRIMARY KEY (`CI`))
-ENGINE = InnoDB
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- datos de la tabla Usuarios
@@ -120,26 +82,62 @@ INSERT INTO `MYMS`.`Usuarios` (`CI`, `Nombre`, `Direccion`, `Celular`, `Rol`, `E
 (14150392, 'Teban', 'Cole', '67505739', 'vendedor', 'Activo', 'imagenes/perfil/teban.jpg');
 
 
+-- -----------------------------------------------------
+-- Table `MYMS`.`Pedidos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `MYMS`.`Pedidos` (
+  `ID` INT NOT NULL AUTO_INCREMENT,
+  `Nombre` VARCHAR(45) NULL DEFAULT NULL,
+  `Fecha` DATE NULL DEFAULT NULL, 
+  `Celular` INT NULL DEFAULT NULL,
+  `Estado` VARCHAR(45) NULL DEFAULT NULL,
+  `Direccion` VARCHAR(80) NULL DEFAULT NULL,
+  `NombreVendedor` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`ID`))
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `MYMS`.`ventas`
+-- Table `MYMS`.`Carrito`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `MYMS`.`ventas` (
-  `ID` INT(11) NOT NULL,
-  `Pedidos_ID` INT(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `MYMS`.`Carrito` (
+  `Productos_Codigo` INT NOT NULL,
+  `Pedidos_ID` INT NOT NULL,
+  `Cantidad` INT NULL DEFAULT NULL,
+  `CostoTotal` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`Productos_Codigo`, `Pedidos_ID`),
+  INDEX `fk_Productos_has_Pedidos_Pedidos1_idx` (`Pedidos_ID` ASC) ,
+  INDEX `fk_Productos_has_Pedidos_Productos1_idx` (`Productos_Codigo` ASC) ,
+  CONSTRAINT `fk_Productos_has_Pedidos_Productos1`
+    FOREIGN KEY (`Productos_Codigo`)
+    REFERENCES `MYMS`.`Productos` (`Codigo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Productos_has_Pedidos_Pedidos1`
+    FOREIGN KEY (`Pedidos_ID`)
+    REFERENCES `MYMS`.`Pedidos` (`ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `MYMS`.`Ventas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `MYMS`.`Ventas` (
+  `ID` INT NOT NULL AUTO_INCREMENT,
+  `Pedidos_ID` INT NOT NULL,
   `Costototal` DECIMAL(10,2) NULL DEFAULT NULL,
   `Estado` VARCHAR(45) NULL DEFAULT NULL,
   `Metodo` VARCHAR(45) NULL DEFAULT NULL,
-  PRIMARY KEY (`ID`, `Pedidos_ID`),
   INDEX `fk_Ventas_Pedidos1_idx` (`Pedidos_ID` ASC) ,
+  PRIMARY KEY (`ID`, `Pedidos_ID`),
   CONSTRAINT `fk_Ventas_Pedidos1`
     FOREIGN KEY (`Pedidos_ID`)
-    REFERENCES `MYMS`.`pedidos` (`ID`)
+    REFERENCES `MYMS`.`Pedidos` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
