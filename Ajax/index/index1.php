@@ -27,10 +27,14 @@
 
         <div class="busqueda">
 
-            <input
+            
+                <input
                 type="text"
-                id="buscar"
+                id="Buscar"
                 placeholder="Buscar producto...">
+            <button id="textoBuscar">
+            Buscar
+        </button>
 
         </div>
 
@@ -49,6 +53,7 @@
         <h2 class="titulo">
             Productos Disponibles
         </h2>
+
         <button id="generarPedido">
             Generar Pedido
         </button>
@@ -201,6 +206,7 @@
 <script src="../js/productos.js"></script>
 <script src="../js/pedido.js"></script>
 <script src="../js/carrito.js"></script>
+<script src="../js/buscar.js"></script>
 </body>
 
 </html>

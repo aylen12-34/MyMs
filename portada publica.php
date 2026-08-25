@@ -361,7 +361,7 @@ main{
                     y cerveza de raíz.
                 </p>
 
-                <a href="menu.php" class="btn">Ver más</a>
+                <a href="Ajax/index/index1.php" class="btn">Ver más</a>
 
             </div>
 
@@ -383,7 +383,7 @@ main{
                     bombones REESE'S
                 </p>
 
-                <a href="menu.php" class="btn">Ver más</a>
+                <a href="Ajax/index/index1.php" class="btn">Ver más</a>
 
             </div>
 
@@ -406,7 +406,7 @@ main{
                     y terminada con explosiones de más trocitos de caramelo.
                 </p>
 
-                <a href="menu.php" class="btn">Ver más</a>
+                <a href="Ajax/index/index1.php" class="btn">Ver más</a>
 
             </div>
 
@@ -428,7 +428,7 @@ main{
                     de goma en un palillo.
                 </p>
 
-                <a href="menu.php" class="btn">Ver más</a>
+                <a href="Ajax/index/index1.php" class="btn">Ver más</a>
 
             </div>
 
@@ -449,7 +449,7 @@ main{
                     pistacho, un chorrito de crema de pistacho y una cucharada de nata montada
                 </p>
 
-                <a href="menu.php" class="btn">Ver más</a>
+                <a href="Ajax/index/index1.php" class="btn">Ver más</a>
 
             </div>
 
@@ -470,7 +470,7 @@ main{
                     de alta calidad.
                 </p>
 
-                <a href="menu.php" class="btn">Ver más</a>
+                <a href="Ajax/index/index1.php" class="btn">Ver más</a>
 
             </div>
 
@@ -490,7 +490,7 @@ main{
                     suave capa rosada de glaseado de almendras auténticas.
                 </p>
 
-                <a href="menu.php" class="btn">Ver más</a>
+                <a href="Ajax/index/index1.php" class="btn">Ver más</a>
 
             </div>
 
@@ -504,7 +504,7 @@ main{
                 y sencilla.
             </p>
 
-            <a href="menu.php" class="btn">Menú y pedidos</a>
+            <a href="Ajax/index/index1.php" class="btn">Menú y pedidos</a>
 
         </section>
         
