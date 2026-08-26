@@ -17,7 +17,7 @@ if($_SESSION['CI']==null){
   if($_SESSION['Rol']=="vendedor"){
     $CI = $_SESSION['CI'];
   } else{
-    header("location:login.html");
+    header("location:login.php");
   }
 }
 

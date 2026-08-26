@@ -3,6 +3,10 @@ $usuario = "root";
 $contraseña = "";     
 $direccion = "localhost";
 $baseDeDatos = "MYMS";    
+$conexion=new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
+if ($conexion->connect_error) {
+    echo "Hubo un error al conectar a la base de datos";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,10 +107,6 @@ $baseDeDatos = "MYMS";
         <h2>Actualizacion Usuario</h2>
         <p>
             <?php 
-            $conexion=new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
-if ($conexion->connect_error) {
-    echo "Hubo un error al conectar a la base de datos";
-}
 $CI=$_POST['CI'];
 $Nombre=$_POST['Nombre'];
 $Direccion=$_POST['Direccion'];
@@ -115,6 +115,7 @@ $Rol=$_POST['Rol'];
 $Estado=$_POST['Estado'];
 $sql="UPDATE Usuarios SET Nombre='$Nombre', Direccion='$Direccion', Celular='$Celular', Rol='$Rol', Estado='$Estado' WHERE CI='$CI'";
 if ($conexion->query($sql) === TRUE) {
+    $Rol=$_SESSION['Rol'];
     if($Rol=='vendedor'){
         header("location:../vendedor.php");
     } else {

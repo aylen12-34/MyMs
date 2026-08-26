@@ -218,7 +218,7 @@ $resultado = $conexion->query($sql);
     <div class="botones">
         <button class="volver"><a href="../vendedor.php">Perfil</a></button>
         <button class="volver"><a href="../portada publica.php">Inicio Público</a></button>
-        <button class="volver"><a href="formRegistroVentas.php">Registrar nueva venta</a></button>
+        <button class="volver"><a href="formRegistroVentas.php?ID=".$ID>Registrar nueva venta</a></button>
     </div>
 </div>
 

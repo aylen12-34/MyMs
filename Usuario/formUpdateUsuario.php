@@ -13,7 +13,7 @@ session_start();
 if($_SESSION['CI']==null){
     header("location:../login.php");
 }
-$CI=$_SESSION['CI'];
+$CI=$_GET['CI'];
 $sql = "SELECT * FROM Usuarios WHERE CI='$CI'";
 $resultado = $conexion->query($sql);
 if ($resultado->num_rows > 0) {
