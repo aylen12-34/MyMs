@@ -247,10 +247,13 @@ a{
             <a href="../vendedor.php">Perfil</a>
         </button>
         <button class="volver">
-            <a href="../inicio.html">Inicio Público</a>
+            <a href="../portada publica.php">Inicio Público</a>
         </button>
         <button class="volver">
             <a href="formRegistroPedidos.php">Registrar nuevo pedido</a>
+        </button>
+        <button class="volver">
+            <a href="../Ventas/leerVentass.php">Ventas aceptadas</a>
         </button>
     </div>
 

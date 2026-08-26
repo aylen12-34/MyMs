@@ -343,7 +343,7 @@ main p{
         </button>
 
         <button>
-            <a href="Ventas/leerVentass.php">
+            <a href="Pedidos/leerPedidos.php">
                 Pedidos registrados
             </a>
         </button>

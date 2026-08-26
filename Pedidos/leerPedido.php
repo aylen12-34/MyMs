@@ -149,8 +149,18 @@ if ($resultado->num_rows > 0) {
     echo "<tr>";
     echo "<td class='titulo'>NombreVendedor</td>";
     echo "<td>".$fila["NombreVendedor"]."</td>";
+    echo "<td>
+        <a href='../Ventas/formRegistroVentas.php?ID=$ID'>
+                <button class='editar'>Aceptar venta</button>
+        </a>
+        <a href='EliminarPedidos.php?ID=$ID'>
+        <button class='eliminar'>Rechazar Pedido</button>
+        </a>
+
+                      </td>";
     echo "</tr>";
 
+    
     echo "</table>";
 
 } else {
