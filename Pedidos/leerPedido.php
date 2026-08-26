@@ -142,6 +142,16 @@ if ($resultado->num_rows > 0) {
     echo "</tr>";
 
     echo "<tr>";
+    echo "<td class='titulo'>Celular</td>";
+    echo "<td>".$fila["Celular"]."</td>";
+    echo "</tr>";
+
+    echo "<tr>";
+    echo "<td class='titulo'>Direccion</td>";
+    echo "<td>".$fila["Direccion"]."</td>";
+    echo "</tr>";
+
+    echo "<tr>";
     echo "<td class='titulo'>Estado</td>";
     echo "<td>".$fila["Estado"]."</td>";
     echo "</tr>";
@@ -149,12 +159,18 @@ if ($resultado->num_rows > 0) {
     echo "<tr>";
     echo "<td class='titulo'>NombreVendedor</td>";
     echo "<td>".$fila["NombreVendedor"]."</td>";
+    echo "</tr>";
+    echo "<tr>";
     echo "<td>
         <a href='../Ventas/formRegistroVentas.php?ID=$ID'>
-                <button class='editar'>Aceptar venta</button>
+                <button class='volver'>Aceptar venta</button>
         </a>
         <a href='EliminarPedidos.php?ID=$ID'>
-        <button class='eliminar'>Rechazar Pedido</button>
+        <button class='volver'>Rechazar Pedido</button>
+        </a>
+
+        <a href='../Carrito/leerCarrito.php?ID=$ID'>
+        <button class='volver'>Ver productos</button>
         </a>
 
                       </td>";

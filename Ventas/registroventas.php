@@ -9,7 +9,7 @@ $Metodo = $_POST['Metodo'];
 $sql = "INSERT INTO Ventas (Pedidos_ID, Costototal, Estado, Metodo) VALUES ('$Pedidos_ID', '$Costototal', '$Estado', '$Metodo')";
 
 if ($conexion->query($sql) === TRUE) {
-    header("location:../Ajax/index/recibo1.php?Pedidos_ID=".$Pedidos_ID);
+    header("location:leerVentass.php");
 } else {
     echo "Hubo un error: " . $conexion->error;
 }

@@ -9,7 +9,7 @@ if (!isset($_SESSION['CI'])) {
 
 $CI = $_SESSION['CI'];
 
-$sql = "SELECT * FROM Ventas";
+$sql = "SELECT * FROM ventas JOIN pedidos ON ventas.Pedidos_ID=pedidos.ID";
 $resultado = $conexion->query($sql);
 ?>
 
@@ -182,6 +182,7 @@ $resultado = $conexion->query($sql);
 
         <?php
         if ($resultado->num_rows > 0) {
+            $Costototal=0;
             while ($fila = $resultado->fetch_assoc()) {
                 $ID = $fila["ID"];
                 $Pedidos_ID = $fila["Pedidos_ID"];
@@ -191,7 +192,7 @@ $resultado = $conexion->query($sql);
                 echo "<td>" . $fila['Costototal'] . "</td>";
                 echo "<td>" . $fila['Estado'] . "</td>";
                 echo "<td>" . $fila['Metodo'] . "</td>";
-                echo "<td>" . $_SESSION['Nombre'] . "</td>";
+                echo "<td>" . $fila['NombreVendedor'] . "</td>";
                 echo "<td>";
                 
                 echo "<a href='leerVentas.php?ID=$ID'><button class='mostrar'>Mostrar</button></a>";
@@ -200,7 +201,7 @@ $resultado = $conexion->query($sql);
                     echo "<a href='formupdateVentas.php?ID=$ID'><button class='editar'>Editar</button></a> ";
                     echo "<a href='eliminarVentas.php?ID=$ID'><button class='eliminar'>Eliminar</button></a>";
                 }
-
+ 
                 echo "</td>";
                 echo "</tr>";
             }
@@ -217,7 +218,7 @@ $resultado = $conexion->query($sql);
     <div class="botones">
         <button class="volver"><a href="../vendedor.php">Perfil</a></button>
         <button class="volver"><a href="../portada publica.php">Inicio Público</a></button>
-        <button class="volver"><a href="../Ajax/index/index1.php">Registrar nueva venta</a></button>
+        <button class="volver"><a href="formRegistroVentas.php">Registrar nueva venta</a></button>
     </div>
 </div>
 

@@ -15,12 +15,18 @@ if (isset($_GET['ID'])) {
         $CostoTotal = $fila['CostoTotal'];
     }
 }*/
-$Pedidos_ID=$_GET['Pedidos_ID'];
-$sql = "SELECT * FROM carrito WHERE Pedidos_ID='$Pedidos_ID'";
+session_start();
+
+$Pedidos_ID=$_GET['ID'];
+/*if($_SESSION['pedidos']='$Pedidos_ID'){
+    $metodo= $_SESSION['Metodo'];
+}*/
+$sql = "SELECT * FROM carrito JOIN productos ON carrito.Productos_Codigo=productos.Codigo WHERE carrito.Pedidos_ID='$Pedidos_ID'";
 $resultado = $conexion->query($sql);
 if ($resultado->num_rows > 0) {
+    $CostoTotal=0;
     while($fila=$resultado->fetch_assoc()) {
-        $CostoTotal=$fila['CostoTotal'];
+        $CostoTotal=$CostoTotal+$fila['Precio'];
     }
 }
 
@@ -229,11 +235,7 @@ label:not(:first-of-type){
             <br><br>
 
             <label for="Metodo">Método de Pago:</label>
-            <select name="Metodo" id="Metodo" required>
-                <option value="">Seleccione un método de pago</option>
-                <option value="Efectivo">Efectivo</option>
-                <option value="QR">QR</option>
-            </select>
+             <input type="text" id="Metodo" name="Metodo" value="efectivo/QR" readonly>
 
             <br><br>
 

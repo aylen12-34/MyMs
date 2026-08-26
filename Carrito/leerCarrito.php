@@ -10,8 +10,8 @@ $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
-
-$sql = "SELECT * FROM Carrito";
+$Pedidos_ID=$_GET['ID'];
+$sql = "SELECT * FROM carrito JOIN productos ON carrito.Productos_Codigo=productos.Codigo WHERE carrito.Pedidos_ID='$Pedidos_ID'";
 $resultado = $conexion->query($sql);
 
 ?>
@@ -124,29 +124,36 @@ button{
 <div>
 
 <h2>Datos del Carrito</h2>
-
+<table>
 <?php
 
 if ($resultado->num_rows > 0) {
 
-    $fila = $resultado->fetch_assoc();
-
-    echo "<table>";
-
+$CostoTotal=0;
+    
+    while($fila = $resultado->fetch_assoc()) {
     echo "<tr>";
+    echo "<td class='titulo'>Codigo</td>";
+    echo "<td>".$fila["Codigo"]."</td>";
+
+    echo "<td class='titulo'>Nombre</td>";
+    echo "<td>".$fila["Nombre"]."</td>";
+
+    echo "<td class='titulo'>Precio</td>";
+    echo "<td>".$fila["Precio"]."</td>";
+
     echo "<td class='titulo'>Cantidad</td>";
     echo "<td>".$fila["Cantidad"]."</td>";
     echo "</tr>";
+    $CostoTotal=$CostoTotal+$fila['Precio'];
 
-    echo "<tr>";
+}
+
     echo "<td class='titulo'>Costo Total</td>";
-    echo "<td>".$fila["CostoTotal"]."</td>";
-    echo "</tr>";
+    echo "<td>".$CostoTotal."</td>";
 
-    echo "</table>";
-
-} else {
-
+}  
+    else {
     echo "No se encontraron productos en el carrito.";
 
 }
@@ -154,6 +161,7 @@ if ($resultado->num_rows > 0) {
 $conexion->close();
 
 ?>
+</table>
 <button class="volver" onclick="history.back()">← Volver</button><br>
 </div>
 
