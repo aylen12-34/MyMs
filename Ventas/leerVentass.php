@@ -9,6 +9,7 @@ if (!isset($_SESSION['CI'])) {
 
 $CI = $_SESSION['CI'];
 
+$Estado = $_SESSION['Estado'] ?? 'No especificado';
 $sql = "SELECT * FROM ventas JOIN pedidos ON ventas.Pedidos_ID=pedidos.ID";
 $resultado = $conexion->query($sql);
 ?>
@@ -182,7 +183,6 @@ $resultado = $conexion->query($sql);
 
         <?php
         if ($resultado->num_rows > 0) {
-            $Costototal=0;
             while ($fila = $resultado->fetch_assoc()) {
                 $ID = $fila["ID"];
                 $Pedidos_ID = $fila["Pedidos_ID"];
@@ -190,12 +190,12 @@ $resultado = $conexion->query($sql);
                 echo "<td>" . $fila['ID'] . "</td>";
                 echo "<td>" . $fila['Pedidos_ID'] . "</td>";
                 echo "<td>" . $fila['Costototal'] . "</td>";
-                echo "<td>" . $fila['Estado'] . "</td>";
+                echo "<td>" . $Estado . "</td>";
                 echo "<td>" . $fila['Metodo'] . "</td>";
                 echo "<td>" . $fila['NombreVendedor'] . "</td>";
                 echo "<td>";
                 
-                echo "<a href='leerVentas.php?ID=$ID'><button class='mostrar'>Mostrar</button></a>";
+                echo "<a href='leerVentas.php?ID=$Pedidos_ID'><button class='mostrar'>Mostrar</button></a>";
 
                 if ($_SESSION['Rol'] === "administrador") {
                     echo "<a href='formupdateVentas.php?ID=$ID'><button class='editar'>Editar</button></a> ";
@@ -216,7 +216,20 @@ $resultado = $conexion->query($sql);
     </table>
 
     <div class="botones">
-        <button class="volver"><a href="../vendedor.php">Perfil</a></button>
+        <button class="volver" onclick="perfil()" >
+            <script>
+    function perfil(){
+        
+        if($_SESSION['Rol']=="vendedor"){
+    header("location:../vendedor.php");
+  } else{
+    if($_SESSION['Rol']=="administrador"){
+header("location:../administrador.php");
+  }
+    }
+}
+
+</script> Perfil</button>
         <button class="volver"><a href="../portada publica.php">Inicio Público</a></button>
         <button class="volver"><a href="formRegistroVentas.php?ID=".$ID>Registrar nueva venta</a></button>
     </div>

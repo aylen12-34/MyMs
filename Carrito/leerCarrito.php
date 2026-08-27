@@ -10,6 +10,7 @@ $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
+
 $Pedidos_ID=$_GET['ID'];
 $sql = "SELECT * FROM carrito JOIN productos ON carrito.Productos_Codigo=productos.Codigo WHERE carrito.Pedidos_ID='$Pedidos_ID'";
 $resultado = $conexion->query($sql);
@@ -151,7 +152,8 @@ $CostoTotal=0;
 
     echo "<td class='titulo'>Costo Total</td>";
     echo "<td>".$CostoTotal."</td>";
-
+    session_start();
+$_SESSION['CostoTotal']= $CostoTotal;
 }  
     else {
     echo "No se encontraron productos en el carrito.";

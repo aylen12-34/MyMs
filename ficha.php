@@ -1,5 +1,5 @@
 <?php
-require "bdVentas.php";
+require "Ajax/index/conexion.php";
 /*
 $ID = "";
 $CostoTotal = "";
@@ -17,18 +17,6 @@ if (isset($_GET['ID'])) {
 }*/
 session_start();
 
-$Pedidos_ID=$_GET['ID'];
-/*if($_SESSION['pedidos']='$Pedidos_ID'){
-    $metodo= $_SESSION['Metodo'];
-}*/
-$sql = "SELECT * FROM carrito JOIN productos ON carrito.Productos_Codigo=productos.Codigo WHERE carrito.Pedidos_ID='$Pedidos_ID'";
-$resultado = $conexion->query($sql);
-if ($resultado->num_rows > 0) {
-    $CostoTotal=0;
-    while($fila=$resultado->fetch_assoc()) {
-        $CostoTotal=$CostoTotal+$fila['Precio'];
-    }
-}
 
 ?>
 
@@ -217,25 +205,25 @@ label:not(:first-of-type){
     <div>
         <h1>Registro de Ventas</h1>
 
-        <form action="registroventas.php" method="post">
+        <form action="no.php" method="post">
 
-            <label for="Pedidos_ID">ID del Pedido:</label>
-            <input type="number" id="ID" name="Pedidos_ID" value="<?= $Pedidos_ID ?>" readonly>
+            <label for="Pedidos_ID">Nombre</label>
+            <input type="text" id="ID" name="Pedidos_ID" value="" >
 
             <br><br>
 
-            <label for="Costototal">Costo Total:</label>
-            <input type="number" id="Costototal" name="Costototal" value="<?= $CostoTotal ?>" readonly>
+            <label for="Costototal">Fecha:</label>
+            <input type="date" id="Costototal" name="Costototal" value="">
 
             <br><br>
 
             <label for="Estado">Estado:</label>
-            <input type="text" id="Estado" name="Estado" value="Activo" readonly>
+            <input type="text" id="Estado" name="Estado" value="Pendiente" >
 
             <br><br>
 
             <label for="Metodo">Método de Pago:</label>
-             <input type="text" id="Metodo" name="Metodo" value="<?= $Metodo ?>" readonly>
+             <input type="text" id="Metodo" name="Metodo" value="efectivo/QR" >
 
             <br><br>
 

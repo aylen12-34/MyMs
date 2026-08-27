@@ -30,11 +30,11 @@
             
                 <input
                 type="text"
-                id="Buscar"
+                id="textoBuscar"
                 placeholder="Buscar producto...">
-            <button id="textoBuscar">
-            Buscar
-        </button>
+            <button onclick="buscarProducto()">buscar productos</button>
+
+   
 
         </div>
 
@@ -49,7 +49,7 @@
     <!--================== PRODUCTOS ==================-->
 
     <main>
-
+ 
         <h2 class="titulo">
             Productos Disponibles
         </h2>
@@ -57,7 +57,7 @@
         <button id="generarPedido">
             Generar Pedido
         </button>
-
+<div id="productos"></div>
         <section id="productos">
 
         </section>

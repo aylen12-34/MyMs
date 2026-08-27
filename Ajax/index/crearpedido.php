@@ -12,9 +12,10 @@ if(!$datos){
 
 $nombre = $datos["Nombre"];
 $metodo = $datos["Metodo"]; // Lo guardaremos en sesión para la tabla 'venta'
-
+$telefono=$datos["Celular"];
+$direccion=$datos["Direccion"];
 // Insertar en la tabla 'pedidos' de Bougies
-$stmt = $conn->prepare("INSERT INTO pedidos (Nombre, Fecha, Estado, NombreVendedor) VALUES (?, NOW(), 'Abierto', 'Pendiente')");
+$stmt = $conn->prepare("INSERT INTO pedidos (Nombre, Fecha, Celular, Direccion, Estado, NombreVendedor) VALUES (?, NOW(),'$telefono', '$direccion', 'Abierto', 'Pendiente')");
 
 $stmt->bind_param("s", $nombre);
 
@@ -35,7 +36,6 @@ if($stmt->execute()){
         "mysql" => $conn->error
     ]);
 }
-
 $stmt->close();
 $conn->close();
 ?>

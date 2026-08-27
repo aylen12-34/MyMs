@@ -2,7 +2,7 @@ function buscarProducto(){
 
     var nombre =document.getElementById("textoBuscar").value;
 
-    fetch("buscar_producto.php?nombre="+nombre)
+    fetch("buscar_producto.php?Nombre="+nombre)
 
     .then(res=>res.json())
 
@@ -16,10 +16,10 @@ function buscarProducto(){
 
             html += `
 
-            <h3>${producto.nombre}</h3>
+            <h3>${producto.Nombre}</h3>
 
             <p>
-            Precio: Bs ${producto.precio}
+            Precio: Bs ${producto.Precio}
             </p>
 
             <hr>

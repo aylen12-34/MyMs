@@ -162,7 +162,7 @@ if ($resultado->num_rows > 0) {
     echo "</tr>";
     echo "<tr>";
     echo "<td>
-        <a href='../Ventas/formRegistroVentas.php?ID=$ID'>
+        <a href='../Ventas/registroventas.php?ID=$ID'>
                 <button class='volver'>Aceptar venta</button>
         </a>
         <a href='EliminarPedidos.php?ID=$ID'>
