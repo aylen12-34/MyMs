@@ -14,25 +14,25 @@ session_start();
 if($_SESSION['CI']==null){
     header("location:login.php");
 } else {
-     if($_SESSION['Estado']=="Activo"){
+ $CI = $_SESSION['CI'];
+ } 
+    
 
-  if($_SESSION['Rol']=="vendedor"){
-    $CI = $_SESSION['CI'];
-  } else{
-    header("location:login.php");
-  }
-  }else{
-    header("location:Usuario/verbloqueo.php");
-  }
-}
-
-
-
+$sqln = "SELECT * FROM Usuarios WHERE CI='$CI'";
+$resultadon = $conexion->query($sqln);
 $sql = "SELECT * FROM Usuarios WHERE CI='$CI'";
 $resultado = $conexion->query($sql);
 $sqlp = "SELECT imagen FROM Usuarios WHERE CI='$CI'";
 $resultadop = $conexion->query($sqlp);
+if ($resultadon->num_rows > 0) {
 
+            while($fila = $resultadon->fetch_assoc()) {
+
+                $Estado = $fila['Estado'];
+            }}
+            if($Estado=="bloqueado"){
+        header("location:Usuario/verbloqueo.php");
+  } 
 ?>
 <!DOCTYPE html>
 <html lang="en">
