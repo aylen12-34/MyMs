@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,15 +10,21 @@
 
     <style>
 
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html,
         body {
-            height: 100vh;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
 
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -31,23 +38,30 @@
         }
 
         .zona-bloqueado {
-            padding: 75%;
+            width: 100vw;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         h2 {
             color: #EFE2DA;
+
             background-color: #6A253A;
 
             padding: 35px 60px;
+
             border-radius: 20px;
 
             text-align: center;
+
             font-size: 2.5rem;
 
             transition: 0.3s;
         }
 
-        /* CARITA */
         #carita {
             position: fixed;
 
@@ -58,39 +72,35 @@
             pointer-events: none;
 
             z-index: 1000;
+
+            transform: translate(0, 0);
         }
 
     </style>
 
 </head>
 
-<body>
 
+<body>
     <div class="zona-bloqueado">
-        <h2>FELICIDADES, ESTÁS BLOQUEADO</h2>
+
+        <h2>
+            FELICIDADES, ESTÁS BLOQUEADO
+        </h2>
+
     </div>
 
-    <div id="carita">😭</div>
+    <div id="carita">
+        😭
+    </div>
 
 
     <script>
 
-        const zona = document.querySelector(".zona-bloqueado");
         const carita = document.querySelector("#carita");
-
-        zona.addEventListener("mouseenter", function() {
+        document.addEventListener("mousemove", function(event) {
 
             carita.style.display = "block";
-
-        });
-
-        zona.addEventListener("mouseleave", function() {
-
-            carita.style.display = "none";
-
-        });
-
-        zona.addEventListener("mousemove", function(event) {
 
             carita.style.left = (event.clientX + 15) + "px";
             carita.style.top = (event.clientY + 15) + "px";
@@ -98,6 +108,7 @@
         });
 
     </script>
+
 
 </body>
 
