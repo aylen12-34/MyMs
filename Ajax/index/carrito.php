@@ -110,8 +110,7 @@ switch($accion){
         $carrito[] = $fila;
 
     }
-    $sqlp= "UPDATE productos SET Stock=Stock-{carrito.cantidad}";
-$resultadop = $conn->query($sqlp);
+    
     echo json_encode($carrito);
 
 break;

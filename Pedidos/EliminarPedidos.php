@@ -14,9 +14,11 @@ $ID = $_GET['ID'];
 $sqlVentas = "DELETE FROM Ventas WHERE Pedidos_ID = '$ID'";
 $conexion->query($sqlVentas);
 
-$sqlPedidos = "DELETE FROM Pedidos WHERE ID = '$ID'";
+$sqlPedidos = "DELETE FROM pedidos WHERE ID = '$ID'";
+
 
 if ($conexion->query($sqlPedidos) === TRUE) {
+        
     $mensaje = "El pedido y su venta asociada han sido eliminados correctamente.";
 } else {
     $mensaje = "Error al eliminar el pedido: " . $conexion->error;

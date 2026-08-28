@@ -8,7 +8,7 @@ if (!isset($_GET['ID'])) {
 
 $ID = $_GET['ID'];
 
-$sql = "SELECT * FROM Ventas WHERE ID='$ID'";
+$sql = "SELECT * FROM Ventas WHERE Pedidos_ID='$ID'";
 $resultado = $conexion->query($sql);
 
 if (!$resultado) {

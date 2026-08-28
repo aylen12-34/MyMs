@@ -17,7 +17,7 @@ if($_SESSION['CI']==null){
 
 $ID = $_GET['ID'];
 
-$sql = "DELETE FROM Ventas WHERE ID=$ID";
+$sql = "DELETE FROM Ventas WHERE Pedidos_ID=$ID";
 
 if ($conexion->query($sql) === TRUE) {
     $mensaje = "La venta ha sido eliminada correctamente.";

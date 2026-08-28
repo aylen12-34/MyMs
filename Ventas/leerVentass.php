@@ -6,12 +6,17 @@ if (!isset($_SESSION['CI'])) {
     header("location: ../login.php");
     exit();
 }
-session_start();
+
 $CI = $_SESSION['CI'];
 if($_SESSION['CI']==null){
     header("location:login.php");
 }else {
-  $Rol = $_SESSION['Rol'];
+$sqlu = "SELECT * FROM Usuarios WHERE CI='$CI'";
+$resultadou = $conexion->query($sqlu);
+if ($resultadou->num_rows > 0) {
+    while($fila=$resultadou->fetch_assoc()) {
+            $Rol = $fila['Rol'];
+    }}
 }
 
 $Estado = $_SESSION['Estado'] ?? 'No especificado';
@@ -224,7 +229,7 @@ $resultado = $conexion->query($sql);
         <button class="volver" onclick="perfil()" >
             <script>
     function perfil(){
-        if($_SESSION['Rol']=="vendedor"){
+        if($Rol=="vendedor"){
     header("location:../vendedor.php");
   } else{
     if($_SESSION['Rol']=="administrador"){
