@@ -118,6 +118,7 @@
             <li><a href="../../portada publica.php">Inicio</a></li>
             <li><a href="../../login.php">Iniciar sesión</a></li>
             <li><a href="../../nosotros.php">Nosotros</a></li>
+            <li><a href="../../ficha.php">Ficha de mrd</a></li>
             
         </ul>
     </nav>

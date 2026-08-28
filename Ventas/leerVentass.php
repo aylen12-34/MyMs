@@ -6,8 +6,13 @@ if (!isset($_SESSION['CI'])) {
     header("location: ../login.php");
     exit();
 }
-
+session_start();
 $CI = $_SESSION['CI'];
+if($_SESSION['CI']==null){
+    header("location:login.php");
+}else {
+  $Rol = $_SESSION['Rol'];
+}
 
 $Estado = $_SESSION['Estado'] ?? 'No especificado';
 $sql = "SELECT * FROM ventas JOIN pedidos ON ventas.Pedidos_ID=pedidos.ID";
@@ -219,7 +224,6 @@ $resultado = $conexion->query($sql);
         <button class="volver" onclick="perfil()" >
             <script>
     function perfil(){
-        
         if($_SESSION['Rol']=="vendedor"){
     header("location:../vendedor.php");
   } else{
@@ -230,7 +234,7 @@ header("location:../administrador.php");
 }
 
 </script> Perfil</button>
-        <button class="volver"><a href="../portada publica.php">Inicio Público</a></button>
+        <a href="../portada publica.php"><button class="volver">Inicio Público</button></a>
         <button class="volver"><a href="formRegistroVentas.php?ID=".$ID>Registrar nueva venta</a></button>
     </div>
 </div>

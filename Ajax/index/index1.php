@@ -57,7 +57,10 @@
         <button id="generarPedido">
             Generar Pedido
         </button>
-<div id="productos"></div>
+
+<div id="productos">
+            
+</div>
         <section id="productos">
 
         </section>
