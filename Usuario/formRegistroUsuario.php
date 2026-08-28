@@ -192,7 +192,7 @@ if ($conexion->connect_error) {
     <div>
         <h1>Registro de Usuario</h1>
     
-        <form action="registroUsuario.php" method="POST" onsubmit="return validar()">
+        <form action="registroUsuario.php" method="POST" onsubmit="return validar()" enctype="multipart/form-data">
             <label for="CI">CI:</label>
             <input type="number" id="CI" name="CI"> <br> <br>
             <label for="Nombre">Nombre:</label>

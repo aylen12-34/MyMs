@@ -101,9 +101,8 @@
             <label for="Nombre">Nombre:</label>
             <input type="text" id="Nombre" name="Nombre"><br><br>
             <input type="submit" value="Iniciar Sesion">
-            <h3>no tienes cuenta? <a href="Usuario/formRegistroUsuario.php">Registrate aquí</a></h3>
         </form>
-    <button class="volver"><a href="inicio.html" id="a">← Volver</a></button>
+    <button class="volver"><a href="portada publica.php" id="a">← Volver</a></button>
 </div>
 <script>
         $("form").validate({

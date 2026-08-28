@@ -102,7 +102,7 @@ switch($accion){
             WHERE c.Pedidos_ID='$idPedido'";
 
     $resultado = $conn->query($sql);
-
+    
     $carrito = [];
 
     while($fila = $resultado->fetch_assoc()){
@@ -110,7 +110,8 @@ switch($accion){
         $carrito[] = $fila;
 
     }
-
+    $sqlp= "UPDATE productos SET Stock=Stock-{carrito.cantidad}";
+$resultadop = $conn->query($sqlp);
     echo json_encode($carrito);
 
 break;

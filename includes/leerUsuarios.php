@@ -233,7 +233,24 @@ button{
                             <button class='eliminar'>Eliminar</button>
                         </a>
                       </td>";
+                      if($fila["Estado"]=="Activo"){
+                         echo "<td>
+                        <a href='Usuario/bloquear.php?CI=$CI'>
+                            <button class='eliminar'>Bloquear</button>
+                        </a>
+                      </td>";
+                      }else{
+                        if($fila["Estado"]=="bloqueado"){
+echo "<td>
+                        <a href='Usuario/desbloquear.php?CI=$CI'>
+                            <button class='eliminar'>Desbloquear</button>
+                        </a>
+                      </td>";
 
+                        }
+                      }
+       
+        
                 echo "</tr>";
             }
 

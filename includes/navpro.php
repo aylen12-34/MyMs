@@ -115,6 +115,7 @@
             <li><a>Mi Portada</a></li>
             <li><a href="login.php">Iniciar sesión</a></li>
             <li><a href="">Historial</a></li>
+            <li><a href="Ajax/index/index1.php">Menu</a></li>
             <li><a href="cerrar.php">Cerrar sesion</a></li>
             <li>
                 <a href="Pedidos/formRegistroPedidos.php">

@@ -14,10 +14,15 @@ session_start();
 if($_SESSION['CI']==null){
     header("location:login.php");
 } else {
+     if($_SESSION['Estado']=="Activo"){
+
   if($_SESSION['Rol']=="vendedor"){
     $CI = $_SESSION['CI'];
   } else{
     header("location:login.php");
+  }
+  }else{
+    header("location:Usuario/verbloqueo.php");
   }
 }
 
