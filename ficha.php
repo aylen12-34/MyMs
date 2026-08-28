@@ -203,31 +203,26 @@ label:not(:first-of-type){
 <body>
 
     <div>
-        <h1>Registro de Ventas</h1>
+        <h1>Titulo</h1>
 
         <form action="no.php" method="post">
 
-            <label for="Pedidos_ID">Nombre</label>
-            <input type="text" id="ID" name="Pedidos_ID" value="" >
+            <label for="">Nombre</label>
+            <input type="text" id="" name="Nombre" value="" >
 
             <br><br>
 
-            <label for="Costototal">Fecha:</label>
-            <input type="date" id="Costototal" name="Costototal" value="">
+            <label for="">Fecha:</label>
+            <input type="date" name="Fecha" value='<?php echo date('Y-m-d');?>' readonly>
 
             <br><br>
 
-            <label for="Estado">Estado:</label>
-            <input type="text" id="Estado" name="Estado" value="Pendiente" >
+            <label for="Estado">Estado</label>
+            <input type="text" id="" name="Estado" value="Si" >
 
             <br><br>
 
-            <label for="Metodo">Método de Pago:</label>
-             <input type="text" id="Metodo" name="Metodo" value="efectivo/QR" >
-
-            <br><br>
-
-            <input type="submit" value="Registrar Ventas">
+            <input type="submit" value="Ver el Formulario">
 
         </form>
     </div>

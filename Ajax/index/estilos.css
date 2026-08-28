@@ -182,6 +182,8 @@ header{
 
     padding: 20px;
 
+    width: 300px;
+
     box-shadow: 0 8px 20px rgba(106, 37, 58, 0.25);
 
     transition: 0.35s;
