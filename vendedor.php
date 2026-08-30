@@ -344,18 +344,9 @@ main p{
         <h1>📦 Registros</h1>
 
         <h3>Inventario de productos</h3>
-
-        <button>
-            <a href="Productos/readleeProductos.php">
-                Productos disponibles
-            </a>
-        </button>
-
-        <button>
-            <a href="Pedidos/leerPedidos.php">
-                Pedidos registrados
-            </a>
-        </button>
+        <a href="Productos/readleeProductos.php"><button>Productos disponibles</button></a>
+        <a href="Pedidos/leerPedidos.php"><button>Pedidos registrados </button></a>
+       
         
 
     </div>
@@ -418,7 +409,7 @@ main p{
             echo "</table>";
 
         }
-            echo "<button><a href='Usuario/formUpdateUsuario.php?CI=".$fila["CI"]."'>Editar</a></button>"
+            echo "<a href='Usuario/formUpdateUsuario.php?CI=".$fila["CI"]."'><button>Editar</button></a>"
         ?>
     </div>
 

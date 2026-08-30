@@ -226,10 +226,9 @@ $resultado = $conexion->query($sql);
     </table>
 
     <div class="botones">
-        <a href="../autenticar.php?CI=.<?'$CI'?>"> <button class="volver" >Perfil</button></a>
-             
+        <a href="../vendedor.php?CI=<?php echo $CI;?>"> <button class="volver" >Perfil</button></a>
         <a href="../portada publica.php"><button class="volver">Inicio Público</button></a>
-        <button class="volver"><a href="formRegistroVentas.php?ID=".$ID>Registrar nueva venta</a></button>
+        <button class="volver"><a href="../Pedidos/leerPedidos.php?ID=".$ID>Registrar nueva venta</a></button>
     </div>
 </div>
 
