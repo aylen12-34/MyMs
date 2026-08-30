@@ -9,8 +9,7 @@ if ($conexion->connect_error) {
     echo "No se ha podido conectar a la base de datos";
 }
 
-
-$CI=$_POST['CI'];
+$CI=$_REQUEST['CI'];
 $Nombre=$_POST['Nombre'];
 $sql = "SELECT * FROM Usuarios WHERE CI='$CI' AND Nombre='$Nombre'";
 $resultado = $conexion->query($sql);

@@ -213,9 +213,15 @@ button{
                 echo "<td>".$fila["Descripcion"]."</td>";
                 echo "<td><img src='../".$fila["imagen"]."' width='80' style='border-radius: 20px; border: 2px solid #E64B6B;'></td>";
                 echo "<td>".$fila["Precio"]."</td>";
-                echo "<td>".$fila["Stock"]."</td>";
-
-
+                if($fila["Stock"]<10){
+                    echo "<td style= 'color: #eedc12;'>".$fila["Stock"]. "</td>";
+                    $mensaje = "No tienes muchos productos, se recomienda reponer";
+                    echo "<script>alert('$mensaje');</script>";
+                }else{
+                    echo "<td>".$fila["Stock"]. "</td>";
+                }
+                
+                
                  echo "<td>
                         <a href='formUpdateProductos.php?Codigo=" . $fila["Codigo"] . "'>
                             <button class='editar'>Editar</button>

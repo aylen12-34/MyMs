@@ -250,7 +250,7 @@ a{
             <a href="../portada publica.php">Inicio Público</a>
         </button>
         <button class="volver">
-            <a href="formRegistroPedidos.php">Registrar nuevo pedido</a>
+            <a href="../Ajax/index/index1.php">Registrar nuevo pedido</a>
         </button>
         <button class="volver">
             <a href="../Ventas/leerVentass.php">Ventas aceptadas</a>

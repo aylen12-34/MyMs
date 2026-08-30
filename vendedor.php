@@ -13,10 +13,14 @@ if ($conexion->connect_error) {
 session_start();
 if($_SESSION['CI']==null){
     header("location:login.php");
-} else {
- $CI = $_SESSION['CI'];
- } 
-    
+}else {
+  if($_SESSION['Rol']=="vendedor"){
+    $CI = $_SESSION['CI'];
+  } else{
+    header("location:login.php");
+  }
+}
+
 
 $sqln = "SELECT * FROM Usuarios WHERE CI='$CI'";
 $resultadon = $conexion->query($sqln);
@@ -414,9 +418,8 @@ main p{
             echo "</table>";
 
         }
-
+            echo "<button><a href='Usuario/formUpdateUsuario.php?CI=".$fila["CI"]."'>Editar</a></button>"
         ?>
-        <button><a href="Usuario/formUpdateUsuario.php">Editar</a></button>
     </div>
 
 </main>

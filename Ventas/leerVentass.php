@@ -226,19 +226,8 @@ $resultado = $conexion->query($sql);
     </table>
 
     <div class="botones">
-        <button class="volver" onclick="perfil()" >
-            <script>
-    function perfil(){
-        if($Rol=="vendedor"){
-    header("location:../vendedor.php");
-  } else{
-    if($_SESSION['Rol']=="administrador"){
-header("location:../administrador.php");
-  }
-    }
-}
-
-</script> Perfil</button>
+        <a href="../autenticar.php?CI=.<?'$CI'?>"> <button class="volver" >Perfil</button></a>
+             
         <a href="../portada publica.php"><button class="volver">Inicio Público</button></a>
         <button class="volver"><a href="formRegistroVentas.php?ID=".$ID>Registrar nueva venta</a></button>
     </div>

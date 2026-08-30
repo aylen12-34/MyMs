@@ -210,10 +210,10 @@ table td:last-child{
 
         <?php include("includes/leerUsuarios.php"); ?>
         <a href="Usuario/formRegistroUsuario.php"><button>Registrar Personal</button></a>
-        <button>
+        <a href="reportes.php"><button>
             Reportes
         </button>
-
+</a>
     </div>
 
     <div class="foto-admin">
@@ -278,7 +278,7 @@ if ($resultado->num_rows > 0) {
 
 } 
 
-"<button><a href='Usuario/formUpdateUsuario.php?CI=".$fila["CI"]."'>Editar</a></button>"?> <br>
+echo "<button><a href='Usuario/formUpdateUsuario.php?CI=".$fila["CI"]."'>Editar</a></button>"?> <br>
 <button><a href="Ventas/leerVentass.php">Ver ventas</a></button><br>
     </div>
 

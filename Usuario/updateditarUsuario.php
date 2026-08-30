@@ -115,9 +115,11 @@ $Rol=$_POST['Rol'];
 $Estado=$_POST['Estado'];
 $sql="UPDATE Usuarios SET Nombre='$Nombre', Direccion='$Direccion', Celular='$Celular', Rol='$Rol', Estado='$Estado' WHERE CI='$CI'";
 if ($conexion->query($sql) === TRUE) {
+    session_start();
     $Rol=$_SESSION['Rol'];
     if($Rol=='vendedor'){
-        header("location:../vendedor.php");
+
+        header("location:../vendedor.php?CI='.$CI'");
     } else {
         header("location:../administrador.php");
     }
