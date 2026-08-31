@@ -146,7 +146,7 @@ $CostoTotal=0;
     echo "<td class='titulo'>Cantidad</td>";
     echo "<td>".$fila["Cantidad"]."</td>";
     echo "</tr>";
-    $CostoTotal=$CostoTotal+$fila['Precio'];
+    $CostoTotal=$fila['Cantidad']*$fila['Precio'];
 
 }
 

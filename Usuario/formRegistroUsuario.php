@@ -210,7 +210,7 @@ if ($conexion->connect_error) {
             <input type="file" name="imagen" accept="image/*">
             <br><br>
             <label for="Estado">Estado:</label>
-            <input type="text" id="Estado" name="Estado"><br><br>
+            <input type="text" value="Activo" name="Estado" readonly><br><br>
             <input type="submit" value="Registrar Usuario">
 
         </form>

@@ -117,7 +117,7 @@ if ($conexion->query($sql) === TRUE) {
         <h2>Eliminar Usuario</h2>
         <p>
             <?php 
-        echo "El usuario ha sido eliminado.";
+        header("location: ../administrador.php");
         $conexion->close(); 
       ?>
       </p><br>

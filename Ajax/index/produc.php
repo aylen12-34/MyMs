@@ -9,9 +9,6 @@ if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
 
-$Codigo=$_GET['Codigo'];
-$sql = "SELECT * FROM productos WHERE Codigo='$Codigo'";
-$resultado = $conexion->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -115,56 +112,60 @@ button{
             background-color: #EFE2DA;
             color:#E64B6B;
         }
+
+        .rating-group {
+            height: 10px;
+            width: 230px;
+    display: inline-flex;
+    flex-direction: row-reverse; /* Invierte el orden para iluminar hacia la izquierda */
+    justify-content: flex-end;
+  }
+
+  .rating-group input {
+    display: none; /* Oculta los radio buttons feos */
+  }
+
+  .rating-group label {
+    font-size: 2rem;
+    color: #ccc; /* Color de estrella apagada */
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+  }
+
+  /* Ilumina la estrella sobre la que pasa el cursor y las anteriores */
+  .rating-group label:hover,
+  .rating-group label:hover ~ label {
+    color: #ffca08;
+  }
+
+  /* Mantiene iluminadas las estrellas seleccionadas */
+  .rating-group input:checked ~ label {
+    color: #ffca08;
+  }
 </style>
 </head>
 <body>
 
 <div>
-
-<h2>Datos del Producto</h2>
-
-<?php
- if($resultado->num_rows>0) {
-
-    $fila = $resultado->fetch_assoc();
-
-    echo "<table>";
-
-    echo "<tr>";
-    echo "<td class='titulo'>Nombre</td>";
-    echo "<td>".$fila["Nombre"]."</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td class='titulo'>Descripcion</td>";
-    echo "<td>".$fila["Descripcion"]."</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td class='titulo'>Precio</td>";
-    echo "<td>".$fila["Precio"]."</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td class='titulo'>Estado</td>";
-    echo "<td>".$fila["Estado"]."</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td class='titulo'>Stock</td>";
-    echo "<td>".$fila["Stock"]."</td>";
-    echo "</tr>";    
-    echo "</table>";
-
-} else {
-
-    echo "No hay informacion sobre el producto.";
-
-}
-$conexion->close();
-?>
 <h2>Comentario</h2>
 <form action="reseña.php" method="post">
+    <label>Calificación</label><br>
+<div class="rating-group" name="estrella">
+  <input type="radio" id="star5" name="Cali" value="5" required />
+  <label for="star5" title="5 estrellas">★</label>
+
+  <input type="radio" id="star4" name="Cali" value="4" />
+  <label for="star4" title="4 estrellas">★</label>
+
+  <input type="radio" id="star3" name="Cali" value="3" />
+  <label for="star3" title="3 estrellas">★</label>
+
+  <input type="radio" id="star2" name="Cali" value="2" />
+  <label for="star2" title="2 estrellas">★</label>
+
+  <input type="radio" id="star1" name="Cali" value="1" />
+  <label for="star1" title="1 estrellas">★</label>
+</div> <br><br>
     <label for="">Nombre o Correo electronico</label> <br>
     <input type="text" name="nombre"> <br><br>
     <label for="">Comentario</label> <br>
@@ -173,8 +174,6 @@ $conexion->close();
     <input type="reset" value="Borrar">
     
 </form>
-
-
 <button class="volver" onclick="history.back()">← Volver</button><br>
 </div>
 

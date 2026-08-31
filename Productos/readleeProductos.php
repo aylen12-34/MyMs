@@ -214,9 +214,16 @@ button{
                 echo "<td><img src='../".$fila["imagen"]."' width='80' style='border-radius: 20px; border: 2px solid #E64B6B;'></td>";
                 echo "<td>".$fila["Precio"]."</td>";
                 if($fila["Stock"]<10){
-                    echo "<td style= 'color: #eedc12;'>".$fila["Stock"]. "</td>";
+                    if($fila["Stock"]<=0){
+                    echo "<td style= 'color: #ee6612;'>".$fila["Stock"]. "</td>";
+                    $mensaje = "No tienes productos";
+                    echo "<script>alert('$mensaje');</script>"; 
+                    }else{
+                      echo "<td style= 'color: #eedc12;'>".$fila["Stock"]. "</td>";
                     $mensaje = "No tienes muchos productos, se recomienda reponer";
-                    echo "<script>alert('$mensaje');</script>";
+                    echo "<script>alert('$mensaje');</script>";  
+                    }
+                    
                 }else{
                     echo "<td>".$fila["Stock"]. "</td>";
                 }

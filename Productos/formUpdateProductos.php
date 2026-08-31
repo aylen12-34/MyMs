@@ -164,6 +164,11 @@ if ($resultado->num_rows > 0) {
         <input type="number" id="Precio" name="Precio" value='<?=$Precio?>' required>  <br>  <br>
         <label for="Stock">Stock:</label>
         <input type="number" id="Stock" name="Stock" value='<?=$Stock?>' required>  <br>  <br>
+        <label for="Estado">Estado</label>
+        <select name="Estado">
+                <option value="Disponible">Disponible</option>
+                <option value="Desactivo">qlopongaelmathy</option>
+            </select> <br> <br>
         <input type="submit" value="Editar">
     </form>
     <button class="volver" onclick="history.back()">Volver</button><br>

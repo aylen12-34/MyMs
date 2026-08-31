@@ -113,7 +113,8 @@ $Nombre=$_POST['Nombre'];
 $Descripcion=$_POST['Descripcion'];
 $Precio=$_POST['Precio'];
 $Stock=$_POST['Stock'];
-$sql="UPDATE Productos SET Codigo=$Codigo, Nombre='$Nombre', Descripcion='$Descripcion', Precio='$Precio', Stock='$Stock' WHERE Codigo=$Codigo";
+$Estado=$_POST['Estado'];
+$sql="UPDATE Productos SET Codigo=$Codigo, Nombre='$Nombre', Descripcion='$Descripcion', Precio='$Precio', Stock='$Stock', Estado='$Estado' WHERE Codigo=$Codigo";
 if ($conexion->query($sql) === TRUE) {
     echo "Se edito el producto correctamente";
 } else {

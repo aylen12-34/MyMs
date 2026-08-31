@@ -183,7 +183,7 @@ input[readonly]{
         <input type="text" name="Rol" value='<?=$Rol?>' required>
         <br>
         <label for="">Estado:</label>
-        <input type="text" name="Estado" value='<?=$Estado?>' required>
+        <input type="text" name="Estado" value='<?=$Estado?>' readonly>
         <br>
         <input type="submit" value="Editar">
     </form>

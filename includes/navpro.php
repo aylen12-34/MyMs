@@ -112,13 +112,11 @@
 
     <nav class="indice" id="menu">
         <ul>
-            <li><a>Mi Portada</a></li>
-            <li><a href="login.php">Iniciar sesión</a></li>
-            <li><a href="">Historial</a></li>
-            <li><a href="Ajax/index/index1.php">Menu</a></li>
+            <li><a href="portada publica.php">Inicio</a></li>
             <li><a href="cerrar.php">Cerrar sesion</a></li>
+            <li><a href="Ajax/index/produc.php">Ver comentario</a></li>
             <li>
-                <a href="Pedidos/formRegistroPedidos.php">
+                <a href="Ajax/index/index1.php">
                     <img src="https://cdn-icons-png.freepik.com/512/9341/9341730.png" id="compra" alt="Carrito">
                 </a>
             </li>

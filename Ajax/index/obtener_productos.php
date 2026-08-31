@@ -3,7 +3,7 @@
 
 include("conexion.php");
 
-$sql = "SELECT * FROM productos";
+$sql = "SELECT * FROM productos WHERE Estado='Disponible'";
 
 $resultado = $conn->query($sql);
 

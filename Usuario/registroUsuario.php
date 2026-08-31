@@ -110,15 +110,12 @@ $imagen=$_POST['imagen'];
             <?php 
             $sql="INSERT INTO Usuarios (CI,Nombre, Direccion, Celular, Rol, Estado, imagen) VALUES ('$CI','$Nombre', '$Direccion', '$Celular', '$Rol', '$Estado', '$imagen')";
             if ($conexion->query($sql) === TRUE) {
-                    echo "
-                    registrado correctamente";
+                    header("location: readleerUsuarios.php");
             }else{
                 echo "Hubo un error";
             }
       ?>
         </p><br>
-        
-        <button class="volver"><a href="../login.php">Iniciar Sesion</a></button><br>
         <button class="volver"><a href="readleerUsuarios.php">Tabla Usuarios</a></button>
     </div>
     </div>

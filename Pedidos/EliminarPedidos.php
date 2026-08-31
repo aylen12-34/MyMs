@@ -11,9 +11,10 @@ if($conexion -> connect_error){
 }
 
 $ID = $_GET['ID'];
-$sqlVentas = "DELETE FROM Ventas WHERE Pedidos_ID = '$ID'";
+$sqlVentas = "DELETE FROM ventas WHERE Pedidos_ID = '$ID'";
 $conexion->query($sqlVentas);
-
+$sqlca = "DELETE FROM carrito WHERE Pedidos_ID = '$ID'";
+$conexion->query($sqlca);
 $sqlPedidos = "DELETE FROM pedidos WHERE ID = '$ID'";
 
 

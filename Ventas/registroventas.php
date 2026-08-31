@@ -36,9 +36,10 @@ $resultadocarrito = $conexion->query($sqlcarrito);
 $producto=$resultadocarrito -> fetch_assoc();
     $Stock=$producto['Stock'];
 $sqlc = "UPDATE productos SET Stock=Stock-$Cantidad WHERE Codigo='$Codigo1'";
+
 $conexion ->query($sqlc);
     }}
-$sqlp = "UPDATE pedidos SET NombreVendedor='$NombreVendedor', Estado='$Estado' WHERE ID='$Pedidos_ID'";
+$sqlp = "UPDATE pedidos SET NombreVendedor='$NombreVendedor', Estado='Aceptado' WHERE ID='$Pedidos_ID'";
 if ($conexion->query($sqlp) === TRUE) {
     header("location:leerVentass.php");
 }else {

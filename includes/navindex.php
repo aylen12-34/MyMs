@@ -119,6 +119,7 @@
             <li><a href="../../login.php">Iniciar sesión</a></li>
             <li><a href="../../nosotros.php">Nosotros</a></li>
             <li><a href="../../ficha.php">Ficha de mrd</a></li>
+             <li><a href="produc.php">Ver comentario</a></li>
             
         </ul>
     </nav>

@@ -7,10 +7,12 @@
 </head>
 <body>
     <?php 
+    $estrella=$_POST["Cali"];
     $nombre=$_POST["nombre"];
     $come=$_POST["come"];
     $comentario = fopen("comentario.txt", "a");
         if($comentario){
+            fwrite( $comentario, $estrella."⭐'s<br>");
             fwrite($comentario, $nombre .PHP_EOL);
             fwrite($comentario,$come .PHP_EOL);
             fwrite($comentario,"****".PHP_EOL);

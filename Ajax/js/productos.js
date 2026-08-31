@@ -49,8 +49,6 @@ function mostrarProductos(productos){
 
             <p>${producto.Descripcion}</p>
 
-           <a href="../index/produc.php?Codigo=${producto.Codigo}"><button > Mas informacion</button></a>
-
             <h2>Bs ${producto.Precio}</h2>
 
             <button
