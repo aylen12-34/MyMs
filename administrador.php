@@ -23,8 +23,8 @@ if($_SESSION['CI']==null){
 
 $CI = $_SESSION['CI'];
 
-$sql = "SELECT * FROM Usuarios WHERE CI='$CI'";
-$resultado = $conexion->query($sql);
+$sqle = "SELECT * FROM Usuarios WHERE CI='$CI'";
+$resultadoe = $conexion->query($sqle);
 $sqlp = "SELECT * FROM Usuarios WHERE CI='$CI'";
 $resultadop = $conexion->query($sqlp);
 
@@ -208,8 +208,8 @@ table td:last-child{
 
         <h3>👥 Personal</h3>
 
-        <?php include("includes/leerUsuarios.php"); ?>
-        <a href="Usuario/formRegistroUsuario.php"><button>Registrar Personal</button></a>
+        <?php include("includes/usuario.php"); ?>
+        <br><br>
         <a href="reportes.php"><button> Reportes</button></a>
         <a href="Ventas/leerVentass.php"><button>Ver ventas</button></a><br>
     </div>
@@ -236,9 +236,9 @@ table td:last-child{
         <h1>Datos Personales</h1>
     <?php
 
-if ($resultado->num_rows > 0) {
+if ($resultadoe->num_rows > 0) {
 
-    $fila = $resultado->fetch_assoc();
+    $fila = $resultadoe->fetch_assoc();
 
     echo "<table>";
 
