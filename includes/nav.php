@@ -119,7 +119,7 @@
             <li><a href="login.php">Iniciar sesión</a></li>
             <li><a href="Ajax/index/index1.php">Menú</a></li>
             <li><a href="nosotros.php">Nosotros</a></li>
-            <li><a href="ficha.php">Ficha ambiental</a></li>
+            <li><a href="formulario ambiental MYMS.pdf">Ficha ambiental</a></li>
             <li><a href="Ajax/index/produc.php">Deja tu comentario</a></li>
         </ul>
     </nav>

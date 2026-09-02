@@ -20,7 +20,7 @@ $sqlPedidos = "DELETE FROM pedidos WHERE ID = '$ID'";
 
 if ($conexion->query($sqlPedidos) === TRUE) {
         
-    $mensaje = "El pedido y su venta asociada han sido eliminados correctamente.";
+    $mensaje = "El pedido y su venta asociada han sido rechazados";
 } else {
     $mensaje = "Error al eliminar el pedido: " . $conexion->error;
 }

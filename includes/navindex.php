@@ -118,7 +118,7 @@
             <li><a href="../../portada publica.php">Inicio</a></li>
             <li><a href="../../login.php">Iniciar sesión</a></li>
             <li><a href="../../nosotros.php">Nosotros</a></li>
-            <li><a href="../../ficha.php">Ficha de mrd</a></li>
+            <li><a href="../../formulario ambiental MYMS.pdf">Ficha ambiental</a></li>
              <li><a href="produc.php">Ver comentario</a></li>
             
         </ul>
