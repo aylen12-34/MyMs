@@ -16,22 +16,42 @@
             margin: 0;
             height: 100vh;
             overflow: hidden;
-            background: #09000f;
+
             font-family: Arial, sans-serif;
+
+            /* =========================
+               FONDO
+            ========================= */
+
+            background-image: url("imagenes/2.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
-        /* Pantalla principal */
+
+        /* =========================
+           PANTALLA PRINCIPAL
+        ========================= */
+
         .pantalla {
             position: relative;
+
             width: 100%;
             height: 100vh;
 
             display: flex;
             justify-content: center;
             align-items: center;
+
+            overflow: hidden;
         }
 
-        /* Contenido central */
+
+        /* =========================
+           CONTENIDO CENTRAL
+        ========================= */
+
         .racha {
             position: relative;
             z-index: 10;
@@ -55,6 +75,11 @@
                 0 0 80px #4a0072;
         }
 
+        .racha h1 img {
+            vertical-align: middle;
+            width: 100px;
+        }
+
         .racha p {
             margin: 10px 0 0;
 
@@ -68,200 +93,111 @@
 
 
         /* =========================
-           FUEGO INFERIOR
+           GALLETAS
         ========================= */
 
-        .fuego {
+        .galleta {
             position: absolute;
+
             z-index: 5;
 
-            bottom: -80px;
-
             width: 120px;
-            height: 180px;
+            height: 120px;
 
-            background: linear-gradient(
-                to top,
-                #6A253A,
-                #E64B6B,
-                #df778c,
-                #EFE2DA,
-                transparent
-            );
+            object-fit: contain;
 
-            border-radius: 50% 50% 35% 35%;
+            /* IMPORTANTE:
+               No se aplica blur a las galletas */
 
-            filter: blur(8px);
-
-            animation:
-                fuegoSubir 1s infinite alternate ease-in-out;
+            animation: saltoGalleta 1.8s infinite ease-in-out;
         }
 
 
-        /* Diferentes posiciones */
+        /* =========================
+           POSICIONES DE GALLETAS
+        ========================= */
 
-        .f1 {
+        .g1 {
             left: 5%;
+            bottom: 8%;
+
             animation-delay: 0s;
-            transform: rotate(-8deg);
         }
 
-        .f2 {
-            left: 20%;
-            animation-delay: .2s;
-            transform: rotate(7deg);
+        .g2 {
+            left: 22%;
+            bottom: 12%;
+
+            animation-delay: .45s;
         }
 
-        .f3 {
-            left: 38%;
-            animation-delay: .4s;
-            transform: rotate(-5deg);
+        .g3 {
+            left: 42%;
+            bottom: 5%;
+
+            animation: saltoGalletaVuelta 2.4s infinite ease-in-out;
+            animation-delay: .9s;
         }
 
-        .f4 {
-            right: 25%;
-            animation-delay: .1s;
-            transform: rotate(8deg);
+        .g4 {
+            right: 22%;
+            bottom: 11%;
+
+            animation-delay: .25s;
         }
 
-        .f5 {
-            right: 8%;
-            animation-delay: .3s;
-            transform: rotate(-7deg);
-        }
+        .g5 {
+            right: 5%;
+            bottom: 7%;
 
-
-        /* =========================
-           FUEGO LATERAL IZQUIERDO
-        ========================= */
-
-        .fuego-izq {
-            position: absolute;
-            left: -50px;
-            top: 0;
-
-            width: 130px;
-            height: 100%;
-
-            background: linear-gradient(
-                to right,
-                #4a0072,
-                #8000ff,
-                #b026ff,
-                transparent
-            );
-
-            filter: blur(15px);
-
-            animation:
-                invadirIzquierda 2s infinite alternate ease-in-out;
-        }
-
-
-        /* =========================
-           FUEGO LATERAL DERECHO
-        ========================= */
-
-        .fuego-der {
-            position: absolute;
-            right: -50px;
-            top: 0;
-
-            width: 130px;
-            height: 100%;
-
-            background: linear-gradient(
-                to left,
-                #4a0072,
-                #8000ff,
-                #b026ff,
-                transparent
-            );
-
-            filter: blur(15px);
-
-            animation:
-                invadirDerecha 2s infinite alternate ease-in-out;
-        }
-
-
-        /* =========================
-           CHISPAS
-        ========================= */
-
-        .chispa {
-            position: absolute;
-
-            width: 7px;
-            height: 7px;
-
-            background: #e0aaff;
-
-            border-radius: 50%;
-
-            box-shadow:
-                0 0 8px #b026ff,
-                0 0 15px #8000ff,
-                0 0 25px #d580ff;
-
-            animation:
-                chispear 2s infinite ease-out;
-        }
-
-
-        .c1 {
-            left: 10%;
-            bottom: 20%;
-            animation-delay: .2s;
-        }
-
-        .c2 {
-            left: 25%;
-            bottom: 10%;
             animation-delay: .7s;
         }
 
-        .c3 {
-            left: 45%;
-            bottom: 15%;
-            animation-delay: 1s;
-        }
-
-        .c4 {
-            right: 25%;
-            bottom: 20%;
-            animation-delay: .4s;
-        }
-
-        .c5 {
-            right: 10%;
-            bottom: 15%;
-            animation-delay: 1.2s;
-        }
-
-        .c6 {
-            right: 40%;
-            bottom: 5%;
-            animation-delay: .8s;
-        }
-
 
         /* =========================
-           BOTÓN
+           BOTONES
         ========================= */
 
-        button {
+        .botones {
             position: absolute;
+
             z-index: 20;
 
-            bottom: 40px;
+            bottom: 35px;
 
-            padding: 15px 30px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 90%;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 30px;
+        }
+
+
+        .botones a {
+            text-decoration: none;
+        }
+
+
+        .botones button {
+            position: relative;
+
+            min-width: 210px;
+
+            padding: 15px 25px;
 
             border: none;
             border-radius: 30px;
 
             background: #8000ff;
+
             color: white;
 
             font-size: 18px;
@@ -274,116 +210,283 @@
                 0 0 30px #b026ff,
                 0 0 45px #4a0072;
 
-            transition: transform .2s;
+            transition:
+                transform .2s,
+                box-shadow .2s;
         }
 
-        button:hover {
+
+        .botones button:hover {
             transform: scale(1.08);
+
+            box-shadow:
+                0 0 20px #8000ff,
+                0 0 40px #b026ff,
+                0 0 60px #4a0072;
         }
 
 
         /* =========================
-           OSCURECIMIENTO
+           ANIMACIÓN DE GALLETAS
         ========================= */
+@keyframes saltoGalleta {
 
-        .oscuro {
-            position: absolute;
-            z-index: 2;
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
 
-            width: 100%;
-            height: 100%;
+    25% {
+        transform: translateY(-45px) rotate(-5deg);
+    }
 
-            background: radial-gradient(
-                circle,
-                transparent 10%,
-                rgba(0, 0, 0, .55) 80%
-            );
-        }
+    50% {
+        transform: translateY(0) rotate(5deg);
+    }
 
+    75% {
+        transform: translateY(-25px) rotate(-3deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+@keyframes saltoGalletaVuelta {
+
+    /* =========================
+       SUBIDA SUAVE
+    ========================= */
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    5% {
+        transform: translateY(-8px) rotate(0deg);
+    }
+
+    10% {
+        transform: translateY(-20px) rotate(0deg);
+    }
+
+    15% {
+        transform: translateY(-35px) rotate(0deg);
+    }
+
+    20% {
+        transform: translateY(-52px) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-70px) rotate(0deg);
+    }
+
+    30% {
+        transform: translateY(-88px) rotate(0deg);
+    }
+
+    35% {
+        transform: translateY(-104px) rotate(0deg);
+    }
+
+    40% {
+        transform: translateY(-117px) rotate(0deg);
+    }
+
+    45% {
+        transform: translateY(-127px) rotate(0deg);
+    }
+
+    48% {
+        transform: translateY(-132px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-135px) rotate(0deg);
+    }
+
+
+    /* =========================
+       GIRO RÁPIDO ARRIBA
+    ========================= */
+
+    51% {
+        transform: translateY(-135px) rotate(30deg);
+    }
+
+    52% {
+        transform: translateY(-135px) rotate(60deg);
+    }
+
+    53% {
+        transform: translateY(-135px) rotate(90deg);
+    }
+
+    54% {
+        transform: translateY(-135px) rotate(120deg);
+    }
+
+    55% {
+        transform: translateY(-135px) rotate(150deg);
+    }
+
+    56% {
+        transform: translateY(-135px) rotate(180deg);
+    }
+
+    57% {
+        transform: translateY(-135px) rotate(210deg);
+    }
+
+    58% {
+        transform: translateY(-135px) rotate(240deg);
+    }
+
+    59% {
+        transform: translateY(-135px) rotate(270deg);
+    }
+
+    60% {
+        transform: translateY(-135px) rotate(300deg);
+    }
+
+    61% {
+        transform: translateY(-135px) rotate(330deg);
+    }
+
+    62% {
+        transform: translateY(-135px) rotate(360deg);
+    }
+
+    63% {
+        transform: translateY(-135px) rotate(360deg);
+    }
+
+
+    /* =========================
+       BAJADA SUAVE
+    ========================= */
+
+    66% {
+        transform: translateY(-133px) rotate(360deg);
+    }
+
+    70% {
+        transform: translateY(-126px) rotate(360deg);
+    }
+
+    74% {
+        transform: translateY(-114px) rotate(360deg);
+    }
+
+    78% {
+        transform: translateY(-98px) rotate(360deg);
+    }
+
+    82% {
+        transform: translateY(-78px) rotate(360deg);
+    }
+
+    86% {
+        transform: translateY(-56px) rotate(360deg);
+    }
+
+    90% {
+        transform: translateY(-35px) rotate(360deg);
+    }
+
+    94% {
+        transform: translateY(-17px) rotate(360deg);
+    }
+
+    97% {
+        transform: translateY(-7px) rotate(360deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(360deg);
+    }
+}
 
         /* =========================
-           ANIMACIONES
+           RESPONSIVE
         ========================= */
 
-        @keyframes fuegoSubir {
+        @media (max-width: 800px) {
 
-            from {
-                transform:
-                    translateY(20px)
-                    scale(1);
-
-                opacity: .7;
+            .racha h1 {
+                font-size: 55px;
             }
 
-            to {
-                transform:
-                    translateY(-40px)
-                    scale(1.2);
-
-                opacity: 1;
+            .racha h1 img {
+                width: 70px;
             }
-        }
 
+            .racha p {
+                font-size: 22px;
+            }
 
-        @keyframes invadirIzquierda {
-
-            from {
+            .galleta {
                 width: 80px;
+                height: 80px;
             }
 
-            to {
-                width: 230px;
-            }
-        }
-
-
-        @keyframes invadirDerecha {
-
-            from {
-                width: 80px;
+            .botones {
+                width: 95%;
+                gap: 10px;
             }
 
-            to {
-                width: 230px;
+            .botones button {
+                min-width: 0;
+                width: 100%;
+                padding: 12px 10px;
+                font-size: 14px;
             }
         }
 
 
-        @keyframes chispear {
+        @media (max-width: 550px) {
 
-            0% {
-                transform:
-                    translateY(0)
-                    scale(1);
+            .botones {
+                flex-direction: column;
 
-                opacity: 0;
+                bottom: 20px;
+
+                gap: 8px;
             }
 
-            20% {
-                opacity: 1;
+            .botones button {
+                width: 220px;
             }
 
-            100% {
-                transform:
-                    translateY(-250px)
-                    translateX(30px)
-                    scale(.2);
-
-                opacity: 0;
-            }
-        }
-
-
-        @keyframes aparecer {
-
-            from {
-                transform: scale(.3);
-                opacity: 0;
+            .racha h1 {
+                font-size: 40px;
             }
 
-            to {
-                transform: scale(1);
-                opacity: 1;
+            .galleta {
+                width: 65px;
+                height: 65px;
+            }
+
+            .g1 {
+                left: 2%;
+            }
+
+            .g2 {
+                left: 15%;
+            }
+
+            .g3 {
+                left: auto;
+                right: 40%;
+            }
+
+            .g4 {
+                right: 15%;
+            }
+
+            .g5 {
+                right: 2%;
             }
         }
 
@@ -392,44 +495,42 @@
 
 
 <body>
+
     <?php include("includes/navpro.php"); ?>
+
 
     <div class="pantalla">
 
-        <!-- Oscurecimiento -->
-        <div class="oscuro"></div>
+
+        <!-- =========================
+             GALLETAS
+        ========================= -->
+
+        <!-- Cambia los nombres de las imágenes
+             por los archivos de tus galletas -->
+
+        <img src="imagenes/galletas/galleta1.png" class="galleta g1" alt="Galleta">
+
+        <img src="imagenes/galletas/galleta2.png" class="galleta g2" alt="Galleta">
+
+        <img src="imagenes/galletas/galleta3.png" class="galleta g3" alt="Galleta">
+
+        <img src="imagenes/galletas/galleta4.png" class="galleta g4" alt="Galleta">
+
+        <img src="imagenes/galletas/galleta2.png" class="galleta g5" alt="Galleta">
 
 
-        <!-- Fuego inferior -->
-
-        <div class="fuego f1"></div>
-        <div class="fuego f2"></div>
-        <div class="fuego f3"></div>
-        <div class="fuego f4"></div>
-        <div class="fuego f5"></div>
-
-
-        <!-- Fuego lateral -->
-
-        <div class="fuego-izq"></div>
-        <div class="fuego-der"></div>
-
-
-        <!-- Chispas -->
-
-        <div class="chispa c1"></div>
-        <div class="chispa c2"></div>
-        <div class="chispa c3"></div>
-        <div class="chispa c4"></div>
-        <div class="chispa c5"></div>
-        <div class="chispa c6"></div>
-
-
-        <!-- Racha -->
+        <!-- =========================
+             CONTENIDO CENTRAL
+        ========================= -->
 
         <div class="racha">
 
-            <h1><img src="imagenes/gatito.png" alt="" width="100"> <?php echo date('F'); ?></h1>
+            <h1>
+                <img src="imagenes/gatito.png" alt="" width="100">
+
+                <?php echo date('F'); ?>
+            </h1>
 
             <p>
                 Ver Reportes
@@ -438,13 +539,30 @@
         </div>
 
 
-        <!-- Botón -->
+        <!-- =========================
+             BOTONES
+        ========================= -->
 
-        <button onclick="reiniciarRacha()">
-            Reporte de ventas
-        </button>
-        <a href="reportclient.php"><button>Reporte de Clientes</button></a>
-        <a href="reportprodu.php"><button>Top Productos</button></a>
+        <div class="botones">
+
+            <button onclick="reiniciarRacha()">
+                Reporte de ventas
+            </button>
+
+            <a href="reportclient.php">
+                <button>
+                    Reporte de Clientes
+                </button>
+            </a>
+
+            <a href="reportprodu.php">
+                <button>
+                    Top Productos
+                </button>
+            </a>
+
+        </div>
+
     </div>
 
 
