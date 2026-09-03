@@ -100,10 +100,8 @@ if ($conexion->query($sqlPedidos) === TRUE) {
     $conexion->close(); 
   ?>
 </p><br>
-        
-        
-<button class="volver"><a href="leerPedidos.php">Tabla Pedidos</a></button>
-<button class="volver"><a href="formRegistroPedidos.php">Hacer otro pedido</a></button>
+<a href="leerPedidos.php"><button class="volver">Tabla Pedidos</button></a>
+<a href="formRegistroPedidos.php"><button class="volver">Hacer otro pedido</button></a>
         
     </div>
     </div>

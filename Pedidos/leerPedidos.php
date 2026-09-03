@@ -243,18 +243,18 @@ a{
     </table>
 
     <div class="botones">
-        <button class="volver">
-            <a href="../vendedor.php">Perfil</a>
-        </button>
-        <button class="volver">
-            <a href="../portada publica.php">Inicio Público</a>
-        </button>
-        <button class="volver">
-            <a href="../Ajax/index/index1.php">Registrar nuevo pedido</a>
-        </button>
-        <button class="volver">
-            <a href="../Ventas/leerVentass.php">Ventas aceptadas</a>
-        </button>
+        
+            <a href="../vendedor.php"><button class="volver">Perfil</button></a>
+        
+        
+            <a href="../portada publica.php"><button class="volver">Inicio Público</button></a>
+        
+        
+            <a href="../Ajax/index/index1.php"><button class="volver">Registrar nuevo pedido</button></a>
+        
+        
+            <a href="../Ventas/leerVentass.php"><button class="volver">Ventas aceptadas</button></a>
+        
     </div>
 
 </div>
