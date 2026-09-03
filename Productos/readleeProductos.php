@@ -220,8 +220,17 @@ button{
                     echo "<script>alert('$mensaje');</script>"; 
                     }else{
                       echo "<td style= 'color: #eedc12;'>".$fila["Stock"]. "</td>";
-                    $mensaje = "No tienes muchos productos, se recomienda reponer";
-                    echo "<script>alert('$mensaje');</script>";  
+                    $mensaje = "Stock";
+                    }
+
+                    if($mensaje == "Stock"){
+                    echo '<script>
+                    Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "No tienes muchos productos, se recomienda reponer"
+                    }); 
+                    </script>';  
                     }
                     
                 }else{
