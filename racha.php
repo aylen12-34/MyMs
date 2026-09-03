@@ -392,6 +392,7 @@
 
 
 <body>
+    <?php include("includes/navpro.php"); ?>
 
     <div class="pantalla">
 
