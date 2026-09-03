@@ -134,34 +134,7 @@ if (isset($_GET['ajax'])) {
         <canvas id="graficoVentas"></canvas>
     </div>
 
-    <div class="top-products">
-        <h3>Top 3 Productos Más Vendidos</h3>
-        <table class="sales-table">
-            <thead>
-                <tr>
-                    <th style="width: 10%;">Pos.</th>
-                    <th>Producto</th>
-                    <th>Veces Vendido</th>
-                    <th>Total Generados</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php 
-                $posicion = 1;
-                while ($prod = $res_top->fetch_assoc()): 
-                ?>
-                    <tr>
-                        <td><span class="rank-badge">#<?php echo $posicion++; ?></span></td>
-                        <td><strong><?php echo htmlspecialchars($prod['producto']); ?></strong></td>
-                        <td><?php echo number_format($prod['unidades']); ?> veces</td>
-                        <td>Bs. <?php echo number_format($prod['ingreso_total'], 2); ?></td>
-                    </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
-    </div>
     
-</div>
 
 <script>
 let etiquetas = <?php echo json_encode($etiquetas); ?>;

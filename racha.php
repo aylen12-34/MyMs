@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Racha de Fuego Morado</title>
+    <title>Reportes</title>
 
     <style>
 
@@ -443,7 +443,7 @@
             Reporte de ventas
         </button>
         <a href="reportclient.php"><button>Reporte de Clientes</button></a>
-
+        <a href="reportprodu.php"><button>Top Productos</button></a>
     </div>
 
 
