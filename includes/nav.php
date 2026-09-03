@@ -117,11 +117,11 @@
         <ul>
             
             <li><a href="portada publica.php">Inicio</a></li>
-            <li><a href="perfil.php" class="volver">perfil</a>
+            <li><a href="perfil.php" class="volver">Perfil</a>
             <li><a href="login.php">Iniciar sesión</a></li>
             <li><a href="Ajax/index/index1.php">Menú</a></li>
             <li><a href="nosotros.php">Nosotros</a></li>
-            <li><a href="formulario ambiental MYMS.pdf">Ficha ambiental</a></li>
+            <li><a href="formulario ambiental MYMS.pdf" target="_blank">Ficha ambiental</a></li>
             <li><a href="Ajax/index/produc.php">Deja tu comentario</a></li>
         </ul>
     </nav>
