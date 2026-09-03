@@ -109,7 +109,7 @@ if (isset($_GET['ajax'])) {
 <body>
 
 <div class="card">
-    <h2>📊 Reporte de Ventas</h2>
+    <h2>Reporte de Ventas</h2>
     
     <div class="controls">
         <div class="control-group">
@@ -135,7 +135,7 @@ if (isset($_GET['ajax'])) {
     </div>
 
     <div class="top-products">
-        <h3>🔥 Top 3 Productos Más Vendidos 🔥</h3>
+        <h3>Top 3 Productos Más Vendidos</h3>
         <table class="sales-table">
             <thead>
                 <tr>
@@ -173,7 +173,7 @@ $sql = "SELECT Nombre, COUNT(*) AS total_pedidos
 $resultado = $conn->query($sql);
 
 if ($resultado && $resultado->num_rows > 0) {
-    echo "<h3>🔥Top 3 Leucemicos🔥</h3>";
+    echo "<h3>Top 3 Leucemicos</h3>";
     echo "<ul>";
     while ($vendedor = $resultado->fetch_assoc()) {
         echo "<li><strong>" . htmlspecialchars($vendedor['Nombre']) . "</strong>: " . $vendedor['total_pedidos'] . " pedidos</li>";

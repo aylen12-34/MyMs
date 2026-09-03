@@ -210,7 +210,7 @@ table td:last-child{
 
         <?php include("includes/usuario.php"); ?>
         <br><br>
-        <a href="reportes.php"><button> Reportes</button></a>
+        <a href="racha.php"><button> Reportes</button></a>
         <a href="Ventas/leerVentass.php"><button>Ver ventas</button></a><br>
     </div>
 

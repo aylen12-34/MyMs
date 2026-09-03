@@ -10,6 +10,11 @@ $ID = $_GET['ID'];
 
 $sql = "SELECT * FROM Ventas WHERE Pedidos_ID='$ID'";
 $resultado = $conexion->query($sql);
+$sqlb = "SELECT * FROM Pedidos WHERE ID='$ID'";
+$resultadob = $conexion->query($sqlb);
+while($fila=$resultadob->fetch_assoc()) {
+            $NombreVendedor = $fila['NombreVendedor'];
+    }
 
 if (!$resultado) {
     die("Error en la consulta: " . $conexion->error);
@@ -224,14 +229,11 @@ tr:hover td{
         echo "<td>" . $fila["Metodo"] . "</td>";
         echo "</tr>";
 
-        if (isset($_SESSION['Nombre'])) {
-
             echo "<tr>";
             echo "<td class='titulo'>Nombre del Vendedor</td>";
-            echo "<td>" . $_SESSION['Nombre'] . "</td>";
+            echo "<td>" . $NombreVendedor. "</td>";
             echo "</tr>";
 
-        }
 
         echo "</table>";
 
