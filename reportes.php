@@ -160,29 +160,7 @@ if (isset($_GET['ajax'])) {
             </tbody>
         </table>
     </div>
-    <?php
-// Consulta SQL corregida
-$sql = "SELECT Nombre, COUNT(*) AS total_pedidos
-        FROM pedidos
-        WHERE Estado = 'Aceptado'
-        GROUP BY Nombre
-        ORDER BY total_pedidos DESC
-        LIMIT 3";
-
-// Ejemplo de ejecución y muestra de datos (usando mysqli)
-$resultado = $conn->query($sql);
-
-if ($resultado && $resultado->num_rows > 0) {
-    echo "<h3>Top 3 Leucemicos</h3>";
-    echo "<ul>";
-    while ($vendedor = $resultado->fetch_assoc()) {
-        echo "<li><strong>" . htmlspecialchars($vendedor['Nombre']) . "</strong>: " . $vendedor['total_pedidos'] . " pedidos</li>";
-    }
-    echo "</ul>";
-} else {
-    echo "No hay datos de pedidos aceptados.";
-}
-?>
+    
 </div>
 
 <script>

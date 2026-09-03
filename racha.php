@@ -82,10 +82,10 @@
 
             background: linear-gradient(
                 to top,
-                #4a0072,
-                #8000ff,
-                #b026ff,
-                #e0aaff,
+                #6A253A,
+                #E64B6B,
+                #df778c,
+                #EFE2DA,
                 transparent
             );
 
@@ -428,10 +428,10 @@
 
         <div class="racha">
 
-            <h1>🔥 <?php echo date('F'); ?></h1>
+            <h1><img src="imagenes/gatito.png" alt="" width="100"> <?php echo date('F'); ?></h1>
 
             <p>
-                ¡Empleados del mes!
+                Ver Reportes
             </p>
 
         </div>
@@ -440,8 +440,9 @@
         <!-- Botón -->
 
         <button onclick="reiniciarRacha()">
-            🔥 ¡Ver reporte!
+            Reporte de ventas
         </button>
+        <a href="reportclient.php"><button>Reporte de Clientes</button></a>
 
     </div>
 
