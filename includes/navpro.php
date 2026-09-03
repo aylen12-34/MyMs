@@ -127,7 +127,7 @@
 
     <nav class="indice" id="menu">
         <ul>
-            <li><a href="perfil.php" class="volver">perfil</a>/li>
+            <li><a href="perfil.php" class="volver">perfil</a>
             <li><a href="portada publica.php">Inicio</a></li>
             <li><a href="cerrar.php">Cerrar sesion</a></li>
             <li><a href="formulario ambiental MYMS.pdf">Ficha ambiental</a></li>
