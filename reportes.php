@@ -156,8 +156,8 @@ function crearGrafico(tipo, labels, data) {
             datasets: [{
                 label: 'Ventas Totales ($)',
                 data: data,
-                backgroundColor: tipo === 'line' ? 'rgba(252, 0, 235, 0.2)' : 'rgba(251, 2, 89, 0.6)',
-                borderColor: 'rgb(114, 11, 107)',
+                backgroundColor: tipo === 'line' ? 'rgba(255, 0, 115, 0.2)' : 'rgba(240, 18, 96, 0.6)',
+                borderColor: 'rgb(154, 12, 78)',
                 borderWidth: 2,
                 fill: true,
                 tension: 0.3

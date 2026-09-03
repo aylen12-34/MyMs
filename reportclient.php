@@ -187,7 +187,7 @@ if (etiquetas.length > 0) {
                 backgroundColor: [
                     '#6A253A', 
                     '#E64B6B', 
-                    '#D9A25E'  
+                    '#e4c5b3'  
                 ],
                 borderColor: '#EFE2DA',
                 borderWidth: 2
