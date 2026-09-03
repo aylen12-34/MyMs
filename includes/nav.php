@@ -115,7 +115,9 @@
     <!-- MENÚ -->
     <nav class="indice" id="menu">
         <ul>
+            <li><a href="perfil.php" class="volver">perfil</a>/li>
             <li><a href="portada publica.php">Inicio</a></li>
+             
             <li><a href="login.php">Iniciar sesión</a></li>
             <li><a href="Ajax/index/index1.php">Menú</a></li>
             <li><a href="nosotros.php">Nosotros</a></li>

@@ -98,6 +98,21 @@
         #botonMenu.cerrar img{
             transform:rotate(-360deg);
         }
+        .volver{
+        padding: 10px 20px;
+        border: none;
+        color: #EFE2DA;
+        border-radius: 5px;
+        background: #E64B6B;
+        cursor: pointer;
+        font-size: 16px;
+        margin:3px;
+        }
+
+        .volver:hover{
+            background-color: #EFE2DA;
+            color: #E64B6B;
+        }
 
     </style>
 
@@ -112,7 +127,8 @@
 
     <nav class="indice" id="menu">
         <ul>
-            <li><a href="portada publica.php">Inicio</a></li>
+            <li><a href="perfil.php" class="volver">perfil</a>/li>
+            <li> href="portada publica.php">Inicio</li>
             <li><a href="cerrar.php">Cerrar sesion</a></li>
             <li><a href="formulario ambiental MYMS.pdf">Ficha ambiental</a></li>
             <li><a href="Ajax/index/produc.php">Ver comentario</a></li>
