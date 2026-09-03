@@ -3,232 +3,344 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <title>Reportes</title>
 
     <style>
 
-        * {
-            box-sizing: border-box;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Chillax-Semibold';
+}
 
-        body {
-            margin: 0;
-            height: 100vh;
-            overflow: hidden;
 
-            font-family: Arial, sans-serif;
+/* =========================
+   BODY
+========================= */
 
-            /* =========================
-               FONDO
-            ========================= */
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
 
-            background-image: url("imagenes/2.png");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+    font-family: 'Chillax-Semibold';
 
+    /* =========================
+       FONDO
+    ========================= */
 
-        /* =========================
-           PANTALLA PRINCIPAL
-        ========================= */
+    background-image: url("imagenes/2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
-        .pantalla {
-            position: relative;
 
-            width: 100%;
-            height: 100vh;
+/* =========================
+   PANTALLA PRINCIPAL
+========================= */
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+.pantalla {
+    position: relative;
 
-            overflow: hidden;
-        }
+    width: 100%;
+    height: 100vh;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        /* =========================
-           CONTENIDO CENTRAL
-        ========================= */
+    overflow: hidden;
+}
 
-        .racha {
-            position: relative;
-            z-index: 10;
 
-            text-align: center;
-            color: white;
+/* =========================
+   CONTENIDO CENTRAL
+========================= */
 
-            animation: aparecer 1s ease-out;
-        }
+.racha {
+    position: relative;
+    z-index: 10;
 
-        .racha h1 {
-            margin: 0;
+    text-align: center;
+    color: white;
 
-            font-size: 90px;
-            font-weight: bold;
+    animation: aparecer 1s ease-out;
+}
 
-            text-shadow:
-                0 0 10px #e0aaff,
-                0 0 25px #b026ff,
-                0 0 50px #8000ff,
-                0 0 80px #4a0072;
-        }
 
-        .racha h1 img {
-            vertical-align: middle;
-            width: 100px;
-        }
+/* =========================
+   TÍTULO
+========================= */
 
-        .racha p {
-            margin: 10px 0 0;
+/* =========================
+   TÍTULO CENTRAL
+========================= */
 
-            font-size: 28px;
-            font-weight: bold;
+.racha h1 {
+    margin: 0;
 
-            text-shadow:
-                0 0 10px #b026ff,
-                0 0 25px #8000ff;
-        }
+    font-size: 90px;
+    font-weight: bold;
 
+    font-family: 'Chillax-Semibold';
 
-        /* =========================
-           GALLETAS
-        ========================= */
+    /* Color oscuro de la paleta */
+    color: #6A253A;
 
-        .galleta {
-            position: absolute;
+    /* Sombra blanca brillante */
+    text-shadow:
+        0 0 3px rgba(255, 255, 255, 0.75),
+        0 0 7px rgba(255, 255, 255, 0.35);
 
-            z-index: 5;
+    /* Agrandamiento muy leve */
+    animation: crecerTexto 3s ease-in-out infinite;
+}
 
-            width: 120px;
-            height: 120px;
 
-            object-fit: contain;
+/* =========================
+   GATITO
+========================= */
 
-            /* IMPORTANTE:
-               No se aplica blur a las galletas */
+.racha h1 img {
+    vertical-align: middle;
 
-            animation: saltoGalleta 1.8s infinite ease-in-out;
-        }
+    width: 100px;
 
+    /* Brillo blanco muy suave */
+    filter:
+        drop-shadow(0 0 3px rgba(255, 255, 255, 0.65))
+        drop-shadow(0 0 7px rgba(255, 255, 255, 0.25));
 
-        /* =========================
-           POSICIONES DE GALLETAS
-        ========================= */
+    transition: filter 0.3s ease;
+}
 
-        .g1 {
-            left: 5%;
-            bottom: 8%;
 
-            animation-delay: 0s;
-        }
+/* =========================
+   BRILLO DEL GATITO
+========================= */
 
-        .g2 {
-            left: 22%;
-            bottom: 12%;
+.racha h1 img:hover {
+    filter:
+        drop-shadow(0 0 4px rgba(255, 255, 255, 0.85))
+        drop-shadow(0 0 9px rgba(255, 255, 255, 0.35));
+}
 
-            animation-delay: .45s;
-        }
 
-        .g3 {
-            left: 42%;
-            bottom: 5%;
+/* =========================
+   TEXTO "VER REPORTES"
+========================= */
 
-            animation: saltoGalletaVuelta 2.4s infinite ease-in-out;
-            animation-delay: .9s;
-        }
+.racha p {
+    margin: 10px 0 0;
 
-        .g4 {
-            right: 22%;
-            bottom: 11%;
+    font-size: 28px;
+    font-weight: bold;
 
-            animation-delay: .25s;
-        }
+    font-family: 'Chillax-Semibold';
 
-        .g5 {
-            right: 5%;
-            bottom: 7%;
+    /* Morado oscuro */
+    color: #6A253A;
 
-            animation-delay: .7s;
-        }
+    /* Sombra blanca brillante */
+    text-shadow:
+        0 0 3px rgba(255, 255, 255, 0.8),
+        0 0 8px rgba(255, 255, 255, 0.35);
 
+    /* Misma animación, ligeramente más suave */
+    animation: crecerTexto 3s ease-in-out infinite;
+}
 
-        /* =========================
-           BOTONES
-        ========================= */
 
-        .botones {
-            position: absolute;
+/* =========================
+   ANIMACIÓN DE AGRANDAMIENTO
+========================= */
 
-            z-index: 20;
+@keyframes crecerTexto {
 
-            bottom: 35px;
+    0% {
+        transform: scale(1);
+    }
 
-            left: 50%;
+    50% {
+        transform: scale(1.025);
+    }
 
-            transform: translateX(-50%);
+    100% {
+        transform: scale(1);
+    }
 
-            width: 90%;
+}
+/* =========================
+   GALLETAS
+========================= */
 
-            display: flex;
+.galleta {
+    position: absolute;
 
-            justify-content: center;
+    z-index: 5;
 
-            align-items: center;
+    width: 390px;
+    height: 390px;
 
-            gap: 30px;
-        }
+    object-fit: contain;
 
+    animation: saltoGalleta 3s infinite ease-in-out;
+}
 
-        .botones a {
-            text-decoration: none;
-        }
 
+/* =========================
+   POSICIONES DE GALLETAS
+========================= */
 
-        .botones button {
-            position: relative;
+.g1 {
+    left: 5%;
+    bottom: 8%;
 
-            min-width: 210px;
+    animation-delay: 0s;
+}
 
-            padding: 15px 25px;
+.g2 {
+    left: 22%;
+    bottom: 12%;
 
-            border: none;
-            border-radius: 30px;
+    animation-delay: .45s;
+}
 
-            background: #8000ff;
+.g3 {
+    left: 42%;
+    bottom: 5%;
 
-            color: white;
+    animation: saltoGalletaVuelta 3.1s infinite ease-in-out;
+    animation-delay: .9s;
+}
 
-            font-size: 18px;
-            font-weight: bold;
+.g4 {
+    right: 22%;
+    bottom: 11%;
 
-            cursor: pointer;
+    animation-delay: .25s;
+}
 
-            box-shadow:
-                0 0 15px #8000ff,
-                0 0 30px #b026ff,
-                0 0 45px #4a0072;
+.g5 {
+    right: 5%;
+    bottom: 7%;
 
-            transition:
-                transform .2s,
-                box-shadow .2s;
-        }
+    animation-delay: .7s;
+}
 
 
-        .botones button:hover {
-            transform: scale(1.08);
+/* =========================
+   BOTONES
+========================= */
 
-            box-shadow:
-                0 0 20px #8000ff,
-                0 0 40px #b026ff,
-                0 0 60px #4a0072;
-        }
+.botones {
+    position: absolute;
 
+    bottom: 45px;
 
-        /* =========================
-           ANIMACIÓN DE GALLETAS
-        ========================= */
+    left: 50%;
+    transform: translateX(-50%);
+
+    z-index: 20;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+
+    width: 90%;
+}
+
+
+/* =========================
+   BOTONES INDIVIDUALES
+========================= */
+
+.botones button {
+    min-width: 200px;
+
+    padding: 14px 20px;
+
+    border: 2px solid #6A253A;
+
+    border-radius: 12px;
+
+    background: #6A253A;
+
+    color: #EFE2DA;
+
+    font-family: 'Chillax-Semibold';
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        text-shadow 0.3s ease;
+
+    /* Sombra normal */
+    box-shadow:
+        0 4px 10px rgba(106, 37, 58, 0.20);
+
+    /* Brillo casi nulo en las letras */
+    text-shadow:
+        0 0 2px rgba(239, 226, 218, 0.25);
+}
+
+
+/* =========================
+   HOVER DE BOTONES
+========================= */
+
+.botones button:hover {
+
+    transform: translateY(-3px);
+
+    background: #E64B6B;
+
+    border-color: #EFE2DA;
+
+    color: #EFE2DA;
+
+    /* Brillo MUY suave */
+    box-shadow:
+        0 0 5px rgba(239, 226, 218, 0.35),
+        0 0 12px rgba(239, 226, 218, 0.15),
+        0 6px 15px rgba(106, 37, 58, 0.25);
+
+    text-shadow:
+        0 0 4px rgba(239, 226, 218, 0.45);
+}
+
+
+/* =========================
+   ENLACES
+========================= */
+
+.botones a {
+    text-decoration: none;
+}
+
+
+/* =========================
+   ANIMACIÓN DE GALLETAS
+========================= */
+
 @keyframes saltoGalleta {
 
     0% {
@@ -251,6 +363,12 @@
         transform: translateY(0) rotate(0deg);
     }
 }
+
+
+/* =========================
+   GALLETA QUE DA LA VUELTA
+========================= */
+
 @keyframes saltoGalletaVuelta {
 
     /* =========================
@@ -408,89 +526,90 @@
     }
 }
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
 
-        @media (max-width: 800px) {
+/* =========================
+   RESPONSIVE
+========================= */
 
-            .racha h1 {
-                font-size: 55px;
-            }
+@media (max-width: 800px) {
 
-            .racha h1 img {
-                width: 70px;
-            }
+    .racha h1 {
+        font-size: 55px;
+    }
 
-            .racha p {
-                font-size: 22px;
-            }
+    .racha h1 img {
+        width: 70px;
+    }
 
-            .galleta {
-                width: 80px;
-                height: 80px;
-            }
+    .racha p {
+        font-size: 22px;
+    }
 
-            .botones {
-                width: 95%;
-                gap: 10px;
-            }
+    .galleta {
+        width: 80px;
+        height: 80px;
+    }
 
-            .botones button {
-                min-width: 0;
-                width: 100%;
-                padding: 12px 10px;
-                font-size: 14px;
-            }
-        }
+    .botones {
+        width: 95%;
+        gap: 10px;
+    }
+
+    .botones button {
+        min-width: 0;
+        width: 100%;
+        padding: 12px 10px;
+        font-size: 14px;
+    }
+}
 
 
-        @media (max-width: 550px) {
+@media (max-width: 550px) {
 
-            .botones {
-                flex-direction: column;
+    .botones {
+        flex-direction: column;
 
-                bottom: 20px;
+        bottom: 20px;
 
-                gap: 8px;
-            }
+        gap: 8px;
+    }
 
-            .botones button {
-                width: 220px;
-            }
+    .botones button {
+        width: 220px;
+    }
 
-            .racha h1 {
-                font-size: 40px;
-            }
+    .racha h1 {
+        font-size: 40px;
+    }
 
-            .galleta {
-                width: 65px;
-                height: 65px;
-            }
+    .galleta {
+        width: 65px;
+        height: 65px;
+    }
 
-            .g1 {
-                left: 2%;
-            }
+    .g1 {
+        left: 2%;
+    }
 
-            .g2 {
-                left: 15%;
-            }
+    .g2 {
+        left: 15%;
+    }
 
-            .g3 {
-                left: auto;
-                right: 40%;
-            }
+    .g3 {
+        left: auto;
+        right: 40%;
+    }
 
-            .g4 {
-                right: 15%;
-            }
+    .g4 {
+        right: 15%;
+    }
 
-            .g5 {
-                right: 2%;
-            }
-        }
+    .g5 {
+        right: 2%;
+    }
+}
 
-    </style>
+</style>
 </head>
 
 
