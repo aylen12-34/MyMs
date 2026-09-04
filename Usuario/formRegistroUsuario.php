@@ -222,8 +222,8 @@ if ($conexion->connect_error) {
         title: 'Alerta',
         background: '#e65c78',
         color: '#EFE2DA',
-        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
-        imageHeight: 150,
+        imageUrl: '../imagenes/gatocaja.png', 
+        imageHeight: 200,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
@@ -238,7 +238,7 @@ if ($conexion->connect_error) {
         title: 'Alerta',
         background: '#e65c78',
         color: '#EFE2DA',
-        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageUrl: '../imagenes/gatocaja.png', 
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
@@ -254,7 +254,7 @@ if ($conexion->connect_error) {
         title: 'Alerta',
         background: '#e65c78',
         color: '#EFE2DA',
-        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageUrl: '../imagenes/gatocaja.png',
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
@@ -270,7 +270,7 @@ if ($conexion->connect_error) {
         title: 'Alerta',
         background: '#e65c78',
         color: '#EFE2DA',
-        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageUrl: '../imagenes/gatocaja.png',
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
@@ -286,7 +286,7 @@ if ($conexion->connect_error) {
         title: 'Alerta',
         background: '#e65c78',
         color: '#EFE2DA',
-        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageUrl: '../imagenes/gatocaja.png',
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
@@ -302,7 +302,7 @@ if ($conexion->connect_error) {
         title: 'Alerta',
         background: '#e65c78',
         color: '#EFE2DA',
-        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageUrl: '../imagenes/gatocaja.png',
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
@@ -318,7 +318,7 @@ if ($conexion->connect_error) {
         title: 'Alerta',
         background: '#e65c78',
         color: '#EFE2DA',
-        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageUrl: '../imagenes/gatocaja.png',
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
@@ -334,7 +334,7 @@ if ($conexion->connect_error) {
         title: 'Alerta',
         background: '#e65c78',
         color: '#EFE2DA',
-        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageUrl: '../imagenes/gatocaja.png',
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
@@ -350,7 +350,7 @@ if ($conexion->connect_error) {
         title: 'Alerta',
         background: '#e65c78',
         color: '#EFE2DA',
-        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageUrl: '../imagenes/gatocaja.png',
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
@@ -365,7 +365,7 @@ if ($conexion->connect_error) {
         title: 'Alerta',
         background: '#e65c78',
         color: '#EFE2DA',
-        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageUrl: '../imagenes/gatocaja.png', 
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',

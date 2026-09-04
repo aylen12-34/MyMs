@@ -25,127 +25,164 @@ if($_SESSION['CI']==null){
     <link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
-    *{
-        font-family: 'Chillax-Semibold';
-    }
+    body, table, button, h2, a, input, select {
+            font-family: 'Chillax-Semibold', sans-serif;
+            box-sizing: border-box;
+        }
 
-    body {
-        background-image: url(../imagenes/2.png);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
+        body {
+            background-image: url(../imagenes/2.png);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 30px 0;
+            margin: 0;
+        }
 
-    form {
-        max-width: 400px;
-    }
+        /* SE CAMBIÓ 'div' POR LA CLASE '.contenedor-registro' */
+        .contenedor-registro {
+            width: 420px;
+            padding: 35px;
+            background-color: #6A253A;
+            border: 2px solid #EFE2DA;
+            border-radius: 40px;
+            color: #EFE2DA;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
 
-    label {
-        display: block;
-        margin-bottom: 5px;
-        color: #EFE2DA;
-    }
+        .contenedor-registro h1 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
 
-    input {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 10px;
-        border: 2.5px solid #E64B6B;
-        border-radius: 10px;
-    }
+        form {
+            width: 100%;
+        }
 
-    input[type="submit"] {
-        background-color: #E64B6B;
-        color:#EFE2DA;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #EFE2DA;
+        }
 
-    input[type="submit"]:hover {
-        background-color: #EFE2DA;
-        color:#E64B6B;
-    }
-    input[type="file"]::file-selector-button {
-    padding: 8px 15px;
-    background-color: #E64B6B;
-    color: #EFE2DA;
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
-    font-family: 'Chillax-Semibold';
-    margin-right: 10px;
-}
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 2.5px solid #E64B6B;
+            border-radius: 10px;
+            outline: none;
+        }
 
-input[type="file"]::file-selector-button:hover {
-    background-color: #6A253A;
-}
+        /* SELECT */
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 2.5px solid #E64B6B;
+            border-radius: 10px;
+            background-color: white;
+            color: #6A253A;
+            font-size: 15px;
+            cursor: pointer;
+            outline: none;
+        }
 
-    div {
-        width: 420px;
-        padding: 35px;
-        background-color: #6A253A;
-        border: 2px solid #EFE2DA;
-        border-radius: 10%;
-        color: #EFE2DA;
-    }
+        select:focus {
+            border-color: #EFE2DA;
+        }
 
-    label.error{
-        color: #ffd6de;
-        background-color: #E64B6B;
-        padding: 6px 10px;
-        border-radius: 8px;
-        margin-top: -5px;
-        margin-bottom: 10px;
-        display: inline-block;
-        font-size: 13px;
-    }@media(max-width:800px){
+        select option {
+            background-color: white;
+            color: #6A253A;
+        }
 
-  body{
-    padding: 20px;
-    height: auto;
-    min-height: 100vh;
-  }
+        /* ARCHIVO */
+        input[type="file"] {
+            background-color: white;
+            color: #6A253A;
+            cursor: pointer;
+        }
 
-  div{
-    width: 100%;
-    max-width: 320px;
-    padding: 25px;
-    border-radius: 25px;
-  }
+        input[type="file"]::file-selector-button {
+            background-color: #E64B6B;
+            color: #EFE2DA;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin-right: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-  h1{
-    text-align: center;
-    font-size: 28px;
-  }
+        input[type="file"]::file-selector-button:hover {
+            background-color: #EFE2DA;
+            color: #6A253A;
+        }
 
-  form{
-    width: 100%;
-  }
+        input[type="submit"] {
+            background-color: #E64B6B;
+            color: #EFE2DA;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
 
-  input{
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 16px;
-  }
+        input[type="submit"]:hover {
+            background-color: #EFE2DA;
+            color: #E64B6B;
+        }
 
-  input[type="submit"]{
-    width: 100%;
-    margin-top: 10px;
-  }
-label.error{
-    display:none !important;
-}
-}
+        .volver {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            color: #EFE2DA;
+            border-radius: 10px;
+            background: #E64B6B;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .volver:hover {
+            background-color: #EFE2DA;
+            color: #E64B6B;
+        }
+
+        @media(max-width:800px){
+            body {
+                padding: 20px;
+            }
+
+            .contenedor-registro {
+                width: 100%;
+                max-width: 340px;
+                padding: 25px;
+                border-radius: 25px;
+            }
+
+            .contenedor-registro h1 {
+                font-size: 24px;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <div>
+    <div class="contenedor-registro">
         <h1>Registro de Productos</h1>
 
         <form action="registroProductos.php" method="post" onsubmit="return validar()">
@@ -191,54 +228,144 @@ label.error{
     function validar() {
 
         if (codigo.value == "") {
-            alert("⚠ Ingrese el código");
+            Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletapro.png',
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ Ingrese el código ⚠'
+    });
             codigo.focus();
             return false;
         }
 
         if (!/^\d+$/.test(codigo.value)) {
-            alert("⚠ El código debe contener solo números");
+            Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletapro.png',
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ El código debe contener solo números ⚠'
+    });
             codigo.focus();
             return false;
         }
 
         if (nombre.value == "") {
-            alert("⚠ Ingrese el nombre");
+            Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletapro.png',
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ Ingrese el nombre ⚠'
+    });
             nombre.focus();
             return false;
         }
 
         if (nombre.value.length < 3) {
-            alert("⚠ El nombre debe tener al menos 3 letras");
+            Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletapro.png',
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ El nombre debe tener al menos 3 letras ⚠'
+    });
             nombre.focus();
             return false;
         }
 
         if (descripcion.value == "") {
-            alert("⚠ Ingrese la descripción");
+            Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletapro.png',
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ Ingrese la descripción ⚠'
+    });
             descripcion.focus();
             return false;
         }
 
         if (precio.value == "") {
-            alert("⚠ Ingrese el precio");
+            Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletapro.png',
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ Ingrese el precio ⚠'
+    });
             precio.focus();
             return false;
         }
 
        if (!/^\d+(\.\d{1,2})?$/.test(precio.value)) {
-            alert("⚠ Ingrese un precio válido (ej: 10 o 10.50)");
+            Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletapro.png',
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ Ingrese un precio válido (ej: 10 o 10.50) ⚠'
+    });
             precio.focus();
             return false;
         }
         if (stock.value == "") {
-            alert("⚠ Ingrese el stock");
+            Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletapro.png',
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ Ingrese el stock ⚠'
+    });
             stock.focus();
             return false;
         }
 
         if (!/^\d+$/.test(stock.value)) {
-            alert("⚠ El stock debe contener solo números");
+            Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletapro.png',
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ El stock debe contener solo números ⚠'
+    });
             stock.focus();
             return false;
         }

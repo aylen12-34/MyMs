@@ -203,13 +203,13 @@ if ($resultado->num_rows > 0) {
         <input type="text" name="Nombre" value='<?=$Nombre?>'>
         <br>
         <label for="">Dirección:</label>
-        <input type="text" name="Direccion" value='<?=$Direccion?>' required>
+        <input type="text" name="Direccion" value='<?=$Direccion?>' >
         <br>
         <label for="">Celular:</label>
-        <input type="number" name="Celular" value='<?=$Celular?>' required>
+        <input type="number" name="Celular" value='<?=$Celular?>'>
         <br>
         <label for="">Rol:</label>
-        <input type="text" name="Rol" value='<?=$Rol?>' required>
+        <input type="text" name="Rol" value='<?=$Rol?>' readonly>
         <br>
         <label for="">Estado:</label>
         <input type="text" name="Estado" value='<?=$Estado?>' readonly>
