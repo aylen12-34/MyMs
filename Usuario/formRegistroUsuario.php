@@ -21,23 +21,45 @@ if ($conexion->connect_error) {
     <link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
-    *{
-        font-family: 'Chillax-Semibold';
-    }
+        body, table, button, h2, a, input, select {
+            font-family: 'Chillax-Semibold', sans-serif;
+            box-sizing: border-box;
+        }
 
         body {
             background-image: url(../imagenes/2.png);
+            background-size: cover;
+            background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 30px 0;
+            margin: 0;
+        }
+
+        /* SE CAMBIÓ 'div' POR LA CLASE '.contenedor-registro' */
+        .contenedor-registro {
+            width: 420px;
+            padding: 35px;
+            background-color: #6A253A;
+            border: 2px solid #EFE2DA;
+            border-radius: 40px;
+            color: #EFE2DA;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .contenedor-registro h1 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
         }
 
         form {
-            max-width: 400px;
+            width: 100%;
         }
 
         label {
@@ -48,148 +70,114 @@ if ($conexion->connect_error) {
 
         input {
             width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
+            padding: 10px;
+            margin-bottom: 12px;
             border: 2.5px solid #E64B6B;
             border-radius: 10px;
+            outline: none;
         }
 
         /* SELECT */
-        select{
+        select {
             width: 100%;
-            padding: 8px;
-
-            margin-bottom: 10px;
-
+            padding: 10px;
+            margin-bottom: 12px;
             border: 2.5px solid #E64B6B;
             border-radius: 10px;
-
             background-color: white;
             color: #6A253A;
-
-            font-family: 'Chillax-Semibold';
             font-size: 15px;
-
             cursor: pointer;
             outline: none;
         }
 
-        select:focus{
+        select:focus {
             border-color: #EFE2DA;
         }
 
-        select option{
+        select option {
             background-color: white;
             color: #6A253A;
-            font-family: 'Chillax-Semibold';
         }
 
         /* ARCHIVO */
-        input[type="file"]{
+        input[type="file"] {
             background-color: white;
             color: #6A253A;
             cursor: pointer;
-            font-family: 'Chillax-Semibold';
         }
 
-        input[type="file"]::file-selector-button{
+        input[type="file"]::file-selector-button {
             background-color: #E64B6B;
             color: #EFE2DA;
-
             border: none;
             border-radius: 8px;
-
             padding: 8px 12px;
             margin-right: 10px;
-
-            font-family: 'Chillax-Semibold';
             cursor: pointer;
-
             transition: 0.3s;
         }
 
-        input[type="file"]::file-selector-button:hover{
+        input[type="file"]::file-selector-button:hover {
             background-color: #EFE2DA;
             color: #6A253A;
         }
 
         input[type="submit"] {
             background-color: #E64B6B;
-            color:#EFE2DA;
-            padding: 10px 20px;
+            color: #EFE2DA;
+            padding: 12px;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+            margin-top: 10px;
         }
 
         input[type="submit"]:hover {
             background-color: #EFE2DA;
-            color:#E64B6B;
+            color: #E64B6B;
         }
 
-        .volver{
-            padding: 10px 20px;
+        .volver {
+            width: 100%;
+            padding: 12px;
             border: none;
             color: #EFE2DA;
-            border-radius: 5px;
+            border-radius: 10px;
             background: #E64B6B;
             cursor: pointer;
             font-size: 16px;
+            margin-top: 10px;
+            transition: 0.3s;
         }
 
-        .volver:hover{
+        .volver:hover {
             background-color: #EFE2DA;
-            color:#E64B6B;
-        }
-
-        div {
-            width: 420px;
-            padding: 35px;
-            background-color: #6A253A;
-            border: 2px solid #EFE2DA;
-            border-radius: 40px;
-            color: #EFE2DA;
+            color: #E64B6B;
         }
 
         @media(max-width:800px){
-
-            body{
+            body {
                 padding: 20px;
             }
 
-            div{
+            .contenedor-registro {
                 width: 100%;
-                max-width: 320px;
+                max-width: 340px;
                 padding: 25px;
                 border-radius: 25px;
             }
 
-            h1{
-                text-align: center;
-                font-size: 28px;
-            }
-
-            form{
-                width: 100%;
-            }
-
-            input{
-                width: 100%;
-                box-sizing: border-box;
-                font-size: 16px;
-            }
-
-            input[type="submit"],
-            .volver{
-                width: 100%;
-                margin-top: 10px;
+            .contenedor-registro h1 {
+                font-size: 24px;
             }
         }
-
     </style>
 </head>
 <body>
-    <div>
+    <div class="contenedor-registro">
         <h1>Registro de Usuario</h1>
     
         <form action="registroUsuario.php" method="POST" onsubmit="return validar()" enctype="multipart/form-data">
@@ -230,79 +218,160 @@ if ($conexion->connect_error) {
     function validar() {
 
         if (ci.value == "") {
-            alert("⚠ Ingrese su CI");
+    Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ Ingresa tu Carnet ⚠'
+    });
             ci.focus();
             return false;
         }
 
         if (!/^\d+$/.test(ci.value)) {
-            alert("⚠ El CI debe contener solo números");
+             Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ Su carnet debe contener solo números ⚠'
+    });
             ci.focus();
             return false;
         }
 
         if (nombre.value == "") {
-            alert("⚠ Ingrese su nombre");
+             Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ Ingrese su nombre ⚠'
+    });
             nombre.focus();
             return false;
         }
 
         if (!expRegNombre.test(nombre.value)) {
-            alert("⚠ El nombre debe contener solo letras");
+             Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ El nombre debe contener solo letras ⚠'
+    });
             nombre.focus();
             return false;
         }
 
         if (nombre.value.length < 3) {
-            alert("⚠ El nombre debe tener al menos 3 letras");
+             Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ El nombre debe tener al menos 3 letras ⚠'
+    });
             nombre.focus();
             return false;
         }
 
         if (direccion.value == "") {
-            alert("⚠ Ingrese su dirección");
+             Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ Ingrese su dirección ⚠'
+    });
             direccion.focus();
             return false;
         }
 
         if (celular.value == "") {
-            alert("⚠ Ingrese su celular");
+             Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ Ingrese su celular ⚠'
+    });
             celular.focus();
             return false;
         }
 
         if (!/^\d+$/.test(celular.value)) {
-            alert("⚠ El celular debe contener solo números");
+             Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ El celular debe contener solo números ⚠'
+    });
             celular.focus();
             return false;
         }
 
         if (celular.value.length != 8) {
-            alert("⚠ El celular debe tener exactamente 8 dígitos");
+             Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ El celular debe tener exactamente 8 dígitos ⚠'
+    });
             celular.focus();
             return false;
         }
-
-        if (rol.value == "") {
-            alert("⚠ Ingrese el rol");
-            rol.focus();
-            return false;
-        }
-
-        if (!expRegRol.test(rol.value)) {
-            alert("⚠ El rol debe contener solo letras minúsculas");
-            rol.focus();
-            return false;
-        }
-
-        if (rol.value != "vendedor" && rol.value != "administrador") {
-            alert("⚠ El rol solo puede ser 'vendedor' o 'administrador'");
-            rol.focus();
-            return false;
-        }
-
         if (estado.value == "") {
-            alert("⚠ Ingrese el estado");
+             Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletaus.png', // Ruta a tu imagen o icono
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ Ingrese el estado ⚠'
+    });
             estado.focus();
             return false;
         }
