@@ -97,24 +97,277 @@ if (isset($_GET['ajax'])) {
    crema:  #EFE2DA
 ========================== */
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-image:url('imagenes/2.png'); margin: 30px; }
-        .card { background: #EFE2DA; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); max-width: 850px; margin: auto; }
-        .controls { margin-bottom: 25px; display: flex; gap: 15px; flex-wrap: wrap; }
-        .control-group { display: flex; flex-direction: column; gap: 5px; }
-        label { font-size: 13px; font-weight: bold; color: #010101; }
-        select { padding: 8px 12px; border-radius: 6px; border: 1px solid #431825; font-size: 14px; outline: none; }
-        .chart-container { position: relative; height: 350px; width: 100%; }
-        
-        .top-products { margin-top: 35px; border-top: 2px dashed #6A253A; padding-top: 20px; }
-        .top-products h3 { color: #6A253A; margin-bottom: 15px; }
-        .sales-table { width: 100%; border-collapse: collapse; margin-top: 10px; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .sales-table th { background-color: #E64B6B; color: #ffffff; text-align: left; padding: 12px 15px; font-size: 14px; }
-        .sales-table td { padding: 12px 15px; border-bottom: 1px solid #eef2f5; color: #333; font-size: 14px; }
-        .sales-table tr:last-child td { border-bottom: none; }
-        .sales-table tr:hover { background-color: #f8f9fa; }
-        .rank-badge { background: #6A253A; color: #ffffff; padding: 4px 10px; border-radius: 50%; font-weight: bold; font-size: 12px; display: inline-block; text-align: center; }
-        
-        .volver { margin-top: 20px; padding: 10px 18px; background: #6A253A; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; }
-        .volver:hover { background: #431825; }
+        .card { background: #EFE2DA;border:5px solid #6A253A; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); max-width: 850px; margin: auto; }
+        /* ==========================
+   CONTROLES / SELECTS
+========================== */
+.volver {
+    margin-top: 30px;
+
+    padding: 12px 24px;
+
+    background: #6A253A;
+    color: #EFE2DA;
+
+    border: 2px solid #6A253A;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    box-shadow: 0 5px 12px rgba(106, 37, 58, 0.25);
+
+    transition: all 0.25s ease;
+}
+
+.volver:hover {
+    background: #E64B6B;
+    border-color: #E64B6B;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 18px rgba(230, 75, 107, 0.35);
+}
+
+.volver:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 7px rgba(106, 37, 58, 0.25);
+}
+.controls {
+    margin-bottom: 30px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 180px;
+}
+
+label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #6A253A;
+    letter-spacing: 0.5px;
+}
+
+/* SELECT ESTILIZADO */
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+
+    padding: 12px 42px 12px 15px;
+
+    background-color: #ffffff;
+
+    border: 2px solid #6A253A;
+    border-radius: 10px;
+
+    color: #6A253A;
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+    outline: none;
+
+    /* Flechita */
+    background-image: linear-gradient(45deg, transparent 50%, #E64B6B 50%),
+                      linear-gradient(135deg, #E64B6B 50%, transparent 50%);
+    background-position: calc(100% - 18px) 50%,
+                         calc(100% - 12px) 50%;
+    background-size: 6px 6px,
+                     6px 6px;
+    background-repeat: no-repeat;
+
+    transition: all 0.25s ease;
+
+    box-shadow: 0 3px 8px rgba(106, 37, 58, 0.12);
+}
+
+select:hover {
+    border-color: #E64B6B;
+    box-shadow: 0 5px 12px rgba(230, 75, 107, 0.20);
+    transform: translateY(-2px);
+}
+
+select:focus {
+    border-color: #E64B6B;
+    box-shadow: 0 0 0 3px rgba(230, 75, 107, 0.20);
+}
+
+
+/* ==========================
+   TABLA DE PRODUCTOS
+========================== */
+
+/* ==========================
+   TABLA DE PRODUCTOS
+========================== */
+
+.top-products {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px dashed #6A253A;
+}
+
+.top-products h3 {
+    color: #6A253A;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+
+/* TABLA */
+
+.sales-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    background: #ffffff;
+
+    border: 3px solid #6A253A;
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow: 0 8px 22px rgba(106, 37, 58, 0.18);
+
+    margin-top: 18px;
+}
+
+
+/* ENCABEZADO */
+
+.sales-table th {
+    background: #E64B6B;
+    color: #ffffff;
+
+    text-align: left;
+
+    padding: 17px 18px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    border: none;
+}
+
+
+/* CELDAS */
+
+.sales-table td {
+    padding: 17px 18px;
+
+    border-bottom: 1px solid rgba(106, 37, 58, 0.12);
+
+    color: #333;
+
+    font-size: 15px;
+
+    transition: all 0.2s ease;
+}
+
+
+/* FILAS */
+
+.sales-table tbody tr {
+    transition: all 0.25s ease;
+}
+
+.sales-table tbody tr:hover {
+    background: #fff0f4;
+    transform: scale(1.008);
+}
+
+.sales-table tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ==========================
+   RANKING
+========================== */
+
+.rank-badge {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    background: #6A253A;
+    color: #ffffff;
+
+    font-weight: bold;
+    font-size: 14px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 3px 8px rgba(106, 37, 58, 0.25);
+}
+
+
+/* PRIMEROS PUESTOS */
+
+.puesto-1 {
+    background: #E64B6B;
+    box-shadow: 0 0 12px rgba(230, 75, 107, 0.4);
+}
+
+.puesto-2 {
+    background: #6A253A;
+}
+
+.puesto-3 {
+    background: #431825;
+}
+
+
+/* PRECIO */
+
+.sales-table td:last-child {
+    color: #6A253A;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width: 700px) {
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .control-group {
+        width: 100%;
+    }
+
+    select {
+        width: 100%;
+    }
+
+    .sales-table {
+        font-size: 12px;
+    }
+
+    .sales-table th,
+    .sales-table td {
+        padding: 10px 8px;
+    }
+
+}
     </style>
 </head>
 <body>

@@ -48,14 +48,7 @@ while ($row = $res_clientes->fetch_assoc()) {
             background: #f4f0ed; 
             margin: 30px; 
         }
-        .card { 
-            background: #EFE2DA; 
-            padding: 25px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.12); 
-            max-width: 650px; 
-            margin: auto; 
-        }
+        .card { background: #EFE2DA;border:5px solid #6A253A; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); max-width: 850px; margin: auto; }
         h2 { 
             color: #6A253A; 
             text-align: center;
