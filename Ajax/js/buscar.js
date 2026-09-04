@@ -37,7 +37,7 @@ Agregar al carrito
 
         });
 
-        document.getElementById("productos").innerHTML = html;
+        document.getElementById("productosbusqueda").innerHTML = html;
 
     });
 

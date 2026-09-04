@@ -49,7 +49,10 @@
     <!--================== PRODUCTOS ==================-->
 
     <main>
- 
+ <div id="productosbusqueda">
+
+
+</div>
         <h2 class="titulo">
             Productos Disponibles
         </h2>
