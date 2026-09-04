@@ -96,11 +96,13 @@ if (isset($_GET['ajax'])) {
    rosado: #E64B6B
    crema:  #EFE2DA
 ========================== */
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-image:url('imagenes/2.png'); margin: 30px; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-image:url(imagenes/2.png); 
+            margin: 30px; 
+        }
         .card { background: #EFE2DA;border:5px solid #6A253A; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); max-width: 850px; margin: auto; }
-        /* ==========================
-   CONTROLES / SELECTS
-========================== */
+
 .volver {
     margin-top: 30px;
 
@@ -225,21 +227,15 @@ select:focus {
 
 /* TABLA */
 
-.sales-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-
-    background: #ffffff;
-
-    border: 3px solid #6A253A;
-    border-radius: 16px;
-
-    overflow: hidden;
-
-    box-shadow: 0 8px 22px rgba(106, 37, 58, 0.18);
-
-    margin-top: 18px;
+.sales-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    border: 5px solid #6A253A;
+    margin-top: 15px; 
+    background: #EFE2DA; 
+    border-radius: 15px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
 

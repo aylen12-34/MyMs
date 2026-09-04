@@ -45,7 +45,7 @@ while ($row = $res_clientes->fetch_assoc()) {
     <style>
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: #f4f0ed; 
+            background-image:url(imagenes/2.png); 
             margin: 30px; 
         }
         .card { background: #EFE2DA;border:5px solid #6A253A; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); max-width: 850px; margin: auto; }
@@ -55,7 +55,6 @@ while ($row = $res_clientes->fetch_assoc()) {
             margin-top: 0;
             margin-bottom: 20px;
         }
-        /* Garantizar dimensiones fijas para el canvas */
         .chart-container { 
             position: relative; 
             height: 300px; 
@@ -74,14 +73,15 @@ while ($row = $res_clientes->fetch_assoc()) {
             padding-top: 15px; 
         }
         .sales-table { 
-            width: 100%; 
-            border-collapse: collapse; 
-            margin-top: 15px; 
-            background: #ffffff; 
-            border-radius: 8px; 
-            overflow: hidden; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
+    width: 100%; 
+    border-collapse: collapse; 
+    border: 5px solid #6A253A;
+    margin-top: 15px; 
+    background: #EFE2DA; 
+    border-radius: 15px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
         .sales-table th { 
             background-color: #E64B6B; 
             color: #ffffff; 
@@ -103,22 +103,13 @@ while ($row = $res_clientes->fetch_assoc()) {
             font-weight: bold; 
             font-size: 12px; 
         }
-        .btn-volver {
-            display: inline-block;
-            margin-top: 20px;
-            background: #6A253A;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            text-decoration: none;
-        }
+        
     </style>
 </head>
 <body>
-
+<?php
+ include ("includes/botonvolver.php"); 
+?>
 <div class="card">
     <h2>Top 3 Clientes Más Frecuentes</h2>
 
@@ -155,8 +146,6 @@ while ($row = $res_clientes->fetch_assoc()) {
             <p>Sin datos para listar.</p>
         <?php endif; ?>
     </div>
-
-    <button class="btn-volver" onclick="history.back()">← Volver</button>
 </div>
 
 <script>

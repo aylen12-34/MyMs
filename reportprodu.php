@@ -110,15 +110,15 @@ while ($row = $res_top->fetch_assoc()) {
             padding-top: 15px; 
         }
         .sales-table { 
-    width: 100%; 
-    border-collapse: collapse; 
-    border: 5px solid #6A253A;
-    margin-top: 15px; 
-    background: #EFE2DA; 
-    border-radius: 8px; 
-    overflow: hidden; 
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-}
+            width: 100%; 
+            border-collapse: collapse; 
+            border: 5px solid #6A253A;
+            margin-top: 15px; 
+            background: #EFE2DA; 
+            border-radius: 15px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+        }
         
         .sales-table th { 
             background-color: #E64B6B; 
@@ -141,25 +141,13 @@ while ($row = $res_top->fetch_assoc()) {
             font-weight: bold; 
             font-size: 12px; 
         }
-        .btn-volver {
-            display: inline-block;
-            margin-top: 20px;
-            background: #6A253A;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            text-decoration: none;
-        }
-        .btn-volver:hover {
-            background: #E64B6B;
-        }
+        
     </style>
 </head>
 <body>
-
+<?php
+ include ("includes/botonvolver.php"); 
+?>
 <div class="card">
     <h2>Top 3 Productos Más Vendidos</h2>
 
@@ -202,7 +190,7 @@ while ($row = $res_top->fetch_assoc()) {
         <?php endif; ?>
     </div>
 
-    <button class="btn-volver" onclick="history.back()">← Volver</button>
+   
 </div>
 
 <script>
