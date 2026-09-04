@@ -687,10 +687,15 @@ Total: Bs <?php echo $total; ?>
     </p>
 
 </div>
-
-<h3>
-Esperando aprobación del vendedor
-</h3>
+<div id="estadoMensaje" class="mensaje-estado <?php echo ($pedido['Estado'] == 'Aceptado') ? 'aceptado' : ''; ?>">
+    <h3>
+        <?php 
+            echo ($pedido['Estado'] == 'Aceptado') 
+                ? '¡Pedido Aceptado por el Vendedor!' 
+                : 'Esperando aprobación del vendedor...'; 
+        ?>
+    </h3>
+</div>
 <button onclick="window.print()">
     
 
