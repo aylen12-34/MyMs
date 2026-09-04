@@ -110,14 +110,16 @@ while ($row = $res_top->fetch_assoc()) {
             padding-top: 15px; 
         }
         .sales-table { 
-            width: 100%; 
-            border-collapse: collapse; 
-            margin-top: 15px; 
-            background: #ffffff; 
-            border-radius: 8px; 
-            overflow: hidden; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
+    width: 100%; 
+    border-collapse: collapse; 
+    border: 5px solid #6A253A;
+    margin-top: 15px; 
+    background: #EFE2DA; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+        
         .sales-table th { 
             background-color: #E64B6B; 
             color: #ffffff; 

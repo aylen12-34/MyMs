@@ -70,22 +70,33 @@ fetch("../index/crearpedido.php",{
 
     if(data.ok){
 document.getElementById("modalCompra").style.display = "none";
+const videoChimuelo = document.createElement('video');
+
+videoChimuelo.src = '../../imagenes/chimuelo.mp4';
+videoChimuelo.autoplay = true;
+videoChimuelo.muted = false;
+
+videoChimuelo.style.width = '200px';
+videoChimuelo.style.borderRadius = '20px';
+videoChimuelo.style.border = '3px solid #EFE2DA';
+videoChimuelo.style.display = 'block';
+videoChimuelo.style.margin = '0 auto';
+
 Swal.fire({
-        title: 'Pedido N'+ data.pedidos,
-        background: '#e65c78',
-        color: '#EFE2DA',
-        imageUrl: '../../imagenes/chimuelo.jpeg', // Ruta a tu imagen o icono
-        imageHeight: 200,
-        imageAlt: 'Icono personalizado',
-        confirmButtonText: 'OK',
+    title: 'Pedido N' + data.pedidos,
+    background: '#e65c78',
+    color: '#EFE2DA',
+    html: videoChimuelo,
+    confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: 'Gracias por tu compra'
-    }).then((result) => {
-                // La redirección solo se ejecuta cuando el usuario hace clic en "OK"
-                if (result.isConfirmed) {
-                    window.location.href = "index1.php?ID=" + data.pedidos;
-                }
-            });
+    text: 'Gracias por tu compra'
+}).then((result) => {
+
+    if (result.isConfirmed) {
+        window.location.href = "index1.php?ID=" + data.pedidos;
+    }
+
+});
     }else{
 
 
