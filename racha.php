@@ -608,6 +608,20 @@ body {
         right: 2%;
     }
 }
+.imagen-interactiva {
+      width: 150px;
+      cursor: pointer;
+      transition: transform 0.2s ease, filter 0.2s ease;
+      border-radius: 12px;
+    }
+    .imagen-interactiva:hover {
+      transform: scale(1.08);
+      filter: brightness(1.1);
+    }
+    .imagen-interactiva:active {
+      transform: scale(0.95);
+    }
+
 
 </style>
 </head>
@@ -646,8 +660,21 @@ body {
         <div class="racha">
 
             <h1>
-                <img src="imagenes/gatito.png" alt="" width="100">
+               <img 
+    src="imagenes/gatito.png" 
+    alt="Elemento interactivo" 
+    class="imagen-interactiva"
+    onclick="reproducirSonido()"
+  >
+  <script>
+    // Carga previa del efecto de sonido
+    const sonido = new Audio('imagenes/gatoo.mp3');
 
+    function reproducirSonido() {
+      sonido.currentTime = 0; // Reinicia el audio si se presiona varias veces rápido
+      sonido.play();
+    }
+  </script>
                 <?php echo date('F'); ?>
             </h1>
 

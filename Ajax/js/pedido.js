@@ -69,17 +69,23 @@ fetch("../index/crearpedido.php",{
 
 
     if(data.ok){
-
-
-        alert(
-        "Pedido confirmado Nº "
-        + data.pedidos
-        );
-
-
-         window.location.href="index1.php?ID="+data.pedidos;
-
-
+document.getElementById("modalCompra").style.display = "none";
+Swal.fire({
+        title: 'Pedido N'+ data.pedidos,
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../../imagenes/chimuelo.jpeg', // Ruta a tu imagen o icono
+        imageHeight: 200,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: 'Gracias por tu compra'
+    }).then((result) => {
+                // La redirección solo se ejecuta cuando el usuario hace clic en "OK"
+                if (result.isConfirmed) {
+                    window.location.href = "index1.php?ID=" + data.pedidos;
+                }
+            });
     }else{
 
 

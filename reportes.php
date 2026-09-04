@@ -15,7 +15,14 @@ if ($conn->connect_error) {
 $filtro = isset($_GET['filtro']) ? $_GET['filtro'] : 'dias';
 
 // Construcción de consultas uniendo 'ventas' y 'pedidos' por Pedidos_ID
-if ($filtro === 'semanas') {
+if ($filtro === 'anios') {
+    $sql_ventas = "SELECT DATE_FORMAT(p.fecha, '%Y') AS etiqueta, 
+                          SUM(v.costototal) AS total 
+                   FROM ventas v
+                   INNER JOIN pedidos p ON v.Pedidos_ID = p.id
+                   GROUP BY YEAR(p.fecha) 
+                   ORDER BY p.fecha ASC LIMIT 10";
+} elseif ($filtro === 'semanas') {
     $sql_ventas = "SELECT CONCAT('Semana ', WEEK(p.fecha, 1), ' - ', DATE_FORMAT(p.fecha, '%b')) AS etiqueta, 
                           SUM(v.costototal) AS total 
                    FROM ventas v
@@ -48,7 +55,7 @@ $totales   = [];
 
 while ($row = $res_ventas->fetch_assoc()) {
     $etiquetas[] = ucfirst($row['etiqueta'] ?? '');
-    $totales[]   = (float)($row['total'] ?? 0); // Corregido a 'total'
+    $totales[]   = (float)($row['total'] ?? 0);
 }
 
 // Consulta de los 3 productos más vendidos uniendo carrito y productos
@@ -97,13 +104,17 @@ if (isset($_GET['ajax'])) {
         select { padding: 8px 12px; border-radius: 6px; border: 1px solid #431825; font-size: 14px; outline: none; }
         .chart-container { position: relative; height: 350px; width: 100%; }
         
-        .top-products { margin-top: 35px; border-top: 1px solid #eee; padding-top: 20px; }
-        .sales-table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #fff; border-radius: 8px; overflow: hidden; }
+        .top-products { margin-top: 35px; border-top: 2px dashed #6A253A; padding-top: 20px; }
+        .top-products h3 { color: #6A253A; margin-bottom: 15px; }
+        .sales-table { width: 100%; border-collapse: collapse; margin-top: 10px; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
         .sales-table th { background-color: #E64B6B; color: #ffffff; text-align: left; padding: 12px 15px; font-size: 14px; }
         .sales-table td { padding: 12px 15px; border-bottom: 1px solid #eef2f5; color: #333; font-size: 14px; }
         .sales-table tr:last-child td { border-bottom: none; }
         .sales-table tr:hover { background-color: #f8f9fa; }
-        .rank-badge { background: #e9ecef; color: #495057; padding: 4px 8px; border-radius: 50%; font-weight: bold; font-size: 12px; }
+        .rank-badge { background: #6A253A; color: #ffffff; padding: 4px 10px; border-radius: 50%; font-weight: bold; font-size: 12px; display: inline-block; text-align: center; }
+        
+        .volver { margin-top: 20px; padding: 10px 18px; background: #6A253A; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; }
+        .volver:hover { background: #431825; }
     </style>
 </head>
 <body>
@@ -118,6 +129,7 @@ if (isset($_GET['ajax'])) {
                 <option value="dias" <?php if($filtro=='dias') echo 'selected'; ?>>Días</option>
                 <option value="semanas" <?php if($filtro=='semanas') echo 'selected'; ?>>Semanas</option>
                 <option value="meses" <?php if($filtro=='meses') echo 'selected'; ?>>Meses</option>
+                <option value="anios" <?php if($filtro=='anios') echo 'selected'; ?>>Años</option>
             </select>
         </div>
 
@@ -134,7 +146,47 @@ if (isset($_GET['ajax'])) {
         <canvas id="graficoVentas"></canvas>
     </div>
 
-    
+    <!-- TABLA DE TOP 3 PRODUCTOS MÁS VENDIDOS -->
+    <div class="top-products">
+        <h3>Top 3 Productos Más Vendidos</h3>
+        <table class="sales-table">
+            <thead>
+                <tr>
+                    <th style="width: 50px; text-align: center;">#</th>
+                    <th>Producto</th>
+                    <th>Unidades Vendidas</th>
+                    <th>Ingreso Total ($)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                $posicion = 1;
+                if ($res_top->num_rows > 0):
+                    while ($top = $res_top->fetch_assoc()): 
+                ?>
+                    <tr>
+                        <td style="text-align: center;"><span class="rank-badge"><?php echo $posicion++; ?></span></td>
+                        <td><strong><?php echo htmlspecialchars($top['producto']); ?></strong></td>
+                        <td><?php echo number_format($top['unidades']); ?></td>
+                        <td>$<?php echo number_format($top['ingreso_total'], 2); ?></td>
+                    </tr>
+                <?php 
+                    endwhile;
+                else: 
+                ?>
+                    <tr>
+                        <td colspan="4" style="text-align: center;">No hay registros de ventas.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+
+    <button class="volver" onclick="history.back()">
+        ← Volver
+    </button>
+
+</div>
 
 <script>
 let etiquetas = <?php echo json_encode($etiquetas); ?>;
@@ -192,7 +244,6 @@ function cambiarTipoGrafico(nuevoTipo) {
 }
 
 function cambiarFiltro(periodo) {
-    // Reemplaza 'index.php' si tu archivo tiene otro nombre
     fetch(`<?php echo $_SERVER['PHP_SELF']; ?>?filtro=${periodo}&ajax=1`)
         .then(response => response.json())
         .then(data => {
@@ -201,9 +252,6 @@ function cambiarFiltro(periodo) {
         .catch(error => console.error('Error al actualizar:', error));
 }
 </script>
-<button class="volver" onclick="history.back()">
-        ← Volver
-    </button>
 
 </body>
 </html>
