@@ -18,7 +18,7 @@ if ($resultadou->num_rows > 0) {
             $Rol = $fila['Rol'];
     }}
 }
-
+$CostoTotal = $_SESSION['CostoTotal'] ?? 'No especificado';
 $Estado = $_SESSION['Estado'] ?? 'No especificado';
 $sql = "SELECT * FROM ventas JOIN pedidos ON ventas.Pedidos_ID=pedidos.ID";
 $resultado = $conexion->query($sql);
