@@ -103,40 +103,7 @@ if (isset($_GET['ajax'])) {
         }
         .card { background: #EFE2DA;border:5px solid #6A253A; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); max-width: 850px; margin: auto; }
 
-.volver {
-    margin-top: 30px;
 
-    padding: 12px 24px;
-
-    background: #6A253A;
-    color: #EFE2DA;
-
-    border: 2px solid #6A253A;
-    border-radius: 10px;
-
-    cursor: pointer;
-
-    font-size: 15px;
-    font-weight: bold;
-
-    box-shadow: 0 5px 12px rgba(106, 37, 58, 0.25);
-
-    transition: all 0.25s ease;
-}
-
-.volver:hover {
-    background: #E64B6B;
-    border-color: #E64B6B;
-
-    transform: translateY(-3px);
-
-    box-shadow: 0 8px 18px rgba(230, 75, 107, 0.35);
-}
-
-.volver:active {
-    transform: translateY(0);
-    box-shadow: 0 3px 7px rgba(106, 37, 58, 0.25);
-}
 .controls {
     margin-bottom: 30px;
     display: flex;
@@ -364,10 +331,69 @@ select:focus {
     }
 
 }
+/* ==========================
+   FLECHA PARA SIGUIENTE REPORTE
+========================== */
+
+.flecha-siguiente {
+    position: fixed;
+
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #E64B6B;
+    color: #EFE2DA;
+
+    border: 3px solid #EFE2DA;
+    border-radius: 50%;
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+
+    box-shadow: 0 4px 12px rgba(106, 37, 58, 0.35);
+
+    z-index: 100;
+
+    transition: 
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.flecha-siguiente:hover {
+    background: #6A253A;
+
+    transform: translateY(-50%) scale(1.1);
+
+    box-shadow: 
+        0 0 10px rgba(230, 75, 107, 0.5),
+        0 5px 15px rgba(106, 37, 58, 0.4);
+}
+
+.flecha-siguiente:active {
+    transform: translateY(-50%) scale(0.95);
+}
     </style>
 </head>
 <body>
+<?php
+ include ("includes/botonvolver.php"); 
+?>
 
+<a href="reportclient.php" class="flecha-siguiente">
+    ›
+</a>
 <div class="card">
     <h2>Reporte de Ventas</h2>
     
@@ -431,9 +457,7 @@ select:focus {
         </table>
     </div>
 
-    <button class="volver" onclick="history.back()">
-        ← Volver
-    </button>
+    
 
 </div>
 
