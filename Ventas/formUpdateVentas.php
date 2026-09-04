@@ -258,7 +258,7 @@ if (isset($_SESSION['Nombre'])) {
 
     <h1>Editar Venta</h1>
 
-    <form action="updateVentas.php" method="post">
+    <form action="updateVentas.php" method="post" onsubmit="return validar()">
 
         <input type="hidden" name="ID" value="<?= $ID ?>">
         <input type="hidden" name="Pedidos_ID" value="<?= $Pedidos_ID ?>">
@@ -296,6 +296,42 @@ if (isset($_SESSION['Nombre'])) {
     </button>
 
 </div>
+<script>
+    var a= document.getElementById("ID");
+    var b= document.getElementById("Costototal");
+    var c= document.getElementById("Estado");
+    var d= document.getElementById("Metodo");
+    var e= document.getElementById("NombreVendedor");
+
+    function validar() {
+        if (ID.value == "") {
+            alert("⚠ Ingrese el ID");
+            codigo.focus();
+            return false;
+        }
+        if (Costototal.value == "") {
+            alert("⚠ Ingrese el costo");
+            codigo.focus();
+            return false;
+        }
+        if (Estado.value == "") {
+            alert("⚠ Ingrese el código");
+            codigo.focus();
+            return false;
+        }
+        if (Metodo.value == "") {
+            alert("⚠ Ingrese el código");
+            codigo.focus();
+            return false;
+        }
+        if (NombreVendedor.value == "") {
+            alert("⚠ Ingrese el código");
+            codigo.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
 
 </body>
 </html>
