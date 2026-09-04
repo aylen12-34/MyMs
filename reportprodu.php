@@ -74,11 +74,12 @@ while ($row = $res_top->fetch_assoc()) {
     <style>
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: #f4f0ed; 
+            background-image:url(imagenes/2.png); 
             margin: 30px; 
         }
         .card { 
             background: #EFE2DA; 
+            border:5px solid #6A253A;
             padding: 25px; 
             border-radius: 12px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.12); 

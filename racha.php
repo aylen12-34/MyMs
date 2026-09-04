@@ -32,15 +32,28 @@ body {
 
     font-family: 'Chillax-Semibold';
 
-    /* =========================
-       FONDO
-    ========================= */
+    position: relative;
+}
+
+/* =========================
+   FONDO BORROSO Y OSCURO
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: -15px;
 
     background-image: url("imagenes/2.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
+    filter: blur(2px) brightness(0.775);
+
+    z-index: -2;
 }
+
 
 
 /* =========================
@@ -210,7 +223,7 @@ body {
 .g2 {
     left: 22%;
     bottom: 12%;
-
+    animation: saltoGalletaVuelta 3.1s infinite ease-in-out;
     animation-delay: .45s;
 }
 
@@ -218,8 +231,7 @@ body {
     left: 42%;
     bottom: 5%;
 
-    animation: saltoGalletaVuelta 3.1s infinite ease-in-out;
-    animation-delay: .9s;
+    animation-delay: .45s;
 }
 
 .g4 {
@@ -644,9 +656,9 @@ body {
 
         <img src="imagenes/galletas/galleta1.png" class="galleta g1" alt="Galleta">
 
-        <img src="imagenes/galletas/galleta2.png" class="galleta g2" alt="Galleta">
+        <img src="imagenes/galletas/galleta3.png" class="galleta g2" alt="Galleta">
 
-        <img src="imagenes/galletas/galleta3.png" class="galleta g3" alt="Galleta">
+        <img src="imagenes/galletas/galleta2.png" class="galleta g3" alt="Galleta">
 
         <img src="imagenes/galletas/galleta4.png" class="galleta g4" alt="Galleta">
 
