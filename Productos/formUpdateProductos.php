@@ -38,19 +38,44 @@ if ($resultado->num_rows > 0) {
     *{
         font-family: 'Chillax-Semibold';
     }
+    
+    body, table, button, h2, a, input, select {
+            font-family: 'Chillax-Semibold', sans-serif;
+            box-sizing: border-box;
+        }
+
         body {
             background-image: url(../imagenes/2.png);
+            background-size: cover;
+            background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 30px 0;
+            margin: 0;
         }
+
+        /* SE CAMBIÓ 'div' POR LA CLASE '.contenedor-registro' */
+        .contenedor-registro {
+            width: 420px;
+            padding: 35px;
+            background-color: #6A253A;
+            border: 2px solid #EFE2DA;
+            border-radius: 40px;
+            color: #EFE2DA;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .contenedor-registro h1 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
         form {
-            max-width: 400px;
+            width: 100%;
         }
-
-
 
         label {
             display: block;
@@ -58,112 +83,128 @@ if ($resultado->num_rows > 0) {
             color: #EFE2DA;
         }
 
-
-
-        
         input {
             width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
+            padding: 10px;
+            margin-bottom: 12px;
             border: 2.5px solid #E64B6B;
             border-radius: 10px;
+            outline: none;
         }
 
+        /* SELECT */
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 2.5px solid #E64B6B;
+            border-radius: 10px;
+            background-color: white;
+            color: #6A253A;
+            font-size: 15px;
+            cursor: pointer;
+            outline: none;
+        }
 
+        select:focus {
+            border-color: #EFE2DA;
+        }
+
+        select option {
+            background-color: white;
+            color: #6A253A;
+        }
+
+        /* ARCHIVO */
+        input[type="file"] {
+            background-color: white;
+            color: #6A253A;
+            cursor: pointer;
+        }
+
+        input[type="file"]::file-selector-button {
+            background-color: #E64B6B;
+            color: #EFE2DA;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin-right: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        input[type="file"]::file-selector-button:hover {
+            background-color: #EFE2DA;
+            color: #6A253A;
+        }
 
         input[type="submit"] {
             background-color: #E64B6B;
-            color:#EFE2DA;
-            padding: 10px 20px;
+            color: #EFE2DA;
+            padding: 12px;
             border: none;
-            border-radius: 4px;
+            border-radius: 10px;
             cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+            margin-top: 10px;
         }
+
         input[type="submit"]:hover {
             background-color: #EFE2DA;
-            color:#E64B6B;
+            color: #E64B6B;
         }
-        input[readonly]{
-    background-color: #FFFFFF;
-    color: #6A253A;
-    cursor: not-allowed;
-}
 
-
-
-
-        div {
-            width: 420px;
-            padding: 35px;
-            background-color: #6A253A;
-            border: 2px solid #EFE2DA;
-            border-radius: 40px;
+        .volver {
+            width: 100%;
+            padding: 12px;
+            border: none;
             color: #EFE2DA;
-        }
-        .volver{
-        padding: 10px 20px;
-        border: none;
-        color: #EFE2DA;
-        border-radius: 5px;
-        background: #E64B6B;
-        cursor: pointer;
-        font-size: 16px;
-        margin:3px;
+            border-radius: 10px;
+            background: #E64B6B;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: 0.3s;
         }
 
-        .volver:hover{
+        .volver:hover {
             background-color: #EFE2DA;
             color: #E64B6B;
-        }@media(max-width:800px){
+        }
 
-  body{
-    padding: 20px;
-  }
+        @media(max-width:800px){
+            body {
+                padding: 20px;
+            }
 
-  div{
-    width: 100%;
-    max-width: 320px;
-    padding: 25px;
-    border-radius: 25px;
-  }
+            .contenedor-registro {
+                width: 100%;
+                max-width: 340px;
+                padding: 25px;
+                border-radius: 25px;
+            }
 
-  h1{
-    text-align: center;
-    font-size: 28px;
-  }
-
-  form{
-    width: 100%;
-  }
-
-  input{
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 16px;
-  }
-
-  input[type="submit"],
-  .volver{
-    width: 100%;
-    margin-top: 10px;
-  }
-}
+            .contenedor-registro h1 {
+                font-size: 24px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div>
+   <div class="contenedor-registro">
         <h1>Editar Producto</h1>
     <form action="updateEditarProductos.php" method="post" onsubmit="return validar()">
         <label for="Codigo">Codigo:</label>
         <input type="number" id="Codigo" name="Codigo" value='<?=$Codigo?>' readonly>  <br>  <br>
         <label for="Nombre">Nombre:</label>
-        <input type="text" id="Nombre" name="Nombre" value='<?=$Nombre?>' required>  <br>  <br>
+        <input type="text" id="Nombre" name="Nombre" value='<?=$Nombre?>' >  <br>  <br>
         <label for="Descripcion">Descripción:</label>
-        <input type="text" id="Descripcion" name="Descripcion" value='<?=$Descripcion?>' required>  <br>  <br>
+        <input type="text" id="Descripcion" name="Descripcion" value='<?=$Descripcion?>' >  <br>  <br>
         <label for="Precio">Precio:</label>
-        <input type="number" id="Precio" name="Precio" value='<?=$Precio?>' required>  <br>  <br>
+        <input type="number" id="Precio" name="Precio" value='<?=$Precio?>' >  <br>  <br>
         <label for="Stock">Stock:</label>
-        <input type="number" id="Stock" name="Stock" value='<?=$Stock?>' required>  <br>  <br>
+        <input type="number" id="Stock" name="Stock" value='<?=$Stock?>' >  <br>  <br>
         <label for="Estado">Estado</label>
         <select name="Estado">
                 <option value="Disponible">Disponible</option>
@@ -184,56 +225,114 @@ if ($resultado->num_rows > 0) {
 
     function validar() {
 
-        if (codigo.value == "") {
-            alert("⚠ Ingrese el código");
-            codigo.focus();
-            return false;
-        }
-
-        if (!/^\d+$/.test(codigo.value)) {
-            alert("⚠ El código debe contener solo números");
-            codigo.focus();
-            return false;
-        }
-
         if (nombre.value == "") {
-            alert("⚠ Ingrese el nombre del producto");
+             Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletapro.png',
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ Ingrese el nombre del producto ⚠'
+    });
             nombre.focus();
             return false;
         }
 
         if (nombre.value.length < 3) {
-            alert("⚠ El nombre debe tener al menos 3 caracteres");
+             Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletapro.png',
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ El nombre debe tener al menos 3 carácteres ⚠'
+    });
             nombre.focus();
             return false;
         }
 
         if (descripcion.value == "") {
-            alert("⚠ Ingrese la descripción");
+             Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletapro.png',
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ Ingrese la descripción ⚠'
+    });
             descripcion.focus();
             return false;
         }
 
         if (precio.value == "") {
-            alert("⚠ Ingrese el precio");
+             Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletapro.png',
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ Ingrese el precio ⚠'
+    });
             precio.focus();
             return false;
         }
 
         if (!/^\d+(\.\d{1,2})?$/.test(precio.value)) {
-            alert("⚠ El precio debe ser un número válido");
+             Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletapro.png',
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ El precio debe ser un número válido ⚠'
+    });
             precio.focus();
             return false;
         }
 
         if (stock.value == "") {
-            alert("⚠ Ingrese el stock");
+             Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletapro.png',
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ Ingrese el stock⚠'
+    });
             stock.focus();
             return false;
         }
 
         if (!/^\d+$/.test(stock.value)) {
-            alert("⚠ El stock debe contener solo números");
+             Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletapro.png',
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ El stock debe contener solo números ⚠'
+    });
             stock.focus();
             return false;
         }

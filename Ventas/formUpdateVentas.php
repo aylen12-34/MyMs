@@ -44,217 +44,167 @@ if (isset($_SESSION['Nombre'])) {
     <title>Editar Venta</title>
 
     <link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
-
-        *{
-            font-family: 'Chillax-Semibold';
+    *{
+        font-family: 'Chillax-Semibold';
+    }
+    
+    body, table, button, h2, a, input, select {
+            font-family: 'Chillax-Semibold', sans-serif;
             box-sizing: border-box;
         }
 
-        body{
+        body {
             background-image: url(../imagenes/2.png);
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
-
             display: flex;
             justify-content: center;
             align-items: center;
-
             min-height: 100vh;
+            padding: 30px 0;
             margin: 0;
-            padding: 20px;
         }
 
-        div{
-            width: 95%;
-            max-width: 550px;
-
-            padding: 40px;
-
+        /* SE CAMBIÓ 'div' POR LA CLASE '.contenedor-registro' */
+        .contenedor-registro {
+            width: 420px;
+            padding: 35px;
             background-color: #6A253A;
-
             border: 2px solid #EFE2DA;
-            border-radius: 30px;
-
+            border-radius: 40px;
             color: #EFE2DA;
-
-            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
-        h1{
+        .contenedor-registro h1 {
             text-align: center;
-
             margin-top: 0;
-            margin-bottom: 30px;
-
-            font-size: 32px;
-
-            color: #EFE2DA;
+            margin-bottom: 20px;
         }
 
-        form{
+        form {
             width: 100%;
         }
 
-        label{
+        label {
             display: block;
-
-            margin-bottom: 8px;
-
+            margin-bottom: 5px;
             color: #EFE2DA;
-
-            font-size: 16px;
         }
 
-        /* CAMPOS */
-
-        input[type="text"]{
+        input {
             width: 100%;
-
-            padding: 12px 14px;
-
-            border: 2px solid #E64B6B;
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 2.5px solid #E64B6B;
             border-radius: 10px;
-
-            background-color: #FFFFFF;
-            color: #6A253A;
-
-            font-family: 'Chillax-Semibold';
-            font-size: 15px;
-
             outline: none;
-
-            transition: 0.3s;
         }
 
-        /* EFECTO AL SELECCIONAR */
-
-        input[type="text"]:focus{
-            border-color: #EFE2DA;
-
-            box-shadow: 0 0 8px rgba(239, 226, 218, 0.5);
-        }
-
-
-
-        input[readonly]{
-            background-color: #FFFFFF;
-            color: #6A253A;
-
-            cursor: not-allowed;
-        }
-
-  
-
-        input[type="submit"]{
+        /* SELECT */
+        select {
             width: 100%;
-
-            padding: 12px 20px;
-
-            margin-top: 10px;
-
-            border: none;
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 2.5px solid #E64B6B;
             border-radius: 10px;
+            background-color: white;
+            color: #6A253A;
+            font-size: 15px;
+            cursor: pointer;
+            outline: none;
+        }
 
+        select:focus {
+            border-color: #EFE2DA;
+        }
+
+        select option {
+            background-color: white;
+            color: #6A253A;
+        }
+
+        /* ARCHIVO */
+        input[type="file"] {
+            background-color: white;
+            color: #6A253A;
+            cursor: pointer;
+        }
+
+        input[type="file"]::file-selector-button {
             background-color: #E64B6B;
             color: #EFE2DA;
-
-            font-family: 'Chillax-Semibold';
-            font-size: 16px;
-
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin-right: 10px;
             cursor: pointer;
-
             transition: 0.3s;
         }
 
-        input[type="submit"]:hover{
+        input[type="file"]::file-selector-button:hover {
             background-color: #EFE2DA;
             color: #6A253A;
-
-            transform: translateY(-2px);
-            margin-top: 20px;
         }
 
-        .volver{
-    width: 100%;
+        input[type="submit"] {
+            background-color: #E64B6B;
+            color: #EFE2DA;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
 
-    padding: 12px 20px;
-
-    margin-top: 20px;
-
-    border: none;
-    border-radius: 10px;
-
-    background-color: #E64B6B;
-    color: #EFE2DA;
-
-    font-family: 'Chillax-Semibold';
-    font-size: 16px;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-}
-
-        .volver:hover{
+        input[type="submit"]:hover {
             background-color: #EFE2DA;
-            color: #6A253A;
-
-            transform: translateY(-2px);
+            color: #E64B6B;
         }
 
-        /* QUITAR LOS SALTOS DE LÍNEA */
-
-        br{
-            display: none;
+        .volver {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            color: #EFE2DA;
+            border-radius: 10px;
+            background: #E64B6B;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: 0.3s;
         }
 
-        /* ESPACIO ENTRE CAMPOS */
-
-        label:not(:first-of-type){
-            margin-top: 20px;
+        .volver:hover {
+            background-color: #EFE2DA;
+            color: #E64B6B;
         }
 
-        /* RESPONSIVE */
-
-        @media(max-width: 600px){
-
-            body{
-                padding: 15px;
+        @media(max-width:800px){
+            body {
+                padding: 20px;
             }
 
-            div{
+            .contenedor-registro {
                 width: 100%;
-
-                padding: 25px 20px;
-
-                border-radius: 20px;
+                max-width: 340px;
+                padding: 25px;
+                border-radius: 25px;
             }
 
-            h1{
-                font-size: 27px;
+            .contenedor-registro h1 {
+                font-size: 24px;
             }
-
-            input[type="text"]{
-                font-size: 14px;
-            }
-
-            input[type="submit"],
-            .volver{
-                font-size: 15px;
-            }
-
         }
-
     </style>
-
 </head>
-
 <body>
-
-<div>
+   <div class="contenedor-registro">
 
     <h1>Editar Venta</h1>
 
@@ -265,19 +215,19 @@ if (isset($_SESSION['Nombre'])) {
 
         <label for="Costototal">Costo Total:</label>
         <input type="text" id="Costototal" name="Costototal"
-               value="<?= $Costototal ?>" required>
+               value="<?= $Costototal ?>" >
 
         <br><br>
 
         <label for="Estado">Estado:</label>
         <input type="text" id="Estado" name="Estado"
-               value="<?= $Estado ?>" required>
+               value="<?= $Estado ?>" >
 
         <br><br>
 
         <label for="Metodo">Método:</label>
         <input type="text" id="Metodo" name="Metodo"
-               value="<?= $Metodo ?>" required>
+               value="<?= $Metodo ?>" >
 
         <br><br>
 
@@ -305,7 +255,17 @@ if (isset($_SESSION['Nombre'])) {
 
     function validar() {
         if (ID.value == "") {
-            alert("⚠ Ingrese el ID");
+            Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletapro.png',
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ Ingrese el ID ⚠'
+    });
             codigo.focus();
             return false;
         }
@@ -324,11 +284,7 @@ if (isset($_SESSION['Nombre'])) {
             codigo.focus();
             return false;
         }
-        if (NombreVendedor.value == "") {
-            alert("⚠ Ingrese el código");
-            codigo.focus();
-            return false;
-        }
+    
         return true;
     }
 </script>
