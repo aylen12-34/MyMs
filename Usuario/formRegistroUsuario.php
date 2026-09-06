@@ -219,16 +219,28 @@ if ($conexion->connect_error) {
 
         if (ci.value == "") {
     Swal.fire({
-        title: 'Alerta',
-        background: '#e65c78',
-        color: '#EFE2DA',
-        imageUrl: '../imagenes/gatous.png', 
-        imageHeight: 200,
-        imageAlt: 'Icono personalizado',
-        confirmButtonText: 'OK',
+    title: 'Alerta',
+    background: '#e65c78',
+    color: '#EFE2DA',
+    imageUrl: '../imagenes/gatous.png',
+    imageHeight: 200,
+    imageAlt: 'Icono personalizado',
+    confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingresa tu Carnet ⚠'
-    });
+    text: '⚠ Ingresa tu Carnet ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             ci.focus();
             return false;
         }
@@ -243,8 +255,21 @@ if ($conexion->connect_error) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Su carnet debe contener solo números ⚠'
-    });
+        text: '⚠ Su carnet debe contener solo números ⚠',
+
+    didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             ci.focus();
             return false;
         }
@@ -259,8 +284,20 @@ if ($conexion->connect_error) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingrese su nombre ⚠'
-    });
+        text: '⚠ Ingrese su nombre ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             nombre.focus();
             return false;
         }
@@ -275,8 +312,20 @@ if ($conexion->connect_error) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ El nombre debe contener solo letras ⚠'
-    });
+        text: '⚠ El nombre debe contener solo letras ⚠',
+   didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             nombre.focus();
             return false;
         }
@@ -291,8 +340,20 @@ if ($conexion->connect_error) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ El nombre debe tener al menos 3 letras ⚠'
-    });
+        text: '⚠ El nombre debe tener al menos 3 letras ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             nombre.focus();
             return false;
         }
@@ -307,8 +368,20 @@ if ($conexion->connect_error) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingrese su dirección ⚠'
-    });
+        text: '⚠ Ingrese su dirección ⚠',
+   didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             direccion.focus();
             return false;
         }
@@ -323,8 +396,20 @@ if ($conexion->connect_error) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingrese su celular ⚠'
-    });
+        text: '⚠ Ingrese su celular ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             celular.focus();
             return false;
         }
@@ -339,8 +424,20 @@ if ($conexion->connect_error) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ El celular debe contener solo números ⚠'
-    });
+        text: '⚠ El celular debe contener solo números ⚠',
+   didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             celular.focus();
             return false;
         }
@@ -355,8 +452,20 @@ if ($conexion->connect_error) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ El celular debe tener exactamente 8 dígitos ⚠'
-    });
+        text: '⚠ El celular debe tener exactamente 8 dígitos ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             celular.focus();
             return false;
         }
@@ -370,8 +479,20 @@ if ($conexion->connect_error) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingrese el estado ⚠'
-    });
+        text: '⚠ Ingrese el estado ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             estado.focus();
             return false;
         }

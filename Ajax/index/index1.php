@@ -49,14 +49,14 @@
     <!--================== PRODUCTOS ==================-->
 
     <main>
- <div id="productosbusqueda">
-
-
-</div>
+ 
         <h2 class="titulo">
             Productos Disponibles
         </h2>
+<div id="productosbusqueda">
 
+
+</div>
         <button id="generarPedido">
             Generar Pedido
         </button>

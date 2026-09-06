@@ -235,8 +235,20 @@ if ($resultado->num_rows > 0) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingrese el nombre del producto ⚠'
-    });
+        text: '⚠ Ingrese el nombre del producto ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             nombre.focus();
             return false;
         }
@@ -251,8 +263,20 @@ if ($resultado->num_rows > 0) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ El nombre debe tener al menos 3 carácteres ⚠'
-    });
+        text: '⚠ El nombre debe tener al menos 3 carácteres ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             nombre.focus();
             return false;
         }
@@ -267,8 +291,20 @@ if ($resultado->num_rows > 0) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingrese la descripción ⚠'
-    });
+        text: '⚠ Ingrese la descripción ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             descripcion.focus();
             return false;
         }
@@ -283,8 +319,20 @@ if ($resultado->num_rows > 0) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingrese el precio ⚠'
-    });
+        text: '⚠ Ingrese el precio ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             precio.focus();
             return false;
         }
@@ -299,8 +347,20 @@ if ($resultado->num_rows > 0) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ El precio debe ser un número válido ⚠'
-    });
+        text: '⚠ El precio debe ser un número válido ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             precio.focus();
             return false;
         }
@@ -315,8 +375,20 @@ if ($resultado->num_rows > 0) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingrese el stock⚠'
-    });
+        text: '⚠ Ingrese el stock⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             stock.focus();
             return false;
         }
@@ -331,8 +403,20 @@ if ($resultado->num_rows > 0) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ El stock debe contener solo números ⚠'
-    });
+        text: '⚠ El stock debe contener solo números ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             stock.focus();
             return false;
         }

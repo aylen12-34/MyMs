@@ -8,7 +8,7 @@ if (!isset($_GET['ID'])) {
 
 $ID = $_GET['ID'];
 
-$sql = "SELECT * FROM Ventas WHERE Pedidos_ID='$ID'";
+$sql = "SELECT * FROM ventas JOIN pedidos ON ventas.Pedidos_ID = pedidos.ID WHERE Pedidos_ID='$ID' ";
 $resultado = $conexion->query($sql);
 
 if (!$resultado) {
@@ -26,12 +26,7 @@ $Pedidos_ID = $fila['Pedidos_ID'];
 $Costototal = $fila['Costototal'];
 $Estado = $fila['Estado'];
 $Metodo = $fila['Metodo'];
-
-if (isset($_SESSION['Nombre'])) {
-    $NombreVendedor = $_SESSION['Nombre'];
-} else {
-    $NombreVendedor = '';
-}
+$NombreVendedor = $fila['NombreVendedor'];
 ?>
 
 <!DOCTYPE html>
@@ -44,6 +39,8 @@ if (isset($_SESSION['Nombre'])) {
     <title>Editar Venta</title>
 
     <link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
@@ -247,45 +244,100 @@ if (isset($_SESSION['Nombre'])) {
 
 </div>
 <script>
-    var a= document.getElementById("ID");
-    var b= document.getElementById("Costototal");
-    var c= document.getElementById("Estado");
-    var d= document.getElementById("Metodo");
-    var e= document.getElementById("NombreVendedor");
-
     function validar() {
-        if (ID.value == "") {
+        // Obtener los elementos por su ID de manera correcta
+        var costototal = document.getElementById("Costototal");
+        var estado = document.getElementById("Estado");
+        var metodo = document.getElementById("Metodo");
+
+        // 1. Validar Costo Total
+        if (costototal.value.trim() === "") {
             Swal.fire({
-        title: 'Alerta',
-        background: '#e65c78',
-        color: '#EFE2DA',
-        imageUrl: '../imagenes/galletapro.png',
-        imageHeight: 150,
-        imageAlt: 'Icono personalizado',
-        confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
-        text: '⚠ Ingrese el ID ⚠'
-    });
-            codigo.focus();
-            return false;
+                title: 'Alerta',
+                background: '#e65c78',
+                color: '#EFE2DA',
+                imageUrl: '../imagenes/gatoventa.png',
+                imageHeight: 150,
+                imageAlt: 'Icono personalizado',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#6A253A',
+                text: '⚠ Ingrese el costo total ⚠',
+   didOpen: () => {
+        const audio = new Audio('../imagenes/gatoventa.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
         }
-        if (Costototal.value == "") {
-            alert("⚠ Ingrese el costo");
-            codigo.focus();
-            return false;
+    }
+});
+            costototal.focus();
+            return false; // Cancela el envío del formulario
         }
-        if (Estado.value == "") {
-            alert("⚠ Ingrese el código");
-            codigo.focus();
-            return false;
+
+        // 2. Validar Estado
+        if (estado.value.trim() === "") {
+            Swal.fire({
+                title: 'Alerta',
+                background: '#e65c78',
+                color: '#EFE2DA',
+                imageUrl: '../imagenes/gatoventa.png',
+                imageHeight: 150,
+                imageAlt: 'Icono personalizado',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#6A253A',
+                text: '⚠ Ingrese el estado ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/gatoventa.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
         }
-        if (Metodo.value == "") {
-            alert("⚠ Ingrese el código");
-            codigo.focus();
-            return false;
+    }
+});
+            estado.focus();
+            return false; // Cancela el envío del formulario
         }
-    
-        return true;
+
+        // 3. Validar Método
+        if (metodo.value.trim() === "") {
+            Swal.fire({
+                title: 'Alerta',
+                background: '#e65c78',
+                color: '#EFE2DA',
+                imageUrl: '../imagenes/gatoventa.png',
+                imageHeight: 150,
+                imageAlt: 'Icono personalizado',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#6A253A',
+                text: '⚠ Ingrese el método ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/gatoventa.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
+            metodo.focus();
+            return false; // Cancela el envío del formulario
+        }
+
+        return true; // Si pasa todas las validaciones, se envía
     }
 </script>
 

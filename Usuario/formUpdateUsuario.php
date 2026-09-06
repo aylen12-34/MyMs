@@ -241,8 +241,20 @@ if ($resultado->num_rows > 0) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingresa tu nombre ⚠'
-    });
+        text: '⚠ Ingresa tu nombre ⚠',
+   didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             nombre.focus();
             return false;
         }
@@ -257,8 +269,20 @@ if ($resultado->num_rows > 0) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ El nombre debe contener solo letras ⚠'
-    });
+        text: '⚠ El nombre debe contener solo letras ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             nombre.focus();
             return false;
         }
@@ -273,8 +297,20 @@ if ($resultado->num_rows > 0) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ El nombre debe tener al menos 3 letras ⚠'
-    });
+        text: '⚠ El nombre debe tener al menos 3 letras ⚠',
+   didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             nombre.focus();
             return false;
         }
@@ -289,8 +325,20 @@ if ($resultado->num_rows > 0) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingresa tu dirección ⚠'
-    });
+        text: '⚠ Ingresa tu dirección ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             direccion.focus();
             return false;
         }
@@ -305,8 +353,20 @@ if ($resultado->num_rows > 0) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingresa tu celular ⚠'
-    });
+        text: '⚠ Ingresa tu celular ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             celular.focus();
             return false;
         }
@@ -321,8 +381,20 @@ if ($resultado->num_rows > 0) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ El celular debe contener solo números ⚠'
-    });
+        text: '⚠ El celular debe contener solo números ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             celular.focus();
             return false;
         }
@@ -337,8 +409,20 @@ if ($resultado->num_rows > 0) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ El celular debe tener 8 dígitos ⚠'
-    });
+        text: '⚠ El celular debe tener 8 dígitos ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             celular.focus();
             return false;
         }
@@ -353,8 +437,20 @@ if ($resultado->num_rows > 0) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingresa el rol ⚠'
-    });
+        text: '⚠ Ingresa el rol ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             rol.focus();
             return false;
         }
@@ -369,8 +465,20 @@ if ($resultado->num_rows > 0) {
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ El rol debe contener solo letras minúsculas ⚠'
-    });
+        text: '⚠ El rol debe contener solo letras minúsculas ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/gatous.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             rol.focus();
             return false;
         }

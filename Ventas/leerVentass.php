@@ -19,7 +19,7 @@ if ($resultadou->num_rows > 0) {
     }}
 }
 $CostoTotal = $_SESSION['CostoTotal'] ?? 'No especificado';
-$Estado = $_SESSION['Estado'] ?? 'No especificado';
+
 $sql = "SELECT * FROM ventas JOIN pedidos ON ventas.Pedidos_ID=pedidos.ID";
 $resultado = $conexion->query($sql);
 ?>
@@ -200,7 +200,7 @@ $resultado = $conexion->query($sql);
                 echo "<td>" . $fila['ID'] . "</td>";
                 echo "<td>" . $fila['Pedidos_ID'] . "</td>";
                 echo "<td>" . $fila['Costototal'] . "</td>";
-                echo "<td>" . $Estado . "</td>";
+                echo "<td>" . $fila['Estado'] . "</td>";
                 echo "<td>" . $fila['Metodo'] . "</td>";
                 echo "<td>" . $fila['NombreVendedor'] . "</td>";
                 echo "<td>";

@@ -237,8 +237,20 @@ if($_SESSION['CI']==null){
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingrese el código ⚠'
-    });
+        text: '⚠ Ingrese el código ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             codigo.focus();
             return false;
         }
@@ -253,8 +265,20 @@ if($_SESSION['CI']==null){
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ El código debe contener solo números ⚠'
-    });
+        text: '⚠ El código debe contener solo números ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             codigo.focus();
             return false;
         }
@@ -269,8 +293,20 @@ if($_SESSION['CI']==null){
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingrese el nombre ⚠'
-    });
+        text: '⚠ Ingrese el nombre ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             nombre.focus();
             return false;
         }
@@ -285,8 +321,20 @@ if($_SESSION['CI']==null){
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ El nombre debe tener al menos 3 letras ⚠'
-    });
+        text: '⚠ El nombre debe tener al menos 3 letras ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             nombre.focus();
             return false;
         }
@@ -301,8 +349,20 @@ if($_SESSION['CI']==null){
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingrese la descripción ⚠'
-    });
+        text: '⚠ Ingrese la descripción ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             descripcion.focus();
             return false;
         }
@@ -317,8 +377,20 @@ if($_SESSION['CI']==null){
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingrese el precio ⚠'
-    });
+        text: '⚠ Ingrese el precio ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             precio.focus();
             return false;
         }
@@ -333,8 +405,20 @@ if($_SESSION['CI']==null){
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingrese un precio válido (ej: 10 o 10.50) ⚠'
-    });
+        text: '⚠ Ingrese un precio válido (ej: 10 o 10.50) ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             precio.focus();
             return false;
         }
@@ -348,8 +432,20 @@ if($_SESSION['CI']==null){
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ Ingrese el stock ⚠'
-    });
+        text: '⚠ Ingrese el stock ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             stock.focus();
             return false;
         }
@@ -364,8 +460,20 @@ if($_SESSION['CI']==null){
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
-        text: '⚠ El stock debe contener solo números ⚠'
-    });
+        text: '⚠ El stock debe contener solo números ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
             stock.focus();
             return false;
         }
