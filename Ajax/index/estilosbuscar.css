@@ -1,0 +1,92 @@
+/*==================================================
+   TARJETA DE BÚSQUEDA (#productosbusqueda)
+==================================================*/
+
+#productosbusqueda .tarjeta {
+    background: rgba(239, 226, 218, 0.96);
+    border-radius: 22px;
+    overflow: hidden;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(106, 37, 58, 0.25);
+    transition: 0.35s;
+    
+    display: flex !important;
+    flex-direction: row !important; 
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 30px !important;
+    
+    border: 2px solid transparent;
+    margin-bottom: 20px;
+    width: 100% !important;
+}
+
+#productosbusqueda .tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(106, 37, 58, 0.35);
+    border-color: #E64B6B;
+}
+
+/* IMAGEN A LA IZQUIERDA */
+#productosbusqueda .tarjeta > img {
+    width: 350px !important;
+    height: 350px !important;
+    object-fit: cover !important;
+    display: block !important;
+    margin: 0 !important;
+    border-radius: 18px;
+    flex-shrink: 0 !important;
+}
+
+/* CONTENEDOR DE INFORMACIÓN */
+#productosbusqueda .tarjeta > .infoDetalle {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    flex-grow: 1 !important;
+    width: calc(100% - 380px) !important;
+}
+
+/* TÍTULO (h3) CON TAMAÑO 45px */
+#productosbusqueda .tarjeta .infoDetalle > h3 {
+    margin: 0 0 15px 0 !important;
+    color: #6A253A !important;
+    font-size: 45px !important; /* <--- Tamaño actualizado */
+    text-align: left !important;
+    width: 100% !important;
+}
+
+/* PRECIO Y DESCRIPCIÓN EN LÍNEA DEBAJO DEL H3 */
+#productosbusqueda .tarjeta .infoDetalle > .precioDescripcion {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 20px !important;
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+/* PRECIO (h2) */
+#productosbusqueda .tarjeta .precioDescripcion > h2 {
+    color: #6A253A !important;
+    margin: 0 !important;
+    font-size: 24px !important;
+    white-space: nowrap !important;
+    text-align: left !important;
+}
+
+/* DESCRIPCIÓN (p) */
+#productosbusqueda .tarjeta .precioDescripcion > p {
+    color: #E64B6B !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 16px !important;
+    text-align: left !important;
+    min-height: auto !important;
+}
+#productosbusqueda .tarjeta button,
+#productosbusqueda .tarjeta .btnAgregar {
+    display: none !important;
+}

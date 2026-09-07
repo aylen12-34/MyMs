@@ -16,23 +16,17 @@ function buscarProducto(){
 
             html += `
             <div class="tarjeta">
-            <img src="../../${producto.imagen}" alt="${producto.Nombre}" width="100px">
-
-            <h3>${producto.Nombre}</h3>
-
-            <p>${producto.Descripcion}</p>
-
-            <h2>Bs ${producto.Precio}</h2>
-
-            <button
-class="btnAgregar"
-data-Codigo="${producto.Codigo}"
-${pedidoActivo ? "" : "disabled"}>
-Agregar al carrito
-</button>
-
-
-        </div>
+                <img src="../../${producto.imagen}" alt="${producto.Nombre}">
+                
+                <div class="infoDetalle">
+                    <h3>${producto.Nombre}</h3>
+                    
+                    <div class="precioDescripcion">
+                        <h2>Bs ${producto.Precio}</h2>
+                        <p>${producto.Descripcion}</p>
+                    </div>
+                </div>
+            </div>
             `;
 
         });

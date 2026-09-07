@@ -11,6 +11,7 @@
     <title>Menu</title>
 
     <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="estilosbuscar.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 

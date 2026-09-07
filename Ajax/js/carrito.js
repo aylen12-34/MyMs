@@ -149,48 +149,56 @@ console.log("Error carrito:",error);
 document.getElementById("vaciarCarrito")
 .addEventListener("click", vaciarCarrito);
 
-function vaciarCarrito(){
-
-    if(!confirm("¿Desea vaciar todo el carrito?")){
-        return;
-    }
-
-    fetch("../index/carrito.php",{
-
-        method:"POST",
-
-        headers:{
-            "Content-Type":"application/x-www-form-urlencoded"
-        },
-
-        body:"accion=vaciar"
-
-    })
-
-    .then(res=>res.json())
-
-    .then(datos=>{
-
-        if(datos.ok){
-
-            actualizarCarrito();
-
-        }else{
-
-            alert(datos.mensaje);
-
+function vaciarCarrito() {
+    Swal.fire({
+        title: "¿Desea vaciar todo el carrito?",
+        text: "Esta acción no se puede deshacer.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#E64B6B",
+        cancelButtonColor: "#6A253A",
+        confirmButtonText: "Sí, vaciar",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch("../index/carrito.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: "accion=vaciar"
+            })
+            .then(res => res.json())
+            .then(datos => {
+                if (datos.ok) {
+                    Swal.fire({
+                        title: "¡Vaciado!",
+                        text: datos.mensaje,
+                        icon: "success",
+                        confirmButtonColor: "#6A253A"
+                    });
+                    actualizarCarrito();
+                } else {
+                    Swal.fire({
+                        title: "Error",
+                        text: datos.mensaje,
+                        icon: "error",
+                        confirmButtonColor: "#6A253A"
+                    });
+                }
+            })
+            .catch(error => {
+                console.log("Error al vaciar carrito:", error);
+                Swal.fire({
+                    title: "Error",
+                    text: "Hubo un problema al conectar con el servidor.",
+                    icon: "error",
+                    confirmButtonColor: "#6A253A"
+                });
+            });
         }
-
-    })
-
-    .catch(error=>{
-
-        console.log(error);
-
     });
-
 }
-
 
 document.addEventListener("click",function(e){
 
