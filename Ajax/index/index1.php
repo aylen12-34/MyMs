@@ -123,11 +123,12 @@
 
 <!--================== MODAL COMPRA ==================-->
 
-<div id="modalCompra" class="modal">
+<div id="modalCompra" class="modal" >
 
     <div class="modalContenido">
 
         <h2>🛍 Finalizar Compra</h2>
+    <form action="" onclick="validarCompra()">
 
         <input type="text"
                id="Nombre"
@@ -148,7 +149,7 @@
             <option value="Efectivo">Pago en efectivo</option>
 
         </select>
-
+    </form>
         <div class="botonesModal">
 
             <button id="confirmarPedido">
@@ -166,6 +167,56 @@
 </div>
 
 </div>
+<script>
+    function validarCompra() {
+
+    var nombre = document.getElementById("Nombre").value.trim();
+    var celular = document.getElementById("Celular").value.trim();
+    var direccion = document.getElementById("Direccion").value.trim();
+    var metodo = document.getElementById("Metodo").value;
+
+    if (nombre === "") {
+        alert("Por favor, ingresa tu nombre completo.");
+        document.getElementById("Nombre").focus();
+        return false;
+    }
+
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre)) {
+        alert("El nombre solo debe contener letras.");
+        document.getElementById("Nombre").focus();
+        return false;
+    }
+
+    // Validar celular
+    if (celular === "") {
+        alert("Por favor, ingresa tu número de teléfono.");
+        document.getElementById("Celular").focus();
+        return false;
+    }
+
+    if (!/^[0-9]{8}$/.test(celular)) {
+        alert("El número de teléfono debe tener 8 dígitos.");
+        document.getElementById("Celular").focus();
+        return false;
+    }
+
+    // Validar dirección
+    if (direccion === "") {
+        alert("Por favor, ingresa tu dirección.");
+        document.getElementById("Direccion").focus();
+        return false;
+    }
+
+    // Validar método de pago
+    if (metodo === "") {
+        alert("Selecciona un método de pago.");
+        document.getElementById("Metodo").focus();
+        return false;
+    }
+
+    return true;
+}
+</script>
     
 
 <!--================== FONDO MODAL PRODUCTO ==================-->
