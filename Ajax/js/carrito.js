@@ -153,7 +153,9 @@ function vaciarCarrito() {
     Swal.fire({
         title: "¿Desea vaciar todo el carrito?",
         text: "Esta acción no se puede deshacer.",
-        icon: "warning",
+        imageUrl: '../../imagenes/gatocarrito.png', 
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
         showCancelButton: true,
         confirmButtonColor: "#E64B6B",
         cancelButtonColor: "#6A253A",
@@ -174,7 +176,9 @@ function vaciarCarrito() {
                     Swal.fire({
                         title: "¡Vaciado!",
                         text: datos.mensaje,
-                        icon: "success",
+                        imageUrl: '../../imagenes/gatocarrito.png',
+                        imageHeight: 150,
+                        imageAlt: 'Icono personalizado',
                         confirmButtonColor: "#6A253A"
                     });
                     actualizarCarrito();
@@ -182,7 +186,9 @@ function vaciarCarrito() {
                     Swal.fire({
                         title: "Error",
                         text: datos.mensaje,
-                        icon: "error",
+                        imageUrl: '../../imagenes/gatocarrito.png',
+                        imageHeight: 150,
+                        imageAlt: 'Icono personalizado',
                         confirmButtonColor: "#6A253A"
                     });
                 }
@@ -192,7 +198,9 @@ function vaciarCarrito() {
                 Swal.fire({
                     title: "Error",
                     text: "Hubo un problema al conectar con el servidor.",
-                    icon: "error",
+                    imageUrl: '../../imagenes/gatocarrito.png',
+                    imageHeight: 150,
+                    imageAlt: 'Icono personalizado',
                     confirmButtonColor: "#6A253A"
                 });
             });
