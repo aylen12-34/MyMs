@@ -430,7 +430,7 @@ select:focus {
                     <th style="width: 50px; text-align: center;">#</th>
                     <th>Producto</th>
                     <th>Unidades Vendidas</th>
-                    <th>Ingreso Total ($)</th>
+                    <th>Ingreso Total (Bs)</th>
                 </tr>
             </thead>
             <tbody>
@@ -443,7 +443,7 @@ select:focus {
                         <td style="text-align: center;"><span class="rank-badge"><?php echo $posicion++; ?></span></td>
                         <td><strong><?php echo htmlspecialchars($top['producto']); ?></strong></td>
                         <td><?php echo number_format($top['unidades']); ?></td>
-                        <td>$<?php echo number_format($top['ingreso_total'], 2); ?></td>
+                        <td><?php echo number_format($top['ingreso_total'], 2); ?> Bs</td>
                     </tr>
                 <?php 
                     endwhile;
@@ -479,7 +479,7 @@ function crearGrafico(tipo, labels, data) {
         data: {
             labels: labels,
             datasets: [{
-                label: 'Ventas Totales ($)',
+                label: 'Ventas Totales (Bs)',
                 data: data,
                 backgroundColor: tipo === 'line' ? 'rgba(255, 0, 115, 0.2)' : 'rgba(240, 18, 96, 0.6)',
                 borderColor: 'rgb(154, 12, 78)',
