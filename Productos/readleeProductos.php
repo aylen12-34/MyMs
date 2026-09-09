@@ -1,4 +1,13 @@
 <?php
+session_start();
+
+// 1. Verificación de sesión y rol al inicio
+if (!isset($_SESSION['Rol']) || $_SESSION['Rol'] != "vendedor") {
+    header("Location: ../login.php");
+    exit();
+}
+
+// 2. Conexión a la base de datos
 $usuario = "root";
 $contraseña = "";
 $direccion = "localhost";
@@ -13,7 +22,7 @@ if ($conexion->connect_error) {
 $sql = "SELECT * FROM Productos";
 $resultado = $conexion->query($sql);
 
-// Variables para controlar alertas globales en vez de por cada fila
+// Variables para controlar alertas globales
 $alertaStockBajo = false;
 $alertaSinStock = false;
 ?>
@@ -30,7 +39,6 @@ $alertaSinStock = false;
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
-        /* Aplicamos fuentes solo a la tipografía base, evitando afectar a SweetAlert */
         body, table, button, h2, a {
             font-family: 'Chillax-Semibold', sans-serif;
             box-sizing: border-box;
@@ -62,7 +70,6 @@ $alertaSinStock = false;
             font-size: 32px;
         }
 
-        /* Contenedor responsivo para la tabla */
         .table-responsive {
             width: 100%;
             overflow-x: auto;
@@ -75,7 +82,7 @@ $alertaSinStock = false;
             border-collapse: collapse;
             overflow: hidden;
             border-radius: 15px;
-            min-width: 800px; /* Previene el aplastamiento de columnas */
+            min-width: 800px;
         }
 
         th {
@@ -225,36 +232,57 @@ $alertaSinStock = false;
     <a href="formRegistroProductos.php"><button class="volver">Registrar Producto</button></a>
 </div>
 
-<!-- Lógica de alertas agrupadas fuera del bucle -->
-<?php if ($alertaSinStock): ?>
+<!-- Scripts de Alertas -->
 <script>
+document.addEventListener("DOMContentLoaded", function() {
+    let timerInterval;
+    
+    // 1. Mostrar alerta de bienvenida con temporizador
     Swal.fire({
-        title: 'Atención con el Inventario',
-        background: '#e65c78',
-        color: '#EFE2DA',
-        imageUrl: '../imagenes/gato.png', // Ruta a tu imagen o icono
-        imageHeight: 150,
-        imageAlt: 'Icono personalizado',
-        confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
-        text: 'Tienes productos agotados (Stock en 0).'
+         title: 'Bienvenido Vendedor',
+          html: 'Cargando número <b></b> de productos.',
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector('b');
+            timerInterval = setInterval(() => {
+              timer.textContent = Swal.getTimerLeft();
+            }, 100);
+          },
+          willClose: () => {
+            clearInterval(timerInterval);
+          }
+        }).then(() => {
+        // 2. Al terminar el timer, lanzar alerta de inventario si corresponde
+        <?php if ($alertaSinStock): ?>
+            Swal.fire({
+                title: 'Atención con el Inventario',
+                background: '#e65c78',
+                color: '#EFE2DA',
+                imageUrl: '../imagenes/gato.png',
+                imageHeight: 150,
+                imageAlt: 'Icono personalizado',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#6A253A',
+                text: 'Tienes productos agotados o con muy pocas unidades (Stock en 3 o menos).'
+            });
+        <?php elseif ($alertaStockBajo): ?>
+            Swal.fire({
+                title: 'Stock Bajo',
+                background: '#e65c78',
+                color: '#EFE2DA',
+                imageUrl: '../imagenes/gato.png',
+                imageHeight: 150,
+                imageAlt: 'Icono personalizado',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#6A253A',
+                text: 'Se recomienda reponer productos con pocas unidades.'
+            });
+        <?php endif; ?>
     });
+});
 </script>
-<?php elseif ($alertaStockBajo): ?>
-<script>
-    Swal.fire({
-        title: 'Stock Bajo',
-        background: '#e65c78',
-        color: '#EFE2DA',
-        imageUrl: '../imagenes/gato.png', // Ruta a tu imagen o icono
-        imageHeight: 150,
-        imageAlt: 'Icono personalizado',
-        confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
-        text: 'Se recomienda reponer productos con pocas unidades.'
-    });
-</script>
-<?php endif; ?>
 
 </body>
 </html>

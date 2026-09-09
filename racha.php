@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+// 1. Verificación de sesión y rol al inicio
+if (!isset($_SESSION['Rol']) || $_SESSION['Rol'] != "administrador") {
+    header("Location: login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,7 +17,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Reportes</title>
 
     <style>
@@ -732,6 +741,31 @@ body::before {
 
         }
 
+document.addEventListener("DOMContentLoaded", function() {
+    let timerInterval;
+    
+    // 1. Mostrar alerta de bienvenida con temporizador
+   Swal.fire({
+          title: 'Bienvenido Administrador',
+          html: 'Cargando total <b></b> de ingresos.',
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector('b');
+            timerInterval = setInterval(() => {
+              timer.textContent = Swal.getTimerLeft();
+            }, 100);
+          },
+          willClose: () => {
+            clearInterval(timerInterval);
+          }
+        }).then((result) => {
+          if (result.dismiss === Swal.DismissReason.timer) {
+            console.log('Alerta cerrada correctamente');
+          }
+        });
+    });
     </script>
 
 </body>

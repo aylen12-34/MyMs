@@ -1,4 +1,12 @@
 <?php
+session_start();
+
+// 1. Verificación de sesión y rol al inicio
+if (!isset($_SESSION['Rol']) || $_SESSION['Rol'] != "vendedor") {
+    header("Location: ../login.php");
+    exit();
+}
+
 $usuario = "root";
 $contraseña = "";
 $direccion = "localhost";
@@ -9,8 +17,10 @@ $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
+
 $sql = "SELECT * FROM Pedidos";
 $resultado = $conexion->query($sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +31,7 @@ $resultado = $conexion->query($sql);
     <title>Pedidos</title>
 
     <link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
 
@@ -252,6 +263,32 @@ a{
     </div>
 
 </div>
-
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let timerInterval;
+    
+    // 1. Mostrar alerta de bienvenida con temporizador
+   Swal.fire({
+          title: 'Bienvenido Vendedor',
+          html: 'Cargando cantidad <b></b> de pedidos.',
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector('b');
+            timerInterval = setInterval(() => {
+              timer.textContent = Swal.getTimerLeft();
+            }, 100);
+          },
+          willClose: () => {
+            clearInterval(timerInterval);
+          }
+        }).then((result) => {
+          if (result.dismiss === Swal.DismissReason.timer) {
+            console.log('Alerta cerrada correctamente');
+          }
+        });
+    });
+</script>
 </body>
 </html>
