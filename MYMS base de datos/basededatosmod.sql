@@ -37,18 +37,17 @@ INSERT INTO `MYMS`.`Productos` (`Codigo`, `Nombre`, `Descripcion`, `imagen`, `Pr
 (6, 'Chocolate Chip Cookie', 'Clasica galleta de azucar con trozos de chocolate ', 'imagenes/galletas/7.png', '15', '50', 'Disponible', 'Clasica galleta de azucar con trozos de chocolate, con un toque de crema batida y cereza en la parte superior.'),
 (7, 'Pink Sugar Cookie', 'Galleta de azucar y almendras', 'imagenes/galletas/8.png', '15', '50', 'Disponible', 'Galleta de azucar y almendras, con un toque de crema batida y cereza en la parte superior.'),
 (8, 'Oreo Bliss', 'Croissant cubierto con chocolate blanco y galleta Oreo', 'imagenes/galletas/10.png', '15', '50', 'Disponible', 'Croissant cubierto con chocolate blanco y galleta Oreo, con un toque de crema batida y cereza en la parte superior.'),
-(9, 'Caramel Crunch', 'Relleno con salsa de caramelo y nueces', 'imagenes/galletas/11.png', '15', '50', 'Disponible', 'Croissant cubierto de dulce de leche con almendras, nueces y avena, relleno con salsa de caramelo y nueces'),
-(10, 'Berry Cream', 'Croissant con frambuesas frescas y crema', 'imagenes/galletas/12.png', '15', '50', 'Disponible','Croissant cubierto de leche condensada, frambuesas y avena, relleno de crema en base a fresas'),
-(11, 'Tropical Choco', 'Chocolate combinado con rodajas de kiwi y platano', 'imagenes/galletas/13.png', '15', '50', 'Disponible', 'Croissant cubierto de chocolate liquido con trozos de kiwi y banana, relleno de '),
-
-(9, 'Strawberry Lovers', 'Fresas frescas en cobertura de chocolate', 'imagenes/galletas/14.png', '15', '50', 'Disponible', 'Fresas frescas en cobertura de chocolate, con un toque de crema batida y cereza en la parte superior.'),
-(10, 'Pistachio Dream', 'Crema de pistacho y pistachos sobre un croissant', 'imagenes/galletas/15.png', '15', '50', 'Disponible', 'Crema de pistacho y pistachos sobre un croissant, con un toque de crema batida y cereza en la parte superior.'),
-(11, 'Coffee Crush', 'Frappe de cafe con crema batida y salsa de caramelo', 'imagenes/galletas/17.png', '15', '50', 'Disponible', 'Frappe de cafe con crema batida y salsa de caramelo, con un toque de crema batida y cereza en la parte superior.'),
-(12, 'Caramel Vibes', 'Cafe helado con caramelo y crema batida.', 'imagenes/galletas/18.png', '15', '50', 'Disponible', 'Cafe helado con caramelo y crema batida, con un toque de crema batida y cereza en la parte superior.'),
-(13, 'Berry Kiss', 'Batido de fresa con crema', 'imagenes/galletas/19.png', '15', '50', 'Disponible', 'Batido de fresa con crema, con un toque de crema batida y cereza en la parte superior.'),
-(14, 'Cookies & Cream', 'Galletas Oreo trituradas y una base cremosa', 'imagenes/galletas/20.png', '15', '50', 'Disponible', 'Galletas Oreo trituradas y una base cremosa, con un toque de crema batida y cereza en la parte superior.'),
-(15, 'Matcha Mood', 'Leche fria, hielo y autentico matcha.', 'imagenes/galletas/21.png', '15', '50', 'Disponible', 'Leche fria, hielo y autentico matcha, con un toque de crema batida y cereza en la parte superior.'),
-(16, 'Choco Latte Ice', 'Chocolate, cafe y leche fria sobre hielo', 'imagenes/galletas/22.png', '15', '50', 'Disponible', 'Chocolate, cafe y leche fria sobre hielo, con un toque de crema batida y cereza en la parte superior.');
+(9, 'Caramel Crunch', 'Relleno con salsa de caramelo y nueces', 'imagenes/galletas/11.png', '15', '50', 'Disponible', 'Croissant cubierto de dulce de leche con almendras, nueces y avena, relleno con salsa de caramelo y nueces.'),
+(10, 'Berry Cream', 'Croissant con frambuesas frescas y crema', 'imagenes/galletas/12.png', '15', '50', 'Disponible','Croissant cubierto de leche condensada, frambuesas y avena, relleno de crema en base a fresas.'),
+(11, 'Tropical Choco', 'Chocolate combinado con rodajas de kiwi y platano', 'imagenes/galletas/13.png', '15', '50', 'Disponible', 'Croissant cubierto de chocolate liquido con trozos de kiwi y banana, relleno de compota de frutas tropicales.'),
+(12, 'Strawberry Lovers', 'Fresas frescas en cobertura de chocolate', 'imagenes/galletas/14.png', '15', '50', 'Disponible', 'Fresas frescas en cobertura de chocolate, con un toque de crema batida y cereza en la parte superior.'),
+(13, 'Pistachio Dream', 'Crema de pistacho y pistachos sobre un croissant', 'imagenes/galletas/15.png', '15', '50', 'Disponible', 'Crema de pistacho y pistachos sobre un croissant, con un toque de crema batida y cereza en la parte superior.'),
+(14, 'Coffee Crush', 'Frappe de cafe con crema batida y salsa de caramelo', 'imagenes/galletas/17.png', '15', '50', 'Disponible', 'Frappe de cafe con crema batida y salsa de caramelo, con un toque de crema batida y cereza en la parte superior.'),
+(15, 'Caramel Vibes', 'Cafe helado con caramelo y crema batida.', 'imagenes/galletas/18.png', '15', '50', 'Disponible', 'Cafe helado con caramelo y crema batida, con un toque de crema batida y cereza en la parte superior.'),
+(16, 'Berry Kiss', 'Batido de fresa con crema', 'imagenes/galletas/19.png', '15', '50', 'Disponible', 'Batido de fresa con crema, decorado con trozos de frutilla, y almendra dentro una cobertura de crema helada y una frutilla en la parte superior.'),
+(17, 'Cookies & Cream', 'Galletas Oreo trituradas y una base cremosa', 'imagenes/galletas/20.png', '15', '50', 'Disponible', 'Galletas Oreo trituradas y una base cremosa, con un toque de crema batida y cereza en la parte superior.'),
+(18, 'Matcha Mood', 'Leche fria, hielo y autentico matcha.', 'imagenes/galletas/21.png', '15', '50', 'Disponible', 'Leche fria, hielo y autentico matcha, con un toque de crema batida y cereza en la parte superior.'),
+(19, 'Choco Latte Ice', 'Chocolate, cafe y leche fria sobre hielo', 'imagenes/galletas/22.png', '15', '50', 'Disponible', 'Chocolate, cafe y leche fria sobre hielo, con un toque de crema batida y cereza en la parte superior.');
 
 -- -----------------------------------------------------
 -- Table `MYMS`.`Usuarios`
