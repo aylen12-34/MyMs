@@ -614,209 +614,364 @@ header{
       MODAL COMPRA
 =======================*/
 
-.modal{
+.modal {
+    display: none;
 
-    display:none;
+    position: fixed;
+    top: 0;
+    left: 0;
 
-    position:fixed;
+    width: 100%;
+    height: 100%;
 
-    top:0;
-    left:0;
+    background: rgba(0, 0, 0, 0.65);
 
-    width:100%;
-    height:100%;
+    justify-content: center;
+    align-items: center;
 
-    background:rgba(0,0,0,.6);
-
-    justify-content:center;
-
-    align-items:center;
-
-    z-index:2000;
-
+    z-index: 2000;
 }
 
-.modalContenido{
 
-    width:400px;
+/*======================
+      CONTENIDO MODAL
+=======================*/
 
-    background:#EFE2DA;
+.modalContenido {
+    width: 420px;
+    max-width: 90%;
 
-    padding:25px;
+    background: #EFE2DA;
 
-    border-radius:12px;
+    padding: 30px;
 
-    display:flex;
+    border-radius: 22px;
 
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 
-    gap:15px;
+    box-shadow: 0 15px 40px rgba(106, 37, 58, 0.45);
 
+    border: 2px solid #E64B6B;
 }
 
-.modalContenido h2{
 
-    text-align:center;
+/*======================
+      TÍTULO
+=======================*/
 
-    color:#1e3a8a;
+.modalContenido h2 {
+    text-align: center;
 
+    color: #6A253A;
+
+    font-size: 28px;
+
+    margin-bottom: 10px;
 }
+
+
+/*======================
+      FORMULARIO
+=======================*/
+
+.modalContenido form {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+/*======================
+      INPUTS Y SELECT
+=======================*/
 
 .modalContenido input,
-.modalContenido select{
+.modalContenido select {
 
-    padding:12px;
+    width: 100%;
 
-    border:1px solid #ccc;
+    padding: 13px 15px;
 
-    border-radius:8px;
+    border: 2px solid rgba(106, 37, 58, 0.25);
 
-    font-size:16px;
+    border-radius: 12px;
 
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.75);
+
+    color: #6A253A;
+
+    font-size: 16px;
+
+    transition: 0.3s;
 }
 
-.botonesModal{
 
-    display:flex;
+/* CUANDO SE SELECCIONA */
 
-    gap:10px;
+.modalContenido input:focus,
+.modalContenido select:focus {
 
+    border-color: #E64B6B;
+
+    box-shadow: 0 0 0 4px rgba(230, 75, 107, 0.15);
 }
 
-.botonesModal button{
 
-    flex:1;
+/* PLACEHOLDER */
 
-    padding:12px;
+.modalContenido input::placeholder {
 
-    border:none;
-
-    border-radius:8px;
-
-    color:white;
-
-    cursor:pointer;
-
+    color: rgba(106, 37, 58, 0.55);
 }
 
-#confirmarPedido{
 
-    background:#16a34a;
+/*======================
+      BOTONES
+=======================*/
 
+.botonesModal {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 5px;
 }
 
-#cancelarCompra{
 
-    background:#ef4444;
+.botonesModal button {
 
+    flex: 1;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    color: #EFE2DA;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
 }
-/* ==========================
+
+
+/* CONFIRMAR */
+
+#confirmarPedido {
+
+    background: #6A253A;
+}
+
+
+#confirmarPedido:hover {
+
+    background: #E64B6B;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 15px rgba(230, 75, 107, 0.3);
+}
+
+
+/* CANCELAR */
+
+#cancelarCompra {
+
+    background: #E64B6B;
+}
+
+
+#cancelarCompra:hover {
+
+    background: #6A253A;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 15px rgba(106, 37, 58, 0.3);
+}
+
+
+/*==========================
    FORMULARIO GENERAR PEDIDO
-========================== */
+==========================*/
 
-.formularioPedido{
+.formularioPedido {
 
-    width: 400px;
+    width: 420px;
+
+    max-width: 90%;
 
     margin: 50px auto;
 
     padding: 30px;
 
-    background: rgba(255,255,255,0.65);
+    background: rgba(239, 226, 218, 0.96);
+
+    border-radius: 22px;
+
+    border: 2px solid #E64B6B;
+
+    box-shadow:
+        0 15px 40px rgba(106, 37, 58, 0.30);
 
     backdrop-filter: blur(12px);
 
-    border-radius: 20px;
+    display: flex;
 
-    box-shadow:
-    0 10px 30px rgba(0,0,0,0.25);
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+
+/*======================
+      TÍTULO
+=======================*/
+
+.formularioPedido h2 {
+
+    text-align: center;
+
+    color: #6A253A;
+
+    font-size: 28px;
+
+    margin-bottom: 10px;
+}
+
+
+/*======================
+      LABEL
+=======================*/
+
+.formularioPedido label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-weight: bold;
+
+    color: #6A253A;
 
 }
 
 
-/* TITULO */
-
-body h2{
-
-    text-align:center;
-
-    color:rgba(255,255,255,0.65);
-
-}
-
-
-/* LABEL */
-
-.formularioPedido label{
-
-    display:block;
-
-    margin-bottom:8px;
-
-    font-weight:bold;
-
-    color:#444;
-
-}
-
-
-/* INPUTS */
+/*======================
+      INPUTS
+=======================*/
 
 .formularioPedido input,
-.formularioPedido select{
+.formularioPedido select {
 
+    width: 100%;
 
-    width:100%;
+    padding: 13px 15px;
 
-    padding:12px;
+    margin-bottom: 12px;
 
-    margin-bottom:15px;
+    border: 2px solid rgba(106, 37, 58, 0.25);
 
-    border:none;
+    border-radius: 12px;
 
-    border-radius:10px;
+    outline: none;
 
-    background:rgba(255,255,255,0.8);
+    background: rgba(255, 255, 255, 0.75);
 
-    box-shadow:
-    inset 0 2px 5px rgba(0,0,0,0.1);
+    color: #6A253A;
 
-    font-size:15px;
+    font-size: 16px;
 
+    transition: 0.3s;
 }
 
 
-/* BOTON */
+/* INPUT SELECCIONADO */
 
-.formularioPedido button{
+.formularioPedido input:focus,
+.formularioPedido select:focus {
 
+    border-color: #E64B6B;
 
-    width:100%;
-
-    padding:12px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:#2196f3;
-
-    color:white;
-
-    font-size:16px;
-
-    cursor:pointer;
-
-
+    box-shadow: 0 0 0 4px rgba(230, 75, 107, 0.15);
 }
 
 
-.formularioPedido button:hover{
+/*======================
+      BOTÓN
+=======================*/
+
+.formularioPedido button {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #6A253A;
+
+    color: #EFE2DA;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    margin-top: 5px;
+}
 
 
-    transform:scale(1.03);
+.formularioPedido button:hover {
 
-    transition:0.3s;
+    background: #E64B6B;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 18px rgba(230, 75, 107, 0.3);
+}
+
+
+/*======================
+      RESPONSIVE
+=======================*/
+
+@media (max-width: 768px) {
+
+    .modalContenido,
+    .formularioPedido {
+
+        width: 90%;
+
+        padding: 25px;
+    }
+
+    .botonesModal {
+
+        flex-direction: column;
+    }
 
 }
 /*======================
