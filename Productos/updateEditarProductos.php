@@ -111,10 +111,11 @@ if ($conexion->connect_error) {
 $Codigo=$_POST['Codigo'];
 $Nombre=$_POST['Nombre'];
 $Descripcion=$_POST['Descripcion'];
+$Detallado=$_POST['Detallado'];
 $Precio=$_POST['Precio'];
 $Stock=$_POST['Stock'];
 $Estado=$_POST['Estado'];
-$sql="UPDATE Productos SET Codigo=$Codigo, Nombre='$Nombre', Descripcion='$Descripcion', Precio='$Precio', Stock='$Stock', Estado='$Estado' WHERE Codigo=$Codigo";
+$sql="UPDATE Productos SET Codigo=$Codigo, Nombre='$Nombre', Descripcion='$Descripcion', Precio='$Precio', Stock='$Stock', Estado='$Estado',Detallado='$Detallado' WHERE Codigo=$Codigo";
 if ($conexion->query($sql) === TRUE) {
     echo "Se edito el producto correctamente";
 } else {

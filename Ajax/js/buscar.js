@@ -24,6 +24,7 @@ function buscarProducto(){
                     <div class="precioDescripcion">
                         <h2>Bs ${producto.Precio}</h2>
                         <p>${producto.Descripcion}</p>
+                        <p>${producto.Detallado}</p>
                     </div>
                 </div>
             </div>

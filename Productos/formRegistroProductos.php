@@ -195,8 +195,12 @@ if($_SESSION['CI']==null){
             <input type="text" id="Nombre" name="Nombre">
             <br><br>
 
-            <label for="Descripcion">Descripción:</label>
+            <label for="Descripcion">Descripción publica:</label>
             <input type="text" id="Descripcion" name="Descripcion">
+            <br><br>
+
+            <label for="Detallado">Descripción detallada:</label>
+            <input type="text" id="Detallado" name="Detallado">
             <br><br>
 
             <label for="imagen">Producto</label>
@@ -222,6 +226,7 @@ if($_SESSION['CI']==null){
     var codigo = document.getElementById("Codigo");
     var nombre = document.getElementById("Nombre");
     var descripcion = document.getElementById("Descripcion");
+    var detallado = document.getElementById("Detallado");
     var precio = document.getElementById("Precio");
     var stock = document.getElementById("Stock");
 
@@ -366,7 +371,33 @@ if($_SESSION['CI']==null){
             descripcion.focus();
             return false;
         }
+if (detallado.value == "") {
+            Swal.fire({
+        title: 'Alerta',
+        background: '#e65c78',
+        color: '#EFE2DA',
+        imageUrl: '../imagenes/galletapro.png',
+        imageHeight: 150,
+        imageAlt: 'Icono personalizado',
+        confirmButtonText: 'OK',
+    confirmButtonColor: '#6A253A',
+        text: '⚠ Ingrese la descripción detallada ⚠',
+    didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
 
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
+detallado.focus();
+            return false;
+        }
         if (precio.value == "") {
             Swal.fire({
         title: 'Alerta',
@@ -391,6 +422,7 @@ if($_SESSION['CI']==null){
         }
     }
 });
+
             precio.focus();
             return false;
         }

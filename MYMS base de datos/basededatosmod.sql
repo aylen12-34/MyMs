@@ -21,32 +21,30 @@ CREATE TABLE IF NOT EXISTS `MYMS`.`Productos` (
   `Precio` VARCHAR(45) NULL DEFAULT NULL,
   `Stock` VARCHAR(45) NULL DEFAULT NULL,
   `Estado` VARCHAR(45) NULL DEFAULT NULL,
+  `Detallado` VARCHAR(1000) NULL DEFAULT NULL,
   PRIMARY KEY (`Codigo`))
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- datos de la tabla Productos
 -- -----------------------------------------------------
-INSERT INTO `MYMS`.`Productos` (`Codigo`, `Nombre`, `Descripcion`, `imagen`, `Precio`, `Stock`, `Estado`) VALUES
-(1, 'Root Beer Float Cookie', 'Galleta marmoleada de vainilla y cerveza de raiz', 'imagenes/galletas/1.png', '15', '50', 'Disponible'),
-(2, 'Peanut Butter Cup Cookie ft. REESEs', 'Galleta de mantequilla de mani', 'imagenes/galletas/1,5.png', '15', '50', 'Disponible'),
-(3, 'Everything But The Dad Jokes Cookie', 'Galleta de caramelo y chips de mantequilla de mani', 'imagenes/galletas/3.png', '15', '50', 'Disponible'),
-(4, 'Cookies & Cream Grill-It Cookie', 'Galleta y crema hecha en sarten', 'imagenes/galletas/4.png', '15', '50', 'Disponible'),
-(5, 'Dubai-Style Chocolate Cheesecake', 'Tarta de queso con chocolate ', 'imagenes/galletas/6.png', '15', '50', 'Disponible'),
-(6, 'Chocolate Chip Cookie', 'Clasica galleta de azucar con trozos de chocolate ', 'imagenes/galletas/7.png', '15', '50', 'Disponible'),
-(7, 'Pink Sugar Cookie', 'Galleta de azucar y almendras', 'imagenes/galletas/8.png', '15', '50', 'Disponible'),
-(8, 'Oreo Bliss', 'Croissant cubierto con chocolate blanco y galleta Oreo', 'imagenes/galletas/10.png', '15', '50', 'Disponible'),
-(9, 'Caramel Crunch', 'Relleno con salsa de caramelo y nueces', 'imagenes/galletas/11.png', '15', '50', 'Disponible'),
-(10, 'Berry Cream', 'Croissant con frambuesas frescas y crema', 'imagenes/galletas/12.png', '15', '50', 'Disponible'),
-(11, 'Tropical Choco', 'Chocolate combinado con rodajas de kiwi y platano', 'imagenes/galletas/13.png', '15', '50', 'Disponible'),
-(12, 'Strawberry Lovers', 'Fresas frescas en cobertura de chocolate', 'imagenes/galletas/14.png', '15', '50', 'Disponible'),
-(13, 'Pistachio Dream', 'Crema de pistacho y pistachos sobre un croissant', 'imagenes/galletas/15.png', '15', '50', 'Disponible'),
-(14, 'Coffee Crush', 'Frappe de cafe con crema batida y salsa de caramelo', 'imagenes/galletas/17.png', '15', '50', 'Disponible'),
-(15, 'Caramel Vibes', 'Cafe helado con caramelo y crema batida.', 'imagenes/galletas/18.png', '15', '50', 'Disponible'),
-(16, 'Berry Kiss', 'Batido de fresa con crema', 'imagenes/galletas/19.png', '15', '50', 'Disponible'),
-(17, 'Cookies & Cream', 'Galletas Oreo trituradas y una base cremosa', 'imagenes/galletas/20.png', '15', '50', 'Disponible'),
-(18, 'Matcha Mood', 'Leche fria, hielo y autentico matcha.', 'imagenes/galletas/21.png', '15', '50', 'Disponible'),
-(19, 'Choco Latte Ice', 'Chocolate, cafe y leche fria sobre hielo', 'imagenes/galletas/22.png', '15', '50', 'Disponible');
+INSERT INTO `MYMS`.`Productos` (`Codigo`, `Nombre`, `Descripcion`, `imagen`, `Precio`, `Stock`, `Estado`, `Detallado`) VALUES
+(1, 'Root Beer Float Cookie', 'Galleta marmoleada de vainilla y cerveza de raiz', 'imagenes/galletas/1.png', '15', '50', 'Disponible', 'Galleta marmoleada de vainilla y cerveza de raiz, con un toque de crema batida y cereza en la parte superior.'),
+(2, 'Peanut Butter Cup Cookie ft. REESEs', 'Galleta de mantequilla de mani', 'imagenes/galletas/1,5.png', '15', '50', 'Disponible', 'Galleta de mantequilla de mani, con un toque de crema batida y cereza en la parte superior.'),
+(3, 'Everything But The Dad Jokes Cookie', 'Galleta de caramelo y chips de mantequilla de mani', 'imagenes/galletas/3.png', '15', '50', 'Disponible', 'Galleta de caramelo y chips de mantequilla de mani, con un toque de crema batida y cereza en la parte superior.'),
+(4, 'Cookies & Cream Grill-It Cookie', 'Galleta y crema hecha en sarten', 'imagenes/galletas/4.png', '15', '50', 'Disponible', 'Galleta y crema hecha en sarten, con un toque de crema batida y cereza en la parte superior.'),
+(5, 'Dubai-Style Chocolate Cheesecake', 'Tarta de queso con chocolate ', 'imagenes/galletas/6.png', '15', '50', 'Disponible', 'Tarta de queso con chocolate, con un toque de crema batida y cereza en la parte superior.'),
+(6, 'Chocolate Chip Cookie', 'Clasica galleta de azucar con trozos de chocolate ', 'imagenes/galletas/7.png', '15', '50', 'Disponible', 'Clasica galleta de azucar con trozos de chocolate, con un toque de crema batida y cereza en la parte superior.'),
+(7, 'Pink Sugar Cookie', 'Galleta de azucar y almendras', 'imagenes/galletas/8.png', '15', '50', 'Disponible', 'Galleta de azucar y almendras, con un toque de crema batida y cereza en la parte superior.'),
+(8, 'Oreo Bliss', 'Croissant cubierto con chocolate blanco y galleta Oreo', 'imagenes/galletas/10.png', '15', '50', 'Disponible', 'Croissant cubierto con chocolate blanco y galleta Oreo, con un toque de crema batida y cereza en la parte superior.'),
+(9, 'Strawberry Lovers', 'Fresas frescas en cobertura de chocolate', 'imagenes/galletas/14.png', '15', '50', 'Disponible', 'Fresas frescas en cobertura de chocolate, con un toque de crema batida y cereza en la parte superior.'),
+(10, 'Pistachio Dream', 'Crema de pistacho y pistachos sobre un croissant', 'imagenes/galletas/15.png', '15', '50', 'Disponible', 'Crema de pistacho y pistachos sobre un croissant, con un toque de crema batida y cereza en la parte superior.'),
+(11, 'Coffee Crush', 'Frappe de cafe con crema batida y salsa de caramelo', 'imagenes/galletas/17.png', '15', '50', 'Disponible', 'Frappe de cafe con crema batida y salsa de caramelo, con un toque de crema batida y cereza en la parte superior.'),
+(12, 'Caramel Vibes', 'Cafe helado con caramelo y crema batida.', 'imagenes/galletas/18.png', '15', '50', 'Disponible', 'Cafe helado con caramelo y crema batida, con un toque de crema batida y cereza en la parte superior.'),
+(13, 'Berry Kiss', 'Batido de fresa con crema', 'imagenes/galletas/19.png', '15', '50', 'Disponible', 'Batido de fresa con crema, con un toque de crema batida y cereza en la parte superior.'),
+(14, 'Cookies & Cream', 'Galletas Oreo trituradas y una base cremosa', 'imagenes/galletas/20.png', '15', '50', 'Disponible', 'Galletas Oreo trituradas y una base cremosa, con un toque de crema batida y cereza en la parte superior.'),
+(15, 'Matcha Mood', 'Leche fria, hielo y autentico matcha.', 'imagenes/galletas/21.png', '15', '50', 'Disponible', 'Leche fria, hielo y autentico matcha, con un toque de crema batida y cereza en la parte superior.'),
+(16, 'Choco Latte Ice', 'Chocolate, cafe y leche fria sobre hielo', 'imagenes/galletas/22.png', '15', '50', 'Disponible', 'Chocolate, cafe y leche fria sobre hielo, con un toque de crema batida y cereza en la parte superior.');
 
 -- -----------------------------------------------------
 -- Table `MYMS`.`Usuarios`
@@ -145,7 +143,6 @@ INSERT INTO `MYMS`.`Carrito` (`Productos_Codigo`, `Pedidos_ID`, `Cantidad`, `Cos
 (14, 2, 2, 30),
 (5, 3, 1, 15),
 (10, 3, 2, 30),
-(18, 3, 1, 15),
 (4, 4, 4, 60),
 (3, 5, 2, 30),
 (7, 5, 2, 30),
@@ -156,8 +153,6 @@ INSERT INTO `MYMS`.`Carrito` (`Productos_Codigo`, `Pedidos_ID`, `Cantidad`, `Cos
 (13, 7, 1, 15),
 (15, 8, 3, 45),
 (16, 8, 2, 30),
-(17, 9, 1, 15),
-(19, 9, 4, 60),
 (6, 10, 5, 75),
 (1, 11, 1, 15),
 (2, 11, 1, 15),
@@ -165,7 +160,6 @@ INSERT INTO `MYMS`.`Carrito` (`Productos_Codigo`, `Pedidos_ID`, `Cantidad`, `Cos
 (5, 12, 2, 30),
 (15, 12, 2, 30),
 (8, 13, 3, 45),
-(18, 13, 2, 30),
 (10, 14, 1, 15),
 (12, 14, 1, 15),
 (16, 14, 2, 30),
@@ -174,9 +168,7 @@ INSERT INTO `MYMS`.`Carrito` (`Productos_Codigo`, `Pedidos_ID`, `Cantidad`, `Cos
 (9, 17, 1, 15),
 (13, 17, 2, 30),
 (14, 18, 3, 45),
-(19, 18, 1, 15),
 (2, 19, 2, 30),
-(17, 19, 2, 30),
 (3, 20, 1, 15),
 (6, 20, 2, 30),
 (11, 20, 1, 15);
