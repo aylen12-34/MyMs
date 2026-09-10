@@ -175,12 +175,25 @@ h3 {
 
 /* PRODUCTOS */
 
-h3 + p {
-    border-radius: 12px;
-
+.producto-recibo {
+    width: 100%;
+    max-width: 650px;
     margin-bottom: 10px;
-
+    background: #EFE2DA;
+    border-radius: 12px;
     box-shadow: 0 4px 10px rgba(106, 37, 58, 0.12);
+    overflow: hidden;
+}
+
+.producto-recibo p {
+    width: 100%;
+    max-width: none;
+    background: transparent;
+    border: none;
+    padding: 12px 20px;
+    margin: 0;
+    color: #4d1b2b;
+    font-size: 15px;
 }
 
 /* TOTAL */
@@ -620,15 +633,15 @@ $total += $producto["CostoTotal"];
 
 
 echo "
-
-<p>
-".$producto["Nombre"]."
-<br>
-Cantidad: ".$producto["Cantidad"]."
-<br>
-Subtotal: Bs ".$producto["CostoTotal"]."
-</p>
-
+<div class='producto-recibo'>
+    <p>
+        ".$producto["Nombre"]."
+        <br>
+        Cantidad: ".$producto["Cantidad"]."
+        <br>
+        Subtotal: Bs ".$producto["CostoTotal"]."
+    </p>
+</div>
 ";
  /*
     Agregamos cada producto al QR
