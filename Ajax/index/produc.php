@@ -35,11 +35,11 @@ if ($conexion->connect_error) {
     <style>
 
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Chillax-Semibold';
-        }
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Chillax', sans-serif;
+}
 
 
         body {
