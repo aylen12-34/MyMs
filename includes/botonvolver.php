@@ -20,11 +20,14 @@
 
         transition: all 0.2s ease;
         z-index: 9999;
+
+        text-decoration: none;
     }
 
     /* Flecha */
     .btn-volver-esquina::before {
         content: "";
+
         width: 12px;
         height: 12px;
 
@@ -32,12 +35,15 @@
         border-bottom: 3px solid #EFE2DA;
 
         transform: rotate(45deg);
+
         margin-left: 6px;
     }
 
     .btn-volver-esquina:hover {
         background: #6A253A;
+
         transform: scale(1.1);
+
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
     }
 
@@ -46,10 +52,9 @@
     }
 </style>
 
-<button
-    type="button"
+<a 
+    href="racha.php"
     class="btn-volver-esquina"
-    onclick="history.back()"
     aria-label="Volver"
     title="Volver">
-</button>
+</a>
