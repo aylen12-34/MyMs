@@ -128,7 +128,7 @@
 
     <div class="modalContenido">
 
-        <h2>🛍 Finalizar Compra</h2>
+        <h2>𓌉◯𓇋 Finalizar Compra</h2>
     <form action="" onclick="validarCompra()">
 
         <input type="text"
