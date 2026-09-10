@@ -33,7 +33,7 @@
                 type="text"
                 id="textoBuscar"
                 placeholder="Buscar producto...">
-            <button onclick="buscarProducto()">buscar productos</button>
+            <button onclick="buscarProducto()" id="ahj">🔍 Buscar</button>
 
    
 
