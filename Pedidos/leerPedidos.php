@@ -151,6 +151,11 @@ a{
     gap: 10px;
     margin-top: 20px;
 }
+.swal2-popup {
+    background: linear-gradient(135deg, #E64B6B, #6A253A) !important;
+    border: 2px solid #EFE2DA;
+    border-radius: 20px;
+}
 
 @media(max-width:800px){
 
@@ -266,29 +271,46 @@ a{
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     let timerInterval;
-    
-    // 1. Mostrar alerta de bienvenida con temporizador
-   Swal.fire({
-          title: 'Bienvenido Vendedor',
-          html: 'Cargando cantidad <b></b> de pedidos.',
-          timer: 2000,
-          timerProgressBar: true,
-          didOpen: () => {
+
+    Swal.fire({
+        title: 'Bienvenido Vendedor',
+
+        html: 'Cargando cantidad <b></b> de pedidos.',
+
+        timer: 2000,
+
+        timerProgressBar: true,
+
+        background: '#E64B6B',
+
+        color: '#EFE2DA',
+
+        confirmButtonColor: '#6A253A',
+
+        didOpen: () => {
+
             Swal.showLoading();
+
             const timer = Swal.getPopup().querySelector('b');
+
             timerInterval = setInterval(() => {
-              timer.textContent = Swal.getTimerLeft();
+                timer.textContent = Swal.getTimerLeft();
             }, 100);
-          },
-          willClose: () => {
+        },
+
+        willClose: () => {
             clearInterval(timerInterval);
-          }
-        }).then((result) => {
-          if (result.dismiss === Swal.DismissReason.timer) {
+        }
+
+    }).then((result) => {
+
+        if (result.dismiss === Swal.DismissReason.timer) {
             console.log('Alerta cerrada correctamente');
-          }
-        });
+        }
+
     });
+
+});
 </script>
 </body>
 </html>
