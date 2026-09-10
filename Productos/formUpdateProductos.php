@@ -208,7 +208,7 @@ if ($resultado->num_rows > 0) {
         <label for="Estado">Estado</label>
         <select name="Estado">
                 <option value="Disponible">Disponible</option>
-                <option value="Desactivo">qlopongaelmathy</option>
+                <option value="Desactivo">Fuera de catalogo</option>
             </select> <br> <br>
         <input type="submit" value="Editar">
     </form>

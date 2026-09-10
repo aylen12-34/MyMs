@@ -141,13 +141,68 @@ while ($row = $res_top->fetch_assoc()) {
             font-weight: bold; 
             font-size: 12px; 
         }
-        
+        /* ==========================
+   FLECHA PARA ANTERIOR REPORTE
+========================== */
+
+.flecha-anterior {
+    position: fixed;
+
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #E64B6B;
+    color: #EFE2DA;
+
+    border: 3px solid #EFE2DA;
+    border-radius: 50%;
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+
+    box-shadow: 0 4px 12px rgba(106, 37, 58, 0.35);
+
+    z-index: 100;
+
+    transition: 
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.flecha-anterior:hover {
+    background: #6A253A;
+
+    transform: translateY(-50%) scale(1.1);
+
+    box-shadow: 
+        0 0 10px rgba(230, 75, 107, 0.5),
+        0 5px 15px rgba(106, 37, 58, 0.4);
+}
+
+.flecha-anterior:active {
+    transform: translateY(-50%) scale(0.95);
+}
     </style>
 </head>
 <body>
 <?php
  include ("includes/botonvolver.php"); 
 ?>
+<a href="reportclient.php" class="flecha-anterior">
+    ⇠
+</a>
 <div class="card">
     <h2>Top 3 Productos Más Vendidos</h2>
 

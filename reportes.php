@@ -392,7 +392,7 @@ select:focus {
 ?>
 
 <a href="reportclient.php" class="flecha-siguiente">
-    ›
+    ⇢
 </a>
 <div class="card">
     <h2>Reporte de Ventas</h2>

@@ -54,6 +54,7 @@
         <h2 class="titulo">
             Productos Disponibles
         </h2>
+         <?php include("../../menu.php"); ?>
 <div id="productosbusqueda">
 
 
