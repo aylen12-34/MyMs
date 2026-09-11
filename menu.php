@@ -419,44 +419,48 @@
     <main>
         <div class="contenedor-acordeon">
         
-    <div class="tarjeta-acordeon active" onclick="seleccionar(this)" style="background-image: url('../../imagenes/galletas/1.png');">
+    <div class="tarjeta-acordeon active" onclick="seleccionar(this)" style="background-image: url('../../imagenes/categoria/1.png');">
         <div class="icono"><i class="fa-solid fa-seedling"></i></div>
         <div class="contenido">
             <h3>Galletas</h3>
             <li>
-                <ol>galleta 1</ol>
-                <ol>galleta 2</ol>
-                <ol>galleta 3</ol>
-                <ol>galleta 4</ol>
-                <ol>galleta 5</ol>
+                <ol>Root Beer Float Cookie</ol>
+                <ol>Peanut Butter Cup Cookie ft. REESEs</ol>
+                <ol>Everything But The Dad Jokes Cookie</ol>
+                <ol>Cookies & Cream Grill-It Cookie</ol>
+                <ol>Dubai-Style Chocolate Cheesecake</ol>
+                <ol>Chocolate Chip Cookie</ol>
+                <ol>Pink Sugar Cookie</ol>
             </li>
         </div>
     </div>
 
-    <div class="tarjeta-acordeon" onclick="seleccionar(this)" style="background-image: url('../../imagenes/galletas/10.png');">
+    <div class="tarjeta-acordeon" onclick="seleccionar(this)" style="background-image: url('../../imagenes/categoria/3.png');">
         <div class="icono"><i class="fa-solid fa-moon"></i></div>
         <div class="contenido">
             <h3>Croasants</h3>
             <li>
-                <ol>Croissant 1</ol>
-                <ol>Croissant 2</ol>
-                <ol>Croissant 3</ol>
-                <ol>Croissant 4</ol>
-                <ol>Croissant 5</ol>
+                <ol>Oreo Bliss</ol>
+                <ol>Caramel Crunch</ol>
+                <ol>Berry Cream</ol>
+                <ol>Tropical Choco</ol>
+                <ol>Strawberry Lovers</ol>
+                <ol>Pistachio Dream</ol>
             </li>
         </div>
     </div>
 
-    <div class="tarjeta-acordeon" onclick="seleccionar(this)" style="background-image: url('../../imagenes/galletas/17.png');">
+    <div class="tarjeta-acordeon" onclick="seleccionar(this)" style="background-image: url('../../imagenes/categoria/2.png');">
         <div class="icono"><i class="fa-solid fa-leaf"></i></div>
         <div class="contenido">
             <h3>Bebidas frias</h3>
             <li>
-                <ol>Frappe 1</ol>
-                <ol>Frappe 2</ol>
-                <ol>Frappe 3</ol>
-                <ol>Frappe 4</ol>
-                <ol>Frappe 5</ol>
+                <ol>Coffee Crush</ol>
+                <ol>Caramel Vibes</ol>
+                <ol>Berry Kiss</ol>
+                <ol>Cookies & Cream</ol>
+                <ol>Matcha Mood</ol>
+                <ol>Choco Latte Ice</ol>
             </li>
         </div>
     </div>

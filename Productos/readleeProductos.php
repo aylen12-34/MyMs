@@ -166,6 +166,11 @@ $alertaSinStock = false;
                 text-align: center;
             }
         }
+        .swal2-popup {
+    background: linear-gradient(135deg, #E64B6B, #6A253A) !important;
+    border: 2px solid #EFE2DA;
+    border-radius: 20px;
+}
     </style>
 </head>
 <body>
@@ -234,6 +239,48 @@ $alertaSinStock = false;
 
 <!-- Scripts de Alertas -->
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    let timerInterval;
+
+    Swal.fire({
+        title: 'Bienvenido Vendedor',
+
+        html: 'Cargando cantidad <b></b> de productos.',
+
+        timer: 2000,
+
+        timerProgressBar: true,
+
+        background: '#E64B6B',
+
+        color: '#EFE2DA',
+
+        confirmButtonColor: '#6A253A',
+
+        didOpen: () => {
+
+            Swal.showLoading();
+
+            const timer = Swal.getPopup().querySelector('b');
+
+            timerInterval = setInterval(() => {
+                timer.textContent = Swal.getTimerLeft();
+            }, 100);
+        },
+
+        willClose: () => {
+            clearInterval(timerInterval);
+        }
+
+    }).then((result) => {
+
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log('Alerta cerrada correctamente');
+        }
+
+    });
+
+});
 document.addEventListener("DOMContentLoaded", function() {
     let timerInterval;
     
