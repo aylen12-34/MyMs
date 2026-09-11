@@ -1,18 +1,83 @@
+<?php
+
+// ==========================
+// CONEXIÓN A LA BASE DE DATOS
+// ==========================
+
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "MYMS";
+
+$conn = new mysqli($host, $user, $pass, $db);
+
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+
+// ==========================
+// CONSULTAR PRECIO Y DETALLADO
+// ==========================
+
+if (isset($_GET['codigo'])) {
+
+    $codigo = intval($_GET['codigo']);
+
+    $consulta = $conn->query(
+        "SELECT Precio, Detallado
+         FROM Productos
+         WHERE Codigo = $codigo"
+    );
+
+    if ($consulta && $producto = $consulta->fetch_assoc()) {
+
+        header('Content-Type: application/json; charset=utf-8');
+
+        echo json_encode([
+            "Precio" => $producto["Precio"],
+            "Detallado" => $producto["Detallado"]
+        ]);
+
+    } else {
+
+        header('Content-Type: application/json; charset=utf-8');
+
+        echo json_encode([
+            "Precio" => "No disponible",
+            "Detallado" => "No hay información detallada para este producto."
+        ]);
+    }
+
+    exit;
+}
+
+?>
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>M&M's</title>
+    <meta charset="UTF-8">
 
-<link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>M&M's</title>
+
+    <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 
 <style>
+
+
 /* ==========================
    COLORES
    morado: #6A253A
@@ -20,12 +85,19 @@
    crema:  #EFE2DA
 ========================== */
 
+
 *{
+
     margin:0;
+
     padding:0;
+
     box-sizing:border-box;
+
     font-family:'Chillax-Semibold';
+
 }
+
 
 body{
 
@@ -39,7 +111,9 @@ body{
     grid-template-rows:350px auto 200px;
 
     min-height:100vh;
+
 }
+
 
 /* ==========================
    MAIN
@@ -50,13 +124,19 @@ main{
     grid-area:main;
 
     padding:60px 40px;
-    background-image: url("imagenes/2.png");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+
+    background-image:url("imagenes/2.png");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-attachment:fixed;
+
+    background-repeat:no-repeat;
 
 }
+
 
 /* ==========================
    HERO
@@ -69,7 +149,9 @@ main{
     max-width:900px;
 
     margin:0 auto 100px auto;
+
 }
+
 
 #hero h1{
 
@@ -78,7 +160,9 @@ main{
     color:#6A253A;
 
     margin-bottom:20px;
+
 }
+
 
 #hero p{
 
@@ -91,7 +175,9 @@ main{
     color:#555;
 
     line-height:1.8;
+
 }
+
 
 #n{
 
@@ -102,7 +188,9 @@ main{
     font-size:50px;
 
     margin-bottom:80px;
+
 }
+
 
 /* ==========================
    PRODUCTOS
@@ -121,12 +209,16 @@ main{
     max-width:1400px;
 
     margin:120px auto;
+
 }
+
 
 .inverso{
 
     flex-direction:row-reverse;
+
 }
+
 
 .prod{
 
@@ -135,26 +227,37 @@ main{
     height:auto;
 
     object-fit:contain;
+
     border-radius:10px;
+
     transition:
     transform .4s ease,
     box-shadow .1s ease;
+
 }
+
 
 .prod:hover{
 
     transform:scale(1.08) rotate(-2deg);
 
     box-shadow:
+
         0 0 30px #ff5b8c,
+
         0 0 60px rgba(106,37,58,.6),
+
         0 0 90px rgba(239,226,218,.9);
+
 }
+
 
 .info{
 
     max-width:500px;
+
 }
+
 
 .etiqueta{
 
@@ -171,7 +274,9 @@ main{
     font-size:14px;
 
     margin-bottom:15px;
+
 }
+
 
 .info h2{
 
@@ -182,7 +287,9 @@ main{
     line-height:1.1;
 
     margin-bottom:20px;
+
 }
+
 
 .info p{
 
@@ -191,7 +298,13 @@ main{
     font-size:18px;
 
     line-height:1.9;
+
 }
+
+
+/* ==========================
+   BOTONES
+========================== */
 
 .btn{
 
@@ -210,37 +323,345 @@ main{
     border-radius:50px;
 
     transition:.3s ease;
+
+    border:none;
+
+    cursor:pointer;
+
 }
+
 
 .btn:hover{
 
     background:#E64B6B;
 
     transform:translateY(-3px);
+
 }
+
+
+/* ==================================================
+   MODAL DEL PRODUCTO
+================================================== */
+
+#modalProducto{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.78);
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:30px;
+
+    z-index:9999;
+
+    backdrop-filter:blur(4px);
+
+}
+
+
+#modalProducto.activo{
+
+    display:flex;
+
+}
+
+
+/* ==========================
+   TARJETA
+========================== */
+
+.tarjeta-modal{
+
+    position:relative;
+
+    width:900px;
+
+    max-width:95%;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:40px;
+
+    padding:45px;
+
+    background:#E64B6B;
+
+    border:4px solid #6A253A;
+
+    border-radius:30px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.55);
+
+    animation:aparecerModal .3s ease;
+
+}
+
+
+@keyframes aparecerModal{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.85);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/* ==========================
+   IMAGEN
+========================== */
+
+#modalImagen{
+
+    width:360px;
+
+    max-height:400px;
+
+    object-fit:contain;
+
+    flex-shrink:0;
+
+}
+
+
+/* ==========================
+   INFORMACIÓN
+========================== */
+
+.modal-info{
+
+    color:#000;
+
+    flex:1;
+
+}
+
+
+#modalEtiqueta{
+
+    display:inline-block;
+
+    background:#6A253A;
+
+    color:#EFE2DA;
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+}
+
+
+#modalNombre{
+
+    color:#000;
+
+    font-size:40px;
+
+    line-height:1.1;
+
+    margin:15px 0 20px 0;
+
+}
+
+
+#modalDescripcion{
+
+    color:#000;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:16px;
+
+    line-height:1.7;
+
+}
+
+
+/* ==========================
+   PRECIO
+========================== */
+
+.modal-precio{
+
+    display:inline-block;
+
+    margin:22px 0;
+
+    padding:12px 20px;
+
+    background:#EFE2DA;
+
+    border:2px solid #6A253A;
+
+    border-radius:15px;
+
+}
+
+
+.modal-precio small{
+
+    display:block;
+
+    color:#6A253A;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:13px;
+
+}
+
+
+#modalPrecio{
+
+    color:#000;
+
+    font-size:27px;
+
+}
+
+
+/* ==========================
+   DETALLADO
+========================== */
+
+.modal-info h3{
+
+    color:#6A253A;
+
+    font-size:24px;
+
+    margin-bottom:10px;
+
+}
+
+
+#modalDetallado{
+
+    background:#EFE2DA;
+
+    color:#000;
+
+    padding:17px;
+
+    border-radius:15px;
+
+    border-left:5px solid #6A253A;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:15px;
+
+    line-height:1.7;
+
+}
+
+
+/* ==========================
+   CERRAR
+========================== */
+
+#cerrarModal{
+
+    position:absolute;
+
+    top:15px;
+
+    right:18px;
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#6A253A;
+
+    color:#EFE2DA;
+
+    font-size:27px;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+
+}
+
+
+#cerrarModal:hover{
+
+    background:#000;
+
+    transform:rotate(90deg);
+
+}
+
 
 /* ==========================
    PEDIDO
 ========================== */
 
 #pedido{
+
     width:1800px;
+
     height:300px;
+
     text-align:center;
 
     margin-top:120px;
 
-    background-image: url("imagenes/galletas/oficial.png");
+    background-image:url("imagenes/galletas/oficial.png");
+
     background-size:cover;
-        background-repeat:no-repeat;
-        background-position:center;
+
+    background-repeat:no-repeat;
+
+    background-position:center;
+
     padding:60px;
 
     border-radius:30px;
 
     box-shadow:
+
     0 10px 30px rgba(0,0,0,.08);
+
 }
+
 
 #pedido h2{
 
@@ -249,7 +670,9 @@ main{
     font-size:40px;
 
     margin-bottom:15px;
+
 }
+
 
 #pedido p{
 
@@ -258,7 +681,9 @@ main{
     font-size:18px;
 
     margin-bottom:20px;
+
 }
+
 
 /* ==========================
    RESPONSIVE
@@ -269,27 +694,37 @@ main{
     body{
 
         grid-template-rows:auto auto auto;
+
     }
+
 
     main{
 
         padding:30px 20px;
+
     }
+
 
     #hero h1{
 
         font-size:42px;
+
     }
+
 
     #hero p{
 
         font-size:18px;
+
     }
+
 
     #n{
 
         font-size:36px;
+
     }
+
 
     .producto,
     .inverso{
@@ -301,216 +736,639 @@ main{
         text-align:center;
 
         margin:80px auto;
+
     }
+
 
     .prod{
 
         width:280px;
+
     }
+
 
     .info h2{
 
         font-size:34px;
+
     }
+
 
     .info p{
 
         font-size:16px;
+
     }
+
 
     #pedido{
 
+        width:100%;
+
+        height:auto;
+
         padding:35px 20px;
+
     }
+
 
     #pedido h2{
 
         font-size:30px;
+
     }
+
+
+    /* MODAL */
+
+    .tarjeta-modal{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        padding:40px 25px;
+
+        gap:20px;
+
+    }
+
+
+    #modalImagen{
+
+        width:260px;
+
+        max-height:260px;
+
+    }
+
+
+    #modalNombre{
+
+        font-size:30px;
+
+    }
+
+
 }
+
+
 </style>
 
 </head>
 
+
 <body>
 
-    <?php include("includes/nav.php"); ?>
 
-    <?php include("includes/header.php"); ?>
+<?php include("includes/nav.php"); ?>
 
-    <main>
 
-        <section id="hero">
+<?php include("includes/header.php"); ?>
 
-            <h1>Especiales De La Semana</h1>
 
-        </section>
-        <section class="producto">
+<main>
 
-            <img src="imagenes/galletas/1.png" class="prod" alt="Tortas y Brownies">
 
-            <div class="info">
+<!-- ==========================
+     HERO
+========================== -->
 
-                <span class="etiqueta">Nuestros favoritos</span>
+<section id="hero">
 
-                <h2>Root Beer Float Cookie</h2>
+    <h1>Especiales De La Semana</h1>
 
-                <p>
-                    Una galleta marmoleada de vainilla y cerveza de raíz, 
-                    coronada con un remolino de mousse cremoso de vainilla 
-                    y cerveza de raíz.
-                </p>
+</section>
 
-                <a href="Ajax/index/index1.php" class="btn">Ver más</a>
 
-            </div>
 
-        </section>
-        <section class="producto inverso">
+<!-- ==========================
+     PRODUCTO 1
+========================== -->
 
-            <img src="imagenes/galletas/1,5.png" class="prod" alt="Bebidas Frías">
+<section class="producto">
 
-            <div class="info">
+    <img
+        src="imagenes/galletas/1.png"
+        class="prod"
+        alt="Tortas y Brownies"
+    >
 
-                <span class="etiqueta">Exquisita</span>
+    <div class="info">
 
-                <h2>Peanut Butter Cup Cookie ft. REESE'S</h2>
+        <span class="etiqueta">
+            Nuestros favoritos
+        </span>
 
-                <p>
-                    Una clásica galleta de mantequilla de cacahuete cubierta 
-                    con trocitos de mantequilla de cacahuete derretida, 
-                    bañada en chocolate con leche fundido y espolvoreada con 
-                    bombones REESE'S
-                </p>
+        <h2>
+            Root Beer Float Cookie
+        </h2>
 
-                <a href="Ajax/index/index1.php" class="btn">Ver más</a>
+        <p>
+            Una galleta marmoleada de vainilla y cerveza de raíz,
+            coronada con un remolino de mousse cremoso de vainilla
+            y cerveza de raíz.
+        </p>
 
-            </div>
+        <a
+            href="#"
+            class="btn btn-ver-mas"
+            data-codigo="1"
+        >
+            Ver más
+        </a>
 
-        </section>
-        <section class="producto">
+    </div>
 
-            <img src="imagenes/galletas/3.png" class="prod" alt="Bebidas Calientes">
+</section>
 
-            <div class="info">
 
-                <span class="etiqueta">Clásicos</span>
 
-                <h2>Everything But The Dad Jokes Cookie</h2>
+<!-- ==========================
+     PRODUCTO 2
+========================== -->
 
-                <p>
-                    Una galleta original repleta de trocitos de caramelo y 
-                    chips de mantequilla de cacahuete, cubierta con una 
-                    capa de mantequilla de cacahuete derretida y patatas 
-                    fritas crujientes recubiertas de mantequilla de cacahuete, 
-                    y terminada con explosiones de más trocitos de caramelo.
-                </p>
+<section class="producto inverso">
 
-                <a href="Ajax/index/index1.php" class="btn">Ver más</a>
+    <img
+        src="imagenes/galletas/1,5.png"
+        class="prod"
+        alt="Bebidas Frías"
+    >
 
-            </div>
+    <div class="info">
 
-        </section>
-        <section class="producto inverso">
+        <span class="etiqueta">
+            Exquisita
+        </span>
 
-            <img src="imagenes/galletas/4.png" class="prod" alt="Masitas">
+        <h2>
+            Peanut Butter Cup Cookie ft. REESE'S
+        </h2>
 
-            <div class="info">
+        <p>
+            Una clásica galleta de mantequilla de cacahuete cubierta
+            con trocitos de mantequilla de cacahuete derretida,
+            bañada en chocolate con leche fundido y espolvoreada
+            con bombones REESE'S
+        </p>
 
-                <span class="etiqueta">Tradicionales</span>
+        <a
+            href="#"
+            class="btn btn-ver-mas"
+            data-codigo="2"
+        >
+            Ver más
+        </a>
 
-                <h2>Cookies & Cream Grill-It Cookie</h2>
+    </div>
 
-                <p>
-                    Una galleta de galleta y crema hecha en sartén, 
-                    cubierta con un remolino de mousse de galleta y crema de chocolate, 
-                    decorada con un diseño de parrilla de chocolate semidulce y ositos 
-                    de goma en un palillo.
-                </p>
+</section>
 
-                <a href="Ajax/index/index1.php" class="btn">Ver más</a>
 
-            </div>
 
-        </section>
-        <section class="producto">
+<!-- ==========================
+     PRODUCTO 3
+========================== -->
 
-            <img src="imagenes/galletas/6.png" class="prod" alt="Bebidas Calientes">
+<section class="producto">
 
-            <div class="info">
+    <img
+        src="imagenes/galletas/3.png"
+        class="prod"
+        alt="Bebidas Calientes"
+    >
 
-                <span class="etiqueta">Clásicos</span>
+    <div class="info">
 
-                <h2>Dubai-Style Chocolate Cheesecake</h2>
+        <span class="etiqueta">
+            Clásicos
+        </span>
 
-                <p>
-                    Una exquisita tarta de queso con chocolate sobre una base de galleta
-                    Graham de chocolate, cubierta con un relleno crujiente de Kataifi y 
-                    pistacho, un chorrito de crema de pistacho y una cucharada de nata montada
-                </p>
+        <h2>
+            Everything But The Dad Jokes Cookie
+        </h2>
 
-                <a href="Ajax/index/index1.php" class="btn">Ver más</a>
+        <p>
+            Una galleta original repleta de trocitos de caramelo y
+            chips de mantequilla de cacahuete, cubierta con una
+            capa de mantequilla de cacahuete derretida y patatas
+            fritas crujientes recubiertas de mantequilla de cacahuete,
+            y terminada con explosiones de más trocitos de caramelo.
+        </p>
 
-            </div>
+        <a
+            href="#"
+            class="btn btn-ver-mas"
+            data-codigo="3"
+        >
+            Ver más
+        </a>
 
-        </section>
-        <section class="producto inverso">
+    </div>
 
-            <img src="imagenes/galletas/7.png" class="prod" alt="Masitas">
+</section>
 
-            <div class="info">
 
-                <span class="etiqueta">Tradicionales</span>
 
-                <h2>Chocolate Chip Cookie</h2>
+<!-- ==========================
+     PRODUCTO 4
+========================== -->
 
-                <p>
-                    Una clásica galleta tibia de azúcar moreno, repleta de trocitos 
-                    de chocolate con leche fundido y trozos de chocolate semidulce 
-                    de alta calidad.
-                </p>
+<section class="producto inverso">
 
-                <a href="Ajax/index/index1.php" class="btn">Ver más</a>
+    <img
+        src="imagenes/galletas/4.png"
+        class="prod"
+        alt="Masitas"
+    >
 
-            </div>
+    <div class="info">
 
-        </section>
-        <section class="producto">
+        <span class="etiqueta">
+            Tradicionales
+        </span>
 
-            <img src="imagenes/galletas/8.png" class="prod" alt="Bebidas Calientes">
+        <h2>
+            Cookies & Cream Grill-It Cookie
+        </h2>
 
-            <div class="info">
+        <p>
+            Una galleta de galleta y crema hecha en sartén,
+            cubierta con un remolino de mousse de galleta y crema
+            de chocolate, decorada con un diseño de parrilla de
+            chocolate semidulce y ositos de goma en un palillo.
+        </p>
 
-                <span class="etiqueta">Clásicos</span>
+        <a
+            href="#"
+            class="btn btn-ver-mas"
+            data-codigo="4"
+        >
+            Ver más
+        </a>
 
-                <h2>Pink Sugar Cookie</h2>
+    </div>
 
-                <p>
-                    Una clásica galleta de azúcar y almendras cubierta con una 
-                    suave capa rosada de glaseado de almendras auténticas.
-                </p>
+</section>
 
-                <a href="Ajax/index/index1.php" class="btn">Ver más</a>
 
-            </div>
 
-        </section>
-        <section id="pedido">
+<!-- ==========================
+     PRODUCTO 5
+========================== -->
 
-            <h2>¿Listo para ordenar?</h2>
+<section class="producto">
 
-            <p>
-                Explora nuestro menú completo y realiza tu pedido de forma rápida
-                y sencilla.
+    <img
+        src="imagenes/galletas/6.png"
+        class="prod"
+        alt="Bebidas Calientes"
+    >
+
+    <div class="info">
+
+        <span class="etiqueta">
+            Clásicos
+        </span>
+
+        <h2>
+            Dubai-Style Chocolate Cheesecake
+        </h2>
+
+        <p>
+            Una exquisita tarta de queso con chocolate sobre una base
+            de galleta Graham de chocolate, cubierta con un relleno
+            crujiente de Kataifi y pistacho, un chorrito de crema de
+            pistacho y una cucharada de nata montada
+        </p>
+
+        <a
+            href="#"
+            class="btn btn-ver-mas"
+            data-codigo="5"
+        >
+            Ver más
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==========================
+     PRODUCTO 6
+========================== -->
+
+<section class="producto inverso">
+
+    <img
+        src="imagenes/galletas/7.png"
+        class="prod"
+        alt="Masitas"
+    >
+
+    <div class="info">
+
+        <span class="etiqueta">
+            Tradicionales
+        </span>
+
+        <h2>
+            Chocolate Chip Cookie
+        </h2>
+
+        <p>
+            Una clásica galleta tibia de azúcar moreno, repleta
+            de trocitos de chocolate con leche fundido y trozos
+            de chocolate semidulce de alta calidad.
+        </p>
+
+        <a
+            href="#"
+            class="btn btn-ver-mas"
+            data-codigo="6"
+        >
+            Ver más
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==========================
+     PRODUCTO 7
+========================== -->
+
+<section class="producto">
+
+    <img
+        src="imagenes/galletas/8.png"
+        class="prod"
+        alt="Bebidas Calientes"
+    >
+
+    <div class="info">
+
+        <span class="etiqueta">
+            Clásicos
+        </span>
+
+        <h2>
+            Pink Sugar Cookie
+        </h2>
+
+        <p>
+            Una clásica galleta de azúcar y almendras cubierta con una
+            suave capa rosada de glaseado de almendras auténticas.
+        </p>
+
+        <a
+            href="#"
+            class="btn btn-ver-mas"
+            data-codigo="7"
+        >
+            Ver más
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==========================
+     PEDIDO
+========================== -->
+
+<section id="pedido">
+
+    <h2>
+        ¿Listo para ordenar?
+    </h2>
+
+    <p>
+        Explora nuestro menú completo y realiza tu pedido de forma rápida
+        y sencilla.
+    </p>
+
+    <a
+        href="Ajax/index/index1.php"
+        class="btn"
+    >
+        Menú y pedidos
+    </a>
+
+</section>
+
+
+</main>
+
+
+<?php include("includes/footer.php"); ?>
+
+
+
+<!-- ==================================================
+     MODAL
+================================================== -->
+
+<div id="modalProducto">
+
+    <div class="tarjeta-modal">
+
+
+        <!-- BOTÓN CERRAR -->
+
+        <button
+            id="cerrarModal"
+            type="button"
+        >
+            ×
+        </button>
+
+
+        <!-- IMAGEN -->
+
+        <img
+            id="modalImagen"
+            src=""
+            alt="Producto"
+        >
+
+
+        <!-- INFORMACIÓN -->
+
+        <div class="modal-info">
+
+
+            <span id="modalEtiqueta">
+                Producto
+            </span>
+
+
+            <h2 id="modalNombre">
+                Producto
+            </h2>
+
+
+            <p id="modalDescripcion">
+                Descripción
             </p>
 
-            <a href="Ajax/index/index1.php" class="btn">Menú y pedidos</a>
 
-        </section>
-        
-    </main>
+            <!-- PRECIO -->
 
-    <?php include("includes/footer.php"); ?>
+            <div class="modal-precio">
+
+                <small>
+                    Precio
+                </small>
+
+                <strong id="modalPrecio">
+                    Cargando...
+                </strong>
+
+            </div>
+
+
+            <!-- DETALLADO -->
+
+            <h3>
+                Detallado
+            </h3>
+
+            <p id="modalDetallado">
+                Cargando información...
+            </p>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* ==========================
+   ELEMENTOS
+========================== */
+
+const modal = document.getElementById("modalProducto");
+
+const cerrar = document.getElementById("cerrarModal");
+
+const modalImagen = document.getElementById("modalImagen");
+
+const modalEtiqueta = document.getElementById("modalEtiqueta");
+
+const modalNombre = document.getElementById("modalNombre");
+
+const modalDescripcion = document.getElementById("modalDescripcion");
+
+const modalPrecio = document.getElementById("modalPrecio");
+
+const modalDetallado = document.getElementById("modalDetallado");
+
+
+/* ==========================
+   BOTONES VER MÁS
+========================== */
+
+document.querySelectorAll(".btn-ver-mas").forEach(function(boton){
+
+    boton.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+
+        // Producto donde se hizo click
+
+        const producto = boton.closest(".producto");
+
+
+        // Código de MySQL
+
+        const codigo = boton.dataset.codigo;
+
+
+        // Datos escritos en HTML
+
+        modalImagen.src =
+            producto.querySelector(".prod").src;
+
+        modalNombre.textContent =
+            producto.querySelector("h2").textContent.trim();
+
+        modalDescripcion.textContent =
+            producto.querySelector(".info p").textContent.trim();
+
+        modalEtiqueta.textContent =
+            producto.querySelector(".etiqueta").textContent.trim();
+
+
+
+        modal.classList.add("activo");
+
+        document.body.style.overflow = "hidden";
+
+
+        fetch("?codigo=" + codigo)
+
+            .then(function(respuesta){
+
+                return respuesta.json();
+
+            })
+
+            .then(function(datos){
+
+                modalPrecio.textContent =
+                    "Bs. " + datos.Precio;
+
+                modalDetallado.textContent =
+                    datos.Detallado;
+
+            })
+
+            .catch(function(){
+
+                modalPrecio.textContent =
+                    "No disponible";
+
+                modalDetallado.textContent =
+                    "No se pudo cargar la información.";
+
+            });
+
+    });
+
+});
+
+
+/* ==========================
+   CERRAR MODAL
+========================== */
+
+cerrar.addEventListener("click", function(){
+
+    modal.classList.remove("activo");
+
+    document.body.style.overflow = "";
+
+});
+
+
+
+</script>
+
 
 </body>
+
 </html>
