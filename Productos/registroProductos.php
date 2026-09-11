@@ -112,7 +112,7 @@ $estado=$_POST["Estado"];
         </p><br>
                 
         <button class="volver" onclick="history.back()">← Volver</button><br>
-        <button class="volver"><a href="readleeProductos.php">Tabla Productos</a></button>
+        <a href="readleeProductos.php"><button class="volver">Tabla Productos</button></a>
     </div>
 </body>
 </html>

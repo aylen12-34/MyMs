@@ -18,8 +18,9 @@ if ($resultado->num_rows > 0) {
         $Codigo=$fila['Codigo'];
         $Nombre=$fila['Nombre'];
         $Descripcion=$fila['Descripcion'];
+        $Detallado=$fila['Detallado'];
         $Precio=$fila['Precio'];
-        $Stock=$fila['Stock'];
+        $Stock=$fila['Stock'];   
     }
 }
 ?>

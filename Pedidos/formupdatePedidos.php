@@ -204,7 +204,7 @@ if ($resultado->num_rows > 0) {
         <label for="Estado">Estado:</label>
         <input type="text" id="Estado" name="Estado" value='<?=$Estado?>'>  <br>  <br>
         <label for="NombreVendedor">Nombre del Vendedor:</label>
-        <input type="text" id="NombreVendedor" name="NombreVendedor" value='<?=$NombreVendedor?>'>  <br>  <br>
+        <input type="text" id="NombreVendedor" name="NombreVendedor" value='<?=$NombreVendedor?>' readonly>  <br>  <br>
         <input type="submit" value="Editar">
     </form>
     <button class="volver" onclick="history.back()">← Volver</button><br>

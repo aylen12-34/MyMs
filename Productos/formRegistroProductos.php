@@ -216,7 +216,7 @@ if($_SESSION['CI']==null){
             <br><br>
 
             <label>Estado</label>
-            <input type="text" value="Disponible" name="Estado" > <br><br>
+            <input type="text" value="Disponible" name="Estado" readonly> <br><br>
 
             <input type="submit" value="Registrar Productos">
 

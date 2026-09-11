@@ -102,7 +102,7 @@
             <input type="text" id="Nombre" name="Nombre"><br><br>
             <input type="submit" value="Iniciar Sesion">
         </form>
-    <button class="volver"><a href="portada publica.php" id="a">← Volver</a></button>
+   <a href="portada publica.php" id="a"> <button class="volver">← Volver</button></a>
 </div>
 <script>
         $("form").validate({

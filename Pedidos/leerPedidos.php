@@ -259,7 +259,7 @@ a{
     </table>
 
     <div class="botones">
-            <a href="../perfil.php"><button class="volver">perfil</button></a>
+            <a href="../perfil.php"><button class="volver">Perfil</button></a>
             <a href="../Ajax/index/index1.php"><button class="volver">Registrar nuevo pedido</button></a>
         
         

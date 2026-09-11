@@ -256,9 +256,9 @@ button{
         ?>
 
     </table>
-    <button class="volver"><a href="../administrador.php">Perfil</a></button>
-<button class="volver"><a href="../portada publica.php">Menu principal</a></button>
-<button class="volver"><a href="formRegistroUsuario.php">Registrar Usuarios</a></button>
+    <a href="../administrador.php"><button class="volver">Perfil</button></a>
+<a href="../portada publica.php"><button class="volver">Menu principal</button></a>
+<a href="formRegistroUsuario.php"><button class="volver">Registrar Usuarios</button></a>
 <button class="volver" onclick="history.back()">← Volver</button><br>
 </div>
 
