@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="estilosbuscar.css">
     <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -127,101 +129,96 @@
 
 <!--================== MODAL COMPRA ==================-->
 
-<div id="modalCompra" class="modal" >
+<div id="modalCompra" class="modal">
 
     <div class="modalContenido">
 
         <h2>𓌉◯𓇋 Finalizar Compra</h2>
-    <form action="" >
 
-        <input type="text"
-               id="Nombre"
-               placeholder="Nombre completo">
+        <form id="formCompra">
 
-        <input type="text"
-               id="Celular"
-               placeholder="Teléfono">
+            <input type="text"
+                   id="Nombre"
+                   placeholder="Nombre completo">
 
-        <input type="text"
-               id="Direccion"
-               placeholder="Dirección">
+            <input type="text"
+                   id="Celular"
+                   placeholder="Teléfono">
 
-        <select id="Metodo">
+            <input type="text"
+                   id="Direccion"
+                   placeholder="Dirección">
 
-            <option value="QR">Pago mediante QR</option>
+            <select id="Metodo">
 
-            <option value="Efectivo">Pago en efectivo</option>
+                <option value="">Selecciona un método de pago</option>
+                <option value="QR">Pago mediante QR</option>
+                <option value="Efectivo">Pago en efectivo</option>
 
-        </select>
-    </form>
-        <div class="botonesModal">
+            </select>
 
-            <button id="confirmarPedido">
-                Confirmar Compra
-            </button>
+            <div class="botonesModal">
 
-            <button id="cancelarCompra">
-                Cancelar
-            </button>
+                <button type="button" id="confirmarPedido">
+                    Confirmar Compra
+                </button>
 
-        </div>
+                <button type="button" id="cancelarCompra">
+                    Cancelar
+                </button>
+
+            </div>
+
+        </form>
 
     </div>
 
 </div>
-
-</div>
 <script>
-    function validarCompra() {
+document.getElementById("confirmarPedido").addEventListener("click", function(event) {
 
-    var nombre = document.getElementById("Nombre").value.trim();
-    var celular = document.getElementById("Celular").value.trim();
-    var direccion = document.getElementById("Direccion").value.trim();
-    var metodo = document.getElementById("Metodo").value;
+    var nombre = $("#Nombre").val().trim();
+    var celular = $("#Celular").val().trim();
+    var direccion = $("#Direccion").val().trim();
+    var metodo = $("#Metodo").val();
 
     if (nombre === "") {
+        event.stopImmediatePropagation();
         alert("Por favor, ingresa tu nombre completo.");
-        document.getElementById("Nombre").focus();
-        return false;
+        $("#Nombre").focus();
+        return;
     }
 
     if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre)) {
+        event.stopImmediatePropagation();
         alert("El nombre solo debe contener letras.");
-        document.getElementById("Nombre").focus();
-        return false;
+        $("#Nombre").focus();
+        return;
     }
 
-    // Validar celular
     if (celular === "") {
+        event.stopImmediatePropagation();
         alert("Por favor, ingresa tu número de teléfono.");
-        document.getElementById("Celular").focus();
-        return false;
+        $("#Celular").focus();
+        return;
     }
 
     if (!/^[0-9]{8}$/.test(celular)) {
+        event.stopImmediatePropagation();
         alert("El número de teléfono debe tener 8 dígitos.");
-        document.getElementById("Celular").focus();
-        return false;
+        $("#Celular").focus();
+        return;
     }
 
-    // Validar dirección
     if (direccion === "") {
+        event.stopImmediatePropagation();
         alert("Por favor, ingresa tu dirección.");
-        document.getElementById("Direccion").focus();
-        return false;
+        $("#Direccion").focus();
+        return;
     }
 
-    // Validar método de pago
-    if (metodo === "") {
-        alert("Selecciona un método de pago.");
-        document.getElementById("Metodo").focus();
-        return false;
-    }
-
-    return true;
-}
+}, true);
 </script>
-    
 
 <!--================== FONDO MODAL PRODUCTO ==================-->
 
