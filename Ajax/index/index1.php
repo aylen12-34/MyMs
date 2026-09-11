@@ -153,9 +153,10 @@
             <option value="Efectivo">Pago en efectivo</option>
 
         </select>
+    </form>
         <div class="botonesModal">
 
-            <button id="confirmarPedido" onclick="validarCompra()">
+            <button id="confirmarPedido">
                 Confirmar Compra
             </button>
 
@@ -164,8 +165,6 @@
             </button>
 
         </div>
-    </form>
-        
 
     </div>
 

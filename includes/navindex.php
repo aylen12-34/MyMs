@@ -183,7 +183,7 @@
                     ¿Tienes un pedido?
                 </span>
 
-                <form action="Ajax/index/buscarPedido.php" method="GET">
+                <form action="buscarPedido.php" method="GET">
 
                     <input
                         type="number"
