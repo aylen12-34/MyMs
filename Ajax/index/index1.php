@@ -8,10 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Menu</title>
+    <title>Menú</title>
 
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="estilosbuscar.css">
+    <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 

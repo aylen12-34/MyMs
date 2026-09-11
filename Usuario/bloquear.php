@@ -15,7 +15,7 @@ $CIU=$_SESSION['CI'];
     $sql = "UPDATE usuarios SET Estado='bloqueado' WHERE CI='$CI'";
 
     if ($conexion->query($sql) === TRUE) {
-        header("location: ../administrador.php?CI=".$CIU);
+        header("location: readleerUsuarios.php");
     }
     else {
         echo "Error al editar: " . $conexion->error;

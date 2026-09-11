@@ -228,21 +228,39 @@ button{
                 echo "<td>".$fila['Celular']."</td>";
                 echo "<td>".$fila['Rol']."</td>";
                 echo "<td>".$fila['Estado']."</td>";
-
                 echo "<td>
                         <a href='readleerUsuario.php?CI=$CI'>
                             <button class='mostrar'>Mostrar</button>
                         </a>
-
+</td>";
+ echo "<td>
                         <a href='formUpdateUsuario.php?CI=$CI'>
                             <button class='editar'>Editar</button>
                         </a>
-
+</td>";
+ echo "<td>
                         <a href='eliminarUsuario.php?CI=$CI'>
                             <button class='eliminar'>Eliminar</button>
                         </a>
                       </td>";
+                      if($fila["Estado"]=="Activo"){
+                         echo "<td>
+                        <a href='bloquear.php?CI=$CI'>
+                            <button class='eliminar'>Bloquear</button>
+                        </a>
+                      </td>";
+                      }else{
+                        if($fila["Estado"]=="bloqueado"){
+echo "<td>
+                        <a href='desbloquear.php?CI=$CI'>
+                            <button class='eliminar'>Desbloquear</button>
+                        </a>
+                      </td>";
 
+                        }
+                      }
+       
+        
                 echo "</tr>";
             }
 
@@ -254,6 +272,7 @@ button{
 
         $conexion->close();
         ?>
+
 
     </table>
     <a href="../administrador.php"><button class="volver">Perfil</button></a>

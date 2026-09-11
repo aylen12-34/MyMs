@@ -87,7 +87,7 @@ if (isset($_GET['ajax'])) {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Reporte Dinámico de Ventas</title>
+    <title>Reporte de Ventas</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* ==========================
