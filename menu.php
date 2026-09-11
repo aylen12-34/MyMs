@@ -470,11 +470,11 @@
         <div class="contenido">
             <h3>Bebidas calientes</h3>
             <li>
-                <ol>Bebida 1</ol>
-                <ol>Bebida 2</ol>
-                <ol>Bebida 3</ol>
-                <ol>Bebida 4</ol>
-                <ol>Bebida 5</ol>
+                <ol>Americano Clásico</ol>
+                <ol>Espresso Intenso</ol>
+                <ol>Capuccino Cremoso</ol>
+                <ol>Latte Clásico</ol>
+                <ol>Mocha Clásico</ol>
             </li>
         </div>
     </div>
@@ -482,13 +482,13 @@
     <div class="tarjeta-acordeon" onclick="seleccionar(this)" style="background-image: url('../../imagenes/categoria/5.jpg');">
         <div class="icono"><i class="fa-solid fa-ice-cream"></i></div>
         <div class="contenido">
-            <h3>Empanadas</h3>
+            <h3>Brownies</h3>
             <li>
-                <ol>Empanada 1</ol>
-                <ol>Empanada 2</ol>
-                <ol>Empanada 3</ol>
-                <ol>Empanada 4</ol>
-                <ol>Empanada 5</ol>
+                <ol>Brownies con cobertura de Chocolate</ol>
+                <ol>Brownies bañados en Nutella</ol>
+                <ol>Brownies con Fresas</ol>
+                <ol>Brownies con Crema</ol>
+                <ol>Brownies rellenos de Chocolate</ol>
             </li>
         </div>
     </div>
