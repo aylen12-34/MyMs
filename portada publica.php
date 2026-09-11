@@ -865,7 +865,7 @@ main{
         </h2>
 
         <p>
-            Una galleta marmoleada de vainilla y cerveza de raíz,
+            Galleta marmoleada de vainilla y cerveza de raíz,
             coronada con un remolino de mousse cremoso de vainilla
             y cerveza de raíz.
         </p>

@@ -233,7 +233,7 @@ while ($row = $res_clientes->fetch_assoc()) {
     </div>
 
     <div class="top-products">
-        <h3>Top 3 leucemicos</h3>
+        <h3>Top 3 Clientes</h3>
         <?php if (!empty($etiquetas)): ?>
             <table class="sales-table">
                 <thead>
