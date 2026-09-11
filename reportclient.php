@@ -132,7 +132,7 @@ while ($row = $res_clientes->fetch_assoc()) {
     font-family: Arial, sans-serif;
     font-size: 32px;
     font-weight: bold;
-
+ 
     box-shadow: 0 4px 12px rgba(106, 37, 58, 0.35);
 
     z-index: 100;
@@ -233,7 +233,7 @@ while ($row = $res_clientes->fetch_assoc()) {
     </div>
 
     <div class="top-products">
-        <h3>Detalle de Pedidos</h3>
+        <h3>Top 3 leucemicos</h3>
         <?php if (!empty($etiquetas)): ?>
             <table class="sales-table">
                 <thead>
