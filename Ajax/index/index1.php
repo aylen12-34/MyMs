@@ -132,7 +132,7 @@
     <div class="modalContenido">
 
         <h2>𓌉◯𓇋 Finalizar Compra</h2>
-    <form action="" onclick="validarCompra()">
+    <form action="" >
 
         <input type="text"
                id="Nombre"
@@ -153,10 +153,9 @@
             <option value="Efectivo">Pago en efectivo</option>
 
         </select>
-    </form>
         <div class="botonesModal">
 
-            <button id="confirmarPedido">
+            <button id="confirmarPedido" onclick="validarCompra()">
                 Confirmar Compra
             </button>
 
@@ -165,6 +164,8 @@
             </button>
 
         </div>
+    </form>
+        
 
     </div>
 

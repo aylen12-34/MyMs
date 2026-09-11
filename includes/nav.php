@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nav</title>
-<link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
+
+    <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
+
     <style>
+
         *{
-      font-family:'Chillax-Semibold';
+            font-family:'Chillax-Semibold';
         }
+
         #overlay{
             position:fixed;
             inset:0;
@@ -99,9 +103,72 @@
             transform:rotate(-360deg);
         }
 
+
+        /* ========================= */
+        /* BUSCAR PEDIDO */
+        /* ========================= */
+
+        .buscar-pedido{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            gap:10px;
+            margin-top:15px;
+            padding:10px;
+        }
+
+        .buscar-pedido span{
+            color:#EFE2DA;
+            font-size:18px;
+            text-align:center;
+        }
+
+        .buscar-pedido form{
+            display:flex;
+            gap:8px;
+            width:100%;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .pedido-form input,
+        .buscar-pedido input{
+            width:130px;
+            padding:10px;
+            border:2px solid #E64B6B;
+            border-radius:10px;
+            outline:none;
+            background:#EFE2DA;
+            color:#6A253A;
+            font-family:inherit;
+            text-align:center;
+        }
+
+        .buscar-pedido input::placeholder{
+            color:#6A253A;
+            opacity:0.6;
+        }
+
+        .buscar-pedido button{
+            padding:10px 15px;
+            border:none;
+            border-radius:10px;
+            background:#E64B6B;
+            color:#EFE2DA;
+            cursor:pointer;
+            font-family:inherit;
+            transition:0.2s;
+        }
+
+        .buscar-pedido button:hover{
+            background:#EFE2DA;
+            color:#6A253A;
+        }
+
     </style>
 
 </head>
+
 <body>
 
     <!-- BOTÓN -->
@@ -114,17 +181,74 @@
 
     <!-- MENÚ -->
     <nav class="indice" id="menu">
+
         <ul>
-            
-            <li><a href="portada publica.php">Inicio</a></li>
-            <li><a href="perfil.php" class="volver">Perfil</a>
-            <li><a href="login.php">Iniciar sesión</a></li>
-            <li><a href="Ajax/index/index1.php">Menú</a></li>
-            <li><a href="nosotros.php">Nosotros</a></li>
-            <li><a href="formulario ambiental MYMS.pdf" target="_blank">Ficha ambiental</a></li>
-            <li><a href="Ajax/index/produc.php">Deja tu comentario</a></li>
+
+            <li>
+                <a href="portada publica.php">Inicio</a>
+            </li>
+
+            <li>
+                <a href="perfil.php" class="volver">Perfil</a>
+            </li>
+
+            <li>
+                <a href="login.php">Iniciar sesión</a>
+            </li>
+
+            <li>
+                <a href="Ajax/index/index1.php">Menú</a>
+            </li>
+
+            <li>
+                <a href="nosotros.php">Nosotros</a>
+            </li>
+
+            <li>
+                <a href="formulario ambiental MYMS.pdf" target="_blank">
+                    Ficha ambiental
+                </a>
+            </li>
+
+            <li>
+                <a href="Ajax/index/produc.php">
+                    Deja tu comentario
+                </a>
+            </li>
+
+
+            <!-- ========================= -->
+            <!-- BUSCAR PEDIDO -->
+            <!-- ========================= -->
+
+            <li class="buscar-pedido">
+
+                <span>
+                    ¿Tienes un pedido?
+                </span>
+
+                <form action="Ajax/index/buscarPedido.php" method="GET">
+
+                    <input
+                        type="number"
+                        name="ID"
+                        placeholder="ID del recibo"
+                        min="1"
+                        required
+                    >
+
+                    <button type="submit">
+                        Buscar
+                    </button>
+
+                </form>
+
+            </li>
+
         </ul>
+
     </nav>
+
 
     <script>
 
@@ -158,6 +282,7 @@
             }
 
         });
+
 
         overlay.addEventListener("click", () => {
 

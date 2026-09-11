@@ -98,6 +98,62 @@
             transform:rotate(-360deg);
         }
 
+         .buscar-pedido{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            gap:10px;
+            margin-top:15px;
+            padding:10px;
+        }
+
+        .buscar-pedido span{
+            color:#EFE2DA;
+            font-size:18px;
+            text-align:center;
+        }
+
+        .buscar-pedido form{
+            display:flex;
+            gap:8px;
+            width:100%;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .pedido-form input,
+        .buscar-pedido input{
+            width:130px;
+            padding:10px;
+            border:2px solid #E64B6B;
+            border-radius:10px;
+            outline:none;
+            background:#EFE2DA;
+            color:#6A253A;
+            font-family:inherit;
+            text-align:center;
+        }
+
+        .buscar-pedido input::placeholder{
+            color:#6A253A;
+            opacity:0.6;
+        }
+
+        .buscar-pedido button{
+            padding:10px 15px;
+            border:none;
+            border-radius:10px;
+            background:#E64B6B;
+            color:#EFE2DA;
+            cursor:pointer;
+            font-family:inherit;
+            transition:0.2s;
+        }
+
+        .buscar-pedido button:hover{
+            background:#EFE2DA;
+            color:#6A253A;
+        }
     </style>
 
 </head>
@@ -121,6 +177,29 @@
             <li><a href="../../nosotros.php">Nosotros</a></li>
             <li><a href="../../formulario ambiental MYMS.pdf" target="_blank">Ficha ambiental</a></li>
              <li><a href="produc.php">Ver comentario</a></li>
+             <li class="buscar-pedido">
+
+                <span>
+                    ¿Tienes un pedido?
+                </span>
+
+                <form action="Ajax/index/buscarPedido.php" method="GET">
+
+                    <input
+                        type="number"
+                        name="ID"
+                        placeholder="ID del recibo"
+                        min="1"
+                        required
+                    >
+
+                    <button type="submit">
+                        Buscar
+                    </button>
+
+                </form>
+
+            </li>
             
         </ul>
     </nav>

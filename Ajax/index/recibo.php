@@ -9,17 +9,20 @@ require("conexion.php");
 
 
 
-if(!isset($_SESSION["pedidos"])){
+if (isset($_GET["ID"])) {
 
-    echo "No existe pedido activo";
+    $id = intval($_GET["ID"]);
 
+} elseif (isset($_SESSION["pedidos"])) {
+
+    $id = intval($_SESSION["pedidos"]);
+
+} else {
+
+    echo "No existe pedido";
     exit;
 
 }
-
-
-$id=$_SESSION["pedidos"];
-
 
 
 $sql="
