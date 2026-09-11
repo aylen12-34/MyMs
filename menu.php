@@ -438,7 +438,7 @@
     <div class="tarjeta-acordeon" onclick="seleccionar(this)" style="background-image: url('../../imagenes/categoria/3.png');">
         <div class="icono"><i class="fa-solid fa-moon"></i></div>
         <div class="contenido">
-            <h3>Croasants</h3>
+            <h3>Croissants</h3>
             <li>
                 <ol>Oreo Bliss</ol>
                 <ol>Caramel Crunch</ol>
@@ -465,7 +465,7 @@
         </div>
     </div>
 
-    <div class="tarjeta-acordeon" onclick="seleccionar(this)" style="background-image: url('../../imagenes/galletas/21.png');">
+    <div class="tarjeta-acordeon" onclick="seleccionar(this)" style="background-image: url('../../imagenes/categoria/4.jpg');">
         <div class="icono"><i class="fa-solid fa-lemon"></i></div>
         <div class="contenido">
             <h3>Bebidas calientes</h3>
@@ -479,7 +479,7 @@
         </div>
     </div>
 
-    <div class="tarjeta-acordeon" onclick="seleccionar(this)" style="background-image: url('../../imagenes/galletas/15.png');">
+    <div class="tarjeta-acordeon" onclick="seleccionar(this)" style="background-image: url('../../imagenes/categoria/5.jpg');">
         <div class="icono"><i class="fa-solid fa-ice-cream"></i></div>
         <div class="contenido">
             <h3>Empanadas</h3>
