@@ -24,7 +24,7 @@
 
         <div class="logo">
 
-            🛍 <span>Menu</span>
+            ☕︎ <span>Menu</span>
 
         </div>
 
