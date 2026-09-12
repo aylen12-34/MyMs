@@ -83,7 +83,7 @@ videoChimuelo.style.display = 'block';
 videoChimuelo.style.margin = '0 auto';
 
 Swal.fire({
-    title: 'Pedido N' + data.pedidos,
+    title: 'Pedido N°' + data.pedidos,
     background: '#e65c78',
     color: '#EFE2DA',
     html: videoChimuelo,

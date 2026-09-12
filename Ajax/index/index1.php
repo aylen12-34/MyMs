@@ -171,6 +171,7 @@
     </div>
 
 </div>
+
 <script>
 document.getElementById("confirmarPedido").addEventListener("click", function(event) {
 
@@ -181,205 +182,229 @@ document.getElementById("confirmarPedido").addEventListener("click", function(ev
     var expRegNombre = /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/;
     var expRegRol = /^[a-z]+$/;
 
+    // Referencia al modal para ocultar / mostrar
+    var modal = document.getElementById("modalCompra");
+
+    // 1. Validar nombre vacío
     if (nombre === "") {
         event.stopImmediatePropagation();
         Swal.fire({
-        title: 'Alerta',
-        background: '#e65c78',
-        color: '#EFE2DA',
-        imageUrl: '../../imagenes/gatous.png',
-        imageHeight: 150,
-        imageAlt: 'Icono personalizado',
-        confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
-        text: '⚠ Ingrese su nombre ⚠',
-    didOpen: () => {
-        const audio = new Audio('../../imagenes/gatous.mp3');
-        const imagenSwal = Swal.getImage();
+            title: 'Alerta',
+            background: '#e65c78',
+            color: '#EFE2DA',
+            imageUrl: '../../imagenes/gatous.png',
+            imageHeight: 150,
+            imageAlt: 'Icono personalizado',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#6A253A',
+            text: '⚠ Ingrese su nombre ⚠',
+            willOpen: () => { modal.style.display = 'none'; },
+            willClose: () => { modal.style.display = 'flex'; },
+            didOpen: () => {
+                const audio = new Audio('../../imagenes/gatous.mp3');
+                const imagenSwal = Swal.getImage();
 
-        if (imagenSwal) {
-            imagenSwal.style.cursor = 'pointer';
-            imagenSwal.addEventListener('click', () => {
-                audio.currentTime = 0;
-                audio.play();
-            });
-        }
-    }
-});
+                if (imagenSwal) {
+                    imagenSwal.style.cursor = 'pointer';
+                    imagenSwal.addEventListener('click', () => {
+                        audio.currentTime = 0;
+                        audio.play();
+                    });
+                }
+            }
+        });
         $("#Nombre").focus();
         return;
     }
 
+    // 2. Validar solo letras en nombre
     if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre)) {
         event.stopImmediatePropagation();
         Swal.fire({
-        title: 'Alerta',
-        background: '#e65c78',
-        color: '#EFE2DA',
-        imageUrl: '../../imagenes/gatous.png',
-        imageHeight: 150,
-        imageAlt: 'Icono personalizado',
-        confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
-        text: '⚠ El nombre debe contener solo letras ⚠',
-   didOpen: () => {
-        const audio = new Audio('../../imagenes/gatous.mp3');
-        const imagenSwal = Swal.getImage();
+            title: 'Alerta',
+            background: '#e65c78',
+            color: '#EFE2DA',
+            imageUrl: '../../imagenes/gatous.png',
+            imageHeight: 150,
+            imageAlt: 'Icono personalizado',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#6A253A',
+            text: '⚠ El nombre debe contener solo letras ⚠',
+            willOpen: () => { modal.style.display = 'none'; },
+            willClose: () => { modal.style.display = 'flex'; },
+            didOpen: () => {
+                const audio = new Audio('../../imagenes/gatous.mp3');
+                const imagenSwal = Swal.getImage();
 
-        if (imagenSwal) {
-            imagenSwal.style.cursor = 'pointer';
-            imagenSwal.addEventListener('click', () => {
-                audio.currentTime = 0;
-                audio.play();
-            });
-        }
-    }
-});
+                if (imagenSwal) {
+                    imagenSwal.style.cursor = 'pointer';
+                    imagenSwal.addEventListener('click', () => {
+                        audio.currentTime = 0;
+                        audio.play();
+                    });
+                }
+            }
+        });
         $("#Nombre").focus();
         return;
     }
 
-    if (nombre.value.length < 3) {
+    // 3. Validar longitud de nombre
+    if (nombre.length < 3) {
         event.stopImmediatePropagation();
-             Swal.fire({
-        title: 'Alerta',
-        background: '#e65c78',
-        color: '#EFE2DA',
-        imageUrl: '../../imagenes/gatous.png',
-        imageHeight: 150,
-        imageAlt: 'Icono personalizado',
-        confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
-        text: '⚠ El nombre debe tener al menos 3 letras ⚠',
-    didOpen: () => {
-        const audio = new Audio('../../imagenes/gatous.mp3');
-        const imagenSwal = Swal.getImage();
+        Swal.fire({
+            title: 'Alerta',
+            background: '#e65c78',
+            color: '#EFE2DA',
+            imageUrl: '../../imagenes/gatous.png',
+            imageHeight: 150,
+            imageAlt: 'Icono personalizado',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#6A253A',
+            text: '⚠ El nombre debe tener al menos 3 letras ⚠',
+            willOpen: () => { modal.style.display = 'none'; },
+            willClose: () => { modal.style.display = 'flex'; },
+            didOpen: () => {
+                const audio = new Audio('../../imagenes/gatous.mp3');
+                const imagenSwal = Swal.getImage();
 
-        if (imagenSwal) {
-            imagenSwal.style.cursor = 'pointer';
-            imagenSwal.addEventListener('click', () => {
-                audio.currentTime = 0;
-                audio.play();
-            });
-        }
+                if (imagenSwal) {
+                    imagenSwal.style.cursor = 'pointer';
+                    imagenSwal.addEventListener('click', () => {
+                        audio.currentTime = 0;
+                        audio.play();
+                    });
+                }
+            }
+        });
+        $("#Nombre").focus();
+        return false;
     }
-});
-            $("#Nombre").focus();
-            return false;
-        }
 
+    // 4. Validar celular vacío
     if (celular === "") {
         event.stopImmediatePropagation();
         Swal.fire({
-        title: 'Alerta',
-        background: '#e65c78',
-        color: '#EFE2DA',
-        imageUrl: '../../imagenes/gatous.png',
-        imageHeight: 150,
-        imageAlt: 'Icono personalizado',
-        confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
-        text: '⚠ Ingrese su celular ⚠',
-    didOpen: () => {
-        const audio = new Audio('../../imagenes/gatous.mp3');
-        const imagenSwal = Swal.getImage();
+            title: 'Alerta',
+            background: '#e65c78',
+            color: '#EFE2DA',
+            imageUrl: '../../imagenes/gatous.png',
+            imageHeight: 150,
+            imageAlt: 'Icono personalizado',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#6A253A',
+            text: '⚠ Ingrese su celular ⚠',
+            willOpen: () => { modal.style.display = 'none'; },
+            willClose: () => { modal.style.display = 'flex'; },
+            didOpen: () => {
+                const audio = new Audio('../../imagenes/gatous.mp3');
+                const imagenSwal = Swal.getImage();
 
-        if (imagenSwal) {
-            imagenSwal.style.cursor = 'pointer';
-            imagenSwal.addEventListener('click', () => {
-                audio.currentTime = 0;
-                audio.play();
-            });
-        }
-    }
-});
+                if (imagenSwal) {
+                    imagenSwal.style.cursor = 'pointer';
+                    imagenSwal.addEventListener('click', () => {
+                        audio.currentTime = 0;
+                        audio.play();
+                    });
+                }
+            }
+        });
         $("#Celular").focus();
         return;
     }
 
-    if (!/^\d+$/.test(celular.value)) {
-        event.stopImmediatePropagation();
-             Swal.fire({
-        title: 'Alerta',
-        background: '#e65c78',
-        color: '#EFE2DA',
-        imageUrl: '../../imagenes/gatous.png',
-        imageHeight: 150,
-        imageAlt: 'Icono personalizado',
-        confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
-        text: '⚠ El celular debe contener solo números ⚠',
-   didOpen: () => {
-        const audio = new Audio('../../imagenes/gatous.mp3');
-        const imagenSwal = Swal.getImage();
-
-        if (imagenSwal) {
-            imagenSwal.style.cursor = 'pointer';
-            imagenSwal.addEventListener('click', () => {
-                audio.currentTime = 0;
-                audio.play();
-            });
-        }
-    }
-});
-            $("#Celular").focus();
-            return false;
-        }
-
-    if (!/^[0-9]{8}$/.test(celular)) {
+    // 5. Validar solo números en celular
+    if (!/^\d+$/.test(celular)) {
         event.stopImmediatePropagation();
         Swal.fire({
-        title: 'Alerta',
-        background: '#e65c78',
-        color: '#EFE2DA',
-        imageUrl: '../../imagenes/gatous.png',
-        imageHeight: 150,
-        imageAlt: 'Icono personalizado',
-        confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
-        text: '⚠ El celular debe tener exactamente 8 dígitos ⚠',
-    didOpen: () => {
-        const audio = new Audio('../../imagenes/gatous.mp3');
-        const imagenSwal = Swal.getImage();
+            title: 'Alerta',
+            background: '#e65c78',
+            color: '#EFE2DA',
+            imageUrl: '../../imagenes/gatous.png',
+            imageHeight: 150,
+            imageAlt: 'Icono personalizado',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#6A253A',
+            text: '⚠ El celular debe contener solo números ⚠',
+            willOpen: () => { modal.style.display = 'none'; },
+            willClose: () => { modal.style.display = 'flex'; },
+            didOpen: () => {
+                const audio = new Audio('../../imagenes/gatous.mp3');
+                const imagenSwal = Swal.getImage();
 
-        if (imagenSwal) {
-            imagenSwal.style.cursor = 'pointer';
-            imagenSwal.addEventListener('click', () => {
-                audio.currentTime = 0;
-                audio.play();
-            });
-        }
-    }
-});
+                if (imagenSwal) {
+                    imagenSwal.style.cursor = 'pointer';
+                    imagenSwal.addEventListener('click', () => {
+                        audio.currentTime = 0;
+                        audio.play();
+                    });
+                }
+            }
+        });
         $("#Celular").focus();
         return false;
     }
 
+    // 6. Validar exactamente 8 dígitos
+    if (!/^[0-9]{8}$/.test(celular)) {
+        event.stopImmediatePropagation();
+        Swal.fire({
+            title: 'Alerta',
+            background: '#e65c78',
+            color: '#EFE2DA',
+            imageUrl: '../../imagenes/gatous.png',
+            imageHeight: 150,
+            imageAlt: 'Icono personalizado',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#6A253A',
+            text: '⚠ El celular debe tener exactamente 8 dígitos ⚠',
+            willOpen: () => { modal.style.display = 'none'; },
+            willClose: () => { modal.style.display = 'flex'; },
+            didOpen: () => {
+                const audio = new Audio('../../imagenes/gatous.mp3');
+                const imagenSwal = Swal.getImage();
+
+                if (imagenSwal) {
+                    imagenSwal.style.cursor = 'pointer';
+                    imagenSwal.addEventListener('click', () => {
+                        audio.currentTime = 0;
+                        audio.play();
+                    });
+                }
+            }
+        });
+        $("#Celular").focus();
+        return false;
+    }
+
+    // 7. Validar dirección vacía
     if (direccion === "") {
         event.stopImmediatePropagation();
         Swal.fire({
-        title: 'Alerta',
-        background: '#e65c78',
-        color: '#EFE2DA',
-        imageUrl: '../../imagenes/gatous.png',
-        imageHeight: 150,
-        imageAlt: 'Icono personalizado',
-        confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
-        text: '⚠ Ingrese su dirección ⚠',
-   didOpen: () => {
-        const audio = new Audio('../../imagenes/gatous.mp3');
-        const imagenSwal = Swal.getImage();
+            title: 'Alerta',
+            background: '#e65c78',
+            color: '#EFE2DA',
+            imageUrl: '../../imagenes/gatous.png',
+            imageHeight: 150,
+            imageAlt: 'Icono personalizado',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#6A253A',
+            text: '⚠ Ingrese su dirección ⚠',
+            willOpen: () => { modal.style.display = 'none'; },
+            willClose: () => { modal.style.display = 'flex'; },
+            didOpen: () => {
+                const audio = new Audio('../../imagenes/gatous.mp3');
+                const imagenSwal = Swal.getImage();
 
-        if (imagenSwal) {
-            imagenSwal.style.cursor = 'pointer';
-            imagenSwal.addEventListener('click', () => {
-                audio.currentTime = 0;
-                audio.play();
-            });
-        }
-    }
-});
+                if (imagenSwal) {
+                    imagenSwal.style.cursor = 'pointer';
+                    imagenSwal.addEventListener('click', () => {
+                        audio.currentTime = 0;
+                        audio.play();
+                    });
+                }
+            }
+        });
         $("#Direccion").focus();
         return false;
     }
