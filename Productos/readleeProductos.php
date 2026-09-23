@@ -24,6 +24,7 @@ $resultado = $conexion->query($sql);
 
 // Variables para controlar alertas globales
 $alertaStockBajo = false;
+$alertaStockSuperBajo = false;
 $alertaSinStock = false;
 ?>
 
@@ -203,16 +204,18 @@ $alertaSinStock = false;
                         echo "<td>$".$fila["Precio"]."</td>";
                         
                         // Lógica de visualización de Stock
-                        if ($fila["Stock"] <= 3) {
-                            echo "<td style='color: #ee6612; font-weight: bold;'>".$fila["Stock"]."</td>";
+                        if ($fila["Stock"] <= 0) {
+                            echo "<td style='color: #d80000; font-weight: bold;'>".$fila["Stock"]."</td>";
                             $alertaSinStock = true;
+                        } else if ($fila["Stock"] <= 3) {
+                            echo "<td style='color: #ee7512; font-weight: bold;'>".$fila["Stock"]."</td>";
+                            $alertaStockSuperBajo = true;
                         } else if ($fila["Stock"] < 10) {
-                            echo "<td style='color: #eedc12; font-weight: bold;'>".$fila["Stock"]."</td>";
+                            echo "<td style='color: #ecdd0a; font-weight: bold;'>".$fila["Stock"]."</td>";
                             $alertaStockBajo = true;
                         } else {
                             echo "<td>".$fila["Stock"]."</td>";
                         }
-                        
                         echo "<td>
                                 <a href='formUpdateProductos.php?Codigo=" . $fila["Codigo"] . "'>
                                     <button class='btn-action'>Editar</button>
@@ -302,7 +305,19 @@ document.addEventListener("DOMContentLoaded", function() {
           }
         }).then(() => {
         // 2. Al terminar el timer, lanzar alerta de inventario si corresponde
-        <?php if ($alertaSinStock): ?>
+        <?php if ($$alertaSinStock): ?>
+            Swal.fire({
+                title: 'Stock en cero',
+                background: '#e65c78',
+                color: '#EFE2DA',
+                imageUrl: '../imagenes/gato.png',
+                imageHeight: 150,
+                imageAlt: 'Icono personalizado',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#6A253A',
+                text: 'No tienes unidades disponibles.'
+            });
+        <?php elseif ($alertaStockSuperBajo): ?>
             Swal.fire({
                 title: 'Atención con el Inventario',
                 background: '#e65c78',
@@ -326,6 +341,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 confirmButtonColor: '#6A253A',
                 text: 'Se recomienda reponer productos con pocas unidades.'
             });
+            
         <?php endif; ?>
     });
 });
