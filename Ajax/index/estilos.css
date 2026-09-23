@@ -1281,59 +1281,383 @@ header{
 
 }
 
+/* =========================================================
+   RESPONSIVE - TABLETS Y CELULARES
+   ========================================================= */
 
-/*======================
-      RESPONSIVE
-=======================*/
+/* ===================== TABLET ===================== */
 
-@media(max-width:768px){
+@media (max-width: 900px) {
 
-    #modalProducto{
-
-        width:90%;
-
-        max-height:90vh;
-
-        overflow:auto;
-
-        padding:20px;
-
+    header {
+        height: auto;
+        min-height: 120px;
+        padding: 20px 30px;
+        gap: 20px;
+        flex-wrap: wrap;
     }
 
-    .productoDetalle{
-
-        grid-template-columns:1fr;
-
-        gap:15px;
-
+    .logo {
+        font-size: 1.7rem;
     }
 
-    #detalleImagen{
-
-        max-height:300px;
-
+    .busqueda {
+        order: 3;
+        width: 100%;
+        display: flex;
     }
 
-    #detalleNombre{
-
-        font-size:28px;
-
-        text-align:center;
-
+    .busqueda input {
+        flex: 1;
+        min-width: 0;
     }
 
-    #detallePrecio{
-
-        font-size:25px;
-
-        text-align:center;
-
+    .busqueda button {
+        white-space: nowrap;
     }
 
-    #detalleDescripcion{
-
-        text-align:center;
-
+    #carritoIcono {
+        margin-left: auto;
+        font-size: 1.5rem;
     }
+
+    main {
+        padding: 25px 20px;
+    }
+
+    .titulo {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    /* PRODUCTOS */
+
+    #productos,
+    #productosbusqueda {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    /* SIDEBAR */
+
+    #sidebar {
+        width: 380px;
+        max-width: 90%;
+    }
+
+    /* MODAL PRODUCTO */
+
+    #modalProducto {
+        width: 90%;
+        max-width: 700px;
+    }
+
+    .productoDetalle {
+        gap: 25px;
+    }
+
+    .productoDetalleImagen {
+        width: 45%;
+    }
+
+    .productoDetalleInfo {
+        width: 55%;
+    }
+
+}
+
+
+/* ===================== CELULAR ===================== */
+
+@media (max-width: 600px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+        width: 100%;
+        min-height: auto;
+        padding: 15px;
+        gap: 15px;
+        box-sizing: border-box;
+    }
+
+    .logo {
+        font-size: 1.35rem;
+        white-space: nowrap;
+    }
+
+    #carritoIcono {
+        font-size: 1.3rem;
+        margin-left: auto;
+    }
+
+    #cantidadCarrito {
+        font-size: 0.75rem;
+    }
+
+    /* ================= BUSCADOR ================= */
+
+    .busqueda {
+        width: 100%;
+        gap: 8px;
+    }
+
+    .busqueda input {
+        width: 100%;
+        height: 42px;
+        min-width: 0;
+        font-size: 0.9rem;
+        padding: 0 12px;
+    }
+
+    .busqueda button {
+        height: 42px;
+        padding: 0 12px;
+        font-size: 0.8rem;
+    }
+
+    /* ================= MAIN ================= */
+
+    main {
+        width: 100%;
+        padding: 20px 12px;
+        box-sizing: border-box;
+    }
+
+    .titulo {
+        font-size: 1.55rem;
+        margin: 10px 0 20px;
+        line-height: 1.2;
+    }
+
+    /* ================= PRODUCTOS ================= */
+
+    #productos,
+    #productosbusqueda {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        width: 100%;
+    }
+
+    /* Si tus tarjetas usan estas clases */
+    .producto,
+    .card,
+    .producto-card {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .producto img,
+    .card img,
+    .producto-card img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* ================= GENERAR PEDIDO ================= */
+
+    #generarPedido {
+        width: 100%;
+        margin: 20px 0;
+        padding: 13px;
+        font-size: 0.95rem;
+    }
+
+    /* ================= SIDEBAR CARRITO ================= */
+
+    #sidebar {
+        width: 100%;
+        max-width: none;
+        height: 100vh;
+        right: -100%;
+        box-sizing: border-box;
+    }
+
+    .sidebarHeader {
+        padding: 18px 15px;
+    }
+
+    .sidebarHeader h2 {
+        font-size: 1.25rem;
+    }
+
+    #contenidoCarrito {
+        padding: 15px;
+    }
+
+    .sidebarFooter {
+        padding: 15px;
+    }
+
+    #totalCarrito {
+        font-size: 1.1rem;
+    }
+
+    .sidebarFooter button {
+        width: 100%;
+        margin-top: 8px;
+        padding: 12px;
+    }
+
+    /* ================= MODAL COMPRA ================= */
+
+    #modalCompra {
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    .modalContenido {
+        width: 100%;
+        max-width: 420px;
+        padding: 22px 18px;
+        box-sizing: border-box;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modalContenido h2 {
+        font-size: 1.35rem;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .modalContenido input,
+    .modalContenido select {
+        width: 100%;
+        box-sizing: border-box;
+        height: 45px;
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+    }
+
+    .botonesModal {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .botonesModal button {
+        width: 100%;
+        min-height: 45px;
+    }
+
+    /* ================= MODAL PRODUCTO ================= */
+
+    #modalProducto {
+        width: calc(100% - 24px);
+        max-width: none;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-sizing: border-box;
+        padding: 18px;
+    }
+
+    .productoDetalle {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .productoDetalleImagen,
+    .productoDetalleInfo {
+        width: 100%;
+    }
+
+    .productoDetalleImagen {
+        display: flex;
+        justify-content: center;
+    }
+
+    #detalleImagen {
+        width: 100%;
+        max-width: 280px;
+        max-height: 250px;
+        object-fit: contain;
+    }
+
+    .productoDetalleInfo {
+        text-align: center;
+    }
+
+    #detalleNombre {
+        font-size: 1.35rem;
+        line-height: 1.2;
+    }
+
+    #detallePrecio {
+        font-size: 1.2rem;
+    }
+
+    #detalleDescripcion {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    #detalleAgregar {
+        width: 100%;
+        padding: 13px;
+    }
+
+    #cerrarProducto {
+        top: 10px;
+        right: 10px;
+    }
+
+}
+
+
+/* ===================== CELULAR PEQUEÑO ===================== */
+
+@media (max-width: 900px) {
+
+    header {
+        padding: 12px;
+    }
+
+    .logo {
+        font-size: 1.15rem;
+    }
+
+    #carritoIcono {
+        font-size: 1.15rem;
+    }
+
+    .busqueda button {
+        padding: 0 9px;
+        font-size: 0.72rem;
+    }
+
+    .titulo {
+        font-size: 1.35rem;
+    }
+
+    #productos,
+    #productosbusqueda {
+        gap: 8px;
+    }
+
+    .producto,
+    .card,
+    .producto-card {
+        font-size: 0.85rem;
+    }
+
+    .modalContenido {
+        padding: 18px 14px;
+    }
+
+    #modalProducto {
+        padding: 15px;
+    }
+
+    #detalleNombre {
+        font-size: 1.2rem;
+    }
+
 
 }

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -12,7 +10,7 @@
 
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="estilosbuscar.css">
-    <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
+    <link rel="stylesheet" href="../../tipografia/Fonts/WEB/css/chillax.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
