@@ -210,7 +210,7 @@ $alertaSinStock = false;
                         } else if ($fila["Stock"] <= 3) {
                             echo "<td style='color: #ee7512; font-weight: bold;'>".$fila["Stock"]."</td>";
                             $alertaStockSuperBajo = true;
-                        } else if ($fila["Stock"] < 10) {
+                        } else if ($fila["Stock"] <= 10) {
                             echo "<td style='color: #ecdd0a; font-weight: bold;'>".$fila["Stock"]."</td>";
                             $alertaStockBajo = true;
                         } else {
@@ -305,7 +305,7 @@ document.addEventListener("DOMContentLoaded", function() {
           }
         }).then(() => {
         // 2. Al terminar el timer, lanzar alerta de inventario si corresponde
-        <?php if ($$alertaSinStock): ?>
+        <?php if ($alertaSinStock): ?>
             Swal.fire({
                 title: 'Stock en cero',
                 background: '#e65c78',
