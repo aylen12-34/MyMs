@@ -3,7 +3,7 @@
 //==============================
 
 document.getElementById("carritoIcono")
-.addEventListener("click",()=>{
+.addEventListener("click", () => {
 
     document.getElementById("sidebar")
     .classList.add("activo");
@@ -15,17 +15,19 @@ document.getElementById("carritoIcono")
 
 });
 
+
 //==============================
 // CERRAR
 //==============================
 
 document.getElementById("cerrarCarrito")
-.addEventListener("click",cerrarSidebar);
+.addEventListener("click", cerrarSidebar);
 
 document.getElementById("fondo")
-.addEventListener("click",cerrarSidebar);
+.addEventListener("click", cerrarSidebar);
 
-function cerrarSidebar(){
+
+function cerrarSidebar() {
 
     document.getElementById("sidebar")
     .classList.remove("activo");
@@ -35,113 +37,211 @@ function cerrarSidebar(){
 
 }
 
+
 //==============================
 // ACTUALIZAR CARRITO
 //==============================
 
+function actualizarCarrito() {
 
-function actualizarCarrito(){
+    fetch("../index/carrito.php", {
 
-fetch("../index/carrito.php",{
+        method: "POST",
 
-method:"POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
 
-headers:{
-"Content-Type":"application/x-www-form-urlencoded"
-},
+        body: "accion=mostrar"
 
-body:"accion=mostrar"
+    })
 
-})
+    .then(res => res.json())
 
-.then(res=>res.json())
+    .then(datos => {
 
-.then(datos=>{
-
-
-console.log(datos);
+        console.log(datos);
 
 
-let html="";
+        let total = 0;
 
-let total = 0;
-
-let cantidadTotal = 0;
+        let cantidadTotal = 0;
 
 
-datos.forEach(producto=>{
+        const contenidoCarrito =
+            document.getElementById("contenidoCarrito");
 
 
-let subtotal = Number(producto.CostoTotal);
-
-let cantidad = Number(producto.Cantidad);
-
-
-total += subtotal;
-
-cantidadTotal += cantidad;
+        // Limpiar contenido anterior
+        contenidoCarrito.replaceChildren();
 
 
-html += `
-
-<div class="productoCarrito">
-
-<img src="../../${producto.imagen}" width="80">
+        datos.forEach(producto => {
 
 
-<h3>
-${producto.Nombre}
-</h3>
+            //==============================
+            // CONVERTIR DATOS NUMÉRICOS
+            //==============================
+
+            let subtotal = Number(producto.CostoTotal);
+
+            let cantidad = Number(producto.Cantidad);
+
+            let precio = Number(producto.Precio);
 
 
-<p>
-Precio: Bs ${producto.Precio}
-</p>
+            // Evitar valores numéricos inválidos
+
+            if (!Number.isFinite(subtotal)) {
+                subtotal = 0;
+            }
+
+            if (!Number.isFinite(cantidad)) {
+                cantidad = 0;
+            }
+
+            if (!Number.isFinite(precio)) {
+                precio = 0;
+            }
 
 
-<p>
-Cantidad: ${cantidad}
-</p>
+            total += subtotal;
+
+            cantidadTotal += cantidad;
 
 
-<p>
-Subtotal:
-Bs ${subtotal}
-</p>
+            //==============================
+            // CREAR CONTENEDOR
+            //==============================
+
+            const divProducto =
+                document.createElement("div");
+
+            divProducto.className = "productoCarrito";
 
 
-</div>
+            //==============================
+            // IMAGEN
+            //==============================
 
-`;
+            const imagen =
+                document.createElement("img");
 
-});
+            /*
+             * La ruta de la imagen viene de la base de datos.
+             *
+             * Se mantiene el funcionamiento actual.
+             */
 
+            imagen.src = "../../" + String(producto.imagen || "");
 
-document.getElementById("contenidoCarrito")
-.innerHTML = html;
+            imagen.width = 80;
 
-
-
-document.getElementById("cantidadCarrito")
-.innerHTML = cantidadTotal;
-
-
-
-document.getElementById("totalCarrito")
-.innerHTML = "Total: Bs " + total;
-
+            imagen.alt = "Producto";
 
 
-})
+            //==============================
+            // NOMBRE
+            //==============================
 
-.catch(error=>{
+            const nombre =
+                document.createElement("h3");
 
-console.log("Error carrito:",error);
+            /*
+             * IMPORTANTE:
+             * textContent trata el contenido como texto.
+             *
+             * Si el nombre fuera:
+             *
+             * <script>alert("XSS")</script>
+             *
+             * se mostraría como texto y NO se ejecutaría.
+             */
 
-});
+            nombre.textContent =
+                String(producto.Nombre || "");
 
+
+            //==============================
+            // PRECIO
+            //==============================
+
+            const precioTexto =
+                document.createElement("p");
+
+            precioTexto.textContent =
+                "Precio: Bs " + precio;
+
+
+            //==============================
+            // CANTIDAD
+            //==============================
+
+            const cantidadTexto =
+                document.createElement("p");
+
+            cantidadTexto.textContent =
+                "Cantidad: " + cantidad;
+
+
+            //==============================
+            // SUBTOTAL
+            //==============================
+
+            const subtotalTexto =
+                document.createElement("p");
+
+            subtotalTexto.textContent =
+                "Subtotal: Bs " + subtotal;
+
+
+            //==============================
+            // ARMAR PRODUCTO
+            //==============================
+
+            divProducto.appendChild(imagen);
+
+            divProducto.appendChild(nombre);
+
+            divProducto.appendChild(precioTexto);
+
+            divProducto.appendChild(cantidadTexto);
+
+            divProducto.appendChild(subtotalTexto);
+
+
+            contenidoCarrito.appendChild(divProducto);
+
+        });
+
+
+        //==============================
+        // ACTUALIZAR CANTIDAD
+        //==============================
+
+        document.getElementById("cantidadCarrito")
+        .textContent = cantidadTotal;
+
+
+        //==============================
+        // ACTUALIZAR TOTAL
+        //==============================
+
+        document.getElementById("totalCarrito")
+        .textContent = "Total: Bs " + total;
+
+
+    })
+
+    .catch(error => {
+
+        console.log("Error carrito:", error);
+
+    });
 
 }
+
+
 //==============================
 // VACIAR CARRITO
 //==============================
@@ -149,95 +249,194 @@ console.log("Error carrito:",error);
 document.getElementById("vaciarCarrito")
 .addEventListener("click", vaciarCarrito);
 
+
 function vaciarCarrito() {
+
     Swal.fire({
+
         title: "¿Desea vaciar todo el carrito?",
+
         text: "Esta acción no se puede deshacer.",
-        imageUrl: '../../imagenes/gatocarrito.png', 
+
+        imageUrl: '../../imagenes/gatocarrito.png',
+
         imageHeight: 150,
+
         imageAlt: 'Icono personalizado',
+
         showCancelButton: true,
+
         confirmButtonColor: "#E64B6B",
+
         cancelButtonColor: "#6A253A",
+
         confirmButtonText: "Sí, vaciar",
+
         cancelButtonText: "Cancelar"
+
     }).then((result) => {
+
+
         if (result.isConfirmed) {
+
+
             fetch("../index/carrito.php", {
+
                 method: "POST",
+
                 headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
+
+                    "Content-Type":
+                        "application/x-www-form-urlencoded"
+
                 },
+
                 body: "accion=vaciar"
+
             })
+
+
             .then(res => res.json())
+
+
             .then(datos => {
+
+
                 if (datos.ok) {
+
+
                     Swal.fire({
+
                         title: "¡Vaciado!",
+
                         text: datos.mensaje,
-                        imageUrl: '../../imagenes/gatocarrito.png',
+
+                        imageUrl:
+                            '../../imagenes/gatocarrito.png',
+
                         imageHeight: 150,
-                        imageAlt: 'Icono personalizado',
-                        confirmButtonColor: "#6A253A"
+
+                        imageAlt:
+                            'Icono personalizado',
+
+                        confirmButtonColor:
+                            "#6A253A"
+
                     });
+
+
                     actualizarCarrito();
+
+
                 } else {
+
+
                     Swal.fire({
+
                         title: "Error",
+
                         text: datos.mensaje,
-                        imageUrl: '../../imagenes/gatocarrito.png',
+
+                        imageUrl:
+                            '../../imagenes/gatocarrito.png',
+
                         imageHeight: 150,
-                        imageAlt: 'Icono personalizado',
-                        confirmButtonColor: "#6A253A"
+
+                        imageAlt:
+                            'Icono personalizado',
+
+                        confirmButtonColor:
+                            "#6A253A"
+
                     });
+
                 }
+
+
             })
+
+
             .catch(error => {
-                console.log("Error al vaciar carrito:", error);
+
+
+                console.log(
+                    "Error al vaciar carrito:",
+                    error
+                );
+
+
                 Swal.fire({
+
                     title: "Error",
-                    text: "Hubo un problema al conectar con el servidor.",
-                    imageUrl: '../../imagenes/gatocarrito.png',
+
+                    text:
+                        "Hubo un problema al conectar con el servidor.",
+
+                    imageUrl:
+                        '../../imagenes/gatocarrito.png',
+
                     imageHeight: 150,
-                    imageAlt: 'Icono personalizado',
-                    confirmButtonColor: "#6A253A"
+
+                    imageAlt:
+                        'Icono personalizado',
+
+                    confirmButtonColor:
+                        "#6A253A"
+
                 });
+
             });
+
         }
+
     });
+
 }
 
-document.addEventListener("click",function(e){
+
+//==============================
+// COMPRAR
+//==============================
+
+document.addEventListener("click", function(e) {
 
 
-    if(e.target.id=="comprar"){
+    if (e.target.id == "comprar") {
 
 
         fetch("finalizar_pedido.php")
 
-.then(res=>res.json())
+        .then(res => res.json())
 
-.then(data=>{
-
-
-    if(data.ok){
+        .then(data => {
 
 
-        window.location.href="recibo.php";
+            if (data.ok) {
 
 
-    }else{
+                window.location.href =
+                    "recibo.php";
 
 
-        alert(data.mensaje);
+            } else {
+
+
+                alert(data.mensaje);
+
+            }
+
+
+        })
+
+        .catch(error => {
+
+            console.log(
+                "Error al finalizar pedido:",
+                error
+            );
+
+        });
 
     }
-
-
-});
-
-    }
-
 
 });

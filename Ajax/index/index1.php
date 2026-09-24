@@ -142,9 +142,12 @@
                    id="Celular"
                    placeholder="Teléfono">
 
-            <input type="text"
-                   id="Direccion"
-                   placeholder="Dirección">
+            <input
+                    type="text"
+                    id="Direccion"
+                    placeholder="Dirección"
+                    maxlength="255"
+                    autocomplete="street-address">
 
             <select id="Metodo">
                 <option value="QR">Pago mediante QR</option>

@@ -1,9 +1,4 @@
 <?php
-
-// ==========================
-// CONEXIÓN A LA BASE DE DATOS
-// ==========================
-
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -14,12 +9,6 @@ $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
-
-
-// ==========================
-// CONSULTAR PRECIO Y DETALLADO
-// ==========================
-
 if (isset($_GET['codigo'])) {
 
     $codigo = intval($_GET['codigo']);
@@ -209,7 +198,7 @@ main{
 
     object-fit:contain;
 
-    border-radius:10px;
+    border-radius:30px;
 
     transition:
     transform .4s ease,
@@ -420,29 +409,16 @@ main{
 }
 
 #modalImagen{
-
     width:330px;
-
     height:330px;
-
     flex-shrink:0;
-
     object-fit:contain;
 
-    background:#EFE2DA;
-
-    padding:18px;
+    padding:0;
+    background:transparent;
 
     border-radius:45px;
-
-    box-shadow:
-
-        0 12px 30px rgba(106,37,58,.30),
-
-        0 0 0 5px rgba(239,226,218,.35);
-
     transition:.3s ease;
-
 }
 
 

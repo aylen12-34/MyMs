@@ -1,6 +1,6 @@
-document.addEventListener("DOMContentLoaded",()=>{
+document.addEventListener("DOMContentLoaded", () => {
 
-verificarEstadoPedido();
+    verificarEstadoPedido();
 
 });
 
@@ -9,194 +9,277 @@ verificarEstadoPedido();
 // ABRIR FORMULARIO
 //==============================
 
-
-document.getElementById("generarPedido").addEventListener("click",()=>{
+document.getElementById("generarPedido").addEventListener("click", () => {
 
     document
-    .getElementById("modalCompra")
-    .style.display="flex";
+        .getElementById("modalCompra")
+        .style.display = "flex";
 
 });
+
 
 //==============================
 // CERRAR FORMULARIO
 //==============================
 
-document.getElementById("cancelarCompra").addEventListener("click",()=>{
+document.getElementById("cancelarCompra").addEventListener("click", () => {
 
     document.getElementById("modalCompra")
-    .style.display="none";
+        .style.display = "none";
 
 });
+
+
 //==============================
 // CONFIRMAR COMPRA
 //==============================
-document.getElementById("confirmarPedido").addEventListener("click",()=>{
-      
+
+document.getElementById("confirmarPedido").addEventListener("click", () => {
 
     let datos = {
 
-        Nombre: document.getElementById("Nombre").value,
-        Celular: document.getElementById("Celular").value,
-        Direccion: document.getElementById("Direccion").value,
-        Metodo: document.getElementById("Metodo").value,
-    
+        Nombre: document.getElementById("Nombre").value.trim(),
+        Celular: document.getElementById("Celular").value.trim(),
+        Direccion: document.getElementById("Direccion").value.trim(),
+        Metodo: document.getElementById("Metodo").value
 
     };
 
 
+    //==============================
+    // VALIDAR MÉTODO DE PAGO
+    //==============================
 
-fetch("../index/crearpedido.php",{
+    const metodosPermitidos = ["QR", "Efectivo"];
 
-    method:"POST",
+    if (!metodosPermitidos.includes(datos.Metodo)) {
 
-    headers:{
-        "Content-Type":"application/json"
-    },
-
-    body: JSON.stringify(datos)
-
-})
-
-
-.then(res=>res.json())
-
-
-.then(data=>{
-
-
-    console.log(data);
-
-
-    if(data.ok){
-document.getElementById("modalCompra").style.display = "none";
-const videoChimuelo = document.createElement('video');
-
-videoChimuelo.src = '../../imagenes/chimuelo.mp4';
-videoChimuelo.autoplay = true;
-videoChimuelo.muted = false;
-
-videoChimuelo.style.width = '200px';
-videoChimuelo.style.borderRadius = '20px';
-videoChimuelo.style.border = '3px solid #EFE2DA';
-videoChimuelo.style.display = 'block';
-videoChimuelo.style.margin = '0 auto';
-
-Swal.fire({
-    title: 'Pedido N°' + data.pedidos,
-    background: '#e65c78',
-    color: '#EFE2DA',
-    html: videoChimuelo,
-    confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
-    text: 'Gracias por tu compra'
-}).then((result) => {
-
-    if (result.isConfirmed) {
-        window.location.href = "index1.php?ID=" + data.pedidos;
-    }
-
-});
-    }else{
-
-
-        alert(data.mensaje);
-
+        alert("Método de pago inválido");
+        return;
 
     }
 
 
-})
+    //==============================
+    // ENVIAR PEDIDO
+    //==============================
+
+    fetch("../index/crearpedido.php", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify(datos)
+
+    })
 
 
-.catch(error=>{
+    .then(res => res.json())
 
-    console.log("Error:",error);
+
+    .then(data => {
+
+        console.log(data);
+
+
+        if (data.ok) {
+
+            document.getElementById("modalCompra").style.display = "none";
+
+
+            //==============================
+            // VIDEO DE CONFIRMACIÓN
+            //==============================
+
+            const videoChimuelo = document.createElement("video");
+
+            videoChimuelo.src = "../../imagenes/chimuelo.mp4";
+            videoChimuelo.autoplay = true;
+            videoChimuelo.muted = false;
+
+            videoChimuelo.style.width = "200px";
+            videoChimuelo.style.borderRadius = "20px";
+            videoChimuelo.style.border = "3px solid #EFE2DA";
+            videoChimuelo.style.display = "block";
+            videoChimuelo.style.margin = "0 auto";
+
+
+            //==============================
+            // MENSAJE DE CONFIRMACIÓN
+            //==============================
+
+            Swal.fire({
+
+                title: "Pedido N°" + data.pedidos,
+
+                background: "#e65c78",
+
+                color: "#EFE2DA",
+
+                html: videoChimuelo,
+
+                confirmButtonText: "OK",
+
+                confirmButtonColor: "#6A253A",
+
+                text: "Gracias por tu compra"
+
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                    /*
+                     * El ID del pedido debe ser un número.
+                     * La validación definitiva también debe
+                     * realizarse en PHP.
+                     */
+
+                    const idPedido = Number(data.pedidos);
+
+                    if (!Number.isInteger(idPedido) || idPedido <= 0) {
+
+                        console.error("ID de pedido inválido");
+                        return;
+
+                    }
+
+                    window.location.href =
+                        "index1.php?ID=" + encodeURIComponent(idPedido);
+
+                }
+
+            });
+
+
+        } else {
+
+            alert(data.mensaje);
+
+        }
+
+
+    })
+
+
+    .catch(error => {
+
+        console.log("Error:", error);
+
+    });
+
 
 });
 
 
-});
-function verificarEstadoPedido(){
+//==============================
+// VERIFICAR ESTADO DEL PEDIDO
+//==============================
+
+function verificarEstadoPedido() {
+
+    fetch("estadopedido.php")
+
+        .then(res => res.json())
+
+        .then(data => {
+
+            if (data.ok) {
+
+                let pedido = data.pedido;
 
 
-fetch("estadopedido.php")
+                if (pedido.Estado == "Pendiente") {
+
+                    document.getElementById("formularioPedido").style.display = "none";
+
+                    document.getElementById("resumenPedido").style.display = "block";
 
 
-.then(res=>res.json())
+                    //========================================
+                    // MOSTRAR DATOS DE FORMA SEGURA
+                    //========================================
+                    //
+                    // Antes se utilizaba innerHTML directamente
+                    // con datos provenientes del servidor.
+                    //
+                    // Ahora utilizamos textContent para que
+                    // esos datos sean tratados únicamente
+                    // como texto y no como código HTML.
+                    //========================================
+
+                    const datosPedido =
+                        document.getElementById("datosPedido");
+
+                    // Limpiar contenido anterior
+                    datosPedido.replaceChildren();
 
 
-.then(data=>{
+                    // Número de pedido
+                    const pNumero = document.createElement("p");
+
+                    pNumero.textContent =
+                        "Número pedido: " + pedido.id;
+
+                    datosPedido.appendChild(pNumero);
 
 
-if(data.ok){
+                    // Cliente
+                    const pCliente = document.createElement("p");
+
+                    pCliente.textContent =
+                        "Cliente: " + pedido.Nombre;
+
+                    datosPedido.appendChild(pCliente);
 
 
-let pedido=data.pedido;
+                    // Teléfono
+                    const pTelefono = document.createElement("p");
+
+                    pTelefono.textContent =
+                        "Teléfono: " + pedido.telefono;
+
+                    datosPedido.appendChild(pTelefono);
 
 
+                    // Dirección
+                    const pDireccion = document.createElement("p");
 
-if(pedido.Estado=="Pendiente"){
+                    pDireccion.textContent =
+                        "Dirección: " + pedido.direccion;
 
-
-
-document.getElementById("formularioPedido").style.display="none";
-
-
-
-document.getElementById("resumenPedido").style.display="block";
+                    datosPedido.appendChild(pDireccion);
 
 
+                    // Método de pago
+                    const pMetodo = document.createElement("p");
 
-document.getElementById("datosPedido").innerHTML=`
-<p>
-Número pedido:
-${pedido.id}
-</p>
+                    pMetodo.textContent =
+                        "Método pago: " + pedido.metodoPago;
 
-
-<p>
-Cliente:
-${pedido.Nombre}
-</p>
+                    datosPedido.appendChild(pMetodo);
 
 
-<p>
-Teléfono:
-${pedido.telefono}
-</p>
+                    // Estado
+                    const pEstado = document.createElement("p");
 
+                    pEstado.textContent =
+                        "Estado: Pendiente de aprobación";
 
-<p>
-Dirección:
-${pedido.direccion}
-</p>
+                    datosPedido.appendChild(pEstado);
 
+                }
 
-<p>
-Método pago:
-${pedido.metodoPago}
-</p>
+            }
 
+        })
 
-<p>
-Estado:
-Pendiente de aprobación
-</p>
+        .catch(error => {
 
+            console.log("Error al verificar el pedido:", error);
 
-`;
-
-
-
-}
-
-
-}
-
-
-
-});
-
+        });
 
 }
