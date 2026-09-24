@@ -76,14 +76,13 @@ if (isset($_GET['codigo'])) {
 
 
 <style>
-
-/* ==========================
+/* ==================================================
    COLORES
+
    morado: #6A253A
    rosado: #E64B6B
    crema:  #EFE2DA
-========================== */
-
+================================================== */
 *{
 
     margin:0;
@@ -110,7 +109,7 @@ body{
 
     min-height:100vh;
 
-}
+}================================================= */
 
 main{
 
@@ -129,7 +128,6 @@ main{
     background-repeat:no-repeat;
 
 }
-
 #hero{
 
     text-align:center;
@@ -166,7 +164,6 @@ main{
 
 }
 
-
 #n{
 
     text-align:center;
@@ -178,6 +175,7 @@ main{
     margin-bottom:80px;
 
 }
+
 
 .producto{
 
@@ -202,6 +200,7 @@ main{
 
 }
 
+================================================ */
 
 .prod{
 
@@ -233,7 +232,6 @@ main{
         0 0 90px rgba(239,226,218,.9);
 
 }
-
 
 .info{
 
@@ -340,7 +338,7 @@ main{
 
     z-index:9999;
 
-    backdrop-filter:blur(5px);
+    backdrop-filter:blur(6px);
 
     overflow:hidden;
 
@@ -357,33 +355,37 @@ main{
 
     position:relative;
 
-    width:950px;
+    width:1000px;
 
     max-width:95%;
 
-    height:auto;
-
-    max-height:85vh;
+    max-height:90vh;
 
     display:flex;
 
-    align-items:center;
+    flex-direction:column;
 
-    gap:45px;
+    gap:28px;
 
-    padding:45px;
+    padding:42px;
 
     background:#E64B6B;
 
     border:4px solid #6A253A;
 
-    border-radius:30px;
+    border-radius:32px;
 
-    box-shadow:0 20px 60px rgba(0,0,0,.55);
+    box-shadow:
+
+        0 20px 60px rgba(0,0,0,.55),
+
+        0 0 40px rgba(106,37,58,.25);
 
     animation:aparecerModal .3s ease;
 
-    overflow:hidden;
+    overflow-y:auto;
+
+    overflow-x:hidden;
 
 }
 
@@ -406,43 +408,60 @@ main{
     }
 
 }
-=============================================== */
+.modal-superior{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:40px;
+
+}
 
 #modalImagen{
 
-    width:350px;
+    width:330px;
 
-    height:350px;
-
-    object-fit:contain;
+    height:330px;
 
     flex-shrink:0;
 
+    object-fit:contain;
+
     background:#EFE2DA;
 
-    border-radius:25px;
+    padding:18px;
 
-    padding:15px;
+    border-radius:45px;
 
-    box-shadow:0 10px 25px rgba(106,37,58,.25);
+    box-shadow:
+
+        0 12px 30px rgba(106,37,58,.30),
+
+        0 0 0 5px rgba(239,226,218,.35);
+
+    transition:.3s ease;
 
 }
 
 
-.modal-info{
+#modalImagen:hover{
 
-    color:#000;
+    transform:scale(1.025) rotate(-1deg);
+
+}
+
+.modal-info{
 
     flex:1;
 
     min-width:0;
 
-    max-height:75vh;
-
-    overflow:hidden;
+    color:#000;
 
 }
-
 
 #modalEtiqueta{
 
@@ -458,8 +477,9 @@ main{
 
     font-size:14px;
 
-}
+    margin-bottom:12px;
 
+}
 
 #modalNombre{
 
@@ -469,12 +489,11 @@ main{
 
     line-height:1.1;
 
-    margin:15px 0 18px 0;
+    margin:8px 0 18px 0;
 
     overflow-wrap:anywhere;
 
 }
-
 
 #modalDescripcion{
 
@@ -484,9 +503,9 @@ main{
 
     font-size:15px;
 
-    line-height:1.6;
+    line-height:1.7;
 
-    margin-bottom:10px;
+    margin-bottom:18px;
 
 }
 
@@ -494,15 +513,19 @@ main{
 
     display:inline-block;
 
-    margin:15px 0 20px 0;
+    margin:5px 0 0 0;
 
-    padding:10px 18px;
+    padding:10px 20px;
 
     background:#EFE2DA;
 
     border:2px solid #6A253A;
 
-    border-radius:15px;
+    border-radius:17px;
+
+    box-shadow:
+
+        0 5px 15px rgba(106,37,58,.12);
 
 }
 
@@ -517,6 +540,8 @@ main{
 
     font-size:12px;
 
+    margin-bottom:2px;
+
 }
 
 
@@ -528,35 +553,53 @@ main{
 
 }
 
+.modal-detallado{
+
+    width:100%;
+
+}
+
+
+.modal-detallado .modal-info{
+
+    width:100%;
+
+}
+
+
 .modal-info h3{
 
     color:#6A253A;
 
     font-size:23px;
 
-    margin-bottom:8px;
+    margin-bottom:10px;
 
 }
 
 #modalDetallado{
 
+    width:100%;
+
+    min-height:120px;
+
+    max-height:230px;
+
     background:#EFE2DA;
 
     color:#000;
 
-    padding:17px;
+    padding:20px 22px;
 
-    border-radius:15px;
+    border-radius:20px;
 
-    border-left:5px solid #6A253A;
+    border-left:6px solid #6A253A;
 
     font-family:'Poppins',sans-serif;
 
     font-size:14px;
 
-    line-height:1.7;
-
-    max-height:190px;
+    line-height:1.75;
 
     overflow-y:auto;
 
@@ -566,21 +609,27 @@ main{
 
     word-break:normal;
 
+    box-shadow:
+
+        inset 0 2px 8px rgba(106,37,58,.08),
+
+        0 5px 15px rgba(106,37,58,.10);
+
 }
-
-
 #modalDetallado::-webkit-scrollbar{
 
-    width:7px;
+    width:8px;
 
 }
 
 
 #modalDetallado::-webkit-scrollbar-track{
 
-    background:rgba(106,37,58,.12);
+    background:rgba(106,37,58,.10);
 
-    border-radius:10px;
+    border-radius:20px;
+
+    margin:8px;
 
 }
 
@@ -589,7 +638,7 @@ main{
 
     background:#6A253A;
 
-    border-radius:10px;
+    border-radius:20px;
 
 }
 
@@ -638,7 +687,6 @@ main{
     transform:rotate(90deg);
 
 }
-
 
 #pedido{
 
@@ -726,6 +774,7 @@ main{
 
     }
 
+
     .producto,
     .inverso{
 
@@ -760,6 +809,7 @@ main{
 
     }
 
+
     #pedido{
 
         width:100%;
@@ -781,31 +831,38 @@ main{
 
         padding:20px;
 
-        align-items:center;
-
     }
 
 
     .tarjeta-modal{
 
-        width:700px;
+        width:750px;
 
         max-width:100%;
 
         max-height:90vh;
 
-        padding:40px 30px;
+        padding:38px 30px;
 
         gap:25px;
 
     }
 
 
+    .modal-superior{
+
+        gap:28px;
+
+    }
+
+
     #modalImagen{
 
-        width:280px;
+        width:250px;
 
-        height:280px;
+        height:250px;
+
+        border-radius:35px;
 
     }
 
@@ -826,12 +883,11 @@ main{
 
     #modalDetallado{
 
-        max-height:170px;
+        max-height:210px;
 
     }
 
 }
-
 
 @media(max-width:650px){
 
@@ -848,40 +904,45 @@ main{
 
         width:100%;
 
-        max-height:92vh;
+        max-width:100%;
+
+        max-height:94vh;
+
+        padding:45px 20px 25px;
+
+        border-radius:27px;
+
+        gap:22px;
+
+    }
+
+
+    .modal-superior{
 
         flex-direction:column;
 
+        gap:20px;
+
         text-align:center;
 
-        padding:45px 20px 25px 20px;
-
-        gap:18px;
-
-        overflow-y:auto;
-
-        overflow-x:hidden;
-
     }
+
     #modalImagen{
 
-        width:200px;
+        width:210px;
 
-        height:200px;
+        height:210px;
 
-        border-radius:22px;
+        padding:14px;
 
-        flex-shrink:0;
+        border-radius:32px;
 
     }
+
 
     .modal-info{
 
         width:100%;
-
-        max-height:none;
-
-        overflow:visible;
 
     }
 
@@ -901,20 +962,25 @@ main{
 
         line-height:1.15;
 
+        margin:8px 0 15px;
+
     }
 
 
     #modalDescripcion{
 
-        font-size:14px;
+        font-size:13px;
 
-        line-height:1.6;
+        line-height:1.65;
+
+        margin-bottom:15px;
 
     }
 
+
     .modal-precio{
 
-        margin:12px 0 18px 0;
+        padding:9px 18px;
 
     }
 
@@ -925,25 +991,37 @@ main{
 
     }
 
+    .modal-detallado{
+
+        text-align:left;
+
+    }
+
+
     .modal-info h3{
 
         font-size:20px;
+
+        margin-bottom:9px;
 
     }
 
 
     #modalDetallado{
 
-        max-height:180px;
+        min-height:110px;
 
-        text-align:left;
+        max-height:190px;
+
+        padding:17px;
 
         font-size:13px;
 
         line-height:1.65;
 
-    }
+        border-radius:17px;
 
+    }
     #cerrarModal{
 
         top:10px;
@@ -959,6 +1037,7 @@ main{
     }
 
 }
+
 </style>
 
 </head>
@@ -975,22 +1054,13 @@ main{
 
 <main>
 
-
-<!-- ==========================
-     HERO
-========================== -->
-
 <section id="hero">
 
-    <h1>Especiales De La Semana</h1>
+    <h1>
+        Especiales De La Semana
+    </h1>
 
 </section>
-
-
-
-<!-- ==========================
-     PRODUCTO 1
-========================== -->
 
 <section class="producto">
 
@@ -1028,12 +1098,6 @@ main{
 
 </section>
 
-
-
-<!-- ==========================
-     PRODUCTO 2
-========================== -->
-
 <section class="producto inverso">
 
     <img
@@ -1070,12 +1134,6 @@ main{
     </div>
 
 </section>
-
-
-
-<!-- ==========================
-     PRODUCTO 3
-========================== -->
 
 <section class="producto">
 
@@ -1116,11 +1174,6 @@ main{
 </section>
 
 
-
-<!-- ==========================
-     PRODUCTO 4
-========================== -->
-
 <section class="producto inverso">
 
     <img
@@ -1157,12 +1210,6 @@ main{
     </div>
 
 </section>
-
-
-
-<!-- ==========================
-     PRODUCTO 5
-========================== -->
 
 <section class="producto">
 
@@ -1201,12 +1248,6 @@ main{
 
 </section>
 
-
-
-<!-- ==========================
-     PRODUCTO 6
-========================== -->
-
 <section class="producto inverso">
 
     <img
@@ -1242,12 +1283,6 @@ main{
     </div>
 
 </section>
-
-
-
-<!-- ==========================
-     PRODUCTO 7
-========================== -->
 
 <section class="producto">
 
@@ -1285,11 +1320,6 @@ main{
 </section>
 
 
-
-<!-- ==========================
-     PEDIDO
-========================== -->
-
 <section id="pedido">
 
     <h2>
@@ -1316,18 +1346,10 @@ main{
 
 <?php include("includes/footer.php"); ?>
 
-
-
-<!-- ==================================================
-     MODAL
-================================================== -->
-
 <div id="modalProducto">
 
+
     <div class="tarjeta-modal">
-
-
-        <!-- BOTÓN CERRAR -->
 
         <button
             id="cerrarModal"
@@ -1336,63 +1358,66 @@ main{
             ×
         </button>
 
+        <div class="modal-superior">
 
-        <!-- IMAGEN -->
+            <img
+                id="modalImagen"
+                src=""
+                alt="Producto"
+            >
+            <div class="modal-info">
+                <span id="modalEtiqueta">
+                    Producto
+                </span>
 
-        <img
-            id="modalImagen"
-            src=""
-            alt="Producto"
-        >
+                <h2 id="modalNombre">
+                    Producto
+                </h2>
+
+                <p id="modalDescripcion">
+                    Descripción
+                </p>
+
+                <div class="modal-precio">
+
+                    <small>
+                        Precio
+                    </small>
+
+                    <strong id="modalPrecio">
+                        Cargando...
+                    </strong>
+
+                </div>
 
 
-        <!-- INFORMACIÓN -->
+            </div>
 
-        <div class="modal-info">
+        </div>
 
+        <div class="modal-separador"></div>
 
-            <span id="modalEtiqueta">
-                Producto
-            </span>
-
-
-            <h2 id="modalNombre">
-                Producto
-            </h2>
+        <div class="modal-detallado">
 
 
-            <p id="modalDescripcion">
-                Descripción
-            </p>
+            <div class="modal-info">
 
 
-            <!-- PRECIO -->
+                <h3>
+                    Detallado
+                </h3>
 
-            <div class="modal-precio">
 
-                <small>
-                    Precio
-                </small>
+                <p id="modalDetallado">
+                    Cargando información...
+                </p>
 
-                <strong id="modalPrecio">
-                    Cargando...
-                </strong>
 
             </div>
 
 
-            <!-- DETALLADO -->
-
-            <h3>
-                Detallado
-            </h3>
-
-            <p id="modalDetallado">
-                Cargando información...
-            </p>
-
-
         </div>
+
 
     </div>
 
@@ -1401,10 +1426,6 @@ main{
 
 
 <script>
-
-/* ==========================
-   ELEMENTOS
-========================== */
 
 const modal = document.getElementById("modalProducto");
 
@@ -1422,48 +1443,41 @@ const modalPrecio = document.getElementById("modalPrecio");
 
 const modalDetallado = document.getElementById("modalDetallado");
 
-
-/* ==========================
-   BOTONES VER MÁS
-========================== */
-
 document.querySelectorAll(".btn-ver-mas").forEach(function(boton){
 
     boton.addEventListener("click", function(e){
 
         e.preventDefault();
 
-
-        // Producto donde se hizo click
-
         const producto = boton.closest(".producto");
 
-
-        // Código de MySQL
-
         const codigo = boton.dataset.codigo;
-
-
-        // Datos escritos en HTML
 
         modalImagen.src =
             producto.querySelector(".prod").src;
 
+
         modalNombre.textContent =
             producto.querySelector("h2").textContent.trim();
+
 
         modalDescripcion.textContent =
             producto.querySelector(".info p").textContent.trim();
 
+
         modalEtiqueta.textContent =
             producto.querySelector(".etiqueta").textContent.trim();
-
-
 
         modal.classList.add("activo");
 
         document.body.style.overflow = "hidden";
 
+
+        modalPrecio.textContent =
+            "Cargando...";
+
+        modalDetallado.textContent =
+            "Cargando información...";
 
         fetch("?codigo=" + codigo)
 
@@ -1478,6 +1492,7 @@ document.querySelectorAll(".btn-ver-mas").forEach(function(boton){
                 modalPrecio.textContent =
                     "Bs. " + datos.Precio;
 
+
                 modalDetallado.textContent =
                     datos.Detallado;
 
@@ -1488,6 +1503,7 @@ document.querySelectorAll(".btn-ver-mas").forEach(function(boton){
                 modalPrecio.textContent =
                     "No disponible";
 
+
                 modalDetallado.textContent =
                     "No se pudo cargar la información.";
 
@@ -1497,11 +1513,6 @@ document.querySelectorAll(".btn-ver-mas").forEach(function(boton){
 
 });
 
-
-/* ==========================
-   CERRAR MODAL
-========================== */
-
 cerrar.addEventListener("click", function(){
 
     modal.classList.remove("activo");
@@ -1509,7 +1520,6 @@ cerrar.addEventListener("click", function(){
     document.body.style.overflow = "";
 
 });
-
 
 
 </script>
