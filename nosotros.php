@@ -1,383 +1,485 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Nosotros</title>
-    
-<link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-/* ==========================
-   COLORES
-   morado: #6A253A
-   rosado: #E64B6B
-   crema:  #EFE2DA
-========================== */
+    <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Chillax-Semibold';
-}
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
 
-body {
-    display: grid;
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
 
-    grid-template-areas:
-        "header"
-        "main"
-        "footer";
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    grid-template-rows: 350px auto 200px;
 
-    min-height: 100vh;
-}
+    <style>
 
-main {
-    grid-area: main;
+        /* ==========================
+           COLORES
+           morado: #6A253A
+           rosado: #E64B6B
+           crema:  #EFE2DA
+        ========================== */
 
-    padding: 80px 6% 120px;
 
-    background-image:
-        url("imagenes/2.png");
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Chillax-Semibold';
+        }
 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-}
 
+        html {
+            width: 100%;
+            overflow-x: hidden;
+        }
 
-#hola {
-    text-align: center;
 
-    max-width: 950px;
+        body {
+            width: 100%;
+            min-height: 100vh;
 
-    margin: 0 auto 110px;
+            display: grid;
 
-    position: relative;
-}
+            grid-template-areas:
+                "header"
+                "main"
+                "footer";
 
-#hola::after {
-    content: "";
+            grid-template-rows: 350px auto 200px;
 
-    display: block;
+            overflow-x: hidden;
+        }
+        main {
+            grid-area: main;
 
-    width: 90px;
-    height: 4px;
+            width: 100%;
+            min-width: 0;
 
-    background: #E64B6B;
+            padding: 80px 6% 120px;
 
-    margin: 30px auto 0;
+            background-image:
+                url("imagenes/2.png");
 
-    border-radius: 10px;
-}
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
 
-#hola h1 {
-    font-size: clamp(50px, 6vw, 78px);
+        #hola {
+            width: min(1050px, 100%);
 
-    color: #6A253A;
+            margin: 0 auto 100px;
 
-    line-height: 1;
+            padding: 55px 70px;
 
-    margin-bottom: 30px;
+            text-align: center;
 
-    letter-spacing: 1px;
-}
+            background: #EFE2DA;
 
-#hola p {
-    color: #4f4f4f;
+            border: 1px solid rgba(106, 37, 58, 0.15);
 
-    font-family: 'Poppins', sans-serif;
+            border-radius: 30px;
 
-    font-size: 17px;
+            box-shadow:
+                0 15px 40px rgba(106, 37, 58, 0.14);
 
-    line-height: 1.9;
+            position: relative;
 
-    max-width: 850px;
+            transition:
+                transform .4s ease,
+                box-shadow .4s ease;
+        }
 
-    margin: auto;
-}
 
+        #hola:hover {
+            transform: translateY(-5px);
 
-/* ==========================
-   SECCIONES
-========================== */
+            box-shadow:
+                0 20px 50px rgba(106, 37, 58, 0.20);
+        }
 
-.producto {
 
-    display: flex;
+        #hola::after {
+            content: "";
 
-    align-items: center;
+            display: block;
 
-    justify-content: center;
+            width: 90px;
+            height: 4px;
 
-    gap: clamp(50px, 8vw, 120px);
+            background: #E64B6B;
 
-    max-width: 1250px;
+            margin: 28px auto 0;
 
-    margin: 0 auto 100px;
+            border-radius: 10px;
+        }
 
-    padding: 45px;
 
-    background: rgba(255, 255, 255, 0.45);
+        #hola h1 {
+            font-size: clamp(50px, 6vw, 78px);
 
-    border: 1px solid rgba(106, 37, 58, 0.12);
+            color: #6A253A;
 
-    border-radius: 30px;
+            line-height: 1;
 
-    box-shadow:
-        0 15px 40px rgba(106, 37, 58, 0.10);
+            margin-bottom: 28px;
 
-    backdrop-filter: blur(4px);
+            letter-spacing: 1px;
+        }
 
-    transition: transform .4s ease, box-shadow .4s ease;
-}
 
-.producto:hover {
-    transform: translateY(-7px);
+        #hola p {
+            color: #4f4f4f;
 
-    box-shadow:
-        0 20px 50px rgba(106, 37, 58, 0.18);
-}
+            font-family: 'Poppins', sans-serif;
 
+            font-size: 17px;
 
-/* ==========================
-   ORDEN INVERSO
-========================== */
+            line-height: 1.9;
 
-.inverso {
-    flex-direction: row-reverse;
-}
+            max-width: 850px;
 
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .producto {
+            width: min(1250px, 100%);
 
-/* ==========================
-   IMÁGENES
-========================== */
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 80px;
 
-.prod {
+            padding: 45px;
 
-    width: min(390px, 38vw);
+            display: flex;
 
-    height: auto;
+            align-items: center;
 
-    object-fit: contain;
+            justify-content: center;
 
-    border-radius: 20px;
+            gap: clamp(50px, 8vw, 120px);
 
-    filter: drop-shadow(
-        0 15px 20px rgba(106, 37, 58, 0.20)
-    );
+            background: #EFE2DA;
 
-    transition:
-        transform .4s ease,
-        filter .4s ease;
-}
+            border: 1px solid rgba(106, 37, 58, 0.15);
 
-.prod:hover {
+            border-radius: 30px;
 
-    transform: scale(1.04) rotate(-1deg);
+            box-shadow:
+                0 15px 40px rgba(106, 37, 58, 0.14);
 
-    filter: drop-shadow(
-        0 20px 30px rgba(106, 37, 58, 0.30)
-    );
-}
+            transition:
+                transform .4s ease,
+                box-shadow .4s ease;
+        }
 
 
-/* ==========================
-   INFORMACIÓN
-========================== */
+        .producto:hover {
+            transform: translateY(-6px);
 
-.info {
+            box-shadow:
+                0 20px 50px rgba(106, 37, 58, 0.20);
+        }
 
-    max-width: 540px;
 
-    position: relative;
-}
+        .inverso {
+            flex-direction: row-reverse;
+        }
 
-.info h2 {
+        .prod {
+            width: min(390px, 38vw);
 
-    color: #6A253A;
+            height: auto;
 
-    font-size: clamp(42px, 5vw, 62px);
+            object-fit: contain;
 
-    line-height: 1;
+            border-radius: 20px;
 
-    margin-bottom: 25px;
+            filter:
+                drop-shadow(
+                    0 15px 20px rgba(106, 37, 58, 0.20)
+                );
 
-    position: relative;
-}
+            transition:
+                transform .4s ease,
+                filter .4s ease;
+        }
 
-.info h2::after {
 
-    content: "";
+        .prod:hover {
+            transform: scale(1.04) rotate(-1deg);
 
-    display: block;
+            filter:
+                drop-shadow(
+                    0 20px 30px rgba(106, 37, 58, 0.30)
+                );
+        }
+        .info {
+            width: 100%;
+            max-width: 540px;
 
-    width: 55px;
-    height: 4px;
+            position: relative;
+        }
 
-    background: #E64B6B;
 
-    border-radius: 10px;
+        .info h2 {
+            color: #6A253A;
 
-    margin-top: 14px;
-}
+            font-size: clamp(42px, 5vw, 62px);
 
-.info p {
+            line-height: 1;
 
-    color: #555;
+            margin-bottom: 25px;
 
-    font-family: 'Poppins', sans-serif;
+            position: relative;
+        }
 
-    font-size: 16px;
 
-    line-height: 1.9;
+        .info h2::after {
+            content: "";
 
-    text-align: justify;
-}
+            display: block;
 
+            width: 55px;
+            height: 4px;
 
-/* ==========================
-   RESPONSIVE
-========================== */
+            background: #E64B6B;
 
-@media (max-width: 900px) {
+            border-radius: 10px;
 
-    main {
-        padding: 60px 25px 80px;
-    }
+            margin-top: 14px;
+        }
 
-    #hola {
-        margin-bottom: 70px;
-    }
 
-    .producto,
-    .inverso {
+        .info p,
+        .info-p {
+            color: #555;
 
-        flex-direction: column;
+            font-family: 'Poppins', sans-serif;
 
-        text-align: center;
+            font-size: 16px;
 
-        gap: 40px;
+            line-height: 1.9;
 
-        padding: 35px 25px;
+            text-align: justify;
+        }
 
-        margin-bottom: 60px;
-    }
+        @media (max-width: 900px) {
 
-    .prod {
-        width: min(380px, 85%);
-    }
+            main {
+                padding: 60px 25px 80px;
+            }
 
-    .info {
-        max-width: 700px;
-    }
 
-    .info h2::after {
-        margin-left: auto;
-        margin-right: auto;
-    }
+            #hola {
+                width: 100%;
 
-    .info p {
-        text-align: center;
-    }
-}
+                padding: 45px 35px;
 
+                margin-bottom: 70px;
+            }
 
-@media (max-width: 500px) {
 
-    main {
-        padding: 50px 18px 60px;
-    }
+            #hola h1 {
+                font-size: 55px;
+            }
 
-    #hola h1 {
-        font-size: 45px;
-    }
 
-    #hola p {
-        font-size: 15px;
-        line-height: 1.7;
-    }
+            .producto,
+            .inverso {
 
-    .producto {
-        padding: 25px 18px;
-        border-radius: 22px;
-    }
+                width: 100%;
 
-    .prod {
-        width: 90%;
-    }
+                flex-direction: column;
 
-    .info h2 {
-        font-size: 40px;
-    }
+                text-align: center;
 
-    .info p {
-        font-size: 14px;
-        line-height: 1.75;
-    }
-}
-</style>
+                gap: 40px;
+
+                padding: 35px 25px;
+
+                margin-bottom: 60px;
+            }
+
+
+            .prod {
+                width: min(380px, 85%);
+            }
+
+
+            .info {
+                max-width: 700px;
+            }
+
+
+            .info h2::after {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .info p,
+            .info-p {
+                text-align: center;
+            }
+        }
+        @media (max-width: 500px) {
+
+            main {
+                padding: 50px 18px 60px;
+            }
+
+
+            #hola {
+                width: 100%;
+
+                padding: 35px 22px;
+
+                margin-bottom: 50px;
+
+                border-radius: 22px;
+            }
+
+
+            #hola h1 {
+                font-size: 42px;
+
+                margin-bottom: 22px;
+            }
+
+
+            #hola p {
+                font-size: 14px;
+
+                line-height: 1.75;
+            }
+
+
+            .producto,
+            .inverso {
+
+                width: 100%;
+
+                padding: 25px 18px;
+
+                border-radius: 22px;
+
+                gap: 30px;
+            }
+
+
+            .prod {
+                width: 90%;
+            }
+
+
+            .info h2 {
+                font-size: 40px;
+            }
+
+
+            .info p,
+            .info-p {
+                font-size: 14px;
+
+                line-height: 1.75;
+            }
+        }
+
+    </style>
+
 </head>
+
+
 <body>
+
+
     <?php include("includes/nav.php"); ?>
+
     <?php include("includes/header.php"); ?>
 
+
     <main>
-            <section id="hola">
+
+        <section id="hola">
+
             <h1>Sobre Nosotros</h1>
 
-           <p>Somos un emprendimiento boliviano dedicado a la elaboración 
-            de productos personalizados y saludables,pensados especialmente 
-            para personas con necesidades alimentarias específicas como celíacos, 
-            diabéticos intolerantes a ciertos ingredientes o para quienes buscan 
-            una alimentación mas natural.</p>
+            <p>
+                Somos un emprendimiento boliviano dedicado a la elaboración
+                de productos personalizados y saludables, pensados especialmente
+                para personas con necesidades alimentarias específicas como celíacos,
+                diabéticos, intolerantes a ciertos ingredientes o para quienes buscan
+                una alimentación más natural.
+            </p>
 
         </section>
-    <section class="producto">
 
-            <img src="imagenes/vision.png" class="prod" alt="Tortas y Brownies">
+        <section class="producto">
+
+            <img
+                src="imagenes/vision.png"
+                class="prod"
+                alt="Tortas y Brownies"
+            >
+
 
             <div class="info">
+
                 <h2>Visión</h2>
 
-                <p class="info-p">Ser un emprendimiento lider en la elaboracion y comercializacion de
-                    prodyuctos alimenticios personalizados y saludables, reconocido por su 
-                    innovacion, calida e impacto social, contribuyendo al desarrolla sostenible,
-                    al apoyo de productores nacionales y a una mejor calidad de vida para las personas 
-                    con necesidades alimentarias especificas.</p>
+                <p class="info-p">
+                    Ser un emprendimiento líder en la elaboración y comercialización de
+                    productos alimenticios personalizados y saludables, reconocido por su
+                    innovación, calidad e impacto social, contribuyendo al desarrollo
+                    sostenible, al apoyo de productores nacionales y a una mejor calidad
+                    de vida para las personas con necesidades alimentarias específicas.
                 </p>
-
 
             </div>
 
         </section>
+
         <section class="producto inverso">
 
-            <img src="imagenes/mision.png" class="prod" alt="Bebidas Frías">
+            <img
+                src="imagenes/mision.png"
+                class="prod"
+                alt="Bebidas Frías"
+            >
+
 
             <div class="info">
 
                 <h2>Misión</h2>
 
-                <p class="info-p">Brindar productos alimenticios personalizados, saludables 
-                y de alta calidad para personas con necesidades alimentarias especiales, 
-                utilizando ingredientes naturales y orgánicos provenientes de productores 
-                bolivianos, con el compromiso de promover el bienestar, la inclusión 
-                alimentaria y el consumo responsable.</p>
-
+                <p class="info-p">
+                    Brindar productos alimenticios personalizados, saludables
+                    y de alta calidad para personas con necesidades alimentarias
+                    especiales, utilizando ingredientes naturales y orgánicos
+                    provenientes de productores bolivianos, con el compromiso
+                    de promover el bienestar, la inclusión alimentaria y el
+                    consumo responsable.
+                </p>
 
             </div>
 
         </section>
-        
+
+
     </main>
-    <?php include("includes/footer.php");?>
+
+
+    <?php include("includes/footer.php"); ?>
+
+
 </body>
+
 </html>
