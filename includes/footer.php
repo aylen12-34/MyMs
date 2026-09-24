@@ -2,7 +2,6 @@
 
 footer {
     position: relative;
-
     width: 100%;
 
     background-image: url("imagenes/pie.png");
@@ -62,21 +61,19 @@ footer::before {
 }
 
 .footer-marca h2 {
-    margin: 0 0 8px;
+    margin: 0 0 12px;
 
-    font-family: 'Chillax', sans-serif;
 
-    font-size: 32px;
+    font-size: 21px;
     font-weight: 600;
 
-    color: #EFE2DA;
+    color: #E64B6B;
 }
 
 .footer-marca p {
     margin: 0;
 
     font-family: 'Chillax', sans-serif;
-
     font-size: 15px;
 
     line-height: 1.5;
@@ -90,8 +87,6 @@ footer::before {
 
 .footer-columna h3 {
     margin: 0 0 12px;
-
-    font-family: 'Chillax', sans-serif;
 
     font-size: 18px;
     font-weight: 600;
@@ -163,7 +158,6 @@ footer::before {
 .footer-bottom p {
     margin: 0;
 
-    font-family: 'Chillax', sans-serif;
 
     font-size: 12px;
 
@@ -223,7 +217,7 @@ footer::before {
                 <h2>MyMs</h2>
 
                 <p>
-                    Sabor que se adapta a ti.
+                    Productos deliciosos y personalizados, pensados para tus necesidades.
                 </p>
 
             </div>
@@ -239,10 +233,7 @@ footer::before {
                     y Gral. Galindo, Cochabamba
                 </p>
 
-                <p>
-                    <i class="fa-brands fa-whatsapp"></i>
-                    +591 69505739
-                </p>
+               
 
             </div>
 
@@ -251,25 +242,25 @@ footer::before {
 
                 <h3>Síguenos</h3>
 
-                <a href="#" class="footer-red">
+                <div class="footer-red">
 
-                    <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-instagram"></i>
 
-                    <span>
-                        myms.ssweetstudio
-                    </span>
+            <span>
+            @myms.ssweetstudio
+            </span>
 
-                </a>
+            </div>
 
-                <a href="#" class="footer-red">
+            <div class="footer-red">
 
-                    <i class="fa-brands fa-whatsapp"></i>
+            <i class="fa-brands fa-whatsapp"></i>
 
-                    <span>
-                        WhatsApp
-                    </span>
+            <span>
+                +591 69505739
+            </span>
 
-                </a>
+            </div>
 
             </div>
 
