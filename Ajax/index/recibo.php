@@ -703,6 +703,17 @@ Total: Bs <?php echo $total; ?>
     </p>
 
 </div>
+<?php if ($_SESSION["Metodo"] == "Pago mediante QR") { ?>
+
+    <div class="qr-recibo">
+        <h3>
+            Escanea para pagar tu pedido
+        </h3>
+
+        <img src="../../imagenes/PAGOOO.png" alt="QR de pago">
+    </div>
+
+<?php } ?>
 <div id="estadoMensaje" class="mensaje-estado <?php echo ($pedido['Estado'] == 'Aceptado') ? 'aceptado' : ''; ?>">
     <h3>
         <?php 
