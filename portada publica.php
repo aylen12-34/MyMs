@@ -77,14 +77,12 @@ if (isset($_GET['codigo'])) {
 
 <style>
 
-
 /* ==========================
    COLORES
    morado: #6A253A
    rosado: #E64B6B
    crema:  #EFE2DA
 ========================== */
-
 
 *{
 
@@ -114,11 +112,6 @@ body{
 
 }
 
-
-/* ==========================
-   MAIN
-========================== */
-
 main{
 
     grid-area:main;
@@ -136,11 +129,6 @@ main{
     background-repeat:no-repeat;
 
 }
-
-
-/* ==========================
-   HERO
-========================== */
 
 #hero{
 
@@ -190,11 +178,6 @@ main{
     margin-bottom:80px;
 
 }
-
-
-/* ==========================
-   PRODUCTOS
-========================== */
 
 .producto{
 
@@ -302,10 +285,6 @@ main{
 }
 
 
-/* ==========================
-   BOTONES
-========================== */
-
 .btn{
 
     display:inline-block;
@@ -339,11 +318,6 @@ main{
 
 }
 
-
-/* ==================================================
-   MODAL DEL PRODUCTO
-================================================== */
-
 #modalProducto{
 
     position:fixed;
@@ -366,7 +340,9 @@ main{
 
     z-index:9999;
 
-    backdrop-filter:blur(4px);
+    backdrop-filter:blur(5px);
+
+    overflow:hidden;
 
 }
 
@@ -377,28 +353,23 @@ main{
 
 }
 
-
-/* ==========================
-   TARJETA
-========================== */
-
 .tarjeta-modal{
 
     position:relative;
 
-    width:900px;
+    width:950px;
 
     max-width:95%;
 
-    max-height:90vh;
+    height:auto;
 
-    overflow-y:auto;
+    max-height:85vh;
 
     display:flex;
 
     align-items:center;
 
-    gap:40px;
+    gap:45px;
 
     padding:45px;
 
@@ -412,8 +383,9 @@ main{
 
     animation:aparecerModal .3s ease;
 
-}
+    overflow:hidden;
 
+}
 
 @keyframes aparecerModal{
 
@@ -434,34 +406,40 @@ main{
     }
 
 }
-
-
-/* ==========================
-   IMAGEN
-========================== */
+=============================================== */
 
 #modalImagen{
 
-    width:360px;
+    width:350px;
 
-    max-height:400px;
+    height:350px;
 
     object-fit:contain;
 
     flex-shrink:0;
 
+    background:#EFE2DA;
+
+    border-radius:25px;
+
+    padding:15px;
+
+    box-shadow:0 10px 25px rgba(106,37,58,.25);
+
 }
 
-
-/* ==========================
-   INFORMACIÓN
-========================== */
 
 .modal-info{
 
     color:#000;
 
     flex:1;
+
+    min-width:0;
+
+    max-height:75vh;
+
+    overflow:hidden;
 
 }
 
@@ -487,11 +465,13 @@ main{
 
     color:#000;
 
-    font-size:40px;
+    font-size:38px;
 
     line-height:1.1;
 
-    margin:15px 0 20px 0;
+    margin:15px 0 18px 0;
+
+    overflow-wrap:anywhere;
 
 }
 
@@ -502,24 +482,21 @@ main{
 
     font-family:'Poppins',sans-serif;
 
-    font-size:16px;
+    font-size:15px;
 
-    line-height:1.7;
+    line-height:1.6;
+
+    margin-bottom:10px;
 
 }
-
-
-/* ==========================
-   PRECIO
-========================== */
 
 .modal-precio{
 
     display:inline-block;
 
-    margin:22px 0;
+    margin:15px 0 20px 0;
 
-    padding:12px 20px;
+    padding:10px 18px;
 
     background:#EFE2DA;
 
@@ -538,7 +515,7 @@ main{
 
     font-family:'Poppins',sans-serif;
 
-    font-size:13px;
+    font-size:12px;
 
 }
 
@@ -547,25 +524,19 @@ main{
 
     color:#000;
 
-    font-size:27px;
+    font-size:25px;
 
 }
-
-
-/* ==========================
-   DETALLADO
-========================== */
 
 .modal-info h3{
 
     color:#6A253A;
 
-    font-size:24px;
+    font-size:23px;
 
-    margin-bottom:10px;
+    margin-bottom:8px;
 
 }
-
 
 #modalDetallado{
 
@@ -581,16 +552,53 @@ main{
 
     font-family:'Poppins',sans-serif;
 
-    font-size:15px;
+    font-size:14px;
 
     line-height:1.7;
+
+    max-height:190px;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    overflow-wrap:anywhere;
+
+    word-break:normal;
 
 }
 
 
-/* ==========================
-   CERRAR
-========================== */
+#modalDetallado::-webkit-scrollbar{
+
+    width:7px;
+
+}
+
+
+#modalDetallado::-webkit-scrollbar-track{
+
+    background:rgba(106,37,58,.12);
+
+    border-radius:10px;
+
+}
+
+
+#modalDetallado::-webkit-scrollbar-thumb{
+
+    background:#6A253A;
+
+    border-radius:10px;
+
+}
+
+
+#modalDetallado::-webkit-scrollbar-thumb:hover{
+
+    background:#4e1b2c;
+
+}
 
 #cerrarModal{
 
@@ -618,6 +626,8 @@ main{
 
     transition:.3s ease;
 
+    z-index:10;
+
 }
 
 
@@ -629,10 +639,6 @@ main{
 
 }
 
-
-/* ==========================
-   PEDIDO
-========================== */
 
 #pedido{
 
@@ -684,11 +690,6 @@ main{
 
 }
 
-
-/* ==========================
-   RESPONSIVE
-========================== */
-
 @media(max-width:900px){
 
     body{
@@ -725,7 +726,6 @@ main{
 
     }
 
-
     .producto,
     .inverso{
 
@@ -760,7 +760,6 @@ main{
 
     }
 
-
     #pedido{
 
         width:100%;
@@ -778,27 +777,35 @@ main{
 
     }
 
+    #modalProducto{
 
-    /* MODAL */
+        padding:20px;
+
+        align-items:center;
+
+    }
+
 
     .tarjeta-modal{
 
-        flex-direction:column;
+        width:700px;
 
-        text-align:center;
+        max-width:100%;
 
-        padding:40px 25px;
+        max-height:90vh;
 
-        gap:20px;
+        padding:40px 30px;
+
+        gap:25px;
 
     }
 
 
     #modalImagen{
 
-        width:260px;
+        width:280px;
 
-        max-height:260px;
+        height:280px;
 
     }
 
@@ -810,9 +817,148 @@ main{
     }
 
 
+    #modalDescripcion{
+
+        font-size:14px;
+
+    }
+
+
+    #modalDetallado{
+
+        max-height:170px;
+
+    }
+
 }
 
 
+@media(max-width:650px){
+
+    #modalProducto{
+
+        padding:15px;
+
+        align-items:center;
+
+    }
+
+
+    .tarjeta-modal{
+
+        width:100%;
+
+        max-height:92vh;
+
+        flex-direction:column;
+
+        text-align:center;
+
+        padding:45px 20px 25px 20px;
+
+        gap:18px;
+
+        overflow-y:auto;
+
+        overflow-x:hidden;
+
+    }
+    #modalImagen{
+
+        width:200px;
+
+        height:200px;
+
+        border-radius:22px;
+
+        flex-shrink:0;
+
+    }
+
+    .modal-info{
+
+        width:100%;
+
+        max-height:none;
+
+        overflow:visible;
+
+    }
+
+
+    #modalEtiqueta{
+
+        font-size:13px;
+
+        padding:7px 14px;
+
+    }
+
+
+    #modalNombre{
+
+        font-size:27px;
+
+        line-height:1.15;
+
+    }
+
+
+    #modalDescripcion{
+
+        font-size:14px;
+
+        line-height:1.6;
+
+    }
+
+    .modal-precio{
+
+        margin:12px 0 18px 0;
+
+    }
+
+
+    #modalPrecio{
+
+        font-size:23px;
+
+    }
+
+    .modal-info h3{
+
+        font-size:20px;
+
+    }
+
+
+    #modalDetallado{
+
+        max-height:180px;
+
+        text-align:left;
+
+        font-size:13px;
+
+        line-height:1.65;
+
+    }
+
+    #cerrarModal{
+
+        top:10px;
+
+        right:10px;
+
+        width:38px;
+
+        height:38px;
+
+        font-size:24px;
+
+    }
+
+}
 </style>
 
 </head>
