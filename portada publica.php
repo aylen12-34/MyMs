@@ -412,13 +412,13 @@ main{
     width:330px;
     height:330px;
     flex-shrink:0;
-    object-fit:contain;
-
+    object-fit:cover;
+    display:block;
     padding:0;
+    margin:0;
     background:transparent;
-
-    border-radius:45px;
-    transition:.3s ease;
+    border:none;
+    border-radius:30px;
 }
 
 
