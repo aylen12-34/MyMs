@@ -228,7 +228,10 @@ $resultado = $conexion->query($sql);
     <div class="botones">
         <a href="../perfil.php" class="volver" >Perfil</a>
         <a href="../portada publica.php"><button class="volver">Inicio Público</button></a>
-        <button class="volver"><a href="../Pedidos/leerPedidos.php?ID=".$ID>Registrar nueva venta</a></button>
+        <?php
+        if ($_SESSION['Rol'] === "vendedor") { 
+        echo "<a href='../Pedidos/leerPedidos.php?ID=".$ID."'><button class='volver'>Registrar nueva venta</button></a>";
+}?>
     </div>
 </div>
 
