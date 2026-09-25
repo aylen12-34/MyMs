@@ -38,3 +38,6 @@ reffsfdfdfdioñljio
 xsccscx
 cdcdcdcd
 ****
+4⭐
+trim, prepare, bind_params, stmt
+****
