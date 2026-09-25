@@ -233,20 +233,12 @@ tr:hover td{
             echo "<td class='titulo'>Nombre del Vendedor</td>";
             echo "<td>" . $NombreVendedor. "</td>";
             echo "</tr>";
-
-
         echo "</table>";
-
     } else {
-
         echo "<p>No se encontró la venta.</p>";
-
     }
-
     $conexion->close();
-
     ?>
-
     <button class="volver" onclick="history.back()">
         ← Volver
     </button>

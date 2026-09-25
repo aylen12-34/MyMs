@@ -83,16 +83,9 @@
 
 <body>
     <div class="zona-bloqueado">
-
-        <h2>
-            FELICIDADES, ESTÁS BLOQUEADO
-        </h2>
-
+        <h2> FELICIDADES, ESTÁS BLOQUEADO</h2>
     </div>
-
-    <div id="carita">
-        😭
-    </div>
+    <div id="carita">😭</div>
 
 
     <script>

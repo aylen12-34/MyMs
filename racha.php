@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-// 1. Verificación de sesión y rol al inicio
 if (!isset($_SESSION['Rol']) || $_SESSION['Rol'] != "administrador") {
     header("Location: login.php");
     exit();
@@ -658,135 +656,67 @@ body::before {
 
 
     <div class="pantalla">
-
-
-        <!-- =========================
-             GALLETAS
-        ========================= -->
-
-        <!-- Cambia los nombres de las imágenes
-             por los archivos de tus galletas -->
-
         <img src="imagenes/galletas/galleta1.png" class="galleta g1" alt="Galleta">
-
         <img src="imagenes/galletas/galleta3.png" class="galleta g2" alt="Galleta">
-
         <img src="imagenes/galletas/galleta2.png" class="galleta g3" alt="Galleta">
-
         <img src="imagenes/galletas/galleta4.png" class="galleta g4" alt="Galleta">
-
         <img src="imagenes/galletas/galleta2.png" class="galleta g5" alt="Galleta">
-
-
-        <!-- =========================
-             CONTENIDO CENTRAL
-        ========================= -->
-
         <div class="racha">
-
             <h1>
                <img 
-    src="imagenes/gatito.png" 
-    alt="Elemento interactivo" 
-    class="imagen-interactiva"
-    onclick="reproducirSonido()"
+    src="imagenes/gatito.png" alt="Elemento interactivo" class="imagen-interactiva" onclick="reproducirSonido()"
   >
   <script>
-    // Carga previa del efecto de sonido
     const sonido = new Audio('imagenes/gatoo.mp3');
 
     function reproducirSonido() {
-      sonido.currentTime = 0; // Reinicia el audio si se presiona varias veces rápido
+      sonido.currentTime = 0;
       sonido.play();
     }
   </script>
                 <?php echo date('F'); ?>
             </h1>
-
-            <p>
-                Ver Reportes
-            </p>
+            <p> Ver Reportes</p>
 
         </div>
-
-
-        <!-- =========================
-             BOTONES
-        ========================= -->
-
         <div class="botones">
-
-            <button onclick="reiniciarRacha()">
-                Reporte de ventas
-            </button>
-
-            <a href="reportclient.php">
-                <button>
-                    Reporte de Clientes
-                </button>
-            </a>
-
-            <a href="reportprodu.php">
-                <button>
-                    Top Productos
-                </button>
-            </a>
-
+            <button onclick="reiniciarRacha()">Reporte de ventas</button>
+            <a href="reportclient.php"><button>Reporte de Clientes</button></a>
+            <a href="reportprodu.php"><button>Top Productos</button></a>
         </div>
-
     </div>
-
-
     <script>
-
         function reiniciarRacha() {
 
             window.location.href = "reportes.php";
 
         }
-
-
 document.addEventListener("DOMContentLoaded", function() {
     let timerInterval;
-
     Swal.fire({
         title: 'Bienvenido Vendedor',
-
         html: 'Cargando cantidad <b></b> de pedidos.',
-
         timer: 2000,
-
         timerProgressBar: true,
-
         background: '#E64B6B',
-
         color: '#EFE2DA',
-
         confirmButtonColor: '#6A253A',
-
         didOpen: () => {
-
             Swal.showLoading();
-
             const timer = Swal.getPopup().querySelector('b');
-
             timerInterval = setInterval(() => {
                 timer.textContent = Swal.getTimerLeft();
             }, 100);
         },
-
         willClose: () => {
             clearInterval(timerInterval);
         }
-
     }).then((result) => {
 
         if (result.dismiss === Swal.DismissReason.timer) {
             console.log('Alerta cerrada correctamente');
         }
-
     });
-
 });
 </script>
 

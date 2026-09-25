@@ -1,5 +1,4 @@
 <?php
-// --- 1. CONEXIÓN A LA BASE DE DATOS ---
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -11,9 +10,6 @@ if ($conn->connect_error) {
 }
 
 @$conn->query("SET lc_time_names = 'es_ES'");
-
-// --- 2. CONSULTA TOP 3 PRODUCTOS MÁS VENDIDOS ---
-// Realizamos los JOINs necesarios según las relaciones de tus tablas
 $sql_top_productos = "SELECT 
                         p.Nombre AS producto, 
                         COUNT(c.Pedidos_ID) AS unidades, 
@@ -29,10 +25,8 @@ $sql_top_productos = "SELECT
 
 $res_top = $conn->query($sql_top_productos);
 
-// Si las claves foráneas tienen nombres distintos (ej. id_producto, id_pedido, id_venta),
-// ajusta los nombres en el JOIN arriba o usa esta consulta alternativa si el total se calcula por la tabla Carrito:
+
 if (!$res_top) {
-    // Consulta fallback simplificada por si difieren algunos nombres de foreign keys
     $sql_top_productos = "SELECT 
                             p.Nombre AS producto, 
                             COUNT(*) AS unidades, 
@@ -69,7 +63,6 @@ while ($row = $res_top->fetch_assoc()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reportes de Productos</title>
-    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body { 
@@ -141,8 +134,8 @@ while ($row = $res_top->fetch_assoc()) {
             font-weight: bold; 
             font-size: 12px; 
         }
-        /* ==========================
-   FLECHA PARA ANTERIOR REPORTE
+/* ==========================
+FLECHA PARA ANTERIOR REPORTE
 ========================== */
 
 .flecha-anterior {

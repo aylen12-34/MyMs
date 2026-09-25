@@ -200,48 +200,29 @@ table td:last-child{
 </head>
 <body>
      <?php include("includes/navpro.php"); ?>
-
      <?php include("includes/header.php"); ?>
 <main>
-
     <div class="panel">
-
         <h3>👥 Personal</h3>
-
-        <?php include("includes/usuario.php"); ?>
-        <br><br>
+        <?php include("includes/usuario.php"); ?><br><br>
         <a href="racha.php"><button> Reportes</button></a>
         <a href="Ventas/leerVentass.php"><button>Ver ventas</button></a><br>
     </div>
-
     <div class="foto-admin">
-
-
         <?php
         if ($resultadop->num_rows > 0) {
-
             while($fila = $resultadop->fetch_assoc()) {
              echo "<img src='".$fila["imagen"]."' width='300'>";
-
-                
-            }
-               
+            }    
         } 
-        
         ?>
     </div>
-
     <div class="panel">
-
         <h1>Datos Personales</h1>
     <?php
-
 if ($resultadoe->num_rows > 0) {
-
     $fila = $resultadoe->fetch_assoc();
-
     echo "<table>";
-
     echo "<tr>";
     echo "<td class='titulo'>CI</td>";
     echo "<td>".$fila["CI"]."</td>";
@@ -273,13 +254,9 @@ if ($resultadoe->num_rows > 0) {
     echo "</tr>";
 
     echo "</table>";
-
 } 
-
 echo "<a href='Usuario/formUpdateUsuario.php?CI=".$fila["CI"]."'><button>Editar</button></a>"?> <br>
-
     </div>
-
 </main>
      <?php include("includes/footer.php"); ?>
 </body>

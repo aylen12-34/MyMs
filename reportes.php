@@ -13,8 +13,6 @@ if ($conn->connect_error) {
 @$conn->query("SET lc_time_names = 'es_ES'");
 
 $filtro = isset($_GET['filtro']) ? $_GET['filtro'] : 'dias';
-
-// Construcción de consultas uniendo 'ventas' y 'pedidos' por Pedidos_ID
 if ($filtro === 'anios') {
     $sql_ventas = "SELECT DATE_FORMAT(p.fecha, '%Y') AS etiqueta, 
                           SUM(v.costototal) AS total 
@@ -57,8 +55,6 @@ while ($row = $res_ventas->fetch_assoc()) {
     $etiquetas[] = ucfirst($row['etiqueta'] ?? '');
     $totales[]   = (float)($row['total'] ?? 0);
 }
-
-// Consulta de los 3 productos más vendidos uniendo carrito y productos
 $sql_top = "SELECT pr.nombre AS producto, 
                    COUNT(c.Productos_Codigo) AS unidades, 
                    SUM(c.costototal) AS ingreso_total 
@@ -72,7 +68,6 @@ if (!$res_top) {
     die("<b>Error en la consulta de productos top:</b> " . $conn->error);
 }
 
-// Respuesta JSON para llamadas AJAX
 if (isset($_GET['ajax'])) {
     header('Content-Type: application/json');
     echo json_encode([
@@ -90,7 +85,7 @@ if (isset($_GET['ajax'])) {
     <title>Reporte de Ventas</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* ==========================
+/* ==========================
    COLORES
    morado: #6A253A
    rosado: #E64B6B
@@ -420,8 +415,6 @@ select:focus {
     <div class="chart-container">
         <canvas id="graficoVentas"></canvas>
     </div>
-
-    <!-- TABLA DE TOP 3 PRODUCTOS MÁS VENDIDOS -->
     <div class="top-products">
         <h3>Top 3 Productos Más Vendidos</h3>
         <table class="sales-table">

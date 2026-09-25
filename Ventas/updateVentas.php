@@ -107,49 +107,30 @@ if ($_SESSION['Rol'] != "administrador") {
                 margin-top: 10px;
             }
         }
-
     </style>
-
 </head>
-
 <body>
 
 <div>
-
     <h2>Actualización de Ventas</h2>
-
     <p>
-
     <?php
-
     if (!isset($_POST['ID'])) {
         die("No se recibió el ID de la venta.");
     }
-
     $ID = $_POST['ID'];
     $Pedidos_ID = $_POST['Pedidos_ID'];
     $Costototal = $_POST['Costototal'];
     $Estado = $_POST['Estado'];
     $Metodo = $_POST['Metodo'];
-
     $sql = "UPDATE Ventas SET  Costototal='$Costototal', Estado='$Estado',Metodo='$Metodo' WHERE ID='$ID'";
-
     if ($conexion->query($sql) === TRUE) {
-
         echo "Se editó la venta correctamente.";
-
     } else {
-
         echo "Error al actualizar la venta: " . $conexion->error;
-
     }
-
     ?>
-
-    </p>
-
-    <br>
-
+    </p> <br>
     <button class="volver">
         <a href="leerVentass.php">Tabla Ventas</a>
     </button>

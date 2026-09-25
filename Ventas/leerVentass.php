@@ -174,12 +174,10 @@ $resultado = $conexion->query($sql);
         }
     </style>
 </head>
-
 <body>
 
 <div class="contenedor">
     <h2>Lista de Ventas</h2>
-
     <table>
         <tr>
             <th>ID Venta</th>
@@ -190,7 +188,6 @@ $resultado = $conexion->query($sql);
             <th>Vendedor</th>
             <th>Acciones</th>
         </tr>
-
         <?php
         if ($resultado->num_rows > 0) {
             while ($fila = $resultado->fetch_assoc()) {
@@ -204,14 +201,11 @@ $resultado = $conexion->query($sql);
                 echo "<td>" . $fila['Metodo'] . "</td>";
                 echo "<td>" . $fila['NombreVendedor'] . "</td>";
                 echo "<td>";
-                
                 echo "<a href='leerVentas.php?ID=$Pedidos_ID'><button class='mostrar'>Mostrar</button></a>";
-
                 if ($_SESSION['Rol'] === "administrador") {
                     echo "<a href='formupdateVentas.php?ID=$ID'><button class='editar'>Editar</button></a> ";
                     echo "<a href='eliminarVentas.php?ID=$ID'><button class='eliminar'>Eliminar</button></a>";
                 }
- 
                 echo "</td>";
                 echo "</tr>";
             }
@@ -224,7 +218,6 @@ $resultado = $conexion->query($sql);
         $conexion->close();
         ?>
     </table>
-
     <div class="botones">
         <a href="../perfil.php" class="volver" >Perfil</a>
         <a href="../portada publica.php"><button class="volver">Inicio Público</button></a>

@@ -206,51 +206,26 @@ $NombreVendedor = $fila['NombreVendedor'];
     <h1>Editar Venta</h1>
 
     <form action="updateVentas.php" method="post" onsubmit="return validar()">
-
         <input type="hidden" name="ID" value="<?= $ID ?>">
         <input type="hidden" name="Pedidos_ID" value="<?= $Pedidos_ID ?>">
-
         <label for="Costototal">Costo Total:</label>
-        <input type="text" id="Costototal" name="Costototal"
-               value="<?= $Costototal ?>" >
-
-        <br><br>
-
+        <input type="text" id="Costototal" name="Costototal" value="<?= $Costototal ?>" ><br><br>
         <label for="Estado">Estado:</label>
-        <input type="text" id="Estado" name="Estado"
-               value="<?= $Estado ?>" >
-
-        <br><br>
-
+        <input type="text" id="Estado" name="Estado" value="<?= $Estado ?>"><br><br>
         <label for="Metodo">Método:</label>
-        <input type="text" id="Metodo" name="Metodo"
-               value="<?= $Metodo ?>" >
-
-        <br><br>
-
+        <input type="text" id="Metodo" name="Metodo" value="<?= $Metodo ?>"><br><br>
         <label for="NombreVendedor">Nombre del Vendedor:</label>
-        <input type="text" id="NombreVendedor" name="NombreVendedor"
-               value="<?= $NombreVendedor ?>" readonly>
-
-        <br><br>
-
+        <input type="text" id="NombreVendedor" name="NombreVendedor" value="<?= $NombreVendedor ?>" readonly><br><br>
         <input type="submit" value="Editar">
-
     </form>
-
-    <button class="volver" onclick="history.back()">
-        ← Volver
-    </button>
-
+    <button class="volver" onclick="history.back()">  ← Volver </button>
 </div>
 <script>
     function validar() {
-        // Obtener los elementos por su ID de manera correcta
         var costototal = document.getElementById("Costototal");
         var estado = document.getElementById("Estado");
         var metodo = document.getElementById("Metodo");
 
-        // 1. Validar Costo Total
         if (costototal.value.trim() === "") {
             Swal.fire({
                 title: 'Alerta',
@@ -276,10 +251,8 @@ $NombreVendedor = $fila['NombreVendedor'];
     }
 });
             costototal.focus();
-            return false; // Cancela el envío del formulario
+            return false;
         }
-
-        // 2. Validar Estado
         if (estado.value.trim() === "") {
             Swal.fire({
                 title: 'Alerta',
@@ -294,7 +267,6 @@ $NombreVendedor = $fila['NombreVendedor'];
     didOpen: () => {
         const audio = new Audio('../imagenes/gatoventa.mp3');
         const imagenSwal = Swal.getImage();
-
         if (imagenSwal) {
             imagenSwal.style.cursor = 'pointer';
             imagenSwal.addEventListener('click', () => {
@@ -305,10 +277,8 @@ $NombreVendedor = $fila['NombreVendedor'];
     }
 });
             estado.focus();
-            return false; // Cancela el envío del formulario
+            return false;
         }
-
-        // 3. Validar Método
         if (metodo.value.trim() === "") {
             Swal.fire({
                 title: 'Alerta',
@@ -334,11 +304,10 @@ $NombreVendedor = $fila['NombreVendedor'];
     }
 });
             metodo.focus();
-            return false; // Cancela el envío del formulario
+            return false;
         }
 
-        return true; // Si pasa todas las validaciones, se envía
-    }
+        return true;}
 </script>
 
 </body>

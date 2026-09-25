@@ -396,22 +396,12 @@
     </style>
 
 </head>
-
-
 <body>
-
-
     <?php include("includes/nav.php"); ?>
-
     <?php include("includes/header.php"); ?>
-
-
     <main>
-
         <section id="hola">
-
-            <h1>Sobre Nosotros</h1>
-
+             <h1>Sobre Nosotros</h1>
             <p>
                 Somos un emprendimiento boliviano dedicado a la elaboración
                 de productos personalizados y saludables, pensados especialmente
@@ -419,22 +409,11 @@
                 diabéticos, intolerantes a ciertos ingredientes o para quienes buscan
                 una alimentación más natural.
             </p>
-
         </section>
-
         <section class="producto">
-
-            <img
-                src="imagenes/vision.png"
-                class="prod"
-                alt="Tortas y Brownies"
-            >
-
-
+            <img src="imagenes/vision.png" class="prod"alt="Tortas y Brownies">
             <div class="info">
-
                 <h2>Visión</h2>
-
                 <p class="info-p">
                     Ser un emprendimiento líder en la elaboración y comercialización de
                     productos alimenticios personalizados y saludables, reconocido por su
@@ -442,24 +421,12 @@
                     sostenible, al apoyo de productores nacionales y a una mejor calidad
                     de vida para las personas con necesidades alimentarias específicas.
                 </p>
-
             </div>
-
         </section>
-
         <section class="producto inverso">
-
-            <img
-                src="imagenes/mision.png"
-                class="prod"
-                alt="Bebidas Frías"
-            >
-
-
+            <img src="imagenes/mision.png"class="prod" alt="Bebidas Frías" >
             <div class="info">
-
                 <h2>Misión</h2>
-
                 <p class="info-p">
                     Brindar productos alimenticios personalizados, saludables
                     y de alta calidad para personas con necesidades alimentarias
@@ -468,18 +435,9 @@
                     de promover el bienestar, la inclusión alimentaria y el
                     consumo responsable.
                 </p>
-
             </div>
-
         </section>
-
-
     </main>
-
-
     <?php include("includes/footer.php"); ?>
-
-
 </body>
-
 </html>

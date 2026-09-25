@@ -152,15 +152,9 @@ $conexion->close();
 <body>
 
     <div>
-
         <h1>Eliminar Venta</h1>
-
         <p><?= $mensaje ?></p>
-
         <a href="leerVentass.php">Volver a Ventas</a>
-
     </div>
-
 </body>
-
 </html>

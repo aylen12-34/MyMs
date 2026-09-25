@@ -1,5 +1,4 @@
 <?php
-// --- 1. CONEXIÓN A LA BASE DE DATOS ---
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -11,8 +10,6 @@ if ($conn->connect_error) {
 }
 
 @$conn->query("SET lc_time_names = 'es_ES'");
-
-// --- 2. CONSULTA TOP 3 CLIENTES MÁS FRECUENTES ---
 $sql_top_clientes = "SELECT Nombre, COUNT(*) AS total_pedidos
                     FROM Pedidos
                     WHERE Estado = 'Aceptado'
@@ -40,7 +37,6 @@ while ($row = $res_clientes->fetch_assoc()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reporte de Clientes</title>
-    <!-- Se incluye Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body { 
@@ -103,8 +99,8 @@ while ($row = $res_clientes->fetch_assoc()) {
             font-weight: bold; 
             font-size: 12px; 
         }
-    /* ==========================
-   FLECHA PARA SIGUIENTE REPORTE
+/* ==========================
+FLECHA PARA SIGUIENTE REPORTE
 ========================== */
 
 .flecha-siguiente {
@@ -260,7 +256,6 @@ while ($row = $res_clientes->fetch_assoc()) {
 </div>
 
 <script>
-// Imprimir en consola los datos que PHP está entregando a JavaScript
 const etiquetas = <?php echo json_encode($etiquetas); ?>;
 const totales = <?php echo json_encode($totales); ?>;
 
