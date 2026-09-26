@@ -15,14 +15,18 @@ if($_SESSION['CI']==null){
     }
 }
 
-$ID = $_GET['ID'];
+$ID = trim($_GET['ID']);
 
-$sql = "DELETE FROM Ventas WHERE Pedidos_ID=$ID";
+$stmt = $conexion->prepare("DELETE FROM Ventas WHERE Pedidos_ID=?");
 
-if ($conexion->query($sql) === TRUE) {
+$stmt->bind_param("s", $ID);
+
+$stmt->execute();
+
+if ($stmt->affected_rows > 0) {
     $mensaje = "La venta ha sido eliminada correctamente.";
 }else{
-    $mensaje = "Error: " . $conexion->error;
+    $mensaje = "Error: " . $stmt->error;
 }
 
 $conexion->close();

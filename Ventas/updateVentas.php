@@ -118,12 +118,33 @@ if ($_SESSION['Rol'] != "administrador") {
     if (!isset($_POST['ID'])) {
         die("No se recibió el ID de la venta.");
     }
-    $ID = $_POST['ID'];
-    $Pedidos_ID = $_POST['Pedidos_ID'];
-    $Costototal = $_POST['Costototal'];
-    $Estado = $_POST['Estado'];
-    $Metodo = $_POST['Metodo'];
-    $sql = "UPDATE Ventas SET  Costototal='$Costototal', Estado='$Estado',Metodo='$Metodo' WHERE ID='$ID'";
+    $ID = trim($_POST['ID']);
+$Pedidos_ID = trim($_POST['Pedidos_ID']);
+$Costototal = trim($_POST['Costototal']);
+$Estado = trim($_POST['Estado']);
+$Metodo = trim($_POST['Metodo']);
+
+$stmt = $conexion->prepare(
+    "UPDATE Ventas 
+     SET Costototal=?, Estado=?, Metodo=? 
+     WHERE ID=?"
+);
+
+$stmt->bind_param(
+    "ssss",
+    $Costototal,
+    $Estado,
+    $Metodo,
+    $ID
+);
+
+$stmt->execute();
+
+if ($stmt->affected_rows >= 0) {
+    echo "Se editó la venta correctamente.";
+} else {
+    echo "Error al actualizar la venta: " . $stmt->error;
+}
     if ($conexion->query($sql) === TRUE) {
         echo "Se editó la venta correctamente.";
     } else {

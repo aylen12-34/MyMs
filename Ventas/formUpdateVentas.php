@@ -6,10 +6,19 @@ if (!isset($_GET['ID'])) {
     die("No se recibió el ID de la venta.");
 }
 
-$ID = $_GET['ID'];
+$ID = trim($_GET['ID']);
 
-$sql = "SELECT * FROM ventas JOIN pedidos ON ventas.Pedidos_ID = pedidos.ID WHERE Pedidos_ID='$ID' ";
-$resultado = $conexion->query($sql);
+$stmt = $conexion->prepare(
+    "SELECT * FROM ventas 
+     JOIN pedidos ON ventas.Pedidos_ID = pedidos.ID 
+     WHERE Pedidos_ID=?"
+);
+
+$stmt->bind_param("s", $ID);
+
+$stmt->execute();
+
+$resultado = $stmt->get_result();
 
 if (!$resultado) {
     die("Error en la consulta: " . $conexion->error);
@@ -209,11 +218,11 @@ $NombreVendedor = $fila['NombreVendedor'];
         <input type="hidden" name="ID" value="<?= $ID ?>">
         <input type="hidden" name="Pedidos_ID" value="<?= $Pedidos_ID ?>">
         <label for="Costototal">Costo Total:</label>
-        <input type="text" id="Costototal" name="Costototal" value="<?= $Costototal ?>" ><br><br>
+        <input type="text" id="Costototal" name="Costototal" value="<?= $Costototal ?>" required minlength="1" maxlength="20"><br><br>
         <label for="Estado">Estado:</label>
-        <input type="text" id="Estado" name="Estado" value="<?= $Estado ?>"><br><br>
+        <input type="text" id="Estado" name="Estado" value="<?= $Estado ?>" required minlength="3" maxlength="30" pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+"><br><br>
         <label for="Metodo">Método:</label>
-        <input type="text" id="Metodo" name="Metodo" value="<?= $Metodo ?>"><br><br>
+        <input type="text" id="Metodo" name="Metodo" value="<?= $Metodo ?>" required minlength="3" maxlength="30" pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+"><br><br>
         <label for="NombreVendedor">Nombre del Vendedor:</label>
         <input type="text" id="NombreVendedor" name="NombreVendedor" value="<?= $NombreVendedor ?>" readonly><br><br>
         <input type="submit" value="Editar">
