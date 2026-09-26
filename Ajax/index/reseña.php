@@ -177,11 +177,11 @@
                         echo '</div>';
 
                         echo '<div class="nombre">';
-                            echo htmlspecialchars($nombre);
+                            echo htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8');
                         echo '</div>';
 
                         echo '<div class="texto">';
-                            echo htmlspecialchars($come);
+                            echo htmlspecialchars($come, ENT_QUOTES, 'UTF-8');
                         echo '</div>';
 
                     echo '</div>';
