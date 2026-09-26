@@ -9,10 +9,22 @@ if ($conexion->connect_error) {
     echo "No se ha podido conectar a la base de datos";
 }
 
-$CI=$_REQUEST['CI'];
-$Nombre=$_POST['Nombre'];
-$sql = "SELECT * FROM Usuarios WHERE CI='$CI' AND Nombre='$Nombre'";
-$resultado = $conexion->query($sql);
+$CI = trim($_REQUEST['CI']);
+$Nombre = trim($_POST['Nombre']);
+
+$stmt = $conexion->prepare(
+    "SELECT * FROM Usuarios WHERE CI=? AND Nombre=?"
+);
+
+$stmt->bind_param(
+    "ss",
+    $CI,
+    $Nombre
+);
+
+$stmt->execute();
+
+$resultado = $stmt->get_result();
 if ($resultado->num_rows > 0) {
     while($fila = $resultado->fetch_assoc()) {
         session_start();

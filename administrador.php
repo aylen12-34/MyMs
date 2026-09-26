@@ -21,12 +21,17 @@ if($_SESSION['CI']==null){
   }
 }
 
-$CI = $_SESSION['CI'];
+$CI = trim($_SESSION['CI']);
 
-$sqle = "SELECT * FROM Usuarios WHERE CI='$CI'";
-$resultadoe = $conexion->query($sqle);
-$sqlp = "SELECT * FROM Usuarios WHERE CI='$CI'";
-$resultadop = $conexion->query($sqlp);
+$stmt = $conexion->prepare("SELECT * FROM Usuarios WHERE CI=?");
+$stmt->bind_param("s", $CI);
+$stmt->execute();
+$resultadoe = $stmt->get_result();
+
+$stmt = $conexion->prepare("SELECT * FROM Usuarios WHERE CI=?");
+$stmt->bind_param("s", $CI);
+$stmt->execute();
+$resultadop = $stmt->get_result();
 
 
 ?>

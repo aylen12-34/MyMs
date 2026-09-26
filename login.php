@@ -97,10 +97,10 @@
     <h1>Iniciar Sesión</h1>
     <form action="autenticar.php" method="POST" >
             <label for="CI">CI:</label>
-            <input type="number" id="CI" name="CI"> <br> <br>
+            <input type="number" id="CI" name="CI" required minlength="7" maxlength="8"> <br> <br>
+
             <label for="Nombre">Nombre:</label>
-            <input type="text" id="Nombre" name="Nombre"><br><br>
-            <input type="submit" value="Iniciar Sesion">
+            <input type="text" id="Nombre" name="Nombre" required minlength="3" maxlength="50" pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+"><br><br>
         </form>
    <a href="portada publica.php" id="a"> <button class="volver">← Volver</button></a>
 </div>

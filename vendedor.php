@@ -11,32 +11,45 @@ if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
 session_start();
+
 if($_SESSION['CI']==null){
     header("location:login.php");
 }else {
-  if($_SESSION['Rol']=="vendedor"){
-    $CI = $_SESSION['CI'];
-  } else{
-    header("location:login.php");
-  }
+    if($_SESSION['Rol']=="vendedor"){
+        $CI = trim($_SESSION['CI']);
+    } else{
+        header("location:login.php");
+    }
 }
 
 
-$sqln = "SELECT * FROM Usuarios WHERE CI='$CI'";
-$resultadon = $conexion->query($sqln);
-$sql = "SELECT * FROM Usuarios WHERE CI='$CI'";
-$resultado = $conexion->query($sql);
-$sqlp = "SELECT imagen FROM Usuarios WHERE CI='$CI'";
-$resultadop = $conexion->query($sqlp);
+$stmt = $conexion->prepare("SELECT * FROM Usuarios WHERE CI=?");
+$stmt->bind_param("s", $CI);
+$stmt->execute();
+$resultadon = $stmt->get_result();
+
+$stmt = $conexion->prepare("SELECT * FROM Usuarios WHERE CI=?");
+$stmt->bind_param("s", $CI);
+$stmt->execute();
+$resultado = $stmt->get_result();
+
+$stmt = $conexion->prepare("SELECT imagen FROM Usuarios WHERE CI=?");
+$stmt->bind_param("s", $CI);
+$stmt->execute();
+$resultadop = $stmt->get_result();
+
+
 if ($resultadon->num_rows > 0) {
 
-            while($fila = $resultadon->fetch_assoc()) {
+    while($fila = $resultadon->fetch_assoc()) {
 
-                $Estado = $fila['Estado'];
-            }}
-            if($Estado=="bloqueado"){
-        header("location:Usuario/verbloqueo.php");
-  } 
+        $Estado = $fila['Estado'];
+    }
+}
+
+if($Estado=="bloqueado"){
+    header("location:Usuario/verbloqueo.php");
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">

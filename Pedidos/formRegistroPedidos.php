@@ -134,19 +134,63 @@ label.error{
 
         <form action="registroPedidos.php" method="post" onsubmit="return validar()">
             <label for="Nombre">Nombre:</label>
-            <input type="text" id="Nombre" name="Nombre">
+            <input 
+                type="text" 
+                id="Nombre" 
+                name="Nombre"
+                required
+                minlength="3"
+                maxlength="50"
+                pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+"
+            >
             <br><br>
+
             <label for="Celular">Celular:</label>
-            <input type="number" id="Celular" name="Celular">
+            <input 
+                type="number" 
+                id="Celular" 
+                name="Celular"
+                required
+                minlength="8"
+                maxlength="8"
+            >
             <br><br>
+
             <label for="Fecha">Fecha:</label>
-            <input type="date" id="Fecha" name="Fecha" value='<?php echo date('Y-m-d');?>' readonly>
+            <input 
+                type="date" 
+                id="Fecha" 
+                name="Fecha" 
+                value='<?php echo date('Y-m-d');?>' 
+                readonly
+                required
+            >
             <br><br>
+
             <label for="Direccion">Dirección:</label>
-            <input type="text" id="direccion" name="Direccion">
+            <input 
+                type="text" 
+                id="direccion" 
+                name="Direccion"
+                required
+                minlength="5"
+                maxlength="100"
+            >
             <br><br>
+
             <label for="Estado">Estado:</label>
-            <input type="text" id="Estado" name="Estado" value="pendiente" readonly>
+            <input 
+                type="text" 
+                id="Estado" 
+                name="Estado" 
+                value="pendiente" 
+                readonly
+                required
+                minlength="8"
+                maxlength="10"
+                pattern="[a-z]+"
+            >
+
             <input type="hidden" value="pendiente" name="NombreVendedor">
             <br><br>
             <br><br>
@@ -155,6 +199,7 @@ label.error{
 
         </form>
     </div>
+
     <script>
         var nombre = document.getElementById("Nombre");
         var estado = document.getElementById("Estado");
