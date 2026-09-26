@@ -101,6 +101,7 @@
 
             <label for="Nombre">Nombre:</label>
             <input type="text" id="Nombre" name="Nombre" required minlength="3" maxlength="50" pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+"><br><br>
+            <input type="submit" value="Iniciar Sesion">
         </form>
    <a href="portada publica.php" id="a"> <button class="volver">← Volver</button></a>
 </div>

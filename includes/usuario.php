@@ -8,8 +8,6 @@ $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
     echo "No se ha podido conectar a la base de datos";
 }
-
-// Obtener únicamente 6 usuarios de la tabla usuarios
 $sql = "SELECT * FROM usuarios LIMIT 6";
 $resultado = $conexion->query($sql);
 ?>
@@ -163,16 +161,12 @@ $resultado = $conexion->query($sql);
     </style>
 </head>
 <body>
-
-    <!-- Botones de navegación global -->
     <a href="Usuario/formRegistroUsuario.php" class="btn-agregar-global">
         <i class="fa-solid fa-user-plus"></i> Agregar Usuario
     </a>
     <a href="Usuario/readleerUsuarios.php" class="btn-agregar-global">
         <i class="fa-solid fa-users"></i> Ver Personal Total
     </a>
-
-    <!-- Contenedor Acordeón -->
     <div class="contenedor-acordeon">
         <?php 
         $primerItem = true;
@@ -196,8 +190,6 @@ $resultado = $conexion->query($sql);
                     <p><i class="fa-solid fa-location-dot"></i> <strong>Dirección:</strong> <?php echo htmlspecialchars($usuario['Direccion']); ?></p>
                     <p><i class="fa-solid fa-toggle-on"></i> <strong>Estado:</strong> <?php echo htmlspecialchars($usuario['Estado']); ?></p>
                     <p><i class="fa-solid fa-phone"></i> <strong>Celular:</strong> <?php echo htmlspecialchars($usuario['Celular']); ?></p>
-                    
-                    <!-- Acciones para cada usuario -->
                     <div class="acciones-db">
                         <a href="Usuario/formUpdateUsuario.php?CI=<?php echo $usuario['CI']; ?>" 
                            class="btn-db btn-actualizar" 

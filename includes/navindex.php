@@ -160,15 +160,10 @@
 </head>
 <body>
 
-    <!-- BOTÓN -->
     <div id="botonMenu">
         <img src="../../imagenes/ISOTIPO BRUMA PASTEL.png" alt="Menu">
     </div>
-
-    <!-- FONDO OSCURO -->
     <div id="overlay"></div>
-
-    <!-- MENÚ -->
     <nav class="indice" id="menu">
         <ul>
             

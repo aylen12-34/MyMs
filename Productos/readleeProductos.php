@@ -1,13 +1,10 @@
 <?php
 session_start();
-
-// 1. Verificación de sesión y rol al inicio
 if (!isset($_SESSION['Rol']) || $_SESSION['Rol'] != "vendedor") {
     header("Location: ../login.php");
     exit();
 }
 
-// 2. Conexión a la base de datos
 $usuario = "root";
 $contraseña = "";
 $direccion = "localhost";
@@ -21,8 +18,6 @@ if ($conexion->connect_error) {
 
 $sql = "SELECT * FROM Productos";
 $resultado = $conexion->query($sql);
-
-// Variables para controlar alertas globales
 $alertaStockBajo = false;
 $alertaStockSuperBajo = false;
 $alertaSinStock = false;
@@ -237,8 +232,6 @@ $alertaSinStock = false;
     <a href="../vendedor.php"><button class="volver">Perfil</button></a>
     <a href="formRegistroProductos.php"><button class="volver">Registrar Producto</button></a>
 </div>
-
-<!-- Scripts de Alertas -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
     let timerInterval;
@@ -285,12 +278,14 @@ $alertaSinStock = false;
 document.addEventListener("DOMContentLoaded", function() {
     let timerInterval;
     
-    // 1. Mostrar alerta de bienvenida con temporizador
     Swal.fire({
          title: 'Bienvenido Vendedor',
           html: 'Cargando número <b></b> de productos.',
           timer: 2000,
           timerProgressBar: true,
+          background: '#E64B6B',
+        color: '#ffffff',
+        confirmButtonColor: '#6A253A',
           didOpen: () => {
             Swal.showLoading();
             const timer = Swal.getPopup().querySelector('b');
@@ -302,7 +297,6 @@ document.addEventListener("DOMContentLoaded", function() {
             clearInterval(timerInterval);
           }
         }).then(() => {
-        // 2. Al terminar el timer, lanzar alerta de inventario si corresponde
         <?php if ($alertaSinStock): ?>
             Swal.fire({
                 title: 'Stock en cero',

@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-// 1. Verificación de sesión y rol al inicio
 if (!isset($_SESSION['Rol']) || $_SESSION['Rol'] != "vendedor") {
     header("Location: ../login.php");
     exit();
