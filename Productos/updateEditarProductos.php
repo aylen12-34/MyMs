@@ -100,7 +100,7 @@ $baseDeDatos = "MYMS";
 </head>
 <body>
     <div>
-        <h2>Actualizacion Usuario</h2>
+        <h2>Actualizacion Producto</h2>
         <p>
             <?php 
 $conexion=new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
@@ -108,18 +108,35 @@ if ($conexion->connect_error) {
     
     echo "Hubo un error al conectar a la base de datos";
 }
-$Codigo=$_POST['Codigo'];
-$Nombre=$_POST['Nombre'];
-$Descripcion=$_POST['Descripcion'];
-$Detallado=$_POST['Detallado'];
-$Precio=$_POST['Precio'];
-$Stock=$_POST['Stock'];
-$Estado=$_POST['Estado'];
-$sql="UPDATE Productos SET Codigo=$Codigo, Nombre='$Nombre', Descripcion='$Descripcion', Precio='$Precio', Stock='$Stock', Estado='$Estado',Detallado='$Detallado' WHERE Codigo=$Codigo";
-if ($conexion->query($sql) === TRUE) {
-    echo "Se edito el producto correctamente";
+$Codigo = trim($_POST['Codigo']);
+$Nombre = trim($_POST['Nombre']);
+$Descripcion = trim($_POST['Descripcion']);
+$Detallado = trim($_POST['Detallado']);
+$Precio = trim($_POST['Precio']);
+$Stock = trim($_POST['Stock']);
+$Estado = trim($_POST['Estado']);
+$stmt = $conexion->prepare(
+    "UPDATE Productos 
+     SET Codigo=?, Nombre=?, Descripcion=?, Precio=?, Stock=?, Estado=?, Detallado=? 
+     WHERE Codigo=?"
+);
+
+$stmt->bind_param(
+    "ssssssss",
+    $Codigo,
+    $Nombre,
+    $Descripcion,
+    $Precio,
+    $Stock,
+    $Estado,
+    $Detallado,
+    $Codigo
+);
+
+if ($stmt->execute()) {
+    echo htmlspecialchars("Se edito el producto correctamente");
 } else {
-    echo "Error al actualizar el producto: " . $conexion->error;
+    echo "Error al actualizar el producto: " . htmlspecialchars($stmt->error);
 }
 ?>
 </p><br>

@@ -9,14 +9,14 @@ if ($conexion->connect_error) {
     
     echo "No se ha podido conectar a la base de datos";
 }
-$Codigo=$_POST['Codigo'];
-$Nombre=$_POST['Nombre'];
-$Descripcion=$_POST['Descripcion'];
-$Detallado=$_POST['Detallado'];
-$imagen=$_POST["imagen"];
-$Precio=$_POST['Precio'];
-$Stock=$_POST['Stock'];
-$estado=$_POST["Estado"];
+$Codigo = trim($_POST['Codigo']);
+$Nombre = trim($_POST['Nombre']);
+$Descripcion = trim($_POST['Descripcion']);
+$Detallado = trim($_POST['Detallado']);
+$imagen = trim($_POST['imagen']);
+$Precio = trim($_POST['Precio']);
+$Stock = trim($_POST['Stock']);
+$estado = trim($_POST['Estado']);
 
 ?>
 <!DOCTYPE html>
@@ -104,10 +104,27 @@ $estado=$_POST["Estado"];
         <h2>Registro de Producto</h2>
         <p>
             <?php 
-           $sql="INSERT INTO Productos (Codigo, Nombre, Descripcion, imagen, Precio, Stock, Estado, Detallado) VALUES ('$Codigo', '$Nombre', '$Descripcion', '$imagen', '$Precio', '$Stock', '$estado', '$Detallado')";
-        if ($conexion->query($sql) === TRUE) {
-            echo "Productos registrado correctamente";
-        }
+           $stmt = $conexion->prepare(
+    "INSERT INTO Productos 
+    (Codigo, Nombre, Descripcion, imagen, Precio, Stock, Estado, Detallado) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+);
+
+$stmt->bind_param(
+    "ssssssss",
+    $Codigo,
+    $Nombre,
+    $Descripcion,
+    $imagen,
+    $Precio,
+    $Stock,
+    $estado,
+    $Detallado
+);
+
+if ($stmt->execute()) {
+    echo htmlspecialchars("Productos registrado correctamente");
+}
       ?>
         </p><br>
                 

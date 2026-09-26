@@ -13,9 +13,15 @@ session_start();
 if($_SESSION['CI']==null){
     header("location:../login.php");
 }
-$CI=$_GET['CI'];
-$sql = "SELECT * FROM Usuarios WHERE CI='$CI'";
-$resultado = $conexion->query($sql);
+$CI = trim($_GET['CI']);
+
+$stmt = $conexion->prepare("SELECT * FROM Usuarios WHERE CI=?");
+
+$stmt->bind_param("s", $CI);
+
+$stmt->execute();
+
+$resultado = $stmt->get_result();
 if ($resultado->num_rows > 0) {
     while($fila=$resultado->fetch_assoc()) {
         $CI=$fila['CI'];
@@ -198,23 +204,37 @@ if ($resultado->num_rows > 0) {
         <h1>Editar Usuario</h1>
     <form action="updateditarUsuario.php" method="post" onsubmit="return validar()">
         <label for="">Carnet de Identidad</label>
-        <input type="text" name="CI" value='<?=$CI?>' readonly>
-        <label for="">Nombre:</label>
-        <input type="text" name="Nombre" value='<?=$Nombre?>'>
-        <br>
-        <label for="">Dirección:</label>
-        <input type="text" name="Direccion" value='<?=$Direccion?>' >
-        <br>
-        <label for="">Celular:</label>
-        <input type="number" name="Celular" value='<?=$Celular?>'>
-        <br>
-        <label for="">Rol:</label>
-        <input type="text" name="Rol" value='<?=$Rol?>' readonly>
-        <br>
-        <label for="">Estado:</label>
-        <input type="text" name="Estado" value='<?=$Estado?>' readonly>
-        <br>
-        <input type="submit" value="Editar">
+<input type="text" name="CI" value='<?=$CI?>' readonly>
+
+<label for="">Nombre:</label>
+<input type="text" name="Nombre" value='<?=$Nombre?>'
+       required minlength="3" maxlength="50"
+       pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+">
+<br>
+
+<label for="">Dirección:</label>
+<input type="text" name="Direccion" value='<?=$Direccion?>'
+       required minlength="5" maxlength="100">
+<br>
+
+<label for="">Celular:</label>
+<input type="number" name="Celular" value='<?=$Celular?>'
+       required minlength="8" maxlength="8">
+<br>
+
+<label for="">Rol:</label>
+<input type="text" name="Rol" value='<?=$Rol?>'
+       readonly required minlength="8" maxlength="13"
+       pattern="[a-z]+">
+<br>
+
+<label for="">Estado:</label>
+<input type="text" name="Estado" value='<?=$Estado?>'
+       readonly required minlength="6" maxlength="8"
+       pattern="[a-zA-Z]+">
+<br>
+
+<input type="submit" value="Editar">
     </form>
     <button class="volver" onclick="history.back()">
          Volver</button><br>

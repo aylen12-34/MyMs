@@ -15,7 +15,7 @@ if($_SESSION['CI']==null){
     header("location:../login.php");
 }else {
   if($_SESSION['Rol']=="administrador"){
-    $CI = $_SESSION['CI'];
+    $CI = trim($_SESSION['CI']);
   } else{
     header("location:../login.php");
   }

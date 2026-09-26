@@ -10,9 +10,17 @@ if ($conexion->connect_error) {
     echo "No se ha podido conectar a la base de datos";
 }
 
-$Codigo=$_GET['Codigo'];
-$sql = "SELECT * FROM Productos WHERE Codigo=$Codigo";
-$resultado = $conexion->query($sql);
+$Codigo = trim($_GET['Codigo']);
+
+$stmt = $conexion->prepare(
+    "SELECT * FROM Productos WHERE Codigo=?"
+);
+
+$stmt->bind_param("s", $Codigo);
+
+$stmt->execute();
+
+$resultado = $stmt->get_result();
 if ($resultado->num_rows > 0) {
     while($fila=$resultado->fetch_assoc()) {
         $Codigo=$fila['Codigo'];
@@ -197,22 +205,48 @@ if ($resultado->num_rows > 0) {
         <h1>Editar Producto</h1>
     <form action="updateEditarProductos.php" method="post" onsubmit="return validar()">
         <label for="Codigo">Codigo:</label>
-        <input type="number" id="Codigo" name="Codigo" value='<?=$Codigo?>' readonly>  <br>  <br>
-        <label for="Nombre">Nombre:</label>
-        <input type="text" id="Nombre" name="Nombre" value='<?=$Nombre?>' >  <br>  <br>
-        <label for="Descripcion">Descripción:</label>
-        <input type="text" id="Descripcion" name="Descripcion" value='<?=$Descripcion?>' >  <br>  <br>
-        <label for="Detallado">Descripción detallada:</label>
-        <input type="text" id="Detallado" name="Detallado" value='<?=$Detallado?>' >  <br>  <br>
-        <label for="Precio">Precio:</label>
-        <input type="number" id="Precio" name="Precio" value='<?=$Precio?>' >  <br>  <br>
-        <label for="Stock">Stock:</label>
-        <input type="number" id="Stock" name="Stock" value='<?=$Stock?>' >  <br>  <br>
-        <label for="Estado">Estado</label>
-        <select name="Estado">
-                <option value="Disponible">Disponible</option>
-                <option value="Desactivo">Fuera de catalogo</option>
-            </select> <br> <br>
+<input type="number" id="Codigo" name="Codigo"
+       value="<?=$Codigo?>"
+       readonly required minlength="1" maxlength="10">
+<br><br>
+
+<label for="Nombre">Nombre:</label>
+<input type="text" id="Nombre" name="Nombre"
+       value="<?=$Nombre?>"
+       required minlength="3" maxlength="100"
+       pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9\s.,'()-]+">
+<br><br>
+
+<label for="Descripcion">Descripción:</label>
+<input type="text" id="Descripcion" name="Descripcion"
+       value="<?=$Descripcion?>"
+       required minlength="3" maxlength="255">
+<br><br>
+
+<label for="Detallado">Descripción detallada:</label>
+<input type="text" id="Detallado" name="Detallado"
+       value="<?=$Detallado?>"
+       required minlength="3" maxlength="1000">
+<br><br>
+
+<label for="Precio">Precio:</label>
+<input type="number" id="Precio" name="Precio"
+       value="<?=$Precio?>"
+       required minlength="1" maxlength="10">
+<br><br>
+
+<label for="Stock">Stock:</label>
+<input type="number" id="Stock" name="Stock"
+       value="<?=$Stock?>"
+       required minlength="1" maxlength="10">
+<br><br>
+
+<label for="Estado">Estado</label>
+<select name="Estado" required>
+    <option value="Disponible">Disponible</option>
+    <option value="Desactivo">Fuera de catalogo</option>
+</select>
+<br><br>
         <input type="submit" value="Editar">
     </form>
     <button class="volver" onclick="history.back()">Volver</button><br>

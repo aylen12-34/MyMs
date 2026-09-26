@@ -188,37 +188,47 @@ if($_SESSION['CI']==null){
         <form action="registroProductos.php" method="post" onsubmit="return validar()">
 
             <label for="Codigo">Codigo:</label>
-            <input type="number" id="Codigo" name="Codigo"> 
-            <br><br>
+<input type="number" id="Codigo" name="Codigo"
+       required minlength="1" maxlength="10">
+<br><br>
 
-            <label for="Nombre">Nombre:</label>
-            <input type="text" id="Nombre" name="Nombre">
-            <br><br>
+<label for="Nombre">Nombre:</label>
+<input type="text" id="Nombre" name="Nombre"
+       required minlength="3" maxlength="100"
+       pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9\s.,'()-]+">
+<br><br>
 
-            <label for="Descripcion">Descripción publica:</label>
-            <input type="text" id="Descripcion" name="Descripcion">
-            <br><br>
+<label for="Descripcion">Descripción publica:</label>
+<input type="text" id="Descripcion" name="Descripcion"
+       required minlength="3" maxlength="255">
+<br><br>
 
-            <label for="Detallado">Descripción detallada:</label>
-            <input type="text" id="Detallado" name="Detallado">
-            <br><br>
+<label for="Detallado">Descripción detallada:</label>
+<input type="text" id="Detallado" name="Detallado"
+       required minlength="3" maxlength="1000">
+<br><br>
 
-            <label for="imagen">Producto</label>
-            <input type="file" name="imagen" accept="image/*">
-            <br><br>
+<label for="imagen">Producto</label>
+<input type="file" name="imagen" accept="image/*">
+<br><br>
 
-            <label for="Precio">Precio:</label>
-            <input type="number" id="Precio" name="Precio">
-            <br><br>
+<label for="Precio">Precio:</label>
+<input type="number" id="Precio" name="Precio"
+       required minlength="1" maxlength="10">
+<br><br>
 
-            <label for="Stock">Stock:</label>
-            <input type="number" id="Stock" name="Stock">
-            <br><br>
+<label for="Stock">Stock:</label>
+<input type="number" id="Stock" name="Stock"
+       required minlength="1" maxlength="10">
+<br><br>
 
-            <label>Estado</label>
-            <input type="text" value="Disponible" name="Estado" readonly> <br><br>
+<label>Estado</label>
+<input type="text" value="Disponible" name="Estado"
+       readonly required minlength="11" maxlength="11"
+       pattern="[a-zA-Z]+">
+<br><br>
 
-            <input type="submit" value="Registrar Productos">
+<input type="submit" value="Registrar Productos">
 
         </form>
     </div>

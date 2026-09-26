@@ -197,21 +197,19 @@ $alertaSinStock = false;
                 if ($resultado && $resultado->num_rows > 0) {
                     while($fila = $resultado->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td>".$fila["Codigo"]."</td>";
-                        echo "<td>".$fila["Nombre"]."</td>";
-                        echo "<td>".$fila["Descripcion"]."</td>";
-                        echo "<td><img src='../".$fila["imagen"]."' width='80' style='border-radius: 12px; border: 2px solid #E64B6B;'></td>";
-                        echo "<td>$".$fila["Precio"]."</td>";
-                        
-                        // Lógica de visualización de Stock
+                        echo "<td>".htmlspecialchars($fila["Codigo"])."</td>";
+                        echo "<td>".htmlspecialchars($fila["Nombre"])."</td>";
+                        echo "<td>".htmlspecialchars($fila["Descripcion"])."</td>";
+                        echo "<td><img src='../".htmlspecialchars($fila["imagen"])."' width='80' style='border-radius: 12px; border: 2px solid #E64B6B;'></td>";
+                        echo "<td>$".htmlspecialchars($fila["Precio"])."</td>";                   
                         if ($fila["Stock"] <= 0) {
-                            echo "<td style='color: #d80000; font-weight: bold;'>".$fila["Stock"]."</td>";
+                            echo "<td style='color: #d80000; font-weight: bold;'>".htmlspecialchars($fila["Stock"])."</td>";
                             $alertaSinStock = true;
                         } else if ($fila["Stock"] <= 3) {
-                            echo "<td style='color: #ee7512; font-weight: bold;'>".$fila["Stock"]."</td>";
+                            echo "<td style='color: #ee7512; font-weight: bold;'>".htmlspecialchars($fila["Stock"])."</td>";
                             $alertaStockSuperBajo = true;
                         } else if ($fila["Stock"] <= 10) {
-                            echo "<td style='color: #ecdd0a; font-weight: bold;'>".$fila["Stock"]."</td>";
+                            echo "<td style='color: #ecdd0a; font-weight: bold;'>".htmlspecialchars($fila["Stock"])."</td>";
                             $alertaStockBajo = true;
                         } else {
                             echo "<td>".$fila["Stock"]."</td>";

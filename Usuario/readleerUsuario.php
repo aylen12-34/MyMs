@@ -11,10 +11,15 @@ if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
 
-$CI = $_GET['CI'];
+$CI = trim($_GET['CI']);
 
-$sql = "SELECT * FROM Usuarios WHERE CI='$CI'";
-$resultado = $conexion->query($sql);
+$stmt = $conexion->prepare("SELECT * FROM Usuarios WHERE CI=?");
+
+$stmt->bind_param("s", $CI);
+
+$stmt->execute();
+
+$resultado = $stmt->get_result();
 
 ?>
 

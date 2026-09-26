@@ -182,23 +182,29 @@ if ($conexion->connect_error) {
     
         <form action="registroUsuario.php" method="POST" onsubmit="return validar()" enctype="multipart/form-data">
             <label for="CI">CI:</label>
-            <input type="number" id="CI" name="CI"> <br> <br>
-            <label for="Nombre">Nombre:</label>
-            <input type="text" id="Nombre" name="Nombre"><br><br>
-            <label for="Direccion">Dirección:</label>
-            <input type="text" id="Direccion" name="Direccion"><br><br>
-            <label for="Celular">Celular:</label>
-            <input type="number" id="Celular" name="Celular"><br><br>
-            <label for="Rol">Rol:</label>
-            <select name="Rol" id="Rol">
-                <option value="vendedor">vendedor</option>
-                <option value="administrador">administrador</option>
-            </select><br><br>
-            <label for="imagen">Perfil</label>
-            <input type="file" name="imagen" accept="image/*">
-            <br><br>
-            <label for="Estado">Estado:</label>
-            <input type="text" value="Activo" name="Estado" readonly><br><br>
+<input type="number" id="CI" name="CI" required minlength="7" maxlength="8"> <br> <br>
+
+<label for="Nombre">Nombre:</label>
+<input type="text" id="Nombre" name="Nombre" required minlength="3" maxlength="50" pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+"><br><br>
+
+<label for="Direccion">Dirección:</label>
+<input type="text" id="Direccion" name="Direccion" required minlength="5" maxlength="100"><br><br>
+
+<label for="Celular">Celular:</label>
+<input type="number" id="Celular" name="Celular" required minlength="8" maxlength="8"><br><br>
+
+<label for="Rol">Rol:</label>
+<select name="Rol" id="Rol" required>
+    <option value="vendedor">vendedor</option>
+    <option value="administrador">administrador</option>
+</select><br><br>
+
+<label for="imagen">Perfil</label>
+<input type="file" name="imagen" accept="image/*">
+<br><br>
+
+<label for="Estado">Estado:</label>
+<input type="text" value="Activo" name="Estado" readonly required minlength="6" maxlength="6" pattern="[a-zA-Z]+"><br><br>
             <input type="submit" value="Registrar Usuario">
 
         </form>
