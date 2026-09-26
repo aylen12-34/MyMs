@@ -70,9 +70,6 @@ function actualizarCarrito() {
 
         const contenidoCarrito =
             document.getElementById("contenidoCarrito");
-
-
-        // Limpiar contenido anterior
         contenidoCarrito.replaceChildren();
 
 
@@ -88,9 +85,6 @@ function actualizarCarrito() {
             let cantidad = Number(producto.Cantidad);
 
             let precio = Number(producto.Precio);
-
-
-            // Evitar valores numéricos inválidos
 
             if (!Number.isFinite(subtotal)) {
                 subtotal = 0;
@@ -126,13 +120,6 @@ function actualizarCarrito() {
 
             const imagen =
                 document.createElement("img");
-
-            /*
-             * La ruta de la imagen viene de la base de datos.
-             *
-             * Se mantiene el funcionamiento actual.
-             */
-
             imagen.src = "../../" + String(producto.imagen || "");
 
             imagen.width = 80;
@@ -146,17 +133,6 @@ function actualizarCarrito() {
 
             const nombre =
                 document.createElement("h3");
-
-            /*
-             * IMPORTANTE:
-             * textContent trata el contenido como texto.
-             *
-             * Si el nombre fuera:
-             *
-             * <script>alert("XSS")</script>
-             *
-             * se mostraría como texto y NO se ejecutaría.
-             */
 
             nombre.textContent =
                 String(producto.Nombre || "");

@@ -10,8 +10,6 @@ if (isset($_GET["ID"])) {
     echo "No existe pedido";
     exit;
 }
-
-// 1. Consulta Pedidos
 $sql = "SELECT * FROM pedidos WHERE ID='$id'";
 $resultado = $conn->query($sql);
 
@@ -21,8 +19,6 @@ if (!$resultado || $resultado->num_rows === 0) {
 }
 
 $pedido = $resultado->fetch_assoc();
-
-// 2. Consulta Ventas para obtener el Método de Pago
 $Metodo = "No especificado";
 
 $sqlv = "SELECT * FROM ventas WHERE Pedidos_ID='$id'";
@@ -355,15 +351,11 @@ if ($resultadov && $resultadov->num_rows > 0) {
     ?>
 
     <h2>Total: Bs <?php echo number_format($total, 2); ?></h2>
-
-    <!-- QR DEL RECIBO -->
     <div class="qr-recibo">
         <h3>Escanea para ver los datos del recibo</h3>
         <img src="<?php echo $qr; ?>" alt="Código QR del recibo">
         <p>Escanea este código para consultar todos los datos de tu pedido.</p>
     </div>
-
-    <!-- QR DE PAGO SI APLICA -->
     <?php if (strcasecmp(trim($Metodo), "Pago mediante QR") === 0 || strcasecmp(trim($Metodo), "QR") === 0) { ?>
         <div class="qr-recibo">
             <h3>Escanea para pagar tu pedido</h3>
