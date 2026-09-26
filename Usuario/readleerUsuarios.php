@@ -210,7 +210,7 @@ button{
             <th>Celular</th>
             <th>Rol</th>
             <th>Estado</th>
-            <th>Acciones</th>
+            <th colspan="4">Acciones</th>
         </tr>
 
         <?php
