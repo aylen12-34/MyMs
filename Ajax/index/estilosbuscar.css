@@ -1,92 +1,334 @@
 /*==================================================
-   TARJETA DE BÚSQUEDA (#productosbusqueda)
+   RESULTADOS DE BÚSQUEDA
+==================================================*/
+
+#productosbusqueda {
+    width: 100%;
+    margin: 25px auto;
+}
+
+
+/*==================================================
+   TARJETA
 ==================================================*/
 
 #productosbusqueda .tarjeta {
-    background: rgba(239, 226, 218, 0.96);
-    border-radius: 22px;
+    background: rgba(239, 226, 218, 0.97);
+    border-radius: 24px;
     overflow: hidden;
-    padding: 20px;
-    box-shadow: 0 8px 20px rgba(106, 37, 58, 0.25);
-    transition: 0.35s;
-    
+    padding: 22px;
+
+    box-shadow:
+        0 8px 20px rgba(106, 37, 58, 0.20);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+
     display: flex !important;
-    flex-direction: row !important; 
+    flex-direction: row !important;
     flex-wrap: nowrap !important;
+
     align-items: center !important;
     justify-content: flex-start !important;
-    gap: 30px !important;
-    
+
+    gap: 32px !important;
+
     border: 2px solid transparent;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
+
     width: 100% !important;
 }
+
+
+/*==================================================
+   HOVER
+==================================================*/
 
 #productosbusqueda .tarjeta:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(106, 37, 58, 0.35);
+
+    box-shadow:
+        0 15px 35px rgba(106, 37, 58, 0.28);
+
     border-color: #E64B6B;
 }
 
-/* IMAGEN A LA IZQUIERDA */
+
+/*==================================================
+   IMAGEN
+==================================================*/
+
 #productosbusqueda .tarjeta > img {
     width: 350px !important;
     height: 350px !important;
+
     object-fit: cover !important;
+
     display: block !important;
+
     margin: 0 !important;
+
     border-radius: 18px;
+
     flex-shrink: 0 !important;
+
+    box-shadow:
+        0 6px 15px rgba(106, 37, 58, 0.18);
+
+    transition: transform 0.35s ease;
 }
 
-/* CONTENEDOR DE INFORMACIÓN */
+
+#productosbusqueda .tarjeta:hover > img {
+    transform: scale(1.02);
+}
+
+
+/*==================================================
+   INFORMACIÓN
+==================================================*/
+
 #productosbusqueda .tarjeta > .infoDetalle {
     display: flex !important;
     flex-direction: column !important;
+
     justify-content: center !important;
     align-items: flex-start !important;
+
     flex-grow: 1 !important;
-    width: calc(100% - 380px) !important;
+
+    width: calc(100% - 382px) !important;
+
+    min-width: 0;
+
+    padding: 8px 15px 8px 0;
 }
 
-/* TÍTULO (h3) CON TAMAÑO 45px */
+
+/*==================================================
+   NOMBRE
+==================================================*/
+
 #productosbusqueda .tarjeta .infoDetalle > h3 {
-    margin: 0 0 15px 0 !important;
+    margin: 0 0 18px 0 !important;
+
     color: #6A253A !important;
-    font-size: 45px !important; /* <--- Tamaño actualizado */
+
+    font-size: 45px !important;
+
+    font-weight: 600;
+
+    line-height: 1.15;
+
     text-align: left !important;
+
     width: 100% !important;
 }
 
-/* PRECIO Y DESCRIPCIÓN EN LÍNEA DEBAJO DEL H3 */
-#productosbusqueda .tarjeta .infoDetalle > .precioDescripcion {
+
+/*==================================================
+   PRECIO + DESCRIPCIONES
+==================================================*/
+
+#productosbusqueda .tarjeta .precioDescripcion {
     display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 20px !important;
+
+    flex-direction: column !important;
+
+    align-items: flex-start !important;
+
+    gap: 13px !important;
+
     margin: 0 !important;
+
     width: 100% !important;
 }
 
-/* PRECIO (h2) */
+
+/*==================================================
+   PRECIO
+==================================================*/
+
 #productosbusqueda .tarjeta .precioDescripcion > h2 {
     color: #6A253A !important;
+
     margin: 0 !important;
-    font-size: 24px !important;
+
+    font-size: 26px !important;
+
+    font-weight: 700;
+
     white-space: nowrap !important;
+
+    background: rgba(230, 75, 107, 0.12);
+
+    padding: 8px 16px;
+
+    border-radius: 12px;
+
+    border-left: 4px solid #E64B6B;
+}
+
+
+/*==================================================
+   DESCRIPCIÓN NORMAL
+==================================================*/
+
+#productosbusqueda .tarjeta .descripcionProducto {
+    color: #E64B6B !important;
+
+    padding: 0 !important;
+
+    margin: 0 !important;
+
+    font-size: 17px !important;
+
+    line-height: 1.6 !important;
+
     text-align: left !important;
 }
 
-/* DESCRIPCIÓN (p) */
-#productosbusqueda .tarjeta .precioDescripcion > p {
-    color: #E64B6B !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    font-size: 16px !important;
-    text-align: left !important;
-    min-height: auto !important;
+
+/*==================================================
+   DETALLADO
+==================================================*/
+
+#productosbusqueda .tarjeta .detalladoProducto {
+
+    /* AQUÍ ESTÁ EL CAMBIO IMPORTANTE */
+    color: #2F2025 !important;
+
+    font-size: 20px !important;
+
+    line-height: 1.7 !important;
+
+    font-weight: 500 !important;
+
+    background: rgba(106, 37, 58, 0.07);
+
+    padding: 18px 20px !important;
+
+    margin: 5px 0 0 0 !important;
+
+    width: 100% !important;
+
+    box-sizing: border-box;
+
+    border-left: 5px solid #E64B6B;
+
+    border-radius: 0 15px 15px 0;
+
+    box-shadow:
+        inset 0 0 15px rgba(106, 37, 58, 0.03);
 }
+
+
+/*==================================================
+   TÍTULO DEL DETALLADO
+==================================================*/
+
+#productosbusqueda .tarjeta .detalladoProducto::before {
+
+    content: "Información del producto";
+
+    display: block;
+
+    color: #6A253A !important;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 8px;
+}
+
+
+/*==================================================
+   OCULTAR BOTONES
+==================================================*/
+
 #productosbusqueda .tarjeta button,
 #productosbusqueda .tarjeta .btnAgregar {
     display: none !important;
+}
+
+
+/*==================================================
+   TABLET
+==================================================*/
+
+@media (max-width: 900px) {
+
+    #productosbusqueda .tarjeta {
+        gap: 22px !important;
+        padding: 18px;
+    }
+
+    #productosbusqueda .tarjeta > img {
+        width: 260px !important;
+        height: 260px !important;
+    }
+
+    #productosbusqueda .tarjeta > .infoDetalle {
+        width: calc(100% - 282px) !important;
+    }
+
+    #productosbusqueda .tarjeta .infoDetalle > h3 {
+        font-size: 34px !important;
+    }
+
+}
+
+
+/*==================================================
+   CELULAR
+==================================================*/
+
+@media (max-width: 650px) {
+
+    #productosbusqueda .tarjeta {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 18px !important;
+    }
+
+    #productosbusqueda .tarjeta > img {
+        width: 100% !important;
+        height: 280px !important;
+    }
+
+    #productosbusqueda .tarjeta > .infoDetalle {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    #productosbusqueda .tarjeta .infoDetalle > h3 {
+        font-size: 30px !important;
+    }
+
+    #productosbusqueda .tarjeta .precioDescripcion > h2 {
+        font-size: 22px !important;
+    }
+
+    #productosbusqueda .tarjeta .descripcionProducto {
+        font-size: 16px !important;
+    }
+
+    #productosbusqueda .tarjeta .detalladoProducto {
+        color: #2F2025 !important;
+        font-size: 17px !important;
+        line-height: 1.6 !important;
+        padding: 15px 16px !important;
+    }
+
+    #productosbusqueda .tarjeta .detalladoProducto::before {
+        font-size: 12px;
+    }
+
 }
