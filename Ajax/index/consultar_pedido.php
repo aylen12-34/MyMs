@@ -32,6 +32,9 @@ Número de pedido:
 type="number"
 id="numeroPedido"
 placeholder="Ejemplo: 44"
+required
+minlength="1"
+maxlength="10"
 >
 
 

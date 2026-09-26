@@ -1,33 +1,81 @@
 <?php
+
 session_start();
+
 require("conexion.php");
 
+
 if (isset($_GET["ID"])) {
-    $id = intval($_GET["ID"]);
+
+    $id = trim($_GET["ID"]);
+
 } elseif (isset($_SESSION["pedidos"])) {
-    $id = intval($_SESSION["pedidos"]);
+
+    $id = trim($_SESSION["pedidos"]);
+
 } else {
+
     echo "No existe pedido";
     exit;
+
 }
-$sql = "SELECT * FROM pedidos WHERE ID='$id'";
-$resultado = $conn->query($sql);
+
+
+$stmt = $conn->prepare(
+    "SELECT * 
+     FROM pedidos 
+     WHERE ID=?"
+);
+
+$stmt->bind_param(
+    "s",
+    $id
+);
+
+$stmt->execute();
+
+$resultado = $stmt->get_result();
+
 
 if (!$resultado || $resultado->num_rows === 0) {
+
     echo "Pedido no encontrado";
     exit;
+
 }
+
 
 $pedido = $resultado->fetch_assoc();
+
 $Metodo = "No especificado";
 
-$sqlv = "SELECT * FROM ventas WHERE Pedidos_ID='$id'";
-$resultadov = $conn->query($sqlv);
+
+$stmt = $conn->prepare(
+    "SELECT * 
+     FROM ventas 
+     WHERE Pedidos_ID=?"
+);
+
+$stmt->bind_param(
+    "s",
+    $id
+);
+
+$stmt->execute();
+
+$resultadov = $stmt->get_result();
+
 
 if ($resultadov && $resultadov->num_rows > 0) {
+
     $fila = $resultadov->fetch_assoc();
-    $Metodo = !empty($fila['Metodo']) ? $fila['Metodo'] : "No especificado";
+
+    $Metodo = !empty($fila['Metodo'])
+        ? $fila['Metodo']
+        : "No especificado";
+
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -301,18 +349,27 @@ if ($resultadov && $resultadov->num_rows > 0) {
     <h3>Productos</h3>
 
     <?php
-    $sqlProductos = "
-        SELECT 
-            p.Nombre,
-            c.Cantidad,
-            c.CostoTotal
-        FROM carrito c
-        INNER JOIN productos p ON c.Productos_Codigo = p.Codigo
-        WHERE c.Pedidos_ID = '$id'
-    ";
+    $stmtProductos = $conn->prepare(
+    "SELECT 
+        p.Nombre,
+        c.Cantidad,
+        c.CostoTotal
+     FROM carrito c
+     INNER JOIN productos p 
+     ON c.Productos_Codigo = p.Codigo
+     WHERE c.Pedidos_ID=?"
+);
 
-    $resultadoProductos = $conn->query($sqlProductos);
-    $total = 0;
+$stmtProductos->bind_param(
+    "s",
+    $id
+);
+
+$stmtProductos->execute();
+
+$resultadoProductos = $stmtProductos->get_result();
+
+$total = 0;
 
     $datosQR = "RECIBO DE PEDIDO\n" .
                "--------------------------\n" .

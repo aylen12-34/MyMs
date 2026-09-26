@@ -676,12 +676,14 @@ if ($conexion->connect_error) {
                 </label>
 
                 <input
-                    type="text"
-                    id="nombre"
-                    name="nombre"
-                    placeholder="Escribe tu nombre o correo"
-                    required
-                >
+    type="text"
+    id="nombre"
+    name="nombre"
+    placeholder="Escribe tu nombre o correo"
+    required
+    minlength="3"
+    maxlength="100"
+>
 
 
                 <br><br>
@@ -691,11 +693,13 @@ if ($conexion->connect_error) {
                 </label>
 
                 <textarea
-                    id="come"
-                    name="come"
-                    placeholder="Escribe aquí tu opinión..."
-                    required
-                ></textarea>
+    id="come"
+    name="come"
+    placeholder="Escribe aquí tu opinión..."
+    required
+    minlength="3"
+    maxlength="1000"
+></textarea>
                 <div class="botones">
 
                     <input

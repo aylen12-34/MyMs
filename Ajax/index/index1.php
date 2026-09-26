@@ -135,21 +135,31 @@
         <form id="formCompra">
 
             <input type="text"
-                   id="Nombre"
-                   placeholder="Nombre completo">
+       id="Nombre"
+       placeholder="Nombre completo"
+       required
+       minlength="3"
+       maxlength="50"
+       pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+">
 
             <input type="text"
-                   id="Celular"
-                   placeholder="Teléfono">
+       id="Nombre"
+       placeholder="Nombre completo"
+       required
+       minlength="3"
+       maxlength="50"
+       pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+">
 
             <input
-                    type="text"
-                    id="Direccion"
-                    placeholder="Dirección"
-                    maxlength="255"
-                    autocomplete="street-address">
+       type="text"
+       id="Direccion"
+       placeholder="Dirección"
+       maxlength="255"
+       minlength="5"
+       required
+       autocomplete="street-address">
 
-            <select id="Metodo">
+            <select id="Metodo" required>
                 <option value="QR">Pago mediante QR</option>
                 <option value="Efectivo">Pago en efectivo</option>
 

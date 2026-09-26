@@ -3,34 +3,36 @@
 include "conexion.php";
 
 
-$nombre=$_GET["nombre"];
+$nombre = trim($_GET["nombre"]);
 
 
-
-$sql="
-SELECT *
-FROM productos
-WHERE Nombre='$nombre'
-";
-
+$stmt = $conn->prepare(
+    "SELECT *
+     FROM productos
+     WHERE Nombre=?"
+);
 
 
-$resultado=$conn->query($sql);
+$stmt->bind_param(
+    "s",
+    $nombre
+);
 
 
-
-$productos=[];
-
+$stmt->execute();
 
 
-while($fila=$resultado->fetch_assoc()){
+$resultado = $stmt->get_result();
 
 
-$productos[]=$fila;
+$productos = [];
 
+
+while($fila = $resultado->fetch_assoc()){
+
+    $productos[] = $fila;
 
 }
-
 
 
 echo json_encode($productos);
