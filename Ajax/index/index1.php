@@ -182,11 +182,7 @@ document.getElementById("confirmarPedido").addEventListener("click", function(ev
     var metodo = $("#Metodo").val();
     var expRegNombre = /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/;
     var expRegRol = /^[a-z]+$/;
-
-    // Referencia al modal para ocultar / mostrar
     var modal = document.getElementById("modalCompra");
-
-    // 1. Validar nombre vacío
     if (nombre === "") {
         event.stopImmediatePropagation();
         Swal.fire({
@@ -204,7 +200,6 @@ document.getElementById("confirmarPedido").addEventListener("click", function(ev
             didOpen: () => {
                 const audio = new Audio('../../imagenes/gatous.mp3');
                 const imagenSwal = Swal.getImage();
-
                 if (imagenSwal) {
                     imagenSwal.style.cursor = 'pointer';
                     imagenSwal.addEventListener('click', () => {
@@ -217,8 +212,6 @@ document.getElementById("confirmarPedido").addEventListener("click", function(ev
         $("#Nombre").focus();
         return;
     }
-
-    // 2. Validar solo letras en nombre
     if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre)) {
         event.stopImmediatePropagation();
         Swal.fire({
@@ -249,8 +242,6 @@ document.getElementById("confirmarPedido").addEventListener("click", function(ev
         $("#Nombre").focus();
         return;
     }
-
-    // 3. Validar longitud de nombre
     if (nombre.length < 3) {
         event.stopImmediatePropagation();
         Swal.fire({
@@ -281,8 +272,6 @@ document.getElementById("confirmarPedido").addEventListener("click", function(ev
         $("#Nombre").focus();
         return false;
     }
-
-    // 4. Validar celular vacío
     if (celular === "") {
         event.stopImmediatePropagation();
         Swal.fire({
@@ -313,8 +302,6 @@ document.getElementById("confirmarPedido").addEventListener("click", function(ev
         $("#Celular").focus();
         return;
     }
-
-    // 5. Validar solo números en celular
     if (!/^\d+$/.test(celular)) {
         event.stopImmediatePropagation();
         Swal.fire({
@@ -345,8 +332,6 @@ document.getElementById("confirmarPedido").addEventListener("click", function(ev
         $("#Celular").focus();
         return false;
     }
-
-    // 6. Validar exactamente 8 dígitos
     if (!/^[0-9]{8}$/.test(celular)) {
         event.stopImmediatePropagation();
         Swal.fire({
@@ -377,8 +362,6 @@ document.getElementById("confirmarPedido").addEventListener("click", function(ev
         $("#Celular").focus();
         return false;
     }
-
-    // 7. Validar dirección vacía
     if (direccion === "") {
         event.stopImmediatePropagation();
         Swal.fire({

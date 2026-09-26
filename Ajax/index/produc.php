@@ -583,14 +583,7 @@ if ($conexion->connect_error) {
 
         <div class="formulario">
 
-            <form
-                action="guardarComentario.php"
-                method="post"
-            >
-
-
-                <!-- CALIFICACIÓN -->
-
+            <form action="guardarComentario.php" method="post">
                 <label>
                     Calificación
                 </label>
@@ -693,9 +686,6 @@ if ($conexion->connect_error) {
 
                 <br><br>
 
-
-                <!-- COMENTARIO -->
-
                 <label for="come">
                     Comentario
                 </label>
@@ -706,10 +696,6 @@ if ($conexion->connect_error) {
                     placeholder="Escribe aquí tu opinión..."
                     required
                 ></textarea>
-
-
-                <!-- BOTONES -->
-
                 <div class="botones">
 
                     <input
@@ -728,10 +714,6 @@ if ($conexion->connect_error) {
 
 
             </form>
-
-
-            <!-- VOLVER -->
-
             <button
                 class="volver"
                 onclick="history.back()"
@@ -763,22 +745,14 @@ if (file_exists($archivo)) {
     foreach ($lineas as $linea) {
 
         $linea = trim($linea);
-
-        // Ignorar líneas vacías
         if ($linea === "") {
             continue;
         }
-
-
-        // Cuando encontramos ****
         if ($linea === "****") {
 
             if ($estrella !== "" && $nombre !== "") {
 
                 $hayComentarios = true;
-
-
-                // Obtener número de estrellas
                 preg_match(
                     '/\d+/',
                     $estrella,
@@ -790,10 +764,6 @@ if (file_exists($archivo)) {
                     isset($resultado[0])
                     ? intval($resultado[0])
                     : 1;
-
-
-                // Limitar entre 1 y 5
-
                 if ($cantidadEstrellas < 1) {
                     $cantidadEstrellas = 1;
                 }
@@ -801,9 +771,6 @@ if (file_exists($archivo)) {
                 if ($cantidadEstrellas > 5) {
                     $cantidadEstrellas = 5;
                 }
-
-
-                // Crear estrellas
 
                 $estrellasLlenas = str_repeat(
                     "★",
@@ -815,15 +782,7 @@ if (file_exists($archivo)) {
                     5 - $cantidadEstrellas
                 );
 
-
-                /*
-                 * MOSTRAR TARJETA
-                 */
-
                 echo '<div class="comentario">';
-
-
-                    // Estrellas
 
                     echo '<div class="estrellas">';
 
@@ -836,10 +795,6 @@ if (file_exists($archivo)) {
                         echo '</span>';
 
                     echo '</div>';
-
-
-                    // Nombre
-
                     echo '<div class="nombre">';
 
                         echo htmlspecialchars(
@@ -849,10 +804,6 @@ if (file_exists($archivo)) {
                         );
 
                     echo '</div>';
-
-
-                    // Comentario
-
                     echo '<div class="texto">';
 
                         echo nl2br(
@@ -869,10 +820,6 @@ if (file_exists($archivo)) {
                 echo '</div>';
 
             }
-
-
-            // Reiniciar
-
             $estrella = "";
             $nombre = "";
             $come = "";
@@ -880,25 +827,16 @@ if (file_exists($archivo)) {
         }
 
         else {
-
-            // Primera línea = estrellas
-
             if ($estrella === "") {
 
                 $estrella = $linea;
 
             }
-
-            // Segunda línea = nombre
-
             else if ($nombre === "") {
 
                 $nombre = $linea;
 
             }
-
-            // Tercera línea en adelante = comentario
-
             else {
 
                 if ($come !== "") {
@@ -914,9 +852,6 @@ if (file_exists($archivo)) {
         }
 
     }
-
-
-    // Si no hay comentarios
 
     if (!$hayComentarios) {
 

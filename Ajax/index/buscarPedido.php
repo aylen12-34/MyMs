@@ -35,14 +35,10 @@ $stmt->execute();
 $resultado = $stmt->get_result();
 
 if ($resultado->num_rows > 0) {
-
-    // EXISTE → ENVIAR AL RECIBO
     header("Location: recibo.php?ID=" . $id);
     exit;
 
 } else {
-
-    // NO EXISTE
     ?><script>
            Swal.fire({
         title: 'Alerta',
@@ -68,7 +64,6 @@ if ($resultado->num_rows > 0) {
         }
     }
 }).then((result) => {
-    // Redirigir al historial únicamente tras presionar "OK"
     if (result.isConfirmed) {
         window.history.back();
     }

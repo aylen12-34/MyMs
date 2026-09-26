@@ -22,8 +22,6 @@ switch($accion){
     case "agregar":
 
         $codigo = $_POST["codigo"];
-
-        // Buscar producto
         $sqlProducto = "SELECT * FROM productos WHERE Codigo='$codigo'";
         $resultadoProducto = $conn->query($sqlProducto);
         if($resultadoProducto->num_rows == 0){
@@ -37,8 +35,6 @@ switch($accion){
 
 }
         $producto = $resultadoProducto->fetch_assoc();
-
-        // Verificar si ya existe
         $sqlExiste = "SELECT * FROM carrito
                        WHERE Pedidos_ID='$idPedido'
                        AND Productos_Codigo='$codigo'";

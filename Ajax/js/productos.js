@@ -1,26 +1,15 @@
 let listaProductos = [];
 let pedidoActivo = false;
 document.addEventListener("DOMContentLoaded", () => {
-//esto crea una lista vacia donde despues sera cargada con los productos de la base de datos 
-
-   
+ 
 verificarPedido();
-   //cargarProductos();
-  
 
 });
 
 
 
 function cargarProductos(){
-/*fetch() es una función de JavaScript que permite realizar peticiones HTTP al servidor.
-
-En este caso envía una petición al archivo:*/
-    fetch("../index/obtener_productos.php")
-/*Cuando el servidor responde, esa respuesta aún no es un objeto de JavaScript.
-
-Es simplemente una respuesta HTTP. Es decir, transforma el JSON recibido en datos que JavaScript puede utilizar.*/ 
-    .then(respuesta => respuesta.json())
+    fetch("../index/obtener_productos.php").then(respuesta => respuesta.json())
 
     .then(productos => {
 
@@ -65,8 +54,6 @@ Agregar al carrito
     });
 
     contenedor.innerHTML = html;
-// el boton agregar carrito ,Este fragmento es muy importante porque crea dinámicamente el botón "Agregar al carrito" y además decide si estará habilitado o deshabilitado según exista un pedido activo.
-    // IMPORTANTE
     agregarEventos();
 
 }

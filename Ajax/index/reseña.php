@@ -141,30 +141,17 @@
         foreach ($lineas as $linea) {
 
             $linea = trim($linea);
-
-            // Fin de un comentario
             if ($linea == "****") {
 
                 if ($nombre != "" || $come != "") {
 
                     $hayComentarios = true;
-
-                    /*
-                     * Sacamos solamente el número
-                     * de estrellas.
-                     *
-                     * Ejemplo:
-                     * "2⭐'s<br>" → 2
-                     * "5⭐'s<br>" → 5
-                     */
-
                    preg_match('/\d+/', $estrella, $resultado);
 
                     $cantidadEstrellas = isset($resultado[0])
                         ? intval($resultado[0])
                         : 0;
 
-                    // Evitamos valores fuera de 1-5
                     if ($cantidadEstrellas < 1) {
                     $cantidadEstrellas = 1;
                     }
@@ -172,14 +159,10 @@
                     if ($cantidadEstrellas > 5) {
                         $cantidadEstrellas = 5;
                     }
-
-                    // Estrellas llenas
                     $estrellasLlenas = str_repeat(
                         "★",
                         $cantidadEstrellas
                     );
-
-                    // Estrellas vacías
                     $estrellasVacias = str_repeat(
                         "☆",
                         5 - $cantidadEstrellas
@@ -203,8 +186,6 @@
 
                     echo '</div>';
                 }
-
-                // Reiniciamos para el siguiente comentario
                 $estrella = "";
                 $nombre = "";
                 $come = "";
@@ -212,22 +193,16 @@
             }
 
             else {
-
-                // Primera línea = estrellas
                 if ($estrella == "") {
 
                     $estrella = $linea;
 
                 }
-
-                // Segunda línea = nombre
                 else if ($nombre == "") {
 
                     $nombre = $linea;
 
                 }
-
-                // Tercera línea = comentario
                 else {
 
                     $come .= " " . $linea;

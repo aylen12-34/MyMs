@@ -131,12 +131,6 @@ document.getElementById("confirmarPedido").addEventListener("click", () => {
 
                 if (result.isConfirmed) {
 
-                    /*
-                     * El ID del pedido debe ser un número.
-                     * La validación definitiva también debe
-                     * realizarse en PHP.
-                     */
-
                     const idPedido = Number(data.pedidos);
 
                     if (!Number.isInteger(idPedido) || idPedido <= 0) {
@@ -198,26 +192,11 @@ function verificarEstadoPedido() {
                     document.getElementById("resumenPedido").style.display = "block";
 
 
-                    //========================================
-                    // MOSTRAR DATOS DE FORMA SEGURA
-                    //========================================
-                    //
-                    // Antes se utilizaba innerHTML directamente
-                    // con datos provenientes del servidor.
-                    //
-                    // Ahora utilizamos textContent para que
-                    // esos datos sean tratados únicamente
-                    // como texto y no como código HTML.
-                    //========================================
 
                     const datosPedido =
                         document.getElementById("datosPedido");
-
-                    // Limpiar contenido anterior
                     datosPedido.replaceChildren();
 
-
-                    // Número de pedido
                     const pNumero = document.createElement("p");
 
                     pNumero.textContent =
@@ -225,44 +204,30 @@ function verificarEstadoPedido() {
 
                     datosPedido.appendChild(pNumero);
 
-
-                    // Cliente
                     const pCliente = document.createElement("p");
 
                     pCliente.textContent =
                         "Cliente: " + pedido.Nombre;
 
                     datosPedido.appendChild(pCliente);
-
-
-                    // Teléfono
                     const pTelefono = document.createElement("p");
 
                     pTelefono.textContent =
                         "Teléfono: " + pedido.telefono;
 
                     datosPedido.appendChild(pTelefono);
-
-
-                    // Dirección
                     const pDireccion = document.createElement("p");
 
                     pDireccion.textContent =
                         "Dirección: " + pedido.direccion;
 
                     datosPedido.appendChild(pDireccion);
-
-
-                    // Método de pago
                     const pMetodo = document.createElement("p");
 
                     pMetodo.textContent =
                         "Método pago: " + pedido.metodoPago;
 
                     datosPedido.appendChild(pMetodo);
-
-
-                    // Estado
                     const pEstado = document.createElement("p");
 
                     pEstado.textContent =
