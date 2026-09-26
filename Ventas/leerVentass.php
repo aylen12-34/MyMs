@@ -7,16 +7,25 @@ if (!isset($_SESSION['CI'])) {
     exit();
 }
 
-$CI = $_SESSION['CI'];
+$CI = trim($_SESSION['CI']);
+
 if($_SESSION['CI']==null){
     header("location:login.php");
 }else {
-$sqlu = "SELECT * FROM Usuarios WHERE CI='$CI'";
-$resultadou = $conexion->query($sqlu);
-if ($resultadou->num_rows > 0) {
-    while($fila=$resultadou->fetch_assoc()) {
+
+    $stmt = $conexion->prepare("SELECT * FROM Usuarios WHERE CI=?");
+
+    $stmt->bind_param("s", $CI);
+
+    $stmt->execute();
+
+    $resultadou = $stmt->get_result();
+
+    if ($resultadou->num_rows > 0) {
+        while($fila=$resultadou->fetch_assoc()) {
             $Rol = $fila['Rol'];
-    }}
+        }
+    }
 }
 $CostoTotal = $_SESSION['CostoTotal'] ?? 'No especificado';
 

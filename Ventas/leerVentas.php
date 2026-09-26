@@ -6,12 +6,17 @@ if (!isset($_GET['ID'])) {
     die("No se recibió el ID de la venta.");
 }
 
-$ID = $_GET['ID'];
+$ID = trim($_GET['ID']);
 
-$sql = "SELECT * FROM Ventas WHERE Pedidos_ID='$ID'";
-$resultado = $conexion->query($sql);
-$sqlb = "SELECT * FROM Pedidos WHERE ID='$ID'";
-$resultadob = $conexion->query($sqlb);
+$stmt = $conexion->prepare("SELECT * FROM Ventas WHERE Pedidos_ID=?");
+$stmt->bind_param("s", $ID);
+$stmt->execute();
+$resultado = $stmt->get_result();
+
+$stmt = $conexion->prepare("SELECT * FROM Pedidos WHERE ID=?");
+$stmt->bind_param("s", $ID);
+$stmt->execute();
+$resultadob = $stmt->get_result();
 while($fila=$resultadob->fetch_assoc()) {
             $NombreVendedor = $fila['NombreVendedor'];
     }
