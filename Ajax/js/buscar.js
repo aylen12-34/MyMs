@@ -1,18 +1,18 @@
 function buscarProducto(){
 
-    var nombre =document.getElementById("textoBuscar").value;
+    var nombre = document.getElementById("textoBuscar").value;
 
-    fetch("buscar_producto.php?nombre="+nombre)
+    fetch("buscar_producto.php?nombre=" + encodeURIComponent(nombre))
 
-    .then(res=>res.json())
+    .then(res => res.json())
 
-    .then(data=>{
+    .then(data => {
 
         console.log(data);
 
-        var html="";
+        var html = "";
 
-        data.forEach(producto=>{
+        data.forEach(producto => {
 
             html += `
             <div class="tarjeta">
