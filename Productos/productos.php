@@ -1,5 +1,4 @@
 <?php
-//no funciona aun
 
 include "bdProductos.php";
 
