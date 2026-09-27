@@ -5,10 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-//==============================
-// ABRIR FORMULARIO
-//==============================
-
 document.getElementById("generarPedido").addEventListener("click", () => {
 
     document
@@ -18,10 +14,6 @@ document.getElementById("generarPedido").addEventListener("click", () => {
 });
 
 
-//==============================
-// CERRAR FORMULARIO
-//==============================
-
 document.getElementById("cancelarCompra").addEventListener("click", () => {
 
     document.getElementById("modalCompra")
@@ -29,10 +21,6 @@ document.getElementById("cancelarCompra").addEventListener("click", () => {
 
 });
 
-
-//==============================
-// CONFIRMAR COMPRA
-//==============================
 
 document.getElementById("confirmarPedido").addEventListener("click", () => {
 
@@ -46,10 +34,6 @@ document.getElementById("confirmarPedido").addEventListener("click", () => {
     };
 
 
-    //==============================
-    // VALIDAR MÉTODO DE PAGO
-    //==============================
-
     const metodosPermitidos = ["QR", "Efectivo"];
 
     if (!metodosPermitidos.includes(datos.Metodo)) {
@@ -58,11 +42,6 @@ document.getElementById("confirmarPedido").addEventListener("click", () => {
         return;
 
     }
-
-
-    //==============================
-    // ENVIAR PEDIDO
-    //==============================
 
     fetch("../index/crearpedido.php", {
 
@@ -89,11 +68,6 @@ document.getElementById("confirmarPedido").addEventListener("click", () => {
 
             document.getElementById("modalCompra").style.display = "none";
 
-
-            //==============================
-            // VIDEO DE CONFIRMACIÓN
-            //==============================
-
             const videoChimuelo = document.createElement("video");
 
             videoChimuelo.src = "../../imagenes/chimuelo.mp4";
@@ -106,10 +80,6 @@ document.getElementById("confirmarPedido").addEventListener("click", () => {
             videoChimuelo.style.display = "block";
             videoChimuelo.style.margin = "0 auto";
 
-
-            //==============================
-            // MENSAJE DE CONFIRMACIÓN
-            //==============================
 
             Swal.fire({
 
@@ -167,10 +137,6 @@ document.getElementById("confirmarPedido").addEventListener("click", () => {
 
 });
 
-
-//==============================
-// VERIFICAR ESTADO DEL PEDIDO
-//==============================
 
 function verificarEstadoPedido() {
 
