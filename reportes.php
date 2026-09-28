@@ -386,12 +386,9 @@ select:focus {
  include ("includes/botonvolver.php"); 
 ?>
 
-<a href="reportclient.php" class="flecha-siguiente">
-    ⇢
-</a>
+<a href="reportclient.php" class="flecha-siguiente">⇢</a>
 <div class="card">
     <h2>Reporte de Ventas</h2>
-    
     <div class="controls">
         <div class="control-group">
             <label for="filtro">Agrupar por:</label>
@@ -402,7 +399,6 @@ select:focus {
                 <option value="anios" <?php if($filtro=='anios') echo 'selected'; ?>>Años</option>
             </select>
         </div>
-
         <div class="control-group">
             <label for="tipoGrafico">Gráfico por:</label>
             <select id="tipoGrafico" onchange="cambiarTipoGrafico(this.value)">
@@ -411,7 +407,6 @@ select:focus {
             </select>
         </div>
     </div>
-
     <div class="chart-container">
         <canvas id="graficoVentas"></canvas>
     </div>
@@ -449,19 +444,13 @@ select:focus {
             </tbody>
         </table>
     </div>
-
-    
-
 </div>
-
 <script>
 let etiquetas = <?php echo json_encode($etiquetas); ?>;
 let totales = <?php echo json_encode($totales); ?>;
-
 const ctx = document.getElementById('graficoVentas').getContext('2d');
 let tipoActual = 'bar';
 let miGrafico;
-
 function crearGrafico(tipo, labels, data) {
     if (miGrafico) {
         miGrafico.destroy();
@@ -503,12 +492,10 @@ function crearGrafico(tipo, labels, data) {
 }
 
 crearGrafico(tipoActual, etiquetas, totales);
-
 function cambiarTipoGrafico(nuevoTipo) {
     tipoActual = nuevoTipo;
     crearGrafico(tipoActual, miGrafico.data.labels, miGrafico.data.datasets[0].data);
 }
-
 function cambiarFiltro(periodo) {
     fetch(`<?php echo $_SERVER['PHP_SELF']; ?>?filtro=${periodo}&ajax=1`)
         .then(response => response.json())
@@ -518,6 +505,5 @@ function cambiarFiltro(periodo) {
         .catch(error => console.error('Error al actualizar:', error));
 }
 </script>
-
 </body>
 </html>

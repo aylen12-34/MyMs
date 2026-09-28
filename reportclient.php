@@ -21,16 +21,13 @@ $res_clientes = $conn->query($sql_top_clientes);
 if (!$res_clientes) {
     die("<b>Error en la consulta de clientes:</b> " . $conn->error);
 }
-
 $etiquetas = [];
 $totales   = [];
-
 while ($row = $res_clientes->fetch_assoc()) {
     $etiquetas[] = $row['Nombre'];
     $totales[]   = (int)$row['total_pedidos'];
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -211,15 +208,10 @@ FLECHA PARA SIGUIENTE REPORTE
 <?php
  include ("includes/botonvolver.php"); 
 ?>
-<a href="reportes.php" class="flecha-anterior">
-    ⇠
-</a>
-<a href="reportprodu.php" class="flecha-siguiente">
-    ⇢
-</a>
+<a href="reportes.php" class="flecha-anterior">⇠</a>
+<a href="reportprodu.php" class="flecha-siguiente">⇢</a>
 <div class="card">
     <h2>Top 3 Clientes Más Frecuentes</h2>
-
     <div class="chart-container">
         <?php if (!empty($etiquetas)): ?>
             <canvas id="graficoClientes"></canvas>
@@ -227,7 +219,6 @@ FLECHA PARA SIGUIENTE REPORTE
             <div class="no-data">No se encontraron pedidos con el estado 'Aceptado' en la base de datos.</div>
         <?php endif; ?>
     </div>
-
     <div class="top-products">
         <h3>Top 3 Clientes</h3>
         <?php if (!empty($etiquetas)): ?>
@@ -254,17 +245,13 @@ FLECHA PARA SIGUIENTE REPORTE
         <?php endif; ?>
     </div>
 </div>
-
 <script>
 const etiquetas = <?php echo json_encode($etiquetas); ?>;
 const totales = <?php echo json_encode($totales); ?>;
-
 console.log("Etiquetas recibidas:", etiquetas);
 console.log("Totales recibidos:", totales);
-
 if (etiquetas.length > 0) {
     const ctx = document.getElementById('graficoClientes').getContext('2d');
-    
     new Chart(ctx, {
         type: 'pie',
         data: {
@@ -297,6 +284,5 @@ if (etiquetas.length > 0) {
     });
 }
 </script>
-
 </body>
 </html>

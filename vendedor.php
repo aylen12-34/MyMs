@@ -359,25 +359,14 @@ main p{
         <h3>Inventario de productos</h3>
         <a href="Productos/readleeProductos.php"><button>Productos disponibles</button></a>
         <a href="Pedidos/leerPedidos.php"><button>Pedidos registrados </button></a>
-       
-        
-
     </div>
     <div class="foto">
-
         <?php
         if ($resultadop->num_rows > 0) {
-
-            $fila = $resultadop->fetch_assoc();
-                
-            echo "<img src='".$fila["imagen"]."' width='120'>";
-
-                
-               
+            $fila = $resultadop->fetch_assoc();  
+            echo "<img src='".$fila["imagen"]."' width='120'>"; 
         } 
-        
         ?>
-
     </div>
     <div class="panel">
 
@@ -386,9 +375,7 @@ main p{
         if($resultado->num_rows > 0){
 
             $fila = $resultado->fetch_assoc();
-
             echo "<table>";
-
             echo "<tr>";
             echo "<td class='titulo'>CI</td>";
             echo "<td>".$fila["CI"]."</td>";
@@ -420,15 +407,11 @@ main p{
             echo "</tr>";
 
             echo "</table>";
-
         }
             echo "<a href='Usuario/formUpdateUsuario.php?CI=".$fila["CI"]."'><button>Editar</button></a>"
         ?>
     </div>
-
 </main>
-
 <?php include("includes/footer.php"); ?>
-
 </body>
 </html>

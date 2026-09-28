@@ -10,43 +10,30 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 if (isset($_GET['codigo'])) {
-
     $codigo = intval($_GET['codigo']);
-
     $consulta = $conn->query(
         "SELECT Precio, Detallado
          FROM Productos
          WHERE Codigo = $codigo"
     );
-
     if ($consulta && $producto = $consulta->fetch_assoc()) {
-
         header('Content-Type: application/json; charset=utf-8');
-
         echo json_encode([
             "Precio" => $producto["Precio"],
             "Detallado" => $producto["Detallado"]
         ]);
-
     } else {
-
         header('Content-Type: application/json; charset=utf-8');
-
         echo json_encode([
             "Precio" => "No disponible",
             "Detallado" => "No hay información detallada para este producto."
         ]);
     }
-
     exit;
 }
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 
     <meta charset="UTF-8">

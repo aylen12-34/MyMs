@@ -8,7 +8,6 @@ $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
-
 @$conn->query("SET lc_time_names = 'es_ES'");
 $sql_top_productos = "SELECT 
                         p.Nombre AS producto, 
@@ -22,9 +21,7 @@ $sql_top_productos = "SELECT
                      GROUP BY p.Codigo, p.Nombre
                      ORDER BY unidades DESC
                      LIMIT 3";
-
 $res_top = $conn->query($sql_top_productos);
-
 
 if (!$res_top) {
     $sql_top_productos = "SELECT 
@@ -45,18 +42,15 @@ if (!$res_top) {
 if (!$res_top) {
     die("<b>Error en la consulta de productos:</b> " . $conn->error);
 }
-
 $etiquetas   = [];
 $totales     = [];
 $filas_tabla = [];
-
 while ($row = $res_top->fetch_assoc()) {
     $etiquetas[]   = $row['producto'];
     $totales[]     = (int)$row['unidades'];
     $filas_tabla[] = $row;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -193,9 +187,7 @@ FLECHA PARA ANTERIOR REPORTE
 <?php
  include ("includes/botonvolver.php"); 
 ?>
-<a href="reportclient.php" class="flecha-anterior">
-    ⇠
-</a>
+<a href="reportclient.php" class="flecha-anterior">⇠</a>
 <div class="card">
     <h2>Top 3 Productos Más Vendidos</h2>
 
@@ -206,7 +198,6 @@ FLECHA PARA ANTERIOR REPORTE
             <div class="no-data">No se encontraron ventas activas de productos registrados.</div>
         <?php endif; ?>
     </div>
-
     <div class="top-products">
         <h3>Detalle de Ventas</h3>
         <?php if (!empty($filas_tabla)): ?>
@@ -237,14 +228,10 @@ FLECHA PARA ANTERIOR REPORTE
             <p>Sin datos disponibles para mostrar.</p>
         <?php endif; ?>
     </div>
-
-   
 </div>
-
 <script>
 const etiquetas = <?php echo json_encode($etiquetas); ?>;
 const totales = <?php echo json_encode($totales); ?>;
-
 console.log("Productos:", etiquetas);
 console.log("Ventas:", totales);
 

@@ -1,83 +1,49 @@
 <?php
-
 session_start();
-
 require("conexion.php");
-
-
 if (isset($_GET["ID"])) {
-
     $id = trim($_GET["ID"]);
-
 } elseif (isset($_SESSION["pedidos"])) {
-
     $id = trim($_SESSION["pedidos"]);
-
 } else {
-
     echo "No existe pedido";
     exit;
-
 }
-
-
 $stmt = $conn->prepare(
     "SELECT * 
      FROM pedidos 
      WHERE ID=?"
 );
-
 $stmt->bind_param(
     "s",
     $id
 );
-
 $stmt->execute();
-
 $resultado = $stmt->get_result();
-
-
 if (!$resultado || $resultado->num_rows === 0) {
-
     echo "Pedido no encontrado";
     exit;
-
 }
-
-
 $pedido = $resultado->fetch_assoc();
-
 $Metodo = "No especificado";
-
-
 $stmt = $conn->prepare(
     "SELECT * 
      FROM ventas 
      WHERE Pedidos_ID=?"
 );
-
 $stmt->bind_param(
     "s",
     $id
 );
-
 $stmt->execute();
-
 $resultadov = $stmt->get_result();
-
-
 if ($resultadov && $resultadov->num_rows > 0) {
-
     $fila = $resultadov->fetch_assoc();
-
     $Metodo = !empty($fila['Metodo'])
         ? $fila['Metodo']
         : "No especificado";
-
 }
-
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -328,26 +294,72 @@ if ($resultadov && $resultadov->num_rows > 0) {
                 print-color-adjust: exact;
             }
         }
+    .btn-volver-esquina {
+        position: fixed;
+        top: 25px;
+        left: 25px;
+
+        width: 52px;
+        height: 52px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: #E64B6B;
+        border: none;
+        border-radius: 50%;
+
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
+
+        transition: all 0.2s ease;
+        z-index: 9999;
+
+        text-decoration: none;
+    }
+
+    /* Flecha */
+    .btn-volver-esquina::before {
+        content: "";
+
+        width: 12px;
+        height: 12px;
+
+        border-left: 3px solid #EFE2DA;
+        border-bottom: 3px solid #EFE2DA;
+
+        transform: rotate(45deg);
+
+        margin-left: 6px;
+    }
+
+    .btn-volver-esquina:hover {
+        background: #6A253A;
+
+        transform: scale(1.1);
+
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn-volver-esquina:active {
+        transform: scale(0.95);
+    }
     </style>
 </head>
 
 <body>
 
     <h1>MI TIENDA</h1>
-
     <h2>Recibo de Pedido</h2>
-
     <p>Número: <?php echo htmlspecialchars($pedido["ID"]); ?></p>
     <p>Cliente: <?php echo htmlspecialchars($pedido["Nombre"]); ?></p>
     <p>Teléfono: <?php echo htmlspecialchars($pedido["Celular"]); ?></p>
     <p>Dirección: <?php echo htmlspecialchars($pedido["Direccion"]); ?></p>
     <p>Método de pago: <?php echo htmlspecialchars($Metodo); ?></p>
     <p>Estado: <?php echo htmlspecialchars($pedido["Estado"]); ?></p>
-
     <hr>
-
     <h3>Productos</h3>
-
     <?php
     $stmtProductos = $conn->prepare(
     "SELECT 
@@ -359,18 +371,13 @@ if ($resultadov && $resultadov->num_rows > 0) {
      ON c.Productos_Codigo = p.Codigo
      WHERE c.Pedidos_ID=?"
 );
-
 $stmtProductos->bind_param(
     "s",
     $id
 );
-
 $stmtProductos->execute();
-
 $resultadoProductos = $stmtProductos->get_result();
-
 $total = 0;
-
     $datosQR = "RECIBO DE PEDIDO\n" .
                "--------------------------\n" .
                "Numero: " . $pedido["ID"] . "\n" .
@@ -381,11 +388,9 @@ $total = 0;
                "Estado: " . $pedido["Estado"] . "\n" .
                "--------------------------\n" .
                "PRODUCTOS\n";
-
     if ($resultadoProductos && $resultadoProductos->num_rows > 0) {
         while ($producto = $resultadoProductos->fetch_assoc()) {
             $total += $producto["CostoTotal"];
-
             echo "
             <div class='producto-recibo'>
                 <p>
@@ -395,7 +400,6 @@ $total = 0;
                 </p>
             </div>
             ";
-
             $datosQR .= $producto["Nombre"] . "\n" .
                         "Cantidad: " . $producto["Cantidad"] . "\n" .
                         "Subtotal: Bs " . $producto["CostoTotal"] . "\n" .
@@ -406,7 +410,6 @@ $total = 0;
     $datosQR .= "TOTAL: Bs " . $total;
     $qr = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" . urlencode($datosQR);
     ?>
-
     <h2>Total: Bs <?php echo number_format($total, 2); ?></h2>
     <div class="qr-recibo">
         <h3>Escanea para ver los datos del recibo</h3>
@@ -419,7 +422,6 @@ $total = 0;
             <img src="../../imagenes/PAGOOO.png" alt="QR de pago">
         </div>
     <?php } ?>
-
     <div id="estadoMensaje" class="mensaje-estado <?php echo ($pedido['Estado'] == 'Aceptado') ? 'aceptado' : ''; ?>">
         <h3>
             <?php 
@@ -429,10 +431,8 @@ $total = 0;
             ?>
         </h3>
     </div>
-
     <button onclick="window.print()">🖨 Imprimir</button>
-    <button id="volverProductos">Volver a Productos</button>
-
+ <a href="" class="btn-volver-esquina" aria-label="Volver" title="Volver" id="volverProductos"> </a>
     <script>
         document.getElementById("volverProductos").addEventListener("click", () => {
             fetch("nueva_compra.php")
