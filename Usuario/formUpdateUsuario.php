@@ -287,7 +287,7 @@ if ($resultado->num_rows > 0) {
 
 <input type="submit" value="Editar">
     </form>
- <a href="../administrador.php" class="btn-volver-esquina" aria-label="Volver" title="Volver"> </a>
+ <a href="../perfil.php" class="btn-volver-esquina" aria-label="Volver" title="Volver"> </a>
 </div>
     <script>
     var ci = document.getElementsByName("CI")[0];
