@@ -18,7 +18,7 @@ $sql_top_productos = "SELECT
                      INNER JOIN carrito c ON p.Codigo = c.Productos_Codigo
                      INNER JOIN pedidos ped ON c.Pedidos_ID = ped.ID
                      INNER JOIN ventas v ON ped.ID = v.Pedidos_ID
-                     WHERE v.Estado = 'Activo'
+                     WHERE v.Estado = 'Aceptada'
                      GROUP BY p.Codigo, p.Nombre
                      ORDER BY unidades DESC
                      LIMIT 3";
@@ -35,7 +35,7 @@ if (!$res_top) {
                          JOIN carrito c ON p.Codigo = c.Productos_Codigo
                          JOIN pedidos ped ON c.Pedidos_ID = ped.ID
                          JOIN ventas v ON ped.ID = v.Pedidos_ID
-                         WHERE v.Estado = 'Activo'
+                         WHERE v.Estado = 'Aceptada'
                          GROUP BY p.Nombre
                          ORDER BY unidades DESC
                          LIMIT 3";

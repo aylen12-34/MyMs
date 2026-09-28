@@ -694,7 +694,7 @@ body::before {
 document.addEventListener("DOMContentLoaded", function() {
     let timerInterval;
     Swal.fire({
-        title: 'Bienvenido Vendedor',
+        title: 'Bienvenido Administrador',
         html: 'Cargando cantidad <b></b> de pedidos.',
         timer: 2000,
         timerProgressBar: true,

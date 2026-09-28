@@ -197,16 +197,16 @@ ENGINE = InnoDB;
 -- datos de la tabla Ventas
 -- -----------------------------------------------------
 INSERT INTO `MYMS`.`Ventas` (`ID`, `Pedidos_ID`, `Costototal`, `Estado`, `Metodo`) VALUES
-(1, 1, 45.00, 'Activo', 'Efectivo'),
-(2, 2, 75.00, 'Activo', 'QR'),
-(3, 3, 60.00, 'Activo', 'Tarjeta'),
-(4, 4, 60.00, 'Activo', 'Efectivo'),
-(5, 5, 60.00, 'Activo', 'QR'),
-(6, 6, 60.00, 'Activo', 'Efectivo'),
-(7, 7, 75.00, 'Activo', 'Tarjeta'),
-(8, 8, 75.00, 'Activo', 'QR'),
-(9, 9, 75.00, 'Activo', 'Efectivo'),
-(10, 10, 75.00, 'Activo', 'QR');
+(1, 1, 45.00, 'Aceptada', 'Efectivo'),
+(2, 2, 75.00, 'Aceptada', 'QR'),
+(3, 3, 60.00, 'Aceptada', 'Efectivo'),
+(4, 4, 60.00, 'Aceptada', 'Efectivo'),
+(5, 5, 60.00, 'Aceptada', 'QR'),
+(6, 6, 60.00, 'Aceptada', 'Efectivo'),
+(7, 7, 75.00, 'Aceptada', 'QR'),
+(8, 8, 75.00, 'Aceptada', 'QR'),
+(9, 9, 75.00, 'Aceptada', 'Efectivo'),
+(10, 10, 75.00, 'Aceptada', 'QR');
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

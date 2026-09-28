@@ -207,6 +207,57 @@ $NombreVendedor = $fila['NombreVendedor'];
                 font-size: 24px;
             }
         }
+    .btn-volver-esquina {
+        position: fixed;
+        top: 25px;
+        left: 25px;
+
+        width: 52px;
+        height: 52px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: #E64B6B;
+        border: none;
+        border-radius: 50%;
+
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
+
+        transition: all 0.2s ease;
+        z-index: 9999;
+
+        text-decoration: none;
+    }
+
+    /* Flecha */
+    .btn-volver-esquina::before {
+        content: "";
+
+        width: 12px;
+        height: 12px;
+
+        border-left: 3px solid #EFE2DA;
+        border-bottom: 3px solid #EFE2DA;
+
+        transform: rotate(45deg);
+
+        margin-left: 6px;
+    }
+
+    .btn-volver-esquina:hover {
+        background: #6A253A;
+
+        transform: scale(1.1);
+
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn-volver-esquina:active {
+        transform: scale(0.95);
+    }
     </style>
 </head>
 <body>
@@ -218,16 +269,16 @@ $NombreVendedor = $fila['NombreVendedor'];
         <input type="hidden" name="ID" value="<?= $ID ?>">
         <input type="hidden" name="Pedidos_ID" value="<?= $Pedidos_ID ?>">
         <label for="Costototal">Costo Total:</label>
-        <input type="text" id="Costototal" name="Costototal" value="<?= $Costototal ?>" required minlength="1" maxlength="20"><br><br>
+        <input type="text" id="Costototal" name="Costototal" value="<?= $Costototal ?>" minlength="1" maxlength="20"><br><br>
         <label for="Estado">Estado:</label>
-        <input type="text" id="Estado" name="Estado" value="<?= $Estado ?>" required minlength="3" maxlength="30" pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+"><br><br>
+        <input type="text" id="Estado" name="Estado" value="<?= $Estado ?>" minlength="3" maxlength="30" pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+"><br><br>
         <label for="Metodo">Método:</label>
-        <input type="text" id="Metodo" name="Metodo" value="<?= $Metodo ?>" required minlength="3" maxlength="30" pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+"><br><br>
+        <input type="text" id="Metodo" name="Metodo" value="<?= $Metodo ?>" minlength="2" maxlength="30" pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+"><br><br>
         <label for="NombreVendedor">Nombre del Vendedor:</label>
         <input type="text" id="NombreVendedor" name="NombreVendedor" value="<?= $NombreVendedor ?>" readonly><br><br>
         <input type="submit" value="Editar">
     </form>
-    <button class="volver" onclick="history.back()">  ← Volver </button>
+ <a href="leerVentass.php" class="btn-volver-esquina" aria-label="Volver" title="Volver"> </a>
 </div>
 <script>
     function validar() {

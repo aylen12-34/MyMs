@@ -145,16 +145,11 @@ if ($stmt->affected_rows >= 0) {
 } else {
     echo "Error al actualizar la venta: " . $stmt->error;
 }
-    if ($conexion->query($sql) === TRUE) {
-        echo "Se editó la venta correctamente.";
-    } else {
-        echo "Error al actualizar la venta: " . $conexion->error;
-    }
     ?>
-    </p> <br>
+    </p> <br><a href="leerVentass.php">
     <button class="volver">
-        <a href="leerVentass.php">Tabla Ventas</a>
-    </button>
+        Tabla Ventas
+    </button></a>
 
 </div>
 

@@ -385,7 +385,6 @@ main {
                     type="text"
                     id="Nombre"
                     placeholder="Nombre completo"
-                    required
                     minlength="3"
                     maxlength="50"
                     pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+">
@@ -394,7 +393,6 @@ main {
                      type="text"
                      id="Celular"
                      placeholder="Número de celular"
-                     required
                      minlength="8"
                      maxlength="8"
                      pattern="[0-9]{8}"
@@ -406,10 +404,9 @@ main {
                     placeholder="Dirección"
                     maxlength="255"
                     minlength="5"
-                    required
                     autocomplete="street-address">
 
-                <select id="Metodo" required>
+                <select id="Metodo">
 
                     <option value="QR">
                         Pago mediante QR
@@ -466,8 +463,8 @@ main {
                     title: 'Alerta',
                     background: '#e65c78',
                     color: '#EFE2DA',
-                    imageUrl: '../../imagenes/gatous.png',
-                    imageHeight: 150,
+                    imageUrl: '../../imagenes/gatogalleta.png',
+                    imageHeight: 200,
                     imageAlt: 'Icono personalizado',
                     confirmButtonText: 'OK',
                     confirmButtonColor: '#6A253A',
@@ -524,8 +521,8 @@ main {
                     title: 'Alerta',
                     background: '#e65c78',
                     color: '#EFE2DA',
-                    imageUrl: '../../imagenes/gatous.png',
-                    imageHeight: 150,
+                    imageUrl: '../../imagenes/gatogalleta.png',
+                    imageHeight: 200,
                     imageAlt: 'Icono personalizado',
                     confirmButtonText: 'OK',
                     confirmButtonColor: '#6A253A',
@@ -582,8 +579,8 @@ main {
                     title: 'Alerta',
                     background: '#e65c78',
                     color: '#EFE2DA',
-                    imageUrl: '../../imagenes/gatous.png',
-                    imageHeight: 150,
+                    imageUrl: '../../imagenes/gatogalleta.png',
+                    imageHeight: 200,
                     imageAlt: 'Icono personalizado',
                     confirmButtonText: 'OK',
                     confirmButtonColor: '#6A253A',
@@ -640,8 +637,8 @@ main {
                     title: 'Alerta',
                     background: '#e65c78',
                     color: '#EFE2DA',
-                    imageUrl: '../../imagenes/gatous.png',
-                    imageHeight: 150,
+                    imageUrl: '../../imagenes/gatogalleta.png',
+                    imageHeight: 200,
                     imageAlt: 'Icono personalizado',
                     confirmButtonText: 'OK',
                     confirmButtonColor: '#6A253A',
@@ -698,8 +695,8 @@ main {
                     title: 'Alerta',
                     background: '#e65c78',
                     color: '#EFE2DA',
-                    imageUrl: '../../imagenes/gatous.png',
-                    imageHeight: 150,
+                    imageUrl: '../../imagenes/gatogalleta.png',
+                    imageHeight: 200,
                     imageAlt: 'Icono personalizado',
                     confirmButtonText: 'OK',
                     confirmButtonColor: '#6A253A',
@@ -756,8 +753,8 @@ main {
                     title: 'Alerta',
                     background: '#e65c78',
                     color: '#EFE2DA',
-                    imageUrl: '../../imagenes/gatous.png',
-                    imageHeight: 150,
+                    imageUrl: '../../imagenes/gatogalleta.png',
+                    imageHeight: 200,
                     imageAlt: 'Icono personalizado',
                     confirmButtonText: 'OK',
                     confirmButtonColor: '#6A253A',
@@ -814,8 +811,8 @@ main {
                     title: 'Alerta',
                     background: '#e65c78',
                     color: '#EFE2DA',
-                    imageUrl: '../../imagenes/gatous.png',
-                    imageHeight: 150,
+                    imageUrl: '../../imagenes/gatogalleta.png',
+                    imageHeight: 200,
                     imageAlt: 'Icono personalizado',
                     confirmButtonText: 'OK',
                     confirmButtonColor: '#6A253A',

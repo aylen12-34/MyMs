@@ -138,7 +138,6 @@ label.error{
                 type="text" 
                 id="Nombre" 
                 name="Nombre"
-                required
                 minlength="3"
                 maxlength="50"
                 pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+"
@@ -150,7 +149,6 @@ label.error{
                 type="number" 
                 id="Celular" 
                 name="Celular"
-                required
                 minlength="8"
                 maxlength="8"
             >
@@ -163,7 +161,6 @@ label.error{
                 name="Fecha" 
                 value='<?php echo date('Y-m-d');?>' 
                 readonly
-                required
             >
             <br><br>
 
@@ -172,7 +169,6 @@ label.error{
                 type="text" 
                 id="direccion" 
                 name="Direccion"
-                required
                 minlength="5"
                 maxlength="100"
             >
@@ -185,7 +181,6 @@ label.error{
                 name="Estado" 
                 value="pendiente" 
                 readonly
-                required
                 minlength="8"
                 maxlength="10"
                 pattern="[a-z]+"

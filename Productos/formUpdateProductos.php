@@ -198,6 +198,57 @@ if ($resultado->num_rows > 0) {
                 font-size: 24px;
             }
         }
+    .btn-volver-esquina {
+        position: fixed;
+        top: 25px;
+        left: 25px;
+
+        width: 52px;
+        height: 52px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: #E64B6B;
+        border: none;
+        border-radius: 50%;
+
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
+
+        transition: all 0.2s ease;
+        z-index: 9999;
+
+        text-decoration: none;
+    }
+
+    /* Flecha */
+    .btn-volver-esquina::before {
+        content: "";
+
+        width: 12px;
+        height: 12px;
+
+        border-left: 3px solid #EFE2DA;
+        border-bottom: 3px solid #EFE2DA;
+
+        transform: rotate(45deg);
+
+        margin-left: 6px;
+    }
+
+    .btn-volver-esquina:hover {
+        background: #6A253A;
+
+        transform: scale(1.1);
+
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn-volver-esquina:active {
+        transform: scale(0.95);
+    }
     </style>
 </head>
 <body>
@@ -207,49 +258,49 @@ if ($resultado->num_rows > 0) {
         <label for="Codigo">Codigo:</label>
 <input type="number" id="Codigo" name="Codigo"
        value="<?=$Codigo?>"
-       readonly required minlength="1" maxlength="10">
+       readonly minlength="1" maxlength="10">
 <br><br>
 
 <label for="Nombre">Nombre:</label>
 <input type="text" id="Nombre" name="Nombre"
        value="<?=$Nombre?>"
-       required minlength="3" maxlength="100"
+       minlength="3" maxlength="100"
        pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9\s.,'()-]+">
 <br><br>
 
 <label for="Descripcion">Descripción:</label>
 <input type="text" id="Descripcion" name="Descripcion"
        value="<?=$Descripcion?>"
-       required minlength="3" maxlength="255">
+       minlength="3" maxlength="255">
 <br><br>
 
 <label for="Detallado">Descripción detallada:</label>
 <input type="text" id="Detallado" name="Detallado"
        value="<?=$Detallado?>"
-       required minlength="3" maxlength="1000">
+       minlength="3" maxlength="1000">
 <br><br>
 
 <label for="Precio">Precio:</label>
 <input type="number" id="Precio" name="Precio"
        value="<?=$Precio?>"
-       required minlength="1" maxlength="10">
+       minlength="1" maxlength="10">
 <br><br>
 
 <label for="Stock">Stock:</label>
 <input type="number" id="Stock" name="Stock"
        value="<?=$Stock?>"
-       required minlength="1" maxlength="10">
+       minlength="1" maxlength="10">
 <br><br>
 
 <label for="Estado">Estado</label>
-<select name="Estado" required>
+<select name="Estado">
     <option value="Disponible">Disponible</option>
     <option value="Desactivo">Fuera de catalogo</option>
 </select>
 <br><br>
         <input type="submit" value="Editar">
     </form>
-    <button class="volver" onclick="history.back()">Volver</button><br>
+ <a href="readleeProductos.php" class="btn-volver-esquina" aria-label="Volver" title="Volver"> </a>
     </div>
     <script>
     var codigo = document.getElementById("Codigo");

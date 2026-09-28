@@ -18,8 +18,6 @@ $_SESSION['NombreVendedor']=$Nombre;
 $NombreVendedor=trim($_SESSION['NombreVendedor']);
 $Estado ='Activo';
 $_SESSION['Estado']='Activo';
-
-// 1. Obtener la suma total de los productos del carrito para este pedido
 $stmt = $conexion->prepare(
     "SELECT SUM(CostoTotal) AS Total 
      FROM carrito 
@@ -33,16 +31,9 @@ $resultadocar = $stmt->get_result();
 
 $rowcar = $resultadocar->fetch_assoc();
 $CostoTotal = $rowcar['Total'] ?? 0;
-
-/* 
-  MODIFICACIÓN AQUÍ:
-  Ya no se modifica el 'Metodo' en el UPDATE porque ya se guardó correctamente 
-  al crear el pedido en 'nueva_compra.php'. Se conserva el valor que ya existe en la BD.
-*/
-
 $stmt = $conexion->prepare(
     "UPDATE Ventas 
-     SET Costototal=?, Estado='Activo' 
+     SET Costototal=?, Estado='Aceptada' 
      WHERE Pedidos_ID=?"
 );
 

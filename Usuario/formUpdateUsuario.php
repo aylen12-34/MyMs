@@ -197,6 +197,57 @@ if ($resultado->num_rows > 0) {
                 font-size: 24px;
             }
         }
+    .btn-volver-esquina {
+        position: fixed;
+        top: 25px;
+        left: 25px;
+
+        width: 52px;
+        height: 52px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: #E64B6B;
+        border: none;
+        border-radius: 50%;
+
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
+
+        transition: all 0.2s ease;
+        z-index: 9999;
+
+        text-decoration: none;
+    }
+
+    /* Flecha */
+    .btn-volver-esquina::before {
+        content: "";
+
+        width: 12px;
+        height: 12px;
+
+        border-left: 3px solid #EFE2DA;
+        border-bottom: 3px solid #EFE2DA;
+
+        transform: rotate(45deg);
+
+        margin-left: 6px;
+    }
+
+    .btn-volver-esquina:hover {
+        background: #6A253A;
+
+        transform: scale(1.1);
+
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn-volver-esquina:active {
+        transform: scale(0.95);
+    }
     </style>
 </head>
 <body>
@@ -208,36 +259,35 @@ if ($resultado->num_rows > 0) {
 
 <label for="">Nombre:</label>
 <input type="text" name="Nombre" value='<?=$Nombre?>'
-       required minlength="3" maxlength="50"
+        minlength="3" maxlength="50"
        pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+">
 <br>
 
 <label for="">Dirección:</label>
 <input type="text" name="Direccion" value='<?=$Direccion?>'
-       required minlength="5" maxlength="100">
+       minlength="5" maxlength="100">
 <br>
 
 <label for="">Celular:</label>
 <input type="number" name="Celular" value='<?=$Celular?>'
-       required minlength="8" maxlength="8">
+       minlength="8" maxlength="8">
 <br>
 
 <label for="">Rol:</label>
 <input type="text" name="Rol" value='<?=$Rol?>'
-       readonly required minlength="8" maxlength="13"
+       readonly minlength="8" maxlength="13"
        pattern="[a-z]+">
 <br>
 
 <label for="">Estado:</label>
 <input type="text" name="Estado" value='<?=$Estado?>'
-       readonly required minlength="6" maxlength="8"
+       readonly minlength="6" maxlength="8"
        pattern="[a-zA-Z]+">
 <br>
 
 <input type="submit" value="Editar">
     </form>
-    <button class="volver" onclick="history.back()">
-         Volver</button><br>
+ <a href="../administrador.php" class="btn-volver-esquina" aria-label="Volver" title="Volver"> </a>
 </div>
     <script>
     var ci = document.getElementsByName("CI")[0];
@@ -257,7 +307,7 @@ if ($resultado->num_rows > 0) {
         background: '#e65c78',
         color: '#EFE2DA',
         imageUrl: '../imagenes/gatous.png',
-        imageHeight: 150,
+        imageHeight: 200,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
@@ -285,7 +335,7 @@ if ($resultado->num_rows > 0) {
         background: '#e65c78',
         color: '#EFE2DA',
         imageUrl: '../imagenes/gatous.png',
-        imageHeight: 150,
+        imageHeight: 200,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
@@ -313,7 +363,7 @@ if ($resultado->num_rows > 0) {
         background: '#e65c78',
         color: '#EFE2DA',
         imageUrl: '../imagenes/gatous.png',
-        imageHeight: 150,
+        imageHeight: 200,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
@@ -341,7 +391,7 @@ if ($resultado->num_rows > 0) {
         background: '#e65c78',
         color: '#EFE2DA',
         imageUrl: '../imagenes/gatous.png',
-        imageHeight: 150,
+        imageHeight: 200,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
@@ -369,7 +419,7 @@ if ($resultado->num_rows > 0) {
         background: '#e65c78',
         color: '#EFE2DA',
         imageUrl: '../imagenes/gatous.png',
-        imageHeight: 150,
+        imageHeight: 200,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
@@ -397,7 +447,7 @@ if ($resultado->num_rows > 0) {
         background: '#e65c78',
         color: '#EFE2DA',
         imageUrl: '../imagenes/gatous.png',
-        imageHeight: 150,
+        imageHeight: 200,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
@@ -425,7 +475,7 @@ if ($resultado->num_rows > 0) {
         background: '#e65c78',
         color: '#EFE2DA',
         imageUrl: '../imagenes/gatous.png',
-        imageHeight: 150,
+        imageHeight: 200,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
@@ -453,7 +503,7 @@ if ($resultado->num_rows > 0) {
         background: '#e65c78',
         color: '#EFE2DA',
         imageUrl: '../imagenes/gatous.png',
-        imageHeight: 150,
+        imageHeight: 200,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
@@ -481,7 +531,7 @@ if ($resultado->num_rows > 0) {
         background: '#e65c78',
         color: '#EFE2DA',
         imageUrl: '../imagenes/gatous.png',
-        imageHeight: 150,
+        imageHeight: 200,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
     confirmButtonColor: '#6A253A',
