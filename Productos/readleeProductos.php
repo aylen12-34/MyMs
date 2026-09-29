@@ -361,8 +361,21 @@ document.addEventListener("DOMContentLoaded", function() {
                 imageAlt: 'Icono personalizado',
                 confirmButtonText: 'OK',
                 confirmButtonColor: '#6A253A',
-                text: 'No tienes unidades disponibles.'
+                text: 'No tienes unidades disponibles.',
+                 didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
             });
+        }
+    }
+});
+
         <?php elseif ($alertaStockSuperBajo): ?>
             Swal.fire({
                 title: 'Atención con el Inventario',
@@ -373,8 +386,20 @@ document.addEventListener("DOMContentLoaded", function() {
                 imageAlt: 'Icono personalizado',
                 confirmButtonText: 'OK',
                 confirmButtonColor: '#6A253A',
-                text: 'Tienes productos agotados o con muy pocas unidades (Stock en 3 o menos).'
+                text: 'Tienes productos agotados o con muy pocas unidades (Stock en 3 o menos).',
+                 didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
             });
+        }
+    }
+});
         <?php elseif ($alertaStockBajo): ?>
             Swal.fire({
                 title: 'Stock Bajo',
@@ -385,9 +410,20 @@ document.addEventListener("DOMContentLoaded", function() {
                 imageAlt: 'Icono personalizado',
                 confirmButtonText: 'OK',
                 confirmButtonColor: '#6A253A',
-                text: 'Se recomienda reponer productos con pocas unidades.'
+                text: 'Se recomienda reponer productos con pocas unidades.',
+                 didOpen: () => {
+        const audio = new Audio('../imagenes/galletapro.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
             });
-            
+        }
+    }
+});
         <?php endif; ?>
     });
 });
