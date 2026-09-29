@@ -49,7 +49,7 @@ if ($resultadov && $resultadov->num_rows > 0) {
 <head>
     <meta charset="UTF-8">
     <title>Recibo</title>
-    <link rel="stylesheet" href="css/ticket.css">
+    <link rel="stylesheet" href="../../tipografia/Fonts/WEB/css/chillax.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
 
@@ -57,6 +57,7 @@ if ($resultadov && $resultadov->num_rows > 0) {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Chillax-Semibold';
         }
 
         body {
@@ -66,7 +67,6 @@ if ($resultadov && $resultadov->num_rows > 0) {
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            font-family: 'Poppins', sans-serif;
             color: #6A253A;
             display: flex;
             flex-direction: column;
@@ -85,7 +85,6 @@ if ($resultadov && $resultadov->num_rows > 0) {
             width: 100%;
             max-width: 650px;
             text-align: center;
-            font-family: 'Cinzel Decorative', serif;
             font-size: 34px;
             color: #6A253A;
             margin-bottom: 5px;
@@ -244,19 +243,6 @@ if ($resultadov && $resultadov->num_rows > 0) {
             transform: translateY(-2px);
             box-shadow: 0 5px 12px rgba(106, 37, 58, 0.3);
         }
-
-        #volverProductos {
-            background: #EFE2DA;
-            border: 2px solid #6A253A;
-            color: #6A253A;
-        }
-
-        #volverProductos:hover {
-            background: #6A253A;
-            color: #EFE2DA;
-            transform: translateY(-2px);
-        }
-
         @media (max-width: 700px) {
             body { padding: 25px 12px; }
             h1 { font-size: 27px; }
@@ -265,10 +251,28 @@ if ($resultadov && $resultadov->num_rows > 0) {
             h2:last-of-type { font-size: 21px; }
             button { width: 90%; max-width: 300px; }
             .qr-recibo img { width: 220px; height: 220px; }
+            .btn-volver-esquina {
+            top: 15px;
+            left: 15px;
+            width: 45px;
+            height: 45px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+        }
+            .btn-volver-esquina::before {
+                width: 10px;
+                height: 10px;
+                border-left: 3px solid #EFE2DA;
+                border-bottom: 3px solid #EFE2DA;
+                margin-left: 5px;
+        }
+            .btn-volver-esquina:hover {
+                transform: scale(1.08);
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.40);
+            }
         }
 
         @media print {
-            @page { size: A4; margin: 10mm; }
+            @page { margin: 10mm; }
             body {
                 background-image: url("../../imagenes/2.png") !important;
                 background-size: cover;
@@ -294,63 +298,48 @@ if ($resultadov && $resultadov->num_rows > 0) {
                 print-color-adjust: exact;
             }
         }
-    .btn-volver-esquina {
-        position: fixed;
-        top: 25px;
-        left: 25px;
+            .btn-volver-esquina {
+            position: fixed;
+            top: 25px;
+            left: 25px;
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6A253A;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
+            transition: all 0.2s ease;
+            z-index: 9999;
+            text-decoration: none;
+        }
+        .btn-volver-esquina::before {
+            content: "";
+            width: 12px;
+            height: 12px;
+            border-left: 3px solid #EFE2DA;
+            border-bottom: 3px solid #EFE2DA;
+            transform: rotate(45deg);
+            margin-left: 6px;
+        }
+        .btn-volver-esquina:hover {
+            transform: scale(1.1);
 
-        width: 52px;
-        height: 52px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        background: #E64B6B;
-        border: none;
-        border-radius: 50%;
-
-        cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
-
-        transition: all 0.2s ease;
-        z-index: 9999;
-
-        text-decoration: none;
-    }
-
-    /* Flecha */
-    .btn-volver-esquina::before {
-        content: "";
-
-        width: 12px;
-        height: 12px;
-
-        border-left: 3px solid #EFE2DA;
-        border-bottom: 3px solid #EFE2DA;
-
-        transform: rotate(45deg);
-
-        margin-left: 6px;
-    }
-
-    .btn-volver-esquina:hover {
-        background: #6A253A;
-
-        transform: scale(1.1);
-
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
-    }
-
-    .btn-volver-esquina:active {
-        transform: scale(0.95);
-    }
+            box-shadow: 
+                0 6px 16px rgba(0, 0, 0, 0.35);
+        }
+        .btn-volver-esquina:active {
+            transform: scale(0.95);
+        }
     </style>
 </head>
 
 <body>
 
-    <h1>MI TIENDA</h1>
+    <h1>MI Compra</h1>
     <h2>Recibo de Pedido</h2>
     <p>Número: <?php echo htmlspecialchars($pedido["ID"]); ?></p>
     <p>Cliente: <?php echo htmlspecialchars($pedido["Nombre"]); ?></p>
