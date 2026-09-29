@@ -1,8 +1,3 @@
-<?php
-session_start();
-
-$sesionIniciada = isset($_SESSION["CI"]) && !empty($_SESSION["CI"]);
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -192,17 +187,7 @@ $sesionIniciada = isset($_SESSION["CI"]) && !empty($_SESSION["CI"]);
             </li>
 
             <li>
-                <?php
-                if ($sesionIniciada) {
-                ?>
-                    <a href="cerrar.php">Cerrar sesión</a>
-                <?php
-                } else {
-                ?>
-                    <a href="login.php">Iniciar sesión</a>
-                <?php
-                }
-                ?>
+                <a href="login.php">Iniciar sesión</a>
             </li>
 
             <li>
