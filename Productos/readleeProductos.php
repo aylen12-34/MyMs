@@ -363,7 +363,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 confirmButtonColor: '#6A253A',
                 text: 'No tienes unidades disponibles.',
                  didOpen: () => {
-        const audio = new Audio('../imagenes/galletapro.mp3');
+        const audio = new Audio('../imagenes/gatoo.mp3');
         const imagenSwal = Swal.getImage();
 
         if (imagenSwal) {
@@ -388,7 +388,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 confirmButtonColor: '#6A253A',
                 text: 'Tienes productos agotados o con muy pocas unidades (Stock en 3 o menos).',
                  didOpen: () => {
-        const audio = new Audio('../imagenes/galletapro.mp3');
+        const audio = new Audio('../imagenes/gatoo.mp3');
         const imagenSwal = Swal.getImage();
 
         if (imagenSwal) {
@@ -412,7 +412,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 confirmButtonColor: '#6A253A',
                 text: 'Se recomienda reponer productos con pocas unidades.',
                  didOpen: () => {
-        const audio = new Audio('../imagenes/galletapro.mp3');
+        const audio = new Audio('../imagenes/gatoo.mp3');
         const imagenSwal = Swal.getImage();
 
         if (imagenSwal) {
