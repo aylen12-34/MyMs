@@ -32,12 +32,6 @@ img {
     height: auto;
 }
 
-/* HEADER */
-
-header {
-    width: 100%;
-}
-
 .logo {
     flex-shrink: 0;
 }

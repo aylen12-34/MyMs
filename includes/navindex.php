@@ -1,251 +1,249 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nav</title>
-    <link rel="stylesheet" href="../../tipografia/Fonts/WEB/css/chillax.css">
-    <style>
-        *{
-      font-family:'Chillax-Semibold';
-        }
-        #overlay{
-            position:fixed;
-            inset:0;
-            background:rgba(0,0,0,0.6);
-            opacity:0;
-            visibility:hidden;
-            transition:0.6s;
-            z-index:1000;
-        }
+<div id="botonMenu">
+    <img src="../../imagenes/ISOTIPO BRUMA PASTEL.png" alt="Menu">
+</div>
 
-        #overlay.activo{
-            opacity:1;
-            visibility:visible;
-        }
+<div id="overlay"></div>
 
-        nav{
-            position:fixed;
-            top:50%;
-            left:-350px;
-            transform:translateY(-50%);
-            width:280px;
-            height:80vh;
-            background:#6A253A;
-            border-right:5px solid #E64B6B;
-            border-radius:0 25px 25px 0;
-            z-index:2000;
-            transition:0.7s ease;
-            display:flex;
-            align-items:center;
-        }
+<nav class="indice" id="menu">
+    <ul>
 
-        nav.activo{
-            left:0;
-        }
+        <li><a href="../../portada publica.php">Inicio</a></li>
 
-        .indice ul{
-            list-style:none;
-            padding:0;
-            margin:0;
-            width:100%;
-        }
+        <li><a href="../../perfil.php" class="volver">Perfil</a></li>
 
-        .indice a{
-            text-decoration:none;
-            color:#EFE2DA;
-            display:block;
-            padding:22px;
-            transition:0.4s;
-        }
+        <li><a href="../../login.php">Iniciar sesión</a></li>
 
-        .indice a:hover{
-            background:#E64B6B;
-        }
+        <li><a href="../../nosotros.php">Nosotros</a></li>
 
-        #compra{
-            border-radius:50%;
-            width:20px;
-            height:20px;
-        }
+        <li>
+            <a href="../../formulario ambiental MYMS.pdf" target="_blank">
+                Ficha ambiental
+            </a>
+        </li>
 
-        #botonMenu{
-            position:fixed;
-            top:20px;
-            left:20px;
-            width:75px;
-            height:75px;
-            border-radius:50%;
-            background:#E64B6B;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            cursor:pointer;
-            z-index:3000;
-            box-shadow:0 5px 15px rgba(0,0,0,0.4);
-        }
+        <li>
+            <a href="produc.php">Ver comentario</a>
+        </li>
 
-        #botonMenu img{
-            width:55px;
-            height:55px;
-            transition:0.7s ease;
-        }
+        <li class="buscar-pedido">
 
-        #botonMenu.abrir img{
-            transform:rotate(360deg);
-        }
+            <span>
+                ¿Tienes un pedido?
+            </span>
 
-        #botonMenu.cerrar img{
-            transform:rotate(-360deg);
-        }
+            <form action="buscarPedido.php" method="GET">
 
-         .buscar-pedido{
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            gap:10px;
-            margin-top:15px;
-            padding:10px;
-        }
+                <input
+                    type="number"
+                    name="ID"
+                    placeholder="ID del recibo"
+                    min="1"
+                    required
+                >
 
-        .buscar-pedido span{
-            color:#EFE2DA;
-            font-size:18px;
-            text-align:center;
-        }
+                <button type="submit">
+                    Buscar
+                </button>
 
-        .buscar-pedido form{
-            display:flex;
-            gap:8px;
-            width:100%;
-            justify-content:center;
-            align-items:center;
-        }
+            </form>
 
-        .pedido-form input,
-        .buscar-pedido input{
-            width:130px;
-            padding:10px;
-            border:2px solid #E64B6B;
-            border-radius:10px;
-            outline:none;
-            background:#EFE2DA;
-            color:#6A253A;
-            font-family:inherit;
-            text-align:center;
-        }
+        </li>
 
-        .buscar-pedido input::placeholder{
-            color:#6A253A;
-            opacity:0.6;
-        }
+    </ul>
+</nav>
 
-        .buscar-pedido button{
-            padding:10px 15px;
-            border:none;
-            border-radius:10px;
-            background:#E64B6B;
-            color:#EFE2DA;
-            cursor:pointer;
-            font-family:inherit;
-            transition:0.2s;
-        }
+<style>
+* {
+    font-family: 'Chillax-Semibold';
+}
 
-        .buscar-pedido button:hover{
-            background:#EFE2DA;
-            color:#6A253A;
-        }
-    </style>
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.6s;
+    z-index: 6000;
+}
 
-</head>
-<body>
+#overlay.activo {
+    opacity: 1;
+    visibility: visible;
+}
 
-    <div id="botonMenu">
-        <img src="../../imagenes/ISOTIPO BRUMA PASTEL.png" alt="Menu">
-    </div>
-    <div id="overlay"></div>
-    <nav class="indice" id="menu">
-        <ul>
-            
-            <li><a href="../../portada publica.php">Inicio</a></li>
-            <li><a href="../../perfil.php" class="volver">Perfil</a></li>
-            <li><a href="../../login.php">Iniciar sesión</a></li>
-            <li><a href="../../nosotros.php">Nosotros</a></li>
-            <li><a href="../../formulario ambiental MYMS.pdf" target="_blank">Ficha ambiental</a></li>
-             <li><a href="produc.php">Ver comentario</a></li>
-             <li class="buscar-pedido">
+nav {
+    position: fixed;
+    top: 50%;
+    left: -350px;
+    transform: translateY(-50%);
+    width: 280px;
+    height: 80vh;
+    background: #6A253A;
+    border-right: 5px solid #E64B6B;
+    border-radius: 0 25px 25px 0;
+    z-index: 7000;
+    transition: 0.7s ease;
+    display: flex;
+    align-items: center;
+}
 
-                <span>
-                    ¿Tienes un pedido?
-                </span>
+nav.activo {
+    left: 0;
+}
 
-                <form action="buscarPedido.php" method="GET">
+.indice ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
 
-                    <input
-                        type="number"
-                        name="ID"
-                        placeholder="ID del recibo"
-                        min="1"
-                        required
-                    >
+.indice a {
+    text-decoration: none;
+    color: #EFE2DA;
+    display: block;
+    padding: 22px;
+    transition: 0.4s;
+}
 
-                    <button type="submit">
-                        Buscar
-                    </button>
+.indice a:hover {
+    background: #E64B6B;
+}
 
-                </form>
+#compra {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
 
-            </li>
-            
-        </ul>
-    </nav>
+#botonMenu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: #E64B6B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 8000;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
 
-    <script>
+#botonMenu img {
+    width: 55px;
+    height: 55px;
+    transition: 0.7s ease;
+}
 
-        const boton = document.getElementById("botonMenu");
-        const menu = document.getElementById("menu");
-        const overlay = document.getElementById("overlay");
+#botonMenu.abrir img {
+    transform: rotate(360deg);
+}
 
-        let abierto = false;
+#botonMenu.cerrar img {
+    transform: rotate(-360deg);
+}
 
-        boton.addEventListener("click", () => {
+.buscar-pedido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    padding: 10px;
+}
 
-            if(!abierto){
+.buscar-pedido span {
+    color: #EFE2DA;
+    font-size: 18px;
+    text-align: center;
+}
 
-                menu.classList.add("activo");
-                overlay.classList.add("activo");
+.buscar-pedido form {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
 
-                boton.classList.remove("cerrar");
-                boton.classList.add("abrir");
+.pedido-form input,
+.buscar-pedido input {
+    width: 130px;
+    padding: 10px;
+    border: 2px solid #E64B6B;
+    border-radius: 10px;
+    outline: none;
+    background: #EFE2DA;
+    color: #6A253A;
+    font-family: inherit;
+    text-align: center;
+}
 
-                abierto = true;
+.buscar-pedido input::placeholder {
+    color: #6A253A;
+    opacity: 0.6;
+}
 
-            }else{
+.buscar-pedido button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    background: #E64B6B;
+    color: #EFE2DA;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.2s;
+}
 
-                menu.classList.remove("activo");
-                overlay.classList.remove("activo");
+.buscar-pedido button:hover {
+    background: #EFE2DA;
+    color: #6A253A;
+}
+</style>
 
-                boton.classList.remove("abrir");
-                boton.classList.add("cerrar");
+<script>
+const boton = document.getElementById("botonMenu");
+const menu = document.getElementById("menu");
+const overlay = document.getElementById("overlay");
 
-                abierto = false;
-            }
+let abierto = false;
 
-        });
+boton.addEventListener("click", () => {
 
-        overlay.addEventListener("click", () => {
+    if (!abierto) {
 
-            menu.classList.remove("activo");
-            overlay.classList.remove("activo");
+        menu.classList.add("activo");
+        overlay.classList.add("activo");
 
-            boton.classList.remove("abrir");
-            boton.classList.add("cerrar");
+        boton.classList.remove("cerrar");
+        boton.classList.add("abrir");
 
-            abierto = false;
+        abierto = true;
 
-        });
+    } else {
 
-    </script>
+        menu.classList.remove("activo");
+        overlay.classList.remove("activo");
 
-</body>
-</html>
+        boton.classList.remove("abrir");
+        boton.classList.add("cerrar");
+
+        abierto = false;
+    }
+});
+
+overlay.addEventListener("click", () => {
+
+    menu.classList.remove("activo");
+    overlay.classList.remove("activo");
+
+    boton.classList.remove("abrir");
+    boton.classList.add("cerrar");
+
+    abierto = false;
+});
+</script>
