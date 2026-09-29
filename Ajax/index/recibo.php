@@ -258,17 +258,30 @@ if ($resultadov && $resultadov->num_rows > 0) {
             height: 45px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
         }
-            .btn-volver-esquina::before {
-                width: 10px;
-                height: 10px;
-                border-left: 3px solid #EFE2DA;
-                border-bottom: 3px solid #EFE2DA;
-                margin-left: 5px;
-        }
-            .btn-volver-esquina:hover {
-                transform: scale(1.08);
-                box-shadow: 0 0 15px rgba(0, 0, 0, 0.40);
-            }
+            .btn-volver-esquina {
+        top: 15px;
+        left: 15px;
+        width: 45px;
+        height: 45px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+    }
+    .btn-volver-esquina::before {
+        width: 8px;
+        height: 8px;
+        border-left: 2.5px solid #EFE2DA;
+        border-bottom: 2.5px solid #EFE2DA;
+        left: 19px;
+        top: 17px;
+        margin: 0;
+    }
+    .btn-volver-esquina:hover {
+        transform: scale(1.08);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.40);
+    }
+
+    .btn-volver-esquina:active {
+        transform: scale(0.95);
+    }
         }
 
         @media print {
@@ -299,37 +312,50 @@ if ($resultadov && $resultadov->num_rows > 0) {
             }
         }
             .btn-volver-esquina {
-            position: fixed;
-            top: 25px;
-            left: 25px;
-            width: 52px;
-            height: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #6A253A;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
-            transition: all 0.2s ease;
-            z-index: 9999;
-            text-decoration: none;
-        }
+        position: fixed;
+        top: 25px;
+        left: 25px;
+
+        width: 52px;
+        height: 52px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: #6A253A;
+        border: none;
+        border-radius: 50%;
+
+        cursor: pointer;
+
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
+
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+        z-index: 9999;
+        text-decoration: none;
+    }
         .btn-volver-esquina::before {
-            content: "";
-            width: 12px;
-            height: 12px;
-            border-left: 3px solid #EFE2DA;
-            border-bottom: 3px solid #EFE2DA;
-            transform: rotate(45deg);
-            margin-left: 6px;
-        }
+    content: "";
+
+    position: absolute;
+
+    width: 9px;
+    height: 9px;
+
+    border-left: 3px solid #EFE2DA;
+    border-bottom: 3px solid #EFE2DA;
+
+    transform: rotate(45deg);
+
+    left: 23px;
+    top: 20px;
+}
         .btn-volver-esquina:hover {
             transform: scale(1.1);
 
-            box-shadow: 
-                0 6px 16px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
         }
         .btn-volver-esquina:active {
             transform: scale(0.95);
@@ -421,23 +447,7 @@ $total = 0;
         </h3>
     </div>
     <button onclick="window.print()">🖨 Imprimir</button>
- <a href="" class="btn-volver-esquina" aria-label="Volver" title="Volver" id="volverProductos"> </a>
-    <script>
-        document.getElementById("volverProductos").addEventListener("click", () => {
-            fetch("nueva_compra.php")
-                .then(res => res.json())
-                .then(data => {
-                    if (data.ok) {
-                        window.location.href = "index1.php";
-                    } else {
-                        window.location.href = "index1.php";
-                    }
-                })
-                .catch(() => {
-                    window.location.href = "index1.php";
-                });
-        });
-    </script>
+ <button href="" class="btn-volver-esquina" aria-label="Volver" onclick="history.back()" title="Volver"> </button>
 
 </body>
 </html>
