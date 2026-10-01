@@ -5,6 +5,10 @@
 #productosbusqueda {
     width: 100%;
     margin: 25px auto;
+
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 22px !important;
 }
 
 
@@ -36,14 +40,17 @@
     gap: 32px !important;
 
     border: 2px solid transparent;
-    margin-bottom: 22px;
+
+    margin-bottom: 0;
 
     width: 100% !important;
+
+    position: relative;
 }
 
 
 /*==================================================
-   HOVER
+   HOVER TARJETA
 ==================================================*/
 
 #productosbusqueda .tarjeta:hover {
@@ -92,9 +99,11 @@
 
 #productosbusqueda .tarjeta > .infoDetalle {
     display: flex !important;
+
     flex-direction: column !important;
 
     justify-content: center !important;
+
     align-items: flex-start !important;
 
     flex-grow: 1 !important;
@@ -196,8 +205,6 @@
 ==================================================*/
 
 #productosbusqueda .tarjeta .detalladoProducto {
-
-    /* AQUÍ ESTÁ EL CAMBIO IMPORTANTE */
     color: #2F2025 !important;
 
     font-size: 20px !important;
@@ -230,7 +237,6 @@
 ==================================================*/
 
 #productosbusqueda .tarjeta .detalladoProducto::before {
-
     content: "Información del producto";
 
     display: block;
@@ -250,10 +256,129 @@
 
 
 /*==================================================
-   OCULTAR BOTONES
+   BOTÓN AGREGAR AL CARRITO
 ==================================================*/
 
-#productosbusqueda .tarjeta button,
+#productosbusqueda .tarjeta {
+    position: relative;
+}
+
+
+#productosbusqueda .btnAgregarBusqueda {
+    position: absolute !important;
+
+    top: 15px !important;
+    right: 15px !important;
+
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: max-content !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+
+    display: inline-flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    flex: none !important;
+
+    margin: 0 !important;
+
+    padding: 10px 16px !important;
+
+    background: #E64B6B !important;
+    color: #EFE2DA !important;
+
+    border: none !important;
+    border-radius: 12px !important;
+
+    font-family: 'Chillax-Semibold' !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+
+    line-height: normal !important;
+    white-space: nowrap !important;
+
+    cursor: pointer;
+
+    z-index: 20;
+
+    box-shadow:
+        0 5px 12px rgba(106, 37, 58, 0.20);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+#productosbusqueda .btnAgregarBusqueda:hover {
+    background: #6A253A !important;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(106, 37, 58, 0.30);
+}
+
+
+#productosbusqueda .btnAgregarBusqueda:disabled {
+    background: #E64B6B !important;
+
+    color: #EFE2DA !important;
+
+    opacity: 1 !important;
+
+    cursor: not-allowed !important;
+
+    transform: none;
+
+    box-shadow:
+        0 5px 12px rgba(106, 37, 58, 0.20);
+}
+
+
+/*==================================================
+   HOVER BOTÓN
+==================================================*/
+
+#productosbusqueda .btnAgregarBusqueda:hover {
+    background: #6A253A;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(106, 37, 58, 0.30);
+}
+
+
+/*==================================================
+   BOTÓN DESHABILITADO
+==================================================*/
+
+#productosbusqueda .btnAgregarBusqueda:disabled {
+    background: #E64B6B;
+
+    color: #EFE2DA;
+
+    opacity: 1;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow:
+        0 5px 12px rgba(106, 37, 58, 0.20);
+}
+
+
+/*==================================================
+   OCULTAR BOTONES ANTIGUOS
+==================================================*/
+
 #productosbusqueda .tarjeta .btnAgregar {
     display: none !important;
 }
@@ -267,17 +392,22 @@
 
     #productosbusqueda .tarjeta {
         gap: 22px !important;
+
         padding: 18px;
     }
 
+
     #productosbusqueda .tarjeta > img {
         width: 260px !important;
+
         height: 260px !important;
     }
+
 
     #productosbusqueda .tarjeta > .infoDetalle {
         width: calc(100% - 282px) !important;
     }
+
 
     #productosbusqueda .tarjeta .infoDetalle > h3 {
         font-size: 34px !important;
@@ -294,41 +424,81 @@
 
     #productosbusqueda .tarjeta {
         flex-direction: column !important;
+
         align-items: stretch !important;
+
         gap: 18px !important;
+
+        padding: 18px;
     }
+
 
     #productosbusqueda .tarjeta > img {
         width: 100% !important;
+
         height: 280px !important;
     }
 
+
     #productosbusqueda .tarjeta > .infoDetalle {
         width: 100% !important;
+
         padding: 0 !important;
     }
+
 
     #productosbusqueda .tarjeta .infoDetalle > h3 {
         font-size: 30px !important;
     }
 
+
     #productosbusqueda .tarjeta .precioDescripcion > h2 {
         font-size: 22px !important;
     }
+
 
     #productosbusqueda .tarjeta .descripcionProducto {
         font-size: 16px !important;
     }
 
+
     #productosbusqueda .tarjeta .detalladoProducto {
         color: #2F2025 !important;
+
         font-size: 17px !important;
+
         line-height: 1.6 !important;
+
         padding: 15px 16px !important;
     }
 
+
     #productosbusqueda .tarjeta .detalladoProducto::before {
         font-size: 12px;
+    }
+
+
+    /*==============================================
+       BOTÓN EN CELULAR
+    ==============================================*/
+
+    #productosbusqueda .btnAgregarBusqueda {
+        top: 12px;
+
+        right: 12px;
+
+        padding: 9px 13px;
+
+        font-size: 13px;
+    }
+
+
+    #productosbusqueda .btnAgregarBusqueda:disabled {
+        background: #E64B6B;
+
+        opacity: 1;
+
+        cursor: not-allowed;
     }
 
 }

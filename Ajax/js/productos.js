@@ -113,6 +113,13 @@ function habilitarCompra(){
 
     });
 
+    document.querySelectorAll(".btnAgregarBusqueda")
+    .forEach(boton=>{
+
+        boton.disabled = false;
+
+    });
+
 }
 
 function verificarPedido(){

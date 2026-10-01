@@ -316,14 +316,12 @@ main {
         <?php include("../../menu.php"); ?>
 
         <br>
-
-        <div id="productosbusqueda">
-        </div>
-
         <button id="generarPedido">
             Generar Pedido
         </button>
 
+        <div id="productosbusqueda">
+        </div>
         <div id="productos">
         </div>
 
