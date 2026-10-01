@@ -23,11 +23,11 @@ function buscarProducto(){
             <div class="tarjeta">
 
                 <button
-                class="btnAgregarBusqueda"
-                data-codigo="${producto.Codigo}"
-                ${pedidoActivo ? "" : "disabled"}>
-                🛒 Agregar
-                </button>
+    class="btnAgregarBusqueda"
+    data-codigo="${producto.Codigo}"
+    ${pedidoActivo ? "" : "disabled"}>
+    ${pedidoActivo ? "🛒 Agregar" : "🚫 Pedido no activo"}
+</button>
 
                 <img
                     src="../../${producto.imagen}"
