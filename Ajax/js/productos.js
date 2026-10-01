@@ -41,12 +41,11 @@ function mostrarProductos(productos){
             <h2>Bs ${producto.Precio}</h2>
 
             <button
-class="btnAgregar"
-data-Codigo="${producto.Codigo}"
-${pedidoActivo ? "" : "disabled"}>
-Agregar al carrito
-</button>
-
+                class="btnAgregar"
+                data-Codigo="${producto.Codigo}"
+                ${pedidoActivo ? "" : "disabled"}>
+                ${pedidoActivo ? "🛒 Agregar al carrito" : "🚫 Pedido no activo"}
+            </button>
 
         </div>
         `;
@@ -55,7 +54,6 @@ Agregar al carrito
 
     contenedor.innerHTML = html;
     agregarEventos();
-
 }
 function agregarEventos(){
 
