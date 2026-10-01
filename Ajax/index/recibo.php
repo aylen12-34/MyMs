@@ -447,7 +447,8 @@ $total = 0;
         </h3>
     </div>
     <button onclick="window.print()">🖨 Imprimir</button>
- <button href="" class="btn-volver-esquina" aria-label="Volver" onclick="history.back()" title="Volver"> </button>
+
+ <a href="index1.php"><button href="" class="btn-volver-esquina" aria-label="Volver"> </button></a>
 
 </body>
 </html>

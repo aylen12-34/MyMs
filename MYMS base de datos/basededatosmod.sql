@@ -78,7 +78,7 @@ ENGINE = InnoDB;
 INSERT INTO `MYMS`.`Usuarios` (`CI`, `Nombre`, `Direccion`, `Celular`, `Rol`, `Estado`, `imagen`) VALUES
 (9494740, 'Adri', 'Chimba', '64886153', 'vendedor', 'Activo', 'imagenes/perfil/adri.jpg'),
 (13419857, 'Gene', 'IC', '60387793', 'administrador', 'Activo', 'imagenes/perfil/gene.jpg'),
-(13876211, 'Zhair', 'Pando', '75973977', 'administrador', 'Activo', 'imagenes/perfil/tungtung.jpg'),
+(13876211, 'Zhair', 'Pando', '75973977', 'administrador', 'Activo', 'imagenes/perfil/zhair.jpg'),
 (9406369, 'Mathy', 'URB', '64831363', 'vendedor', 'Activo', 'imagenes/perfil/mathy.jpg'),
 (12936658, 'Aylen', 'Casa', '65514288', 'vendedor', 'Activo', 'imagenes/perfil/aylen.jpg'),
 (14150392, 'Teban', 'Cole', '67505739', 'vendedor', 'Activo', 'imagenes/perfil/teban.jpg');
@@ -98,7 +98,21 @@ CREATE TABLE IF NOT EXISTS `MYMS`.`Pedidos` (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- datos de la tabla Pedidos
+-- Table `MYMS`.`Pedidos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `MYMS`.`Pedidos` (
+  `ID` INT NOT NULL AUTO_INCREMENT,
+  `Nombre` VARCHAR(45) NULL DEFAULT NULL,
+  `Fecha` DATE NULL DEFAULT NULL, 
+  `Celular` INT NULL DEFAULT NULL,
+  `Estado` VARCHAR(45) NULL DEFAULT NULL,
+  `Direccion` VARCHAR(80) NULL DEFAULT NULL,
+  `NombreVendedor` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`ID`))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Datos de la tabla Pedidos
 -- -----------------------------------------------------
 INSERT INTO `MYMS`.`Pedidos` (`ID`, `Nombre`, `Fecha`, `Celular`, `Estado`, `Direccion`, `NombreVendedor`) VALUES
 (1, 'Carlos Mendoza', '2026-02-01', 71234567, 'Aceptado', 'Av. Heroínas #456', 'Adri'),
@@ -131,8 +145,8 @@ CREATE TABLE IF NOT EXISTS `MYMS`.`Carrito` (
   `Cantidad` INT NULL DEFAULT NULL,
   `CostoTotal` INT NULL DEFAULT NULL,
   PRIMARY KEY (`Productos_Codigo`, `Pedidos_ID`),
-  INDEX `fk_Productos_has_Pedidos_Pedidos1_idx` (`Pedidos_ID` ASC) ,
-  INDEX `fk_Productos_has_Pedidos_Productos1_idx` (`Productos_Codigo` ASC) ,
+  INDEX `fk_Productos_has_Pedidos_Pedidos1_idx` (`Pedidos_ID` ASC),
+  INDEX `fk_Productos_has_Pedidos_Productos1_idx` (`Productos_Codigo` ASC),
   CONSTRAINT `fk_Productos_has_Pedidos_Productos1`
     FOREIGN KEY (`Productos_Codigo`)
     REFERENCES `MYMS`.`Productos` (`Codigo`)
@@ -146,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `MYMS`.`Carrito` (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- datos de la tabla Carrito
+-- Datos de la tabla Carrito
 -- -----------------------------------------------------
 INSERT INTO `MYMS`.`Carrito` (`Productos_Codigo`, `Pedidos_ID`, `Cantidad`, `CostoTotal`) VALUES
 (1, 1, 2, 30),
@@ -165,6 +179,8 @@ INSERT INTO `MYMS`.`Carrito` (`Productos_Codigo`, `Pedidos_ID`, `Cantidad`, `Cos
 (13, 7, 1, 15),
 (15, 8, 3, 45),
 (16, 8, 2, 30),
+(5, 9, 3, 45),
+(10, 9, 2, 30),
 (6, 10, 5, 75),
 (1, 11, 1, 15),
 (2, 11, 1, 15),
@@ -194,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `MYMS`.`Ventas` (
   `Costototal` DECIMAL(10,2) NULL DEFAULT NULL,
   `Estado` VARCHAR(45) NULL DEFAULT NULL,
   `Metodo` VARCHAR(45) NULL DEFAULT NULL,
-  INDEX `fk_Ventas_Pedidos1_idx` (`Pedidos_ID` ASC) ,
+  INDEX `fk_Ventas_Pedidos1_idx` (`Pedidos_ID` ASC),
   PRIMARY KEY (`ID`, `Pedidos_ID`),
   CONSTRAINT `fk_Ventas_Pedidos1`
     FOREIGN KEY (`Pedidos_ID`)
@@ -204,21 +220,29 @@ CREATE TABLE IF NOT EXISTS `MYMS`.`Ventas` (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- datos de la tabla Ventas
+-- Datos de la tabla Ventas
 -- -----------------------------------------------------
 INSERT INTO `MYMS`.`Ventas` (`ID`, `Pedidos_ID`, `Costototal`, `Estado`, `Metodo`) VALUES
 (1, 1, 45.00, 'Aceptada', 'Efectivo'),
 (2, 2, 75.00, 'Aceptada', 'QR'),
-(3, 3, 60.00, 'Aceptada', 'Efectivo'),
+(3, 3, 45.00, 'Aceptada', 'Efectivo'),
 (4, 4, 60.00, 'Aceptada', 'Efectivo'),
 (5, 5, 60.00, 'Aceptada', 'QR'),
 (6, 6, 60.00, 'Aceptada', 'Efectivo'),
 (7, 7, 75.00, 'Aceptada', 'QR'),
 (8, 8, 75.00, 'Aceptada', 'QR'),
 (9, 9, 75.00, 'Aceptada', 'Efectivo'),
-(10, 10, 75.00, 'Aceptada', 'QR');
-
-
+(10, 10, 75.00, 'Aceptada', 'QR'),
+(11, 11, 45.00, 'Pendiente', 'Efectivo'),
+(12, 12, 60.00, 'Pendiente', 'QR'),
+(13, 13, 45.00, 'Aceptada', 'Efectivo'),
+(14, 14, 60.00, 'Pendiente', 'QR'),
+(15, 15, 60.00, 'Pendiente', 'Efectivo'),
+(16, 16, 30.00, 'Aceptada', 'Efectivo'),
+(17, 17, 45.00, 'Pendiente', 'QR'),
+(18, 18, 45.00, 'Aceptada', 'QR'),
+(19, 19, 30.00, 'Pendiente', 'Efectivo'),
+(20, 20, 60.00, 'Pendiente', 'QR');
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
