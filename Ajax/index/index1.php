@@ -146,7 +146,28 @@ main {
     max-width: 100%;
     overflow-wrap: break-word;
 }
+#pedidoPersonalizado {
+    margin-top: 10px;
+    padding: 12px 22px;
+    border: 2px solid #E64B6B;
+    border-radius: 12px;
+    background: #E64B6B;
+    color: #EFE2DA;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
 
+#pedidoPersonalizado:hover {
+    background: #EFE2DA;
+    color: #6A253A;
+    border-color: #6A253A;
+}
+
+#pedidoPersonalizado:active {
+    transform: scale(0.97);
+}
 
 @media (max-width: 1000px) {
 
@@ -318,6 +339,9 @@ main {
         <br>
         <button id="generarPedido">
             Generar Pedido
+        </button>
+        <button id="pedidoPersonalizado" onclick="window.location.href='pedido_personalizado.php'">
+            Pedido Personalizado
         </button>
 
         <div id="productosbusqueda">
