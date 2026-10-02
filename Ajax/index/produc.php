@@ -30,7 +30,7 @@ if ($conexion->connect_error) {
     <title>Comentario</title>
 
     <link rel="stylesheet"
-          href="../tipografia/Fonts/WEB/css/chillax.css">
+          href="../../tipografia/Fonts/WEB/css/chillax.css">
 
     <style>
 
@@ -38,7 +38,7 @@ if ($conexion->connect_error) {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Chillax', sans-serif;
+    font-family:'Chillax-Semibold';
 }
 
 
@@ -583,7 +583,7 @@ if ($conexion->connect_error) {
 
         <div class="formulario">
 
-            <form action="guardarComentario.php" method="post">
+            <form action="guardarComentario.php" method="post" onsubmit="return validarFormulario()">
                 <label>
                     Calificación
                 </label>
@@ -596,7 +596,6 @@ if ($conexion->connect_error) {
                         id="star5"
                         name="Cali"
                         value="5"
-                        required
                     >
 
                     <label
@@ -675,15 +674,7 @@ if ($conexion->connect_error) {
                     Nombre o correo electrónico
                 </label>
 
-                <input
-    type="text"
-    id="nombre"
-    name="nombre"
-    placeholder="Escribe tu nombre o correo"
-    required
-    minlength="3"
-    maxlength="100"
->
+                <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre o correo">
 
 
                 <br><br>
@@ -692,14 +683,7 @@ if ($conexion->connect_error) {
                     Comentario
                 </label>
 
-                <textarea
-    id="come"
-    name="come"
-    placeholder="Escribe aquí tu opinión..."
-    required
-    minlength="3"
-    maxlength="1000"
-></textarea>
+                <textarea id="come" name="come" placeholder="Escribe aquí tu opinión..."></textarea>
                 <div class="botones">
 
                     <input
@@ -887,7 +871,50 @@ else {
 
 </div>
 
+<script>
+function validarFormulario() {
 
+    let nombre = document.getElementById("nombre").value.trim();
+    let comentario = document.getElementById("come").value.trim();
+    let estrellas = document.querySelector('input[name="Cali"]:checked');
+
+    if (!estrellas) {
+        alert("Debes seleccionar una calificación.");
+        return false;
+    }
+    if (nombre === "") {
+        alert("El nombre no puede estar vacío.");
+        return false;
+    }
+
+    if (comentario === "") {
+        alert("El comentario no puede estar vacío.");
+        return false;
+    }
+
+    if (nombre.length < 3) {
+        alert("El nombre debe tener al menos 3 caracteres.");
+        return false;
+    }
+
+    if (nombre.length > 100) {
+        alert("El nombre no puede superar los 100 caracteres.");
+        return false;
+    }
+
+    if (comentario.length < 3) {
+        alert("El comentario debe tener al menos 3 caracteres.");
+        return false;
+    }
+
+    if (comentario.length > 1000) {
+        alert("El comentario no puede superar los 1000 caracteres.");
+        return false;
+    }
+
+    return true;
+}
+</script>
 </body>
 
 </html>

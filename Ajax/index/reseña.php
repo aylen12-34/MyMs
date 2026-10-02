@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Comentarios</title>
+    <link rel="stylesheet"
+          href="../../tipografia/Fonts/WEB/css/chillax.css">
 
     <style>
 
@@ -15,12 +17,13 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family:'Chillax-Semibold';
         }
 
         body {
             min-height: 100vh;
-            background: #EFE2DA;
+            background-image:
+                url("../../imagenes/2.png");
             padding: 40px 20px;
         }
 
