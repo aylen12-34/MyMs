@@ -564,190 +564,64 @@ if ($conexion->connect_error) {
     </style>
 
 </head>
-
-
 <body>
-
-
 <div class="contenedor">
-
     <h2>Deja tu comentario</h2>
-
-
     <div class="contenido">
-
-
-        <!-- =========================
-             FORMULARIO
-        ========================== -->
-
         <div class="formulario">
-
             <form action="guardarComentario.php" method="post" onsubmit="return validarFormulario()">
                 <label>
                     Calificación
                 </label>
-
-
                 <div class="rating-group">
-
-                    <input
-                        type="radio"
-                        id="star5"
-                        name="Cali"
-                        value="5"
-                    >
-
-                    <label
-                        for="star5"
-                        title="5 estrellas"
-                    >
-                        ★
-                    </label>
-
-
-                    <input
-                        type="radio"
-                        id="star4"
-                        name="Cali"
-                        value="4"
-                    >
-
-                    <label
-                        for="star4"
-                        title="4 estrellas"
-                    >
-                        ★
-                    </label>
-
-
-                    <input
-                        type="radio"
-                        id="star3"
-                        name="Cali"
-                        value="3"
-                    >
-
-                    <label
-                        for="star3"
-                        title="3 estrellas"
-                    >
-                        ★
-                    </label>
-
-
-                    <input
-                        type="radio"
-                        id="star2"
-                        name="Cali"
-                        value="2"
-                    >
-
-                    <label
-                        for="star2"
-                        title="2 estrellas"
-                    >
-                        ★
-                    </label>
-
-
-                    <input
-                        type="radio"
-                        id="star1"
-                        name="Cali"
-                        value="1"
-                    >
-
-                    <label
-                        for="star1"
-                        title="1 estrella"
-                    >
-                        ★
-                    </label>
-
+                    <input type="radio" id="star5" name="Cali" value="5">
+                    <label for="star5" title="5 estrellas">★</label>
+                    <input type="radio" id="star4" name="Cali" value="4">
+                    <label for="star4" title="4 estrellas">★</label>
+                    <input type="radio" id="star3" name="Cali" value="3">
+                    <label for="star3" title="3 estrellas">★</label>
+                    <input type="radio" id="star2" name="Cali" value="2">
+                    <label for="star2" title="2 estrellas">★</label>
+                    <input type="radio" id="star1" name="Cali" value="1">
+                    <label for="star1" title="1 estrella">★</label>
                 </div>
-
-
-                <!-- NOMBRE -->
-
-                <label for="nombre">
-                    Nombre o correo electrónico
-                </label>
-
+                <label for="nombre">Nombre o correo electrónico</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre o correo">
-
-
                 <br><br>
-
-                <label for="come">
-                    Comentario
-                </label>
-
+                <label for="come">Comentario</label>
                 <textarea id="come" name="come" placeholder="Escribe aquí tu opinión..."></textarea>
                 <div class="botones">
-
-                    <input
-                        type="submit"
-                        value="Enviar comentario"
-                        class="enviar"
-                    >
-
-                    <input
-                        type="reset"
-                        value="Borrar"
-                        class="borrar"
-                    >
-
+                    <input type="submit" value="Enviar comentario" class="enviar">
+                    <input type="reset" value="Borrar" class="borrar">
                 </div>
-
-
             </form>
-            <button
-                class="volver"
-                onclick="history.back()"
-            >
-                ← Volver
-            </button>
-
+            <button class="volver" onclick="history.back()">← Volver</button>
         </div>
-
         <div class="espacio-derecho">
-
 <?php
-
 $archivo = "comentario.txt";
-
 $hayComentarios = false;
-
 if (file_exists($archivo)) {
-
     $lineas = file(
         $archivo,
         FILE_IGNORE_NEW_LINES
     );
-
     $estrella = "";
     $nombre = "";
     $come = "";
-
     foreach ($lineas as $linea) {
-
         $linea = trim($linea);
         if ($linea === "") {
             continue;
         }
         if ($linea === "****") {
-
             if ($estrella !== "" && $nombre !== "") {
-
                 $hayComentarios = true;
                 preg_match(
                     '/\d+/',
                     $estrella,
                     $resultado
                 );
-
-
                 $cantidadEstrellas =
                     isset($resultado[0])
                     ? intval($resultado[0])
@@ -755,45 +629,34 @@ if (file_exists($archivo)) {
                 if ($cantidadEstrellas < 1) {
                     $cantidadEstrellas = 1;
                 }
-
                 if ($cantidadEstrellas > 5) {
                     $cantidadEstrellas = 5;
                 }
-
                 $estrellasLlenas = str_repeat(
                     "★",
                     $cantidadEstrellas
                 );
-
                 $estrellasVacias = str_repeat(
                     "☆",
                     5 - $cantidadEstrellas
                 );
-
                 echo '<div class="comentario">';
-
                     echo '<div class="estrellas">';
-
                         echo '<span class="llenas">';
                         echo $estrellasLlenas;
                         echo '</span>';
-
                         echo '<span class="vacias">';
                         echo $estrellasVacias;
                         echo '</span>';
-
                     echo '</div>';
                     echo '<div class="nombre">';
-
                         echo htmlspecialchars(
                             $nombre,
                             ENT_QUOTES,
                             'UTF-8'
                         );
-
                     echo '</div>';
                     echo '<div class="texto">';
-
                         echo nl2br(
                             htmlspecialchars(
                                 $come,
@@ -801,83 +664,49 @@ if (file_exists($archivo)) {
                                 'UTF-8'
                             )
                         );
-
                     echo '</div>';
-
-
                 echo '</div>';
-
             }
             $estrella = "";
             $nombre = "";
             $come = "";
-
         }
-
         else {
             if ($estrella === "") {
-
                 $estrella = $linea;
-
             }
             else if ($nombre === "") {
-
                 $nombre = $linea;
-
             }
             else {
-
                 if ($come !== "") {
-
                     $come .= "\n";
-
                 }
-
                 $come .= $linea;
-
             }
-
         }
-
     }
-
     if (!$hayComentarios) {
-
         echo '<div class="vacio">';
-
         echo 'Todavía no hay comentarios.';
-
         echo '</div>';
-
     }
-
 }
-
 else {
-
     echo '<div class="vacio">';
-
     echo 'Todavía no hay comentarios.';
-
     echo '</div>';
-
 }
-
 ?>
         </div>
-
-
     </div>
-
 </div>
 
 <script>
 function validarFormulario() {
-
     let nombre = document.getElementById("nombre").value.trim();
     let comentario = document.getElementById("come").value.trim();
     let estrellas = document.querySelector('input[name="Cali"]:checked');
-
     if (!estrellas) {
         alert("Debes seleccionar una calificación.");
         return false;
@@ -886,35 +715,28 @@ function validarFormulario() {
         alert("El nombre no puede estar vacío.");
         return false;
     }
-
     if (comentario === "") {
         alert("El comentario no puede estar vacío.");
         return false;
     }
-
     if (nombre.length < 3) {
         alert("El nombre debe tener al menos 3 caracteres.");
         return false;
     }
-
     if (nombre.length > 100) {
         alert("El nombre no puede superar los 100 caracteres.");
         return false;
     }
-
     if (comentario.length < 3) {
         alert("El comentario debe tener al menos 3 caracteres.");
         return false;
     }
-
     if (comentario.length > 1000) {
         alert("El comentario no puede superar los 1000 caracteres.");
         return false;
     }
-
     return true;
 }
 </script>
 </body>
-
 </html>

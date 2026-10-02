@@ -12,12 +12,15 @@ if($conexion -> connect_error){
 
 $Codigo = $_GET['Codigo'];
 $sql = "DELETE FROM Productos WHERE Codigo=$Codigo";
+$sqlca = "DELETE FROM carrito WHERE Productos_Codigo = $Codigo";
+$conexion->query($sqlca);
 if ($conexion->query($sql) === TRUE) {
     echo "";
-}
- else {
+}else {
     echo "Error: " . $conexion->error;
 }
+
+ 
 ?>
 
 <!DOCTYPE html>

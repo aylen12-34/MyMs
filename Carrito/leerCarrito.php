@@ -14,7 +14,7 @@ if ($conexion->connect_error) {
 $Pedidos_ID=$_GET['ID'];
 $sql = "SELECT * FROM carrito JOIN productos ON carrito.Productos_Codigo=productos.Codigo WHERE carrito.Pedidos_ID='$Pedidos_ID'";
 $resultado = $conexion->query($sql);
-
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -136,24 +136,17 @@ $CostoTotal=0;
     echo "<tr>";
     echo "<td class='titulo'>Codigo</td>";
     echo "<td>".$fila["Codigo"]."</td>";
-
     echo "<td class='titulo'>Nombre</td>";
     echo "<td>".$fila["Nombre"]."</td>";
-
     echo "<td class='titulo'>Precio</td>";
     echo "<td>".$fila["Precio"]."</td>";
-
     echo "<td class='titulo'>Cantidad</td>";
     echo "<td>".$fila["Cantidad"]."</td>";
     echo "</tr>";
     $CostoTotal= $CostoTotal+$fila['Cantidad']*$fila['Precio'];
-
 }
-
     echo "<td class='titulo'>Costo Total</td>";
     echo "<td>".$CostoTotal."</td>";
-    session_start();
-    $_SESSION['CostoTotal']= $CostoTotal;
 }  
     else {
     echo "No se encontraron productos en el carrito.";
