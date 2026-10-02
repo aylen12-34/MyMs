@@ -12,9 +12,7 @@ if ($conn->connect_error) {
 if (isset($_GET['codigo'])) {
     $codigo = intval($_GET['codigo']);
     $consulta = $conn->query(
-        "SELECT Precio, Detallado
-         FROM Productos
-         WHERE Codigo = $codigo"
+        "SELECT Precio, Detallado FROM Productos WHERE Codigo = $codigo"
     );
     if ($consulta && $producto = $consulta->fetch_assoc()) {
         header('Content-Type: application/json; charset=utf-8');
@@ -71,7 +69,6 @@ if (isset($_GET['codigo'])) {
 
 }
 
-
 body{
 
     display:grid;
@@ -114,7 +111,6 @@ main{
 
 }
 
-
 #hero h1{
 
     font-size:70px;
@@ -124,7 +120,6 @@ main{
     margin-bottom:20px;
 
 }
-
 
 #hero p{
 
@@ -152,7 +147,6 @@ main{
 
 }
 
-
 .producto{
 
     display:flex;
@@ -169,13 +163,11 @@ main{
 
 }
 
-
 .inverso{
 
     flex-direction:row-reverse;
 
 }
-
 
 .prod{
 
@@ -192,7 +184,6 @@ main{
     box-shadow .1s ease;
 
 }
-
 
 .prod:hover{
 
@@ -214,7 +205,6 @@ main{
 
 }
 
-
 .etiqueta{
 
     display:inline-block;
@@ -233,7 +223,6 @@ main{
 
 }
 
-
 .info h2{
 
     color:#6A253A;
@@ -246,7 +235,6 @@ main{
 
 }
 
-
 .info p{
 
     color:#555;
@@ -256,7 +244,6 @@ main{
     line-height:1.9;
 
 }
-
 
 .btn{
 
@@ -281,7 +268,6 @@ main{
     cursor:pointer;
 
 }
-
 
 .btn:hover{
 
@@ -318,7 +304,6 @@ main{
     overflow:hidden;
 
 }
-
 
 #modalProducto.activo{
 
@@ -408,7 +393,6 @@ main{
     border-radius:30px;
 }
 
-
 #modalImagen:hover{
 
     transform:scale(1.025) rotate(-1deg);
@@ -491,7 +475,6 @@ main{
 
 }
 
-
 .modal-precio small{
 
     display:block;
@@ -505,7 +488,6 @@ main{
     margin-bottom:2px;
 
 }
-
 
 #modalPrecio{
 
@@ -521,13 +503,11 @@ main{
 
 }
 
-
 .modal-detallado .modal-info{
 
     width:100%;
 
 }
-
 
 .modal-info h3{
 
@@ -584,7 +564,6 @@ main{
 
 }
 
-
 #modalDetallado::-webkit-scrollbar-track{
 
     background:rgba(106,37,58,.10);
@@ -594,7 +573,6 @@ main{
     margin:8px;
 
 }
-
 
 #modalDetallado::-webkit-scrollbar-thumb{
 
@@ -999,168 +977,78 @@ main{
     }
 
 }
-
 </style>
-
 </head>
-
-
 <body>
-
-
 <?php include("includes/nav.php"); ?>
-
-
 <?php include("includes/header.php"); ?>
 
-
 <main>
-
 <section id="hero">
-
-    <h1>
-        Especiales De La Semana
-    </h1>
-
+    <h1>Especiales De La Semana</h1>
 </section>
 
 <section class="producto">
-
-    <img
-        src="imagenes/galletas/1.png"
-        class="prod"
-        alt="Tortas y Brownies"
-    >
-
+    <img src="imagenes/galletas/1.png" class="prod" alt="Tortas y Brownies">
     <div class="info">
-
-        <span class="etiqueta">
-            Nuestros favoritos
-        </span>
-
-        <h2>
-            Root Beer Float Cookie
-        </h2>
-
-        <p>
-            Galleta marmoleada de vainilla y cerveza de raíz,
-            coronada con un remolino de mousse cremoso de vainilla
-            y cerveza de raíz.
-        </p>
-
-        <a
-            href="#"
-            class="btn btn-ver-mas"
-            data-codigo="1"
-        >
+        <span class="etiqueta">Nuestros favoritos</span>
+        <h2></h2>
+        <p></p>
+        <a href="#" class="btn btn-ver-mas" data-codigo="1">
             Ver más
         </a>
-
     </div>
-
 </section>
 
 <section class="producto inverso">
-
-    <img
-        src="imagenes/galletas/1,5.png"
-        class="prod"
-        alt="Bebidas Frías"
-    >
-
+    <img src="imagenes/galletas/1,5.png" class="prod" alt="Bebidas Frías">
     <div class="info">
-
         <span class="etiqueta">
             Exquisita
         </span>
-
-        <h2>
-            Peanut Butter Cup Cookie ft. REESE'S
-        </h2>
-
-        <p>
-            Una clásica galleta de mantequilla de cacahuete cubierta
-            con trocitos de mantequilla de cacahuete derretida,
-            bañada en chocolate con leche fundido y espolvoreada
-            con bombones REESE'S
-        </p>
-
-        <a
-            href="#"
-            class="btn btn-ver-mas"
-            data-codigo="2"
-        >
+        <h2></h2>
+        <p></p>
+        <a href="#" class="btn btn-ver-mas" data-codigo="2">
             Ver más
         </a>
-
     </div>
-
 </section>
 
 <section class="producto">
-
     <img
         src="imagenes/galletas/3.png"
         class="prod"
         alt="Bebidas Calientes"
     >
-
     <div class="info">
-
-        <span class="etiqueta">
-            Clásicos
-        </span>
-
-        <h2>
-            Everything But The Dad Jokes Cookie
-        </h2>
-
-        <p>
-            Una galleta original repleta de trocitos de caramelo y
-            chips de mantequilla de cacahuete, cubierta con una
-            capa de mantequilla de cacahuete derretida y patatas
-            fritas crujientes recubiertas de mantequilla de cacahuete,
-            y terminada con explosiones de más trocitos de caramelo.
-        </p>
-
-        <a
-            href="#"
-            class="btn btn-ver-mas"
-            data-codigo="3"
-        >
+        <span class="etiqueta">Clásicos</span>
+        <h2></h2>
+        <p></p>
+        <a href="#" class="btn btn-ver-mas" data-codigo="3">
             Ver más
         </a>
-
     </div>
-
 </section>
 
-
 <section class="producto inverso">
-
     <img
         src="imagenes/galletas/4.png"
         class="prod"
         alt="Masitas"
     >
-
     <div class="info">
-
         <span class="etiqueta">
             Tradicionales
         </span>
-
         <h2>
             Cookies & Cream Grill-It Cookie
         </h2>
-
         <p>
             Una galleta de galleta y crema hecha en sartén,
             cubierta con un remolino de mousse de galleta y crema
             de chocolate, decorada con un diseño de parrilla de
             chocolate semidulce y ositos de goma en un palillo.
         </p>
-
         <a
             href="#"
             class="btn btn-ver-mas"
@@ -1168,36 +1056,28 @@ main{
         >
             Ver más
         </a>
-
     </div>
-
 </section>
 
 <section class="producto">
-
     <img
         src="imagenes/galletas/6.png"
         class="prod"
         alt="Bebidas Calientes"
     >
-
     <div class="info">
-
         <span class="etiqueta">
             Clásicos
         </span>
-
         <h2>
             Dubai-Style Chocolate Cheesecake
         </h2>
-
         <p>
             Una exquisita tarta de queso con chocolate sobre una base
             de galleta Graham de chocolate, cubierta con un relleno
             crujiente de Kataifi y pistacho, un chorrito de crema de
             pistacho y una cucharada de nata montada
         </p>
-
         <a
             href="#"
             class="btn btn-ver-mas"
@@ -1205,35 +1085,27 @@ main{
         >
             Ver más
         </a>
-
     </div>
-
 </section>
 
 <section class="producto inverso">
-
     <img
         src="imagenes/galletas/7.png"
         class="prod"
         alt="Masitas"
     >
-
     <div class="info">
-
         <span class="etiqueta">
             Tradicionales
         </span>
-
         <h2>
             Chocolate Chip Cookie
         </h2>
-
         <p>
             Una clásica galleta tibia de azúcar moreno, repleta
             de trocitos de chocolate con leche fundido y trozos
             de chocolate semidulce de alta calidad.
         </p>
-
         <a
             href="#"
             class="btn btn-ver-mas"
@@ -1241,34 +1113,26 @@ main{
         >
             Ver más
         </a>
-
     </div>
-
 </section>
 
 <section class="producto">
-
     <img
         src="imagenes/galletas/8.png"
         class="prod"
         alt="Bebidas Calientes"
     >
-
     <div class="info">
-
         <span class="etiqueta">
             Clásicos
         </span>
-
         <h2>
             Pink Sugar Cookie
         </h2>
-
         <p>
             Una clásica galleta de azúcar y almendras cubierta con una
             suave capa rosada de glaseado de almendras auténticas.
         </p>
-
         <a
             href="#"
             class="btn btn-ver-mas"
@@ -1276,52 +1140,37 @@ main{
         >
             Ver más
         </a>
-
     </div>
-
 </section>
 
-
 <section id="pedido">
-
     <h2>
         ¿Listo para ordenar?
     </h2>
-
     <p>
         Explora nuestro menú completo y realiza tu pedido de forma rápida
         y sencilla.
     </p>
-
     <a
         href="Ajax/index/index1.php"
         class="btn"
     >
         Menú y pedidos
     </a>
-
 </section>
-
-
 </main>
-
 
 <?php include("includes/footer.php"); ?>
 
 <div id="modalProducto">
-
-
     <div class="tarjeta-modal">
-
         <button
             id="cerrarModal"
             type="button"
         >
             ×
         </button>
-
         <div class="modal-superior">
-
             <img
                 id="modalImagen"
                 src=""
@@ -1331,61 +1180,35 @@ main{
                 <span id="modalEtiqueta">
                     Producto
                 </span>
-
                 <h2 id="modalNombre">
                     Producto
                 </h2>
-
                 <p id="modalDescripcion">
                     Descripción
                 </p>
-
                 <div class="modal-precio">
-
                     <small>
                         Precio
                     </small>
-
                     <strong id="modalPrecio">
                         Cargando...
                     </strong>
-
                 </div>
-
-
             </div>
-
         </div>
-
         <div class="modal-separador"></div>
-
         <div class="modal-detallado">
-
-
             <div class="modal-info">
-
-
                 <h3>
                     Detallado
                 </h3>
-
-
                 <p id="modalDetallado">
                     Cargando información...
                 </p>
-
-
             </div>
-
-
         </div>
-
-
     </div>
-
 </div>
-
-
 
 <script>
 
