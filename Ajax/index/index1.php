@@ -15,314 +15,38 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-<style>
-
-* {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-.logo {
-    flex-shrink: 0;
-}
-
-.busqueda {
-    min-width: 0;
-    max-width: 100%;
-}
-
-.busqueda input {
-    min-width: 0;
-    max-width: 100%;
-}
-
-#carritoIcono {
-    flex-shrink: 0;
-}
-
-main {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-#productosbusqueda,
-#productos {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-}
-
-#productosbusqueda > *,
-#productos > * {
-    min-width: 0;
-    max-width: 100%;
-}
-
-#sidebar {
-    max-width: 100vw;
-}
-
-#contenidoCarrito {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-#modalCompra {
-    max-width: 100vw;
-    padding: 20px;
-}
-
-.modalContenido {
-    width: min(520px, 95vw);
-    max-width: 95vw;
-    max-height: 90vh;
-    overflow-y: auto;
-}
-
-#formCompra {
-    width: 100%;
-}
-
-#formCompra input,
-#formCompra select {
-    width: 100%;
-    max-width: 100%;
-}
-
-.botonesModal {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.botonesModal button {
-    max-width: 100%;
-}
-
-#modalProducto {
-    width: min(900px, 94vw);
-    max-width: 94vw;
-    max-height: 90vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-.productoDetalle {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-}
-
-.productoDetalleImagen {
-    min-width: 0;
-    max-width: 100%;
-}
-
-.productoDetalleImagen img {
-    max-width: 100%;
-    height: auto;
-}
-
-.productoDetalleInfo {
-    min-width: 0;
-    max-width: 100%;
-}
-
-.productoDetalleInfo h2,
-.productoDetalleInfo h3,
-.productoDetalleInfo p {
-    max-width: 100%;
-    overflow-wrap: break-word;
-}
-#pedidoPersonalizado {
-    margin-top: 10px;
-    padding: 12px 22px;
-    border: 2px solid #E64B6B;
-    border-radius: 12px;
-    background: #E64B6B;
-    color: #EFE2DA;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-#pedidoPersonalizado:hover {
-    background: #EFE2DA;
-    color: #6A253A;
-    border-color: #6A253A;
-}
-
-#pedidoPersonalizado:active {
-    transform: scale(0.97);
-}
-
-@media (max-width: 1000px) {
-
-    header {
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-
-    .busqueda {
-        order: 3;
-        width: 100%;
-        flex-basis: 100%;
-    }
-
-}
-
-@media (max-width: 768px) {
-
-    header {
-        padding-left: 4%;
-        padding-right: 4%;
-    }
-
-    .busqueda {
-        width: 100%;
-        flex-basis: 100%;
-    }
-
-    .productoDetalle {
-        flex-direction: column;
-    }
-
-    .productoDetalleImagen {
-        width: 100%;
-        max-width: 500px;
-        margin: auto;
-    }
-
-    .productoDetalleInfo {
-        width: 100%;
-        text-align: center;
-    }
-
-    #detalleDescripcion {
-        text-align: left;
-    }
-
-}
-
-
-@media (max-width: 600px) {
-
-    header {
-        padding: 15px 4%;
-    }
-
-    .busqueda {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        gap: 8px;
-    }
-
-    .busqueda input,
-    .busqueda button {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    main {
-        padding-left: 4%;
-        padding-right: 4%;
-    }
-
-    #sidebar {
-        width: 94vw;
-        max-width: 94vw;
-    }
-
-    #modalCompra {
-        padding: 10px;
-    }
-
-    .modalContenido {
-        width: 94vw;
-        max-width: 94vw;
-        padding: 20px 15px;
-    }
-
-    .botonesModal {
-        flex-direction: column;
-    }
-
-    .botonesModal button {
-        width: 100%;
-    }
-
-    #modalProducto {
-        width: 94vw;
-        max-width: 94vw;
-        padding: 18px 15px;
-    }
-
-}
-
-@media (max-width: 400px) {
-
-    header {
-        padding-left: 3%;
-        padding-right: 3%;
-    }
-
-    main {
-        padding-left: 3%;
-        padding-right: 3%;
-    }
-
-    #modalProducto,
-    .modalContenido {
-        width: 96vw;
-        max-width: 96vw;
-    }
-
-}
-
-</style>
-
 </head>
 
 <body>
 
     <header>
 
-        <div class="logo">
-            ☕︎ <span>Menu</span>
-        </div>
+    <div class="logo">
+        ☕︎ <span>Menu</span>
+    </div>
 
-        <div class="busqueda">
+    <button id="pedidoPersonalizado" onclick="window.location.href='pedido_personalizado.php'">
+        Pedido Personalizado
+    </button>
 
-            <input
-                type="text"
-                id="textoBuscar"
-                placeholder="Buscar producto...">
+    <div class="busqueda">
 
-            <button onclick="buscarProducto()" id="ahj">
-                🔍 Buscar
-            </button>
+        <input
+            type="text"
+            id="textoBuscar"
+            placeholder="Buscar producto...">
 
-        </div>
+    </div>
 
-        <div id="carritoIcono">
-            🛒 <span id="cantidadCarrito">0</span>
-        </div>
+    <button id="generarPedido">
+        Generar Pedido
+    </button>
 
-    </header>
+    <div id="carritoIcono">
+        🛒 <span id="cantidadCarrito">0</span>
+    </div>
+
+</header>
 
     <?php include("../../includes/navindex.php"); ?>
 
@@ -337,12 +61,6 @@ main {
         <?php include("../../menu.php"); ?>
 
         <br>
-        <button id="generarPedido">
-            Generar Pedido
-        </button>
-        <button id="pedidoPersonalizado" onclick="window.location.href='pedido_personalizado.php'">
-            Pedido Personalizado
-        </button>
 
         <div id="productosbusqueda">
         </div>

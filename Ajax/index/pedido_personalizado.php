@@ -282,7 +282,7 @@ main {
                     type="text"
                     id="nombre"
                     maxlength="50"
-                    placeholder="Ej. Mathias Torrico">
+                    placeholder="...">
 
             </div>
 
@@ -296,7 +296,7 @@ main {
                     type="text"
                     id="celular"
                     maxlength="8"
-                    placeholder="Ej. 69505739"
+                    placeholder="..."
                     inputmode="numeric">
 
             </div>
@@ -595,7 +595,7 @@ mensaje +=
     "Este pedido es una solicitud de personalización.%0A" +
     "El precio y los detalles finales deben ser confirmados con el cliente.";
 
-var numeroMyMs = "591XXXXXXXX";
+var numeroMyMs = "59169505739";
 
 var url =
     "https://wa.me/" +
