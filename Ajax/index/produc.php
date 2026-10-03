@@ -28,7 +28,7 @@ if ($conexion->connect_error) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Comentario</title>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet"
           href="../../tipografia/Fonts/WEB/css/chillax.css">
 
@@ -708,31 +708,185 @@ function validarFormulario() {
     let comentario = document.getElementById("come").value.trim();
     let estrellas = document.querySelector('input[name="Cali"]:checked');
     if (!estrellas) {
-        alert("Debes seleccionar una calificación.");
+        Swal.fire({
+                title: 'Alerta',
+                background: '#e65c78',
+                color: '#EFE2DA',
+                imageUrl: '../../imagenes/gatoventa.png',
+                imageHeight: 150,
+                imageAlt: 'Icono personalizado',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#6A253A',
+                text: '⚠ Debes seleccionar una calificación. ⚠',
+   didOpen: () => {
+        const audio = new Audio('../imagenes/gatoventa.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
         return false;
     }
     if (nombre === "") {
-        alert("El nombre no puede estar vacío.");
+        Swal.fire({
+                title: 'Alerta',
+                background: '#e65c78',
+                color: '#EFE2DA',
+                imageUrl: '../../imagenes/gatoventa.png',
+                imageHeight: 150,
+                imageAlt: 'Icono personalizado',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#6A253A',
+                text: '⚠ El nombre no puede estar vacío. ⚠',
+   didOpen: () => {
+        const audio = new Audio('../imagenes/gatoventa.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
         return false;
     }
     if (comentario === "") {
-        alert("El comentario no puede estar vacío.");
+        Swal.fire({
+                title: 'Alerta',
+                background: '#e65c78',
+                color: '#EFE2DA',
+                imageUrl: '../../imagenes/gatoventa.png',
+                imageHeight: 150,
+                imageAlt: 'Icono personalizado',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#6A253A',
+                text: '⚠ El comentario no puede estar vacío. ⚠',
+   didOpen: () => {
+        const audio = new Audio('../../imagenes/gatoventa.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
         return false;
     }
     if (nombre.length < 3) {
-        alert("El nombre debe tener al menos 3 caracteres.");
+        Swal.fire({
+                title: 'Alerta',
+                background: '#e65c78',
+                color: '#EFE2DA',
+                imageUrl: '../../imagenes/gatoventa.png',
+                imageHeight: 150,
+                imageAlt: 'Icono personalizado',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#6A253A',
+                text: '⚠ El nombre debe tener al menos 3 caracteres. ⚠',
+   didOpen: () => {
+        const audio = new Audio('../../imagenes/gatoventa.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
         return false;
     }
     if (nombre.length > 100) {
-        alert("El nombre no puede superar los 100 caracteres.");
+        Swal.fire({
+                title: 'Alerta',
+                background: '#e65c78',
+                color: '#EFE2DA',
+                imageUrl: '../../imagenes/gatoventa.png',
+                imageHeight: 150,
+                imageAlt: 'Icono personalizado',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#6A253A',
+                text: '⚠ El nombre no puede superar los 100 caracteres. ⚠',
+   didOpen: () => {
+        const audio = new Audio('../../imagenes/gatoventa.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
         return false;
     }
     if (comentario.length < 3) {
-        alert("El comentario debe tener al menos 3 caracteres.");
+        Swal.fire({
+                title: 'Alerta',
+                background: '#e65c78',
+                color: '#EFE2DA',
+                imageUrl: '../../imagenes/gatoventa.png',
+                imageHeight: 150,
+                imageAlt: 'Icono personalizado',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#6A253A',
+                text: '⚠ El comentario debe tener al menos 3 caracteres. ⚠',
+   didOpen: () => {
+        const audio = new Audio('../../imagenes/gatoventa.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
         return false;
     }
     if (comentario.length > 1000) {
-        alert("El comentario no puede superar los 1000 caracteres.");
+        Swal.fire({
+                title: 'Alerta',
+                background: '#e65c78',
+                color: '#EFE2DA',
+                imageUrl: '../../imagenes/gatoventa.png',
+                imageHeight: 150,
+                imageAlt: 'Icono personalizado',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#6A253A',
+                text: '⚠ El comentario no puede superar los 1000 caracteres. ⚠',
+   didOpen: () => {
+        const audio = new Audio('../../imagenes/gatoventa.mp3');
+        const imagenSwal = Swal.getImage();
+
+        if (imagenSwal) {
+            imagenSwal.style.cursor = 'pointer';
+            imagenSwal.addEventListener('click', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    }
+});
         return false;
     }
     return true;
