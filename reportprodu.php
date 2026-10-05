@@ -9,10 +9,12 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 @$conn->query("SET lc_time_names = 'es_ES'");
+
+// Consulta SQL optimizada obteniendo cantidad y costototal desde la tabla carrito
 $sql_top_productos = "SELECT 
                         p.Nombre AS producto, 
-                        COUNT(c.Pedidos_ID) AS unidades, 
-                        SUM(p.Precio) AS ingreso_total
+                        SUM(c.cantidad) AS unidades, 
+                        SUM(c.costototal) AS ingreso_total
                      FROM productos p
                      INNER JOIN carrito c ON p.Codigo = c.Productos_Codigo
                      INNER JOIN pedidos ped ON c.Pedidos_ID = ped.ID
@@ -21,13 +23,15 @@ $sql_top_productos = "SELECT
                      GROUP BY p.Codigo, p.Nombre
                      ORDER BY unidades DESC
                      LIMIT 3";
+
 $res_top = $conn->query($sql_top_productos);
 
+// Consulta de respaldo por si falla la primera agrupación
 if (!$res_top) {
     $sql_top_productos = "SELECT 
                             p.Nombre AS producto, 
-                            COUNT(*) AS unidades, 
-                            SUM(p.Precio) AS ingreso_total
+                            SUM(c.cantidad) AS unidades, 
+                            SUM(c.costototal) AS ingreso_total
                          FROM productos p
                          JOIN carrito c ON p.Codigo = c.Productos_Codigo
                          JOIN pedidos ped ON c.Pedidos_ID = ped.ID
@@ -42,12 +46,14 @@ if (!$res_top) {
 if (!$res_top) {
     die("<b>Error en la consulta de productos:</b> " . $conn->error);
 }
+
 $etiquetas   = [];
 $totales     = [];
 $filas_tabla = [];
+
 while ($row = $res_top->fetch_assoc()) {
     $etiquetas[]   = $row['producto'];
-    $totales[]     = (int)$row['unidades'];
+    $totales[]     = (int)($row['unidades'] ?? 0);
     $filas_tabla[] = $row;
 }
 ?>
@@ -106,7 +112,6 @@ while ($row = $res_top->fetch_assoc()) {
             overflow: hidden; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
         }
-        
         .sales-table th { 
             background-color: #E64B6B; 
             color: #ffffff; 
@@ -128,65 +133,45 @@ while ($row = $res_top->fetch_assoc()) {
             font-weight: bold; 
             font-size: 12px; 
         }
-/* ==========================
-FLECHA PARA ANTERIOR REPORTE
-========================== */
 
-.flecha-anterior {
-    position: fixed;
+        /* FLECHA PARA ANTERIOR REPORTE */
+        .flecha-anterior {
+            position: fixed;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #E64B6B;
+            color: #EFE2DA;
+            border: 3px solid #EFE2DA;
+            border-radius: 50%;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(106, 37, 58, 0.35);
+            z-index: 100;
+            transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+        }
 
-    left: 18px;
-    top: 50%;
-    transform: translateY(-50%);
+        .flecha-anterior:hover {
+            background: #6A253A;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 0 10px rgba(230, 75, 107, 0.5), 0 5px 15px rgba(106, 37, 58, 0.4);
+        }
 
-    width: 55px;
-    height: 55px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #E64B6B;
-    color: #EFE2DA;
-
-    border: 3px solid #EFE2DA;
-    border-radius: 50%;
-
-    text-decoration: none;
-
-    font-family: Arial, sans-serif;
-    font-size: 32px;
-    font-weight: bold;
-
-    box-shadow: 0 4px 12px rgba(106, 37, 58, 0.35);
-
-    z-index: 100;
-
-    transition: 
-        transform 0.25s ease,
-        background 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.flecha-anterior:hover {
-    background: #6A253A;
-
-    transform: translateY(-50%) scale(1.1);
-
-    box-shadow: 
-        0 0 10px rgba(230, 75, 107, 0.5),
-        0 5px 15px rgba(106, 37, 58, 0.4);
-}
-
-.flecha-anterior:active {
-    transform: translateY(-50%) scale(0.95);
-}
+        .flecha-anterior:active {
+            transform: translateY(-50%) scale(0.95);
+        }
     </style>
 </head>
 <body>
-<?php
- include ("includes/botonvolver.php"); 
-?>
+<?php include ("includes/botonvolver.php"); ?>
+
 <a href="reportclient.php" class="flecha-anterior">⇠</a>
 <div class="card">
     <h2>Top 3 Productos Más Vendidos</h2>
@@ -206,7 +191,7 @@ FLECHA PARA ANTERIOR REPORTE
                     <tr>
                         <th style="width: 10%;">Pos.</th>
                         <th>Producto</th>
-                        <th>Veces Vendido</th>
+                        <th>Unidades Vendidas</th>
                         <th>Total Generado</th>
                     </tr>
                 </thead>
@@ -218,7 +203,7 @@ FLECHA PARA ANTERIOR REPORTE
                         <tr>
                             <td><span class="rank-badge">#<?php echo $posicion++; ?></span></td>
                             <td><strong><?php echo htmlspecialchars($prod['producto']); ?></strong></td>
-                            <td><?php echo number_format($prod['unidades']); ?> veces</td>
+                            <td><?php echo number_format($prod['unidades']); ?> unidades</td>
                             <td>Bs. <?php echo number_format($prod['ingreso_total'], 2); ?></td>
                         </tr>
                     <?php endforeach; ?>
@@ -232,8 +217,6 @@ FLECHA PARA ANTERIOR REPORTE
 <script>
 const etiquetas = <?php echo json_encode($etiquetas); ?>;
 const totales = <?php echo json_encode($totales); ?>;
-console.log("Productos:", etiquetas);
-console.log("Ventas:", totales);
 
 if (etiquetas.length > 0) {
     const ctx = document.getElementById('graficoProductos').getContext('2d');
@@ -243,7 +226,7 @@ if (etiquetas.length > 0) {
         data: {
             labels: etiquetas,
             datasets: [{
-                label: 'Cantidad de Veces Vendido',
+                label: 'Unidades Vendidas',
                 data: totales,
                 backgroundColor: [
                     '#6A253A', 
