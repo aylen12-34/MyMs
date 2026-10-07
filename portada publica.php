@@ -608,9 +608,9 @@ $resultado_productos = $conn->query($sql_mas_vendidos);
 
 .galleta-caida{
     position:absolute;
-    top:-80px;
-    width:45px;
-    height:45px;
+    top:-100px;
+    width:75px;
+    height:75px;
     object-fit:contain;
     animation:caerGalleta linear forwards;
     opacity:0;
@@ -638,8 +638,8 @@ $resultado_productos = $conn->query($sql_mas_vendidos);
 
 @media(max-width:650px){
     .galleta-caida{
-        width:32px;
-        height:32px;
+        width:55px;
+        height:55px;
     }
 }
     </style>
