@@ -118,19 +118,15 @@ if ($conexion->query($sql) === TRUE) {
     session_start();
     $Rol=$_SESSION['Rol'];
     if($Rol=='vendedor'){
-
         header("location:../vendedor.php?CI='.$CI'");
     } else {
         header("location:../administrador.php");
     }
-    
-    
 } else {
     echo "Error al actualizar el usuario: " . $conexion->error;
 }
       ?>
         </p><br>
-      
         <button class="volver"><a href="readleerUsuarios.php">Tabla Usuarios</a></button>
     </div>
     </div>

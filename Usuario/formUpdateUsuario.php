@@ -3,7 +3,6 @@ $usuario = "root";
 $contraseña = "";     
 $direccion = "localhost";
 $baseDeDatos = "MYMS";    
-
 $conexion=new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
     
@@ -14,13 +13,9 @@ if($_SESSION['CI']==null){
     header("location:../login.php");
 }
 $CI = trim($_GET['CI']);
-
 $stmt = $conexion->prepare("SELECT * FROM Usuarios WHERE CI=?");
-
 $stmt->bind_param("s", $CI);
-
 $stmt->execute();
-
 $resultado = $stmt->get_result();
 if ($resultado->num_rows > 0) {
     while($fila=$resultado->fetch_assoc()) {
@@ -44,8 +39,6 @@ if ($resultado->num_rows > 0) {
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
     <style>
     body, table, button, h2, a, input, select {
             font-family: 'Chillax-Semibold', sans-serif;
@@ -64,7 +57,6 @@ if ($resultado->num_rows > 0) {
             margin: 0;
         }
 
-        /* SE CAMBIÓ 'div' POR LA CLASE '.contenedor-registro' */
         .contenedor-registro {
             width: 420px;
             padding: 35px;
@@ -201,47 +193,35 @@ if ($resultado->num_rows > 0) {
         position: fixed;
         top: 25px;
         left: 25px;
-
         width: 52px;
         height: 52px;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         background: #E64B6B;
         border: none;
         border-radius: 50%;
-
         cursor: pointer;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
-
         transition: all 0.2s ease;
         z-index: 9999;
-
         text-decoration: none;
     }
 
     /* Flecha */
     .btn-volver-esquina::before {
         content: "";
-
         width: 12px;
         height: 12px;
-
         border-left: 3px solid #EFE2DA;
         border-bottom: 3px solid #EFE2DA;
-
         transform: rotate(45deg);
-
         margin-left: 6px;
     }
 
     .btn-volver-esquina:hover {
         background: #6A253A;
-
         transform: scale(1.1);
-
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
     }
 
@@ -256,35 +236,29 @@ if ($resultado->num_rows > 0) {
     <form action="updateditarUsuario.php" method="post" onsubmit="return validar()">
         <label for="">Carnet de Identidad</label>
 <input type="text" name="CI" value='<?=$CI?>' readonly>
-
 <label for="">Nombre:</label>
 <input type="text" name="Nombre" value='<?=$Nombre?>'
         minlength="3" maxlength="50"
        pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+">
 <br>
-
 <label for="">Dirección:</label>
 <input type="text" name="Direccion" value='<?=$Direccion?>'
        minlength="5" maxlength="100">
 <br>
-
 <label for="">Celular:</label>
 <input type="number" name="Celular" value='<?=$Celular?>'
        minlength="8" maxlength="8">
 <br>
-
 <label for="">Rol:</label>
 <input type="text" name="Rol" value='<?=$Rol?>'
        readonly minlength="8" maxlength="13"
        pattern="[a-z]+">
 <br>
-
 <label for="">Estado:</label>
 <input type="text" name="Estado" value='<?=$Estado?>'
        readonly minlength="6" maxlength="8"
        pattern="[a-zA-Z]+">
 <br>
-
 <input type="submit" value="Editar">
     </form>
  <a href="../perfil.php" class="btn-volver-esquina" aria-label="Volver" title="Volver"> </a>
@@ -298,9 +272,7 @@ if ($resultado->num_rows > 0) {
     var estado = document.getElementsByName("Estado")[0];
     var expRegNombre = /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/;
     var expRegRol = /^[a-z]+$/;
-
     function validar() {
-
         if (nombre.value == "") {
              Swal.fire({
         title: 'Alerta',
@@ -315,7 +287,6 @@ if ($resultado->num_rows > 0) {
    didOpen: () => {
         const audio = new Audio('../imagenes/gatous.mp3');
         const imagenSwal = Swal.getImage();
-
         if (imagenSwal) {
             imagenSwal.style.cursor = 'pointer';
             imagenSwal.addEventListener('click', () => {
@@ -328,7 +299,6 @@ if ($resultado->num_rows > 0) {
             nombre.focus();
             return false;
         }
-
         if (!expRegNombre.test(nombre.value)) {
              Swal.fire({
         title: 'Alerta',
@@ -343,7 +313,6 @@ if ($resultado->num_rows > 0) {
     didOpen: () => {
         const audio = new Audio('../imagenes/gatous.mp3');
         const imagenSwal = Swal.getImage();
-
         if (imagenSwal) {
             imagenSwal.style.cursor = 'pointer';
             imagenSwal.addEventListener('click', () => {
@@ -356,7 +325,6 @@ if ($resultado->num_rows > 0) {
             nombre.focus();
             return false;
         }
-
         if (nombre.value.length < 3) {
             Swal.fire({
         title: 'Alerta',
@@ -371,7 +339,6 @@ if ($resultado->num_rows > 0) {
    didOpen: () => {
         const audio = new Audio('../imagenes/gatous.mp3');
         const imagenSwal = Swal.getImage();
-
         if (imagenSwal) {
             imagenSwal.style.cursor = 'pointer';
             imagenSwal.addEventListener('click', () => {
@@ -384,7 +351,6 @@ if ($resultado->num_rows > 0) {
             nombre.focus();
             return false;
         }
-
         if (direccion.value == "") {
              Swal.fire({
         title: 'Alerta',
@@ -399,7 +365,6 @@ if ($resultado->num_rows > 0) {
     didOpen: () => {
         const audio = new Audio('../imagenes/gatous.mp3');
         const imagenSwal = Swal.getImage();
-
         if (imagenSwal) {
             imagenSwal.style.cursor = 'pointer';
             imagenSwal.addEventListener('click', () => {
@@ -412,7 +377,6 @@ if ($resultado->num_rows > 0) {
             direccion.focus();
             return false;
         }
-
         if (celular.value == "") {
              Swal.fire({
         title: 'Alerta',
@@ -427,7 +391,6 @@ if ($resultado->num_rows > 0) {
     didOpen: () => {
         const audio = new Audio('../imagenes/gatous.mp3');
         const imagenSwal = Swal.getImage();
-
         if (imagenSwal) {
             imagenSwal.style.cursor = 'pointer';
             imagenSwal.addEventListener('click', () => {
@@ -440,7 +403,6 @@ if ($resultado->num_rows > 0) {
             celular.focus();
             return false;
         }
-
         if (!/^\d+$/.test(celular.value)) {
              Swal.fire({
         title: 'Alerta',
@@ -455,7 +417,6 @@ if ($resultado->num_rows > 0) {
     didOpen: () => {
         const audio = new Audio('../imagenes/gatous.mp3');
         const imagenSwal = Swal.getImage();
-
         if (imagenSwal) {
             imagenSwal.style.cursor = 'pointer';
             imagenSwal.addEventListener('click', () => {
@@ -468,7 +429,6 @@ if ($resultado->num_rows > 0) {
             celular.focus();
             return false;
         }
-
         if (celular.value.length != 8) {
              Swal.fire({
         title: 'Alerta',
@@ -483,7 +443,6 @@ if ($resultado->num_rows > 0) {
     didOpen: () => {
         const audio = new Audio('../imagenes/gatous.mp3');
         const imagenSwal = Swal.getImage();
-
         if (imagenSwal) {
             imagenSwal.style.cursor = 'pointer';
             imagenSwal.addEventListener('click', () => {
@@ -496,7 +455,6 @@ if ($resultado->num_rows > 0) {
             celular.focus();
             return false;
         }
-
         if (rol.value == "") {
              Swal.fire({
         title: 'Alerta',
@@ -511,7 +469,6 @@ if ($resultado->num_rows > 0) {
     didOpen: () => {
         const audio = new Audio('../imagenes/gatous.mp3');
         const imagenSwal = Swal.getImage();
-
         if (imagenSwal) {
             imagenSwal.style.cursor = 'pointer';
             imagenSwal.addEventListener('click', () => {
@@ -524,7 +481,6 @@ if ($resultado->num_rows > 0) {
             rol.focus();
             return false;
         }
-
         if (!expRegRol.test(rol.value)) {
              Swal.fire({
         title: 'Alerta',
@@ -539,7 +495,6 @@ if ($resultado->num_rows > 0) {
     didOpen: () => {
         const audio = new Audio('../imagenes/gatous.mp3');
         const imagenSwal = Swal.getImage();
-
         if (imagenSwal) {
             imagenSwal.style.cursor = 'pointer';
             imagenSwal.addEventListener('click', () => {
@@ -552,7 +507,6 @@ if ($resultado->num_rows > 0) {
             rol.focus();
             return false;
         }
-
         return true;
     }
     </script>

@@ -102,10 +102,9 @@ $baseDeDatos = "MYMS";
     <div>
         <h2>Actualizacion Producto</h2>
         <p>
-            <?php 
+<?php 
 $conexion=new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
-    
     echo "Hubo un error al conectar a la base de datos";
 }
 $Codigo = trim($_POST['Codigo']);
@@ -116,9 +115,7 @@ $Precio = trim($_POST['Precio']);
 $Stock = trim($_POST['Stock']);
 $Estado = trim($_POST['Estado']);
 $stmt = $conexion->prepare(
-    "UPDATE Productos 
-     SET Codigo=?, Nombre=?, Descripcion=?, Precio=?, Stock=?, Estado=?, Detallado=? 
-     WHERE Codigo=?"
+    "UPDATE Productos SET Codigo=?, Nombre=?, Descripcion=?, Precio=?, Stock=?, Estado=?, Detallado=? WHERE Codigo=?"
 );
 
 $stmt->bind_param(
@@ -140,7 +137,7 @@ if ($stmt->execute()) {
 }
 ?>
 </p><br>
-        <a href="readleeProductos.php"><button class="volver">Tabla Productos</button></a>
+    <a href="readleeProductos.php"><button class="volver">Tabla Productos</button></a>
     </div>
     </div>
 </body>

@@ -7,17 +7,12 @@ if (!isset($_GET['ID'])) {
 }
 
 $ID = trim($_GET['ID']);
-
 $stmt = $conexion->prepare(
-    "SELECT * FROM ventas 
-     JOIN pedidos ON ventas.Pedidos_ID = pedidos.ID 
-     WHERE Pedidos_ID=?"
+    "SELECT * FROM ventas JOIN pedidos ON ventas.Pedidos_ID = pedidos.ID WHERE Pedidos_ID=?"
 );
 
 $stmt->bind_param("s", $ID);
-
 $stmt->execute();
-
 $resultado = $stmt->get_result();
 
 if (!$resultado) {
@@ -29,7 +24,6 @@ if ($resultado->num_rows == 0) {
 }
 
 $fila = $resultado->fetch_assoc();
-
 $ID = $fila['ID'];
 $Pedidos_ID = $fila['Pedidos_ID'];
 $Costototal = $fila['Costototal'];
@@ -41,17 +35,13 @@ $NombreVendedor = $fila['NombreVendedor'];
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Editar Venta</title>
-
     <link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <style>
     *{
         font-family: 'Chillax-Semibold';
@@ -74,7 +64,6 @@ $NombreVendedor = $fila['NombreVendedor'];
             margin: 0;
         }
 
-        /* SE CAMBIÓ 'div' POR LA CLASE '.contenedor-registro' */
         .contenedor-registro {
             width: 420px;
             padding: 35px;
@@ -110,7 +99,6 @@ $NombreVendedor = $fila['NombreVendedor'];
             outline: none;
         }
 
-        /* SELECT */
         select {
             width: 100%;
             padding: 10px;
@@ -133,7 +121,6 @@ $NombreVendedor = $fila['NombreVendedor'];
             color: #6A253A;
         }
 
-        /* ARCHIVO */
         input[type="file"] {
             background-color: white;
             color: #6A253A;
@@ -211,47 +198,35 @@ $NombreVendedor = $fila['NombreVendedor'];
         position: fixed;
         top: 25px;
         left: 25px;
-
         width: 52px;
         height: 52px;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         background: #E64B6B;
         border: none;
         border-radius: 50%;
-
         cursor: pointer;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
-
         transition: all 0.2s ease;
         z-index: 9999;
-
         text-decoration: none;
     }
 
     /* Flecha */
     .btn-volver-esquina::before {
         content: "";
-
         width: 12px;
         height: 12px;
-
         border-left: 3px solid #EFE2DA;
         border-bottom: 3px solid #EFE2DA;
-
         transform: rotate(45deg);
-
         margin-left: 6px;
     }
 
     .btn-volver-esquina:hover {
         background: #6A253A;
-
         transform: scale(1.1);
-
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
     }
 
@@ -262,9 +237,7 @@ $NombreVendedor = $fila['NombreVendedor'];
 </head>
 <body>
    <div class="contenedor-registro">
-
     <h1>Editar Venta</h1>
-
     <form action="updateVentas.php" method="post" onsubmit="return validar()">
         <input type="hidden" name="ID" value="<?= $ID ?>">
         <input type="hidden" name="Pedidos_ID" value="<?= $Pedidos_ID ?>">
@@ -366,9 +339,7 @@ $NombreVendedor = $fila['NombreVendedor'];
             metodo.focus();
             return false;
         }
-
         return true;}
 </script>
-
 </body>
 </html>

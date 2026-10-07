@@ -83,7 +83,6 @@ td{
     background-color: rgba(255,255,255,0.04);
 }
 
-/* NOMBRE DEL DATO */
 td.titulo{
     width: 30%;
     background-color: rgba(239,226,218,0.12);

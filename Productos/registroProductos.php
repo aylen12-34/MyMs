@@ -68,8 +68,8 @@ $estado = trim($_POST['Estado']);
         .volver:hover{
             background-color: #EFE2DA;
             color: #E64B6B;
-        }@media(max-width:800px){
-
+        }
+@media(max-width:800px){
   body{
     padding: 20px;
   }
@@ -127,7 +127,6 @@ if ($stmt->execute()) {
 }
       ?>
         </p><br>
-                
         <button class="volver" onclick="history.back()">← Volver</button><br>
         <a href="readleeProductos.php"><button class="volver">Tabla Productos</button></a>
     </div>

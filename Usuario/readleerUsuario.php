@@ -4,7 +4,6 @@ $usuario = "root";
 $contraseña = "";
 $direccion = "localhost";
 $baseDeDatos = "MYMS";
-
 $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 
 if ($conexion->connect_error) {
@@ -12,15 +11,10 @@ if ($conexion->connect_error) {
 }
 
 $CI = trim($_GET['CI']);
-
 $stmt = $conexion->prepare("SELECT * FROM Usuarios WHERE CI=?");
-
 $stmt->bind_param("s", $CI);
-
 $stmt->execute();
-
 $resultado = $stmt->get_result();
-
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +25,6 @@ $resultado = $stmt->get_result();
     <link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
-
     <style>
 *{
     font-family: 'Chillax-Semibold';
@@ -128,19 +121,13 @@ button{
 </style>
 </head>
 <body>
-
 <div>
-
 <h2>Datos del Usuario</h2>
-
 <?php
 
 if ($resultado->num_rows > 0) {
-
     $fila = $resultado->fetch_assoc();
-
     echo "<table>";
-
     echo "<tr>";
     echo "<td class='titulo'>CI</td>";
     echo "<td>".$fila["CI"]."</td>";
@@ -170,20 +157,13 @@ if ($resultado->num_rows > 0) {
     echo "<td class='titulo'>Estado</td>";
     echo "<td>".$fila["Estado"]."</td>";
     echo "</tr>";
-
     echo "</table>";
-
 } else {
-
     echo "No se encontraron usuarios.";
-
 }
-
 $conexion->close();
-
 ?>
 <button class="volver" onclick="history.back()">← Volver</button><br>
 </div>
-
 </body>
 </html>

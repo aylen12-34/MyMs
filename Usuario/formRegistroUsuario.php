@@ -4,13 +4,11 @@ $usuario = "root";
 $contraseña = "";
 $direccion = "localhost";
 $baseDeDatos = "MYMS";
-
 $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 
 if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +20,6 @@ if ($conexion->connect_error) {
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <style>
         body, table, button, h2, a, input, select {
             font-family: 'Chillax-Semibold', sans-serif;
@@ -41,7 +38,6 @@ if ($conexion->connect_error) {
             margin: 0;
         }
 
-        /* SE CAMBIÓ 'div' POR LA CLASE '.contenedor-registro' */
         .contenedor-registro {
             width: 420px;
             padding: 35px;
@@ -178,47 +174,35 @@ if ($conexion->connect_error) {
         position: fixed;
         top: 25px;
         left: 25px;
-
         width: 52px;
         height: 52px;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         background: #E64B6B;
         border: none;
         border-radius: 50%;
-
         cursor: pointer;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
-
         transition: all 0.2s ease;
         z-index: 9999;
-
         text-decoration: none;
     }
 
     /* Flecha */
     .btn-volver-esquina::before {
         content: "";
-
         width: 12px;
         height: 12px;
-
         border-left: 3px solid #EFE2DA;
         border-bottom: 3px solid #EFE2DA;
-
         transform: rotate(45deg);
-
         margin-left: 6px;
     }
 
     .btn-volver-esquina:hover {
         background: #6A253A;
-
         transform: scale(1.1);
-
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
     }
 
@@ -230,34 +214,26 @@ if ($conexion->connect_error) {
 <body>
     <div class="contenedor-registro">
         <h1>Registro de Usuario</h1>
-    
         <form action="registroUsuario.php" method="POST" onsubmit="return validar()" enctype="multipart/form-data">
             <label for="CI">CI:</label>
 <input type="number" id="CI" name="CI"  minlength="7" maxlength="8"> <br> <br>
-
 <label for="Nombre">Nombre:</label>
 <input type="text" id="Nombre" name="Nombre"  minlength="3" maxlength="50" pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+"><br><br>
-
 <label for="Direccion">Dirección:</label>
 <input type="text" id="Direccion" name="Direccion"  minlength="5" maxlength="100"><br><br>
-
 <label for="Celular">Celular:</label>
 <input type="number" id="Celular" name="Celular"  minlength="8" maxlength="8"><br><br>
-
 <label for="Rol">Rol:</label>
 <select name="Rol" id="Rol" >
     <option value="vendedor">vendedor</option>
     <option value="administrador">administrador</option>
 </select><br><br>
-
 <label for="imagen">Perfil</label>
 <input type="file" name="imagen" accept="image/*">
 <br><br>
-
 <label for="Estado">Estado:</label>
 <input type="text" value="Activo" name="Estado"   minlength="6" maxlength="6" pattern="[a-zA-Z]+"><br><br>
             <input type="submit" value="Registrar Usuario">
-
         </form>
  <a href="../administrador.php" class="btn-volver-esquina" aria-label="Volver" title="Volver"> </a>
     </div>
@@ -268,7 +244,6 @@ if ($conexion->connect_error) {
     var celular = document.getElementById("Celular");
     var rol = document.getElementById("Rol");
     var estado = document.getElementById("Estado");
-
     var expRegNombre = /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/;
     var expRegRol = /^[a-z]+$/;
 
@@ -553,7 +528,6 @@ if ($conexion->connect_error) {
             estado.focus();
             return false;
         }
-
         return true;
     }
 </script>

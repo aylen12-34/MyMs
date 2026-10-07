@@ -7,7 +7,6 @@ $Celular=$_POST['Celular'];
 $Rol=$_POST['Rol'];
 $Estado=$_POST['Estado'];
 $imagen=$_POST['imagen'];
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
