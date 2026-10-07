@@ -120,11 +120,8 @@ if ($conexion->query($sql) === TRUE) {
         header("location: ../administrador.php");
         $conexion->close(); 
       ?>
-      </p><br>
-        
-        
-<button class="volver"><a href="readleerUsuarios.php">Tabla Usuarios</a></button>
-        
+      </p><br>  
+<button class="volver"><a href="readleerUsuarios.php">Tabla Usuarios</a></button>  
     </div>
     </div>
 </body>
