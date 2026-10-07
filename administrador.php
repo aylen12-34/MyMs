@@ -1,10 +1,8 @@
 <?php
-
 $usuario = "root";
 $contraseña = "";
 $direccion = "localhost";
 $baseDeDatos = "MYMS";
-
 $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 
 if ($conexion->connect_error) {
@@ -22,18 +20,14 @@ if($_SESSION['CI']==null){
 }
 
 $CI = trim($_SESSION['CI']);
-
 $stmt = $conexion->prepare("SELECT * FROM Usuarios WHERE CI=?");
 $stmt->bind_param("s", $CI);
 $stmt->execute();
 $resultadoe = $stmt->get_result();
-
 $stmt = $conexion->prepare("SELECT * FROM Usuarios WHERE CI=?");
 $stmt->bind_param("s", $CI);
 $stmt->execute();
 $resultadop = $stmt->get_result();
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +36,6 @@ $resultadop = $stmt->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador</title>
     <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
-
 <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -62,16 +55,12 @@ $resultadop = $stmt->get_result();
 }
 
 body{
-
     display:grid;
-
     grid-template-areas:
     "header"
     "main"
     "footer";
-
     grid-template-rows:350px auto 200px;
-
     min-height:100vh;
 }
 
@@ -81,55 +70,37 @@ body{
 
 main{
     grid-area: main;
-
     background-image: url("imagenes/2.png");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-
     padding: 50px;
-
     display: grid;
     grid-template-columns: 1fr 350px 1fr;
     gap: 30px;
-
     align-items: start;
 }
 
-/* Tarjetas */
-
 .panel{
     background: rgba(239, 226, 218, 0.92);
-
-
     border-radius: 20px;
     padding: 25px;
-
     box-shadow: 0 8px 25px rgba(0,0,0,.15);
 }
 
-/* Títulos */
-
-main h1,
-main h3{
+main h1, main h3{
     color:#6A253A;
     margin-bottom:15px;
 }
 
-/* Botones */
-
 main button{
     width:100%;
     margin-bottom:12px;
-
     border:none;
     border-radius:12px;
-
     padding:14px;
-
     background:#E64B6B;
     color:white;
-
     font-size:16px;
     transition:.3s;
     cursor:pointer;
@@ -150,23 +121,17 @@ button a{
 
 .foto-admin{
     background: rgba(239, 226, 218, 0.92);
-
     border-radius:20px;
     padding:20px;
-
     text-align:center;
-
     box-shadow:0 8px 25px rgba(0,0,0,.15);
 }
 
 #yo{
     width:100%;
     max-width:280px;
-
     border-radius:20px;
-
     object-fit:cover;
-
     box-shadow:0 5px 20px rgba(0,0,0,.2);
 }
 table{

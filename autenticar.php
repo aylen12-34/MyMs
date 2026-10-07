@@ -11,7 +11,6 @@ if ($conexion->connect_error) {
 
 $CI = trim($_REQUEST['CI']);
 $Nombre = trim($_POST['Nombre']);
-
 $stmt = $conexion->prepare(
     "SELECT * FROM Usuarios WHERE CI=? AND Nombre=?"
 );
@@ -23,7 +22,6 @@ $stmt->bind_param(
 );
 
 $stmt->execute();
-
 $resultado = $stmt->get_result();
 if ($resultado->num_rows > 0) {
     while($fila = $resultado->fetch_assoc()) {

@@ -23,17 +23,12 @@
             max-width: 400px;
         }
 
-
-
         label {
             display: block;
             margin-bottom: 5px;
             color: #EFE2DA;
         }
 
-
-
-        
         input {
             width: 100%;
             padding: 8px;
@@ -41,8 +36,6 @@
             border: 2.5px solid #E64B6B;
             border-radius: 10px;
         }
-
-
 
         input[type="submit"] {
             background-color: #E64B6B;
@@ -52,14 +45,11 @@
             border-radius: 4px;
             cursor: pointer;
         }
+
         input[type="submit"]:hover {
             background-color: #EFE2DA;
             color:#E64B6B;
         }
-
-
-
-
 
         div {
             width: 420px;
@@ -69,9 +59,11 @@
             border-radius: 40px;
             color: #EFE2DA;
         }
+
         a {
             color: #EFE2DA;
         }
+        
         .volver{
         padding: 10px 20px;
         border: none;
@@ -86,6 +78,7 @@
             background-color: #EFE2DA;
             color:#E64B6B;
         }
+
         #a{
     text-decoration: none;
     color: #EFE2DA;
@@ -98,7 +91,6 @@
     <form action="autenticar.php" method="POST" >
             <label for="CI">CI:</label>
             <input type="number" id="CI" name="CI" required minlength="7" maxlength="8"> <br> <br>
-
             <label for="Nombre">Nombre:</label>
             <input type="text" id="Nombre" name="Nombre" required minlength="3" maxlength="50" pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+"><br><br>
             <input type="submit" value="Iniciar Sesion">

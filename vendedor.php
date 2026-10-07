@@ -1,5 +1,4 @@
 <?php
-
 $usuario = "root";
 $contraseña = "";
 $direccion = "localhost";
@@ -22,7 +21,6 @@ if($_SESSION['CI']==null){
     }
 }
 
-
 $stmt = $conexion->prepare("SELECT * FROM Usuarios WHERE CI=?");
 $stmt->bind_param("s", $CI);
 $stmt->execute();
@@ -37,7 +35,6 @@ $stmt = $conexion->prepare("SELECT imagen FROM Usuarios WHERE CI=?");
 $stmt->bind_param("s", $CI);
 $stmt->execute();
 $resultadop = $stmt->get_result();
-
 
 if ($resultadon->num_rows > 0) {
 
@@ -87,9 +84,7 @@ body{
     "header"
     "main"
     "footer";
-
     grid-template-rows:350px auto 200px;
-
     min-height:100vh;
 }
 
@@ -98,21 +93,16 @@ body{
 ========================== */
 
 main{
-
     grid-area:main;
-
     background-image:url("imagenes/2.png");
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
     background-attachment:fixed;
-
     padding:50px;
-
     display:grid;
     grid-template-columns:1fr 320px 1fr;
     gap:30px;
-
     align-items:start;
 }
 
@@ -121,32 +111,21 @@ main{
 ========================== */
 
 .panel{
-
     background:rgba(239,226,218,.92);
-
     backdrop-filter:blur(5px);
     -webkit-backdrop-filter:blur(5px);
-
     padding:25px;
-
     border-radius:20px;
-
     box-shadow:0 8px 25px rgba(0,0,0,.15);
 }
 
 .foto{
-
     background:rgba(239,226,218,.92);
-
     backdrop-filter:blur(5px);
     -webkit-backdrop-filter:blur(5px);
-
     padding:20px;
-
     border-radius:20px;
-
     text-align:center;
-
     box-shadow:0 8px 25px rgba(0,0,0,.15);
 }
 
@@ -169,44 +148,28 @@ main h3{
 ========================== */
 
 main button{
-
     width:100%;
-
     margin-bottom:12px;
-
     padding:14px;
-
     border:none;
     border-radius:12px;
-
     background:#E64B6B;
-
     color:white;
-
     font-size:16px;
-
     cursor:pointer;
-
     transition:.3s;
 }
 
 main button:hover{
-
     transform:translateY(-3px);
-
     background:#c73b58;
-
     box-shadow:0 5px 15px rgba(0,0,0,.2);
 }
 
 button a{
-
     color:white;
-
     text-decoration:none;
-
     display:block;
-
     width:100%;
 }
 
@@ -215,17 +178,11 @@ button a{
 ========================== */
 
 .foto img{
-
     width:100%;
-
     max-width:260px;
-
     height:260px;
-
     object-fit:cover;
-
     border-radius:20px;
-
     box-shadow:0 5px 20px rgba(0,0,0,.2);
 }
 
@@ -234,31 +191,24 @@ button a{
 ========================== */
 
 table{
-
     width:100%;
-
     border-collapse:collapse;
 }
 
 table td{
-
     padding:12px;
 }
 
 table tr{
-
     border-bottom:1px solid rgba(106,37,58,.2);
 }
 
 .titulo{
-
     font-weight:bold;
-
     color:#6A253A;
 }
 
 table td:last-child{
-
     color:#444;
 }
 
@@ -267,9 +217,7 @@ table td:last-child{
 ========================== */
 
 main p{
-
     color:#444;
-
     line-height:1.6;
 }
 
@@ -278,67 +226,49 @@ main p{
 ========================== */
 
 @media(max-width:1000px){
-
     body{
-
         grid-template-rows:
         250px
         auto
         150px;
     }
-
     main{
-
         grid-template-columns:1fr;
-
         padding:25px;
     }
 
     .foto{
-
         order:-1;
     }
 
     .foto img{
-
         max-width:220px;
-
         height:220px;
     }
 
     main h1{
-
         text-align:center;
     }
 
     main h3{
-
         text-align:center;
     }
 }
 
 @media(max-width:600px){
-
     main{
-
         padding:15px;
     }
-
-    .panel,
-    .foto{
-
+    .panel,.foto{
         padding:18px;
     }
 
     main button{
-
         padding:12px;
-
         font-size:15px;
     }
 
     table td{
-
         padding:10px;
         font-size:14px;
     }
@@ -348,14 +278,11 @@ main p{
 <body>
 
 <?php include("includes/navpro.php"); ?>
-
 <?php include("includes/header.php"); ?>
 
 <main>
     <div class="panel">
-
         <h1>📦 Registros</h1>
-
         <h3>Inventario de productos</h3>
         <a href="Productos/readleeProductos.php"><button>Productos disponibles</button></a>
         <a href="Pedidos/leerPedidos.php"><button>Pedidos registrados </button></a>

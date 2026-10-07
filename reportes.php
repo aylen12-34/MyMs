@@ -1,5 +1,4 @@
 <?php
-// --- 1. CONEXIÓN Y CONFIGURACIÓN DE FECHA ---
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -11,47 +10,26 @@ if ($conn->connect_error) {
 }
 
 @$conn->query("SET lc_time_names = 'es_ES'");
-
 $filtro =$_GET['filtro'] ?? 'dias';
 
 switch ($filtro) {
     case 'anios':
-        $sql_ventas = "SELECT DATE_FORMAT(p.fecha, '%Y') AS etiqueta, 
-                              SUM(v.costototal) AS total 
-                       FROM ventas v
-                       INNER JOIN pedidos p ON v.Pedidos_ID = p.id
-                       GROUP BY YEAR(p.fecha) 
-                       ORDER BY p.fecha ASC LIMIT 10";
+        $sql_ventas = "SELECT DATE_FORMAT(p.fecha, '%Y') AS etiqueta, SUM(v.costototal) AS total FROM ventas v INNER JOIN pedidos p ON v.Pedidos_ID = p.id
+                       GROUP BY YEAR(p.fecha) ORDER BY p.fecha ASC LIMIT 10";
         break;
     case 'semanas':
-        $sql_ventas = "SELECT CONCAT('Semana ', WEEK(p.fecha, 1), ' - ', DATE_FORMAT(p.fecha, '%b')) AS etiqueta, 
-                              SUM(v.costototal) AS total 
-                       FROM ventas v
-                       INNER JOIN pedidos p ON v.Pedidos_ID = p.id
-                       GROUP BY YEARWEEK(p.fecha, 1) 
-                       ORDER BY p.fecha ASC LIMIT 12";
+        $sql_ventas = "SELECT CONCAT('Semana ', WEEK(p.fecha, 1), ' - ', DATE_FORMAT(p.fecha, '%b')) AS etiqueta, SUM(v.costototal) AS total FROM ventas v INNER JOIN pedidos p ON v.Pedidos_ID = p.id
+                       GROUP BY YEARWEEK(p.fecha, 1) ORDER BY p.fecha ASC LIMIT 12";
         break;
     case 'meses':
-        $sql_ventas = "SELECT DATE_FORMAT(p.fecha, '%M %Y') AS etiqueta, 
-                              SUM(v.costototal) AS total 
-                       FROM ventas v
-                       INNER JOIN pedidos p ON v.Pedidos_ID = p.id
-                       GROUP BY DATE_FORMAT(p.fecha, '%Y-%m') 
-                       ORDER BY p.fecha ASC LIMIT 12";
+        $sql_ventas = "SELECT DATE_FORMAT(p.fecha, '%M %Y') AS etiqueta, SUM(v.costototal) AS total FROM ventas v INNER JOIN pedidos p ON v.Pedidos_ID = p.id
+                       GROUP BY DATE_FORMAT(p.fecha, '%Y-%m') ORDER BY p.fecha ASC LIMIT 12";
         break;
     default:
-        // Obtiene los 15 días MÁS RECIENTES y los reordena de forma cronológica para el gráfico
         $sql_ventas = "SELECT etiqueta, total FROM (
-                           SELECT DATE_FORMAT(p.fecha, '%W, %d/%m') AS etiqueta, 
-                                  SUM(v.costototal) AS total,
-                                  DATE(p.fecha) AS fecha_orden
-                           FROM ventas v
-                           INNER JOIN pedidos p ON v.Pedidos_ID = p.id
-                           GROUP BY DATE(p.fecha) 
-                           ORDER BY fecha_orden DESC 
-                           LIMIT 15
-                       ) AS ultimos_dias
-                       ORDER BY fecha_orden ASC";
+                           SELECT DATE_FORMAT(p.fecha, '%W, %d/%m') AS etiqueta, SUM(v.costototal) AS total, DATE(p.fecha) AS fecha_orden FROM ventas v INNER JOIN pedidos p ON v.Pedidos_ID = p.id
+                           GROUP BY DATE(p.fecha) ORDER BY fecha_orden DESC LIMIT 15
+                       ) AS ultimos_dias ORDER BY fecha_orden ASC";
         break;
 }
 
@@ -67,21 +45,13 @@ while ($row =$res_ventas->fetch_assoc()) {
     $totales[]   = (float)($row['total'] ?? 0);
 }
 
-// --- 2. CONSULTA TOP 3 PRODUCTOS (SUMA DE CANTIDAD DEL CARRITO) ---
-$sql_top = "SELECT pr.nombre AS producto, 
-                   SUM(c.cantidad) AS unidades, 
-                   SUM(c.costototal) AS ingreso_total 
-            FROM carrito c
-            INNER JOIN productos pr ON c.Productos_Codigo = pr.codigo
-            GROUP BY c.Productos_Codigo, pr.nombre 
-            ORDER BY unidades DESC LIMIT 3";
-
+$sql_top = "SELECT pr.nombre AS producto, SUM(c.cantidad) AS unidades, SUM(c.costototal) AS ingreso_total FROM carrito c INNER JOIN productos pr ON c.Productos_Codigo = pr.codigo
+            GROUP BY c.Productos_Codigo, pr.nombre ORDER BY unidades DESC LIMIT 3";
 $res_top = $conn->query($sql_top);
 if (!$res_top) {
     die("<b>Error en la consulta de productos top:</b> " . $conn->error);
 }
 
-// Respuesta para peticiones AJAX al cambiar el filtro
 if (isset($_GET['ajax'])) {
     header('Content-Type: application/json');
     echo json_encode([
@@ -91,7 +61,6 @@ if (isset($_GET['ajax'])) {
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -247,11 +216,9 @@ if (isset($_GET['ajax'])) {
             justify-content: center;
             box-shadow: 0 3px 8px rgba(106, 37, 58, 0.25);
         }
-
         .puesto-1 { background: #E64B6B; box-shadow: 0 0 12px rgba(230, 75, 107, 0.4); }
         .puesto-2 { background: #6A253A; }
         .puesto-3 { background: #431825; }
-
         .sales-table td:last-child {
             color: #6A253A;
             font-weight: bold;
@@ -319,7 +286,6 @@ if (isset($_GET['ajax'])) {
 </head>
 <body>
 <?php include ("includes/botonvolver.php"); ?>
-
 <a href="reportclient.php" class="flecha-siguiente">⇢</a>
 <div class="card">
     <h2>Reporte de Ventas</h2>

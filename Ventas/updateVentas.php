@@ -1,44 +1,33 @@
 <?php
 session_start();
 require "bdVentas.php";
-
 if (!isset($_SESSION['CI'])) {
     header("location:../login.html");
     exit();
 }
-
 if ($_SESSION['Rol'] != "administrador") {
     header("location:../login.html");
     exit();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Actualización de Ventas</title>
-
     <link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
-
     <style>
-
         * {
             font-family: 'Chillax-Semibold';
         }
-
         body {
             background-image: url('../imagenes/2.png');
             background-size: cover;
             background-position: center;
-
             display: flex;
             justify-content: center;
             align-items: center;
-
             min-height: 100vh;
             padding: 30px 0;
         }
@@ -46,11 +35,9 @@ if ($_SESSION['Rol'] != "administrador") {
         div {
             width: 420px;
             padding: 35px;
-
             background-color: #6A253A;
             border: 2px solid #EFE2DA;
             border-radius: 40px;
-
             color: #EFE2DA;
         }
 
@@ -118,18 +105,14 @@ if ($_SESSION['Rol'] != "administrador") {
     if (!isset($_POST['ID'])) {
         die("No se recibió el ID de la venta.");
     }
-    $ID = trim($_POST['ID']);
+$ID = trim($_POST['ID']);
 $Pedidos_ID = trim($_POST['Pedidos_ID']);
 $Costototal = trim($_POST['Costototal']);
 $Estado = trim($_POST['Estado']);
 $Metodo = trim($_POST['Metodo']);
-
 $stmt = $conexion->prepare(
-    "UPDATE Ventas 
-     SET Costototal=?, Estado=?, Metodo=? 
-     WHERE ID=?"
+    "UPDATE Ventas SET Costototal=?, Estado=?, Metodo=? WHERE ID=?"
 );
-
 $stmt->bind_param(
     "ssss",
     $Costototal,
@@ -137,9 +120,7 @@ $stmt->bind_param(
     $Metodo,
     $ID
 );
-
 $stmt->execute();
-
 if ($stmt->affected_rows >= 0) {
     echo "Se editó la venta correctamente.";
 } else {
@@ -147,11 +128,7 @@ if ($stmt->affected_rows >= 0) {
 }
     ?>
     </p> <br><a href="leerVentass.php">
-    <button class="volver">
-        Tabla Ventas
-    </button></a>
-
+    <button class="volver"> Tabla Ventas</button></a>
 </div>
-
 </body>
 </html>

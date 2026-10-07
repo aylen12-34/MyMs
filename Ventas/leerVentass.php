@@ -1,26 +1,19 @@
 <?php
 require "bdVentas.php";
 session_start();
-
 if (!isset($_SESSION['CI'])) {
     header("location: ../login.php");
     exit();
 }
 
 $CI = trim($_SESSION['CI']);
-
 if($_SESSION['CI']==null){
     header("location:login.php");
 }else {
-
     $stmt = $conexion->prepare("SELECT * FROM Usuarios WHERE CI=?");
-
     $stmt->bind_param("s", $CI);
-
     $stmt->execute();
-
     $resultadou = $stmt->get_result();
-
     if ($resultadou->num_rows > 0) {
         while($fila=$resultadou->fetch_assoc()) {
             $Rol = $fila['Rol'];
@@ -28,11 +21,9 @@ if($_SESSION['CI']==null){
     }
 }
 $CostoTotal = $_SESSION['CostoTotal'] ?? 'No especificado';
-
 $sql = "SELECT * FROM ventas JOIN pedidos ON ventas.Pedidos_ID=pedidos.ID WHERE ventas.Estado='Aceptada'";
 $resultado = $conexion->query($sql);
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -185,47 +176,35 @@ $resultado = $conexion->query($sql);
         position: fixed;
         top: 25px;
         left: 25px;
-
         width: 52px;
         height: 52px;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         background: #E64B6B;
         border: none;
         border-radius: 50%;
-
         cursor: pointer;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
-
         transition: all 0.2s ease;
         z-index: 9999;
-
         text-decoration: none;
     }
 
     /* Flecha */
     .btn-volver-esquina::before {
         content: "";
-
         width: 12px;
         height: 12px;
-
         border-left: 3px solid #EFE2DA;
         border-bottom: 3px solid #EFE2DA;
-
         transform: rotate(45deg);
-
         margin-left: 6px;
     }
 
     .btn-volver-esquina:hover {
         background: #6A253A;
-
         transform: scale(1.1);
-
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
     }
 

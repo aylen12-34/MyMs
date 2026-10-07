@@ -32,9 +32,7 @@ body {
     margin: 0;
     height: 100vh;
     overflow: hidden;
-
     font-family: 'Chillax-Semibold';
-
     position: relative;
 }
 /* =========================
@@ -44,14 +42,11 @@ body::before {
     content: "";
     position: fixed;
     inset: -15px;
-
     background-image: url("imagenes/2.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     filter: blur(2px) brightness(0.775);
-
     z-index: -2;
 }
 /* =========================
@@ -60,14 +55,11 @@ body::before {
 
 .pantalla {
     position: relative;
-
     width: 100%;
     height: 100vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     overflow: hidden;
 }
 /* =========================
@@ -76,15 +68,10 @@ body::before {
 .racha {
     position: relative;
     z-index: 10;
-
     text-align: center;
     color: white;
-
     animation: aparecer 1s ease-out;
 }
-/* =========================
-   TÍTULO
-========================= */
 
 /* =========================
    TÍTULO CENTRAL

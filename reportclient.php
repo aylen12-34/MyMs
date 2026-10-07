@@ -10,12 +10,8 @@ if ($conn->connect_error) {
 }
 
 @$conn->query("SET lc_time_names = 'es_ES'");
-$sql_top_clientes = "SELECT Nombre, COUNT(*) AS total_pedidos
-                    FROM Pedidos
-                    WHERE Estado = 'Aceptado'
-                    GROUP BY Nombre
-                    ORDER BY total_pedidos DESC
-                    LIMIT 3";
+$sql_top_clientes = "SELECT Nombre, COUNT(*) AS total_pedidos FROM Pedidos WHERE Estado = 'Aceptado'
+                    GROUP BY Nombre ORDER BY total_pedidos DESC LIMIT 3";
 
 $res_clientes = $conn->query($sql_top_clientes);
 if (!$res_clientes) {
@@ -102,34 +98,24 @@ FLECHA PARA SIGUIENTE REPORTE
 
 .flecha-siguiente {
     position: fixed;
-
     right: 18px;
     top: 50%;
     transform: translateY(-50%);
-
     width: 55px;
     height: 55px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: #E64B6B;
     color: #EFE2DA;
-
     border: 3px solid #EFE2DA;
     border-radius: 50%;
-
     text-decoration: none;
-
     font-family: Arial, sans-serif;
     font-size: 32px;
     font-weight: bold;
- 
     box-shadow: 0 4px 12px rgba(106, 37, 58, 0.35);
-
     z-index: 100;
-
     transition: 
         transform 0.25s ease,
         background 0.25s ease,
@@ -138,9 +124,7 @@ FLECHA PARA SIGUIENTE REPORTE
 
 .flecha-siguiente:hover {
     background: #6A253A;
-
     transform: translateY(-50%) scale(1.1);
-
     box-shadow: 
         0 0 10px rgba(230, 75, 107, 0.5),
         0 5px 15px rgba(106, 37, 58, 0.4);
@@ -155,34 +139,24 @@ FLECHA PARA SIGUIENTE REPORTE
 
 .flecha-anterior {
     position: fixed;
-
     left: 18px;
     top: 50%;
     transform: translateY(-50%);
-
     width: 55px;
     height: 55px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: #E64B6B;
     color: #EFE2DA;
-
     border: 3px solid #EFE2DA;
     border-radius: 50%;
-
     text-decoration: none;
-
     font-family: Arial, sans-serif;
     font-size: 32px;
     font-weight: bold;
-
     box-shadow: 0 4px 12px rgba(106, 37, 58, 0.35);
-
     z-index: 100;
-
     transition: 
         transform 0.25s ease,
         background 0.25s ease,
@@ -191,9 +165,7 @@ FLECHA PARA SIGUIENTE REPORTE
 
 .flecha-anterior:hover {
     background: #6A253A;
-
     transform: translateY(-50%) scale(1.1);
-
     box-shadow: 
         0 0 10px rgba(230, 75, 107, 0.5),
         0 5px 15px rgba(106, 37, 58, 0.4);

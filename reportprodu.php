@@ -10,39 +10,17 @@ if ($conn->connect_error) {
 }
 @$conn->query("SET lc_time_names = 'es_ES'");
 
-// Consulta SQL optimizada obteniendo cantidad y costototal desde la tabla carrito
-$sql_top_productos = "SELECT 
-                        p.Nombre AS producto, 
-                        SUM(c.cantidad) AS unidades, 
-                        SUM(c.costototal) AS ingreso_total
-                     FROM productos p
-                     INNER JOIN carrito c ON p.Codigo = c.Productos_Codigo
-                     INNER JOIN pedidos ped ON c.Pedidos_ID = ped.ID
-                     INNER JOIN ventas v ON ped.ID = v.Pedidos_ID
-                     WHERE v.Estado = 'Aceptada'
-                     GROUP BY p.Codigo, p.Nombre
-                     ORDER BY unidades DESC
-                     LIMIT 3";
-
+$sql_top_productos = "SELECT p.Nombre AS producto, SUM(c.cantidad) AS unidades, SUM(c.costototal) AS ingreso_total FROM productos p INNER JOIN carrito c ON p.Codigo = c.Productos_Codigo
+                     INNER JOIN pedidos ped ON c.Pedidos_ID = ped.ID INNER JOIN ventas v ON ped.ID = v.Pedidos_ID WHERE v.Estado = 'Aceptada'
+                     GROUP BY p.Codigo, p.Nombre ORDER BY unidades DESC LIMIT 3";
 $res_top = $conn->query($sql_top_productos);
 
-// Consulta de respaldo por si falla la primera agrupación
 if (!$res_top) {
-    $sql_top_productos = "SELECT 
-                            p.Nombre AS producto, 
-                            SUM(c.cantidad) AS unidades, 
-                            SUM(c.costototal) AS ingreso_total
-                         FROM productos p
-                         JOIN carrito c ON p.Codigo = c.Productos_Codigo
-                         JOIN pedidos ped ON c.Pedidos_ID = ped.ID
-                         JOIN ventas v ON ped.ID = v.Pedidos_ID
-                         WHERE v.Estado = 'Aceptada'
-                         GROUP BY p.Nombre
-                         ORDER BY unidades DESC
-                         LIMIT 3";
+    $sql_top_productos = "SELECT p.Nombre AS producto, SUM(c.cantidad) AS unidades, SUM(c.costototal) AS ingreso_total FROM productos p JOIN carrito c ON p.Codigo = c.Productos_Codigo
+                         JOIN pedidos ped ON c.Pedidos_ID = ped.ID JOIN ventas v ON ped.ID = v.Pedidos_ID WHERE v.Estado = 'Aceptada'
+                         GROUP BY p.Nombre ORDER BY unidades DESC LIMIT 3";
     $res_top = $conn->query($sql_top_productos);
 }
-
 if (!$res_top) {
     die("<b>Error en la consulta de productos:</b> " . $conn->error);
 }
