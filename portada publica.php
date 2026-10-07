@@ -596,86 +596,10 @@ $resultado_productos = $conn->query($sql_mas_vendidos);
             font-size:24px;
         }
     }
-    #lluviaGalletas{
-    position:fixed;
-    inset:0;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-    overflow:hidden;
-    z-index:10000;
-}
-
-.galleta-caida{
-    position:absolute;
-    top:-100px;
-    width:75px;
-    height:75px;
-    object-fit:contain;
-    animation:caerGalleta linear forwards;
-    opacity:0;
-}
-
-@keyframes caerGalleta{
-    0%{
-        transform:translateY(-80px) rotate(0deg);
-        opacity:0;
-    }
-
-    10%{
-        opacity:1;
-    }
-
-    90%{
-        opacity:1;
-    }
-
-    100%{
-        transform:translateY(110vh) rotate(360deg);
-        opacity:0;
-    }
-}
-
-@media(max-width:650px){
-    .galleta-caida{
-        width:55px;
-        height:55px;
-    }
-}
+  
     </style>
 </head>
-<script>
-window.addEventListener("load", function(){
-
-    const lluvia = document.getElementById("lluviaGalletas");
-    const cantidad = 28;
-
-    for(let i = 0; i < cantidad; i++){
-
-        const galleta = document.createElement("img");
-
-        galleta.src = "imagenes/galletas/galleta1.png";
-        galleta.className = "galleta-caida";
-
-        galleta.style.left = Math.random() * 100 + "%";
-
-        const duracion = 1.8 + Math.random() * 1.5;
-        const retraso = Math.random() * 1.2;
-
-        galleta.style.animationDuration = duracion + "s";
-        galleta.style.animationDelay = retraso + "s";
-
-        lluvia.appendChild(galleta);
-    }
-
-    setTimeout(function(){
-        lluvia.remove();
-    }, 4500);
-
-});
-</script>
 <body>
-    <div id="lluviaGalletas"></div>
 <?php include("includes/nav.php"); ?>
 <?php include("includes/header.php"); ?>
 
