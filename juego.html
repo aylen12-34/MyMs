@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tres en Raya — MyMs</title>
+
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<style>
+
+/* =========================================================
+   FUENTE MYMS
+   ========================================================= */
+
+@font-face{
+    font-family:'Chillax-Semibold';
+    src:url("tipografia/Fonts/WEB/fonts/Chillax-Semibold.woff2") format("woff2");
+    font-weight:600;
+    font-style:normal;
+}
+
+
+/* =========================================================
+   COLORES
+   ========================================================= */
+
+:root{
+    --morado:#6A253A;
+    --morado-oscuro:#4F1B2C;
+
+    --rosado:#E64B6B;
+    --rosado-claro:#F47D95;
+    --rosado-suave:#F5B5C2;
+
+    --crema:#EFE2DA;
+    --crema-claro:#FFF8F4;
+
+    --blanco:#FFFFFF;
+
+    --borde:rgba(239,226,218,.35);
+}
+
+
+/* =========================================================
+   GENERAL
+   ========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Chillax-Semibold',sans-serif;
+}
+
+html,
+body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    min-height:100vh;
+
+    background-image:url("imagenes/2.png");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+
+    color:var(--crema);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:25px;
+
+    overflow-x:hidden;
+}
+
+
+/* =========================================================
+   CONTENEDOR
+   ========================================================= */
+
+.game-container{
+    width:min(950px,100%);
+
+    background:rgba(106,37,58,.90);
+
+    border:2px solid rgba(239,226,218,.35);
+
+    border-radius:35px;
+
+    padding:30px;
+
+    box-shadow:
+        0 25px 70px rgba(79,27,44,.45),
+        0 0 40px rgba(230,75,107,.15);
+
+    backdrop-filter:blur(8px);
+
+    position:relative;
+}
+
+
+/* =========================================================
+   TITULO
+   ========================================================= */
+
+h1{
+    text-align:center;
+
+    color:var(--crema);
+
+    font-size:clamp(2rem,5vw,3.3rem);
+
+    margin-bottom:8px;
+
+    text-shadow:
+        0 5px 15px rgba(0,0,0,.25);
+}
+
+.subtitle{
+    text-align:center;
+
+    color:var(--rosado-suave);
+
+    font-size:1rem;
+
+    margin-bottom:25px;
+}
+
+
+/* =========================================================
+   CONTROLES Y SELECTS
+   ========================================================= */
+
+.controls{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:12px;
+
+    margin-bottom:25px;
+}
+
+.control-group{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    background:rgba(239,226,218,.10);
+
+    border:1px solid rgba(239,226,218,.25);
+
+    padding:9px 11px 9px 15px;
+
+    border-radius:18px;
+
+    transition:.2s ease;
+}
+
+.control-group:hover{
+    background:rgba(239,226,218,.15);
+
+    border-color:rgba(239,226,218,.40);
+}
+
+.control-group label{
+    color:var(--crema);
+
+    font-size:.9rem;
+
+    white-space:nowrap;
+}
+
+select{
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+
+    min-width:150px;
+
+    border:1px solid rgba(106,37,58,.2);
+
+    outline:none;
+
+    background-color:var(--crema);
+
+    color:var(--morado);
+
+    padding:9px 38px 9px 15px;
+
+    border-radius:13px;
+
+    font-family:'Chillax-Semibold',sans-serif;
+
+    font-size:.88rem;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    background-image:
+        linear-gradient(45deg,transparent 50%,var(--rosado) 50%),
+        linear-gradient(135deg,var(--rosado) 50%,transparent 50%);
+
+    background-position:
+        calc(100% - 18px) 50%,
+        calc(100% - 12px) 50%;
+
+    background-size:
+        6px 6px,
+        6px 6px;
+
+    background-repeat:no-repeat;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.12);
+
+    transition: all .2s ease;
+}
+
+select:hover{
+    background-color:var(--crema-claro);
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.18);
+}
+
+select:focus{
+    box-shadow:
+        0 0 0 3px rgba(230,75,107,.35);
+}
+
+select option{
+    background-color:var(--crema-claro);
+
+    color:var(--morado-oscuro);
+
+    font-family:'Chillax-Semibold',sans-serif;
+
+    font-size:.9rem;
+
+    padding:10px;
+}
+
+
+/* =========================================================
+   MARCADOR
+   ========================================================= */
+
+.scoreboard{
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:25px;
+}
+
+.score{
+    min-width:105px;
+
+    padding:12px 18px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    background:rgba(239,226,218,.11);
+
+    border:1px solid rgba(239,226,218,.25);
+
+    transition:.2s ease;
+}
+
+.score:hover{
+    transform:translateY(-2px);
+
+    background:rgba(239,226,218,.17);
+}
+
+.score-label{
+    font-size:.85rem;
+
+    color:var(--rosado-suave);
+
+    margin-bottom:3px;
+}
+
+.score-value{
+    font-size:1.5rem;
+
+    color:var(--crema);
+}
+
+.score.x-score .score-value{
+    color:var(--crema);
+}
+
+.score.o-score .score-value{
+    color:var(--rosado);
+}
+
+
+/* =========================================================
+   TABLERO
+   ========================================================= */
+
+.board{
+    width:min(430px,90vw);
+
+    aspect-ratio:1 / 1;
+
+    margin:0 auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+    grid-template-rows:repeat(3,1fr);
+
+    gap:10px;
+
+    padding:10px;
+
+    background:rgba(239,226,218,.12);
+
+    border:2px solid rgba(239,226,218,.25);
+
+    border-radius:30px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.22);
+}
+
+
+/* =========================================================
+   CASILLAS
+   ========================================================= */
+
+.cell{
+    border:none;
+
+    outline:none;
+
+    border-radius:22px;
+
+    background:rgba(239,226,218,.93);
+
+    color:var(--morado);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:clamp(3rem,9vw,5rem);
+
+    font-family:'Chillax-Semibold',sans-serif;
+
+    cursor:pointer;
+
+    transition:
+        transform .18s ease,
+        background .18s ease,
+        box-shadow .18s ease;
+}
+
+.cell:hover{
+    transform:scale(.96);
+
+    background:var(--crema-claro);
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.12);
+}
+
+.cell:active{
+    transform:scale(.91);
+}
+
+
+/* =========================================================
+   X
+   ========================================================= */
+
+.cell.x{
+    color:var(--crema);
+
+    background:var(--morado);
+
+    text-shadow:
+        0 4px 15px rgba(239,226,218,.20);
+}
+
+.cell.x:hover{
+    background:#792C46;
+}
+
+
+/* =========================================================
+   O
+   ========================================================= */
+
+.cell.o{
+    color:var(--rosado);
+
+    background:var(--crema-claro);
+
+    text-shadow:
+        0 4px 15px rgba(230,75,107,.25);
+}
+
+.cell.o:hover{
+    background:#FFFFFF;
+}
+
+
+/* =========================================================
+   TURNO
+   ========================================================= */
+
+.turn{
+    text-align:center;
+
+    margin-top:20px;
+
+    color:var(--crema);
+
+    font-size:1rem;
+}
+
+.turn strong{
+    color:var(--rosado);
+}
+
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+
+.buttons{
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:25px;
+}
+
+button.action{
+    border:none;
+
+    outline:none;
+
+    padding:12px 22px;
+
+    border-radius:18px;
+
+    font-family:'Chillax-Semibold',sans-serif;
+
+    font-size:.95rem;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+}
+
+button.action:hover{
+    transform:translateY(-3px);
+}
+
+button.action:active{
+    transform:translateY(0) scale(.96);
+}
+
+.new-round{
+    background:var(--rosado);
+
+    color:var(--blanco);
+
+    box-shadow:
+        0 8px 20px rgba(230,75,107,.30);
+}
+
+.new-round:hover{
+    background:var(--rosado-claro);
+}
+
+.reset-score{
+    background:var(--crema);
+
+    color:var(--morado);
+
+    box-shadow:
+        0 8px 20px rgba(239,226,218,.20);
+}
+
+.reset-score:hover{
+    background:var(--crema-claro);
+}
+
+
+/* =========================================================
+   SWEETALERT2
+   ========================================================= */
+
+.swal2-popup{
+    font-family:'Chillax-Semibold',sans-serif !important;
+
+    border-radius:32px !important;
+
+    padding:2rem !important;
+
+    border:3px solid var(--rosado) !important;
+
+    box-shadow:
+        0 25px 70px rgba(79,27,44,.40),
+        0 0 0 8px rgba(230,75,107,.10) !important;
+}
+
+.swal2-title{
+    font-family:'Chillax-Semibold',sans-serif !important;
+
+    color:var(--morado) !important;
+
+    font-size:1.8rem !important;
+
+    font-weight:normal !important;
+}
+
+.swal2-html-container{
+    font-family:'Chillax-Semibold',sans-serif !important;
+
+    color:var(--morado) !important;
+
+    font-size:1rem !important;
+}
+
+.swal2-styled{
+    font-family:'Chillax-Semibold',sans-serif !important;
+
+    border-radius:18px !important;
+
+    padding:12px 22px !important;
+
+    font-size:.95rem !important;
+
+    border:none !important;
+
+    box-shadow:none !important;
+
+    transition:.2s ease !important;
+}
+
+.swal2-styled:hover{
+    transform:translateY(-2px);
+}
+
+.swal2-confirm{
+    background:var(--rosado) !important;
+
+    color:white !important;
+
+    box-shadow:
+        0 8px 20px rgba(230,75,107,.30) !important;
+}
+
+.swal2-cancel{
+    background:var(--morado) !important;
+
+    color:var(--crema) !important;
+
+    box-shadow:
+        0 8px 20px rgba(106,37,58,.22) !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:600px){
+
+    body{
+        padding:12px;
+    }
+
+    .game-container{
+        padding:18px;
+
+        border-radius:27px;
+    }
+
+    h1{
+        font-size:2rem;
+    }
+
+    .subtitle{
+        font-size:.85rem;
+    }
+
+    .control-group{
+        width:100%;
+
+        justify-content:space-between;
+    }
+
+    select{
+        min-width:140px;
+    }
+
+    .score{
+        min-width:85px;
+
+        padding:10px 13px;
+    }
+
+    .board{
+        width:min(92vw,380px);
+
+        aspect-ratio:1 / 1;
+
+        grid-template-columns:repeat(3,1fr);
+        grid-template-rows:repeat(3,1fr);
+
+        gap:7px;
+
+        padding:7px;
+
+        border-radius:23px;
+    }
+
+    .cell{
+        border-radius:17px;
+    }
+
+    button.action{
+        width:100%;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="game-container">
+
+    <h1>🍪 Tres en Raya</h1>
+
+    <div class="subtitle">
+        Un pequeño juego de MyMs
+    </div>
+
+
+    <!-- CONTROLES -->
+
+    <div class="controls">
+
+        <div class="control-group">
+
+            <label for="mode">
+                Modo:
+            </label>
+
+            <select id="mode">
+
+                <option value="cpu">
+                    Contra CPU
+                </option>
+
+                <option value="pvp">
+                    Dos jugadores
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="control-group" id="difficultyGroup">
+
+            <label for="difficulty">
+                Dificultad:
+            </label>
+
+            <select id="difficulty">
+
+                <option value="easy">
+                    Fácil
+                </option>
+
+                <option value="medium">
+                    Media
+                </option>
+
+                <option value="hard">
+                    Difícil
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <!-- MARCADOR -->
+
+    <div class="scoreboard">
+
+        <div class="score x-score">
+
+            <div class="score-label">
+                X
+            </div>
+
+            <div class="score-value" id="scoreX">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="score o-score">
+
+            <div class="score-label">
+                O
+            </div>
+
+            <div class="score-value" id="scoreO">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="score">
+
+            <div class="score-label">
+                Empates
+            </div>
+
+            <div class="score-value" id="scoreT">
+                0
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TABLERO -->
+
+    <div class="board" id="board">
+
+        <button class="cell" data-index="0"></button>
+        <button class="cell" data-index="1"></button>
+        <button class="cell" data-index="2"></button>
+
+        <button class="cell" data-index="3"></button>
+        <button class="cell" data-index="4"></button>
+        <button class="cell" data-index="5"></button>
+
+        <button class="cell" data-index="6"></button>
+        <button class="cell" data-index="7"></button>
+        <button class="cell" data-index="8"></button>
+
+    </div>
+
+
+    <!-- TURNO -->
+
+    <div class="turn" id="turn">
+        Turno de <strong>X</strong>
+    </div>
+
+
+    <!-- BOTONES -->
+
+    <div class="buttons">
+
+        <button
+            class="action new-round"
+            id="newRound">
+            Nueva partida
+        </button>
+
+        <button
+            class="action reset-score"
+            id="resetScore">
+            Reiniciar marcador
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+/* =========================================================
+   ELEMENTOS
+   ========================================================= */
+
+const cells =
+    document.querySelectorAll(".cell");
+
+const modeSelect =
+    document.getElementById("mode");
+
+const difficultySelect =
+    document.getElementById("difficulty");
+
+const difficultyGroup =
+    document.getElementById("difficultyGroup");
+
+const turnElement =
+    document.getElementById("turn");
+
+const newRoundButton =
+    document.getElementById("newRound");
+
+const resetScoreButton =
+    document.getElementById("resetScore");
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+let board = [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+];
+
+let currentPlayer = "X";
+
+let gameOver = false;
+
+let score = {
+    X:0,
+    O:0,
+    T:0
+};
+
+
+/* =========================================================
+   CARGAR MARCADOR
+   ========================================================= */
+
+const savedScore =
+    localStorage.getItem("neonTTTScore");
+
+if(savedScore){
+
+    try{
+
+        const parsed =
+            JSON.parse(savedScore);
+
+        if(
+            typeof parsed.X === "number" &&
+            typeof parsed.O === "number" &&
+            typeof parsed.T === "number"
+        ){
+
+            score = parsed;
+
+        }
+
+    }catch(e){
+
+        score = {
+            X:0,
+            O:0,
+            T:0
+        };
+
+    }
+
+}
+
+
+/* =========================================================
+   GUARDAR
+   ========================================================= */
+
+function saveScores(){
+
+    localStorage.setItem(
+        "neonTTTScore",
+        JSON.stringify(score)
+    );
+
+}
+
+
+/* =========================================================
+   ACTUALIZAR MARCADOR
+   ========================================================= */
+
+function updateScores(){
+
+    document.getElementById("scoreX")
+        .textContent = score.X;
+
+    document.getElementById("scoreO")
+        .textContent = score.O;
+
+    document.getElementById("scoreT")
+        .textContent = score.T;
+
+}
+
+
+/* =========================================================
+   ACTUALIZAR TURNO
+   ========================================================= */
+
+function updateTurn(){
+
+    if(gameOver){
+        return;
+    }
+
+    turnElement.innerHTML =
+        `Turno de <strong>${currentPlayer}</strong>`;
+
+}
+
+
+/* =========================================================
+   COMBINACIONES
+   ========================================================= */
+
+const winningCombos = [
+
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+
+    [0,4,8],
+    [2,4,6]
+
+];
+
+
+/* =========================================================
+   COMPROBAR GANADOR
+   ========================================================= */
+
+function checkWinner(state){
+
+    for(const combo of winningCombos){
+
+        const [a,b,c] = combo;
+
+        if(
+            state[a] &&
+            state[a] === state[b] &&
+            state[a] === state[c]
+        ){
+
+            return {
+                winner:state[a],
+                combo
+            };
+
+        }
+
+    }
+
+    if(state.every(cell => cell !== "")){
+
+        return {
+            winner:"T",
+            combo:[]
+        };
+
+    }
+
+    return null;
+
+}
+
+
+/* =========================================================
+   RENDER
+   ========================================================= */
+
+function renderBoard(){
+
+    cells.forEach((cell,index)=>{
+
+        cell.textContent =
+            board[index];
+
+        cell.classList.remove(
+            "x",
+            "o"
+        );
+
+        if(board[index] === "X"){
+
+            cell.classList.add("x");
+
+        }
+
+        if(board[index] === "O"){
+
+            cell.classList.add("o");
+
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   FINALIZAR
+   ========================================================= */
+
+function finishGame(result){
+
+    gameOver = true;
+
+    if(result.winner === "X"){
+
+        score.X++;
+
+        Swal.fire({
+
+            title:"¡Ganó X!",
+
+            text:"Muy buena partida.",
+
+            icon:"success",
+
+            confirmButtonText:"Continuar",
+
+            confirmButtonColor:"#E64B6B",
+
+            background:"#EFE2DA",
+
+            color:"#6A253A",
+
+            customClass:{
+                popup:"myms-swal"
+            }
+
+        });
+
+    }
+
+    else if(result.winner === "O"){
+
+        score.O++;
+
+        Swal.fire({
+
+            title:"¡Ganó O!",
+
+            text:"La O se llevó la partida.",
+
+            icon:"success",
+
+            confirmButtonText:"Continuar",
+
+            confirmButtonColor:"#E64B6B",
+
+            background:"#EFE2DA",
+
+            color:"#6A253A",
+
+            customClass:{
+                popup:"myms-swal"
+            }
+
+        });
+
+    }
+
+    else{
+
+        score.T++;
+
+        Swal.fire({
+
+            title:"¡Empate!",
+
+            text:
+                "Nadie consiguió completar la línea.",
+
+            icon:"info",
+
+            confirmButtonText:"Continuar",
+
+            confirmButtonColor:"#E64B6B",
+
+            background:"#EFE2DA",
+
+            color:"#6A253A",
+
+            customClass:{
+                popup:"myms-swal"
+            }
+
+        });
+
+    }
+
+    saveScores();
+
+    updateScores();
+
+}
+
+
+/* =========================================================
+   JUGADA
+   ========================================================= */
+
+function makeMove(index){
+
+    if(gameOver){
+        return;
+    }
+
+    if(board[index] !== ""){
+        return;
+    }
+
+    board[index] = currentPlayer;
+
+    renderBoard();
+
+    const result =
+        checkWinner(board);
+
+    if(result){
+
+        finishGame(result);
+
+        return;
+
+    }
+
+    currentPlayer =
+        currentPlayer === "X"
+            ? "O"
+            : "X";
+
+    updateTurn();
+
+    if(
+        modeSelect.value === "cpu" &&
+        currentPlayer === "O"
+    ){
+
+        setTimeout(
+            cpuMove,
+            350
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CPU
+   ========================================================= */
+
+function cpuMove(){
+
+    if(gameOver){
+        return;
+    }
+
+    let move;
+
+    const difficulty =
+        difficultySelect.value;
+
+
+    if(difficulty === "easy"){
+
+        move = randomMove();
+
+    }
+
+    else if(difficulty === "medium"){
+
+        move = mediumMove();
+
+    }
+
+    else{
+
+        move = bestMove();
+
+    }
+
+
+    if(move !== null){
+
+        makeMove(move);
+
+    }
+
+}
+
+
+/* =========================================================
+   FÁCIL
+   ========================================================= */
+
+function randomMove(){
+
+    const available =
+        board
+        .map((value,index)=>
+            value === "" ? index : null
+        )
+        .filter(index =>
+            index !== null
+        );
+
+    if(available.length === 0){
+
+        return null;
+
+    }
+
+    return available[
+        Math.floor(
+            Math.random() *
+            available.length
+        )
+    ];
+
+}
+
+
+/* =========================================================
+   MEDIO
+   ========================================================= */
+
+function mediumMove(){
+
+    let move;
+
+    move =
+        findWinningMove("O");
+
+    if(move !== null){
+
+        return move;
+
+    }
+
+    move =
+        findWinningMove("X");
+
+    if(move !== null){
+
+        return move;
+
+    }
+
+    if(board[4] === ""){
+
+        return 4;
+
+    }
+
+    const corners =
+        [0,2,6,8]
+        .filter(index =>
+            board[index] === ""
+        );
+
+    if(corners.length){
+
+        return corners[
+            Math.floor(
+                Math.random() *
+                corners.length
+            )
+        ];
+
+    }
+
+    return randomMove();
+
+}
+
+
+/* =========================================================
+   BUSCAR GANADOR
+   ========================================================= */
+
+function findWinningMove(player){
+
+    for(let i=0;i<9;i++){
+
+        if(board[i] === ""){
+
+            board[i] = player;
+
+            const result =
+                checkWinner(board);
+
+            board[i] = "";
+
+            if(
+                result &&
+                result.winner === player
+            ){
+
+                return i;
+
+            }
+
+        }
+
+    }
+
+    return null;
+
+}
+
+
+/* =========================================================
+   DIFÍCIL
+   ========================================================= */
+
+function bestMove(){
+
+    let bestScore =
+        -Infinity;
+
+    let move = null;
+
+    for(let i=0;i<9;i++){
+
+        if(board[i] === ""){
+
+            board[i] = "O";
+
+            const scoreValue =
+                minimax(
+                    board,
+                    false
+                );
+
+            board[i] = "";
+
+            if(scoreValue > bestScore){
+
+                bestScore =
+                    scoreValue;
+
+                move = i;
+
+            }
+
+        }
+
+    }
+
+    return move;
+
+}
+
+
+/* =========================================================
+   MINIMAX
+   ========================================================= */
+
+function minimax(
+    state,
+    isMaximizing
+){
+
+    const result =
+        checkWinner(state);
+
+    if(result){
+
+        if(result.winner === "O"){
+            return 10;
+        }
+
+        if(result.winner === "X"){
+            return -10;
+        }
+
+        return 0;
+
+    }
+
+
+    if(isMaximizing){
+
+        let bestScore =
+            -Infinity;
+
+        for(let i=0;i<9;i++){
+
+            if(state[i] === ""){
+
+                state[i] = "O";
+
+                const scoreValue =
+                    minimax(
+                        state,
+                        false
+                    );
+
+                state[i] = "";
+
+                bestScore =
+                    Math.max(
+                        bestScore,
+                        scoreValue
+                    );
+
+            }
+
+        }
+
+        return bestScore;
+
+    }
+
+
+    else{
+
+        let bestScore =
+            Infinity;
+
+        for(let i=0;i<9;i++){
+
+            if(state[i] === ""){
+
+                state[i] = "X";
+
+                const scoreValue =
+                    minimax(
+                        state,
+                        true
+                    );
+
+                state[i] = "";
+
+                bestScore =
+                    Math.min(
+                        bestScore,
+                        scoreValue
+                    );
+
+            }
+
+        }
+
+        return bestScore;
+
+    }
+
+}
+
+
+/* =========================================================
+   NUEVA PARTIDA
+   ========================================================= */
+
+function newRound(){
+
+    board = [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+    ];
+
+    currentPlayer = "X";
+
+    gameOver = false;
+
+    renderBoard();
+
+    updateTurn();
+
+}
+
+
+/* =========================================================
+   CAMBIO DE MODO
+   ========================================================= */
+
+modeSelect.addEventListener(
+    "change",
+    ()=>{
+
+        if(modeSelect.value === "pvp"){
+
+            difficultyGroup.style.display =
+                "none";
+
+        }
+
+        else{
+
+            difficultyGroup.style.display =
+                "flex";
+
+        }
+
+        newRound();
+
+    }
+);
+
+
+/* =========================================================
+   CLIC EN CASILLAS
+   ========================================================= */
+
+cells.forEach(cell=>{
+
+    cell.addEventListener(
+        "click",
+        ()=>{
+
+            const index =
+                Number(
+                    cell.dataset.index
+                );
+
+            if(
+                modeSelect.value === "cpu" &&
+                currentPlayer === "O"
+            ){
+
+                return;
+
+            }
+
+            makeMove(index);
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   NUEVA PARTIDA
+   ========================================================= */
+
+newRoundButton.addEventListener(
+    "click",
+    ()=>{
+        newRound();
+    }
+);
+
+
+/* =========================================================
+   REINICIAR MARCADOR
+   ========================================================= */
+
+resetScoreButton.addEventListener(
+    "click",
+    ()=>{
+
+        Swal.fire({
+
+            title:"¿Reiniciar marcador?",
+
+            text:
+                "Se eliminarán todas las puntuaciones guardadas.",
+
+            icon:"warning",
+
+            showCancelButton:true,
+
+            confirmButtonText:
+                "Sí, reiniciar",
+
+            cancelButtonText:
+                "Cancelar",
+
+            confirmButtonColor:
+                "#E64B6B",
+
+            cancelButtonColor:
+                "#6A253A",
+
+            background:
+                "#EFE2DA",
+
+            color:
+                "#6A253A",
+
+            reverseButtons:true,
+
+            customClass:{
+                popup:"myms-swal"
+            }
+
+        }).then((result)=>{
+
+            if(result.isConfirmed){
+
+                score = {
+                    X:0,
+                    O:0,
+                    T:0
+                };
+
+                updateScores();
+
+                saveScores();
+
+                newRound();
+
+                Swal.fire({
+
+                    title:"¡Listo!",
+
+                    text:
+                        "El marcador fue reiniciado.",
+
+                    icon:"success",
+
+                    confirmButtonText:
+                        "Continuar",
+
+                    confirmButtonColor:
+                        "#E64B6B",
+
+                    background:
+                        "#EFE2DA",
+
+                    color:
+                        "#6A253A",
+
+                    customClass:{
+                        popup:"myms-swal"
+                    }
+
+                });
+
+            }
+
+        });
+
+    }
+);
+
+
+/* =========================================================
+   INICIO
+   ========================================================= */
+
+updateScores();
+
+if(modeSelect.value === "pvp"){
+
+    difficultyGroup.style.display =
+        "none";
+
+}
+
+renderBoard();
+
+updateTurn();
+
+</script>
+
+</body>
+</html>
