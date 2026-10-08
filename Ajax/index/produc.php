@@ -1,39 +1,22 @@
 <?php
-
 $usuario = "root";
 $contraseña = "";
 $direccion = "localhost";
 $baseDeDatos = "MYMS";
-
-$conexion = new mysqli(
-    $direccion,
-    $usuario,
-    $contraseña,
-    $baseDeDatos
-);
-
+$conexion = new mysqli($direccion, $usuario,$contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Comentario</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet"
-          href="../../tipografia/Fonts/WEB/css/chillax.css">
-
+    <link rel="stylesheet" href="../../tipografia/Fonts/WEB/css/chillax.css">
     <style>
-
         * {
     margin: 0;
     padding: 0;
@@ -41,303 +24,170 @@ if ($conexion->connect_error) {
     font-family:'Chillax-Semibold';
 }
 
-
         body {
-
             min-height: 100vh;
-
             background-image:
                 url("../../imagenes/2.png");
-
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-
             display: flex;
             justify-content: center;
             align-items: center;
-
             padding: 40px 20px;
-
         }
-
 
         .contenedor {
-
             width: 100%;
             max-width: 1100px;
-
             background-color: #6A253A;
-
             border: 2px solid #EFE2DA;
-
             border-radius: 30px;
-
             padding: 40px;
-
             color: #EFE2DA;
-
             box-shadow:
                 0 15px 40px rgba(0, 0, 0, 0.30);
-
         }
-
 
         h2 {
-
             text-align: left;
-
             font-size: 34px;
-
             margin-bottom: 30px;
-
             color: #EFE2DA;
-
         }
-
 
         .contenido {
-
             display: grid;
-
             grid-template-columns:
                 1fr 1fr;
-
             gap: 40px;
-
             align-items: stretch;
-
         }
 
-
         .formulario {
-
             width: 100%;
-
             padding-right: 10px;
 
         }
 
-
         .formulario label {
-
             display: block;
-
             margin-bottom: 8px;
-
             font-size: 16px;
-
-            color: #EFE2DA;
-
+            color: #EFE2DA
         }
-
-
 
         .formulario input[type="text"],
         .formulario textarea {
-
             width: 100%;
-
             background-color: #EFE2DA;
-
             border: 2px solid transparent;
-
             border-radius: 12px;
-
             padding: 12px 15px;
-
             color: #6A253A;
-
             font-size: 15px;
-
             outline: none;
-
             transition: 0.3s;
-
         }
-
 
         .formulario input[type="text"] {
-
             height: 45px;
-
         }
-
 
         .formulario textarea {
-
             min-height: 140px;
-
             resize: vertical;
-
         }
-
 
         .formulario input[type="text"]:focus,
         .formulario textarea:focus {
-
             border-color: #E64B6B;
-
             box-shadow:
                 0 0 0 3px rgba(230, 75, 107, 0.20);
-
         }
-
-
 
         .rating-group {
-
             display: flex;
-
             flex-direction: row-reverse;
-
             justify-content: flex-end;
-
             width: fit-content;
-
             margin-bottom: 25px;
-
         }
-
 
         .rating-group input {
-
             display: none;
-
         }
 
-
         .rating-group label {
-
             font-family: Arial, sans-serif;
-
             display: block;
-
             font-size: 38px;
-
             color: rgba(239, 226, 218, 0.35);
-
             cursor: pointer;
-
             margin: 0;
-
             padding: 0 3px;
-
             transition: 0.2s;
-
         }
 
         .rating-group label:hover,
         .rating-group label:hover ~ label {
-
             color:  #E64B6B;
-
             transform: scale(1.08);
-
         }
 
         .rating-group input:checked ~ label {
-
             color: #ffca08;
-
         }
 
         .botones {
-
             display: flex;
-
             gap: 12px;
-
             margin-top: 20px;
-
         }
-
 
         .botones input {
-
             border: none;
-
             border-radius: 10px;
-
             padding: 12px 25px;
-
             font-size: 15px;
-
             cursor: pointer;
-
             transition: 0.3s;
-
         }
-
-
-        /* Enviar */
 
         .enviar {
-
             background-color: #E64B6B;
-
             color: #EFE2DA;
-
         }
-
 
         .enviar:hover {
-
             background-color: #EFE2DA;
-
             color: #6A253A;
-
             transform: translateY(-2px);
-
         }
-
-
-        /* Borrar */
 
         .borrar {
-
             background-color: rgba(239, 226, 218, 0.15);
-
             color: #EFE2DA;
-
             border: 1px solid #EFE2DA !important;
-
         }
-
 
         .borrar:hover {
-
             background-color: #EFE2DA;
-
             color: #6A253A;
-
             transform: translateY(-2px);
-
         }
-
 
         /* =========================
            CAJA DERECHA
         ========================= */
-
        .espacio-derecho {
-
     height: 500px;
-
     border: 2px solid rgba(239, 226, 218, 0.35);
-
     border-radius: 20px;
-
     padding: 20px;
-
     overflow-y: auto;
-
     background-color: rgba(0, 0, 0, 0.10);
-
 }
-
-
-/* Barra de desplazamiento */
 
 .espacio-derecho::-webkit-scrollbar {
     width: 8px;
@@ -357,23 +207,13 @@ if ($conexion->connect_error) {
     background: #EFE2DA;
 }
 .espacio-derecho {
-
     height: 500px;
-
     border: 2px solid rgba(239, 226, 218, 0.35);
-
     border-radius: 20px;
-
     padding: 20px;
-
     overflow-y: auto;
-
     background-color: rgba(0, 0, 0, 0.10);
-
 }
-
-
-/* Barra de desplazamiento */
 
 .espacio-derecho::-webkit-scrollbar {
     width: 8px;
@@ -392,111 +232,64 @@ if ($conexion->connect_error) {
 .espacio-derecho::-webkit-scrollbar-thumb:hover {
     background: #EFE2DA;
 }
-
-
         /* =========================
            BOTÓN VOLVER
         ========================= */
 
         .volver {
-
             margin-top: 35px;
-
             padding: 11px 25px;
-
             border: none;
-
             color: #EFE2DA;
-
             border-radius: 10px;
-
             background: #E64B6B;
-
             cursor: pointer;
-
             font-size: 16px;
-
             transition: 0.3s;
-
         }
-
 
         .volver:hover {
-
             background-color: #EFE2DA;
-
             color: #6A253A;
-
             transform: translateX(-3px);
-
         }
-
 
         /* =========================
            RESPONSIVE
         ========================= */
-
         @media (max-width: 750px) {
-
             body {
-
                 padding: 20px 12px;
 
             }
 
-
             .contenedor {
-
                 padding: 25px;
-
                 border-radius: 22px;
-
             }
-
 
             h2 {
-
                 font-size: 28px;
-
             }
-
 
             .contenido {
-
                 grid-template-columns: 1fr;
-
                 gap: 25px;
-
             }
-
-
             .espacio-derecho {
-
                 min-height: 250px;
-
             }
-
         }
         .vacio {
-
     width: 100%;
-
     min-height: 150px;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     text-align: center;
-
     color: #EFE2DA;
-
     font-size: 16px;
-
     opacity: 0.7;
-
 }
 .comentario {
     width: 100%;

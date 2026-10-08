@@ -3,7 +3,6 @@ session_start();
 header("Content-Type: application/json");
 if(isset($_SESSION["pedidos"])){
 
-
 echo json_encode([
 
 "pedidoActivo"=>true,
@@ -11,16 +10,13 @@ echo json_encode([
 
 ]);
 
-
 }else{
-
 
 echo json_encode([
 
 "pedidoActivo"=>false
 
 ]);
-
 
 }
 

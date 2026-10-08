@@ -13,7 +13,6 @@ footer{
     border-top:5px solid #E64B6B;
 }
 </style>
-
 <footer>
     <p>&copy; 2026 M&M's. Todos los derechos reservados.</p>
 </footer>

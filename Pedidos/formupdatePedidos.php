@@ -3,25 +3,20 @@ $usuario = "root";
 $contraseña = "";     
 $direccion = "localhost";
 $baseDeDatos = "MYMS";    
-
 $conexion=new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
+
 if ($conexion->connect_error) {
-    
     echo "No se ha podido conectar a la base de datos";
 }
 session_start();
-
 $ID = trim($_GET['ID']);
-
 $stmt = $conexion->prepare(
     "SELECT * FROM Pedidos WHERE ID=?"
 );
-
 $stmt->bind_param("s", $ID);
-
 $stmt->execute();
-
 $resultado = $stmt->get_result();
+
 if ($resultado->num_rows > 0) {
     while($fila=$resultado->fetch_assoc()) {
         $ID=$fila['ID'];
@@ -32,7 +27,6 @@ if ($resultado->num_rows > 0) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +41,7 @@ if ($resultado->num_rows > 0) {
     *{
         font-family: 'Chillax-Semibold';
     }
-    
+
     body, table, button, h2, a, input, select {
             font-family: 'Chillax-Semibold', sans-serif;
             box-sizing: border-box;
@@ -65,7 +59,6 @@ if ($resultado->num_rows > 0) {
             margin: 0;
         }
 
-        /* SE CAMBIÓ 'div' POR LA CLASE '.contenedor-registro' */
         .contenedor-registro {
             width: 420px;
             padding: 35px;
@@ -101,7 +94,6 @@ if ($resultado->num_rows > 0) {
             outline: none;
         }
 
-        /* SELECT */
         select {
             width: 100%;
             padding: 10px;
@@ -124,7 +116,6 @@ if ($resultado->num_rows > 0) {
             color: #6A253A;
         }
 
-        /* ARCHIVO */
         input[type="file"] {
             background-color: white;
             color: #6A253A;
@@ -202,47 +193,34 @@ if ($resultado->num_rows > 0) {
         position: fixed;
         top: 25px;
         left: 25px;
-
         width: 52px;
         height: 52px;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         background: #E64B6B;
         border: none;
         border-radius: 50%;
-
         cursor: pointer;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
-
         transition: all 0.2s ease;
         z-index: 9999;
-
         text-decoration: none;
     }
 
-    /* Flecha */
     .btn-volver-esquina::before {
         content: "";
-
         width: 12px;
         height: 12px;
-
         border-left: 3px solid #EFE2DA;
         border-bottom: 3px solid #EFE2DA;
-
         transform: rotate(45deg);
-
         margin-left: 6px;
     }
 
     .btn-volver-esquina:hover {
         background: #6A253A;
-
         transform: scale(1.1);
-
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
     }
 
@@ -256,32 +234,18 @@ if ($resultado->num_rows > 0) {
         <h1>Editar Pedido</h1>
     <form action="updatePedidos.php" method="post" onsubmit="return validar()">
         <input type="hidden" name="ID" value="<?=htmlspecialchars($ID, ENT_QUOTES, 'UTF-8')?>">
-
-<label for="Nombre">Nombre:</label>
-<input type="text" id="Nombre" name="Nombre"
-       value="<?=htmlspecialchars($Nombre, ENT_QUOTES, 'UTF-8')?>"
-       minlength="3" maxlength="50"
-       pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+">
-<br><br>
-
-<label for="Fecha">Fecha:</label>
-<input type="date" id="Fecha" name="Fecha"
-       value="<?=htmlspecialchars($Fecha, ENT_QUOTES, 'UTF-8')?>">
-<br><br>
-
-<label for="Estado">Estado:</label>
-<input type="text" id="Estado" name="Estado"
-       value="<?=htmlspecialchars($Estado, ENT_QUOTES, 'UTF-8')?>"
-       minlength="3" maxlength="30"
-       pattern="[a-zA-ZÑñÁáÉéÍíÓóÜü\s]+">
-<br><br>
-
-<label for="NombreVendedor">Nombre del Vendedor:</label>
-<input type="text" id="NombreVendedor" name="NombreVendedor"
-       value="<?=htmlspecialchars($NombreVendedor, ENT_QUOTES, 'UTF-8')?>"
-       readonly minlength="3" maxlength="50"
-       pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+">
-<br><br>
+        <label for="Nombre">Nombre:</label>
+        <input type="text" id="Nombre" name="Nombre" value="<?=htmlspecialchars($Nombre, ENT_QUOTES, 'UTF-8')?>" minlength="3" maxlength="50" pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+">
+        <br><br>
+        <label for="Fecha">Fecha:</label>
+        <input type="date" id="Fecha" name="Fecha" value="<?=htmlspecialchars($Fecha, ENT_QUOTES, 'UTF-8')?>">
+        <br><br>
+        <label for="Estado">Estado:</label>
+        <input type="text" id="Estado" name="Estado" value="<?=htmlspecialchars($Estado, ENT_QUOTES, 'UTF-8')?>" minlength="3" maxlength="30" pattern="[a-zA-ZÑñÁáÉéÍíÓóÜü\s]+">
+        <br><br>
+        <label for="NombreVendedor">Nombre del Vendedor:</label>
+        <input type="text" id="NombreVendedor" name="NombreVendedor" value="<?=htmlspecialchars($NombreVendedor, ENT_QUOTES, 'UTF-8')?>" readonly minlength="3" maxlength="50" pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+">
+        <br><br>
         <input type="submit" value="Editar">
     </form> 
     <a href="leerPedidos.php" class="btn-volver-esquina" aria-label="Volver" title="Volver"> </a>
@@ -290,10 +254,8 @@ if ($resultado->num_rows > 0) {
         var nombre = document.getElementById("Nombre");
         var estado = document.getElementById("Estado");
         var vendedor = document.getElementById("NombreVendedor");
-
         var expRegNombre = /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/;
         var expRegEstado = /^[A-Z]+$/;
-
         function validar() {
 
             if (nombre.value == "") {
@@ -305,7 +267,7 @@ if ($resultado->num_rows > 0) {
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
+        confirmButtonColor: '#6A253A',
         text: '⚠ Ingrese el nombre ⚠',
     didOpen: () => {
         const audio = new Audio('../imagenes/gatocaja.mp3');
@@ -333,7 +295,7 @@ if ($resultado->num_rows > 0) {
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
+        confirmButtonColor: '#6A253A',
         text: '⚠ El nombre debe contener solo letras ⚠',
     didOpen: () => {
         const audio = new Audio('../imagenes/gatocaja.mp3');
@@ -361,7 +323,7 @@ if ($resultado->num_rows > 0) {
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
+        confirmButtonColor: '#6A253A',
         text: '⚠ El nombre debe tener al menos 3 letras ⚠',
     didOpen: () => {
         const audio = new Audio('../imagenes/gatocaja.mp3');
@@ -389,7 +351,7 @@ if ($resultado->num_rows > 0) {
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
+        confirmButtonColor: '#6A253A',
         text: '⚠ Ingrese el estado ⚠',
     didOpen: () => {
         const audio = new Audio('../imagenes/gatocaja.mp3');
@@ -408,8 +370,6 @@ if ($resultado->num_rows > 0) {
                 return false;
             }
 
-
-
             if (vendedor.value == "") {
                 Swal.fire({
         title: 'Alerta',
@@ -419,7 +379,7 @@ if ($resultado->num_rows > 0) {
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
+        confirmButtonColor: '#6A253A',
         text: '⚠ Ingrese el nombre del vendedor ⚠',
     didOpen: () => {
         const audio = new Audio('../imagenes/gatocaja.mp3');
@@ -447,7 +407,7 @@ if ($resultado->num_rows > 0) {
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
+        confirmButtonColor: '#6A253A',
         text: '⚠ El nombre del vendedor debe contener solo letras ⚠',
     didOpen: () => {
         const audio = new Audio('../imagenes/gatocaja.mp3');
@@ -465,7 +425,6 @@ if ($resultado->num_rows > 0) {
                 vendedor.focus();
                 return false;
             }
-
             return true;
         }
     </script>

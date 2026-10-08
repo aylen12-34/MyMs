@@ -3,7 +3,6 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $bdname = "MYMS";
-
 $conexion = new mysqli($servername, $username,$password,$bdname);
 
 if($conexion -> connect_error){
@@ -17,15 +16,12 @@ $sqlca = "DELETE FROM carrito WHERE Pedidos_ID = '$ID'";
 $conexion->query($sqlca);
 $sqlPedidos = "DELETE FROM pedidos WHERE ID = '$ID'";
 
-
-if ($conexion->query($sqlPedidos) === TRUE) {
-        
+if ($conexion->query($sqlPedidos) === TRUE) {     
     $mensaje = "El pedido y su venta asociada han sido rechazados";
 } else {
     $mensaje = "Error al eliminar el pedido: " . $conexion->error;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +29,7 @@ if ($conexion->query($sqlPedidos) === TRUE) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eliminar Pedido</title>
     <link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
-<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
     <style>
     *{
@@ -80,14 +76,12 @@ if ($conexion->query($sqlPedidos) === TRUE) {
         font-size: 16px;
         margin:3px;
         }
-
         .volver:hover{
             background-color: #EFE2DA;
             color: #E64B6B;
         }
         a{
             text-decoration: none;
-            
         }
     </style>
 </head>
@@ -101,8 +95,7 @@ if ($conexion->query($sqlPedidos) === TRUE) {
   ?>
 </p><br>
 <a href="leerPedidos.php"><button class="volver">Tabla Pedidos</button></a>
-<a href="formRegistroPedidos.php"><button class="volver">Hacer otro pedido</button></a>
-        
+<a href="formRegistroPedidos.php"><button class="volver">Hacer otro pedido</button></a>  
     </div>
     </div>
 </body>

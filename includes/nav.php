@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nav</title>
-
     <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
-
     <style>
 
         *{
@@ -103,7 +101,6 @@
             transform:rotate(-360deg);
         }
 
-
         /* ========================= */
         /* BUSCAR PEDIDO */
         /* ========================= */
@@ -131,8 +128,7 @@
             align-items:center;
         }
 
-        .pedido-form input,
-        .buscar-pedido input{
+        .pedido-form input, .buscar-pedido input{
             width:130px;
             padding:10px;
             border:2px solid #E64B6B;
@@ -164,132 +160,63 @@
             background:#EFE2DA;
             color:#6A253A;
         }
-
     </style>
-
 </head>
-
 <body>
     <div id="botonMenu">
         <img src="imagenes/ISOTIPO BRUMA PASTEL.png" alt="Menu">
     </div>
     <div id="overlay"></div>
     <nav class="indice" id="menu">
-
         <ul>
-
-            <li>
-                <a href="portada publica.php">Inicio</a>
-            </li>
-
-            <li>
-                <a href="perfil.php" class="volver">Perfil</a>
-            </li>
-
-            <li>
-                <a href="login.php">Iniciar sesión</a>
-            </li>
-
-            <li>
-                <a href="Ajax/index/index1.php">Menú</a>
-            </li>
-
-            <li>
-                <a href="nosotros.php">Nosotros</a>
-            </li>
-
-            <li>
-                <a href="formulario ambiental MYMS.pdf" target="_blank">
-                    Ficha ambiental
-                </a>
-            </li>
-
-            <li>
-                <a href="Ajax/index/produc.php">
-                    Deja tu comentario
-                </a>
-            </li>
-            <li>
-                <a href="juego.php">
-                    Juego
-                </a>
-            </li>
+            <li><a href="portada publica.php">Inicio</a></li>
+            <li><a href="perfil.php" class="volver">Perfil</a></li>
+            <li><a href="login.php">Iniciar sesión</a></li>
+            <li><a href="Ajax/index/index1.php">Menú</a></li>
+            <li><a href="nosotros.php">Nosotros</a></li>
+            <li><a href="formulario ambiental MYMS.pdf" target="_blank">Ficha ambiental</a></li>
+            <li><a href="Ajax/index/produc.php">Deja tu comentario</a></li>
+            <li><a href="juego.php">Juego</a></li>
             <li class="buscar-pedido">
-
                 <span>
                     ¿Tienes un pedido?
                 </span>
-
                 <form action="Ajax/index/buscarPedido.php" method="GET">
-
-                    <input
-                        type="number"
-                        name="ID"
-                        placeholder="ID del recibo"
-                        min="1"
-                        required
-                    >
-
-                    <button type="submit">
-                        Buscar
-                    </button>
-
+                    <input type="number" name="ID" placeholder="ID del recibo" min="1" required>
+                    <button type="submit"> Buscar</button>
                 </form>
-
             </li>
-
         </ul>
-
     </nav>
-
-
     <script>
-
         const boton = document.getElementById("botonMenu");
         const menu = document.getElementById("menu");
         const overlay = document.getElementById("overlay");
-
         let abierto = false;
-
         boton.addEventListener("click", () => {
 
             if(!abierto){
-
                 menu.classList.add("activo");
                 overlay.classList.add("activo");
-
                 boton.classList.remove("cerrar");
                 boton.classList.add("abrir");
-
                 abierto = true;
-
             }else{
-
                 menu.classList.remove("activo");
                 overlay.classList.remove("activo");
-
                 boton.classList.remove("abrir");
                 boton.classList.add("cerrar");
-
                 abierto = false;
             }
-
         });
-
 
         overlay.addEventListener("click", () => {
-
             menu.classList.remove("activo");
             overlay.classList.remove("activo");
-
             boton.classList.remove("abrir");
             boton.classList.add("cerrar");
-
             abierto = false;
-
         });
-
     </script>
-
 </body>
 </html>

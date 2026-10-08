@@ -3,15 +3,14 @@ $usuario = "root";
 $contraseña = "";     
 $direccion = "localhost";
 $baseDeDatos = "MYMS";    
-
 $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
+
 if ($conexion->connect_error) {
     echo "No se ha podido conectar a la base de datos";
 }
 $sql = "SELECT * FROM usuarios LIMIT 6";
 $resultado = $conexion->query($sql);
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,7 +18,6 @@ $resultado = $conexion->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acordeón de Usuarios (Máx 6)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         * {
             box-sizing: border-box;
@@ -46,7 +44,6 @@ $resultado = $conexion->query($sql);
             margin-right: 10px;
         }
 
-        /* Estilos del acordeón */
         .contenedor-acordeon {
             display: flex;
             width: 700px;
@@ -66,7 +63,6 @@ $resultado = $conexion->query($sql);
             transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Overlay para oscurecer la imagen y mejorar lectura del texto */
         .tarjeta-acordeon::before {
             content: '';
             position: absolute;
@@ -129,7 +125,6 @@ $resultado = $conexion->query($sql);
             transform: translateY(0);
         }
 
-        /* Botones integrados */
         .acciones-db {
             display: flex;
             gap: 8px;
@@ -161,15 +156,12 @@ $resultado = $conexion->query($sql);
     </style>
 </head>
 <body>
-    <a href="Usuario/formRegistroUsuario.php" class="btn-agregar-global">
-        <i class="fa-solid fa-user-plus"></i> Agregar Usuario
-    </a>
-    <a href="Usuario/readleerUsuarios.php" class="btn-agregar-global">
-        <i class="fa-solid fa-users"></i> Ver Personal Total
-    </a>
+    <a href="Usuario/formRegistroUsuario.php" class="btn-agregar-global"><i class="fa-solid fa-user-plus"></i> Agregar Usuario </a>
+    <a href="Usuario/readleerUsuarios.php" class="btn-agregar-global"><i class="fa-solid fa-users"></i> Ver Personal Total </a>
     <div class="contenedor-acordeon">
         <?php 
         $primerItem = true;
+
         if ($resultado && $resultado->num_rows > 0):
             while($usuario = $resultado->fetch_assoc()): 
                 $claseActiva = $primerItem ? 'active' : '';
@@ -178,11 +170,9 @@ $resultado = $conexion->query($sql);
             <div class="tarjeta-acordeon <?php echo $claseActiva; ?>" 
                  onclick="seleccionar(this)" 
                  style="background-image: url('<?php echo htmlspecialchars($usuario['imagen']); ?>');">
-                
                 <div class="icono">
                     <i class="fa-solid fa-user"></i>
                 </div>
-                
                 <div class="contenido">
                     <h3><?php echo htmlspecialchars($usuario['Nombre']); ?></h3>
                     <p><i class="fa-solid fa-id-card"></i> <strong>CI:</strong> <?php echo htmlspecialchars($usuario['CI']); ?></p>
@@ -210,7 +200,6 @@ $resultado = $conexion->query($sql);
         endif; 
         ?>
     </div>
-
     <script>
         function seleccionar(elemento) {
             document.querySelectorAll('.tarjeta-acordeon').forEach(tarjeta => {
@@ -219,6 +208,5 @@ $resultado = $conexion->query($sql);
             elemento.classList.add('active');
         }
     </script>
-
 </body>
 </html>

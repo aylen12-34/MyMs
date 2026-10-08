@@ -315,46 +315,33 @@ if ($resultadov && $resultadov->num_rows > 0) {
         position: fixed;
         top: 25px;
         left: 25px;
-
         width: 52px;
         height: 52px;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         background: #6A253A;
         border: none;
         border-radius: 50%;
-
         cursor: pointer;
-
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
-
         transition: transform 0.2s ease, box-shadow 0.2s ease;
-
         z-index: 9999;
         text-decoration: none;
     }
         .btn-volver-esquina::before {
     content: "";
-
     position: absolute;
-
     width: 9px;
     height: 9px;
-
     border-left: 3px solid #EFE2DA;
     border-bottom: 3px solid #EFE2DA;
-
     transform: rotate(45deg);
-
     left: 23px;
     top: 20px;
 }
         .btn-volver-esquina:hover {
             transform: scale(1.1);
-
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
         }
         .btn-volver-esquina:active {
@@ -364,7 +351,6 @@ if ($resultadov && $resultadov->num_rows > 0) {
 </head>
 
 <body>
-
     <h1>MI Compra</h1>
     <h2>Recibo de Pedido</h2>
     <p>Número: <?php echo htmlspecialchars($pedido["ID"]); ?></p>
@@ -377,14 +363,7 @@ if ($resultadov && $resultadov->num_rows > 0) {
     <h3>Productos</h3>
     <?php
     $stmtProductos = $conn->prepare(
-    "SELECT 
-        p.Nombre,
-        c.Cantidad,
-        c.CostoTotal
-     FROM carrito c
-     INNER JOIN productos p 
-     ON c.Productos_Codigo = p.Codigo
-     WHERE c.Pedidos_ID=?"
+    "SELECT p.Nombre, c.Cantidad, c.CostoTotal FROM carrito c INNER JOIN productos p  ON c.Productos_Codigo = p.Codigo WHERE c.Pedidos_ID=?"
 );
 $stmtProductos->bind_param(
     "s",
@@ -447,8 +426,6 @@ $total = 0;
         </h3>
     </div>
     <button onclick="window.print()">🖨 Imprimir</button>
-
  <a href="index1.php"><button href="" class="btn-volver-esquina" aria-label="Volver"> </button></a>
-
 </body>
 </html>

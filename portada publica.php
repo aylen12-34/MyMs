@@ -3,22 +3,20 @@ $host = "localhost";
 $user = "root";
 $pass = "";
 $db   = "MYMS";
-
 $conn = new mysqli($host, $user, $pass, $db);
 
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Endpoint AJAX para el Modal
 if (isset($_GET['codigo'])) {
     $codigo = intval($_GET['codigo']);
     $stmt = $conn->prepare("SELECT Precio, Detallado FROM Productos WHERE Codigo = ?");
     $stmt->bind_param("i", $codigo);
     $stmt->execute();
     $resultado = $stmt->get_result();
-
     header('Content-Type: application/json; charset=utf-8');
+
     if ($resultado && $producto = $resultado->fetch_assoc()) {
         echo json_encode([
             "Precio" => $producto["Precio"],
@@ -33,21 +31,8 @@ if (isset($_GET['codigo'])) {
     exit;
 }
 
-// Consulta para obtener los 7 productos más vendidos
-$sql_mas_vendidos = "
-    SELECT 
-        p.Codigo, 
-        p.Nombre, 
-        p.Descripcion, 
-        p.Imagen, 
-        SUM(c.cantidad) AS TotalVendidos
-    FROM Productos p
-    INNER JOIN Carrito c ON p.Codigo = c.productos_codigo
-    GROUP BY p.Codigo, p.Nombre, p.Descripcion, p.Imagen
-    ORDER BY TotalVendidos DESC
-    LIMIT 7
-";
-
+$sql_mas_vendidos = "SELECT p.Codigo, p.Nombre, p.Descripcion, p.Imagen, SUM(c.cantidad) AS TotalVendidos FROM Productos p INNER JOIN Carrito c ON p.Codigo = c.productos_codigo
+    GROUP BY p.Codigo, p.Nombre, p.Descripcion, p.Imagen ORDER BY TotalVendidos DESC LIMIT 7";
 $resultado_productos = $conn->query($sql_mas_vendidos);
 ?>
 <!DOCTYPE html>
@@ -60,7 +45,6 @@ $resultado_productos = $conn->query($sql_mas_vendidos);
     <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
     <style>
     /* ==================================================
        COLORES
@@ -448,8 +432,7 @@ $resultado_productos = $conn->query($sql_mas_vendidos);
             font-size:36px;
         }
 
-        .producto,
-        .inverso{
+        .producto, .inverso{
             flex-direction:column;
             gap:30px;
             text-align:center;
@@ -596,19 +579,17 @@ $resultado_productos = $conn->query($sql_mas_vendidos);
             font-size:24px;
         }
     }
-  
     </style>
 </head>
 <body>
 <?php include("includes/nav.php"); ?>
 <?php include("includes/header.php"); ?>
-
 <main>
     <section id="hero">
         <h1>Especiales De La Semana</h1>
     </section>
+    <?php
 
-    <?php 
     if ($resultado_productos && $resultado_productos->num_rows > 0): 
         $i = 0;
         while ($row = $resultado_productos->fetch_assoc()): 
@@ -621,9 +602,7 @@ $resultado_productos = $conn->query($sql_mas_vendidos);
                     <span class="etiqueta">Top Vendidos</span>
                     <h2><?= htmlspecialchars($row['Nombre']); ?></h2>
                     <p><?= htmlspecialchars($row['Descripcion']); ?></p>
-                    <a href="#" class="btn btn-ver-mas" data-codigo="<?= htmlspecialchars($row['Codigo']); ?>">
-                        Ver más
-                    </a>
+                    <a href="#" class="btn btn-ver-mas" data-codigo="<?= htmlspecialchars($row['Codigo']); ?>">Ver más</a>
                 </div>
             </section>
     <?php 
@@ -632,16 +611,13 @@ $resultado_productos = $conn->query($sql_mas_vendidos);
     ?>
         <p style="text-align:center; font-size:20px; color:#6A253A;">No hay datos de productos disponibles en este momento.</p>
     <?php endif; ?>
-
     <section id="pedido">
         <h2>¿Listo para ordenar?</h2>
         <p>Explora nuestro menú completo y realiza tu pedido de forma rápida y sencilla.</p>
         <a href="Ajax/index/index1.php" class="btn">Menú y pedidos</a>
     </section>
 </main>
-
 <?php include("includes/footer.php"); ?>
-
 <div id="modalProducto">
     <div class="tarjeta-modal">
         <button id="cerrarModal" type="button">×</button>
@@ -676,24 +652,19 @@ const modalNombre = document.getElementById("modalNombre");
 const modalDescripcion = document.getElementById("modalDescripcion");
 const modalPrecio = document.getElementById("modalPrecio");
 const modalDetallado = document.getElementById("modalDetallado");
-
 document.querySelectorAll(".btn-ver-mas").forEach(function(boton){
     boton.addEventListener("click", function(e){
         e.preventDefault();
         const producto = boton.closest(".producto");
         const codigo = boton.dataset.codigo;
-
         modalImagen.src = producto.querySelector(".prod").src;
         modalNombre.textContent = producto.querySelector("h2").textContent.trim();
         modalDescripcion.textContent = producto.querySelector(".info p").textContent.trim();
         modalEtiqueta.textContent = producto.querySelector(".etiqueta").textContent.trim();
-
         modal.classList.add("activo");
         document.body.style.overflow = "hidden";
-
         modalPrecio.textContent = "Cargando...";
         modalDetallado.textContent = "Cargando información...";
-
         fetch("?codigo=" + codigo)
             .then(function(respuesta){
                 return respuesta.json();
@@ -708,7 +679,6 @@ document.querySelectorAll(".btn-ver-mas").forEach(function(boton){
             });
     });
 });
-
 cerrar.addEventListener("click", function(){
     modal.classList.remove("activo");
     document.body.style.overflow = "";

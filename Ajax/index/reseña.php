@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Comentarios</title>
     <link rel="stylesheet"
           href="../../tipografia/Fonts/WEB/css/chillax.css">
-
     <style>
-
         * {
             margin: 0;
             padding: 0;
@@ -44,13 +38,9 @@
             background: white;
             padding: 22px;
             margin-bottom: 20px;
-
             border-radius: 18px;
-
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
-
             border-left: 6px solid #E64B6B;
-
             transition: 0.3s;
         }
 
@@ -90,19 +80,13 @@
         .volver {
             display: block;
             margin: 30px auto 0;
-
             background: #6A253A;
             color: white;
-
             border: none;
             border-radius: 12px;
-
             padding: 12px 25px;
-
             font-size: 16px;
-
             cursor: pointer;
-
             transition: 0.3s;
         }
 
@@ -117,99 +101,70 @@
         position: fixed;
         top: 25px;
         left: 25px;
-
         width: 52px;
         height: 52px;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         background: #E64B6B;
         border: none;
         border-radius: 50%;
-
         cursor: pointer;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
-
         transition: all 0.2s ease;
         z-index: 9999;
-
         text-decoration: none;
     }
 
     /* Flecha */
     .btn-volver-esquina::before {
         content: "";
-
         width: 12px;
         height: 12px;
-
         border-left: 3px solid #EFE2DA;
         border-bottom: 3px solid #EFE2DA;
-
         transform: rotate(45deg);
-
         margin-left: 6px;
     }
 
     .btn-volver-esquina:hover {
         background: #6A253A;
-
         transform: scale(1.1);
-
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
     }
 
     .btn-volver-esquina:active {
         transform: scale(0.95);
     }
-
     </style>
-
 </head>
-
 <body>
-
 <div class="contenedor">
-
     <h1>💬 Comentarios de nuestros clientes</h1>
-
     <?php
-
     $archivo = "comentario.txt";
 
     if (file_exists($archivo)) {
-
         $lineas = file(
             $archivo,
             FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES
         );
-
         $estrella = "";
         $nombre = "";
         $come = "";
-
         $hayComentarios = false;
-
         foreach ($lineas as $linea) {
-
             $linea = trim($linea);
             if ($linea == "****") {
-
                 if ($nombre != "" || $come != "") {
-
                     $hayComentarios = true;
                    preg_match('/\d+/', $estrella, $resultado);
-
                     $cantidadEstrellas = isset($resultado[0])
                         ? intval($resultado[0])
                         : 0;
-
                     if ($cantidadEstrellas < 1) {
                     $cantidadEstrellas = 1;
                     }
-
                     if ($cantidadEstrellas > 5) {
                         $cantidadEstrellas = 5;
                     }
@@ -221,79 +176,51 @@
                         "☆",
                         5 - $cantidadEstrellas
                     );
-
-
                     echo '<div class="comentario">';
-
                         echo '<div class="estrellas">';
                             echo $estrellasLlenas;
                             echo $estrellasVacias;
                         echo '</div>';
-
                         echo '<div class="nombre">';
                             echo htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8');
                         echo '</div>';
-
                         echo '<div class="texto">';
                             echo htmlspecialchars($come, ENT_QUOTES, 'UTF-8');
                         echo '</div>';
-
                     echo '</div>';
                 }
                 $estrella = "";
                 $nombre = "";
                 $come = "";
-
             }
-
             else {
                 if ($estrella == "") {
-
                     $estrella = $linea;
-
                 }
                 else if ($nombre == "") {
-
                     $nombre = $linea;
-
                 }
                 else {
-
                     $come .= " " . $linea;
-
                 }
-
             }
-
         }
 
         if (!$hayComentarios) {
-
             echo '<div class="vacio">';
                 echo 'Todavía no hay comentarios.';
             echo '</div>';
-
         }
-
     }
-
     else {
-
         echo '<div class="vacio">';
             echo 'Todavía no hay comentarios.';
         echo '</div>';
-
     }
-
     ?>
 
-   
- <a href="produc.php" class="btn-volver-esquina" aria-label="Volver" title="Volver"> </a>
-    
-        <a href="../../portada publica.php"><button class="volver">Inicio</button></a>
-    
-
+<a href="produc.php" class="btn-volver-esquina" aria-label="Volver" title="Volver"> </a>
+<a href="../../portada publica.php"><button class="volver">Inicio</button></a>
 </div>
-
 </body>
 </html>

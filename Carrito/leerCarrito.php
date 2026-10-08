@@ -1,10 +1,8 @@
 <?php
-
 $usuario = "root";
 $contraseña = "";
 $direccion = "localhost";
 $baseDeDatos = "MYMS";
-
 $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 
 if ($conexion->connect_error) {
@@ -16,7 +14,6 @@ $sql = "SELECT * FROM carrito JOIN productos ON carrito.Productos_Codigo=product
 $resultado = $conexion->query($sql);
     session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -121,17 +118,13 @@ button{
 </style>
 </head>
 <body>
-
 <div>
-
 <h2>Datos del Carrito</h2>
 <table>
 <?php
 
 if ($resultado->num_rows > 0) {
-
 $CostoTotal=0;
-    
     while($fila = $resultado->fetch_assoc()) {
     echo "<tr>";
     echo "<td class='titulo'>Codigo</td>";
@@ -152,13 +145,10 @@ $CostoTotal=0;
     echo "No se encontraron productos en el carrito.";
 
 }
-
 $conexion->close();
-
 ?>
 </table>
 <button class="volver" onclick="history.back()">← Volver</button><br>
 </div>
-
 </body>
 </html>

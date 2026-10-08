@@ -1,18 +1,14 @@
 <?php
-
 $usuario = "root";
 $contraseña = "";
 $direccion = "localhost";
 $baseDeDatos = "MYMS";
-
 $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 
 if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
 session_start();
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,9 +17,8 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Pedido</title>
     <link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
-<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
-
     <style>
     *{
         font-family: 'Chillax-Semibold';
@@ -87,7 +82,8 @@ session_start();
         margin-bottom: 10px;
         display: inline-block;
         font-size: 13px;
-    }@media(max-width:800px){
+    }
+    @media(max-width:800px){
 
   body{
     padding: 20px;
@@ -127,81 +123,35 @@ label.error{
 }
     </style>
 </head>
-
 <body>
     <div>
         <h1>Registro de Pedidos</h1>
-
         <form action="registroPedidos.php" method="post" onsubmit="return validar()">
             <label for="Nombre">Nombre:</label>
-            <input 
-                type="text" 
-                id="Nombre" 
-                name="Nombre"
-                minlength="3"
-                maxlength="50"
-                pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+"
-            >
+            <input type="text" id="Nombre" name="Nombre" minlength="3" maxlength="50" pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+">
             <br><br>
-
             <label for="Celular">Celular:</label>
-            <input 
-                type="number" 
-                id="Celular" 
-                name="Celular"
-                minlength="8"
-                maxlength="8"
-            >
+            <input type="number" id="Celular" name="Celular" minlength="8" maxlength="8">
             <br><br>
-
             <label for="Fecha">Fecha:</label>
-            <input 
-                type="date" 
-                id="Fecha" 
-                name="Fecha" 
-                value='<?php echo date('Y-m-d');?>' 
-                readonly
-            >
+            <input type="date" id="Fecha" name="Fecha" value='<?php echo date('Y-m-d');?>' readonly>
             <br><br>
-
             <label for="Direccion">Dirección:</label>
-            <input 
-                type="text" 
-                id="direccion" 
-                name="Direccion"
-                minlength="5"
-                maxlength="100"
-            >
+            <input type="text" id="direccion" name="Direccion" minlength="5" maxlength="100">
             <br><br>
-
             <label for="Estado">Estado:</label>
-            <input 
-                type="text" 
-                id="Estado" 
-                name="Estado" 
-                value="pendiente" 
-                readonly
-                minlength="8"
-                maxlength="10"
-                pattern="[a-z]+"
-            >
-
+            <input type="text" id="Estado" name="Estado" value="pendiente" readonly minlength="8" maxlength="10" pattern="[a-z]+">
             <input type="hidden" value="pendiente" name="NombreVendedor">
             <br><br>
             <br><br>
-
             <input type="submit" value="Registrar Pedidos">
-
         </form>
     </div>
-
     <script>
         var nombre = document.getElementById("Nombre");
         var estado = document.getElementById("Estado");
-
         var expRegNombre = /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/;
         var expRegEstado = /^[a-z]+$/;
-
         function validar() {
 
             if (nombre.value == "") {

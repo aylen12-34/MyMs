@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nav</title>
-<link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
+    <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
     <style>
         *{
       font-family:'Chillax-Semibold';
@@ -113,18 +113,13 @@
             background-color: #EFE2DA;
             color: #E64B6B;
         }
-
     </style>
-
 </head>
 <body>
-
     <div id="botonMenu">
         <img src="imagenes/ISOTIPO BRUMA PASTEL.png" alt="Menu">
     </div>
-
     <div id="overlay"></div>
-
     <nav class="indice" id="menu">
         <ul>
             <li><a href="portada publica.php">Inicio</a></li>
@@ -132,60 +127,37 @@
             <li><a href="cerrar.php">Cerrar sesion</a></li>
             <li><a href="formulario ambiental MYMS.pdf" target="_blank">Ficha ambiental</a></li>
             <li><a href="Ajax/index/produc.php">Ver comentario</a></li>
-            <li>
-                <a href="Ajax/index/index1.php">
-                    <img src="https://cdn-icons-png.freepik.com/512/9341/9341730.png" id="compra" alt="Carrito">
-                </a>
-            </li>
+            <li><a href="Ajax/index/index1.php"><img src="https://cdn-icons-png.freepik.com/512/9341/9341730.png" id="compra" alt="Carrito"></a></li>
         </ul>
     </nav>
-
     <script>
-
         const boton = document.getElementById("botonMenu");
         const menu = document.getElementById("menu");
         const overlay = document.getElementById("overlay");
-
         let abierto = false;
-
         boton.addEventListener("click", () => {
 
             if(!abierto){
-
                 menu.classList.add("activo");
                 overlay.classList.add("activo");
-
                 boton.classList.remove("cerrar");
                 boton.classList.add("abrir");
-
                 abierto = true;
-
             }else{
-
                 menu.classList.remove("activo");
                 overlay.classList.remove("activo");
-
                 boton.classList.remove("abrir");
                 boton.classList.add("cerrar");
-
                 abierto = false;
             }
-
         });
-
         overlay.addEventListener("click", () => {
-
             menu.classList.remove("activo");
             overlay.classList.remove("activo");
-
             boton.classList.remove("abrir");
             boton.classList.add("cerrar");
-
             abierto = false;
-
         });
-
     </script>
-
 </body>
 </html>

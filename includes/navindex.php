@@ -1,62 +1,27 @@
 <div id="botonMenu">
     <img src="../../imagenes/ISOTIPO BRUMA PASTEL.png" alt="Menu">
 </div>
-
 <div id="overlay"></div>
-
 <nav class="indice" id="menu">
     <ul>
-
         <li><a href="../../portada publica.php">Inicio</a></li>
-
         <li><a href="../../perfil.php" class="volver">Perfil</a></li>
-
         <li><a href="../../login.php">Iniciar sesión</a></li>
-
         <li><a href="../../nosotros.php">Nosotros</a></li>
-
-        <li>
-            <a href="../../formulario ambiental MYMS.pdf" target="_blank">
-                Ficha ambiental
-            </a>
-        </li>
-
-        <li>
-            <a href="produc.php">Ver comentario</a>
-        </li>
-        <li>
-                <a href="../../juego.php">
-                    Juego
-                </a>
-            </li>
-
+        <li><a href="../../formulario ambiental MYMS.pdf" target="_blank">Ficha ambiental</a></li>
+        <li><a href="produc.php">Ver comentario</a></li>
+        <li><a href="../../juego.php">Juego</a></li>
         <li class="buscar-pedido">
-
             <span>
                 ¿Tienes un pedido?
             </span>
-
             <form action="buscarPedido.php" method="GET">
-
-                <input
-                    type="number"
-                    name="ID"
-                    placeholder="ID del recibo"
-                    min="1"
-                    required
-                >
-
-                <button type="submit">
-                    Buscar
-                </button>
-
+                <input type="number" name="ID" placeholder="ID del recibo" min="1" required>
+                <button type="submit"> Buscar </button>
             </form>
-
         </li>
-
     </ul>
 </nav>
-
 <style>
 * {
     font-family: 'Chillax-Semibold';
@@ -175,8 +140,7 @@ nav.activo {
     align-items: center;
 }
 
-.pedido-form input,
-.buscar-pedido input {
+.pedido-form input, .buscar-pedido input {
     width: 130px;
     padding: 10px;
     border: 2px solid #E64B6B;
@@ -209,46 +173,32 @@ nav.activo {
     color: #6A253A;
 }
 </style>
-
 <script>
 const boton = document.getElementById("botonMenu");
 const menu = document.getElementById("menu");
 const overlay = document.getElementById("overlay");
-
 let abierto = false;
-
 boton.addEventListener("click", () => {
 
     if (!abierto) {
-
         menu.classList.add("activo");
         overlay.classList.add("activo");
-
         boton.classList.remove("cerrar");
         boton.classList.add("abrir");
-
         abierto = true;
-
     } else {
-
         menu.classList.remove("activo");
         overlay.classList.remove("activo");
-
         boton.classList.remove("abrir");
         boton.classList.add("cerrar");
-
         abierto = false;
     }
 });
-
 overlay.addEventListener("click", () => {
-
     menu.classList.remove("activo");
     overlay.classList.remove("activo");
-
     boton.classList.remove("abrir");
     boton.classList.add("cerrar");
-
     abierto = false;
 });
 </script>
