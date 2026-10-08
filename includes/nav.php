@@ -209,6 +209,11 @@
                     Deja tu comentario
                 </a>
             </li>
+            <li>
+                <a href="juego.php">
+                    🎮 Juego
+                </a>
+            </li>
             <li class="buscar-pedido">
 
                 <span>

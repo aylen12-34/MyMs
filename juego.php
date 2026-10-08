@@ -661,7 +661,7 @@ button.action:active{
 </head>
 
 <body>
-
+<?php include("includes/nav.php"); ?>
 <div class="game-container">
 
     <h1>🍪 Tres en Raya</h1>
