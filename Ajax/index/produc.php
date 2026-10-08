@@ -22,12 +22,11 @@ if ($conexion->connect_error) {
     padding: 0;
     box-sizing: border-box;
     font-family:'Chillax-Semibold';
-}
+        }
 
         body {
             min-height: 100vh;
-            background-image:
-                url("../../imagenes/2.png");
+            background-image: url("../../imagenes/2.png");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -45,8 +44,7 @@ if ($conexion->connect_error) {
             border-radius: 30px;
             padding: 40px;
             color: #EFE2DA;
-            box-shadow:
-                0 15px 40px rgba(0, 0, 0, 0.30);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.30);
         }
 
         h2 {
@@ -77,8 +75,7 @@ if ($conexion->connect_error) {
             color: #EFE2DA
         }
 
-        .formulario input[type="text"],
-        .formulario textarea {
+        .formulario input[type="text"], .formulario textarea {
             width: 100%;
             background-color: #EFE2DA;
             border: 2px solid transparent;
@@ -99,11 +96,9 @@ if ($conexion->connect_error) {
             resize: vertical;
         }
 
-        .formulario input[type="text"]:focus,
-        .formulario textarea:focus {
+        .formulario input[type="text"]:focus, .formulario textarea:focus {
             border-color: #E64B6B;
-            box-shadow:
-                0 0 0 3px rgba(230, 75, 107, 0.20);
+            box-shadow: 0 0 0 3px rgba(230, 75, 107, 0.20);
         }
 
         .rating-group {
@@ -129,8 +124,7 @@ if ($conexion->connect_error) {
             transition: 0.2s;
         }
 
-        .rating-group label:hover,
-        .rating-group label:hover ~ label {
+        .rating-group label:hover, .rating-group label:hover ~ label {
             color:  #E64B6B;
             transform: scale(1.08);
         }
@@ -253,14 +247,12 @@ if ($conexion->connect_error) {
             color: #6A253A;
             transform: translateX(-3px);
         }
-
         /* =========================
            RESPONSIVE
         ========================= */
         @media (max-width: 750px) {
             body {
                 padding: 20px 12px;
-
             }
 
             .contenedor {
@@ -297,16 +289,11 @@ if ($conexion->connect_error) {
     border-radius: 15px;
     padding: 18px;
     margin-bottom: 20px;
-
     border-left: 5px solid #E64B6B;
-
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-
     color: #6A253A;
-
     overflow-wrap: anywhere;
     word-break: break-word;
-
     transition: 0.3s;
 }
 
@@ -314,48 +301,28 @@ if ($conexion->connect_error) {
     border-bottom: 3px solid #EFE2DA;
     margin-bottom: 25px;
 }
-
-
         @media (max-width: 450px) {
-
             .contenedor {
-
                 padding: 20px;
-
             }
-
 
             h2 {
-
                 font-size: 25px;
-
             }
-
 
             .rating-group label {
-
                 font-size: 32px;
-
             }
-
 
             .botones {
-
                 flex-direction: column;
-
             }
-
 
             .botones input {
-
                 width: 100%;
-
             }
-
         }
-
     </style>
-
 </head>
 <body>
 <div class="contenedor">
@@ -363,9 +330,7 @@ if ($conexion->connect_error) {
     <div class="contenido">
         <div class="formulario">
             <form action="guardarComentario.php" method="post" onsubmit="return validarFormulario()">
-                <label>
-                    Calificación
-                </label>
+                <label>Calificación</label>
                 <div class="rating-group">
                     <input type="radio" id="star5" name="Cali" value="5">
                     <label for="star5" title="5 estrellas">★</label>

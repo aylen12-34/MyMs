@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Pedido Personalizado</title>
-
     <link rel="stylesheet" href="../../tipografia/Fonts/WEB/css/chillax.css">
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <style>
-
 * {
     box-sizing: border-box;
     font-family: 'Chillax-Semibold';
 }
 
-html,
-body {
+html, body {
     margin: 0;
     padding: 0;
     min-height: 100%;
@@ -73,8 +65,7 @@ main {
     color: #E64B6B;
 }
 
-.grupo input,
-.grupo textarea {
+.grupo input, .grupo textarea {
     width: 100%;
     padding: 13px;
     border: 2px solid #E64B6B;
@@ -85,14 +76,12 @@ main {
     color: #6A253A;
 }
 
-.grupo input::placeholder,
-.grupo textarea::placeholder {
+.grupo input::placeholder, .grupo textarea::placeholder {
     color: #6A253A;
     opacity: 0.65;
 }
 
-.grupo input:focus,
-.grupo textarea:focus {
+.grupo input:focus, .grupo textarea:focus {
     border-color: #E64B6B;
     box-shadow: 0 0 0 2px rgba(230, 75, 107, 0.2);
 }
@@ -132,7 +121,6 @@ main {
 }
 
 @media (max-width: 700px) {
-
     main {
         width: 94%;
         padding: 25px 20px;
@@ -155,7 +143,6 @@ main {
 }
 
 @media (max-width: 400px) {
-
     main {
         width: 96%;
         padding: 22px 15px;
@@ -175,7 +162,7 @@ main {
             height: 45px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
         }
-            .btn-volver-esquina {
+    .btn-volver-esquina {
         top: 15px;
         left: 15px;
         width: 45px;
@@ -199,221 +186,100 @@ main {
     .btn-volver-esquina:active {
         transform: scale(0.95);
     }
-
 }
 .btn-volver-esquina {
         position: fixed;
         top: 25px;
         left: 25px;
-
         width: 52px;
         height: 52px;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         background: #6A253A;
         border: none;
         border-radius: 50%;
-
         cursor: pointer;
-
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
-
         transition: transform 0.2s ease, box-shadow 0.2s ease;
-
         z-index: 9999;
         text-decoration: none;
     }
-        .btn-volver-esquina::before {
+.btn-volver-esquina::before {
     content: "";
-
     position: absolute;
-
     width: 9px;
     height: 9px;
-
     border-left: 3px solid #EFE2DA;
     border-bottom: 3px solid #EFE2DA;
-
     transform: rotate(45deg);
-
     left: 23px;
     top: 20px;
 }
-        .btn-volver-esquina:hover {
-            transform: scale(1.1);
-
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
-        }
-        .btn-volver-esquina:active {
-            transform: scale(0.95);
-        }
+.btn-volver-esquina:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+.btn-volver-esquina:active {
+    transform: scale(0.95);
+}
 </style>
-
 </head>
-
 <body>
       <a href="index1.php"><button href="" class="btn-volver-esquina" aria-label="Volver"> </button></a>
     <main>
-
-    <h1 class="titulo">
-        Pedido Personalizado
-    </h1>
-
+    <h1 class="titulo">Pedido Personalizado</h1>
     <p class="descripcion">
         ¿Tienes una idea especial?
         Cuéntanos cómo la imaginas y nos pondremos en contacto contigo
         para definir los detalles y el precio.
     </p>
-
     <form id="formPedidoPersonalizado">
-
         <div class="fila">
-
             <div class="grupo">
-
-                <label for="nombre">
-                    Nombre completo 
-                </label>
-
-                <input
-                    type="text"
-                    id="nombre"
-                    maxlength="50"
-                    placeholder="...">
-
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" maxlength="50" placeholder="...">
             </div>
-
             <div class="grupo">
-
-                <label for="celular">
-                    Número de celular 
-                </label>
-
-                <input
-                    type="text"
-                    id="celular"
-                    maxlength="8"
-                    placeholder="..."
-                    inputmode="numeric">
-
+                <label for="celular">Número de celular</label>
+                <input type="text" id="celular" maxlength="8" placeholder="..." inputmode="numeric">
             </div>
-
         </div>
-
         <div class="grupo">
-
-            <label for="producto">
-                ¿Qué quieres pedir? 
-            </label>
-
-            <input
-                type="text"
-                id="producto"
-                maxlength="100"
-                placeholder="Ej. Torta, galletas, brownies...">
-
+            <label for="producto">¿Qué quieres pedir? </label>
+            <input type="text" id="producto" maxlength="100" placeholder="Ej. Torta, galletas, brownies...">
         </div>
-
         <div class="fila">
-
             <div class="grupo">
-
-                <label for="cantidad">
-                    Cantidad
-                </label>
-
-                <input
-                    type="number"
-                    id="cantidad"
-                    min="1"
-                    max="1000"
-                    placeholder="Ej. 12">
-
+                <label for="cantidad">Cantidad</label>
+                <input type="number" id="cantidad" min="1" max="1000" placeholder="Ej. 12">
             </div>
-
             <div class="grupo">
-
-                <label for="fecha">
-                    Fecha deseada 
-                </label>
-
-                <input
-                    type="date"
-                    id="fecha">
-
+                <label for="fecha">Fecha deseada</label>
+                <input type="date" id="fecha">
             </div>
-
         </div>
-
         <div class="grupo">
-
-            <label for="sabor">
-                Sabor
-            </label>
-
-            <input
-                type="text"
-                id="sabor"
-                maxlength="100"
-                placeholder="Ej. Chocolate">
-
+            <label for="sabor"> Sabor</label>
+            <input type="text" id="sabor" maxlength="100" placeholder="Ej. Chocolate">
         </div>
-
         <div class="grupo">
-
-            <label for="relleno">
-                Relleno
-            </label>
-
-            <input
-                type="text"
-                id="relleno"
-                maxlength="100"
-                placeholder="Ej. Dulce de leche">
-
+            <label for="relleno">Relleno</label>
+            <input type="text" id="relleno" maxlength="100" placeholder="Ej. Dulce de leche">
         </div>
-
         <div class="grupo">
-
-            <label for="decoracion">
-                Decoración o temática
-            </label>
-
-            <input
-                type="text"
-                id="decoracion"
-                maxlength="200"
-                placeholder="Ej. Temática de fútbol, colores negro y dorado...">
-
+            <label for="decoracion">Decoración o temática</label>
+            <input type="text" id="decoracion" maxlength="200" placeholder="Ej. Temática de fútbol, colores negro y dorado...">
         </div>
-
         <div class="grupo">
-
-            <label for="detalles">
-                Detalles adicionales
-            </label>
-
-            <textarea
-                id="detalles"
-                maxlength="500"
-                placeholder="Cuéntanos cualquier otro detalle que quieras agregar..."></textarea>
-
+            <label for="detalles">Detalles adicionales</label>
+            <textarea id="detalles" maxlength="500" placeholder="Cuéntanos cualquier otro detalle que quieras agregar..."></textarea>
         </div>
-
-        <button type="button" id="enviarPedido">
-            Enviar pedido por WhatsApp
-        </button>
-
+        <button type="button" id="enviarPedido">Enviar pedido por WhatsApp</button>
     </form>
-
 </main>
-      <script>
-
+<script>
 document.getElementById("enviarPedido").addEventListener("click", function() {
-
     var nombre = document.getElementById("nombre").value.trim();
     var celular = document.getElementById("celular").value.trim();
     var producto = document.getElementById("producto").value.trim();
@@ -425,7 +291,6 @@ document.getElementById("enviarPedido").addEventListener("click", function() {
     var detalles = document.getElementById("detalles").value.trim();
 
     if (nombre === "") {
-
         Swal.fire({
             title: "Alerta",
             text: "Ingrese su nombre.",
@@ -433,13 +298,11 @@ document.getElementById("enviarPedido").addEventListener("click", function() {
             color: "#EFE2DA",
             confirmButtonColor: "#6A253A"
         });
-
         document.getElementById("nombre").focus();
         return;
     }
 
     if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(nombre)) {
-
         Swal.fire({
             title: "Alerta",
             text: "El nombre debe contener solamente letras.",
@@ -447,13 +310,11 @@ document.getElementById("enviarPedido").addEventListener("click", function() {
             color: "#EFE2DA",
             confirmButtonColor: "#6A253A"
         });
-
         document.getElementById("nombre").focus();
         return;
     }
 
     if (nombre.length < 3) {
-
         Swal.fire({
             title: "Alerta",
             text: "El nombre debe tener al menos 3 letras.",
@@ -461,13 +322,11 @@ document.getElementById("enviarPedido").addEventListener("click", function() {
             color: "#EFE2DA",
             confirmButtonColor: "#6A253A"
         });
-
         document.getElementById("nombre").focus();
         return;
     }
 
     if (celular === "") {
-
         Swal.fire({
             title: "Alerta",
             text: "Ingrese su número de celular.",
@@ -475,13 +334,11 @@ document.getElementById("enviarPedido").addEventListener("click", function() {
             color: "#EFE2DA",
             confirmButtonColor: "#6A253A"
         });
-
         document.getElementById("celular").focus();
         return;
     }
 
     if (!/^[0-9]{8}$/.test(celular)) {
-
         Swal.fire({
             title: "Alerta",
             text: "El celular debe contener exactamente 8 números.",
@@ -489,13 +346,11 @@ document.getElementById("enviarPedido").addEventListener("click", function() {
             color: "#EFE2DA",
             confirmButtonColor: "#6A253A"
         });
-
         document.getElementById("celular").focus();
         return;
     }
 
     if (producto === "") {
-
         Swal.fire({
             title: "Alerta",
             text: "Indique qué producto desea.",
@@ -503,13 +358,11 @@ document.getElementById("enviarPedido").addEventListener("click", function() {
             color: "#EFE2DA",
             confirmButtonColor: "#6A253A"
         });
-
         document.getElementById("producto").focus();
         return;
     }
 
     if (cantidad === "" || cantidad < 1) {
-
         Swal.fire({
             title: "Alerta",
             text: "Ingrese una cantidad válida.",
@@ -517,13 +370,11 @@ document.getElementById("enviarPedido").addEventListener("click", function() {
             color: "#EFE2DA",
             confirmButtonColor: "#6A253A"
         });
-
         document.getElementById("cantidad").focus();
         return;
     }
 
     if (fecha === "") {
-
         Swal.fire({
             title: "Alerta",
             text: "Seleccione la fecha en la que necesita su pedido.",
@@ -531,18 +382,14 @@ document.getElementById("enviarPedido").addEventListener("click", function() {
             color: "#EFE2DA",
             confirmButtonColor: "#6A253A"
         });
-
         document.getElementById("fecha").focus();
         return;
     }
-
     var fechaSeleccionada = new Date(fecha + "T00:00:00");
     var hoy = new Date();
-
     hoy.setHours(0, 0, 0, 0);
 
     if (fechaSeleccionada < hoy) {
-
         Swal.fire({
             title: "Alerta",
             text: "La fecha del pedido no puede ser anterior a hoy.",
@@ -550,7 +397,6 @@ document.getElementById("enviarPedido").addEventListener("click", function() {
             color: "#EFE2DA",
             confirmButtonColor: "#6A253A"
         });
-
         document.getElementById("fecha").focus();
         return;
     }
@@ -596,18 +442,13 @@ mensaje +=
     "El precio y los detalles finales deben ser confirmados con el cliente.";
 
 var numeroMyMs = "59169505739";
-
 var url =
     "https://wa.me/" +
     numeroMyMs +
     "?text=" +
     mensaje;
-
 window.open(url, "_blank");
-
 });
-
 </script>
 </body>
-
 </html>
