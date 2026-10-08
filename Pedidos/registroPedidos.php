@@ -3,20 +3,17 @@ $usuario = "root";
 $contraseña = "";     
 $direccion = "localhost";
 $baseDeDatos = "MYMS";   
- 
 $conexion=new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
-    
     echo "No se ha podido conectar a la base de datos";
 }
-
 $Nombre = trim($_POST['Nombre']);
 $Celular = trim($_POST['Celular']);
 $Fecha = trim($_POST['Fecha']);
 $Direccion = trim($_POST['Direccion']);
 $Estado = trim($_POST['Estado']);
 $NombreVendedor = trim($_POST['NombreVendedor']);
-   ?> 
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +50,7 @@ $NombreVendedor = trim($_POST['NombreVendedor']);
             color: #EFE2DA;
             text-decoration:none;
         }
-.volver{
+        .volver{
         padding: 10px 20px;
         border: none;
         color: #EFE2DA;
@@ -63,53 +60,43 @@ $NombreVendedor = trim($_POST['NombreVendedor']);
         font-size: 16px;
         margin:3px;
         }
-
         .volver:hover{
             background-color: #EFE2DA;
             color: #E64B6B;
         }@media(max-width:800px){
-
-  body{
-    padding: 20px;
-  }
-
-  div{
-    width: 100%;
-    max-width: 320px;
-    padding: 25px;
-    border-radius: 25px;
-    text-align: center;
-  }
-
-  h2{
-    font-size: 28px;
-  }
-
-  p{
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-  .volver{
-    width: 100%;
-    margin-top: 10px;
-    box-sizing: border-box;
-  }
-}
-    </style>
+        body{
+            padding: 20px;
+        }
+        div{
+            width: 100%;
+            max-width: 320px;
+            padding: 25px;
+            border-radius: 25px;
+            text-align: center;
+        }
+        h2{
+            font-size: 28px;
+        }
+        p{
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .volver{
+            width: 100%;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+    }
+</style>
 </head>
 <body>
     <div>
         <h2>Registro de pedido:</h2>
         <p>
         <?php
-
             $stmt = $conexion->prepare(
-                "INSERT INTO Pedidos 
-                (Nombre, Celular, Fecha, Direccion, Estado, NombreVendedor) 
-                VALUES (?, ?, ?, ?, ?, ?)"
+                "INSERT INTO Pedidos (Nombre, Celular, Fecha, Direccion, Estado, NombreVendedor) VALUES (?, ?, ?, ?, ?, ?)"
             );
-
             $stmt->bind_param(
                 "ssssss",
                 $Nombre,
@@ -125,7 +112,6 @@ $NombreVendedor = trim($_POST['NombreVendedor']);
             }else{
                 echo "Error: " . $conexion->error;
             }
-
         ?>
         </p><br>
     </div>

@@ -11,7 +11,7 @@ $baseDeDatos = "MYMS";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar Pedido</title>
     <link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
-<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
     <style>
     *{
@@ -58,14 +58,12 @@ $baseDeDatos = "MYMS";
         font-size: 16px;
         margin:3px;
         }
-
         .volver:hover{
             background-color: #EFE2DA;
             color: #E64B6B;
         }
         a{
-            text-decoration: none;
-            
+            text-decoration: none;   
         }
         @media(max-width:800px){
 
@@ -102,7 +100,7 @@ $baseDeDatos = "MYMS";
     <div>
         <h2>Actualizacion de Pedidos</h2>
         <p>
-            <?php 
+        <?php 
             $conexion=new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 if ($conexion->connect_error) {
     echo "Hubo un error al conectar a la base de datos";
@@ -115,7 +113,6 @@ $NombreVendedor=$_POST['NombreVendedor'];
 $sql="UPDATE Pedidos SET Nombre='$Nombre', Fecha='$Fecha', Estado='$Estado', NombreVendedor='$NombreVendedor' WHERE ID='$ID'";
 if ($conexion->query($sql) === TRUE) {
     echo "Se edito el pedido correctamente";
-    
 } else {
     echo "Error al actualizar el pedido: " . $conexion->error;
 }

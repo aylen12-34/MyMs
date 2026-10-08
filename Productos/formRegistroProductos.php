@@ -1,10 +1,8 @@
 <?php
-
 $usuario = "root";
 $contraseña = "";
 $direccion = "localhost";
 $baseDeDatos = "MYMS";
-
 $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 
 if ($conexion->connect_error) {
@@ -14,7 +12,6 @@ session_start();
 if($_SESSION['CI']==null){
     header("location:../login.php");
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +23,6 @@ if($_SESSION['CI']==null){
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <style>
     body, table, button, h2, a, input, select {
             font-family: 'Chillax-Semibold', sans-serif;
@@ -45,7 +41,6 @@ if($_SESSION['CI']==null){
             margin: 0;
         }
 
-        /* SE CAMBIÓ 'div' POR LA CLASE '.contenedor-registro' */
         .contenedor-registro {
             width: 420px;
             padding: 35px;
@@ -81,7 +76,6 @@ if($_SESSION['CI']==null){
             outline: none;
         }
 
-        /* SELECT */
         select {
             width: 100%;
             padding: 10px;
@@ -104,7 +98,6 @@ if($_SESSION['CI']==null){
             color: #6A253A;
         }
 
-        /* ARCHIVO */
         input[type="file"] {
             background-color: white;
             color: #6A253A;
@@ -182,47 +175,34 @@ if($_SESSION['CI']==null){
         position: fixed;
         top: 25px;
         left: 25px;
-
         width: 52px;
         height: 52px;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         background: #E64B6B;
         border: none;
         border-radius: 50%;
-
         cursor: pointer;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
-
         transition: all 0.2s ease;
         z-index: 9999;
-
         text-decoration: none;
     }
 
-    /* Flecha */
     .btn-volver-esquina::before {
         content: "";
-
         width: 12px;
         height: 12px;
-
         border-left: 3px solid #EFE2DA;
         border-bottom: 3px solid #EFE2DA;
-
         transform: rotate(45deg);
-
         margin-left: 6px;
     }
 
     .btn-volver-esquina:hover {
         background: #6A253A;
-
         transform: scale(1.1);
-
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
     }
 
@@ -231,58 +211,37 @@ if($_SESSION['CI']==null){
     }
     </style>
 </head>
-
 <body>
     <div class="contenedor-registro">
         <h1>Registro de Productos</h1>
-
         <form action="registroProductos.php" method="post" onsubmit="return validar()">
-
             <label for="Codigo">Codigo:</label>
-<input type="number" id="Codigo" name="Codigo"
-        minlength="1" maxlength="10">
-<br><br>
-
-<label for="Nombre">Nombre:</label>
-<input type="text" id="Nombre" name="Nombre"
-        minlength="3" maxlength="100"
-       pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9\s.,'()-]+">
-<br><br>
-
-<label for="Descripcion">Descripción publica:</label>
-<input type="text" id="Descripcion" name="Descripcion"
-        minlength="3" maxlength="255">
-<br><br>
-
-<label for="Detallado">Descripción detallada:</label>
-<input type="text" id="Detallado" name="Detallado"
-        minlength="3" maxlength="1000">
-<br><br>
-
-<label for="imagen">Producto</label>
-<input type="file" name="imagen" accept="image/*">
-<br><br>
-
-<label for="Precio">Precio:</label>
-<input type="number" id="Precio" name="Precio"
-       minlength="1" maxlength="10">
-<br><br>
-
-<label for="Stock">Stock:</label>
-<input type="number" id="Stock" name="Stock"
-       minlength="1" maxlength="10">
-<br><br>
-
-<label>Estado</label>
-<input type="text" value="Disponible" name="Estado"
-       readonly minlength="11" maxlength="11"
-       pattern="[a-zA-Z]+">
-<br><br>
-
-<input type="submit" value="Registrar Productos">
- </form>
+            <input type="number" id="Codigo" name="Codigo" minlength="1" maxlength="10">
+            <br><br>
+            <label for="Nombre">Nombre:</label>
+            <input type="text" id="Nombre" name="Nombre" minlength="3" maxlength="100" pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9\s.,'()-]+">
+            <br><br>
+            <label for="Descripcion">Descripción publica:</label>
+            <input type="text" id="Descripcion" name="Descripcion" minlength="3" maxlength="255">
+            <br><br>
+            <label for="Detallado">Descripción detallada:</label>
+            <input type="text" id="Detallado" name="Detallado" minlength="3" maxlength="1000">
+            <br><br>
+            <label for="imagen">Producto</label>
+            <input type="file" name="imagen" accept="image/*">
+            <br><br>
+            <label for="Precio">Precio:</label>
+            <input type="number" id="Precio" name="Precio" minlength="1" maxlength="10">
+            <br><br>
+            <label for="Stock">Stock:</label>
+            <input type="number" id="Stock" name="Stock" minlength="1" maxlength="10">
+            <br><br>
+            <label>Estado</label>
+            <input type="text" value="Disponible" name="Estado" readonly minlength="11" maxlength="11" pattern="[a-zA-Z]+">
+            <br><br>
+            <input type="submit" value="Registrar Productos">
+        </form>
  <a href="readleeProductos.php" class="btn-volver-esquina" aria-label="Volver" title="Volver"> </a>
-
     </div>
 <script>
     var codigo = document.getElementById("Codigo");
@@ -291,7 +250,6 @@ if($_SESSION['CI']==null){
     var detallado = document.getElementById("Detallado");
     var precio = document.getElementById("Precio");
     var stock = document.getElementById("Stock");
-
     function validar() {
 
         if (codigo.value == "") {
@@ -303,7 +261,7 @@ if($_SESSION['CI']==null){
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
+        confirmButtonColor: '#6A253A',
         text: '⚠ Ingrese el código ⚠',
     didOpen: () => {
         const audio = new Audio('../imagenes/galletapro.mp3');
@@ -331,7 +289,7 @@ if($_SESSION['CI']==null){
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
+        confirmButtonColor: '#6A253A',
         text: '⚠ El código debe contener solo números ⚠',
     didOpen: () => {
         const audio = new Audio('../imagenes/galletapro.mp3');
@@ -359,7 +317,7 @@ if($_SESSION['CI']==null){
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
+        confirmButtonColor: '#6A253A',
         text: '⚠ Ingrese el nombre ⚠',
     didOpen: () => {
         const audio = new Audio('../imagenes/galletapro.mp3');
@@ -387,7 +345,7 @@ if($_SESSION['CI']==null){
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
+        confirmButtonColor: '#6A253A',
         text: '⚠ El nombre debe tener al menos 3 letras ⚠',
     didOpen: () => {
         const audio = new Audio('../imagenes/galletapro.mp3');
@@ -415,7 +373,7 @@ if($_SESSION['CI']==null){
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
+        confirmButtonColor: '#6A253A',
         text: '⚠ Ingrese la descripción ⚠',
     didOpen: () => {
         const audio = new Audio('../imagenes/galletapro.mp3');
@@ -442,7 +400,7 @@ if (detallado.value == "") {
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
+        confirmButtonColor: '#6A253A',
         text: '⚠ Ingrese la descripción detallada ⚠',
     didOpen: () => {
         const audio = new Audio('../imagenes/galletapro.mp3');
@@ -469,7 +427,7 @@ detallado.focus();
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
+        confirmButtonColor: '#6A253A',
         text: '⚠ Ingrese el precio ⚠',
     didOpen: () => {
         const audio = new Audio('../imagenes/galletapro.mp3');
@@ -498,7 +456,7 @@ detallado.focus();
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
+        confirmButtonColor: '#6A253A',
         text: '⚠ Ingrese un precio válido (ej: 10 o 10.50) ⚠',
     didOpen: () => {
         const audio = new Audio('../imagenes/galletapro.mp3');
@@ -525,7 +483,7 @@ detallado.focus();
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
+        confirmButtonColor: '#6A253A',
         text: '⚠ Ingrese el stock ⚠',
     didOpen: () => {
         const audio = new Audio('../imagenes/galletapro.mp3');
@@ -553,7 +511,7 @@ detallado.focus();
         imageHeight: 150,
         imageAlt: 'Icono personalizado',
         confirmButtonText: 'OK',
-    confirmButtonColor: '#6A253A',
+        confirmButtonColor: '#6A253A',
         text: '⚠ El stock debe contener solo números ⚠',
     didOpen: () => {
         const audio = new Audio('../imagenes/galletapro.mp3');
@@ -571,7 +529,6 @@ detallado.focus();
             stock.focus();
             return false;
         }
-
         return true;
     }
 </script>

@@ -4,35 +4,27 @@ if (!isset($_SESSION['Rol']) || $_SESSION['Rol'] != "vendedor") {
     header("Location: ../login.php");
     exit();
 }
-
 $usuario = "root";
 $contraseña = "";
 $direccion = "localhost";
 $baseDeDatos = "MYMS";
-
 $conexion = new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
 
 if ($conexion->connect_error) {
     die("No se ha podido conectar a la base de datos");
 }
-
 $sql = "SELECT * FROM Pedidos";
 $resultado = $conexion->query($sql);
-
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedidos</title>
-
     <link rel="stylesheet" href="../tipografia/Fonts/WEB/css/chillax.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <style>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
 *{
     font-family: 'Chillax-Semibold';
     box-sizing: border-box;
@@ -43,11 +35,9 @@ body{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     min-height: 100vh;
     margin: 0;
     padding: 20px;
@@ -109,15 +99,11 @@ button{
     color: #EFE2DA;
 }
 
-.mostrar,
-.editar,
-.eliminar{
+.mostrar,.editar,.eliminar{
     background-color: #E64B6B;
 }
 
-.mostrar:hover,
-.editar:hover,
-.eliminar:hover{
+.mostrar:hover,.editar:hover,.eliminar:hover{
     background-color: #EFE2DA;
     color: #6A253A;
 }
@@ -190,47 +176,34 @@ a{
         position: fixed;
         top: 25px;
         left: 25px;
-
         width: 52px;
         height: 52px;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         background: #E64B6B;
         border: none;
         border-radius: 50%;
-
         cursor: pointer;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
-
         transition: all 0.2s ease;
         z-index: 9999;
-
         text-decoration: none;
     }
-
     /* Flecha */
     .btn-volver-esquina::before {
         content: "";
-
         width: 12px;
         height: 12px;
-
         border-left: 3px solid #EFE2DA;
         border-bottom: 3px solid #EFE2DA;
-
         transform: rotate(45deg);
-
         margin-left: 6px;
     }
 
     .btn-volver-esquina:hover {
         background: #6A253A;
-
         transform: scale(1.1);
-
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
     }
 
@@ -239,15 +212,11 @@ a{
     }
     </style>
 </head>
-
 <body>
- <a href="../vendedor.php" class="btn-volver-esquina" aria-label="Volver" title="Volver"> </a>
+    <a href="../vendedor.php" class="btn-volver-esquina" aria-label="Volver" title="Volver"> </a>
 <div class="contenedor">
-
     <h2>Lista de Pedidos</h2>
-
     <table>
-
         <tr>
             <th>ID</th>
             <th>Nombre</th>
@@ -256,15 +225,11 @@ a{
             <th>Vendedor</th>
             <th>Acciones</th>
         </tr>
-
         <?php
 
         if ($resultado->num_rows > 0) {
-
             while($fila = $resultado->fetch_assoc()) {
-
                 $ID = $fila["ID"];
-
                 echo "<tr>";
 
                 echo "<td>".$fila['ID']."</td>";
@@ -274,90 +239,53 @@ a{
                 echo "<td>".$fila['NombreVendedor']."</td>";
 
                 echo "<td>
-
-                        <a href='leerPedido.php?ID=$ID'>
-                            <button class='mostrar'>Mostrar</button>
-                        </a>
-
-                        <a href='formupdatePedidos.php?ID=$ID'>
-                            <button class='editar'>Editar</button>
-                        </a>
-
-                        <a href='EliminarPedidos.php?ID=$ID'>
-                            <button class='eliminar'>Eliminar</button>
-                        </a>
-
-                      </td>";
-
+                    <a href='leerPedido.php?ID=$ID'><button class='mostrar'>Mostrar</button></a>
+                    <a href='formupdatePedidos.php?ID=$ID'><button class='editar'>Editar</button></a>
+                    <a href='EliminarPedidos.php?ID=$ID'><button class='eliminar'>Eliminar</button></a>
+                </td>";
                 echo "</tr>";
             }
-
         } else {
-
             echo "<tr>";
             echo "<td colspan='6'>No hay pedidos registrados</td>";
             echo "</tr>";
-
         }
-
         $conexion->close();
-
         ?>
-
     </table>
-
     <div class="botones">
             <a href="../perfil.php"><button class="volver">Perfil</button></a>
             <a href="../Ajax/index/index1.php"><button class="volver">Registrar nuevo pedido</button></a>
-        
-        
             <a href="../Ventas/leerVentass.php"><button class="volver">Ventas aceptadas</button></a>
-        
     </div>
-
 </div>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     let timerInterval;
-
     Swal.fire({
         title: 'Bienvenido Vendedor',
-
         html: 'Cargando cantidad <b></b> de pedidos.',
-
         timer: 2000,
-
         timerProgressBar: true,
-
         background: '#E64B6B',
-
         color: '#EFE2DA',
-
         confirmButtonColor: '#6A253A',
-
         didOpen: () => {
-
             Swal.showLoading();
-
             const timer = Swal.getPopup().querySelector('b');
-
             timerInterval = setInterval(() => {
                 timer.textContent = Swal.getTimerLeft();
             }, 100);
         },
-
         willClose: () => {
             clearInterval(timerInterval);
         }
-
     }).then((result) => {
 
         if (result.dismiss === Swal.DismissReason.timer) {
             console.log('Alerta cerrada correctamente');
         }
-
     });
-
 });
 </script>
 </body>

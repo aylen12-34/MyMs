@@ -3,24 +3,19 @@ $usuario = "root";
 $contraseña = "";     
 $direccion = "localhost";
 $baseDeDatos = "MYMS";    
-
 $conexion=new mysqli($direccion, $usuario, $contraseña, $baseDeDatos);
-if ($conexion->connect_error) {
-    
+
+if ($conexion->connect_error) {    
     echo "No se ha podido conectar a la base de datos";
 }
-
 $Codigo = trim($_GET['Codigo']);
-
 $stmt = $conexion->prepare(
     "SELECT * FROM Productos WHERE Codigo=?"
 );
-
 $stmt->bind_param("s", $Codigo);
-
 $stmt->execute();
-
 $resultado = $stmt->get_result();
+
 if ($resultado->num_rows > 0) {
     while($fila=$resultado->fetch_assoc()) {
         $Codigo=$fila['Codigo'];
@@ -32,7 +27,6 @@ if ($resultado->num_rows > 0) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +59,6 @@ if ($resultado->num_rows > 0) {
             margin: 0;
         }
 
-        /* SE CAMBIÓ 'div' POR LA CLASE '.contenedor-registro' */
         .contenedor-registro {
             width: 420px;
             padding: 35px;
@@ -101,7 +94,6 @@ if ($resultado->num_rows > 0) {
             outline: none;
         }
 
-        /* SELECT */
         select {
             width: 100%;
             padding: 10px;
@@ -124,7 +116,6 @@ if ($resultado->num_rows > 0) {
             color: #6A253A;
         }
 
-        /* ARCHIVO */
         input[type="file"] {
             background-color: white;
             color: #6A253A;
@@ -202,47 +193,35 @@ if ($resultado->num_rows > 0) {
         position: fixed;
         top: 25px;
         left: 25px;
-
         width: 52px;
         height: 52px;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         background: #E64B6B;
         border: none;
         border-radius: 50%;
-
         cursor: pointer;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
-
         transition: all 0.2s ease;
         z-index: 9999;
-
         text-decoration: none;
     }
 
     /* Flecha */
     .btn-volver-esquina::before {
         content: "";
-
         width: 12px;
         height: 12px;
-
         border-left: 3px solid #EFE2DA;
         border-bottom: 3px solid #EFE2DA;
-
         transform: rotate(45deg);
-
         margin-left: 6px;
     }
 
     .btn-volver-esquina:hover {
         background: #6A253A;
-
         transform: scale(1.1);
-
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
     }
 
@@ -256,48 +235,29 @@ if ($resultado->num_rows > 0) {
         <h1>Editar Producto</h1>
     <form action="updateEditarProductos.php" method="post" onsubmit="return validar()">
         <label for="Codigo">Codigo:</label>
-<input type="number" id="Codigo" name="Codigo"
-       value="<?=$Codigo?>"
-       readonly minlength="1" maxlength="10">
-<br><br>
-
-<label for="Nombre">Nombre:</label>
-<input type="text" id="Nombre" name="Nombre"
-       value="<?=$Nombre?>"
-       minlength="3" maxlength="100"
-       pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9\s.,'()-]+">
-<br><br>
-
-<label for="Descripcion">Descripción:</label>
-<input type="text" id="Descripcion" name="Descripcion"
-       value="<?=$Descripcion?>"
-       minlength="3" maxlength="255">
-<br><br>
-
-<label for="Detallado">Descripción detallada:</label>
-<input type="text" id="Detallado" name="Detallado"
-       value="<?=$Detallado?>"
-       minlength="3" maxlength="1000">
-<br><br>
-
-<label for="Precio">Precio:</label>
-<input type="number" id="Precio" name="Precio"
-       value="<?=$Precio?>"
-       minlength="1" maxlength="10">
-<br><br>
-
-<label for="Stock">Stock:</label>
-<input type="number" id="Stock" name="Stock"
-       value="<?=$Stock?>"
-       minlength="1" maxlength="10">
-<br><br>
-
-<label for="Estado">Estado</label>
-<select name="Estado">
-    <option value="Disponible">Disponible</option>
-    <option value="Desactivo">Fuera de catalogo</option>
-</select>
-<br><br>
+        <input type="number" id="Codigo" name="Codigo" value="<?=$Codigo?>" readonly minlength="1" maxlength="10">
+        <br><br>
+        <label for="Nombre">Nombre:</label>
+        <input type="text" id="Nombre" name="Nombre" value="<?=$Nombre?>" minlength="3" maxlength="100" pattern="[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9\s.,'()-]+">
+        <br><br>
+        <label for="Descripcion">Descripción:</label>
+        <input type="text" id="Descripcion" name="Descripcion" value="<?=$Descripcion?>" minlength="3" maxlength="255">
+        <br><br>
+        <label for="Detallado">Descripción detallada:</label>
+        <input type="text" id="Detallado" name="Detallado" value="<?=$Detallado?>" minlength="3" maxlength="1000">
+        <br><br>
+        <label for="Precio">Precio:</label>
+        <input type="number" id="Precio" name="Precio" value="<?=$Precio?>" minlength="1" maxlength="10">
+        <br><br>
+        <label for="Stock">Stock:</label>
+        <input type="number" id="Stock" name="Stock" value="<?=$Stock?>" minlength="1" maxlength="10">
+        <br><br>
+        <label for="Estado">Estado</label>
+        <select name="Estado">
+            <option value="Disponible">Disponible</option>
+            <option value="Desactivo">Fuera de catalogo</option>
+        </select>
+        <br><br>
         <input type="submit" value="Editar">
     </form>
  <a href="readleeProductos.php" class="btn-volver-esquina" aria-label="Volver" title="Volver"> </a>
@@ -309,9 +269,7 @@ if ($resultado->num_rows > 0) {
     var detallado = document.getElementById("Detallado");
     var precio = document.getElementById("Precio");
     var stock = document.getElementById("Stock");
-
     var expRegNombre = /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/;
-
     function validar() {
 
         if (nombre.value == "") {
@@ -536,7 +494,6 @@ if ($resultado->num_rows > 0) {
             stock.focus();
             return false;
         }
-
         return true;
     }
 </script>

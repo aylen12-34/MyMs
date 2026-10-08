@@ -3,7 +3,6 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $bdname = "MYMS";
-
 $conexion = new mysqli($servername, $username,$password,$bdname);
 
 if($conexion -> connect_error){
@@ -19,10 +18,7 @@ if ($conexion->query($sql) === TRUE) {
 }else {
     echo "Error: " . $conexion->error;
 }
-
- 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,7 +73,6 @@ if ($conexion->query($sql) === TRUE) {
         font-size: 16px;
         margin:3px;
         }
-
         .volver:hover{
             background-color: #EFE2DA;
             color: #E64B6B;
@@ -91,16 +86,13 @@ if ($conexion->query($sql) === TRUE) {
 <body>
     <div>
         <h2>Eliminar Productos</h2>
-        <p>
-      <?php
+    <p>
+        <?php
         echo "El producto ha sido eliminado.";
         $conexion->close(); 
       ?>
-    </p><br>
-        
-        
+    </p><br>    
 <a href="readleeProductos.php"><button class="volver">Tabla Productos</button></a>
-        
     </div>
     </div>
 </body>
