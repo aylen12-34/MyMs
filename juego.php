@@ -596,67 +596,240 @@ button.action:active{
 /* =========================================================
    RESPONSIVE
    ========================================================= */
-
 @media(max-width:600px){
 
     body{
         padding:12px;
+        align-items:center;
+        background-position:center;
     }
 
     .game-container{
-        padding:18px;
-
-        border-radius:27px;
+        width:100%;
+        max-width:430px;
+        padding:20px 16px;
+        border-radius:28px;
+        border-width:1px;
+        box-shadow:
+            0 20px 50px rgba(79,27,44,.50),
+            0 0 30px rgba(230,75,107,.12);
     }
 
     h1{
-        font-size:2rem;
+        font-size:clamp(1.8rem,8vw,2.3rem);
+        margin-bottom:5px;
     }
 
     .subtitle{
-        font-size:.85rem;
+        font-size:.82rem;
+        margin-bottom:20px;
+    }
+
+    /* CONTROLES */
+
+    .controls{
+        width:100%;
+        flex-direction:column;
+        gap:9px;
+        margin-bottom:20px;
     }
 
     .control-group{
         width:100%;
-
+        min-height:54px;
         justify-content:space-between;
+        padding:8px 10px 8px 13px;
+        border-radius:16px;
+    }
+
+    .control-group label{
+        font-size:.82rem;
     }
 
     select{
-        min-width:140px;
+        min-width:145px;
+        width:auto;
+        padding:9px 35px 9px 12px;
+        font-size:.82rem;
+        border-radius:12px;
+    }
+
+    /* MARCADOR */
+
+    .scoreboard{
+        width:100%;
+        gap:7px;
+        margin-bottom:20px;
     }
 
     .score{
-        min-width:85px;
-
-        padding:10px 13px;
+        flex:1;
+        min-width:0;
+        padding:9px 8px;
+        border-radius:16px;
     }
+
+    .score-label{
+        font-size:.72rem;
+    }
+
+    .score-value{
+        font-size:1.3rem;
+    }
+
+    /* TABLERO */
 
     .board{
-        width:min(92vw,380px);
-
+        width:min(88vw,360px);
+        max-width:360px;
         aspect-ratio:1 / 1;
-
-        grid-template-columns:repeat(3,1fr);
-        grid-template-rows:repeat(3,1fr);
-
         gap:7px;
-
         padding:7px;
-
-        border-radius:23px;
+        border-radius:24px;
+        border-width:1px;
+        box-shadow:
+            0 12px 30px rgba(0,0,0,.25);
     }
 
+    /* CASILLAS */
+
     .cell{
+        width:100%;
+        height:100%;
+        min-width:0;
+        min-height:0;
         border-radius:17px;
+        font-size:clamp(2.8rem,15vw,4.2rem);
+    }
+
+    .cell:hover{
+        transform:none;
+    }
+
+    .cell:active{
+        transform:scale(.94);
+    }
+
+    /* TURNO */
+
+    .turn{
+        margin-top:16px;
+        font-size:.85rem;
+    }
+
+    /* BOTONES */
+
+    .buttons{
+        width:100%;
+        flex-direction:column;
+        gap:9px;
+        margin-top:19px;
     }
 
     button.action{
         width:100%;
+        padding:11px 18px;
+        border-radius:15px;
+        font-size:.86rem;
+    }
+
+    button.action:hover{
+        transform:none;
+    }
+
+    /* SWEETALERT */
+
+    .swal2-popup{
+        width:calc(100% - 28px) !important;
+        max-width:360px !important;
+        border-radius:25px !important;
+        padding:1.5rem !important;
+        border-width:2px !important;
+    }
+
+    .swal2-title{
+        font-size:1.45rem !important;
+    }
+
+    .swal2-html-container{
+        font-size:.85rem !important;
+    }
+
+    .swal2-styled{
+        padding:10px 17px !important;
+        border-radius:15px !important;
+        font-size:.85rem !important;
     }
 }
 
+
+/* CELULARES MUY PEQUEÑOS */
+
+@media(max-width:380px){
+
+    body{
+        padding:8px;
+    }
+
+    .game-container{
+        padding:17px 12px;
+        border-radius:24px;
+    }
+
+    h1{
+        font-size:1.75rem;
+    }
+
+    .subtitle{
+        font-size:.76rem;
+    }
+
+    .control-group{
+        min-height:50px;
+    }
+
+    .control-group label{
+        font-size:.76rem;
+    }
+
+    select{
+        min-width:125px;
+        font-size:.76rem;
+    }
+
+    .score{
+        padding:8px 5px;
+    }
+
+    .score-label{
+        font-size:.65rem;
+    }
+
+    .score-value{
+        font-size:1.15rem;
+    }
+
+    .board{
+        width:min(88vw,320px);
+        gap:6px;
+        padding:6px;
+        border-radius:21px;
+    }
+
+    .cell{
+        border-radius:15px;
+        font-size:clamp(2.5rem,16vw,3.6rem);
+    }
+
+    .turn{
+        font-size:.78rem;
+    }
+
+    button.action{
+        font-size:.8rem;
+        padding:10px 15px;
+    }
+}
 </style>
 </head>
 

@@ -211,7 +211,7 @@
             </li>
             <li>
                 <a href="juego.php">
-                    🎮 Juego
+                    Juego
                 </a>
             </li>
             <li class="buscar-pedido">

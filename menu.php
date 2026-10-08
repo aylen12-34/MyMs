@@ -4,17 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>M&M's</title>
+
 <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
+
 /* =========================================================
-   COLORES
+   COLORES MYMS
    morado: #6A253A
    rosado: #E64B6B
    crema:  #EFE2DA
 ========================================================= */
+
+* {
+    font-family: 'Chillax-Semibold';
+}
+
 #seccion-acordeon-categorias {
     width: 100%;
     padding: 80px 5%;
@@ -22,6 +31,7 @@
     text-align: center;
     box-sizing: border-box;
 }
+
 .titulo-acordeon span {
     color: var(--beige);
     font-size: 0.85rem;
@@ -61,7 +71,6 @@
 .titulo-acordeon h1.escala span:hover {
     transform: scale(1.9) translateY(-10px);
     color: beige;
-
 }
 
 .contenedor-acordeon {
@@ -70,7 +79,6 @@
     height: 500px;
     gap: 15px;
     box-sizing: border-box;
-
 }
 
 .tarjeta-acordeon {
@@ -97,12 +105,14 @@
     left: 0;
     width: 100%;
     height: 100%;
+
     background:
         linear-gradient(
             0deg,
-            rgba(0, 0, 0, 0.85) 0%,
-            rgba(0, 0, 0, 0.2) 100%
+            rgba(45, 45, 45, 0.87) 0%,
+            rgba(239, 226, 218, 0.18) 100%
         );
+
     z-index: 1;
     transition: opacity 0.5s ease;
 }
@@ -115,8 +125,8 @@
     background:
         linear-gradient(
             0deg,
-            rgba(0, 0, 0, 0.9) 0%,
-            rgba(0, 0, 0, 0.4) 100%
+            rgba(55, 55, 55, 0.9) 0%,
+            rgba(239, 226, 218, 0.28) 100%
         );
 }
 
@@ -125,19 +135,26 @@
     bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
+
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+
     width: 50px;
     height: 50px;
     border-radius: 50%;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     color: var(--beige);
     font-size: 1.2rem;
+
     z-index: 3;
+
     transition: all 0.5s ease;
+
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -154,13 +171,20 @@
     bottom: 35px;
     left: 35px;
     right: 35px;
+
     text-align: left;
+
     z-index: 2;
+
     opacity: 0;
+
     transform: translateY(30px);
+
     transition:
         all 0.5s ease 0.2s;
+
     pointer-events: none;
+
     min-width: 0;
 }
 
@@ -172,16 +196,24 @@
 
 .contenido h3 {
     position: relative;
+
     margin: 0 0 18px 0;
+
     color: #E64B6B;
-    font-family: 'Chillax', sans-serif;
+
+    font-family: 'Chillax-Semibold';
+
     font-size: 2.2rem;
     font-weight: 600;
     letter-spacing: 3px;
+
     text-transform: uppercase;
     text-align: left;
+
     line-height: 1.2;
+
     overflow-wrap: break-word;
+
     text-shadow:
         0 2px 8px rgba(0, 0, 0, 0.8),
         0 0 15px rgba(230, 75, 107, 0.25);
@@ -189,12 +221,18 @@
 
 .contenido h3::after {
     content: "";
+
     display: block;
+
     width: 55px;
     height: 3px;
+
     margin-top: 9px;
+
     background: #E64B6B;
+
     border-radius: 10px;
+
     box-shadow: 0 0 8px rgba(230, 75, 107, 0.5);
 }
 
@@ -206,28 +244,45 @@
 
 .contenido li {
     position: relative;
+
     list-style: none;
+
     margin: 7px 0;
+
     padding: 0 0 0 22px;
+
     color: #EFE2DA;
-    font-family: 'Chillax', sans-serif;
+
+    font-family: 'Chillax-Semibold';
+
     font-size: 0.95rem;
     font-weight: 400;
+
     letter-spacing: 1px;
+
     text-align: left;
+
     line-height: 1.45;
+
     overflow-wrap: break-word;
+
     transition:
         color 0.3s ease,
         transform 0.3s ease;
 }
+
 .contenido li::before {
     content: "•";
+
     position: absolute;
+
     left: 0;
     top: -1px;
+
     color: #E64B6B;
+
     font-size: 1.2rem;
+
     transition: transform 0.3s ease;
 }
 
@@ -240,7 +295,13 @@
     transform: scale(1.4);
 }
 
+
+/* =========================================================
+   TABLET
+========================================================= */
+
 @media (max-width: 1100px) {
+
     #seccion-acordeon-categorias {
         padding: 65px 4%;
     }
@@ -266,7 +327,13 @@
     }
 }
 
+
+/* =========================================================
+   TABLET PEQUEÑA
+========================================================= */
+
 @media (max-width: 850px) {
+
     #seccion-acordeon-categorias {
         padding: 55px 3%;
     }
@@ -315,7 +382,13 @@
     }
 }
 
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
 @media (max-width: 650px) {
+
     #seccion-acordeon-categorias {
         padding: 45px 18px;
     }
@@ -343,8 +416,10 @@
         width: 100%;
         height: auto;
         min-height: 0;
+
         display: flex;
         flex-direction: column;
+
         gap: 12px;
     }
 
@@ -352,8 +427,11 @@
         width: 100%;
         height: 85px;
         min-height: 85px;
+
         flex: none;
+
         border-radius: 16px;
+
         transition:
             height 0.6s cubic-bezier(0.25, 1, 0.5, 1),
             flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
@@ -364,12 +442,17 @@
         flex: none;
     }
 
+
+    /* =====================================================
+       DEGRADADO EN CELULAR
+       ===================================================== */
+
     .tarjeta-acordeon::after {
         background:
             linear-gradient(
                 90deg,
-                rgba(0, 0, 0, 0.82) 0%,
-                rgba(0, 0, 0, 0.3) 100%
+                rgba(55, 55, 55, 0.75) 0%,
+                rgba(239, 226, 218, 0.20) 100%
             );
     }
 
@@ -377,8 +460,8 @@
         background:
             linear-gradient(
                 0deg,
-                rgba(0, 0, 0, 0.92) 0%,
-                rgba(0, 0, 0, 0.25) 100%
+                rgba(55, 55, 55, 0.80) 0%,
+                rgba(239, 226, 218, 0.25) 100%
             );
     }
 
@@ -393,9 +476,13 @@
         left: 20px;
         right: 20px;
         bottom: 20px;
+
         max-height: calc(100% - 40px);
+
         overflow-y: auto;
+
         padding-right: 3px;
+
         box-sizing: border-box;
     }
 
@@ -417,7 +504,13 @@
     }
 }
 
+
+/* =========================================================
+   CELULAR PEQUEÑO
+========================================================= */
+
 @media (max-width: 480px) {
+
     #seccion-acordeon-categorias {
         padding: 38px 13px;
     }
@@ -488,7 +581,13 @@
     }
 }
 
+
+/* =========================================================
+   CELULAR MUY PEQUEÑO
+========================================================= */
+
 @media (max-width: 360px) {
+
     #seccion-acordeon-categorias {
         padding: 32px 10px;
     }
@@ -527,22 +626,30 @@
         padding-left: 14px;
     }
 }
+
 </style>
 </head>
+
 <body>
+
 <main>
+
 <div class="contenedor-acordeon">
+
     <div
         class="tarjeta-acordeon active"
         onclick="seleccionar(this)"
         style="background-image: url('../../imagenes/categoria/1.png');"
     >
+
         <div class="icono">
             <i class="fa-solid fa-seedling"></i>
         </div>
 
         <div class="contenido">
+
             <h3>Galletas</h3>
+
             <ul>
                 <li>Root Beer Float Cookie</li>
                 <li>Peanut Butter Cup Cookie ft. REESEs</li>
@@ -552,18 +659,26 @@
                 <li>Chocolate Chip Cookie</li>
                 <li>Pink Sugar Cookie</li>
             </ul>
+
         </div>
+
     </div>
+
+
     <div
         class="tarjeta-acordeon"
         onclick="seleccionar(this)"
         style="background-image: url('../../imagenes/categoria/3.png');"
     >
+
         <div class="icono">
             <i class="fa-solid fa-moon"></i>
         </div>
+
         <div class="contenido">
+
             <h3>Croissants</h3>
+
             <ul>
                 <li>Oreo Bliss</li>
                 <li>Caramel Crunch</li>
@@ -572,19 +687,26 @@
                 <li>Strawberry Lovers</li>
                 <li>Pistachio Dream</li>
             </ul>
+
         </div>
+
     </div>
+
+
     <div
         class="tarjeta-acordeon"
         onclick="seleccionar(this)"
         style="background-image: url('../../imagenes/categoria/2.png');"
     >
+
         <div class="icono">
             <i class="fa-solid fa-leaf"></i>
         </div>
 
         <div class="contenido">
+
             <h3>Bebidas frías</h3>
+
             <ul>
                 <li>Coffee Crush</li>
                 <li>Caramel Vibes</li>
@@ -593,19 +715,26 @@
                 <li>Matcha Mood</li>
                 <li>Choco Latte Ice</li>
             </ul>
+
         </div>
+
     </div>
+
+
     <div
         class="tarjeta-acordeon"
         onclick="seleccionar(this)"
         style="background-image: url('../../imagenes/categoria/4.jpg');"
     >
+
         <div class="icono">
             <i class="fa-solid fa-lemon"></i>
         </div>
 
         <div class="contenido">
+
             <h3>Bebidas calientes</h3>
+
             <ul>
                 <li>Americano Clásico</li>
                 <li>Espresso Intenso</li>
@@ -613,20 +742,26 @@
                 <li>Latte Clásico</li>
                 <li>Mocha Clásico</li>
             </ul>
+
         </div>
+
     </div>
+
 
     <div
         class="tarjeta-acordeon"
         onclick="seleccionar(this)"
         style="background-image: url('../../imagenes/categoria/5.jpg');"
     >
+
         <div class="icono">
             <i class="fa-solid fa-ice-cream"></i>
         </div>
 
         <div class="contenido">
+
             <h3>Brownies</h3>
+
             <ul>
                 <li>Brownies con cobertura de Chocolate</li>
                 <li>Brownies bañados en Nutella</li>
@@ -634,19 +769,32 @@
                 <li>Brownies con Crema</li>
                 <li>Brownies rellenos de Chocolate</li>
             </ul>
+
         </div>
+
     </div>
+
 </div>
+
 </main>
+
+
 <script>
+
 var listaTarjetas =
     document.querySelectorAll('.tarjeta-acordeon');
+
 function seleccionar(tarjetaSeleccionada) {
+
     for (var i = 0; i < listaTarjetas.length; i++) {
         listaTarjetas[i].classList.remove('active');
     }
+
     tarjetaSeleccionada.classList.add('active');
+
 }
+
 </script>
+
 </body>
 </html>
