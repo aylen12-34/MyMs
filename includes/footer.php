@@ -152,11 +152,11 @@ footer::before {
     <div class="footer-contenido">
         <div class="footer-columnas">
             <div class="footer-marca">
-                <h2>MyMs</h2>
+                <h2>MyM's</h2>
                 <p>Productos deliciosos y personalizados, pensados para tus necesidades.</p>
             </div>
             <div class="footer-columna">
-                <h3>Contacto</h3>
+                <h3>Ubicación</h3>
                 <p>
                     <i class="fa-solid fa-location-dot"></i>
                     Plazuela Tarija, entre Av. América
@@ -164,7 +164,7 @@ footer::before {
                 </p>
             </div>
             <div class="footer-columna">
-                <h3>Síguenos</h3>
+                <h3>Contactos</h3>
                 <div class="footer-red">
             <i class="fa-brands fa-instagram"></i>
             <span>
@@ -181,7 +181,7 @@ footer::before {
         </div>
         <div class="footer-bottom">
             <p>
-                &copy; 2026 MyMs. Todos los derechos reservados.
+                &copy; 2026 MyM's. Todos los derechos reservados.
             </p>
         </div>
     </div>

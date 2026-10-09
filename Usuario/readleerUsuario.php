@@ -1,5 +1,4 @@
 <?php
-
 $usuario = "root";
 $contraseña = "";
 $direccion = "localhost";
@@ -129,32 +128,32 @@ if ($resultado->num_rows > 0) {
     $fila = $resultado->fetch_assoc();
     echo "<table>";
     echo "<tr>";
-    echo "<td class='titulo'>CI</td>";
+    echo "<td class='titulo'>CI:</td>";
     echo "<td>".$fila["CI"]."</td>";
     echo "</tr>";
 
     echo "<tr>";
-    echo "<td class='titulo'>Nombre</td>";
+    echo "<td class='titulo'>Nombre:</td>";
     echo "<td>".$fila["Nombre"]."</td>";
     echo "</tr>";
 
     echo "<tr>";
-    echo "<td class='titulo'>Dirección</td>";
+    echo "<td class='titulo'>Dirección:</td>";
     echo "<td>".$fila["Direccion"]."</td>";
     echo "</tr>";
 
     echo "<tr>";
-    echo "<td class='titulo'>Celular</td>";
+    echo "<td class='titulo'>Celular:</td>";
     echo "<td>".$fila["Celular"]."</td>";
     echo "</tr>";
 
     echo "<tr>";
-    echo "<td class='titulo'>Rol</td>";
+    echo "<td class='titulo'>Rol:</td>";
     echo "<td>".$fila["Rol"]."</td>";
     echo "</tr>";
 
     echo "<tr>";
-    echo "<td class='titulo'>Estado</td>";
+    echo "<td class='titulo'>Estado:</td>";
     echo "<td>".$fila["Estado"]."</td>";
     echo "</tr>";
     echo "</table>";

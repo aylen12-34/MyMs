@@ -374,7 +374,7 @@
             </div>
         </div>
     </div>
-
+    <?php include("../../includes/footerindex.php");?>
     <script src="../js/productos.js"></script>
     <script src="../js/pedido.js"></script>
     <script src="../js/carrito.js"></script>

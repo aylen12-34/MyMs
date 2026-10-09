@@ -311,7 +311,7 @@ if (isset($_GET['ajax'])) {
         <canvas id="graficoVentas"></canvas>
     </div>
     <div class="top-products">
-        <h3>Top 3 Productos Más Vendidos</h3>
+        <h3>Top 3 Productos Más Vendidos en MyM's</h3>
         <table class="sales-table">
             <thead>
                 <tr>

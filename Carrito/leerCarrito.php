@@ -127,18 +127,18 @@ if ($resultado->num_rows > 0) {
 $CostoTotal=0;
     while($fila = $resultado->fetch_assoc()) {
     echo "<tr>";
-    echo "<td class='titulo'>Codigo</td>";
+    echo "<td class='titulo'>Codigo:</td>";
     echo "<td>".$fila["Codigo"]."</td>";
-    echo "<td class='titulo'>Nombre</td>";
+    echo "<td class='titulo'>Nombre:</td>";
     echo "<td>".$fila["Nombre"]."</td>";
-    echo "<td class='titulo'>Precio</td>";
+    echo "<td class='titulo'>Precio:</td>";
     echo "<td>".$fila["Precio"]."</td>";
-    echo "<td class='titulo'>Cantidad</td>";
+    echo "<td class='titulo'>Cantidad:</td>";
     echo "<td>".$fila["Cantidad"]."</td>";
     echo "</tr>";
     $CostoTotal= $CostoTotal+$fila['Cantidad']*$fila['Precio'];
 }
-    echo "<td class='titulo'>Costo Total</td>";
+    echo "<td class='titulo'>Costo Total:</td>";
     echo "<td>".$CostoTotal."</td>";
 }  
     else {
