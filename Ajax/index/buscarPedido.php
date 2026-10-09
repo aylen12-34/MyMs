@@ -3,16 +3,13 @@ $host = "localhost";
 $user = "root";
 $pass = "";
 $db   = "MYMS";
-
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
     die("Error de conexión");
 }
 ?>
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <?php 
-
 $id = isset($_GET["ID"]) ? trim($_GET["ID"]) : "";
 if ($id === "") {
     echo "<script>
@@ -21,7 +18,6 @@ if ($id === "") {
           </script>";
     exit;
 }
-
 $stmt = $conn->prepare("SELECT ID FROM Pedidos WHERE ID = ?");
 $stmt->bind_param("s", $id);
 $stmt->execute();
@@ -37,7 +33,6 @@ if ($resultado->num_rows > 0) {
         'UTF-8'
     );
     ?>
-
     <script>
         Swal.fire({
             title: 'Alerta',
@@ -70,7 +65,6 @@ if ($resultado->num_rows > 0) {
     </script>
     <?php
 }
-
 $stmt->close();
 $conn->close();
 ?>

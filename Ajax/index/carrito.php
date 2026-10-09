@@ -1,8 +1,6 @@
 <?php
-
 session_start();
 require("conexion.php");
-
 header("Content-Type: application/json");
 
 if(!isset($_SESSION["pedidos"])){
@@ -39,7 +37,6 @@ switch($accion){
             ]);
             exit;
         }
-
         $producto = $resultadoProducto->fetch_assoc();
         $stmt = $conn->prepare(
             "SELECT * FROM carrito WHERE Pedidos_ID=? AND Productos_Codigo=?"
@@ -54,15 +51,10 @@ switch($accion){
             $stmt->get_result();
 
         if($resultadoExiste->num_rows > 0){
-            $fila = 
-                $resultadoExiste->fetch_assoc();
-            $cantidad =
-                $fila["Cantidad"] + 1;
-            $subtotal =
-                $cantidad * $producto["Precio"];
-            $stmt = $conn->prepare(
-                "UPDATE carrito SET Cantidad=?, CostoTotal=? WHERE Pedidos_ID=? AND Productos_Codigo=?"
-            );
+            $fila = $resultadoExiste->fetch_assoc();
+            $cantidad = $fila["Cantidad"] + 1;
+            $subtotal = $cantidad * $producto["Precio"];
+            $stmt = $conn->prepare("UPDATE carrito SET Cantidad=?, CostoTotal=? WHERE Pedidos_ID=? AND Productos_Codigo=?");
             $stmt->bind_param(
                 "ssss",
                 $cantidad,
@@ -71,13 +63,9 @@ switch($accion){
                 $codigo
             );
         }else{
-            $subtotal =
-                $producto["Precio"];
+            $subtotal = $producto["Precio"];
             $cantidad = 1;
-
-            $stmt = $conn->prepare(
-                "INSERT INTO carrito (Pedidos_ID, Productos_Codigo, Cantidad, CostoTotal) VALUES (?, ?, ?, ?)"
-            );
+            $stmt = $conn->prepare("INSERT INTO carrito (Pedidos_ID, Productos_Codigo, Cantidad, CostoTotal) VALUES (?, ?, ?, ?)");
             $stmt->bind_param(
                 "ssss",
                 $idPedido,
@@ -100,28 +88,21 @@ switch($accion){
         }
     break;
     case "mostrar":
-        $stmt = $conn->prepare(
-            "SELECT c.Productos_Codigo, c.Cantidad, c.CostoTotal, p.Nombre, p.Precio, p.imagen FROM carrito c INNER JOIN productos p ON c.Productos_Codigo = p.Codigo WHERE c.Pedidos_ID=?"
-        );
+        $stmt = $conn->prepare("SELECT c.Productos_Codigo, c.Cantidad, c.CostoTotal, p.Nombre, p.Precio, p.imagen FROM carrito c INNER JOIN productos p ON c.Productos_Codigo = p.Codigo WHERE c.Pedidos_ID=?");
         $stmt->bind_param(
             "s",
             $idPedido
         );
         $stmt->execute();
-        $resultado =
-            $stmt->get_result();
+        $resultado = $stmt->get_result();
         $carrito = [];
-        while($fila =
-            $resultado->fetch_assoc()){
+        while($fila = $resultado->fetch_assoc()){
             $carrito[] = $fila;
-
         }
         echo json_encode($carrito);
     break;
     case "vaciar":
-        $stmt = $conn->prepare(
-            "DELETE FROM carrito WHERE Pedidos_ID=?"
-        );
+        $stmt = $conn->prepare("DELETE FROM carrito WHERE Pedidos_ID=?");
         $stmt->bind_param(
             "s",
             $idPedido
