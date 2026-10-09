@@ -159,32 +159,32 @@ tr:hover td{
         echo "<table>";
 
         echo "<tr>";
-        echo "<td class='titulo'>ID de Venta</td>";
+        echo "<td class='titulo'>ID de Venta:</td>";
         echo "<td>" . $fila["ID"] . "</td>";
         echo "</tr>";
 
         echo "<tr>";
-        echo "<td class='titulo'>ID del Pedido</td>";
+        echo "<td class='titulo'>ID del Pedido:</td>";
         echo "<td>" . $fila["Pedidos_ID"] . "</td>";
         echo "</tr>";
 
         echo "<tr>";
-        echo "<td class='titulo'>Costo Total</td>";
+        echo "<td class='titulo'>Costo Total:</td>";
         echo "<td>" . $fila["Costototal"] . "</td>";
         echo "</tr>";
 
         echo "<tr>";
-        echo "<td class='titulo'>Estado</td>";
+        echo "<td class='titulo'>Estado:</td>";
         echo "<td>" . $fila["Estado"] . "</td>";
         echo "</tr>";
 
         echo "<tr>";
-        echo "<td class='titulo'>Método de Pago</td>";
+        echo "<td class='titulo'>Método de Pago:</td>";
         echo "<td>" . $fila["Metodo"] . "</td>";
         echo "</tr>";
 
         echo "<tr>";
-        echo "<td class='titulo'>Nombre del Vendedor</td>";
+        echo "<td class='titulo'>Nombre del Vendedor:</td>";
         echo "<td>" . $NombreVendedor. "</td>";
         echo "</tr>";
         echo "</table>";
