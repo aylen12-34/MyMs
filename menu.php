@@ -643,7 +643,7 @@
     >
 
         <div class="icono">
-            <i class="fa-solid fa-seedling"></i>
+            <i class="fa-solid fa-cookie"></i>
         </div>
 
         <div class="contenido">
@@ -672,7 +672,7 @@
     >
 
         <div class="icono">
-            <i class="fa-solid fa-moon"></i>
+            <i class="fa-solid fa-wheat-awn"></i>
         </div>
 
         <div class="contenido">
@@ -700,7 +700,7 @@
     >
 
         <div class="icono">
-            <i class="fa-solid fa-leaf"></i>
+            <i class="fa-regular fa-snowflake"></i>
         </div>
 
         <div class="contenido">
@@ -728,7 +728,7 @@
     >
 
         <div class="icono">
-            <i class="fa-solid fa-lemon"></i>
+            <i class="fa-solid fa-mug-hot"></i>
         </div>
 
         <div class="contenido">
@@ -755,7 +755,7 @@
     >
 
         <div class="icono">
-            <i class="fa-solid fa-ice-cream"></i>
+            <i class="fa-solid fa-bread-slice"></i>
         </div>
 
         <div class="contenido">
