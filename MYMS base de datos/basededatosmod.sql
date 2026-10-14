@@ -98,20 +98,6 @@ CREATE TABLE IF NOT EXISTS `MYMS`.`Pedidos` (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `MYMS`.`Pedidos`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `MYMS`.`Pedidos` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
-  `Nombre` VARCHAR(45) NULL DEFAULT NULL,
-  `Fecha` DATE NULL DEFAULT NULL, 
-  `Celular` INT NULL DEFAULT NULL,
-  `Estado` VARCHAR(45) NULL DEFAULT NULL,
-  `Direccion` VARCHAR(80) NULL DEFAULT NULL,
-  `NombreVendedor` VARCHAR(45) NULL DEFAULT NULL,
-  PRIMARY KEY (`ID`))
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
 -- Datos de la tabla Pedidos
 -- -----------------------------------------------------
 INSERT INTO `MYMS`.`Pedidos` (`ID`, `Nombre`, `Fecha`, `Celular`, `Estado`, `Direccion`, `NombreVendedor`) VALUES
