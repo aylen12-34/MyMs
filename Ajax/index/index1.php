@@ -13,7 +13,7 @@
 <body>
     <header>
     <div class="logo">
-        ☕︎ <span>Menu</span>
+        ☕︎ <span>Menú</span>
     </div>
     <button id="pedidoPersonalizado" onclick="window.location.href='pedido_personalizado.php'"> Pedido Personalizado </button>
     <div class="busqueda">
