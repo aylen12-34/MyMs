@@ -17,7 +17,7 @@
 
 @font-face{
     font-family:'Chillax-Semibold';
-    src:url("tipografia/Fonts/WEB/fonts/Chillax-Semibold.woff2") format("woff2");
+    src:url("../tipografia/Fonts/WEB/fonts/Chillax-Semibold.woff2") format("woff2");
     font-weight:600;
     font-style:normal;
 }
@@ -64,7 +64,7 @@ body{
 body{
     min-height:100vh;
 
-    background-image:url("imagenes/2.png");
+    background-image:url("../imagenes/2.png");
     background-size:cover;
     background-position:center;
     background-attachment:fixed;
@@ -834,7 +834,7 @@ button.action:active{
 </head>
 
 <body>
-<?php include("includes/nav.php"); ?>
+<?php include("../includes/navjuegos.php"); ?>
 <div class="game-container">
 
     <h1>🍪 Tres en Raya</h1>

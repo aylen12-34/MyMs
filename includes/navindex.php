@@ -10,7 +10,7 @@
         <li><a href="../../nosotros.php">Nosotros</a></li>
         <li><a href="../../formulario ambiental MYMS.pdf" target="_blank">Ficha ambiental</a></li>
         <li><a href="produc.php">Ver comentario</a></li>
-        <li><a href="../../juego.php">Juego</a></li>
+        <li><a href="../../juegos/quejuegoquierejugar.php">juegos</a></li>
         <li class="buscar-pedido">
             <span>
                 ¿Tienes un pedido?

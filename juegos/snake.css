@@ -1,0 +1,188 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --vino: #6A253A;
+    --vino-oscuro: #4F1B2C;
+    --rosado: #E64B6B;
+    --crema: #FFF8F4;
+    --crema-oscuro: #EFE2DA;
+    --texto: #4F1B2C;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 55px 24px 30px;
+    background:
+        linear-gradient(#FFF8F4B3, #FFF8F4B3),
+        url("../imagenes/2.png") center center / cover fixed no-repeat;
+    color: var(--vino-oscuro);
+    font-family: 'Chillax-Semibold', sans-serif;
+}
+
+.contenedor-juego {
+    width: min(100%, 620px);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.encabezado-juego {
+    margin-bottom: 24px;
+}
+
+.etiqueta {
+    margin: 0 0 8px;
+    color: var(--rosado);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+h1 {
+    margin: 0;
+    color: var(--vino);
+    font-size: clamp(25px, 5vw, 36px);
+}
+
+.descripcion {
+
+    margin: 10px 0 0;
+    font-size: 25px;
+    color: #4F1B2C;
+}
+
+.panel-juego {
+    padding: 18px;
+    background: #ca3a57;
+    border-radius: 20px;
+    box-shadow: 0 12px 32px #4F1B2C40;
+}
+
+.barra-superior {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+#puntuacion {
+    min-width: 42px;
+    padding: 6px 12px;
+    color: white;
+    background: var(--vino);
+    border-radius: 12px;
+    font-weight: 700;
+}
+
+.contenedor-canvas {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border: 2px solid #E5D1C7;
+    border-radius: 12px;
+    line-height: 0;
+}
+
+#tablero {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.instrucciones {
+    margin: 16px 0 2px;
+    color: #80656A;
+    font-size: 12px;
+}
+
+.volver {
+    display: inline-block;
+    margin-top: 22px;
+    color: var(--vino);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.volver:hover {
+    color: var(--rosado);
+}
+
+.pantalla-final {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: #4F1B2CBF;
+    line-height: normal;
+}
+
+.pantalla-final[hidden] {
+    display: none;
+}
+
+.tarjeta-final {
+    width: min(100%, 310px);
+    padding: 28px 20px;
+    background: var(--crema);
+    border: 2px solid #E9D8D0;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px #0002;
+}
+
+.galleta-final {
+    font-size: 42px;
+}
+
+.tarjeta-final h2 {
+    margin: 12px 0;
+    color: var(--vino);
+    font-size: 23px;
+}
+
+.tarjeta-final p {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #80656A;
+}
+
+#reiniciar {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    background: var(--vino);
+    color: white;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+#reiniciar:hover {
+    background: var(--rosado);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 22px 10px;
+    }
+
+    .panel-juego {
+        padding: 10px;
+    }
+
+    .barra-superior {
+        font-size: 12px;
+    }
+}
