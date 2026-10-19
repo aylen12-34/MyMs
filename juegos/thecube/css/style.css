@@ -1,0 +1,296 @@
+@font-face {
+    font-family: "Chillax";
+    src: url("../../../tipografia/Fonts/WEB/fonts/Chillax-Semibold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}.ui, .ui:before, .ui:after, .ui *, .ui *:before, .ui *:after {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+  cursor: inherit;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  text-transform: uppercase;
+}.ui *:focus {
+  outline: none;
+}html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  overflow: hidden;
+  height: 100%;
+}body {
+  font-family: "Chillax", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  cursor: default;
+  overflow: hidden;
+  height: 100%;
+  font-size: 16px;
+}.ui .icon {
+  display: inline-block;
+  font-size: inherit;
+  overflow: visible;
+  vertical-align: -0.125em;
+  preserveAspectRatio: none;
+}.ui .range {
+  position: relative;
+  width: 14em;
+  z-index: 1;
+  opacity: 0;
+}.ui .range:not(:last-child) {
+  margin-bottom: 2em;
+}.ui .range__label {
+  position: relative;
+  font-size: 0.9em;
+  line-height: 0.75em;
+  padding-bottom: 0.5em;
+  z-index: 2;
+}.ui .range__track {
+  position: relative;
+  height: 1em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  z-index: 3;
+}.ui .range__track-line {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.2);
+  height: 2px;
+  top: 50%;
+  margin-top: -1px;
+  left: -0.5em;
+  right: -0.5em;
+  transform-origin: left center;
+}.ui .range__handle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 0;
+  cursor: pointer;
+  z-index: 1;
+}.ui .range__handle div {
+  transition: background 500ms ease;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0.9em;
+  height: 0.9em;
+  border-radius: 0.2em;
+  margin-left: -0.45em;
+  margin-top: -0.45em;
+  background: #41aac8;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}.ui .range.is-active .range__handle div {
+  transform: scale(1.25);
+}.ui .range__handle:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3em;
+  height: 3em;
+  margin-left: -1.5em;
+  margin-top: -1.5em;
+}.ui .range__list {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 0.5em;
+  font-size: 0.55em;
+  color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}.ui .range--type-color:not(:last-child) {
+  margin-bottom: 1em;
+}.ui .range--type-color .range__list {
+  display: none;
+}.ui .range--type-color .range__handle > div {
+  background: currentColor !important;
+}.ui .range--type-color .range__track-line {
+  background: transparent;
+}.ui .range--type-color .range__track-line:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  opacity: 0.5;
+}.ui .range--color-hue .range__handle {
+  color: red;
+}.ui .range--color-hue .range__track {
+  color: red;
+}.ui .range--color-hue .range__track-line:after {
+  background: linear-gradient(to right, red, yellow, lime, cyan, blue, magenta, red);
+}.ui .range--color-saturation .range__handle {
+  color: red;
+}.ui .range--color-saturation .range__track {
+  color: red;
+}.ui .range--color-saturation .range__track-line:after {
+  background: linear-gradient(to right, gray, currentColor);
+}.ui .range--color-lightness .range__handle {
+  color: red;
+}.ui .range--color-lightness .range__track {
+  color: red;
+}.ui .range--color-lightness .range__track-line:after {
+  background: linear-gradient(to right, black, currentColor, white);
+}.ui .stats {
+  position: relative;
+  width: 14em;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0;
+}.ui .stats:not(:last-child) {
+  margin-bottom: 1.5em;
+}.ui .stats > i {
+  display: block;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 0.9em;
+}.ui .stats > b {
+  display: block;
+  font-size: 0.9em;
+}.ui .stats > b > i {
+  font-size: 0.75em;
+}.ui .stats[name="worst-time"] {
+  display: none;
+}.ui .text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  line-height: 0.75;
+  perspective: 100rem;
+  opacity: 0;
+}.ui .text i {
+  display: inline-block;
+  opacity: 0;
+  white-space: pre-wrap;
+}.ui .text--title {
+  bottom: 75%;
+  font-size: 4.4em;
+  height: 1.2em;
+}.ui .text--title span {
+  display: block;
+}.ui .text--title span:first-child {
+  font-size: 0.5em;
+  margin-bottom: 0.2em;
+}.ui .text--note {
+  top: 87%;
+  font-size: 1em;
+}.ui .text--timer {
+  bottom: 78%;
+  font-size: 3.5em;
+  line-height: 1;
+}.ui .text--complete, .ui .text--best-time {
+  font-size: 1.5em;
+  top: 83%;
+  line-height: 1em;
+}.ui .btn {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border-radius: 0;
+  border-width: 0;
+  position: absolute;
+  pointer-events: none;
+  font-size: 1.2em;
+  color: rgba(0, 0, 0, 0.25);
+  opacity: 0;
+}.ui .btn:after {
+  position: absolute;
+  content: "";
+  width: 3em;
+  height: 3em;
+  left: 50%;
+  top: 50%;
+  margin-left: -1.5em;
+  margin-top: -1.5em;
+  border-radius: 100%;
+}.ui .btn--bl {
+  bottom: 0.8em;
+  left: 0.8em;
+}.ui .btn--br {
+  bottom: 0.8em;
+  right: 0.8em;
+}.ui .btn--bc {
+  bottom: 0.8em;
+  left: calc(50% - 0.5em);
+}.ui .btn svg {
+  display: block;
+}.ui .btn--cancel {
+  display: none !important;
+}.ui {
+  pointer-events: none;
+  color: #070d15;
+}.ui .ui, .ui .ui__background, .ui .ui__game, .ui .ui__texts, .ui .ui__prefs, .ui .ui__theme, .ui .ui__stats, .ui .ui__buttons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}.ui .ui__background {
+  z-index: 1;
+  transition: background 500ms ease;
+  background: #d1d5db;
+}.ui .ui__background:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+}.ui .ui__game {
+  pointer-events: all;
+  z-index: 2;
+}.ui .ui__game canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}.ui .ui__texts {
+  z-index: 3;
+}.ui .ui__prefs, .ui .ui__stats, .ui .ui__theme {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 4;
+}.ui .ui__theme {
+  padding-top: 15em;
+}.ui .ui__buttons {
+  z-index: 5;
+  visibility: hidden;
+}
+
+/* MyMs adaptations: preserve original cube sizing and isolate styles from navigation. */
+.ui {
+    font-family: "Chillax", sans-serif;
+    font-size: 5rem;
+    font-weight: 600;
+    color: #6A253A;
+}
+.ui__background {
+    background: url("../../../imagenes/2.png") center center / cover no-repeat !important;
+}
+
+.ui .text, .ui .stats, .ui .range, .ui .btn {
+    font-family: "Chillax", sans-serif;
+    font-weight: 600;
+}
+.ui .btn { color: rgba(106, 37, 58, 0.65); }
+.ui .range__handle div { background: #E64B6B; }

@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include("../includes/navjuegos.php");
@@ -29,15 +28,15 @@ include("../includes/navjuegos.php");
         }
 
         body {
-        margin: 0;
-        min-height: 100vh;
-        padding: 55px 24px 30px;
-        background:
-        linear-gradient(#FFF8F4B3, #FFF8F4B3),
-        url("../imagenes/2.png") center center / cover fixed no-repeat;
-        color: var(--vino-oscuro);
-        font-family: 'Chillax-Semibold', sans-serif;
-}
+            margin: 0;
+            min-height: 100vh;
+            padding: 55px 24px 30px;
+            background:
+                linear-gradient(#FFF8F4B3, #FFF8F4B3),
+                url("../imagenes/2.png") center center / cover fixed no-repeat;
+            color: var(--vino-oscuro);
+            font-family: 'Chillax-Semibold', sans-serif;
+        }
 
         .zona-juegos {
             width: min(100%, 1100px);
@@ -202,6 +201,57 @@ include("../includes/navjuegos.php");
             font-size: 26px;
         }
 
+        .ilustracion-cubo {
+            background:
+                radial-gradient(circle at 50% 40%, #F5B5C2 0%, transparent 65%),
+                var(--crema-oscuro);
+            perspective: 700px;
+        }
+
+        .cubo-visual {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            transform-style: preserve-3d;
+            transform: rotateX(-25deg) rotateY(-35deg);
+            animation: girarCubo 8s linear infinite;
+        }
+
+        .cara-cubo {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 3px solid var(--crema);
+            border-radius: 9px;
+            background: var(--vino);
+            box-shadow: inset 0 0 0 2px #FFFFFF20;
+        }
+
+        .cara-frontal {
+            transform: translateZ(50px);
+            background: var(--rosado);
+        }
+
+        .cara-lateral {
+            transform: rotateY(90deg) translateZ(50px);
+            background: var(--vino);
+        }
+
+        .cara-superior {
+            transform: rotateX(90deg) translateZ(50px);
+            background: var(--rosado-claro);
+        }
+
+        @keyframes girarCubo {
+            from {
+                transform: rotateX(-25deg) rotateY(-35deg);
+            }
+
+            to {
+                transform: rotateX(335deg) rotateY(325deg);
+            }
+        }
+
         .contenido-tarjeta {
             padding: 26px;
         }
@@ -305,6 +355,10 @@ include("../includes/navjuegos.php");
             *::after {
                 transition: none !important;
             }
+
+            .cubo-visual {
+                animation: none;
+            }
         }
     </style>
 </head>
@@ -330,7 +384,6 @@ include("../includes/navjuegos.php");
         <section class="lista-juegos">
 
             <article class="tarjeta-juego">
-
                 <div class="ilustracion ilustracion-snake">
                     <div class="serpiente-visual">
                         <div class="cabeza-serpiente"></div>
@@ -345,7 +398,6 @@ include("../includes/navjuegos.php");
 
                 <div class="contenido-tarjeta">
                     <span class="categoria">REFLEJOS · DIVERSIÓN</span>
-
                     <h2>Snake</h2>
 
                     <p>
@@ -359,11 +411,9 @@ include("../includes/navjuegos.php");
                         <span class="flecha">→</span>
                     </a>
                 </div>
-
             </article>
 
             <article class="tarjeta-juego">
-
                 <div class="ilustracion ilustracion-raya">
                     <div class="tablero-raya">
                         <div class="casilla galleta">🍪</div>
@@ -382,7 +432,6 @@ include("../includes/navjuegos.php");
 
                 <div class="contenido-tarjeta">
                     <span class="categoria">ESTRATEGIA · RETOS</span>
-
                     <h2>Tres en Raya</h2>
 
                     <p>
@@ -396,14 +445,38 @@ include("../includes/navjuegos.php");
                         <span class="flecha">→</span>
                     </a>
                 </div>
+            </article>
 
+            <article class="tarjeta-juego">
+                <div class="ilustracion ilustracion-cubo">
+                    <div class="cubo-visual">
+                        <div class="cara-cubo cara-frontal"></div>
+                        <div class="cara-cubo cara-lateral"></div>
+                        <div class="cara-cubo cara-superior"></div>
+                    </div>
+                </div>
+
+                <div class="contenido-tarjeta">
+                    <span class="categoria">LÓGICA · AGILIDAD MENTAL</span>
+                    <h2>The Cube</h2>
+
+                    <p>
+                        Gira las caras, encuentra la combinación
+                        correcta y resuelve el cubo. ¡Pon a prueba
+                        tu concentración y supera tu tiempo!
+                    </p>
+
+                    <a href="thecube/index.php" class="boton-jugar">
+                        <span>Jugar The Cube</span>
+                        <span class="flecha">→</span>
+                    </a>
+                </div>
             </article>
 
         </section>
 
         <footer class="pie-juegos">
             <span>Un toque dulce en cada partida · MyMs</span>
-
         </footer>
 
     </main>
