@@ -21,7 +21,7 @@ const C = { wine:'#6A253A', dark:'#4F1B2C', pink:'#E64B6B', rose:'#F47D95', blus
 const stages = [
   {name:'COCINA', sky:'#FFF8F4', hill:'#F0DCD4', far:'#F8E8E4', accent:'#E64B6B'},
   {name:'DULCERÍA', sky:'#FCE9EC', hill:'#EBC8D0', far:'#F8DDE2', accent:'#D85A79'},
-  {name:'REPOSTERÍA', sky:'#F6EBDD', hill:'#E7D0B9', far:'#F1DDCA', accent:'#B77D55'},
+  {name:'HORNO', sky:'#F6EBDD', hill:'#E7D0B9', far:'#F1DDCA', accent:'#B77D55'},
   {name:'HORA DEL TÉ', sky:'#F5EEF4', hill:'#E4D6E3', far:'#EDE2ED', accent:'#99749A'}
 ];
 let state = 'ready', lastTime = 0, elapsed = 0, score = 0, speed = 320, spawnIn = 1.0;
@@ -31,7 +31,10 @@ let best = 0;
 try { best = Number(localStorage.getItem('mymsChefRunBest') || 0); } catch (_) {}
 bestEl.textContent = formatScore(best);
 
-const chef = { x: 112, y: groundY - 74, w: 57, h: 74, vy: 0, grounded: true, duck: false, run: 0, blink: 0, blinkWait: 2.5 };
+const chef = { x: 112, y: groundY - 74, w: 88, h: 74, vy: 0, grounded: true, duck: false, run: 0, blink: 0, blinkWait: 2.5 };
+const spriteFiles = { runA: 'assets/run-a.svg', runB: 'assets/run-b.svg', jump: 'assets/jump.svg', duck: 'assets/duck.svg', dead: 'assets/dead.svg' };
+const sprites = {};
+for (const [key, src] of Object.entries(spriteFiles)) { const img = new Image(); img.src = src; sprites[key] = img; }
 
 function formatScore(n) { return String(Math.max(0, Math.floor(n))).padStart(5, '0'); }
 function rounded(x,y,w,h,r,fill,stroke,lineWidth=2) {
@@ -68,68 +71,80 @@ function drawCupcakeShop(x,y,s,stage) {
   ctx.restore();
 }
 function drawBackground(dt=0) {
-  const stage=stages[stageIndex];
-  const grad=ctx.createLinearGradient(0,0,0,H);grad.addColorStop(0,stage.sky);grad.addColorStop(1,'#FFF9F4');ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
-  // soft bakery glow
-  const glow=ctx.createRadialGradient(760,60,2,760,60,180);glow.addColorStop(0,'#FFFFFFAA');glow.addColorStop(1,'#FFFFFF00');ctx.fillStyle=glow;ctx.fillRect(560,0,400,240);
-  // sun and tiny drifting stars
-  ellipse(790,65,31,31,stageIndex===2?'#F5D6A5':'#FFFFFFA8');
-  ellipse(790,65,42,42,null,'#FFFFFF80',1);
-  for(let i=0;i<7;i++){const x=(i*149+38-(elapsed*(5+i%3))%1000+1000)%1000;const y=28+(i*37)%130;ctx.save();ctx.globalAlpha=.2+Math.sin(elapsed*2+i)*.12;ctx.fillStyle=stage.accent;starPath(x,y,4,1.8,4);ctx.fill();ctx.restore();}
-  // layered hills
-  ctx.fillStyle=stage.far;ctx.beginPath();ctx.moveTo(0,235);ctx.bezierCurveTo(120,170,220,223,340,207);ctx.bezierCurveTo(465,170,555,230,675,207);ctx.bezierCurveTo(780,173,870,196,960,216);ctx.lineTo(960,groundY);ctx.lineTo(0,groundY);ctx.closePath();ctx.fill();
-  ctx.fillStyle=stage.hill;ctx.beginPath();ctx.moveTo(0,258);ctx.bezierCurveTo(140,214,245,261,380,235);ctx.bezierCurveTo(510,212,630,265,760,235);ctx.bezierCurveTo(850,217,900,240,960,229);ctx.lineTo(960,groundY);ctx.lineTo(0,groundY);ctx.closePath();ctx.fill();
-  // distant bakery silhouettes move slowly for parallax
-  const offset=(elapsed*speed*.10)%260;
-  for(let x=-260-offset;x<W+260;x+=260) drawCupcakeShop(x+90,253,.72,stage);
-  // floating icing swirls
-  for(let i=0;i<5;i++){const x=(i*223-elapsed*speed*.19%1100+1100)%1100-60;const y=190+(i%3)*19;ctx.save();ctx.globalAlpha=.2;ctx.strokeStyle=stage.accent;ctx.lineWidth=2;ctx.beginPath();ctx.arc(x,y,7,0,Math.PI*1.7);ctx.stroke();ctx.restore();}
-  // ground shadow, dotted confectionery lane
-  ctx.fillStyle='#6A253A12';ctx.fillRect(0,groundY,W,H-groundY);
-  ctx.strokeStyle=C.wine;ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(0,groundY);ctx.lineTo(W,groundY);ctx.stroke();
-  ctx.strokeStyle='#6A253A35';ctx.lineWidth=2;
-  for(let x=-(elapsed*speed*.72%78);x<W;x+=78){ctx.beginPath();ctx.moveTo(x,groundY+15);ctx.lineTo(x+28,groundY+15);ctx.stroke();}
-  // little ground sprinkles
-  for(let i=0;i<20;i++){const x=(i*53-elapsed*speed*.32%1020+1020)%1020;const y=groundY+31+(i%3)*8;ctx.save();ctx.translate(x,y);ctx.rotate(i*.7);ctx.strokeStyle=i%2?C.pink:C.wine;ctx.globalAlpha=.27;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(-3,0);ctx.lineTo(3,0);ctx.stroke();ctx.restore();}
-  // stage badge on canvas
-  rounded(W-157,15,137,25,12,'#FFFEF4B8','#FFFFFFA8',1);
-  ctx.fillStyle=C.wine;ctx.font='600 10px Chillax, sans-serif';ctx.textAlign='center';ctx.fillText(stage.name,W-88,31);ctx.textAlign='left';
+  const stage = stages[stageIndex];
+  const sky = ctx.createLinearGradient(0, 0, 0, H);
+  sky.addColorStop(0, stage.sky); sky.addColorStop(1, '#FFFCF9');
+  ctx.fillStyle = sky; ctx.fillRect(0, 0, W, H);
+
+  // One quiet landmark per stage; the palette and silhouette change as the run progresses.
+  ctx.save(); ctx.globalAlpha = .72;
+  if (stageIndex === 0) {
+    // Kitchen window and a simple counter.
+    rounded(690, 48, 118, 88, 8, '#FFFFFF88', '#FFFFFFB0', 2);
+    ctx.strokeStyle = '#EAD9D3'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(749, 50); ctx.lineTo(749, 134); ctx.moveTo(692, 91); ctx.lineTo(806, 91); ctx.stroke();
+    rounded(650, 172, 205, 10, 4, '#D9BEB4');
+    rounded(672, 182, 10, 43, 3, '#D9BEB4'); rounded(822, 182, 10, 43, 3, '#D9BEB4');
+  } else if (stageIndex === 1) {
+    // Candy-shop awning: broad clean stripes rather than lots of floating decoration.
+    rounded(680, 112, 168, 76, 7, '#FFFFFF88', '#FFFFFFA0', 1.5);
+    rounded(670, 99, 188, 22, 5, stage.accent);
+    for (let i=0;i<5;i++) { ctx.fillStyle = i%2 ? '#FFF8F4' : '#F5B5C2'; ctx.fillRect(676+i*36,101,18,18); }
+    rounded(700, 134, 52, 54, 3, '#F5B5C255'); rounded(765, 134, 60, 54, 3, '#FFFFFF88');
+  } else if (stageIndex === 2) {
+    // Oven silhouette with a warm, subtle glow.
+    rounded(700, 91, 126, 127, 8, '#D9BEB4', '#D9BEB4', 1);
+    rounded(712, 103, 102, 17, 4, '#FFF8F4');
+    rounded(712, 129, 102, 76, 6, '#B77D55');
+    rounded(722, 139, 82, 57, 4, '#F6DCC5');
+    ellipse(805, 112, 2.5, 2.5, stage.accent);
+  } else {
+    // Tea-room silhouette: shelf and a teapot, kept intentionally simple.
+    rounded(665, 105, 185, 8, 4, '#D5C5D4');
+    rounded(687, 113, 8, 55, 3, '#D5C5D4'); rounded(820, 113, 8, 55, 3, '#D5C5D4');
+    ellipse(751, 153, 24, 18, '#FFFFFFB8', '#CBB8CA', 2);
+    ellipse(775, 151, 10, 11, '#FFFFFFB8', '#CBB8CA', 2);
+    ctx.strokeStyle='#CBB8CA';ctx.lineWidth=3;ctx.beginPath();ctx.arc(728,153,10,Math.PI*.45,Math.PI*1.55);ctx.stroke();
+    rounded(737, 132, 29, 4, 2, '#CBB8CA');
+  }
+  ctx.restore();
+
+  // Soft distant hills give the runner depth without competing with the character.
+  ctx.fillStyle = stage.far;
+  ctx.beginPath(); ctx.moveTo(0, 232); ctx.bezierCurveTo(155, 192, 260, 239, 390, 215); ctx.bezierCurveTo(530, 186, 650, 237, 790, 211); ctx.bezierCurveTo(860, 199, 915, 208, W, 216); ctx.lineTo(W, groundY); ctx.lineTo(0, groundY); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = stage.hill;
+  ctx.beginPath(); ctx.moveTo(0, 258); ctx.bezierCurveTo(160, 227, 280, 265, 415, 243); ctx.bezierCurveTo(560, 222, 680, 265, 810, 241); ctx.lineTo(W, 244); ctx.lineTo(W, groundY); ctx.lineTo(0, groundY); ctx.closePath(); ctx.fill();
+
+  // Small sun, with a restrained pulse; its color subtly follows the current stage.
+  const sunX = 565 - (elapsed * speed * .025 % 1080);
+  ctx.globalAlpha = .78; ellipse(sunX, 58, 19, 19, stageIndex===2 ? '#F1CFA4' : '#FFFFFFB8');
+  ctx.globalAlpha = 1;
+
+  // Scrolling ground and short dashes make speed legible at a glance.
+  ctx.fillStyle = '#6A253A0A'; ctx.fillRect(0, groundY, W, H-groundY);
+  ctx.strokeStyle = C.wine; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(0, groundY); ctx.lineTo(W, groundY); ctx.stroke();
+  ctx.strokeStyle = '#6A253A30'; ctx.lineWidth = 2;
+  for (let x = -(elapsed * speed * .72 % 76); x < W; x += 76) { ctx.beginPath(); ctx.moveTo(x, groundY + 14); ctx.lineTo(x + 22, groundY + 14); ctx.stroke(); }
+  rounded(W-143, 14, 123, 24, 12, '#FFFEF4D9', '#FFFFFFA8', 1);
+  ctx.fillStyle=C.wine;ctx.font='600 10px Chillax, sans-serif';ctx.textAlign='center';ctx.fillText(stage.name,W-81,30);ctx.textAlign='left';
 }
 function drawChef(x,y,duck=false,run=0,blink=false) {
-  ctx.save();ctx.translate(x,y);
-  if(duck)ctx.translate(0,26);
-  const swing=Math.sin(run*12), legA=swing*7, legB=-swing*7;
-  // soft ground shadow
-  ctx.save();ctx.globalAlpha=chef.grounded?.18:.08;ellipse(25,duck?47:72,26,5,'#4F1B2C');ctx.restore();
-  // tail
-  ctx.fillStyle=C.wine;ctx.beginPath();ctx.moveTo(12,43);ctx.quadraticCurveTo(-4,42,-8,55);ctx.quadraticCurveTo(7,59,18,51);ctx.closePath();ctx.fill();
-  // feet and legs, with a little bounce
-  line([[18,58],[16+legA,68],[8+legA,68]],C.dark,7);
-  line([[38,58],[40+legB,68],[48+legB,68]],C.dark,7);
-  rounded(2+legA,64,18,8,4,C.rose,C.dark,1.5);rounded(36+legB,64,18,8,4,C.rose,C.dark,1.5);
-  // chef jacket body
-  rounded(7,28,43,36,11,C.wine);
-  ctx.beginPath();ctx.moveTo(20,29);ctx.lineTo(28,37);ctx.lineTo(36,29);ctx.lineTo(34,62);ctx.lineTo(21,62);ctx.closePath();ctx.fillStyle=C.cream;ctx.fill();
-  line([[28,38],[28,57]],C.rose,2);
-  ellipse(24,44,1.5,1.5,C.gold);ellipse(24,51,1.5,1.5,C.gold);
-  // arms / little gloves
-  line([[10,36],[2,45+swing*2]],C.wine,7);ellipse(2,46+swing*2,4,4,C.cream,C.wine,1.5);
-  line([[47,36],[53,44-swing*2]],C.wine,7);ellipse(53,45-swing*2,4,4,C.cream,C.wine,1.5);
-  // head and snout
-  ellipse(28,24,21,20,'#E9B18E','#A96759',1.2);
-  ellipse(43,29,11,7,'#E9B18E','#A96759',1.1,.1);
-  // cheek and nostril
-  ellipse(20,31,4,2.4,'#F47D9570');ellipse(47,27,1.5,1.5,C.dark);
-  if(!blink){ellipse(34,18,2.5,3,C.dark);ellipse(34.7,17,0.8,.8,'#FFFFFF');}else{line([[31,18],[36,18]],C.dark,2);}
-  // tiny smile
-  ctx.strokeStyle=C.dark;ctx.lineWidth=1.4;ctx.beginPath();ctx.arc(42,32,4,0.2,1.4);ctx.stroke();
-  // chef toque, puffed and outlined
-  rounded(15,5,28,12,5,C.cream,'#D8B8B7',1.2);
-  ellipse(19,6,8,8,C.cream,'#D8B8B7',1.2);ellipse(28,1,10,11,C.cream,'#D8B8B7',1.2);ellipse(38,6,8,8,C.cream,'#D8B8B7',1.2);
-  rounded(16,8,25,7,2,C.cream,'#D8B8B7',1);
-  // little pink band / badge
-  rounded(36,39,8,8,3,C.rose);starPath(40,43,2.4,1,4);ctx.fillStyle=C.cream;ctx.fill();
+  // Sprite poses are separate hand-drawn vector assets, not a stretched generic mascot.
+  const pose = state === 'over' ? sprites.dead : (duck ? sprites.duck : (!chef.grounded ? sprites.jump : (Math.floor(run * 7) % 2 ? sprites.runA : sprites.runB)));
+  const drawW = 98;
+  const drawH = duck ? 66 : 74;
+  const drawY = duck ? y + 8 : y;
+  ctx.save();
+  ctx.globalAlpha = 0.15;
+  ellipse(x + 43, groundY + 2, chef.grounded ? 35 : 23, 5, '#4F1B2C');
   ctx.restore();
+  if (pose && pose.complete && pose.naturalWidth) ctx.drawImage(pose, x - 4, drawY, drawW, drawH);
+  else {
+    // Safe loading fallback: unmistakable side-view dinosaur silhouette.
+    ctx.save(); ctx.translate(x, y); ctx.fillStyle = C.wine;
+    ctx.beginPath(); ctx.moveTo(20,43); ctx.lineTo(0,55); ctx.lineTo(24,51); ctx.lineTo(35,60); ctx.lineTo(62,60); ctx.lineTo(70,44); ctx.lineTo(88,39); ctx.lineTo(88,28); ctx.lineTo(66,25); ctx.lineTo(55,14); ctx.lineTo(42,18); ctx.lineTo(36,32); ctx.closePath(); ctx.fill();
+    ctx.fillStyle=C.cream; ctx.fillRect(57,5,26,12); ctx.fillRect(61,0,18,8); ctx.fillStyle=C.dark; ctx.fillRect(71,25,4,4); ctx.restore();
+  }
 }
 function drawCupcake(o){ctx.save();ctx.translate(o.x,groundY);ctx.rotate(Math.sin(elapsed*7+o.seed)*.035);
   // wrapper fluted
@@ -148,7 +163,7 @@ function addTrail(){if(Math.random()<.7)particles.push({x:chef.x+5+Math.random()
 function drawParticles(){for(const p of particles){ctx.save();ctx.globalAlpha=Math.max(0,p.life/(p.max||1));ctx.translate(p.x,p.y);ctx.rotate(p.rot||0);if(p.shape==='star'){starPath(0,0,p.size,p.size*.4,4);ctx.fillStyle=p.color;ctx.fill();}else{ellipse(0,0,p.size,p.size,p.color);}ctx.restore();}}
 function updateParticles(dt){particles=particles.filter(p=>p.life>0);for(const p of particles){p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=250*dt;p.rot=(p.rot||0)+(p.spin||0)*dt;}}
 function spawn(){const flying=score>90&&Math.random()<Math.min(.34,.10+score/2500);let type;if(flying)type=Math.random()<.55?'whisk':'spoon';else{const r=Math.random();type=r<.39?'cupcake':r<.70?'rolling':'tower';}const o={type,x:W+40,seed:Math.random()*10};if(type==='whisk'||type==='spoon'){o.y=groundY-(Math.random()<.48?73:116);o.w=34;o.h=40;}else if(type==='cupcake'){o.w=37;o.h=48;}else if(type==='rolling'){o.w=64;o.h=22;}else{o.w=35;o.h=60;}obstacles.push(o);spawnIn=Math.max(.60,1.28-Math.min(.45,score/1600))+Math.random()*.42;}
-function hit(o){const px=chef.x+7,py=chef.duck?chef.y+27:chef.y+8,pw=chef.duck?46:47,ph=chef.duck?36:62;let ox=o.x+5,oy,ow=o.w-10,oh;if(o.type==='whisk'||o.type==='spoon'){oy=o.y-14;oh=36;}else{oy=groundY-o.h;oh=o.h;}return px<ox+ow&&px+pw>ox&&py<oy+oh&&py+ph>oy;}
+function hit(o){const px=chef.x+16,py=chef.duck?chef.y+27:chef.y+10,pw=chef.duck?59:62,ph=chef.duck?34:58;let ox=o.x+5,oy,ow=o.w-10,oh;if(o.type==='whisk'||o.type==='spoon'){oy=o.y-14;oh=36;}else{oy=groundY-o.h;oh=o.h;}return px<ox+ow&&px+pw>ox&&py<oy+oh&&py+ph>oy;}
 function updateStage(){const next=Math.floor(score/350)%stages.length;if(next!==stageIndex){previousStage=stageIndex;stageIndex=next;stageFlash=.8;burst(W*.7,85,C.blush,24,190);showToast('✦ ¡Nueva zona: '+stages[stageIndex].name.toLowerCase()+'!');}}
 function showToast(message){toast.textContent=message;toast.classList.add('show');toastTimer=1.5;}
 function drawScene(){drawBackground();for(const o of obstacles)drawObstacle(o);drawParticles();drawChef(chef.x,chef.y,chef.duck,chef.run,chef.blink<.12);if(stageFlash>0){ctx.save();ctx.globalAlpha=Math.min(.22,stageFlash*.3);ctx.fillStyle='#FFFFFF';ctx.fillRect(0,0,W,H);ctx.restore();}if(state==='ready'){ctx.save();ctx.globalAlpha=.65;ctx.fillStyle=C.wine;ctx.font='600 12px Chillax, sans-serif';ctx.textAlign='center';ctx.fillText('LISTO PARA HORNEAR UNA NUEVA MARCA',W/2,groundY-104);ctx.restore();}}

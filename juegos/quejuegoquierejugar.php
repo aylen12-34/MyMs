@@ -360,6 +360,17 @@ include("../includes/navjuegos.php");
                 animation: none;
             }
         }
+        .ilustracion-chef-run {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #FFF8F4, #F5B5C255);
+        }
+        .ilustracion-chef-run img {
+            width: min(68%, 180px);
+            height: 110px;
+            object-fit: contain;
+        }
     </style>
 </head>
 
@@ -448,26 +459,21 @@ include("../includes/navjuegos.php");
             </article>
 
             <article class="tarjeta-juego">
-                <div class="ilustracion ilustracion-cubo">
-                    <div class="cubo-visual">
-                        <div class="cara-cubo cara-frontal"></div>
-                        <div class="cara-cubo cara-lateral"></div>
-                        <div class="cara-cubo cara-superior"></div>
-                    </div>
+                <div class="ilustracion ilustracion-cubo ilustracion-chef-run">
+                    <img src="thecube/assets/run-a.svg" alt="T-Rex de MyMs con gorro de chef">
                 </div>
 
                 <div class="contenido-tarjeta">
-                    <span class="categoria">LÓGICA · AGILIDAD MENTAL</span>
-                    <h2>The Cube</h2>
+                    <span class="categoria">REFLEJOS · ARCADE</span>
+                    <h2>MyMs Chef Run</h2>
 
                     <p>
-                        Gira las caras, encuentra la combinación
-                        correcta y resuelve el cubo. ¡Pon a prueba
-                        tu concentración y supera tu tiempo!
+                        Corre con nuestro T-Rex chef, salta los dulces
+                        y supera nuevos escenarios mientras aumenta el ritmo.
                     </p>
 
                     <a href="thecube/index.php" class="boton-jugar">
-                        <span>Jugar The Cube</span>
+                        <span>Jugar Chef Run</span>
                         <span class="flecha">→</span>
                     </a>
                 </div>
