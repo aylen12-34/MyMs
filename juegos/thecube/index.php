@@ -6,116 +6,52 @@ include("../../includes/navcubo.php");
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>The Cube | MyMs Zona de juegos</title>
-    <meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FFF8F4">
+    <title>MyMs Chef Run | Zona de juegos</title>
     <link rel="stylesheet" href="../../../tipografia/Fonts/WEB/css/chillax.css">
     <link rel="stylesheet" href="css/style.css">
-
+    <script src="js/script.js" defer></script>
 </head>
+<body class="chef-run-body">
+<main class="chef-run-page">
+    <header class="chef-run-heading">
+        <div class="heading-spark heading-spark-one" aria-hidden="true">✦</div>
+        <div class="heading-spark heading-spark-two" aria-hidden="true">✧</div>
+        <span class="chef-run-label"><span class="label-dot"></span> MYMS ARCADE <span class="label-dot"></span> ZONA DE JUEGOS</span>
+        <h1>Chef <span>Run!</span></h1>
+        <p>Una carrera recién horneada. ¿Hasta dónde llegarás?</p>
+        <div class="heading-stamp" aria-hidden="true"><span>HECHO</span><strong>con</strong><span>AMOR</span><i>♡</i></div>
+    </header>
 
-<body>
-
-<div class="ui myms-cubo">
-
-    <div class="ui__background"></div>
-
-    <div class="ui__game"></div>
-
-    <div class="ui__texts">
-        <h1 class="text text--title">
-            <span>THE</span>
-            <span>CUBE</span>
-        </h1>
-
-        <div class="text text--note">
-            Toca dos veces para empezar
+    <section class="chef-run-panel" aria-label="Juego MyMs Chef Run">
+        <div class="panel-topline"><span><i class="live-dot"></i> ARCADE DE REPOSTERÍA</span><span class="level-chip" id="levelChip">NIVEL 01 · COCINA</span></div>
+        <div class="chef-run-toolbar">
+            <div class="score-block score-current"><span class="score-icon">✦</span><div><small>PUNTUACIÓN</small><strong id="score">00000</strong></div></div>
+            <div class="score-block score-best"><span class="score-icon">♛</span><div><small>MEJOR MARCA</small><strong id="best">00000</strong></div></div>
+            <div class="speed-meter" aria-label="Velocidad"><span>RITMO</span><div class="speed-track"><i id="speedFill"></i></div></div>
         </div>
-
-        <div class="text text--timer">
-            0:00
+        <div class="canvas-wrap" id="canvasWrap">
+            <canvas id="chefCanvas" width="960" height="360" aria-label="Juego de correr. Pulsa espacio o toca para saltar."></canvas>
+            <div class="game-overlay" id="gameOverlay">
+                <div class="overlay-card">
+                    <div class="overlay-emblem"><span id="overlayIcon">🍪</span><i>✦</i><b>✧</b></div>
+                    <span class="overlay-eyebrow" id="overlayEyebrow">PREPARA · LISTA · ¡CORRE!</span>
+                    <h2 id="overlayTitle">¡A hornear la victoria!</h2>
+                    <p id="overlayText">Salta los dulces, esquiva los utensilios y consigue el récord de la cocina.</p>
+                    <button id="startButton" type="button"><span>¡A jugar!</span><b aria-hidden="true">↗</b></button>
+                    <div class="overlay-hint"><kbd>SPACE</kbd><span>o toca para saltar</span></div>
+                </div>
+            </div>
+            <div class="toast-message" id="toastMessage" aria-live="polite"></div>
         </div>
-
-        <div class="text text--complete">
-            <span>¡Completado!</span>
+        <div class="chef-run-bottom">
+            <div class="controls-hint"><span class="keycap">SPACE</span><span class="keycap">↑</span><span>SALTAR</span><i></i><span class="keycap">↓</span><span>AGACHARSE</span></div>
+            <button id="restartButton" type="button" class="restart-button"><span aria-hidden="true">↻</span> Reiniciar</button>
         </div>
-
-        <div class="text text--best-time">
-            <icon trophy></icon>
-            <span>¡Mejor tiempo!</span>
-        </div>
-    </div>
-
-    <div class="ui__prefs">
-        <range name="size" title="Tamaño del cubo" list="2,3,4,5"></range>
-        <range name="flip" title="Tipo de giro" list="Swift&nbsp;,Smooth,Bounce"></range>
-        <range name="scramble" title="Longitud de mezcla" list="20,25,30"></range>
-        <range name="fov" title="Ángulo de cámara" list="Orthographic,Perspective"></range>
-        <range name="theme" title="Esquema de color" list="Cube,Erno,Dust,Camo,Rain"></range>
-    </div>
-
-    <div class="ui__theme">
-        <range name="hue" title="Tono" color></range>
-        <range name="saturation" title="Saturación" color></range>
-        <range name="lightness" title="Luminosidad" color></range>
-    </div>
-
-    <div class="ui__stats">
-        <div class="stats" name="cube-size">
-            <i>Cubo:</i><b>3x3x3</b>
-        </div>
-
-        <div class="stats" name="total-solves">
-            <i>Partidas:</i><b>-</b>
-        </div>
-
-        <div class="stats" name="best-time">
-            <i>Mejor tiempo:</i><b>-</b>
-        </div>
-
-        <div class="stats" name="worst-time">
-            <i>Peor tiempo:</i><b>-</b>
-        </div>
-
-        <div class="stats" name="average-5">
-            <i>Promedio de 5:</i><b>-</b>
-        </div>
-
-        <div class="stats" name="average-12">
-            <i>Promedio de 12:</i><b>-</b>
-        </div>
-
-        <div class="stats" name="average-25">
-            <i>Promedio de 25:</i><b>-</b>
-        </div>
-    </div>
-
-    <div class="ui__buttons">
-        <button class="btn btn--bl btn--stats">
-            <icon trophy></icon>
-        </button>
-
-        <button class="btn btn--br btn--prefs">
-            <icon settings></icon>
-        </button>
-
-        <button class="btn btn--bl btn--back">
-            <icon back></icon>
-        </button>
-
-        <button class="btn btn--br btn--theme">
-            <icon theme></icon>
-        </button>
-
-        <button class="btn btn--br btn--reset">
-            <icon reset></icon>
-        </button>
-    </div>
-
-</div>
-
-<script src="js/three.min.js"></script>
-<script src="js/script.js"></script>
-
+    </section>
+    <div class="run-tip"><span class="tip-icon">✿</span><p><strong>Consejito de chef:</strong> ¡mantén los ojos abiertos! Los utensilios voladores aparecen cuando sube el ritmo.</p><span class="tip-cookie" aria-hidden="true">✦</span></div>
+    <footer class="chef-run-footnote"><span>MYMS</span> · Un toque dulce en cada partida · <span>♡</span></footer>
+</main>
 </body>
 </html>
