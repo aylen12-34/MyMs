@@ -1,1 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90"><g stroke="#4F1B2C" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path fill="#6A253A" d="M27 55 8 59 2 69 25 67 39 62Z"/><path fill="#6A253A" d="M29 44 Q42 39 57 44 L75 53 82 64 66 72 36 71 25 62Z"/><path fill="#6A253A" d="M58 43 67 31 81 30 89 36 103 39 116 44 114 53 89 53 80 58 68 55Z"/><path fill="#6A253A" d="M62 53 73 60 85 59 88 65 74 69 62 63Z"/><path fill="#6A253A" d="M40 66 54 67 59 77 51 82 37 82 33 77Z"/><path fill="#6A253A" d="M62 66 76 65 83 75 78 82 64 82 57 76Z"/><path fill="#FFF8F4" d="M77 38 Q83 35 88 39 L88 43 77 43Z" stroke="none"/><circle cx="83" cy="40" r="3" fill="#4F1B2C" stroke="none"/><circle cx="84" cy="39" r="1" fill="#FFF8F4" stroke="none"/><circle cx="109" cy="45" r="1.6" fill="#FFF8F4" stroke="none"/><path fill="#E64B6B" stroke="none" d="M60 55 72 57 68 65 58 61Z"/><path fill="#FFF8F4" d="M65 19 Q61 14 67 13 Q74 12 75 18 Q83 13 88 18 Q94 23 88 29 L64 29 Q58 25 65 19Z"/><path fill="#FFF8F4" d="M62 26 H91 V33 H62Z"/><path fill="#E64B6B" d="M62 29 H91 V32 H62Z" stroke="none"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90" shape-rendering="crispEdges"><g>
+<!-- Low running pose, inspired by the Chrome dino crouch -->
+<path fill="#6A253A" d="M5 56H17V52H25V56H34V51H44V48H62V52H69V65H62V70H43V67H33V64H25V61H17V59H5Z"/>
+<path fill="#6A253A" d="M37 62H47V70H55V76H49V80H33V76H41V71H36Z"/>
+<path fill="#6A253A" d="M54 64H64V70H69V76H64V80H52V76H58V71H52Z"/>
+<path fill="#FFF8F4" d="M32 77H50V81H31V79ZM51 77H67V81H50V79Z"/>
+
+<!-- Chef hat: tall, puffy top and a crisp band -->
+<path fill="#FFF8F4" d="M66 10V7H69V4H73V1H80V4H84V7H87V13H84V16H66Z"/>
+<path fill="#F47D95" d="M65 13H88V18H65Z"/>
+<path fill="#E64B6B" d="M65 13H88V15H65Z"/>
+<!-- Head and long square snout: intentionally blocky, like the original runner -->
+<path fill="#6A253A" d="M65 17H87V21H95V25H108V29H115V39H110V43H88V39H80V35H70V31H65Z"/>
+<!-- Lower jaw -->
+<path fill="#6A253A" d="M83 37H111V42H106V46H88V42H83Z"/>
+<!-- Eye and nostril -->
+<rect x="79" y="22" width="5" height="5" fill="#FFF8F4"/>
+<rect x="81" y="23" width="2" height="2" fill="#4F1B2C"/>
+<rect x="105" y="30" width="3" height="3" fill="#4F1B2C"/>
+<!-- Small squared teeth -->
+<path fill="#FFF8F4" d="M91 38H95V42H91ZM100 38H104V42H100Z"/>
+<!-- Short little forearm -->
+<path fill="#6A253A" d="M68 43H76V47H80V51H75V49H70V47H66Z"/>
+<!-- Tiny cuff/neckerchief accent, kept subtle so the dinosaur remains classic -->
+<path fill="#E64B6B" d="M63 42H70V47H66L63 51Z"/>
+</g></svg>

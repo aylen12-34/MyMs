@@ -131,14 +131,14 @@ function drawBackground(dt=0) {
 function drawChef(x,y,duck=false,run=0,blink=false) {
   // Sprite poses are separate hand-drawn vector assets, not a stretched generic mascot.
   const pose = state === 'over' ? sprites.dead : (duck ? sprites.duck : (!chef.grounded ? sprites.jump : (Math.floor(run * 7) % 2 ? sprites.runA : sprites.runB)));
-  const drawW = 98;
-  const drawH = duck ? 66 : 74;
-  const drawY = duck ? y + 8 : y;
+  const drawW = 110;
+  const drawH = duck ? 72 : 82;
+  const drawY = duck ? y + 2 : y - 4;
   ctx.save();
   ctx.globalAlpha = 0.15;
   ellipse(x + 43, groundY + 2, chef.grounded ? 35 : 23, 5, '#4F1B2C');
   ctx.restore();
-  if (pose && pose.complete && pose.naturalWidth) ctx.drawImage(pose, x - 4, drawY, drawW, drawH);
+  if (pose && pose.complete && pose.naturalWidth) ctx.drawImage(pose, x - 10, drawY, drawW, drawH);
   else {
     // Safe loading fallback: unmistakable side-view dinosaur silhouette.
     ctx.save(); ctx.translate(x, y); ctx.fillStyle = C.wine;
