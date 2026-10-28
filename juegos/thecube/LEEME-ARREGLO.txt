@@ -1,0 +1,14 @@
+MyMs Chef Run - revisión de estabilidad
+
+Se conserva la estructura original y las rutas de archivos.
+Cambios:
+- Corregida la ruta de Chillax desde index.php.
+- Añadido parámetro de versión al JavaScript para evitar caché antigua.
+- Unificada la acción del botón de inicio/continuar.
+- Corregida la pausa al cambiar de pestaña para que no se pierda el estado de la partida.
+- Limitado el número de partículas y reducido el rastro para bajar carga por fotograma.
+- Bucle de animación con protección para no programar fotogramas duplicados y delta de tiempo limitado.
+- Mensaje de respaldo si el navegador no puede crear el contexto 2D del canvas.
+
+Instalación: reemplaza la carpeta juegos/thecube por esta versión manteniendo las demás carpetas del proyecto.
+Si el navegador conserva archivos antiguos, recarga con Ctrl+F5.

@@ -201,76 +201,55 @@ include("../includes/navjuegos.php");
             font-size: 26px;
         }
 
-        .ilustracion-chef-run {
-            background: radial-gradient(circle at 50% 35%, #FFF8F4 0%, #F5B5C2 100%);
+        .ilustracion-cubo {
+            background:
+                radial-gradient(circle at 50% 40%, #F5B5C2 0%, transparent 65%),
+                var(--crema-oscuro);
+            perspective: 700px;
         }
 
-        .mini-escena {
+        .cubo-visual {
             position: relative;
-            width: 100%;
-            height: 225px;
-            overflow: hidden;
+            width: 100px;
+            height: 100px;
+            transform-style: preserve-3d;
+            transform: rotateX(-25deg) rotateY(-35deg);
+            animation: girarCubo 8s linear infinite;
         }
 
-        .mini-sol {
+        .cara-cubo {
             position: absolute;
-            top: 28px;
-            right: 22%;
-            width: 54px;
-            height: 54px;
-            border-radius: 50%;
-            background: #FFF8F4;
-        }
-
-        .mini-suelo {
-            position: absolute;
-            right: 0;
-            bottom: 36px;
-            left: 0;
-            height: 5px;
+            width: 100px;
+            height: 100px;
+            border: 3px solid var(--crema);
+            border-radius: 9px;
             background: var(--vino);
-            box-shadow: 0 12px 0 #6A253A18;
+            box-shadow: inset 0 0 0 2px #FFFFFF20;
         }
 
-        .mini-dino {
-            position: absolute;
-            left: 27%;
-            bottom: 41px;
-            width: 72px;
-            height: 78px;
-            border-radius: 24px 24px 12px 12px;
+        .cara-frontal {
+            transform: translateZ(50px);
+            background: var(--rosado);
+        }
+
+        .cara-lateral {
+            transform: rotateY(90deg) translateZ(50px);
             background: var(--vino);
-            box-shadow: inset -10px 0 #4F1B2C;
         }
 
-        .mini-dino::before {
-            content: "";
-            position: absolute;
-            left: 8px;
-            top: -25px;
-            width: 49px;
-            height: 28px;
-            border-radius: 50% 50% 8px 8px;
-            background: white;
-            border: 3px solid var(--crema-oscuro);
-            box-shadow: 8px -9px 0 -2px white, -5px -7px 0 -2px white;
+        .cara-superior {
+            transform: rotateX(90deg) translateZ(50px);
+            background: var(--rosado-claro);
         }
 
-        .mini-dino::after {
-            content: "•";
-            position: absolute;
-            top: 7px;
-            right: 10px;
-            color: var(--crema);
-            font-size: 24px;
-        }
+        @keyframes girarCubo {
+            from {
+                transform: rotateX(-25deg) rotateY(-35deg);
+            }
 
-        .mini-obstaculo {
-            position: absolute;
-            right: 25%;
-            bottom: 41px;
-            font-size: 39px;
-            transform: rotate(-12deg);
+            to {
+                transform: rotateX(335deg) rotateY(325deg);
+            }
         }
 
         .contenido-tarjeta {
@@ -377,6 +356,20 @@ include("../includes/navjuegos.php");
                 transition: none !important;
             }
 
+            .cubo-visual {
+                animation: none;
+            }
+        }
+        .ilustracion-chef-run {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #FFF8F4, #F5B5C255);
+        }
+        .ilustracion-chef-run img {
+            width: min(68%, 180px);
+            height: 110px;
+            object-fit: contain;
         }
     </style>
 </head>
@@ -466,23 +459,17 @@ include("../includes/navjuegos.php");
             </article>
 
             <article class="tarjeta-juego">
-                <div class="ilustracion ilustracion-chef-run">
-                    <div class="mini-escena" aria-hidden="true">
-                        <div class="mini-sol"></div>
-                        <div class="mini-dino"></div>
-                        <span class="mini-obstaculo">🧁</span>
-                        <div class="mini-suelo"></div>
-                    </div>
+                <div class="ilustracion ilustracion-cubo ilustracion-chef-run">
+                    <img src="thecube/assets/run-a.svg" alt="T-Rex de MyMs con gorro de chef">
                 </div>
 
                 <div class="contenido-tarjeta">
-                    <span class="categoria">REFLEJOS · VELOCIDAD</span>
+                    <span class="categoria">REFLEJOS · ARCADE</span>
                     <h2>MyMs Chef Run</h2>
 
                     <p>
-                        ¡Corre con nuestro dinosaurio chef! Salta los cupcakes,
-                        esquiva los rodillos y consigue la mayor puntuación
-                        mientras la cocina se vuelve cada vez más rápida.
+                        Corre con nuestro T-Rex chef, salta los dulces
+                        y supera nuevos escenarios mientras aumenta el ritmo.
                     </p>
 
                     <a href="thecube/index.php" class="boton-jugar">
