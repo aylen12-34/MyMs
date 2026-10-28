@@ -2,7 +2,7 @@
 :root{--wine:#6A253A;--dark:#4F1B2C;--pink:#E64B6B;--rose:#F47D95;--blush:#F5B5C2;--cream:#FFF8F4;--sand:#EFE2DA;--muted:#80656A;--line:#EAD9D3;--white:#fffdfb}
 *{box-sizing:border-box}
 html{-webkit-tap-highlight-color:transparent}
-body.chef-run-body{margin:0;min-height:100vh;padding:clamp(20px,4vw,42px) 16px 28px;background:linear-gradient(180deg,rgba(255,253,251,.35) 0%,rgba(255,248,244,.48) 100%),url("../../../imagenes/2.png") center center/cover fixed no-repeat;color:var(--dark);font-family:Chillax,"Chillax-Semibold",sans-serif;overflow-x:hidden}
+body.chef-run-body{margin:0;min-height:100vh;padding:clamp(20px,4vw,42px) 16px 28px;background:linear-gradient(180deg,rgba(255,253,251,.35) 0%,rgba(255,248,244,.48) 100%),url("../../../imagenes/2.png") center center/cover no-repeat;color:var(--dark);font-family:Chillax,"Chillax-Semibold",sans-serif;overflow-x:hidden}
 .chef-run-page{width:min(100%,1000px);margin:0 auto}
 .chef-run-heading{text-align:center;margin:0 auto 22px}
 .chef-run-label{display:inline-flex;align-items:center;gap:9px;color:var(--muted);font-size:10px;letter-spacing:2px}

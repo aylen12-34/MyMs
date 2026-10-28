@@ -25,6 +25,7 @@ const stages = [
   {name:'HORA DEL TÉ', sky:'#F5EEF4', hill:'#E4D6E3', far:'#EDE2ED', accent:'#99749A'}
 ];
 let state = 'ready', lastTime = 0, elapsed = 0, score = 0, speed = 320, spawnIn = 1.0;
+let loopScheduled = false;
 let obstacles = [], particles = [], sparkles = [], clouds = [], backgroundBits = [];
 let stageIndex = 0, previousStage = 0, stageFlash = 0, screenShake = 0, toastTimer = 0, bonusPulse = 0;
 let best = 0;
@@ -34,7 +35,14 @@ bestEl.textContent = formatScore(best);
 const chef = { x: 112, y: groundY - 74, w: 88, h: 74, vy: 0, grounded: true, duck: false, run: 0, blink: 0, blinkWait: 2.5 };
 const spriteFiles = { runA: 'assets/run-a.svg', runB: 'assets/run-b.svg', jump: 'assets/jump.svg', duck: 'assets/duck.svg', dead: 'assets/dead.svg' };
 const sprites = {};
-for (const [key, src] of Object.entries(spriteFiles)) { const img = new Image(); img.src = src; sprites[key] = img; }
+for (const [key, src] of Object.entries(spriteFiles)) {
+  const img = new Image();
+  img.onload = () => { if (state !== 'running') drawScene(); };
+  img.onerror = () => { console.warn('No se pudo cargar el sprite:', src); if (state !== 'running') drawScene(); };
+  img.decoding = 'async';
+  img.src = src;
+  sprites[key] = img;
+}
 
 function formatScore(n) { return String(Math.max(0, Math.floor(n))).padStart(5, '0'); }
 function rounded(x,y,w,h,r,fill,stroke,lineWidth=2) {
@@ -141,9 +149,29 @@ function drawChef(x,y,duck=false,run=0,blink=false) {
   if (pose && pose.complete && pose.naturalWidth) ctx.drawImage(pose, x - 10, drawY, drawW, drawH);
   else {
     // Safe loading fallback: unmistakable side-view dinosaur silhouette.
-    ctx.save(); ctx.translate(x, y); ctx.fillStyle = C.wine;
-    ctx.beginPath(); ctx.moveTo(20,43); ctx.lineTo(0,55); ctx.lineTo(24,51); ctx.lineTo(35,60); ctx.lineTo(62,60); ctx.lineTo(70,44); ctx.lineTo(88,39); ctx.lineTo(88,28); ctx.lineTo(66,25); ctx.lineTo(55,14); ctx.lineTo(42,18); ctx.lineTo(36,32); ctx.closePath(); ctx.fill();
-    ctx.fillStyle=C.cream; ctx.fillRect(57,5,26,12); ctx.fillRect(61,0,18,8); ctx.fillStyle=C.dark; ctx.fillRect(71,25,4,4); ctx.restore();
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.fillStyle = C.wine;
+    // Tail and rounded body.
+    ctx.beginPath();
+    ctx.moveTo(26, 48); ctx.lineTo(2, 59); ctx.lineTo(25, 56);
+    ctx.lineTo(36, 64); ctx.lineTo(68, 64); ctx.lineTo(79, 51);
+    ctx.lineTo(91, 45); ctx.lineTo(91, 31); ctx.lineTo(73, 27);
+    ctx.lineTo(63, 17); ctx.lineTo(47, 20); ctx.lineTo(39, 35);
+    ctx.closePath(); ctx.fill();
+    // Legs and tiny feet.
+    rounded(37, 54, 12, 18, 4, C.wine);
+    rounded(60, 54, 12, 18, 4, C.wine);
+    rounded(32, 68, 21, 5, 2, C.dark);
+    rounded(56, 68, 21, 5, 2, C.dark);
+    // Chef hat.
+    rounded(52, 8, 31, 11, 4, C.cream, '#EAD9D3', 1);
+    ellipse(60, 8, 8, 8, C.cream, '#EAD9D3', 1);
+    ellipse(72, 5, 9, 9, C.cream, '#EAD9D3', 1);
+    // Face and jacket detail.
+    ellipse(78, 31, 2.5, 2.5, C.cream);
+    line([[49, 38], [49, 53]], C.rose, 2);
+    ctx.restore();
   }
 }
 function drawCupcake(o){ctx.save();ctx.translate(o.x,groundY);ctx.rotate(Math.sin(elapsed*7+o.seed)*.035);
@@ -169,17 +197,18 @@ function showToast(message){toast.textContent=message;toast.classList.add('show'
 function drawScene(){drawBackground();for(const o of obstacles)drawObstacle(o);drawParticles();drawChef(chef.x,chef.y,chef.duck,chef.run,chef.blink<.12);if(stageFlash>0){ctx.save();ctx.globalAlpha=Math.min(.22,stageFlash*.3);ctx.fillStyle='#FFFFFF';ctx.fillRect(0,0,W,H);ctx.restore();}if(state==='ready'){ctx.save();ctx.globalAlpha=.65;ctx.fillStyle=C.wine;ctx.font='600 12px Chillax, sans-serif';ctx.textAlign='center';ctx.fillText('LISTO PARA HORNEAR UNA NUEVA MARCA',W/2,groundY-104);ctx.restore();}}
 function resize(){const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);drawScene();}
 function reset(){state='ready';elapsed=0;score=0;speed=320;spawnIn=.95;obstacles=[];particles=[];stageIndex=0;previousStage=0;stageFlash=0;screenShake=0;chef.y=groundY-chef.h;chef.vy=0;chef.grounded=true;chef.duck=false;chef.run=0;chef.blink=0;scoreEl.textContent=formatScore(0);speedFill.style.width='12%';levelChip.textContent='NIVEL 01 · COCINA';overlay.classList.remove('is-hidden');iconEl.textContent='🍪';eyebrowEl.textContent='PREPARA · LISTA · ¡CORRE!';titleEl.textContent='¡A hornear la victoria!';textEl.textContent='Salta los dulces, esquiva los utensilios y consigue el récord de la cocina.';startButton.querySelector('span').textContent='¡A jugar!';toast.classList.remove('show');drawScene();}
-function start(){if(state==='over')reset();if(state==='running')return;state='running';overlay.classList.add('is-hidden');lastTime=performance.now();requestAnimationFrame(loop);}
+function start(){if(state==='over')reset();if(state==='running')return;state='running';overlay.classList.add('is-hidden');lastTime=performance.now();scheduleLoop();}
+function scheduleLoop(){if(loopScheduled)return;loopScheduled=true;requestAnimationFrame(loop);}
 function jump(){if(state==='ready'){start();}if(state!=='running')return;if(chef.grounded){chef.vy=-710;chef.grounded=false;chef.duck=false;burst(chef.x+24,groundY-3,C.blush,7,70);}}
 function duck(on){if(state!=='running')return;chef.duck=!!on&&chef.grounded;}
 function endGame(){state='over';screenShake=.28;wrap.classList.remove('is-shaking');void wrap.offsetWidth;wrap.classList.add('is-shaking');burst(chef.x+27,chef.y+32,C.pink,28,230);burst(chef.x+27,chef.y+32,C.gold,12,160);const newRecord=score>best;if(newRecord){best=score;bestEl.textContent=formatScore(best);try{localStorage.setItem('mymsChefRunBest',String(best));}catch(_){}}overlay.classList.remove('is-hidden');iconEl.textContent=newRecord?'🏆':'🍪';eyebrowEl.textContent=newRecord?'¡NUEVO RÉCORD!':'BUENA PARTIDA, CHEF';titleEl.textContent=newRecord?'¡Eres la estrella de la cocina!':'¡Pausa para un dulce!';textEl.textContent=`Conseguiste ${score} puntos. ${newRecord?'Tu mejor marca ya está guardada.':'¿Te animas a superar tu récord de '+best+'?'}`;startButton.querySelector('span').textContent='Otra partida';drawScene();}
-function loop(now){if(state!=='running')return;const dt=Math.min((now-lastTime)/1000,.035);lastTime=now;elapsed+=dt;speed=Math.min(690,320+score*.38);score=Math.floor(elapsed*10+Math.max(0,speed-320)*elapsed*.055);scoreEl.textContent=formatScore(score);speedFill.style.width=(12+Math.min(88,(speed-320)/370*88))+'%';
+function loop(now){loopScheduled=false;if(state!=='running')return;const dt=Math.min((now-lastTime)/1000,.035);lastTime=now;elapsed+=dt;speed=Math.min(690,320+score*.38);score=Math.floor(elapsed*10+Math.max(0,speed-320)*elapsed*.055);scoreEl.textContent=formatScore(score);speedFill.style.width=(12+Math.min(88,(speed-320)/370*88))+'%';
  const level=Math.floor(score/350)+1;levelChip.textContent='NIVEL '+String(level).padStart(2,'0')+' · '+stages[stageIndex].name;
  chef.run+=dt*speed/100;chef.blinkWait-=dt;if(chef.blinkWait<=0){chef.blink=.16;chef.blinkWait=2.1+Math.random()*3.2;}chef.blink=Math.max(0,chef.blink-dt);
  chef.vy+=1850*dt;chef.y+=chef.vy*dt;if(chef.y>=groundY-chef.h){if(!chef.grounded&&chef.vy>250)burst(chef.x+24,groundY-2,'#E64B6B66',5,45);chef.y=groundY-chef.h;chef.vy=0;chef.grounded=true;}else chef.grounded=false;
  if(chef.grounded&&Math.random()<.45)addTrail();spawnIn-=dt;if(spawnIn<=0)spawn();obstacles.forEach(o=>o.x-=speed*dt);obstacles=obstacles.filter(o=>o.x>-100);updateParticles(dt);updateStage();stageFlash=Math.max(0,stageFlash-dt);screenShake=Math.max(0,screenShake-dt);if(toastTimer>0){toastTimer-=dt;if(toastTimer<=0)toast.classList.remove('show');}
  for(const o of obstacles){if(hit(o)){endGame();return;}}
- drawScene();requestAnimationFrame(loop);}
+ drawScene();scheduleLoop();}
 function onKeyDown(e){if(['Space','ArrowUp','ArrowDown','KeyW','KeyS'].includes(e.code))e.preventDefault();if(e.code==='Space'||e.code==='ArrowUp'||e.code==='KeyW'){if(!e.repeat)jump();}if(e.code==='ArrowDown'||e.code==='KeyS')duck(true);}
 function onKeyUp(e){if(e.code==='ArrowDown'||e.code==='KeyS')duck(false);}
 window.addEventListener('keydown',onKeyDown);window.addEventListener('keyup',onKeyUp);
@@ -187,6 +216,6 @@ canvas.addEventListener('pointerdown',e=>{e.preventDefault();jump();});startButt
 clouds=Array.from({length:5},(_,i)=>({x:80+i*205,y:35+(i%3)*35,s:.7+(i%2)*.35}));
 window.addEventListener('resize',resize);document.addEventListener('visibilitychange',()=>{if(document.hidden&&state==='running'){state='paused';overlay.classList.remove('is-hidden');iconEl.textContent='☕';eyebrowEl.textContent='UN RESPIRO DE CHEF';titleEl.textContent='¡Tomemos un descanso!';textEl.textContent='La cocina se quedó en pausa. Cuando quieras, seguimos la carrera.';startButton.querySelector('span').textContent='Continuar';}else if(!document.hidden&&state==='paused'){state='ready';}});
 // Clicking continue after an automatic pause resumes the current round.
-startButton.addEventListener('click',()=>{if(state==='paused'){state='running';overlay.classList.add('is-hidden');lastTime=performance.now();requestAnimationFrame(loop);}});
+startButton.addEventListener('click',()=>{if(state==='paused'){state='running';overlay.classList.add('is-hidden');lastTime=performance.now();scheduleLoop();}});
 resize();reset();
 })();
