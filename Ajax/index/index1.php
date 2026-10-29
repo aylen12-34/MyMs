@@ -27,9 +27,7 @@
     <?php include("../../includes/navindex.php"); ?>
     <main>
         <h2 class="titulo">Productos Disponibles</h2>
-        <br>
-        <?php include("../../includes/menu.php"); ?>
-        <br>
+        <div id="menu2"><?php include("../../includes/menu.php"); ?></div>
         <div id="productosbusqueda">
         </div>
         <div id="productos">

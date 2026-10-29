@@ -11,13 +11,12 @@ if (!isset($_SESSION['Rol']) || $_SESSION['Rol'] != "administrador") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="tipografia/Fonts/WEB/css/chillax.css">
-<link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Reportes</title>
     <style>
-
 * {
     margin: 0;
     padding: 0;
@@ -27,32 +26,31 @@ if (!isset($_SESSION['Rol']) || $_SESSION['Rol'] != "administrador") {
 /* =========================
    BODY
 ========================= */
-
 body {
     margin: 0;
     height: 100vh;
     overflow: hidden;
     font-family: 'Chillax-Semibold';
     position: relative;
+    background-color: #1a0a10; /* Fondo base oscuro por si carga el canvas */
 }
+
 /* =========================
-   FONDO BORROSO Y OSCURO
+   CANVAS DE LLUVIA DE GALLETAS
 ========================= */
-body::before {
-    content: "";
+#canvas-lluvia {
     position: fixed;
-    inset: -15px;
-    background-image: url("imagenes/2.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: blur(2px) brightness(0.775);
-    z-index: -2;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
 }
+
 /* =========================
    PANTALLA PRINCIPAL
 ========================= */
-
 .pantalla {
     position: relative;
     width: 100%;
@@ -129,46 +127,6 @@ body::before {
     100% {transform: scale(1);}
 }
 /* =========================
-   GALLETAS
-========================= */
-.galleta {
-    position: absolute;
-    z-index: 5;
-    width: 390px;
-    height: 390px;
-    object-fit: contain;
-    animation: saltoGalleta 3s infinite ease-in-out;
-}
-/* =========================
-   POSICIONES DE GALLETAS
-========================= */
-.g1 {
-    left: 5%;
-    bottom: 8%;
-    animation-delay: 0s;
-}
-.g2 {
-    left: 22%;
-    bottom: 12%;
-    animation: saltoGalletaVuelta 3.1s infinite ease-in-out;
-    animation-delay: .45s;
-}
-.g3 {
-    left: 42%;
-    bottom: 5%;
-    animation-delay: .45s;
-}
-.g4 {
-    right: 22%;
-    bottom: 11%;
-    animation-delay: .25s;
-}
-.g5 {
-    right: 5%;
-    bottom: 7%;
-    animation-delay: .7s;
-}
-/* =========================
    BOTONES
 ========================= */
 .botones {
@@ -230,65 +188,6 @@ body::before {
     text-decoration: none;
 }
 /* =========================
-   ANIMACIÓN DE GALLETAS
-========================= */
-@keyframes saltoGalleta {
-    0% {transform: translateY(0) rotate(0deg);}
-    25% {transform: translateY(-45px) rotate(-5deg);}
-    50% {transform: translateY(0) rotate(5deg);}
-    75% {transform: translateY(-25px) rotate(-3deg);}
-    100% {transform: translateY(0) rotate(0deg);}
-}
-/* =========================
-   GALLETA QUE DA LA VUELTA
-========================= */
-@keyframes saltoGalletaVuelta {
-    /* =========================
-       SUBIDA SUAVE
-    ========================= */
-    0% {transform: translateY(0) rotate(0deg);}
-    5% {transform: translateY(-8px) rotate(0deg);}
-    10% {transform: translateY(-20px) rotate(0deg);}
-    15% {transform: translateY(-35px) rotate(0deg);}
-    20% {transform: translateY(-52px) rotate(0deg);}
-    25% {transform: translateY(-70px) rotate(0deg);}
-    30% {transform: translateY(-88px) rotate(0deg);}
-    35% {transform: translateY(-104px) rotate(0deg);}
-    40% {transform: translateY(-117px) rotate(0deg);}
-    45% {transform: translateY(-127px) rotate(0deg);}
-    48% {transform: translateY(-132px) rotate(0deg);}
-    50% {transform: translateY(-135px) rotate(0deg);}
-    /* =========================
-       GIRO RÁPIDO ARRIBA
-    ========================= */
-    51% {transform: translateY(-135px) rotate(30deg);}
-    52% {transform: translateY(-135px) rotate(60deg);}
-    53% {transform: translateY(-135px) rotate(90deg);}
-    54% {transform: translateY(-135px) rotate(120deg);}
-    55% {transform: translateY(-135px) rotate(150deg);}
-    56% {transform: translateY(-135px) rotate(180deg);}
-    57% {transform: translateY(-135px) rotate(210deg);}
-    58% {transform: translateY(-135px) rotate(240deg);}
-    59% {transform: translateY(-135px) rotate(270deg);}
-    60% {transform: translateY(-135px) rotate(300deg);}
-    61% {transform: translateY(-135px) rotate(330deg);}
-    62% {transform: translateY(-135px) rotate(360deg);}
-    63% {transform: translateY(-135px) rotate(360deg);}
-    /* =========================
-       BAJADA SUAVE
-    ========================= */
-    66% {transform: translateY(-133px) rotate(360deg);}
-    70% {transform: translateY(-126px) rotate(360deg);}
-    74% {transform: translateY(-114px) rotate(360deg);}
-    78% {transform: translateY(-98px) rotate(360deg);}
-    82% {transform: translateY(-78px) rotate(360deg);}
-    86% {transform: translateY(-56px) rotate(360deg);}
-    90% {transform: translateY(-35px) rotate(360deg);}
-    94% {transform: translateY(-17px) rotate(360deg);}
-    97% {transform: translateY(-7px) rotate(360deg);}
-    100% {transform: translateY(0) rotate(360deg);}
-}
-/* =========================
    RESPONSIVE
 ========================= */
 @media (max-width: 800px) {
@@ -300,10 +199,6 @@ body::before {
     }
     .racha p {
         font-size: 22px;
-    }
-    .galleta {
-        width: 80px;
-        height: 80px;
     }
     .botones {
         width: 95%;
@@ -328,26 +223,6 @@ body::before {
     .racha h1 {
         font-size: 40px;
     }
-    .galleta {
-        width: 65px;
-        height: 65px;
-    }
-    .g1 {
-        left: 2%;
-    }
-    .g2 {
-        left: 15%;
-    }
-    .g3 {
-        left: auto;
-        right: 40%;
-    }
-    .g4 {
-        right: 15%;
-    }
-    .g5 {
-        right: 2%;
-    }
 }
 .imagen-interactiva {
       width: 150px;
@@ -367,16 +242,14 @@ body::before {
     border: 2px solid #EFE2DA;
     border-radius: 20px;
 }
-</style>
+    </style>
 </head>
 <body>
+    <!-- Canvas para la lluvia de galletas de fondo -->
+    <canvas id="canvas-lluvia"></canvas>
+
     <?php include("includes/navpro.php"); ?>
     <div class="pantalla">
-        <img src="imagenes/galletas/galleta1.png" class="galleta g1" alt="Galleta">
-        <img src="imagenes/galletas/galleta3.png" class="galleta g2" alt="Galleta">
-        <img src="imagenes/galletas/galleta2.png" class="galleta g3" alt="Galleta">
-        <img src="imagenes/galletas/galleta4.png" class="galleta g4" alt="Galleta">
-        <img src="imagenes/galletas/galleta2.png" class="galleta g5" alt="Galleta">
         <div class="racha">
             <h1>
         <img src="imagenes/gatito.png" alt="Elemento interactivo" class="imagen-interactiva" onclick="reproducirSonido()">  
@@ -400,13 +273,104 @@ body::before {
     <script>
         function reiniciarRacha() {
             window.location.href = "reportes.php";
-
         }
+
+        // Script de Lluvia de Galletas en Canvas 2D
+        const canvas = document.getElementById('canvas-lluvia');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Rutas de las galletas existentes en tu proyecto
+        const rutasGalletas = [
+            'imagenes/galletas/galleta1.png',
+            'imagenes/galletas/galleta2.png',
+            'imagenes/galletas/galleta3.png',
+            'imagenes/galletas/galleta4.png'
+        ];
+
+        let imagenesGalletas = [];
+        let imagenesCargadas = 0;
+
+        rutasGalletas.forEach((ruta, index) => {
+            const img = new Image();
+            img.src = ruta;
+            img.onload = () => {
+                imagenesCargadas++;
+            };
+            imagenesGalletas.push(img);
+        });
+
+        class CopoGalleta {
+            constructor() {
+                this.reiniciar();
+            }
+            reiniciar() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * -canvas.height;
+                this.tamano = Math.random() * 60 + 90; // Tamaño entre 40px y 90px
+                this.velocidadY = Math.random() * 1.5 + 0.5; // Velocidad de caída suave
+                this.velocidadX = Math.random() * 1 - 0.5; // Ligero movimiento lateral
+                this.rotacion = Math.random() * Math.PI * 2;
+                this.velocidadRotacion = (Math.random() - 0.5) * 0.02;
+                this.imagenIndex = Math.floor(Math.random() * imagenesGalletas.length);
+                this.opacidad = Math.random() * 0.5 + 0.3; // Semitransparentes para que no distraigan el contenido
+            }
+            actualizar() {
+                this.y += this.velocidadY;
+                this.x += this.velocidadX;
+                this.rotacion += this.velocidadRotacion;
+
+                if (this.y > canvas.height + 100) {
+                    this.reiniciar();
+                    this.y = -100;
+                }
+            }
+            dibujar() {
+                if (imagenesGalletas[this.imagenIndex].complete && imagenesGalletas[this.imagenIndex].naturalWidth !== 0) {
+                    ctx.save();
+                    ctx.globalAlpha = this.opacidad;
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate(this.rotacion);
+                    ctx.drawImage(
+                        imagenesGalletas[this.imagenIndex],
+                        -this.tamano / 2,
+                        -this.tamano / 2,
+                        this.thisTamano || this.tamano,
+                        this.thisTamano || this.tamano
+                    );
+                    ctx.restore();
+                }
+            }
+        }
+
+        const cantidadGalletas = 25;
+        const lluvia = [];
+        for (let i = 0; i < cantidadGalletas; i++) {
+            lluvia.push(new CopoGalleta());
+        }
+
+        function animar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            lluvia.forEach(galleta => {
+                galleta.actualizar();
+                galleta.dibujar();
+            });
+            requestAnimationFrame(animar);
+        }
+
+        animar();
+
 document.addEventListener("DOMContentLoaded", function() {
     let timerInterval;
     Swal.fire({
         title: 'Bienvenido Administrador',
-        html: 'Cargando cantidad <b></b> de pedidos.',
+        html: 'Cargando cantidad <b></b> de reportes.',
         timer: 2000,
         timerProgressBar: true,
         background: '#E64B6B',
@@ -423,7 +387,6 @@ document.addEventListener("DOMContentLoaded", function() {
             clearInterval(timerInterval);
         }
     }).then((result) => {
-
         if (result.dismiss === Swal.DismissReason.timer) {
             console.log('Alerta cerrada correctamente');
         }
