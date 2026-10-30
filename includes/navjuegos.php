@@ -181,7 +181,7 @@
                 <span>
                     ¿Tienes un pedido?
                 </span>
-                <form action="../Ajax/index/buscarPedido.php" method="GET">
+                <form action="../Ajax/index/consultar_pedido.php" method="GET">
                     <input type="number" name="ID" placeholder="ID del recibo" min="1" required>
                     <button type="submit"> Buscar</button>
                 </form>
