@@ -141,7 +141,7 @@ if ($res_carrusel && $res_carrusel->num_rows > 0) {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, #6A253A 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 55%, #6A253A 100%);
 }
 
 .carrusel-seccion .icono-avatar {

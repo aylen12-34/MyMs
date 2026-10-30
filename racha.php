@@ -23,21 +23,14 @@ if (!isset($_SESSION['Rol']) || $_SESSION['Rol'] != "administrador") {
     box-sizing: border-box;
     font-family: 'Chillax-Semibold';
 }
-/* =========================
-   BODY
-========================= */
 body {
     margin: 0;
     height: 100vh;
     overflow: hidden;
     font-family: 'Chillax-Semibold';
     position: relative;
-    background-color: #1a0a10; /* Fondo base oscuro por si carga el canvas */
+    background-color: #1a0a10;
 }
-
-/* =========================
-   CANVAS DE LLUVIA DE GALLETAS
-========================= */
 #canvas-lluvia {
     position: fixed;
     top: 0;
@@ -47,10 +40,6 @@ body {
     z-index: -1;
     pointer-events: none;
 }
-
-/* =========================
-   PANTALLA PRINCIPAL
-========================= */
 .pantalla {
     position: relative;
     width: 100%;
@@ -60,9 +49,6 @@ body {
     align-items: center;
     overflow: hidden;
 }
-/* =========================
-   CONTENIDO CENTRAL
-========================= */
 .racha {
     position: relative;
     z-index: 10;
@@ -70,10 +56,6 @@ body {
     color: white;
     animation: aparecer 1s ease-out;
 }
-
-/* =========================
-   TÍTULO CENTRAL
-========================= */
 .racha h1 {
     margin: 0;
     font-size: 90px;
@@ -85,9 +67,6 @@ body {
         0 0 7px rgba(255, 255, 255, 0.35);
     animation: crecerTexto 3s ease-in-out infinite;
 }
-/* =========================
-   GATITO
-========================= */
 .racha h1 img {
     vertical-align: middle;
     width: 100px;
@@ -96,17 +75,11 @@ body {
         drop-shadow(0 0 7px rgba(255, 255, 255, 0.25));
     transition: filter 0.3s ease;
 }
-/* =========================
-   BRILLO DEL GATITO
-========================= */
 .racha h1 img:hover {
     filter:
         drop-shadow(0 0 4px rgba(255, 255, 255, 0.85))
         drop-shadow(0 0 9px rgba(255, 255, 255, 0.35));
 }
-/* =========================
-   TEXTO "VER REPORTES"
-========================= */
 .racha p {
     margin: 10px 0 0;
     font-size: 28px;
@@ -118,17 +91,11 @@ body {
         0 0 8px rgba(255, 255, 255, 0.35);
     animation: crecerTexto 3s ease-in-out infinite;
 }
-/* =========================
-   ANIMACIÓN DE AGRANDAMIENTO
-========================= */
 @keyframes crecerTexto {
     0% {transform: scale(1);}
     50% {transform: scale(1.025);}
     100% {transform: scale(1);}
 }
-/* =========================
-   BOTONES
-========================= */
 .botones {
     position: absolute;
     bottom: 45px;
@@ -141,9 +108,6 @@ body {
     gap: 15px;
     width: 90%;
 }
-/* =========================
-   BOTONES INDIVIDUALES
-========================= */
 .botones button {
     min-width: 200px;
     padding: 14px 20px;
@@ -166,9 +130,6 @@ body {
     text-shadow:
         0 0 2px rgba(239, 226, 218, 0.25);
 }
-/* =========================
-   HOVER DE BOTONES
-========================= */
 .botones button:hover {
     transform: translateY(-3px);
     background: #E64B6B;
@@ -181,15 +142,9 @@ body {
     text-shadow:
         0 0 4px rgba(239, 226, 218, 0.45);
 }
-/* =========================
-   ENLACES
-========================= */
 .botones a {
     text-decoration: none;
 }
-/* =========================
-   RESPONSIVE
-========================= */
 @media (max-width: 800px) {
     .racha h1 {
         font-size: 55px;
@@ -245,9 +200,7 @@ body {
     </style>
 </head>
 <body>
-    <!-- Canvas para la lluvia de galletas de fondo -->
     <canvas id="canvas-lluvia"></canvas>
-
     <?php include("includes/navpro.php"); ?>
     <div class="pantalla">
         <div class="racha">
@@ -274,8 +227,6 @@ body {
         function reiniciarRacha() {
             window.location.href = "reportes.php";
         }
-
-        // Script de Lluvia de Galletas en Canvas 2D
         const canvas = document.getElementById('canvas-lluvia');
         const ctx = canvas.getContext('2d');
 
@@ -285,8 +236,6 @@ body {
         }
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
-
-        // Rutas de las galletas existentes en tu proyecto
         const rutasGalletas = [
             'imagenes/galletas/galleta1.png',
             'imagenes/galletas/galleta2.png',
@@ -313,13 +262,13 @@ body {
             reiniciar() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * -canvas.height;
-                this.tamano = Math.random() * 60 + 90; // Tamaño entre 40px y 90px
-                this.velocidadY = Math.random() * 1.5 + 0.5; // Velocidad de caída suave
-                this.velocidadX = Math.random() * 1 - 0.5; // Ligero movimiento lateral
+                this.tamano = Math.random() * 60 + 90;
+                this.velocidadY = Math.random() * 1.5 + 0.5;
+                this.velocidadX = Math.random() * 1 - 0.5;
                 this.rotacion = Math.random() * Math.PI * 2;
                 this.velocidadRotacion = (Math.random() - 0.5) * 0.02;
                 this.imagenIndex = Math.floor(Math.random() * imagenesGalletas.length);
-                this.opacidad = Math.random() * 0.5 + 0.3; // Semitransparentes para que no distraigan el contenido
+                this.opacidad = Math.random() * 0.5 + 0.3;
             }
             actualizar() {
                 this.y += this.velocidadY;

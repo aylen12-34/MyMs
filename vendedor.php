@@ -282,7 +282,7 @@ main p{
 
 <main>
     <div class="panel">
-        <h1>📦 Registros</h1>
+        <h1><i class="fa-solid fa-box-open"></i> Registros</h1>
         <h3>Inventario de productos</h3>
         <a href="Productos/readleeProductos.php"><button>Productos disponibles</button></a>
         <a href="Pedidos/leerPedidos.php"><button>Pedidos registrados </button></a>
