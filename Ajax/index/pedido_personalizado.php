@@ -438,8 +438,7 @@ if (detalles !== "") {
 
 mensaje +=
     "%0A━━━━━━━━━━━━━━%0A" +
-    "Este pedido es una solicitud de personalización.%0A" +
-    "El precio y los detalles finales deben ser confirmados con el cliente.";
+    "Este pedido es una solicitud de personalización.%0A" 
 
 var numeroMyMs = "59169505739";
 var url =

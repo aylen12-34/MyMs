@@ -29,7 +29,23 @@ body {
     overflow: hidden;
     font-family: 'Chillax-Semibold';
     position: relative;
-    background-color: #1a0a10;
+    background: linear-gradient(
+        to right,
+        #6A253A 0%,
+        #EFE2DA 3%,
+        #EFE2DA 97%,
+        #6A253A 100%
+    ),
+    linear-gradient(
+            to bottom,
+           #6A253A 0%,
+        #EFE2DA 3%,
+        #EFE2DA 97%,
+        #6A253A 100%
+        );
+    min-height: 100vh;
+    background-blend-mode: multiply;
+    background-attachment: fixed;
 }
 #canvas-lluvia {
     position: fixed;
