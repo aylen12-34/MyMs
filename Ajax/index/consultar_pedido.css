@@ -1,0 +1,301 @@
+/* =========================================================
+   CONSULTA DE PEDIDOS - MYMS
+   Mantiene la paleta y la tipografía del sitio.
+   ========================================================= */
+
+.pagina-consultar-pedido {
+    min-height: 100vh;
+}
+
+.contenedor-consulta {
+    min-height: calc(100vh - 85px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 18px 55px;
+}
+
+.pagina-consultar-pedido .formularioPedido {
+    width: min(460px, 94vw);
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 34px;
+    gap: 14px;
+    background: #EFE2DA;
+    border: 3px solid #E64B6B;
+    border-radius: 24px;
+    box-shadow: 0 16px 38px rgba(79, 27, 44, 0.25);
+}
+
+.etiqueta-consulta,
+.detalle-modal-superior {
+    color: #E64B6B;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-align: center;
+}
+
+.pagina-consultar-pedido .formularioPedido h1 {
+    color: #6A253A;
+    font-size: clamp(26px, 5vw, 34px);
+    line-height: 1.2;
+    text-align: center;
+}
+
+.descripcion-consulta {
+    color: #6A253A;
+    font-size: 15px;
+    line-height: 1.55;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.pagina-consultar-pedido .formularioPedido label {
+    margin: 4px 0 -6px;
+    color: #6A253A;
+    font-size: 14px;
+}
+
+.pagina-consultar-pedido .formularioPedido input {
+    width: 100%;
+    margin: 0;
+    background: #FFF8F4;
+    border: 2px solid #F5B5C2;
+    border-radius: 13px;
+    color: #4F1B2C;
+    font-family: 'Chillax-Semibold', sans-serif;
+}
+
+.pagina-consultar-pedido .formularioPedido input:focus {
+    border-color: #E64B6B;
+    box-shadow: 0 0 0 4px rgba(230, 75, 107, 0.13);
+}
+
+.pagina-consultar-pedido .formularioPedido button {
+    margin-top: 5px;
+    background: #6A253A;
+    color: #FFF8F4;
+    font-family: 'Chillax-Semibold', sans-serif;
+}
+
+.pagina-consultar-pedido .formularioPedido button:hover {
+    background: #E64B6B;
+}
+
+.mensaje-consulta {
+    min-height: 18px;
+    color: #6A253A;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* Fondo exterior */
+.fondo-modal-pedido {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(26, 10, 16, 0.76);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.fondo-modal-pedido.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Marco rosa exterior, más ancho que el cuerpo crema */
+.marco-modal-pedido {
+    position: relative;
+    width: min(510px, 94vw);
+    max-height: min(90vh, 760px);
+    overflow-y: auto;
+    padding: 12px;
+    border: 3px solid #F5B5C2;
+    border-radius: 29px;
+    background: #E64B6B;
+    box-shadow:
+        0 22px 55px rgba(0, 0, 0, 0.38),
+        0 7px 18px rgba(79, 27, 44, 0.28);
+    transform: translateY(12px) scale(0.97);
+    transition: transform 0.25s ease;
+}
+
+.fondo-modal-pedido.activo .marco-modal-pedido {
+    transform: translateY(0) scale(1);
+}
+
+.contenido-modal-pedido {
+    position: relative;
+    padding: 34px 30px 30px;
+    border-radius: 19px;
+    background: #FFF8F4;
+    color: #6A253A;
+    box-shadow: inset 0 0 0 1px rgba(106, 37, 58, 0.08);
+}
+
+.cerrar-modal-pedido {
+    position: absolute;
+    top: 12px;
+    right: 13px;
+    width: 34px;
+    height: 34px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #6A253A;
+    color: #FFF8F4;
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.cerrar-modal-pedido:hover {
+    background: #E64B6B;
+    transform: rotate(90deg);
+}
+
+.contenido-modal-pedido h2 {
+    margin: 7px 0 22px;
+    color: #6A253A;
+    font-size: clamp(24px, 5vw, 30px);
+    line-height: 1.2;
+    text-align: center;
+}
+
+.numero-pedido-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    margin-bottom: 17px;
+    padding: 15px;
+    border-radius: 15px;
+    background: #FCE8EC;
+    border: 1px solid #F5B5C2;
+}
+
+.numero-pedido-modal span {
+    color: #E64B6B;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+}
+
+.numero-pedido-modal strong {
+    color: #6A253A;
+    font-size: 29px;
+}
+
+.dato-pedido-modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 12px 2px;
+    border-bottom: 1px solid rgba(106, 37, 58, 0.12);
+    font-size: 14px;
+}
+
+.dato-pedido-modal span {
+    flex: 0 0 auto;
+    color: #9A5266;
+}
+
+.dato-pedido-modal strong {
+    color: #4F1B2C;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.estado-pedido-modal {
+    padding: 5px 11px;
+    border-radius: 20px;
+    background: #FCE8EC;
+    color: #6A253A !important;
+}
+
+.enlace-recibo-pedido {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin: 23px auto 0;
+    padding: 12px 18px;
+    border: 2px solid #E64B6B;
+    border-radius: 12px;
+    background: #6A253A;
+    color: #FFF8F4;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.enlace-recibo-pedido:hover {
+    background: #E64B6B;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 15px rgba(106, 37, 58, 0.2);
+}
+
+body.modal-pedido-abierto {
+    overflow: hidden;
+}
+
+@media (max-width: 520px) {
+    .contenedor-consulta {
+        min-height: calc(100vh - 85px);
+        padding: 20px 13px 35px;
+    }
+
+    .pagina-consultar-pedido .formularioPedido {
+        padding: 27px 22px;
+    }
+
+    .marco-modal-pedido {
+        padding: 9px;
+        border-radius: 24px;
+    }
+
+    .contenido-modal-pedido {
+        padding: 31px 19px 23px;
+    }
+
+    .dato-pedido-modal {
+        font-size: 13px;
+        gap: 10px;
+    }
+
+    .enlace-recibo-pedido {
+        width: 100%;
+        font-size: 13px;
+    }
+}
+
+
+/* SweetAlert2 con identidad visual MyMs */
+.swal-myms {
+    border: 5px solid #E64B6B !important;
+    border-radius: 22px !important;
+    box-shadow: 0 15px 40px rgba(79, 27, 44, 0.28) !important;
+    font-family: 'Chillax-Semibold', sans-serif !important;
+}
+
+.swal-myms-titulo,
+.swal-myms .swal2-html-container,
+.swal-myms-boton {
+    font-family: 'Chillax-Semibold', sans-serif !important;
+}
+
+.swal-myms-boton {
+    border-radius: 11px !important;
+    padding: 11px 25px !important;
+}
