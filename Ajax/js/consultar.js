@@ -122,6 +122,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     botonConsultar.addEventListener("click", consultarPedido);
 
+    // Si el usuario llega desde el buscador del menú (?ID=...), consultar directamente.
+    const parametrosURL = new URLSearchParams(window.location.search);
+    const idURL = parametrosURL.get("ID");
+    if (idURL !== null) {
+        inputID.value = idURL;
+        consultarPedido();
+    }
+
     inputID.addEventListener("keydown", (evento) => {
         if (evento.key === "Enter") {
             evento.preventDefault();

@@ -11,6 +11,8 @@
 </head>
 <body class="pagina-consultar-pedido">
 
+    <?php include("../../includes/navindex.php"); ?>
+
     <main class="contenedor-consulta">
         <section class="formularioPedido">
             <span class="etiqueta-consulta">MYMS · ATENCIÓN AL CLIENTE</span>
@@ -23,6 +25,7 @@
             <input
                 type="number"
                 id="numeroPedido"
+                name="ID"
                 placeholder="Ejemplo: 44"
                 min="1"
                 step="1"
