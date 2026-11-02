@@ -426,6 +426,6 @@ $total = 0;
         </h3>
     </div>
     <button onclick="window.print()">🖨 Imprimir</button>
- <a href="index1.php"><button href="" class="btn-volver-esquina" aria-label="Volver"> </button></a>
+ <a href="../../portada publica.php"><button href="" class="btn-volver-esquina" aria-label="Volver"> </button></a>
 </body>
 </html>

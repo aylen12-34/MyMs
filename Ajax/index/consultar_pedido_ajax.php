@@ -1,66 +1,82 @@
 <?php
 session_start();
-require_once __DIR__ . "/conexion.php";
+require_once("conexion.php");
 
 header("Content-Type: application/json; charset=utf-8");
 
-function responder($ok, $mensaje = "", $pedido = null, $codigo = 200) {
-    http_response_code($codigo);
-    $respuesta = ["ok" => $ok];
-    if ($mensaje !== "") {
-        $respuesta["mensaje"] = $mensaje;
-    }
-    if ($pedido !== null) {
-        $respuesta["pedido"] = $pedido;
-    }
-    echo json_encode($respuesta, JSON_UNESCAPED_UNICODE);
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    http_response_code(405);
+    echo json_encode([
+        "ok" => false,
+        "mensaje" => "Método no permitido"
+    ], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
-if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    responder(false, "Método no permitido", null, 405);
-}
+$id = isset($_POST["id"]) ? trim($_POST["id"]) : "";
 
-$id = isset($_POST["id"]) ? trim((string) $_POST["id"]) : "";
-if ($id === "" || !ctype_digit($id) || (int) $id < 1) {
-    responder(false, "Ingresa un número de pedido válido");
+if ($id === "" || !ctype_digit($id) || (int)$id < 1) {
+    echo json_encode([
+        "ok" => false,
+        "mensaje" => "Ingresa un número de pedido válido"
+    ], JSON_UNESCAPED_UNICODE);
+    exit;
 }
 
 $stmt = $conn->prepare(
     "SELECT ID, Nombre, Fecha, Estado, NombreVendedor
-     FROM Pedidos
+     FROM pedidos
      WHERE ID = ?
      LIMIT 1"
 );
 
 if (!$stmt) {
-    responder(false, "No se pudo preparar la consulta", null, 500);
+    http_response_code(500);
+    echo json_encode([
+        "ok" => false,
+        "mensaje" => "No se pudo realizar la consulta"
+    ], JSON_UNESCAPED_UNICODE);
+    $conn->close();
+    exit;
 }
 
-$idNumerico = (int) $id;
-$stmt->bind_param("i", $idNumerico);
+$stmt->bind_param("s", $id);
 
 if (!$stmt->execute()) {
+    http_response_code(500);
+    echo json_encode([
+        "ok" => false,
+        "mensaje" => "No se pudo realizar la consulta"
+    ], JSON_UNESCAPED_UNICODE);
     $stmt->close();
-    responder(false, "No se pudo realizar la consulta", null, 500);
+    $conn->close();
+    exit;
 }
 
 $resultado = $stmt->get_result();
-$pedido = $resultado ? $resultado->fetch_assoc() : null;
-$stmt->close();
-$conn->close();
 
-if (!$pedido) {
-    responder(false, "No existe ningún pedido con ese número");
+if ($resultado && $resultado->num_rows > 0) {
+    $pedido = $resultado->fetch_assoc();
+
+    echo json_encode([
+        "ok" => true,
+        "pedido" => [
+            "ID" => $pedido["ID"],
+            "Nombre" => $pedido["Nombre"],
+            "Fecha" => $pedido["Fecha"],
+            "Estado" => $pedido["Estado"],
+            "NombreVendedor" => !empty($pedido["NombreVendedor"])
+                ? $pedido["NombreVendedor"]
+                : "Pendiente"
+        ]
+    ], JSON_UNESCAPED_UNICODE);
+} else {
+    echo json_encode([
+        "ok" => false,
+        "mensaje" => "No existe ningún pedido con ese número"
+    ], JSON_UNESCAPED_UNICODE);
 }
 
-responder(true, "", [
-    "ID" => (int) $pedido["ID"],
-    "Nombre" => $pedido["Nombre"] ?: "No especificado",
-    "Fecha" => $pedido["Fecha"] ?: "No especificada",
-    "Estado" => $pedido["Estado"] ?: "No especificado",
-    "NombreVendedor" => !empty($pedido["NombreVendedor"])
-        ? $pedido["NombreVendedor"]
-        : "Pendiente"
-]);
+$stmt->close();
+$conn->close();
 ?>

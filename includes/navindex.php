@@ -15,13 +15,31 @@
             <span>
                 ¿Tienes un pedido?
             </span>
-            <form action="consultar_pedido.php" method="GET">
-                <input type="number" name="ID" placeholder="ID del recibo" min="1" step="1" inputmode="numeric" required>
-                <button type="submit"> Buscar </button>
-            </form>
+            <form class="form-buscar-pedido" data-endpoint="consultar_pedido_ajax.php" novalidate>
+                    <input type="number" name="ID" placeholder="ID del recibo" min="1" step="1" required>
+                    <button type="submit">Buscar</button>
+                </form>
         </li>
     </ul>
 </nav>
+<!-- Resultado de búsqueda de pedido: permanece en la página actual -->
+<div id="fondoModalPedido" class="fondo-modal-pedido" aria-hidden="true">
+    <section id="modalPedido" class="marco-modal-pedido" role="dialog" aria-modal="true" aria-labelledby="tituloModalPedido">
+        <div class="contenido-modal-pedido">
+            <button type="button" id="cerrarModalPedido" class="cerrar-modal-pedido" aria-label="Cerrar ventana">×</button>
+            <span class="detalle-modal-superior">INFORMACIÓN DE TU COMPRA</span>
+            <h2 id="tituloModalPedido">Pedido encontrado</h2>
+            <div class="numero-pedido-modal"><span>PEDIDO N.º</span><strong id="modalPedidoID">—</strong></div>
+            <div class="dato-pedido-modal"><span>Cliente</span><strong id="modalPedidoNombre">—</strong></div>
+            <div class="dato-pedido-modal"><span>Fecha</span><strong id="modalPedidoFecha">—</strong></div>
+            <div class="dato-pedido-modal"><span>Estado del pedido</span><strong id="modalPedidoEstado" class="estado-pedido-modal">—</strong></div>
+            <div class="dato-pedido-modal"><span>Vendedor</span><strong id="modalPedidoVendedor">—</strong></div>
+            <a id="enlaceReciboPedido" class="enlace-recibo-pedido" href="#" target="_blank">¿Necesitas de nuevo el recibo?</a>
+        </div>
+    </section>
+</div>
+
+<link rel="stylesheet" href="consultar_pedido.css">
 <style>
 * {
     font-family: 'Chillax-Semibold';
@@ -202,3 +220,5 @@ overlay.addEventListener("click", () => {
     abierto = false;
 });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="../js/consultar_nav.js"></script>
