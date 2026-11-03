@@ -201,7 +201,7 @@
             <div class="dato-pedido-modal"><span>Fecha</span><strong id="modalPedidoFecha">—</strong></div>
             <div class="dato-pedido-modal"><span>Estado del pedido</span><strong id="modalPedidoEstado" class="estado-pedido-modal">—</strong></div>
             <div class="dato-pedido-modal"><span>Vendedor</span><strong id="modalPedidoVendedor">—</strong></div>
-            <a id="enlaceReciboPedido" class="enlace-recibo-pedido" href="#" target="_blank">¿Necesitas de nuevo el recibo?</a>
+            <a id="enlaceReciboPedido" class="enlace-recibo-pedido" href="Ajax/index/recibo.php">¿Necesitas de nuevo el recibo?</a>
         </div>
     </section>
 </div>
